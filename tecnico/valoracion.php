@@ -137,12 +137,13 @@
                                     <i class="fa fa-list fa-5x" style="color: green"></i>
                                 </div>
                                 <?php 
+	                             $idtecnico = $_SESSION['usuario']['id_tecnico'];
                                 $query ="SELECT 'calificacion', COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS excelente,
                                                                 COUNT(CASE WHEN evaluacion = 'REGULAR' THEN 1 END) AS regular,
                                                                 COUNT(CASE WHEN evaluacion = 'MALO' THEN 1 END) AS malo                    
                                                 FROM
                                                     reporte
-                                                GROUP BY 'Bueno'";
+                                                WHERE idtec = $idtecnico";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
                                 ?>

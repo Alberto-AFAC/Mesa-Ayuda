@@ -126,11 +126,65 @@
         </div>
     </div>
     <div class="row">   
-        <div class="col-lg-12">
-            <div class="panel panel-cherri">
-                <div class="panel-heading"></div>
+    <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/like.svg" width="60px" alt="Bueno" class="img-fluid">
+                                </div>
+                                <?php 
+	                             $idtecnico = $_SESSION['usuario']['id_tecnico'];
+                                $query ="SELECT 'calificacion', COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS excelente,
+                                                                COUNT(CASE WHEN evaluacion = 'REGULAR' THEN 1 END) AS regular,
+                                                                COUNT(CASE WHEN evaluacion = 'MALO' THEN 1 END) AS malo                    
+                                                FROM
+                                                    reporte
+                                                WHERE idtec = $idtecnico";
+                                $resultado = mysqli_query($conexion, $query);
+                                $row = mysqli_fetch_assoc($resultado);
+                                ?>
+                                <div class="col-xs-9 text-right text-success">
+                                    <div class="huge"><?php echo $row['excelente'] ?></div>
+                                    <div>Bueno</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+               <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                <img src="../img/manos-abiertas.svg" width="60px" alt="regular" class="img-fluid">
+                                </div>
+                                <div class="col-xs-9 text-right text-warning">
+                                    <div class="huge"><?php echo $row['regular'] ?></div>
+                                    <div>Regular</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                <img src="../img/dislike.svg" width="60px" alt="malo" class="img-fluid">
+                                </div>
+                                <div class="col-xs-9 text-right text-danger">
+                                    <div class="huge"><?php echo $row['malo'] ?></div>
+                                    <div>Malo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
          <div class="panel-body">
             <div class="col-lg-12">
             <?php //include("../html/consultar.html");?>
