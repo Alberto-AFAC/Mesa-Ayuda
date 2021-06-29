@@ -94,6 +94,11 @@ session_start();
                             <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="valoracion.php"><i class="fa fa-area-chart"></i> valoración</a>
+                            <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
+                            <!-- /.nav-second-level -->
+                        </li>
 
 
                     </ul>
