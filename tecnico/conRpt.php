@@ -436,7 +436,7 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     fixedHeader: true,
     data: dataSet,
     columns: [
-    {title: "N° Reporte"},
+    {title: "N°"},
     {title: "Nombre usuario"},
     {title: "Ubicación"},
     {title: "Extensión"},
