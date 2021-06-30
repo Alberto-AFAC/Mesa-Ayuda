@@ -338,14 +338,16 @@ unset($_SESSION['consulta']);
 
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php if($data['estado_rpt'] == 'Pendiente'){
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+
+                     if($data['estado_rpt'] == 'Pendiente'){
                 echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
                     } 
                       else if($data['estado_rpt'] == 'En proceso') {
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";                        
                     } else if($data['evaluacion'] == 0){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%'>Evaluar</a>";                        
-                    } else {
+                    } else if($data['evaluacion'] != 0){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>Detalles</a>";                        
                     }
                  ?>"
