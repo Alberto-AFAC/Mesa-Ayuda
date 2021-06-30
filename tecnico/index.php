@@ -94,11 +94,7 @@ session_start();
                             <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="valoracion.php"><i class="fa fa-area-chart"></i> valoración</a>
-                            <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
-                            <!-- /.nav-second-level -->
-                        </li>
+                   
 
 
                     </ul>
@@ -716,11 +712,11 @@ $(document).ready(function(){
                       else if($data['estado_rpt'] == 'En proceso') {
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:70%'>{$data['estado_rpt']}</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";
 
-                    }else if($data['evaluacion'] ==0 && $data['estado_rpt'] =='Cancelado'){
+                    }else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:70%'>Por confirmar</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";
 
-                    } else if($data['evaluacion'] == 0){
+                    } else if($data['evaluacion'] == '0'){
 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:70%'>Por evaluar</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";
 

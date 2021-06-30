@@ -103,11 +103,7 @@
                             <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="valoracion.php"><i class="fa fa-area-chart"></i> valoración</a>
-                            <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
-                            <!-- /.nav-second-level -->
-                        </li>
+                      
 
 
                     </ul>
@@ -424,9 +420,9 @@
 if($data['evaluacion'] == 0 && $data['estado_rpt'] =='Finalizado'){
     ?>
     ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta su evaluación</a>";?>"],
-<?php }else if($data['evaluacion'] != 0){ ?>
+<?php }else if($data['evaluacion'] != '0'){ ?>
     ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['evaluacion']}</a>";?>"],
-<?php }else if($data['evaluacion'] == 0 && $data['estado_rpt'] == 'Cancelado'){ ?> 
+<?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?> 
     ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta que confirme</a>";?>"],
 <?php  } 
     }   ?>

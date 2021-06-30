@@ -345,9 +345,9 @@ unset($_SESSION['consulta']);
                     } 
                       else if($data['estado_rpt'] == 'En proceso') {
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";                        
-                    } else if($data['evaluacion'] == 0){
+                    } else if($data['evaluacion'] == '0'){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%'>Evaluar</a>";                        
-                    } else if($data['evaluacion'] != 0){
+                    } else if($data['evaluacion'] != '0'){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>Detalles</a>";                        
                     }
                  ?>"
