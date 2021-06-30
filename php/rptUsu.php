@@ -1,6 +1,7 @@
 	<?php 
-include ("../conexion/conexion.php");
-  
+	include ("../conexion/conexion.php");
+	include_once('../php-mailer/class.phpmailer.php');
+	include_once('../php-mailer/class.smtp.php');
 	$opcion = $_POST["opcion"];
 	$informacion = [];//<---Arreglo
 
@@ -27,9 +28,12 @@ $fenvio= date('Y').'/'.date('m').'/'.date('d');
 $Hinic=date('H:i');
 
 if(registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequipo,$fenvio,$Hinic,$conexion)){
-		echo "0";
-			}else{	echo "1";	}	
+//		 echo "0";
+		enviarCorreo($nempleado,$conexion);		
+		 	}else{	echo "1";	}	
+		
 	}
+	
 
 	if($opcion === 'evaluar'){
 
@@ -55,8 +59,9 @@ function registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequ
 //		$query = "INSERT INTO reporte VALUES(0,'$nempleado','$servicio','$intervencion','$descripcion','0','0','$fenvio','0','0','0','0','$obser','Pendiente','0',2)";
 //agregar reporte y id equipo
 $query = "INSERT INTO reporte(n_empleado,idequipo,servicio,intervencion,descripcion,usu_observ,falla_interna,falla_xterna,finicio,hinicio,ffinal,hfinal,evaluacion,observa,estado_rpt,pila,idtec) SELECT '$nempleado',id_equipo,'$servicio','$intervencion','$descripcion','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Pendiente','0',2 FROM equipo ORDER BY id_equipo DESC LIMIT 1";
-
+	
 			if (mysqli_query($conexion,$query)){		
+				
 				return true;
 				}else{
 					return false;
@@ -92,6 +97,67 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 			return false;
 			}
 		cerrar($conexion);
+	}
+
+function enviarCorreo($nempleado,$conexion){
+	// AQUÍ SE CREA Y ENVÍA EL REPORTE PARA EL TECNICO
+
+		$query = "SELECT MAX(reporte.n_reporte),
+		usuarios.nombre,
+		usuarios.apellidos,
+		usuarios.ubicacion,
+		usuarios.extension,
+		usuarios.correo,
+		reporte.n_empleado,
+		reporte.finicio,
+		reporte.hinicio,
+		reporte.descripcion,
+		reporte.ffinal,
+		reporte.hfinal,
+		reporte.servicio,
+		reporte.intervencion,
+		reporte.falla_interna,
+		reporte.falla_xterna,
+		reporte.observa,
+		reporte.usu_observ 
+	FROM
+		reporte
+		RIGHT JOIN tecnico ON id_tecnico = idtec
+		LEFT JOIN usuarios ON id_usuario = id_usu 
+	WHERE
+		reporte.n_empleado = $nempleado";		
+		$resultados = mysqli_query($conexion,$query);
+		$fila   = mysqli_fetch_assoc($resultados);
+		$fila['n_reporte'];
+		$mail = new PHPMailer();
+		$mail->IsSMTP();
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = "ssl";
+		$mail->CharSet = "Content-Type: text/html; charset=utf-8";
+		$mail->Host = "smtp.gmail.com";
+		$mail->Port = 465;
+		$mail->Username ='jmondragonescamilla@gmail.com';
+		$mail->Password = 'ELVIS_wolf97';
+
+		$mail->AddAddress('jmondragonescamilla@gmail.com');
+		$mail->Subject = "SOLICITUD DE SERVICIO";
+		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
+			<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>SOLICITUD DE SERVICIO</span></td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$fila['n_reporte']."</td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>N° Empleado: </td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>Tipo de curso: </td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: </td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>Hora: </td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>Cargo: </td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: </td></tr>
+			<tr><td style='text-align: center; font-size: 15px;'>Modalidad: </td></tr>
+			<hr><center>
+			<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
+			</center><hr>
+			</table>";
+		$mail->MsgHTML($msg);
+		$mail->send();
+
 	}
 
 

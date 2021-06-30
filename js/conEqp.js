@@ -215,129 +215,129 @@ $.ajax({
 })
 
 //consulta datos para evaluar reporte
-function evaluar(fila){
+function evaluar(fila) {
 
-$.ajax({
-    url: '../php/conReport.php',
-    type: 'POST'
-}).done(function(resp) {
-    obj = JSON.parse(resp);
-    var res = obj.data;
-    var x = 0;
-    for (i = 0; i < res.length; i++) {
+    $.ajax({
+        url: '../php/conReport.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        for (i = 0; i < res.length; i++) {
 
-        if(obj.data[i].n_reporte==fila){
+            if (obj.data[i].n_reporte == fila) {
 
-            year = obj.data[i].finicio.substring(0, 4);
-            month = obj.data[i].finicio.substring(5, 7);
-            day = obj.data[i].finicio.substring(8, 10);
-            Finicio = day + '/' + month + '/' + year;
+                year = obj.data[i].finicio.substring(0, 4);
+                month = obj.data[i].finicio.substring(5, 7);
+                day = obj.data[i].finicio.substring(8, 10);
+                Finicio = day + '/' + month + '/' + year;
 
-            year = obj.data[i].ffinal.substring(0, 4);
-            month = obj.data[i].ffinal.substring(5, 7);
-            day = obj.data[i].ffinal.substring(8, 10);
-            Finaliza = day + '/' + month + '/' + year;
+                year = obj.data[i].ffinal.substring(0, 4);
+                month = obj.data[i].ffinal.substring(5, 7);
+                day = obj.data[i].ffinal.substring(8, 10);
+                Finaliza = day + '/' + month + '/' + year;
 
-            detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].usu_observ;
+                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].usu_observ;
 
 
-    var d = detalles.split("*");
-    $("#modalEval #nreporte").val(d[0]);
-    $("#modalEval #usuario").val(d[1] + ' ' + d[2]);
-    $("#modalEval #extension").val(d[3]);
-    $("#modalEval #ubicacion").val(d[4]);
-    $("#modalEval #servicio").val(d[5]);
-    $("#modalEval #intervencion").val(d[6]);
-    $("#modalEval #descripcion").val(d[7]);
-    $("#modalEval #falla_interna").val(d[8]);
-    $("#modalEval #finicio").val(d[9]);
-    $("#modalEval #ffinal").val(d[10]);
-    if (d[11] == 0) {
-        $("#externo").hide();
-    } else {
-        $("#modalEval #falla_xterna").val(d[11]);
-    }
-    $("#modalEval #estado_rpt").val(d[14]);
-    $("#modalEval #usu_observ").val(d[17]);
+                var d = detalles.split("*");
+                $("#modalEval #nreporte").val(d[0]);
+                $("#modalEval #usuario").val(d[1] + ' ' + d[2]);
+                $("#modalEval #extension").val(d[3]);
+                $("#modalEval #ubicacion").val(d[4]);
+                $("#modalEval #servicio").val(d[5]);
+                $("#modalEval #intervencion").val(d[6]);
+                $("#modalEval #descripcion").val(d[7]);
+                $("#modalEval #falla_interna").val(d[8]);
+                $("#modalEval #finicio").val(d[9]);
+                $("#modalEval #ffinal").val(d[10]);
+                if (d[11] == 0) {
+                    $("#externo").hide();
+                } else {
+                    $("#modalEval #falla_xterna").val(d[11]);
+                }
+                $("#modalEval #estado_rpt").val(d[14]);
+                $("#modalEval #usu_observ").val(d[17]);
 
-    if (d[14] == 'Cancelado') {
-        $("#div1").hide();
-        $("#div2").show();
-    } else {
-        $("#div1").show();
-        $("#div2").hide();
-        }
+                if (d[14] == 'Cancelado') {
+                    $("#div1").hide();
+                    $("#div2").show();
+                } else {
+                    $("#div1").show();
+                    $("#div2").hide();
+                }
 
-       }
+            }
         }
     })
 }
 
 //detalles del reporte
 function detalle(fila) {
-$.ajax({
-    url: '../php/conReport.php',
-    type: 'POST'
-}).done(function(resp) {
-    obj = JSON.parse(resp);
-    var res = obj.data;
-    var x = 0;
-    for (i = 0; i < res.length; i++) {
+    $.ajax({
+        url: '../php/conReport.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        for (i = 0; i < res.length; i++) {
 
-        if(obj.data[i].n_reporte==fila){
+            if (obj.data[i].n_reporte == fila) {
 
-            year = obj.data[i].finicio.substring(0, 4);
-            month = obj.data[i].finicio.substring(5, 7);
-            day = obj.data[i].finicio.substring(8, 10);
-            Finicio = day + '/' + month + '/' + year;
+                year = obj.data[i].finicio.substring(0, 4);
+                month = obj.data[i].finicio.substring(5, 7);
+                day = obj.data[i].finicio.substring(8, 10);
+                Finicio = day + '/' + month + '/' + year;
 
-            year = obj.data[i].ffinal.substring(0, 4);
-            month = obj.data[i].ffinal.substring(5, 7);
-            day = obj.data[i].ffinal.substring(8, 10);
-            Finaliza = day + '/' + month + '/' + year;
+                year = obj.data[i].ffinal.substring(0, 4);
+                month = obj.data[i].ffinal.substring(5, 7);
+                day = obj.data[i].ffinal.substring(8, 10);
+                Finaliza = day + '/' + month + '/' + year;
 
-            detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].usu_observ;
+                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].usu_observ;
 
-            var d = detalles.split("*");
+                var d = detalles.split("*");
 
-    $("#modalDtll #nreporte").val(d[0]);
-    $("#modalDtll #usuario").val(d[1] + ' ' + d[2]);
-    $("#modalDtll #extension").val(d[3]);
-    $("#modalDtll #ubicacion").val(d[4]);
-    $("#modalDtll #servicio").val(d[5]);
-    $("#modalDtll #intervencion").val(d[6]);
-    $("#modalDtll #descripcion").val(d[7]);
+                $("#modalDtll #nreporte").val(d[0]);
+                $("#modalDtll #usuario").val(d[1] + ' ' + d[2]);
+                $("#modalDtll #extension").val(d[3]);
+                $("#modalDtll #ubicacion").val(d[4]);
+                $("#modalDtll #servicio").val(d[5]);
+                $("#modalDtll #intervencion").val(d[6]);
+                $("#modalDtll #descripcion").val(d[7]);
 
-    $("#modalDtll #falla_interna").val(d[8]);
-    $("#modalDtll #finicio").val(d[9] + ' a las ' + d[15] + ' hrs');
+                $("#modalDtll #falla_interna").val(d[8]);
+                $("#modalDtll #finicio").val(d[9] + ' a las ' + d[15] + ' hrs');
 
-    if (d[11] == 0 || d[11] == '') {
-        $("#falla").hide();
-    } else {
-        $("#falla").show();
-        $("#modalDtll #falla_xterna").val(d[11]);
-    }
-    $("#modalDtll #observa").val(d[12]);
-    $("#modalDtll #evaluacion").val(d[13]);
-    if (d[13] == '0' && d[14] == 'Pendiente') {
-        $("#obsrvcns").show();
-        $("#modalDtll #usu_observ").val(d[17]);
-        $("#rspsta").hide();
-        $("#pndint1").hide();
-        $("#pndint2").hide();
-        $("#modalDtll #ffinal").val('Pendiente');
-    } else if (d[13] == '0' && d[14] == 'En proceso') {
-        $("#modalDtll #usu_observ").val(d[17]);
-        $("#pndint1").hide();
-        $("#pndint2").hide();
-        $("#modalDtll #ffinal").val('En proceso');
-    } else {
-        $("#modalDtll #usu_observ").val(d[17]);
-        $("#obsrvcns").show();
-        $("#rspsta").show();
-        $("#pndint1").show();
-        $("#pndint2").show();
-        $("#modalDtll #ffinal").val(d[10] + ' a las ' + d[16] + ' hrs');
+                if (d[11] == 0 || d[11] == '') {
+                    $("#falla").hide();
+                } else {
+                    $("#falla").show();
+                    $("#modalDtll #falla_xterna").val(d[11]);
+                }
+                $("#modalDtll #observa").val(d[12]);
+                $("#modalDtll #evaluacion").val(d[13]);
+                if (d[13] == '0' && d[14] == 'Pendiente') {
+                    $("#obsrvcns").show();
+                    $("#modalDtll #usu_observ").val(d[17]);
+                    $("#rspsta").hide();
+                    $("#pndint1").hide();
+                    $("#pndint2").hide();
+                    $("#modalDtll #ffinal").val('Pendiente');
+                } else if (d[13] == '0' && d[14] == 'En proceso') {
+                    $("#modalDtll #usu_observ").val(d[17]);
+                    $("#pndint1").hide();
+                    $("#pndint2").hide();
+                    $("#modalDtll #ffinal").val('En proceso');
+                } else {
+                    $("#modalDtll #usu_observ").val(d[17]);
+                    $("#obsrvcns").show();
+                    $("#rspsta").show();
+                    $("#pndint1").show();
+                    $("#pndint2").show();
+                    $("#modalDtll #ffinal").val(d[10] + ' a las ' + d[16] + ' hrs');
                 }
             }
         }
