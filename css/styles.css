@@ -1,72 +1,115 @@
 /*Ocultar contenedores area*/
-#Fregist{
-display: none;
+
+#Fregist {
+    display: none;
 }
-#det1{
-display: none;
+
+#det1 {
+    display: none;
 }
-#det2{
-display: none;
+
+#det2 {
+    display: none;
 }
-#edt1{
-	display: none;
+
+#edt1 {
+    display: none;
 }
-.row > .col-lg-12 > img{
-float: right; 
-width: 90px;
-margin-top: 0.8em
+
+.row>.col-lg-12>img {
+    float: right;
+    width: 90px;
+    margin-top: 0.8em
 }
-.padding{
+
+.padding {
     padding: 0;
 }
-.error,.exito,.aviso{
-margin:0;
-color:#fff;
-width: 40%; 
-float: right;
-padding: 0.4em 0;
-display: none;
+
+.error,
+.exito,
+.aviso {
+    margin: 0;
+    color: #fff;
+    width: 40%;
+    float: right;
+    padding: 0.4em 0;
+    display: none;
 }
+
+
 /*Apartado de reportes*/
-#div1 > input,#div2 > input{
-	cursor: pointer;
+
+#div1>input,
+#div2>input {
+    cursor: pointer;
 }
-.reporte{
-background: white;
-color: black;
-width: 100%;
-float: right;
-border: 2px solid green;
-padding: 1em 0em;
-text-align: center;
-display: none;
+
+.reporte {
+    background: white;
+    color: black;
+    width: 100%;
+    float: right;
+    border: 2px solid green;
+    padding: 1em 0em;
+    text-align: center;
+    display: none;
 }
+
+
 /*estilos imagen*/
-.imgafac{
-float: right; 
-width: 90px;
-margin-top: 0.8em
+
+.imgafac {
+    float: right;
+    width: 90px;
+    margin-top: 0.8em
 }
+
+
 /*tmaño dé panel*/
 
-.width{
-	width: 900px;
-	margin-top:4em;
+.width {
+    width: 900px;
+    margin-top: 4em;
 }
+
+
 /*ocultar borde de input*/
-.transparent
-{
-	border: 1px solid white;
-	background: white;
+
+.transparent {
+    border: 1px solid white;
+    background: white;
 }
-.disabled{
-	background: white;	
+
+.disabled {
+    background: white;
 }
+
+.zoom {
+    transition: 1.1s ease;
+    -moz-transition: 1.1s ease;
+    -webkit-transition: 1.1s ease;
+    -o-transition: 1.1s ease;
+}
+
+.zoom:hover {
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+}
+
+
 /*stylo de radio*/
+
+
 /*<input checked="checked" type="radio" name="catch" value="true" id="pregunta1">
 <label for="pregunta1">¿El equipo que va reportar es de usted?</label>
 <input type="radio" name="catch" value="false" id="pregunta2">
 <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>*/
+
+
 /*#div2 .radio input[type=radio]{display: none;}
 /*#div1 label{ display: inline-block;padding: 8px;background: rgba(20,137,216,0.9);color: #fff;width: calc(50% - 8px);min-width: 100px;cursor: pointer;text-align: center;}
 #div1 label:hover{background: #333;}
