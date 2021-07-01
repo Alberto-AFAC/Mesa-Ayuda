@@ -27,30 +27,21 @@
 
     <title>Sistema</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
+<!-- MetisMenu CSS -->
 
-    <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="../boots/morrisjs/morris.css" rel="stylesheet">
+<link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/styles.css">
+<script type="text/javascript" src="../js/funciones.js"></script>
+<script type="text/javascript" src="../js/area.js"></script>
+<link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
-    <!-- Custom Fonts -->
-    <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-    <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-    <link href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
-
-    <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet">
-    </link>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css" />
 </head>
 
 <body>
@@ -436,7 +427,6 @@
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
 <!--<script src="js/jquery-1.12.3.js"></script>-->
-<script src="../js/bootstrap.min.js"></script>
 <!-- <script src="../js/jquery.dataTables.min.js"></script> -->
 <!-- <script src="../js/dataTables.bootstrap.js"></script> -->
 <!--botones DataTables-->
@@ -448,15 +438,25 @@
 <script src="../js/pdfmake.min.js"></script>
 <script src="../js/vfs_fonts.js"></script>
 <!--Librerias para botones de exportación-->
-<script src="../boots/metisMenu/metisMenu.min.js"></script>
-<script src="../dist/js/sb-admin-2.js"></script>
+
 <!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
-<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+
 <!-- <script type="text/javascript" src="../js/actualizar.js"></script> -->
 <!--COMIENZA TABLA DEL ADMINISTRADOR-->
+
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/dataTables.bootstrap.js"></script>  
+<script src="../js/dataTables.buttons.min.js"></script>
+<script src="../boots/metisMenu/metisMenu.min.js"></script>
+<script src="../dist/js/sb-admin-2.js"></script>
+<script type="text/javascript" src="../js/area.js"></script>
+ 
+
 <script type="text/javascript">
 var dataSet = [
     <?php

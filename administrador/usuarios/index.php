@@ -27,25 +27,12 @@
     <!-- Bootstrap Core CSS -->
     <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="../../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../../boots/morrisjs/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link href="../../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-    <link href="../../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
-    <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css
-"/>
+<link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+<link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../css/styles.css">
+<link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
 
 </head>
 
@@ -231,9 +218,7 @@
                 <!-- /.col-lg-12 -->
             </div>
 
-            <link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
             <script src="../../js/jquery-1.12.3.min.js"></script>
-            <script src="../../js/select2.js"></script>
             <?php
 
             $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
@@ -242,166 +227,35 @@
             $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
             $aree = mysqli_query($conexion,$sql);
 
-
             $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
             $cargo = mysqli_query($conexion,$sql);
+
+            $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
+            $acargo = mysqli_query($conexion,$sql);            
             ?>
   
          <!-- /.row -->
 
- <form  class="form-horizontal" action="" method="POST" onsubmit="return registrar(this)" >
- <div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="ProyectoRegistrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<style type="text/css">
+    #cuadro2,#Editar{
+        display: none;
+    }
+</style>
 
 
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-    <div class="modal-header">
-        <button type="button" id="btn_listar" class="close" data-dismiss="modal" aria-label="Close"><a href="./"><span style="color: black"  aria-hidden="true">&times;</span></a></button>
-
-        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-
-        <div class="cerrar"><a ><span class="icon-cross"></span></a></div>
-
-        <h4 class="modal-title" id="exampleModalLabel">Agregar Usuario</h4>
-        <div class="alert alert-danger text-center" style="display:none;color: black" id="danger">
-        <p>El usuario ya esta registrado</p>
-        </div>
-        <div class="alert alert-success text-center" style="display:none; color: black" id="exito">
-        <p>Usario registrado</p>
-        </div>
-        <div class="alert alert-warning text-center" style="display:none;color: black" id="aviso_vacio">
-        <p>Debes escribir contenido en el campo vacio</p>
-        </div>
-    </div>
-
-    <div class="modal-body">
-
-    <!--<input type="hidden" id="id_cliente" name="id_cliente" value="0">-->
-    <input type="hidden" id="opcion" name="opcion" value="registrar">
-        
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-6">
-    <label for="nombre">Nombre</label>
-    <input id="nombre" name="nombre" type="text" class="form-control">
-    </div>
-    <div class="col-sm-offset-0 col-sm-6">
-    <label for="apellidos">Apellidos</label>
-    <input id="apellidos" name="apellidos" type="text" class="form-control">
-    </div>
-    </div>
-
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-12">
-    <label for="idcargo">Cargo:</label>
-   <select  class="form-control" class="selectpicker" name="id_cargo" id="id_cargo" type="text" data-live-search="true">
-    <option selected></option> 
-    <?php while($caresp = mysqli_fetch_row($cargo)):?>
-      <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
-    <?php endwhile; ?>
-    </select>
-    </div>
-    </div>
-
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-12">
-    <label>Area adscripción:</label>
-   <select  class="form-control" class="selectpicker" name="id_area" id="id_area" type="text" data-live-search="true">
-    <option selected></option> 
-    <?php while($rea = mysqli_fetch_row($are)):?>
-      <option value="<?php echo $rea[0]?>"><?php echo utf8_decode($rea[1])?></option>
-    <?php endwhile; ?>
-    </select>
-    </div>
-    </div>
-
-     <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-6">
-    <label for="correo">Correo</label>
-    <input id="correo" name="correo" type="text" class="form-control">
-    </div>    
-    <div class="col-sm-offset-0 col-sm-6">
-    <label for="extension">Extension</label>
-    <input id="extension" name="extension" type="text" class="form-control">
-    </div>
-
-    </div>
-
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-6">
-    <label>Ubicación:</label>
-   <select  class="form-control" class="selectpicker" name="ubicacion" id="ubicacion" type="text" data-live-search="true">
-    <option selected></option> 
-      <option value="Piso m2">Piso m2</option>
-      <option value="Piso 1">Piso 1</option>
-      <option value="Piso 2">Piso 2</option>
-      <option value="Piso 3">Piso 3</option>
-      <option value="Piso 4">Piso 4</option>
-      <option value="Piso 7">Piso 7</option>
-    </select>
-    </div>
-  
-    <div class="col-sm-offset-0 col-sm-6">
-    <label for="n_empleado">N° Empleado</label>
-    <input id="n_empleado" name="n_empleado" type="text" class="form-control">
-    </div>
-    </div>
-
-    <div class="form-group"><br>
-    <div class="col-sm-offset-0 col-sm-5">
-    <button type="button" class="btn btn-primary" onclick="registrar();">Guardar</button>
-    <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
-    </div>
-    </div>
-    </div>
-   
-    </div>
-    </div>
-    </div>
-    </form>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-            $('#id_area').select2();
-    });
-    $(document).ready(function(){
-            $('#idarea').select2();
-    });
-    $(document).ready(function(){
-            $('#id_cargo').select2();
-    });    
-</script>
-
- <div class="row">
-        <div id="cuadro1" class="col-lg-12">
+<div class="row">
+    <div id="cuadro1" class="col-lg-12">
         <div class="panel panel-default">                  
-        <div style="padding: 0;" class="panel-heading"> 
-        <!-- <p style="text-align: center; float: left; width:90%; " class="mensaje"></p>-->
-   <button type="button" style="color:blue;" class="btn btn-default" data-toggle="modal" onclick="RegistrarUsu()"><i class="glyphicon glyphicon-user"></i> Agregar</button>
-
-
-      <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
-      </div>
-               <div class="panel-body" style="font-size: 12px;">             
-                <table id="usuario" class="table table-bordered"  cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>ID</th>                        
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Adscripción</th>
-                            <!--<th>Empleado</th>-->
-                            <th></th>                                           
-                        </tr>
-                    </thead>  
-                    <tbody>
-                      <thead class="thead-default"></thead>
-                    </tbody>                  
-                </table>
+            <div style="padding: 0;" class="panel-heading"> 
+                    <button title="Agregar usuario" type="button" style="color:blue;" class="btn btn-default" data-toggle="modal" onclick="RegistrarUsu()"><i class='fa fa-user-plus text-info' ></i></button>
+                  <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
             </div>
-            </div>          
-        </div>      
-    </div>
+               <div class="panel-body" style="font-size: 12px;">             
+                    <table id="data-table-area" class="table table-striped table-hover"></table>
+                </div>
+        </div>          
+    </div>      
+</div>
 
 <div>
 <form id="EliminarUsuario" action="" method="POST">
@@ -433,7 +287,7 @@
 #frmDetalles input,textarea{ border: 1px solid transparent; }
 </style>
 
- <form id="frmDetalles" class="form-horizontal" action="" method="POST" >
+ <!-- <form id="frmDetalles" class="form-horizontal" action="" method="POST" >
  <div id="cuadro4" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 
 
@@ -487,18 +341,144 @@
     
     </div>
     </form>
+ -->
+<!-- <form class="form-horizontal" action="" method="POST" >
+    <div  class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog-modi" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  
+  ---------------------------
+
+                </div>
+                <div class="modal-body">
+  
+  --------------------------------
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+ -->
+
+<form class="form-horizontal" action="" method="POST" onsubmit="return registrar(this)">
+ <div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 
 
-
-
- <form id="frmEditar" class="form-horizontal" action="" method="POST" >
- <div id="cuadro3" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-
-
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog-modi" role="document">
     <div class="modal-content">
 
     <div class="modal-header">
+        <button type="button" id="btn_listar" class="close" data-dismiss="modal" aria-label="Close"><a href="./"><span style="color: black"  aria-hidden="true">&times;</span></a></button>
+
+
+        <div class="cerrar"><a ><span class="icon-cross"></span></a></div>
+
+        <h4 class="modal-title" id="exampleModalLabel">Agregar Usuario</h4>
+        <div class="alert alert-danger text-center" style="display:none;color: black" id="danger">
+        <p>El usuario ya esta registrado</p>
+        </div>
+        <div class="alert alert-success text-center" style="display:none; color: black" id="exito">
+        <p>Usario registrado</p>
+        </div>
+        <div class="alert alert-warning text-center" style="display:none;color: black" id="aviso_vacio">
+        <p>Debes escribir contenido en el campo vacio</p>
+        </div>
+    </div>
+
+    <div class="modal-body">
+
+
+    <input type="hidden" id="opcion" name="opcion" value="registrar">
+        
+    <div class="form-group">
+    <div class="col-sm-offset-0 col-sm-4">
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" type="text" class="form-control">
+    </div>
+    <div class="col-sm-offset-0 col-sm-4">
+    <label for="apellidos">Apellidos</label>
+    <input id="apellidos" name="apellidos" type="text" class="form-control">
+    </div>
+     <div class="col-sm-offset-0 col-sm-4">
+    <label for="correo">Correo</label>
+    <input id="correo" name="correo" type="text" class="form-control">
+    </div> 
+    </div>
+
+    <div class="form-group">
+    <div class="col-sm-offset-0 col-sm-4">
+    <label for="idcargo">Cargo:</label>
+   <select style="width: 100%" class="form-control" class="selectpicker" name="id_cargo" id="id_cargo" type="text" data-live-search="true">
+    <option selected></option> 
+    <?php while($caresp = mysqli_fetch_row($cargo)):?>
+      <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
+    <?php endwhile; ?>
+    </select>
+    </div>
+
+    <div class="col-sm-offset-0 col-sm-8">
+    <label>Area adscripción:</label>
+   <select style="width: 100%" class="form-control" class="selectpicker" name="id_area" id="id_area" type="text" data-live-search="true">
+    <option selected></option> 
+    <?php while($rea = mysqli_fetch_row($are)):?>
+      <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
+    <?php endwhile; ?>
+    </select>
+    </div>
+    </div>
+
+
+    <div class="form-group">
+      
+    <div class="col-sm-offset-0 col-sm-4">
+    <label for="extension">Extension</label>
+    <input id="extension" name="extension" type="text" class="form-control">
+    </div>
+
+    <div class="col-sm-offset-0 col-sm-4">
+    <label>Ubicación:</label>
+   <select  class="form-control" class="selectpicker" name="ubicacion" id="ubicacion" type="text" data-live-search="true">
+    <option selected></option> 
+      <option value="Piso m2">Piso m2</option>
+      <option value="Piso 1">Piso 1</option>
+      <option value="Piso 2">Piso 2</option>
+      <option value="Piso 3">Piso 3</option>
+      <option value="Piso 4">Piso 4</option>
+      <option value="Piso 7">Piso 7</option>
+    </select>
+    </div>
+  
+    <div class="col-sm-offset-0 col-sm-4">
+    <label for="n_empleado">N° Empleado</label>
+    <input id="n_empleado" name="n_empleado" type="text" class="form-control">
+    </div>
+    </div>
+
+    <div class="form-group"><br>
+    <div class="col-sm-offset-0 col-sm-5">
+    <button type="button" class="btn btn-primary" onclick="registrar();">Guardar</button>
+    <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
+    </div>
+    </div>
+    </div>
+   
+    </div>
+    </div>
+    </div>
+    </form> 
+
+
+ <form id="Editar" class="form-horizontal" action="" method="POST">
+
+<div id="frmEditar" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+    <div class="modal-dialog-modi" role="document">
+    <div class="modal-content">
+
+    <div class="modal-header">
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span aria-hidden="true">&times;</span></a></button>
 
         <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
@@ -521,38 +501,47 @@
     <input type="hidden" id="opcion" name="opcion" value="modificar">
 
     <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-6">
+    <div class="col-sm-offset-0 col-sm-4">
     <label for="nombre">Nombre</label>
     <input id="nombre" name="nombre" type="text" class="form-control">
     </div>
-    <div class="col-sm-offset-0 col-sm-6">
+    <div class="col-sm-offset-0 col-sm-4">
     <label for="apellidos">Apellidos</label>
     <input id="apellidos" name="apellidos" type="text" class="form-control">
     </div>
+    <div class="col-sm-offset-0 col-sm-4">
+    <label for="correo">Correo</label>
+    <input id="correo" name="correo" type="text" class="form-control">
+    </div>    
     </div>
     <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-12">
+
+    <div class="col-sm-offset-0 col-sm-4">
+    <label for="idcargo">Cargo:</label>
+   <select style="width: 100%" class="form-control" class="selectpicker" name="idcargo" id="idcargo" type="text" data-live-search="true">
+    <option selected></option> 
+    <?php while($caresp = mysqli_fetch_row($acargo)):?>
+      <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
+    <?php endwhile; ?>
+    </select>
+    </div>
+
+    <div class="col-sm-offset-0 col-sm-8">
     <label>Area adscripción:</label>
-    <select  class="form-control" class="selectpicker" name="idarea" id="idarea" type="text" data-live-search="true" value="0">
+    <select style="width: 100%" class="form-control" class="selectpicker" name="idarea" id="idarea" type="text" data-live-search="true">
     <option value="0">Único</option>
     <?php while($reae = mysqli_fetch_row($aree)):?>
-      <option value="<?php echo $reae[0]?>"><?php echo utf8_decode($reae[1])?></option>
+      <option value="<?php echo $reae[0]?>"><?php echo $reae[1]?></option>
     <?php endwhile; ?>
     </select>
     </div>
     </div>
-         <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-6">
+    <div class="form-group">
+    <div class="col-sm-offset-0 col-sm-4">
     <label for="extension">Extension</label>
     <input id="extension" name="extension" type="text" class="form-control">
     </div>
-    <div class="col-sm-offset-0 col-sm-6">
-    <label for="correo">Correo</label>
-    <input id="correo" name="correo" type="text" class="form-control">
-    </div>
-    </div>
 
-    <div class="form-group">
     <div class="col-sm-offset-0 col-sm-4">
     <label for="ubicacion">Ubicación</label>
     <input id="ubicacion" name="ubicacion" type="text" class="form-control">
@@ -561,10 +550,7 @@
     <label for="n_empleado">N° Empleado</label>
     <input id="n_empleado" name="n_empleado" type="text" class="form-control">
     </div>
-    <!--<div class="col-sm-offset-0 col-sm-4">
-    <label for="orden">Orden</label>
-    <input id="orden" name="orden" type="text" class="form-control">
-    </div>-->
+
     </div>
     <div class="form-group"><br>
     <div class="col-sm-offset-0 col-sm-5">
@@ -584,7 +570,6 @@
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
     <!-- /#wrapper -->
 </body>
 
@@ -614,25 +599,67 @@
     <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
     <script type="text/javascript" src="../../js/usuarios.js"></script>
 
-     
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
+<link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#id_area').select2();
+            $('#idarea').select2();
+    });
+</script>
+<script src="../../js/select2.js"></script> 
+
+
+ <script type="text/javascript">
+
     $(document).on("ready", function(){
-            listar_usuario();
-            eliminar_usuario();      
-          //  modificar();
+            //ocultar();
         });
-        //llamdo id de boton, evento clic que desencadenara la una funcio
-        $("#btn_listar").on("click", function(){
-            //llamar la funcion listar
-            listar_usuario();
-            //nota aparecera una ventana mencionando que no se puede reinicializar la tabla de datos, para que no cuseda eso vamos a la estructura de la funcion listar mencionamos una propiedad llamada destroy, la cual aceptara la actualizacion de reiniciar la tabla de datos
-        });
-         $("#btnlistar").on("click", function(){
-            listar_usuario();
-        });$("#btnslista").on("click", function(){
-            listar_usuario();
-        });         
+
+        var dataSet = [
+        <?php
+          $query = "SELECT * FROM usuarios 
+          INNER JOIN area ON area_ads = id_area 
+          WHERE usuarios.estado = 0 && id_usuario != 0 ORDER BY id_usuario ASC";
+             $resultado = mysqli_query($conexion, $query);
+        while($data = mysqli_fetch_array($resultado)){
+           $id = $data['id_usuario'];
+            $data['nombre'];
+            $data['apellidos'];
+            $data['adscripcion'];
+
+        ?>
+    
+    ['<?php echo $id;?>','<?php echo $data['nombre']?>','<?php echo $data['apellidos']?>', '<?php echo $data['adscripcion']?>' ,"<?php 
+
+// echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+
+echo "<button title='Editar usuario' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></button>   <button title='Eliminar usuario' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></button>   <button title='Detalles usuario' type='button' data-toggle='modal' data-target='#modalDetalles' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></button>";
+
+
+
+    ?>"
+
+
+    ],
+<?php } ?>
+];
+
+var tableGenerarReporte = $('#data-table-area').DataTable({
+    "language": {
+    "searchPlaceholder": "Buscar datos...",
+    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [
+    {title: "ID"},
+    {title: "NOMBRE"},
+    {title: "APELLIDOS"},
+    {title: "ADSCIPCIÓN"},
+    {title: "ACCIÓN"}    
+    ],
+    });
 
     </script>
 
