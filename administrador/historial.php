@@ -46,7 +46,7 @@
 
     <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <link href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
-
+    <link href="//cdn.datatables.net/datetime/1.1.0/css/dataTables.dateTime.min.css" rel="stylesheet">
     <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet">
     </link>
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
@@ -245,15 +245,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
-                    <h1 class="page-header">Administrador</h1>
+                    <h1 class="page-header">Historial de Reportes</h1>
                 </div>
 
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-
-
                 <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -269,10 +267,7 @@
                                             COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
                                             COUNT( CASE WHEN estado_rpt = 'En proceso' THEN 1 END ) AS Proceso 
                                         FROM
-                                            reporte 
-                                        WHERE
-                                            MONTH ( finicio ) = MONTH (
-                                            CURRENT_DATE ())";
+                                            reporte";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
                                 ?>
@@ -332,99 +327,42 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="row">
-                <div id="cuadro1" class="col-lg-12">
-                    <div class="panel panel-default">
-
-                        <div class="panel-body">
-
-                            <table id="data-table-administrador" class="table table-bordered" width="100%"
-                                cellspacing="0"></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <form id="frmEditar" class="form-horizontal" action="" method="POST">
-                <div class="modal fade" id="modalEditar" class="col-sm-12 col-md-12 col-lg-12" tabindex="-1"
-                    role="dialog" aria-labelledby="exampleModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="col-md-8 col-md-offset-3">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" id="btnlistar" class="close" data-dismiss="modal"
-                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">Actualizar Contraseña</h4>
-                                    <div class="alert alert-success text-center" style="display:none;" id="echo">
-                                        <p>Contraseña actualizado</p>
-                                    </div>
-
-                                    <div class="alert alert-info text-center" style="display:none;" id="invalida">
-                                        <p>Comprobación de contraseña no coicide</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="falso">
-                                        <p>Contraseña incorrecto</p>
-                                    </div>
-
-                                    <div class="alert alert-warning text-center" style="display:none;" id="vacio">
-                                        <p>Debes escribir contenido en el campo vacio</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="error">
-                                        <p>No se pudo actualizar los datos</p>
-                                    </div>
+                <div class="panel-body">
+                    <div id="cuadro1" class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div style="padding-top: 13px;" class="col-lg-5">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-default"><i class="fa fa-calendar-check-o"
+                                                aria-hidden="true"></i></span>
+                                    </span>
+                                    <input type="text" placeholder="Desde" id="min" name="min" class="form-control">
                                 </div>
-
-                                <div class="modal-body">
-                                    <input type="hidden" id="id_usuario" name="id_usuario"
-                                        value="<?php echo $_SESSION['usuario']['id_usuario'];?>">
-                                    <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="usuario">Usuario</label>
-                                            <input id="usuario" name="usuario" type="text" class="form-control"
-                                                value="<?php echo $_SESSION['usuario']['usuario'];?>" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="password">Contraseña</label>
-                                            <input id="password" name="password" type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="pass">Nueva Contraseña</label>
-                                            <input id="pass" name="pass" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="pass2">Repetir Contraseña</label>
-                                            <input id="pass2" name="pass2" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="actualizar();">Actualizar</button>
+                            </div>
+                            <div style="padding-top: 13px;" class="col-lg-5">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Hasta" id="max" name="max">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-default"><i class="fa fa-calendar-check-o"
+                                                aria-hidden="true"></i></span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
+                        <div style="text-align: right">
+                            <img style="cursor: pointer;" onclick="pdf()"
+                                src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png"
+                                class="img-fluid swing" width="46px" alt="Crear-PDF">
+                        </div><br>
+                        <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
+                        </table>
                     </div>
                 </div>
-            </form>
-
+            </div>
         </div>
-        <!-- /.row -->
+    </div>
+    <!-- /.row -->
     </div>
     <!-- /#page-wrapper -->
 
@@ -437,6 +375,9 @@
 <script src="../js/select2.js"></script>
 <!--<script src="js/jquery-1.12.3.js"></script>-->
 <script src="../js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="//cdn.datatables.net/datetime/1.1.0/js/dataTables.dateTime.min.js"></script>
+
 <!-- <script src="../js/jquery.dataTables.min.js"></script> -->
 <!-- <script src="../js/dataTables.bootstrap.js"></script> -->
 <!--botones DataTables-->
@@ -448,6 +389,7 @@
 <script src="../js/pdfmake.min.js"></script>
 <script src="../js/vfs_fonts.js"></script>
 <!--Librerias para botones de exportación-->
+
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
@@ -455,9 +397,28 @@
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <!--    <script type="text/javascript" src="valida/valida.js"></script>-->
 <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-<!-- <script type="text/javascript" src="../js/actualizar.js"></script> -->
 <!--COMIENZA TABLA DEL ADMINISTRADOR-->
 <script type="text/javascript">
+var minDate, maxDate;
+
+// Custom filtering function which will search data in column four between two values
+$.fn.dataTable.ext.search.push(
+    function(settings, data, dataIndex) {
+        var min = minDate.val();
+        var max = maxDate.val();
+        var date = new Date(data[5]);
+
+        if (
+            (min === null && max === null) ||
+            (min === null && date <= max) ||
+            (min <= date && max === null) ||
+            (min <= date && date <= max)
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
 var dataSet = [
     <?php
 	    $query = "SELECT
@@ -468,77 +429,75 @@ var dataSet = [
                     usuarios.extension,
                     reporte.finicio,
                     reporte.ffinal,
-                    reporte.evaluacion,
                     reporte.estado_rpt
                  FROM
                     reporte 
                 LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado
-                WHERE
-                MONTH ( finicio ) = MONTH (
-                CURRENT_DATE ()) 
-                ORDER BY  n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query);
+                WHERE estado_rpt = 'FINALIZADO'";
+	    $resultado = mysqli_query($conexion, $query);
+            $finicio   = date("m-d-Y");
+            $ffinal   = date("m-d-Y");
         while($data = mysqli_fetch_array($resultado)){
-            if($data['ffinal'] == '0000-00-00'){
-                $NA = "Sin fecha";
-
-            } else {
-                $NA = $data['ffinal'];
-            };
-            if($data['evaluacion'] == '0'){
-                $eva = "Sin evaluar";
-            } else {
-                $eva = $data['evaluacion'];
-            }
         ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre']?>", "<?php echo  $data['apellidos']?>",
-        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA ?>", "<?php echo   $eva?>", "<?php echo  $data['estado_rpt']?>"
+        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $finicio ?>",
+        "<?php echo $ffinal ?>", "", "<?php echo  $data['estado_rpt']?>"
     ],
     <?php } ?>
 ];
 //       
-
-var tableGenerarReporte = $('#data-table-administrador').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    "order": [
-        [0, "desc"]
-    ],
-    orderCellsTop: true,
-    fixedHeader: true,
-    data: dataSet,
-    columns: [{
-            title: "N°"
+$(document).ready(function() {
+    minDate = new DateTime($('#min'), {
+        format: 'Do MMMM YYYY'
+    });
+    maxDate = new DateTime($('#max'), {
+        format: 'Do MMMM YYYY'
+    });
+    var tableGenerarReporte = $('#data-table-administrador').DataTable({
+        "order": [
+            [0, "desc"]
+        ],
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        {
-            title: "Nombre"
-        },
-        {
-            title: "Apellidos"
-        },
-        {
-            title: "Ubicación"
-        },
-        {
-            title: "Extensión"
-        },
-        {
-            title: "Fecha Reporte"
-        },
-        {
-            title: "Fecha termino"
-        },
-        {
-            title: "Evaluación"
-        },
-        {
-            title: "Proceso"
-        }
-    ],
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: "N°"
+            },
+            {
+                title: "Nombre"
+            },
+            {
+                title: "Apellidos"
+            },
+            {
+                title: "Ubicación"
+            },
+            {
+                title: "Extensión"
+            },
+            {
+                title: "Fecha Reporte"
+            },
+            {
+                title: "Fecha termino"
+            },
+            {
+                title: "Atención"
+            },
+            {
+                title: "Proceso"
+            }
+        ],
+    });
+    //Cierre de la función
+    $('#min, #max').on('change', function() {
+        tableGenerarReporte.draw();
+    });
 });
 </script>
 
