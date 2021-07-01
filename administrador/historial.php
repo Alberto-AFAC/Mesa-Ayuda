@@ -210,7 +210,7 @@
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="historial.php"><i class="fa fa-list-alt"></i> Historial</a>
+                                    <a href="historial"><i class="fa fa-list-alt"></i> Historial</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -400,8 +400,6 @@
 <!--COMIENZA TABLA DEL ADMINISTRADOR-->
 <script type="text/javascript">
 var minDate, maxDate;
-
-// Custom filtering function which will search data in column four between two values
 $.fn.dataTable.ext.search.push(
     function(settings, data, dataIndex) {
         var min = minDate.val();
@@ -429,20 +427,25 @@ var dataSet = [
                     usuarios.extension,
                     reporte.finicio,
                     reporte.ffinal,
+                    reporte.evaluacion,
                     reporte.estado_rpt
                  FROM
                     reporte 
-                LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado
-                WHERE estado_rpt = 'FINALIZADO'";
+                LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado";
 	    $resultado = mysqli_query($conexion, $query);
             $finicio   = date("m-d-Y");
             $ffinal   = date("m-d-Y");
         while($data = mysqli_fetch_array($resultado)){
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
         ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre']?>", "<?php echo  $data['apellidos']?>",
         "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $finicio ?>",
-        "<?php echo $ffinal ?>", "", "<?php echo  $data['estado_rpt']?>"
+        "<?php echo $ffinal ?>", "<?php echo  $eva ?>", "<?php echo  $data['estado_rpt']?>"
     ],
     <?php } ?>
 ];
@@ -455,6 +458,7 @@ $(document).ready(function() {
         format: 'Do MMMM YYYY'
     });
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
+        
         "order": [
             [0, "desc"]
         ],
@@ -464,6 +468,7 @@ $(document).ready(function() {
         },
         orderCellsTop: true,
         fixedHeader: true,
+        responsive: true,
         data: dataSet,
         columns: [{
                 title: "N°"

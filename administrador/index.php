@@ -210,7 +210,7 @@
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="historial.php"><i class="fa fa-list-alt"></i> Historial</a>
+                                    <a href="historial"><i class="fa fa-list-alt"></i> Historial</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -486,7 +486,7 @@ var dataSet = [
                 $NA = $data['ffinal'];
             };
             if($data['evaluacion'] == '0'){
-                $eva = "Sin evaluar";
+                $eva = "SIN EVALUAR";
             } else {
                 $eva = $data['evaluacion'];
             }
