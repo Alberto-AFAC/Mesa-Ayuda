@@ -321,7 +321,7 @@
                                     <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <div class="col-xs-9 text-right text-danger">
-                                    <div class="huge"><?php echo $row['Proceso'] ?></div>
+                                    <div class="huge"><?php echo $row['Cancelado'] ?></div>
                                     <div>Cancelado</div>
                                 </div>
                             </div>
