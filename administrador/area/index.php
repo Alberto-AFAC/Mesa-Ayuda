@@ -22,7 +22,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <title>Sistema</title>
+
     <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -208,31 +210,37 @@
             <div class="row">
                 <div class="col-lg-12">
             <img src="../../img/afac.png">
-                    <h1 class="page-header">Area</h1>                    
+                    <h1 class="page-header">Área</h1>                    
                 </div>
             </div>
 
             <div class="row">
-                <div id="list" class="col-lg-12">
+<!--                 <div id="list" class="col-lg-12">
                     <div class="panel panel-info">                  
                         <div class="panel-heading padding">
                         <b><p style=" padding-top: 0.4em; text-align: center; float: right; width:90%;" class="mensaje"></p></b> 
                                 <div class="panel-heading padding">
-                                    <button type="button" class="btn btn-default" data-toggle="modal" onclick="openConteiner()"><i class="glyphicon glyphicon-plus"></i> Agregar</button>                                    
-                                    <!--<span class="fa fa-refresh"></span>-->
-                                 </div>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" onclick="openConteiner()"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                                 </div>        
                             <div class="col-lg-12">
-                                                                 <br>        
-
-                                <?php //include("../../html/datas.html");?>
                                 <table id="data-table-area" class="table table-striped table-hover"></table>
-
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> -->
+                    <div id="list" class="col-lg-12">
+                        <div class="panel panel-default">                  
+                            <div style="padding: 0;" class="panel-heading"> 
+                                    <button title="Agregar área" ttype="button" class="btn btn-default" data-toggle="modal" onclick="openConteiner()"><i class='fa fa-list-alt text-info' ><b>+</b></i></button>
+                                  <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
+                            </div>
+                               <div class="panel-body" style="font-size: 12px;">             
+                                    <table id="data-table-area" class="table table-striped table-hover"></table>
+                                </div>
+                        </div>          
+                    </div> 
 
+            </div>
 
         <link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
         <script src="../../js/jquery-1.12.3.min.js"></script>
@@ -240,15 +248,23 @@
         <?php include('../../php/repCons.php');?>    
          <!-- /.row -->
 
-<form class="form-horizontal" action="" method="POST" id="Fregist" onsubmit="return registrar(this)">
-    <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="ProyectoRegistrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content" >
+
+
+
+
+
+<form id="Fregist" class="form-horizontal" action="" method="POST" onsubmit="return registrar(this)">
+    <div id="ProyectoRegistrar" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="EditarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog-modi" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
+
                 <button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
                 <div class="cerrar"><a ><span class="icon-cross"></span></a></div>
                 <h4 class="modal-title" id="exampleModalLabel">Agregar</h4>
+
                 </div>
+                
                 <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="registrar">            
                 <div class="form-group">
@@ -259,47 +275,34 @@
                 </div>    
                 <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-10">
-                <label for="adscripcion">Area:</label>
+                <label for="adscripcion">Área:</label>
                 <input id="adscripcion" name="adscripcion" type="text" class="form-control">
                 </div>
                 </div>
-                <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-10">
-                <label for="id_area">Pertenece A:</label>
-                <select style="width: 100%;"  class="form-control" class="selectpicker" name="id_area" id="id_area" type="text" data-live-search="true">
-                <option selected></option> 
-                <option value="0">Único</option>
-                <?php while($rea = mysqli_fetch_row($are)):?>
-                <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                <?php endwhile; ?>
-                </select>
-                </div>
-                </div>
+
+                <input type="hidden" name="id_area" id="id_area" value="0">
+
                 <div class="form-group"><br>
                 <div class="col-sm-offset-1 col-sm-5">
                 <button type="button" class="btn btn-primary" onclick="registrar();">Guardar</button>
                 <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
                 </div>
-                <b><p class="alert alert-danger text-center padding error" id="error">El area ya esta registrada</p></b>
-                <b><p class="alert alert-success text-center padding exito" id="exito">Area registrada</p></b>
+                <b><p class="alert alert-danger text-center padding error" id="error">El área ya esta registrada</p></b>
+                <b><p class="alert alert-success text-center padding exito" id="exito">Área registrada</p></b>
                 <b><p class="alert alert-warning text-center padding aviso" id="vacio">Llene campos vacíos</p></b>
+                </div>                    
                 </div>
-                </div>   
             </div>
         </div>
     </div>
 </form>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-            $('#id_area').select2();
-    });
+
     $(document).ready(function(){
             $('#idarea').select2();
     });
-    $(document).ready(function(){
-            $('#idareas').select2();
-    });
+
 </script>
 
 <form id="AreaEliminar" action="" method="POST">
@@ -309,10 +312,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="modalProyectoEliminarLabel">Eliminar area</h4>
+                    <h4 class="modal-title" id="modalProyectoEliminarLabel">Eliminar área</h4>
                 </div>
                 <div class="modal-body">                            
-                    ¿Está seguro de eliminar esta area? <strong data-name=""></strong>           
+                    ¿Está seguro de eliminar esta área? <strong data-name=""></strong>           
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="eliminararea();" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
@@ -327,7 +330,7 @@
 #frmDetalles input,textarea{ border: 1px solid transparent; }
 </style>
 
-<form id="frmDetalles" class="form-horizontal" action="" method="POST" >
+<!-- <form id="frmDetalles" class="form-horizontal" action="" method="POST" >
     <div style="background:white;" id="det1" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="row">
             <div class="col-sm-offset-1 col-sm-10">
@@ -365,7 +368,7 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
 
 <form id="EditarArea" class="form-horizontal" action="" method="POST" >
@@ -393,17 +396,7 @@
                     </div>
                     </div>   
                     <input type="hidden" name="idarea" id="idareas" value="0">
-  <!--               <div class="form-group">
-                    <div class="col-sm-offset-1 col-sm-10">
-                    <label for="id_area">Pertenece A:</label>
-                    <select style="width: 100%;" class="form-control" class="selectpicker" name="idarea" id="idareas" type="text" data-live-search="true" value="0">
-                    <option value="0">Único</option>
-                    <?php while($reaed = mysqli_fetch_row($areed)):?>
-                    <option value="<?php echo $reaed[0]?>"><?php echo $reaed[1]?></option>
-                    <?php endwhile; ?>
-                    </select>
-                    </div>
-                    </div> -->
+  
                     <div class="form-group"><br>
                     <div class="col-sm-offset-1 col-sm-5">
                     <button type="button" class="btn btn-primary" onclick="editAra()">Guardar</button>
@@ -417,7 +410,6 @@
         </div>
     </div>
 </form>
-
 
    <!-- <form id="AreaEditar" class="form-horizontal" action="" method="POST" >
  <div id="cuadro7" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="EditarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -536,12 +528,15 @@
         <!-- /#page-wrapper -->
             <!-- /#wrapper -->
 </body>
-    <script src="../../js/bootstrap.min.js"></script>
+
+
+     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/jquery.dataTables.min.js"></script>
     <script src="../../js/dataTables.bootstrap.js"></script>  
     <script src="../../js/dataTables.buttons.min.js"></script>
     <script src="../../boots/metisMenu/metisMenu.min.js"></script>
     <script src="../../dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="../../js/area.js"></script>
     <script type="text/javascript">
         var dataSet = [
         <?php
@@ -557,7 +552,7 @@
     
     ['<?php echo $data['identificador']?>','<?php echo $data['adscripcion']?>',"<?php 
 
-echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+echo "<a title='Editar área' href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button title='Eliminar área' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
     ?>"
 
@@ -586,11 +581,4 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
 
 
 </html>
-<!--<script type="text/javascript">
-    function abreModal(obj) {
-  alert(obj.name);
-}
-</script>
-<a href="javascript:abreModal({ 'name':'John'});">
-     Pulsador
-</a>*/
+     

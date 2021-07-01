@@ -1,3 +1,5 @@
+
+
 var listar_usuario = function(){
 		//para mostrar las tablas del formulario
 		//$("#cuadro5").hide("slow");
@@ -95,9 +97,8 @@ function registrar(){
 	
 	function modificar(){
 
-  var frm=$("#frmEditar").serialize();
+  var frm=$("#Editar").serialize();
     console.log(frm);
-
     $.ajax({
         url:"../../php/usuarios.php",
         type:'POST',
@@ -233,31 +234,42 @@ var datos_eliminar = function(tbody, table){
 			$("#cuadro1").hide("slow");
 	}
 
-	//funciones para obtener los datos. tendra dos parametros 
-	var datos_editar = function(tbody, table){
-	//al darle clicl al boton editar va desencadenar la funcion 
-		$(tbody).on("click", "button.editar", function(){
-		//el metodo row nos va dar el dato de cada fila	.. parets nos retorna todos los antesesores al metodo selecionado, en esta caso el metodso seleccionado es el boton pero antes de el esta un dt y antes esta un tr en este caso pasamos por parametro al tr que nos va devolver los data de esa fila
-			var data = table.row( $(this).parents("tr") ).data();
-				//console.log(data);///colocnado esta linea podremos ver desde la consola que datos nos etsa areojando
-			//colocamos las variable de esta manera idenfificador, para mostrar los valores en el formulario.data nos permite costrar como objeto las variables.
-			var id_usuario = $("#frmEditar #id_usuario").val(data.id_usuario),
-				    nombre = $("#frmEditar #nombre").val(data.nombre),
-				 apellidos = $("#frmEditar #apellidos").val(data.apellidos),
-				   id_area = $("#frmEditar #idarea").val(data.id_area),
-				 extension = $("#frmEditar #extension").val(data.extension),
-				  correo = $("#frmEditar #correo").val(data.correo),
-				    ubicacion = $("#frmEditar #ubicacion").val(data.ubicacion)
-				    orden = $("#frmEditar #orden").val(data.orden),
 
-				       n_empleado = $("#frmEditar #n_empleado").val(data.n_empleado),
-				    opcion = $("#frmEditar #opcion").val("modificar");
+	function datos_editar(id){
 
-			$("#cuadro3").slideDown("slow");
-			$("#cuadro1").hide();
+		$("#Editar").slideDown("slow");
+			$("#cuadro1").hide("slow");
 
-		});
-	}
+$.ajax({
+url:'../../php/listar_usuarios.php',
+type:'POST'
+}).done(function(resp){
+    obj = JSON.parse(resp);
+    var res = obj.data;  
+
+        for(i=0; i<res.length;i++){
+        
+        if(obj.data[i].id_usuario==id){
+
+  		var id_usuario = $("#frmEditar #id_usuario").val(obj.data[i].id_usuario),
+		nombre = $("#frmEditar #nombre").val(obj.data[i].nombre),
+		apellidos = $("#frmEditar #apellidos").val(obj.data[i].apellidos),
+		idcargo = $("#frmEditar #idcargo").val(obj.data[i].idcargo),
+		id_area = $("#frmEditar #idarea").val(obj.data[i].id_area),
+		extension = $("#frmEditar #extension").val(obj.data[i].extension),
+		correo = $("#frmEditar #correo").val(obj.data[i].correo),
+		ubicacion = $("#frmEditar #ubicacion").val(obj.data[i].ubicacion)
+		orden = $("#frmEditar #orden").val(obj.data[i].orden),
+
+		n_empleado = $("#frmEditar #n_empleado").val(obj.data[i].n_empleado),
+		opcion = $("#frmEditar #opcion").val("modificar");
+
+            }
+        }
+    })
+}
+
+
 		
 var mostrar_mensaje = function( informacion ){
 var texto = "", color = "";
