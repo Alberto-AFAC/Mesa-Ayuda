@@ -13,7 +13,11 @@
 
         //$idu = $_SESSION['usuario']['id_usuario'];
        $idu = $_SESSION['usuario']['id_usu'];
+   ini_set('date.timezone','America/Mexico_City');
+  $meses = array("ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE");  
+  $fecha = $meses[date('n')-1].' del '.date('Y');
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,18 +32,32 @@
     <title>Sistema</title>
 
 
-<!-- MetisMenu CSS -->
+    <!-- MetisMenu CSS -->
 
 
-<link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-<link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
-<link rel="stylesheet" type="text/css" href="../css/styles.css">
-<script type="text/javascript" src="../js/funciones.js"></script>
-<script type="text/javascript" src="../js/area.js"></script>
-<link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet"
+        href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script type="text/javascript" src="../js/funciones.js"></script>
+    <script type="text/javascript" src="../js/area.js"></script>
+    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <style>
+    canvas {
+        border: 1px dotted gray;
+    }
+
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 35vh;
+        width: 35vw;
+    }
+    </style>
+
 
 
 </head>
@@ -236,7 +254,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
-                    <h1 class="page-header">Administrador</h1>
+                    <?php 
+                    echo "<h1 class='page-header'>Administrador | $fecha</h1>"
+                    ?>
                 </div>
 
                 <!-- /.col-lg-12 -->
@@ -323,10 +343,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="row">
                 <div id="cuadro1" class="col-lg-12">
                     <div class="panel panel-default">
@@ -338,86 +354,26 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
-
-            <form id="frmEditar" class="form-horizontal" action="" method="POST">
-                <div class="modal fade" id="modalEditar" class="col-sm-12 col-md-12 col-lg-12" tabindex="-1"
-                    role="dialog" aria-labelledby="exampleModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="col-md-8 col-md-offset-3">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" id="btnlistar" class="close" data-dismiss="modal"
-                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">Actualizar Contraseña</h4>
-                                    <div class="alert alert-success text-center" style="display:none;" id="echo">
-                                        <p>Contraseña actualizado</p>
-                                    </div>
-
-                                    <div class="alert alert-info text-center" style="display:none;" id="invalida">
-                                        <p>Comprobación de contraseña no coicide</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="falso">
-                                        <p>Contraseña incorrecto</p>
-                                    </div>
-
-                                    <div class="alert alert-warning text-center" style="display:none;" id="vacio">
-                                        <p>Debes escribir contenido en el campo vacio</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="error">
-                                        <p>No se pudo actualizar los datos</p>
-                                    </div>
-                                </div>
-
-                                <div class="modal-body">
-                                    <input type="hidden" id="id_usuario" name="id_usuario"
-                                        value="<?php echo $_SESSION['usuario']['id_usuario'];?>">
-                                    <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="usuario">Usuario</label>
-                                            <input id="usuario" name="usuario" type="text" class="form-control"
-                                                value="<?php echo $_SESSION['usuario']['usuario'];?>" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="password">Contraseña</label>
-                                            <input id="password" name="password" type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="pass">Nueva Contraseña</label>
-                                            <input id="pass" name="pass" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <label for="pass2">Repetir Contraseña</label>
-                                            <input id="pass2" name="pass2" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="actualizar();">Actualizar</button>
-                                </div>
-                            </div>
-                        </div>
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="ms-panel-body">
+                        <canvas id="piechart-admin"></canvas>
                     </div>
                 </div>
-            </form>
+            </div>
+</div>
 
         </div>
-        <!-- /.row -->
     </div>
     <!-- /#page-wrapper -->
+
+    </div>
+    </div>
+    <!-- /#page-wrapper -->
+
 
     </div>
     <!-- /#wrapper -->
@@ -450,16 +406,18 @@
 
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>
-<script src="../js/dataTables.bootstrap.js"></script>  
+<script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/area.js"></script>
- 
+
 
 <script type="text/javascript">
 var dataSet = [
     <?php
+
 	    $query = "SELECT
                     reporte.n_reporte,
                     usuarios.nombre,
@@ -539,6 +497,73 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
             title: "Proceso"
         }
     ],
+});
+
+//GRAFICAS PARA MEDIR LA EVALUACIÓN DEL TÉCNICO//
+<?php 
+        $query = "SELECT
+                    usuarios.nombre,
+                    usuarios.apellidos,
+                    reporte.evaluacion
+                    'total',
+                    COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+                    COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+                    COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo
+                FROM
+                    reporte
+                INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
+                INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario
+                GROUP BY idtec";
+        $resultado = mysqli_query($conexion, $query);
+?>
+var piechar = new Chart(document.getElementById("piechart-admin"), {
+    type: 'bar',
+    data: {
+
+        <?php        while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["<?php echo $row['nombre']. " " .$row['apellidos']?>"],
+
+        datasets: [{
+                label: "Bueno",
+                backgroundColor: ["#00AD88"],
+                borderWidth: 0,
+                data: [<?php echo $row['Bueno']?>]
+            },
+            {
+                label: "Regular",
+                backgroundColor: ["#006178"],
+                borderWidth: 0,
+                data: [<?php echo $row['Regular']?>]
+            },
+            {
+                label: "Malo",
+                backgroundColor: ["#FF0000"],
+                borderWidth: 0,
+                data: [<?php echo $row['Malo']?>]
+            }
+            <?php }?>
+        ]
+
+    },
+    options: {
+        legend: {
+            labels: {
+                fontColor: '#5c6dc0',
+            }
+        },
+        title: {
+            display: false,
+            text: 'Porcentaje de cumplimiento'
+        },
+        scales: {
+            x: {
+                stacked: true,
+            },
+            y: {
+                stacked: true,
+            }
+        }
+    }
 });
 </script>
 
