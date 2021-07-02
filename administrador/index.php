@@ -324,6 +324,152 @@
                 </div>
             </div>
 
+<?php 
+
+$query = "SELECT id_tecnico, nombre, apellidos FROM usuarios
+        INNER JOIN tecnico ON tecnico.id_usu = usuarios.id_usuario
+        WHERE   privilegios = 'tecnico' AND usuarios.estado = 0";
+$result = mysqli_query($conexion,$query);
+
+
+?>
+
+
+<form class="form-horizontal" action="" method="POST">
+    <div class="modal fade" id="modalAtndr" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+<div class="modal-dialog width" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
+</button>
+onclick="location.href='./'" -->
+<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
+
+<h4 class="modal-title" id="exampleModalLabel"><p>
+
+<!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
+
+</p><input type="hidden" id="idequipo">
+Reporte pendiente 
+</h4> 
+</div>
+            <div class="modal-body">
+                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
+                <input type="hidden" id="opcion" name="opcion" value="atender">
+                    <div class="form-group">                    
+                    <div class="col-sm-3">
+                    <label>N° reporte</label>
+                    <input id="n_reporte" name="n_reporte" type="text" class="form-control" disabled="">
+                    </div>
+                    <div class="col-sm-5">
+                    <label>Usuario</label>
+                    <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
+                    </div>                    
+                    <div class="col-sm-2">
+                    <label>Extension</label>
+                    <input id="extension" name="extension" type="text" class="form-control" disabled="">
+                    </div>
+                    <div class="col-sm-2">
+                    <label>Ubicación</label>
+                    <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
+                    </div>                    
+                    </div>
+
+                    <div class="form-group" id="dsprob1" style="display: none;">
+                    <div id="buscador"></div>
+                    <div id="select1"></div>  
+                    <div id="select2"></div>
+                    <input type="hidden" name="rspst" id="rspst">
+                    </div>
+
+     
+                    <div class="form-group" id="dsprob2">
+                    <div class="col-sm-4">
+                    <label>Tipo de servicio</label>
+                    <input id="servicio" type="text" class="form-control" disabled="">
+                    </div>
+
+                    <div class="col-sm-4">
+                    <label>Intervención</label>
+                    <input id="intervencion" type="text" class="form-control" disabled="">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                    <label>Descripción</label>
+                    <input id="descripcion" type="text" class="form-control" disabled="">
+                    </div>
+                    <input type="hidden" name="rspst" id="rspst" value="SI">
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-12">
+                    <label>Observaciones del usuario al problema</label> 
+                    <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
+                    </div>          
+                    </div>
+
+                    <div class="form-group" id="externo" style="display: none;">
+                    <div class="col-sm-12">
+                    <label> Respuesta externa de la falla</label>
+                    <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    </div>                    
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label> Fecha reporte</label>
+                    <input id="finicio" name="finicio" type="text" class="form-control"  disabled="">
+                    </div>
+
+                    <br>
+                    <div class="col-sm-4">
+                    <label>¿Requiere reasignar técnico?</label><br>
+                    <label for="SI">SI</label>
+                    <input name="OK" type="radio" value="SI" id="SI" />
+                    <label for="NO">NO</label>
+                    <input name="OK" type="radio" value="NO" id="NO" checked="checked"/>
+                    </div>
+                    
+                    <div class="col-sm-4" id="asignado">
+                    <label>Técnico asignado</label>
+                    <input  class="form-control" selected="true" id="nomtec" name="nomtec" disabled="">
+                    </div>
+                    <div class="col-sm-4" style="display: none;" id="reasigar">
+                    <label>Reasignar técnico </label>
+                    <select style="width: 100%" class="form-control" class="selectpicker" id="idtec" name="idtec" type="text" data-live-search="true">
+                    <option value="0">Seleccione técnico</option> 
+                    <?php while($usuario = mysqli_fetch_row($result)):?>
+                    <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
+                    <?php endwhile; ?>
+                    </select>                    
+                    </div>
+
+               <!--      <div class="col-sm-4">
+                    <button type="button" class="btn btn-warning" id="asignartec" onclick="tecReasignar();">REASIGNAR TÉCNICO</button>        
+                    </div> -->
+                    </div> 
+
+
+            <div class="form-group" style="display: none;" id="button"><br>
+            <div class="col-sm-offset-0 col-sm-5">
+            <button type="button" class="btn btn-green btn-lg" onclick="tecReasignar();">Aceptar</button>
+            </div>
+            <b><p class="alert alert-danger text-center padding error" id="error">Error al reasignar técnico</p></b>
+
+            <b><p class="alert alert-success text-center padding exito" id="exito">¡El técnico se reasigno con éxito!</p></b>
+            
+              <b><p class="alert alert-warning text-center padding aviso" id="aviso">Favor de seleccionar técnico</p></b>
+            </div>
+
+            </div>            
+                <!--<div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="atdRpt();">Atender</button>
+                </div>-->
+            </div>
+            </div>
+        </div>
+</form>  
 
 
 
@@ -426,35 +572,17 @@
 
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
-<!--<script src="js/jquery-1.12.3.js"></script>-->
-<!-- <script src="../js/jquery.dataTables.min.js"></script> -->
-<!-- <script src="../js/dataTables.bootstrap.js"></script> -->
-<!--botones DataTables-->
-<!-- <script src="../js/dataTables.buttons.min.js"></script> -->
-<!-- <script src="../js/buttons.bootstrap.min.js"></script> -->
-<!--Libreria para exportar Excel-->
 <script src="../js/jszip.min.js"></script>
-<!--Librerias para exportar PDF-->
 <script src="../js/pdfmake.min.js"></script>
 <script src="../js/vfs_fonts.js"></script>
-<!--Librerias para botones de exportación-->
-
-<!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
-
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-
-<!-- <script type="text/javascript" src="../js/actualizar.js"></script> -->
-<!--COMIENZA TABLA DEL ADMINISTRADOR-->
-
-
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>  
 <script src="../js/dataTables.buttons.min.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
-<script type="text/javascript" src="../js/area.js"></script>
+<script type="text/javascript" src="../js/admin.js"></script>
  
 
 <script type="text/javascript">
@@ -492,9 +620,34 @@ var dataSet = [
             }
         ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre']?>", "<?php echo  $data['apellidos']?>",
+    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre'].' '.$data['apellidos']?>",
         "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA ?>", "<?php echo   $eva?>", "<?php echo  $data['estado_rpt']?>"
+        "<?php echo $NA ?>", "<?php echo   $eva?>",
+
+                "<?php if($data['estado_rpt'] == 'Pendiente'){
+                
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+
+                    } 
+                      else if($data['estado_rpt'] == 'En proceso') {
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+
+                    }else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
+
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por confirmar</a>";
+
+                    } else if($data['evaluacion'] == '0'){
+
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por evaluar</a>";
+
+                    } else if($data['estado_rpt'] == 'Finalizado'){
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                    } else if($data['evaluacion']=='CANCELADO'){
+
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                    }?>"
+
+         //"<?php //echo  $data['estado_rpt']?>"
     ],
     <?php } ?>
 ];
@@ -516,9 +669,6 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         },
         {
             title: "Nombre"
-        },
-        {
-            title: "Apellidos"
         },
         {
             title: "Ubicación"
