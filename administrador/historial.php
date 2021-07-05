@@ -13,6 +13,7 @@
 
         //$idu = $_SESSION['usuario']['id_usuario'];
        $idu = $_SESSION['usuario']['id_usu'];
+       ini_set('date.timezone','America/Mexico_City');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,30 +28,31 @@
 
     <title>Sistema</title>
 
-<!-- Bootstrap Core CSS -->
+    <!-- Bootstrap Core CSS -->
 
 
-<!-- MetisMenu CSS -->
-<link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
 
 
-<!-- Morris Charts CSS -->
-<link href="../boots/morrisjs/morris.css" rel="stylesheet">
-<link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-<link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-<link href="//cdn.datatables.net/datetime/1.1.0/css/dataTables.dateTime.min.css" rel="stylesheet">
-<link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet">
-</link>
-<link rel="stylesheet" type="text/css" href="../css/styles.css" />
-<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css" />
-<link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-<link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
-<link rel="stylesheet" type="text/css" href="../css/styles.css">
-<script type="text/javascript" src="../js/funciones.js"></script>
-<script type="text/javascript" src="../js/area.js"></script>
-<link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <!-- Morris Charts CSS -->
+    <link href="../boots/morrisjs/morris.css" rel="stylesheet">
+    <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/datetime/1.1.0/css/dataTables.dateTime.min.css" rel="stylesheet">
+    <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet">
+    </link>
+    <link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" rel="stylesheet"
+        type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css" />
+    <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script type="text/javascript" src="../js/funciones.js"></script>
+    <script type="text/javascript" src="../js/area.js"></script>
+    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
 
 
 </head>
@@ -352,11 +354,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="text-align: right">
-                            <img style="cursor: pointer;" onclick="pdf()"
-                                src="http://www.uco.es/servicios/ucodigital/omeka/files/original/d0409d702e2e506249903964dd94b80aa01d1161.png"
-                                class="img-fluid swing" width="46px" alt="Crear-PDF">
-                        </div><br>
+                        </br></br></br>
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
                     </div>
@@ -401,10 +399,18 @@
 
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>
-<script src="../js/dataTables.bootstrap.js"></script>  
+<script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script> -->
 <script type="text/javascript" src="../js/area.js"></script>
 
 
@@ -414,7 +420,7 @@ $.fn.dataTable.ext.search.push(
     function(settings, data, dataIndex) {
         var min = minDate.val();
         var max = maxDate.val();
-        var date = new Date(data[5]);
+        var date = new Date(data[4]);
 
         if (
             (min === null && max === null) ||
@@ -435,16 +441,14 @@ var dataSet = [
                     usuarios.apellidos,
                     usuarios.ubicacion,
                     usuarios.extension,
-                    reporte.finicio,
-                    reporte.ffinal,
+                    DATE_FORMAT(reporte.finicio,'%d/%m/%Y') AS finicio,
+	                DATE_FORMAT(reporte.ffinal,'%d/%m/%Y') AS ffinal,
                     reporte.evaluacion,
                     reporte.estado_rpt
                  FROM
                     reporte 
                 LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado";
 	    $resultado = mysqli_query($conexion, $query);
-            $finicio   = date("m-d-Y");
-            $ffinal   = date("m-d-Y");
         while($data = mysqli_fetch_array($resultado)){
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -453,22 +457,23 @@ var dataSet = [
             }
         ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre']?>", "<?php echo  $data['apellidos']?>",
-        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $finicio ?>",
-        "<?php echo $ffinal ?>", "<?php echo  $eva ?>", "<?php echo  $data['estado_rpt']?>"
+    ["<?php echo  $data['n_reporte']?>", "<?php echo $data['nombre'] . " " .$data['apellidos'] ?>",
+        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
+        "<?php echo $data['ffinal']?>", "<?php echo  $eva ?>", "<?php echo  $data['estado_rpt']?>"
     ],
     <?php } ?>
 ];
 //       
 $(document).ready(function() {
+    var printCounter = 0;
     minDate = new DateTime($('#min'), {
-        format: 'Do MMMM YYYY'
+        format: 'l'
     });
     maxDate = new DateTime($('#max'), {
-        format: 'Do MMMM YYYY'
+        format: 'l'
     });
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
-        
+
         "order": [
             [0, "desc"]
         ],
@@ -476,6 +481,19 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
+        // dom: 'Bfrtip',
+        // buttons: [
+            
+        //     'copy', 'csv', 'excel',
+        //     {
+        //     extend: 'pdfHtml5',
+        //     messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+        //     download: 'open',
+        //     title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+        //     text: 'Descargar PDF',
+        //     pageSize: 'A4',
+            
+        // }],
         orderCellsTop: true,
         fixedHeader: true,
         responsive: true,
@@ -487,19 +505,16 @@ $(document).ready(function() {
                 title: "Nombre"
             },
             {
-                title: "Apellidos"
-            },
-            {
                 title: "Ubicación"
             },
             {
                 title: "Extensión"
             },
             {
-                title: "Fecha Reporte"
+                title: "Inicio"
             },
             {
-                title: "Fecha termino"
+                title: "Finaliza"
             },
             {
                 title: "Atención"
