@@ -131,11 +131,9 @@ if(idtec==0){
             setTimeout(function(){
             $('#error').toggle("toggled");
             },2000);
-        }
-
-    });
-}
-
+          }
+      });
+   }
 }
 
 function limpiarCam(){

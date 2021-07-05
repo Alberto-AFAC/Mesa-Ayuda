@@ -1,27 +1,3 @@
-/*function listar_equipo(){
-
-    //
-    destroy:true,
-    $.ajax({
-    url:'../../php/lista_area.php',
-    type:'POST'
-    }).done(function(resp){
-        obj = JSON.parse(resp);
-        var res = obj.data;  
-        var x = 0;
-            html = '<div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="area" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>ID</th><th><i></i> Identificador</th><th><i></i> Area</th><th><i></i>Acción</th></tr></thead><tbody>';
-            for(i=0; i<res.length;i++){
-            x++;
-            html +="<tr><td>"+x+"</td><td>"+obj.data[i].identificador+"</td><td>"+obj.data[i].adscripcion+"</td><td><a href='javascript:openEdt1()' onclick='aredit("+'"'+obj.data[i].id_area+'"'+")' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar("+'"'+obj.data[i].id_area+'"'+")'><li class='fa fa-trash-o text-danger'></li></button> <a href='javascript:openDet1()' onclick='areadetalles("+'"'+obj.data[i].id_area+'*'+obj.data[i].adscripcion+'"'+")' class='detalle btn btn-default'><i class='glyphicon glyphicon-list-alt text-warning'></i></a> </td></tr>";
-        } 
-        html +='</tbody></table></div></div></div>';
-        $("#areas").html(html);  
-    })          
-}	*/
-
-
-//lista de equipo, del usuario
-//destroy:true,
 $.ajax({
         url: '../php/conEquipo.php',
         type: 'POST'
@@ -70,11 +46,6 @@ function reporte() {
     var idequipo = document.getElementById('idequipo').value;
     var proceso = document.getElementById('proceso').value;
 
-
-    //        data = nempleado+'*'+servicio+'*'+intervencion+'*'+descripcion+'*'+modelo+'*'+serie+'*'+obser+'*'+verwind+'*'+idequipo+'*'+proceso;
-
-    // alert(data);
-
     if (nempleado == '' || servicio == 'x' || intervencion == 'x' || descripcion == '0' || modelo == '' || obser == '' || verwind == '' || idequipo == '') {
         $("#vacio").toggle("toggled");
         setTimeout(function() {
@@ -83,8 +54,8 @@ function reporte() {
         return;
     } else {
         //bloquear boton 
-        document.getElementById('button').disabled = 'false';
-        document.getElementById('button').style.color = "silver";
+  //      document.getElementById('button').disabled = 'false';
+//        document.getElementById('button').style.color = "silver";
         $.ajax({
             url: '../php/rptUsu.php',
             type: 'POST',
@@ -184,7 +155,6 @@ $.ajax({
     html = '<div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="reporte" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>N° reporte</th><th><i></i> Técnico asignado</th><th><i></i> Ext.</th><th><i></i> Descripción Problema</th><th><i></i> Fecha envio</th><th><i></i> Fecha termino</th><th><i></i> Estado</th></tr></thead><tbody>';
     for (i = 0; i < res.length; i++) {
         x++;
-
 
         year = obj.data[i].finicio.substring(0, 4);
         month = obj.data[i].finicio.substring(5, 7);

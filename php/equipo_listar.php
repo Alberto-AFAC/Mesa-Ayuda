@@ -1,9 +1,8 @@
 <?php
 	include("../conexion/conexion.php");
-	session_start();
-	$numEmp = $_SESSION['n_empleado']['n_empleado'];
-	$query = "SELECT *,	CAST(BINARY(ubicacion) AS CHAR CHARACTER SET utf8) AS ubicacion
-	FROM equipo WHERE estado=0 AND ";
+//	session_start();
+//	$numEmp = $_SESSION['n_empleado']['n_empleado'];
+	$query = "SELECT * FROM equipo WHERE estado=0 ";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
