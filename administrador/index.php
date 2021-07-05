@@ -14,8 +14,8 @@
         //$idu = $_SESSION['usuario']['id_usuario'];
        $idu = $_SESSION['usuario']['id_usu'];
    ini_set('date.timezone','America/Mexico_City');
-  $meses = array("ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE");  
-  $fecha = $meses[date('n')-1].' del '.date('Y');
+  $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");  
+  $fecha = $meses[date('n')-1].'  '.date('Y');
 ?>
 
 <!DOCTYPE html>
@@ -38,28 +38,10 @@
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet"
-        href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <style>
-    canvas {
-        border: 1px dotted gray;
-    }
-
-    .chart-container {
-        position: relative;
-        margin: auto;
-        height: 35vh;
-        width: 35vw;
-    }
-    </style>
-
-
-
 </head>
 
 <body>
@@ -351,30 +333,36 @@
 
                             <table id="data-table-administrador" class="table table-bordered" width="100%"
                                 cellspacing="0"></table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <h5 style="font-weight: bold; text-align: center;">Estadística Mensual de Evaluación</h5>
+                            <div class="row">
+                                <canvas id="piechart-admin"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-            <div class="jumbotron">
-                <div class="container">
-                    <div class="ms-panel-body">
-                        <canvas id="piechart-admin"></canvas>
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <h5 style="font-weight: bold; text-align: center;">Estadística Mensual Solicitud Según Servicio</h5>
+                            <div style="padding-top:50px;" class="row">
+                                <canvas id="piechart-servicios"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-</div>
-
+            
         </div>
-    </div>
-    <!-- /#page-wrapper -->
 
     </div>
-    </div>
-    <!-- /#page-wrapper -->
-
-
     </div>
     <!-- /#wrapper -->
 </body>
@@ -382,30 +370,8 @@
 
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
-<!--<script src="js/jquery-1.12.3.js"></script>-->
-<!-- <script src="../js/jquery.dataTables.min.js"></script> -->
-<!-- <script src="../js/dataTables.bootstrap.js"></script> -->
-<!--botones DataTables-->
-<!-- <script src="../js/dataTables.buttons.min.js"></script> -->
-<!-- <script src="../js/buttons.bootstrap.min.js"></script> -->
-<!--Libreria para exportar Excel-->
-<script src="../js/jszip.min.js"></script>
-<!--Librerias para exportar PDF-->
-<script src="../js/pdfmake.min.js"></script>
-<script src="../js/vfs_fonts.js"></script>
-<!--Librerias para botones de exportación-->
-
-<!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
-
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-
-<!-- <script type="text/javascript" src="../js/actualizar.js"></script> -->
-<!--COMIENZA TABLA DEL ADMINISTRADOR-->
-
-
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -501,70 +467,123 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
 //GRAFICAS PARA MEDIR LA EVALUACIÓN DEL TÉCNICO//
 <?php 
-        $query = "SELECT
-                    usuarios.nombre,
-                    usuarios.apellidos,
-                    reporte.evaluacion
-                    'total',
-                    COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-                    COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-                    COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo
-                FROM
-                    reporte
-                INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-                INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario
-                GROUP BY idtec";
+            $query = " SELECT
+            COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+            COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+            COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
+            COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
+            FROM
+            reporte";
+            // -- WHERE
+            // -- MONTH ( finicio ) = MONTH (
+            // -- CURRENT_DATE ())";
+    //     $query = "SELECT
+    //     usuarios.nombre,
+    //     usuarios.apellidos,
+    //     COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+    //     COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+    //     COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo 
+    // FROM
+    //     reporte
+    //     INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
+    //     INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
+    // GROUP BY
+    //     idtec";
         $resultado = mysqli_query($conexion, $query);
 ?>
 var piechar = new Chart(document.getElementById("piechart-admin"), {
-    type: 'bar',
+    type: 'pie',
     data: {
 
-        <?php        while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["<?php echo $row['nombre']. " " .$row['apellidos']?>"],
+        <?php while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["Bueno", "Regular", "Malo", "Cancelado"],
 
         datasets: [{
                 label: "Bueno",
-                backgroundColor: ["#00AD88"],
+                backgroundColor: ["#057100", "#0BFD00", "#FD9200", "#FD0000"],
                 borderWidth: 0,
-                data: [<?php echo $row['Bueno']?>]
-            },
-            {
-                label: "Regular",
-                backgroundColor: ["#006178"],
-                borderWidth: 0,
-                data: [<?php echo $row['Regular']?>]
-            },
-            {
-                label: "Malo",
-                backgroundColor: ["#FF0000"],
-                borderWidth: 0,
-                data: [<?php echo $row['Malo']?>]
+                data: [<?php echo $row['Bueno']?>, <?php echo $row['Regular']?>, <?php echo $row['Malo']?>,
+                    <?php echo $row['Cancelado']?>
+                ]
             }
-            <?php }?>
-        ]
 
+        ],
+        <?php }?>
     },
     options: {
+        responsive: true,
         legend: {
             labels: {
-                fontColor: '#5c6dc0',
+                position: 'top',
             }
         },
         title: {
-            display: false,
+            display: true,
             text: 'Porcentaje de cumplimiento'
         },
-        scales: {
-            x: {
-                stacked: true,
-            },
-            y: {
-                stacked: true,
-            }
-        }
+        maintainAspectRatio: false
     }
 });
+//GRAFICAS PARA MEDIR SOLICITUD DE SERVICIO SEGUN EL CASO
+<?php 
+            $query = " SELECT
+           	COUNT( CASE WHEN servicio = 'IMPRESORA/MULTIFUNCIONALES' THEN 1 END ) AS multifuncionales,
+	        COUNT( CASE WHEN servicio = 'SISTEMAS_APLICATIVOS' THEN 1 END ) AS sistemasAplicativos,
+	        COUNT( CASE WHEN servicio = 'EQUIPO DE CÓMPUTO' THEN 1 END ) AS equipoComputo,
+            COUNT( CASE WHEN servicio = 'SISTEMAS' THEN 1 END ) AS sistemas,
+            COUNT( CASE WHEN servicio = 'RED' THEN 1 END ) AS red,
+            COUNT( CASE WHEN servicio = 'OTROS' THEN 1 END ) AS otros
+            FROM
+            reporte";
+            // -- WHERE
+            // -- MONTH ( finicio ) = MONTH (
+            // -- CURRENT_DATE ())";
+    //     $query = "SELECT
+    //     usuarios.nombre,
+    //     usuarios.apellidos,
+    //     COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+    //     COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+    //     COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo 
+    // FROM
+    //     reporte
+    //     INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
+    //     INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
+    // GROUP BY
+    //     idtec";
+        $resultado = mysqli_query($conexion, $query);
+?>
+var piechar = new Chart(document.getElementById("piechart-servicios"), {
+        type: 'bar',
+        data: {
+            <?php while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["Impresora/Multifuncionales", "Sistemas Aplicativos", "Equipo de cómputo", "Sistemas", "Red", "Otros"],
+        datasets: [{
+        label: "Ocultar estadisticas",
+        backgroundColor: ["#707070","#006C52","#002FC2","#EB4E00","#000D8A"],
+        borderWidth: 0,
+        data: [<?php echo $row['multifuncionales']?>,<?php echo $row['sistemasAplicativos']?>,<?php echo $row['equipoComputo']?>,<?php echo $row['sistemas']?>,<?php echo $row['red']?>,<?php echo $row['otros']?>]
+        }
+      ]
+      <?php }?>
+    },
+        options: {
+        legend: {
+        labels: {
+        fontColor: '#5c6dc0',
+        }
+    },
+        title: {
+        display: false,
+        text: 'Porcentaje de cumplimiento'
+    },
+    scales:{
+        y: {
+        beginAtZero: true
+      }
+    }
+    
+        }
+    });
 </script>
 
 </html>
