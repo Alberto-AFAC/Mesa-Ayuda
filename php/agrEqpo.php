@@ -34,7 +34,38 @@ if($opcion === 'agreqpo'){
 
    if(agregarEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
    		{	echo "0";	}else{	echo "1";	}	
-	}
+	}else 
+	if($opcion === 'eliminar'){
+
+		$ideqpo = $_POST['ideqpo'];
+
+		eliminar($ideqpo, $conexion);
+	}else if($opcion === 'actualizar'){
+
+		$num_sigtic = $_POST['num_sigtic'];
+		$num_invntraio = $_POST['num_invntraio'];
+		$marca_cpu = $_POST['marca_cpu'];
+		$serie_cpu = $_POST['serie_cpu'];
+		$memoria_ram = $_POST['memoria_ram'];
+		$procesador = $_POST['procesador'];
+		$velocidad_proc = $_POST['velocidad_proc'];
+		$uni_disc_flax = $_POST['uni_disc_flax'];
+		$disco_duro = $_POST['disco_duro'];
+		$serie_teclado = $_POST['serie_teclado'];
+		$serie_monitor = $_POST['serie_monitor'];
+		$version_windows = $_POST['version_windows'];
+		$version_office = $_POST['version_office'];
+		$serie_mouse = $_POST['serie_mouse'];
+		$direccion_ip = $_POST['direccion_ip'];
+		$nombre_equipo = $_POST['nombre_equipo'];
+		$servicio_internet = $_POST['servicio_internet'];
+		$tipo_equipo = $_POST['tipo_equipo'];
+		$ubicacion = $_POST['ubicacion'];
+		$id_equipo = $_POST['idequipo'];
+
+		   if(agregarEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
+   		{	echo "0";	}else{	echo "1";	}	
+	}	
 
 
 function agregarEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion){
@@ -54,6 +85,13 @@ servicio_internet = '$servicio_internet',tipo_equipo = '$tipo_equipo',ubicacion 
 					}
 	cerrar($conexion);
 }
+
+	function eliminar($ideqpo, $conexion){
+	$query = "UPDATE equipo SET estado = 1 WHERE id_equipo = $ideqpo";
+	$resultado = mysqli_query($conexion, $query);
+	verificar_resultado($resultado);
+	cerrar($conexion);
+	}
 	
 	function asignarUsu($n_empleado,$id_equipo,$asignado,$conexion){
 		$query = "UPDATE asignacion SET n_emp = '$n_empleado', proceso = '$asignado' WHERE id_equi = $id_equipo";	
@@ -65,7 +103,14 @@ servicio_internet = '$servicio_internet',tipo_equipo = '$tipo_equipo',ubicacion 
 	cerrar($conexion);
 
 	}
-
+	function verificar_resultado($resultado){
+		//si no hay resultado que marque una respuesta de error 
+		if(!$resultado) $informacion["respuesta"] = "ERROR";
+		//si hay resultado respuesta de bien
+			else $informacion["respuesta"] = "BIEN";
+			//todo codificado a formato JSON esta variable va hacer un arreglo 
+				echo json_encode($informacion);
+	}
 	function cerrar($conexion){
 		mysqli_close($conexion);
 	}

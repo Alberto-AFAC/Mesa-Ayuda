@@ -1,8 +1,10 @@
 <?php
 	include("../conexion/conexion.php");
-//	session_start();
-//	$numEmp = $_SESSION['n_empleado']['n_empleado'];
-	$query = "SELECT * FROM equipo WHERE estado=0 ";
+
+	$query = "SELECT * FROM reporte 
+			INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
+			INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario
+			";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -24,3 +26,5 @@
 		mysqli_close($conexion);
 
 ?>
+
+

@@ -1,20 +1,8 @@
-/*Ocultar contenedores area*/
-
-#Fregist {
+/*Ocultar contenedores*/
+#Fregist,#Frmeqpo,#det1,#det2,#edt1,#Edteqpo {
     display: none;
 }
 
-#det1 {
-    display: none;
-}
-
-#det2 {
-    display: none;
-}
-
-#edt1 {
-    display: none;
-}
 
 .row>.col-lg-12>img {
     float: right;

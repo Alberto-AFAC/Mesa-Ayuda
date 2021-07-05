@@ -15,7 +15,7 @@
        $idu = $_SESSION['usuario']['id_usu'];
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -234,19 +234,12 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
     <script src="../../js/jquery-1.12.3.min.js"></script>
-
  <div class="row">
-        <div id="cuadro1" class="col-lg-12">
-        <div class="panel panel-default">         
-
-         
-       <div style="padding: 0;" class="panel-heading">
-        
+<!--         <div id="cuadro1" class="col-lg-12">
+        <div class="panel panel-default">                  
+       <div style="padding: 0;" class="panel-heading">        
    <button type="button" style="color:blue;" class="btn btn-default" data-toggle="modal" onclick="RegisEquipo()"><i class="glyphicon glyphicon-hdd"></i> Agregar</button>
-
-
       <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
       </div>
                <div class="panel-body">             
@@ -259,7 +252,6 @@
                             <th>Windows</th>
                             <th>Direccion</th>
                             <th>Ubicacion</th>
-                            <!--<th>Empleado</th>-->
                             <th></th>                                           
                         </tr>
                     </thead>  
@@ -270,11 +262,439 @@
             </div>
             </div>          
         </div>      
+ -->    
+
+                    <div id="list" class="col-lg-12">
+                        <div class="panel panel-default">                  
+                            <div style="padding: 0;" class="panel-heading"> 
+<button title="Agregar equipo de computo" ttype="button" class="btn btn-default" data-toggle="modal" onclick="openEquipo()"><i class='fa fa-desktop text-info' ><b>+</b></i></button>
+                                  <p style="padding: 0.5em; text-align: center; float: right; width:95%;" class="mensaje"></p>
+                            </div>
+                               <div class="panel-body" style="font-size: 12px;">             
+                                    <table id="data-table-area" class="table table-striped table-hover"></table>
+                                </div>
+                        </div>          
+                    </div>
+
+</div>
+
+
+<!-- <form  class="form-horizontal" action="" method="POST" onsubmit="return registrar(this)">
+    <div id="ProyectoRegistrar" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="EditarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog-modi" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                <button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
+                <div class="cerrar"><a ><span class="icon-cross"></span></a></div>
+                <h4 class="modal-title" id="exampleModalLabel">Agregar</h4>
+
+                </div>
+                
+                <div class="modal-body">
+                <input type="hidden" id="opcion" name="opcion" value="registrar">            
+                <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-10">
+                <label for="identificador">Identificador:</label>
+                <input id="identificador" name="identificador" type="text" class="form-control">
+                </div>
+                </div>    
+                <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-10">
+                <label for="adscripcion">Área:</label>
+                <input id="adscripcion" name="adscripcion" type="text" class="form-control">
+                </div>
+                </div>
+
+                <input type="hidden" name="ideqpo" id="ideqpo" value="0">
+
+                <div class="form-group"><br>
+                <div class="col-sm-offset-1 col-sm-5">
+                <button type="button" class="btn btn-primary" onclick="registrar();">Guardar</button>
+                <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
+                </div>
+                <b><p class="alert alert-danger text-center padding error" id="error">El área ya esta registrada</p></b>
+                <b><p class="alert alert-success text-center padding exito" id="exito">Área registrada</p></b>
+                <b><p class="alert alert-warning text-center padding aviso" id="vacio">Llene campos vacíos</p></b>
+                </div>                    
+                </div>
+            </div>
+        </div>
     </div>
+</form> -->
 
 
+<form id="Frmeqpo" class="form-horizontal" action="" method="POST">
+  <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+   
+
+<div class="modal-dialog-modi" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="exampleModalLabel">
+Agregar datos del  equipo </h4>  
+</div>
+            <div class="modal-body">
+                <input type="hidden" id="id_equipo" name="id_equipo">
+                <input type="hidden" id="opcion" name="opcion" value="actualizar">
+
+<!--                     <div class="form-group">
+                    <div class="col-sm-12">
+                    <label>
+                    ¿el equipo de cómputo pertenece al usuario?
+                    Seleccione usuario a quien pertenece el equipo </label>              
+                    </div>    
+                                        
+                    <div class="col-sm-8">
+                    <select style="width: 100%" class="form-control" class="selectpicker" id="n_empleado" name="n_empleado" type="text" data-live-search="true">
+                    <option selected>Seleccione usuarion</option> 
+                    <?php //while($usuario = mysqli_fetch_row($usua)):?>
+                    <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
+                    <?php //endwhile; ?>
+                    </select>
+                    </div>
+ 
+                    <div class="col-sm-4">
+                    <select class="form-control" name="asignado" id="asignado">
+                    <option value="0">Eleija Opción</option>
+                    <option value="asignado">Pertenece</option>
+                    <option value="designado">No pertenece</option>
+                    </select>
+                    </div>                    
+                    </div> -->
+
+                    <div class="form-group">                    
+                    <div class="col-sm-4">
+                    <label>Número sigctic</label>
+                    <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Numero de inventario</label>
+                    <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                    <label>Marca de CPU</label>    
+                    <select class="form-control" selected="true" id="marca_cpu" name="marca_cpu">
+                    <option value="" selected>SELECCIONE MARCA DE EQUIPO</option>
+                    <option value="LENOVO">LENOVO</option>
+                    <option value="DELL">DELL</option>
+                    <option value="HP">HP</option>
+                    <option value="OTRO">OTRO</option>
+                    </select>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Serie de la CPU</label>
+                    <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Capacidad de memoria RAM</label>
+                    <input id="memoria_ram" name="memoria_ram" type="text" class="form-control">
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Procesador</label>
+                    <input id="procesador" name="procesador" type="text" class="form-control">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Velocidad del procesador</label>
+                    <input id="velocidad_proc" name="velocidad_proc" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Unidad de disco flash</label>
+                    <input id="uni_disc_flax" name="uni_disc_flax" type="text" class="form-control">
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Capacidad de disco duro</label>
+                    <input id="disco_duro" name="disco_duro" type="text" class="form-control">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Serie teclado</label>
+                    <input id="serie_teclado" name="serie_teclado" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Serie monitor</label>
+                    <input id="serie_monitor" name="serie_monitor" type="text" class="form-control" >
+                    </div>                                        
+                    <div class="col-sm-offset-0 col-sm-4">
+                    <label>Versión Windows</label>
+                    <select class="form-control" selected="true" id="version_windows" name="version_windows">                                
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="WINDOWS 7" >WINDOWS 7</option>
+                    <option value="WINDOWS 10" >WINDOWS 10</option>
+                    <option value="LINUX" >LINUX</option> 
+                    </select>                                
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Versión office</label>
+                    <input id="version_office" name="version_office" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Serie mouse</label>
+                    <input id="serie_mouse" name="serie_mouse" type="text" class="form-control" >
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Dirección IP</label>
+                    <input id="direccion_ip" name="direccion_ip" type="text" class="form-control" >
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Nombre del equipo</label>
+                    <input id="nombre_equipo" name="nombre_equipo" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Servicio internet</label>
+                    <input id="servicio_internet" name="servicio_internet" type="text" class="form-control" >
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Tipo equipo</label>
+                    <input id="tipo_equipo" name="tipo_equipo" type="text" class="form-control" >
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Ubicación del equipo</label>
+                    <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
+                    <option value="0">Selecione</option> 
+                    <option value="Piso m2">Piso m2</option>
+                    <option value="Piso 1">Piso 1</option>
+                    <option value="Piso 2">Piso 2</option>
+                    <option value="Piso 3">Piso 3</option>
+                    <option value="Piso 4">Piso 4</option>
+                    <option value="Piso 7">Piso 7</option>
+                    </select>
+                    </div>
+                    </div>
+
+
+                    <div class="form-group"><br>
+                    <div class="col-sm-offset-0 col-sm-5">
+                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="agrEqpo();">Aceptar</button>
+                    </div>
+                    <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos del equipo </p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="success">¡Se agregaron los datos con éxito!</p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
+                    </div>
+
+            </div>            
+            </div>
+            </div>
     </div>
+</form>
 
+
+<form id="EqpoEliminar" action="" method="POST">
+    <input type="hidden" id="ideqpo" name="ideqpo" value="">
+    <input type="hidden" id="opcion" name="opcion" value="eliminar">
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalProyectoEliminarLabel">Eliminar equipo de  computo</h4>
+                </div>
+                <div class="modal-body">                            
+                    ¿Está seguro de eliminar este equipo? <strong data-name=""></strong>           
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="eliminareqpo();" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form id="Edteqpo" class="form-horizontal" action="" method="POST">
+  <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+   
+
+<div class="modal-dialog-modi" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="exampleModalLabel">
+Editar datos del  equipo </h4>  
+</div>
+            <div class="modal-body">
+                <input type="hidden" id="idequipo" name="idequipo">
+
+<!--                     <div class="form-group">
+                    <div class="col-sm-12">
+                    <label>
+                    ¿el equipo de cómputo pertenece al usuario?
+                    Seleccione usuario a quien pertenece el equipo </label>              
+                    </div>    
+                                        
+                    <div class="col-sm-8">
+                    <select style="width: 100%" class="form-control" class="selectpicker" id="n_empleado" name="n_empleado" type="text" data-live-search="true">
+                    <option selected>Seleccione usuarion</option> 
+                    <?php //while($usuario = mysqli_fetch_row($usua)):?>
+                    <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
+                    <?php //endwhile; ?>
+                    </select>
+                    </div>
+ 
+                    <div class="col-sm-4">
+                    <select class="form-control" name="asignado" id="asignado">
+                    <option value="0">Eleija Opción</option>
+                    <option value="asignado">Pertenece</option>
+                    <option value="designado">No pertenece</option>
+                    </select>
+                    </div>                    
+                    </div> -->
+
+                    <div class="form-group">                    
+                    <div class="col-sm-4">
+                    <label>Número sigctic</label>
+                    <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Numero de inventario</label>
+                    <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                    <label>Marca de CPU</label>    
+                    <select class="form-control" selected="true" id="emarca_cpu" name="emarca_cpu">
+                    <option value="" selected>SELECCIONE MARCA DE EQUIPO</option>
+                    <option value="LENOVO">LENOVO</option>
+                    <option value="DELL">DELL</option>
+                    <option value="HP">HP</option>
+                    <option value="OTRO">OTRO</option>
+                    </select>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Serie de la CPU</label>
+                    <input id="eserie_cpu" name="eserie_cpu" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Capacidad de memoria RAM</label>
+                    <input id="ememoria_ram" name="ememoria_ram" type="text" class="form-control">
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Procesador</label>
+                    <input id="eprocesador" name="eprocesador" type="text" class="form-control">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Velocidad del procesador</label>
+                    <input id="evelocidad_proc" name="evelocidad_proc" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Unidad de disco flash</label>
+                    <input id="euni_disc_flax" name="euni_disc_flax" type="text" class="form-control">
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Capacidad de disco duro</label>
+                    <input id="edisco_duro" name="edisco_duro" type="text" class="form-control">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Serie teclado</label>
+                    <input id="eserie_teclado" name="eserie_teclado" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Serie monitor</label>
+                    <input id="eserie_monitor" name="eserie_monitor" type="text" class="form-control" >
+                    </div>                                        
+                    <div class="col-sm-offset-0 col-sm-4">
+                    <label>Versión Windows</label>
+                    <select class="form-control" selected="true" id="eversion_windows" name="eversion_windows">                                
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="WINDOWS 7" >WINDOWS 7</option>
+                    <option value="WINDOWS 10" >WINDOWS 10</option>
+                    <option value="LINUX" >LINUX</option> 
+                    </select>                                
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Versión office</label>
+                    <input id="eversion_office" name="eversion_office" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Serie mouse</label>
+                    <input id="eserie_mouse" name="eserie_mouse" type="text" class="form-control" >
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Dirección IP</label>
+                    <input id="edireccion_ip" name="edireccion_ip" type="text" class="form-control" >
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Nombre del equipo</label>
+                    <input id="enombre_equipo" name="enombre_equipo" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Servicio internet</label>
+                    <input id="eservicio_internet" name="eservicio_internet" type="text" class="form-control" >
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Tipo equipo</label>
+                    <input id="etipo_equipo" name="etipo_equipo" type="text" class="form-control" >
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Ubicación del equipo</label>
+                    <select  class="form-control" class="selectpicker" name="eubicaeqpo" id="eubicaeqpo" type="text" data-live-search="true">
+                    <option value="0">Selecione</option> 
+                    <option value="Piso m2">Piso m2</option>
+                    <option value="Piso 1">Piso 1</option>
+                    <option value="Piso 2">Piso 2</option>
+                    <option value="Piso 3">Piso 3</option>
+                    <option value="Piso 4">Piso 4</option>
+                    <option value="Piso 7">Piso 7</option>
+                    </select>
+                    </div>
+                    </div>
+
+
+                    <div class="form-group"><br>
+                    <div class="col-sm-offset-0 col-sm-5">
+                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="edtEqpo();">Aceptar</button>
+                    </div>
+                    <b><p class="alert alert-danger text-center padding error" id="danger1">Error al agregar datos del equipo </p></b>
+
+                    <b><p class="alert alert-success text-center padding exito" id="success1">¡Se actualizaron los datos del equipo con éxito! </p></b>
+
+                    <b><p class="alert alert-warning text-center padding aviso" id="empty1">Es necesario agregar los datos que se solicitan </p></b>
+                    </div>
+
+            </div>            
+            </div>
+            </div>
+    </div>
+</form>
+</div>
         </div>
             <!-- /.row -->
 
@@ -305,23 +725,55 @@
 <!--    <script type="text/javascript" src="valida/valida.js"></script>-->
     <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
     <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
+   <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <script type="text/javascript" src="../../js/funciones.js"></script>
     <script type="text/javascript" src="../../js/equipo.js"></script>
 
-     
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).on("ready", function(){
-            listar_equipo();
-//            eliminar_usuario();      
-        });
-    $("#btn_listar").on("click", function(){
-  //          listar_usuario();
-        });
-         $("#btnlistar").on("click", function(){
-    //        listar_usuario();
-        });$("#btnslista").on("click", function(){
-      //      listar_usuario();
-        });         
+  <script type="text/javascript">
+        var dataSet = [
+        <?php
+      
+          $query = "SELECT * FROM equipo WHERE estado = 0 ORDER BY id_equipo ASC";
+             $resultado = mysqli_query($conexion, $query);
+             $n=0;
+        while($data = mysqli_fetch_array($resultado)){
+           $n++;
+           $id = $data['id_equipo'];
+  //          $data['identificador'];
+    //        $data['adscripcion'];
+           
+        ?>
+    
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>',"<?php 
+
+echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button title='Eliminar área' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+
+    ?>"
+
+
+    ],
+<?php } ?>
+];
+
+var tableGenerarReporte = $('#data-table-area').DataTable({
+    "language": {
+    "searchPlaceholder": "Buscar datos...",
+    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [
+    {title: "N°"},
+    {title: "N° INVENTARIO"},    
+    {title: "N° SIGTIC"},
+    {title: "MARCA"},
+    {title: "N° SERIE"},
+    {title: "ACCIÓN"}
+
+    ],
+    });
+
     </script>
 
 </html>

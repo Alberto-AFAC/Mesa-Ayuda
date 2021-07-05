@@ -1,8 +1,11 @@
 <?php
 	include("../conexion/conexion.php");
-//	session_start();
-//	$numEmp = $_SESSION['n_empleado']['n_empleado'];
-	$query = "SELECT * FROM equipo WHERE estado=0 ";
+
+	$query = "SELECT
+ 					*
+                 FROM
+                    reporte 
+                LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -18,9 +21,12 @@
 		}else{
 
 			echo $arreglo='0';
+			
 		}
 	}
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);
 
 ?>
+
+

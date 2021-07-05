@@ -33,3 +33,13 @@ function closeEdt1(){
     $("#list").slideDown(250);//Oculta lista  
     $("#edt1").slideUp("fast");//Oculta contenedor editar 1
 }
+ 
+ function openEquipo(){
+    $("#Frmeqpo").slideDown(250);//Muestra contenedor registro
+    $("#list").slideUp("fast");//Oculta lista
+   // listar_area();
+}
+function openEqpo(){
+  $("#Edteqpo").slideDown(250);//Muestra contenedor editar 1
+  $("#list").slideUp("fast");//Oculta lista
+}

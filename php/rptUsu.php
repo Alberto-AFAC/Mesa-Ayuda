@@ -19,6 +19,8 @@
 	$verwind = $_POST['verwind'];
 	$proceso = $_POST['proceso'];
 
+	$idtec = selecTec($conexion);
+	
 	if($idequipo == 0){
 		registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion);
 	}
@@ -27,7 +29,7 @@ ini_set('date.timezone','America/Mexico_City');
 $fenvio= date('Y').'/'.date('m').'/'.date('d');	
 $Hinic=date('H:i');
 
-if(registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequipo,$fenvio,$Hinic,$conexion)){
+if(registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequipo,$fenvio,$Hinic,$idtec,$conexion)){
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
 		 	}else{	echo "1";	}	
@@ -46,7 +48,31 @@ if(registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequipo,$f
 		}else{	echo "1";	}	
 	}
 
-function registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequipo,$fenvio,$Hinic,$conexion){
+function selecTec($conexion){
+
+$query = "SELECT idtec FROM reporte ORDER BY n_reporte DESC ";
+$res = mysqli_query($conexion,$query);
+$result = mysqli_fetch_row($res);
+if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
+$query = "SELECT id_tecnico,nombre,apellidos FROM usuarios 
+		  INNER JOIN tecnico ON id_usuario = id_usu 
+		  WHERE privilegios = 'tecnico' AND activo = 0 AND baja = 0 ORDER BY id_tecnico ASC ";
+$result = mysqli_query($conexion,$query);
+$n=0;
+while ($res = mysqli_fetch_row($result)) {
+if($idtecnico >= $res[0]){
+$n++;
+}
+$idtec[] = array($res[0]);
+}
+if(!empty($idtec[$n][0])){
+	return $idtec[$n][0];
+}else{
+	return $idtec[0][0];
+}
+}	
+
+function registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequipo,$fenvio,$Hinic,$idtec,$conexion){
 	$query="SELECT * FROM asignacion  
 			INNER JOIN reporte
 			ON n_emp = n_empleado
@@ -58,7 +84,7 @@ function registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequ
 
 //		$query = "INSERT INTO reporte VALUES(0,'$nempleado','$servicio','$intervencion','$descripcion','0','0','$fenvio','0','0','0','0','$obser','Pendiente','0',2)";
 //agregar reporte y id equipo
-$query = "INSERT INTO reporte(n_empleado,idequipo,servicio,intervencion,descripcion,usu_observ,falla_interna,falla_xterna,finicio,hinicio,ffinal,hfinal,evaluacion,observa,estado_rpt,pila,idtec) SELECT '$nempleado',id_equipo,'$servicio','$intervencion','$descripcion','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Pendiente','0',2 FROM equipo ORDER BY id_equipo DESC LIMIT 1";
+$query = "INSERT INTO reporte(n_empleado,idequipo,servicio,intervencion,descripcion,usu_observ,falla_interna,falla_xterna,finicio,hinicio,ffinal,hfinal,evaluacion,observa,estado_rpt,pila,idtec) SELECT '$nempleado',id_equipo,'$servicio','$intervencion','$descripcion','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Pendiente','0','$idtec' FROM equipo ORDER BY id_equipo DESC LIMIT 1";
 	
 			if (mysqli_query($conexion,$query)){		
 				

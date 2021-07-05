@@ -143,10 +143,6 @@ type:'POST'
         }
     })
 
-
-
-
-
 }
 
 //detalles del reporte atendido 
