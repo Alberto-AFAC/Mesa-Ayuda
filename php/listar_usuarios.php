@@ -1,19 +1,10 @@
 <?php
 	include ("../conexion/conexion.php");
 	header("Content-Type: text/html;charset=utf-8");
-	$query = "
-	SELECT *,
-	id_area,
-	usuarios.id_usuario,
-	usuarios.nombre,
-	usuarios.apellidos,
-	CAST(BINARY(adscripcion) AS CHAR CHARACTER SET utf8) AS adscripcion,
-	usuarios.extension,
-	usuarios.correo,
-	usuarios.ubicacion,
-	usuarios.n_empleado
+	$query = "SELECT *
 	FROM usuarios 
 	INNER JOIN area ON area_ads = id_area
+    INNER JOIN cargo ON idcargo = id_cargo
 	WHERE usuarios.estado = 0 ORDER BY area.id_area ASC";
 	$resultado = mysqli_query($conexion, $query);
 

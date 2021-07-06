@@ -138,8 +138,9 @@ $.ajax({
 
     for (ii = 0; ii < res.length; ii++) {
         if (obj.data[ii].evaluacion == '0') {
-            document.getElementById('pregunta1').disabled = 'false';
-            $('#button').hide();
+            //para bloquerar radio boton que dice ¿El equipo que va reportar está a su cargo?
+           // document.getElementById('pregunta1').disabled = 'false';
+            //$('#button').hide();
         }
     }
 })

@@ -27,28 +27,22 @@
 
     <title>Sistema</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
+<!--     
     <link href="../../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
     <link href="../../boots/morrisjs/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <link href="../../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
     <link href="../../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
     <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
-    <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css
-"/>
+    <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/> -->
+
+
+
+    <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
+
 
 </head>
 
@@ -234,7 +228,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-    <script src="../../js/jquery-1.12.3.min.js"></script>
+   <!--  <script src="../../js/jquery-1.12.3.min.js"></script> -->
  <div class="row">
 <!--         <div id="cuadro1" class="col-lg-12">
         <div class="panel panel-default">                  
@@ -271,7 +265,7 @@
                                   <p style="padding: 0.5em; text-align: center; float: right; width:95%;" class="mensaje"></p>
                             </div>
                                <div class="panel-body" style="font-size: 12px;">             
-                                    <table id="data-table-area" class="table table-striped table-hover"></table>
+                                    <table id="data-table-area" class="table table-striped table-bordered"></table>
                                 </div>
                         </div>          
                     </div>
@@ -364,6 +358,8 @@ Agregar datos del  equipo </h4>
                     </div>                    
                     </div> -->
 
+
+<!-- ------------------------------------------------------------------------------------------------------///////--------------------
                     <div class="form-group">                    
                     <div class="col-sm-4">
                     <label>Número sigctic</label>
@@ -385,7 +381,6 @@ Agregar datos del  equipo </h4>
                     </select>
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Serie de la CPU</label>
@@ -400,7 +395,6 @@ Agregar datos del  equipo </h4>
                     <input id="procesador" name="procesador" type="text" class="form-control">
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Velocidad del procesador</label>
@@ -415,7 +409,6 @@ Agregar datos del  equipo </h4>
                     <input id="disco_duro" name="disco_duro" type="text" class="form-control">
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Serie teclado</label>
@@ -435,7 +428,6 @@ Agregar datos del  equipo </h4>
                     </select>                                
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Versión office</label>
@@ -450,7 +442,6 @@ Agregar datos del  equipo </h4>
                     <input id="direccion_ip" name="direccion_ip" type="text" class="form-control" >
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Nombre del equipo</label>
@@ -465,8 +456,135 @@ Agregar datos del  equipo </h4>
                     <input id="tipo_equipo" name="tipo_equipo" type="text" class="form-control" >
                     </div>
                     </div>
-
                     <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Ubicación del equipo</label>
+                    <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
+                    <option value="0">Selecione</option> 
+                    <option value="Piso m2">Piso m2</option>
+                    <option value="Piso 1">Piso 1</option>
+                    <option value="Piso 2">Piso 2</option>
+                    <option value="Piso 3">Piso 3</option>
+                    <option value="Piso 4">Piso 4</option>
+                    <option value="Piso 7">Piso 7</option>
+                    </select>
+                    </div>
+                    </div>
+ -->
+
+                    <div class="form-group">                    
+                    <div class="col-sm-4">
+                    <label>Número sigctic</label>
+                    <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Numero de inventario</label>
+                    <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Serie</label>
+                    <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
+                    </div>        
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Modelo</label>
+                    <input id="nombre_equipo" name="nombre_equipo" type="text" class="form-control">
+                    </div> 
+                    <div class="col-sm-4">
+                    <label>Tipo del equipo</label>
+                    <select  class="form-control" class="selectpicker" id="tipo_equipo" name="tipo_equipo" type="text" data-live-search="true">
+                    <option value="0">Seleccione tipo equipo</option> 
+                    <option value="LAP TOP ">LAP TOP </option>
+                    <option value="ESCRITORIO">ESCRITORIO</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Marca</label>    
+                    <select class="form-control" selected="true" id="marca_cpu" name="marca_cpu">
+                    <option value="" selected>SELECCIONE MARCA</option>
+                    <option value="LENOVO">LENOVO</option>
+                    <option value="DELL">DELL</option>
+                    <option value="HP">HP</option>
+                    <option value="OTRO">OTRO</option>
+                    </select>
+                    </div>
+                    </div>
+                     <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-3">
+                    <label>Versión Windows</label>
+                    <select class="form-control" selected="true" id="version_windows" name="version_windows">                   
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="WINDOWS 7" >WINDOWS 7</option>
+                    <option value="WINDOWS 10" >WINDOWS 10</option>
+                    <option value="LINUX" >LINUX</option> 
+                    </select>                                
+                    </div>
+                    <div class="col-sm-offset-0 col-sm-3">
+                    <label>Versión office</label>
+                    <select class="form-control" selected="true" id="version_office" name="version_office">                   
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="2016" >2016</option>
+                    <option value="2010" >2010</option>
+                    <option value="OTROS" >OTROS</option> 
+                    </select>                                
+                    </div>
+                    <div class="col-sm-3">
+                    <label>Procesador</label>       
+                    <select class="form-control" selected="true" id="procesador" name="procesador">                   
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="INTEL" >INTEL</option>
+                    <option value="AMED" >AMED</option>
+                    </select> 
+                    </div>
+                    <div class="col-sm-3">
+                    <label>Velocidad del procesador</label>
+                    <input id="velocidad_proc" name="velocidad_proc" type="text" class="form-control">
+                    </div>
+                     </div>   
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Capacidad de disco duro</label>             
+                    <select class="form-control" selected="true" id="disco_duro" name="disco_duro">                   
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="250 GB" >250 GB</option>
+                    <option value="320 GB" >320 GB</option>
+                    <option value="500 GB" >500 GB</option>
+                    <option value="1 TB" >1 TB</option>
+                    </select> 
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Capacidad de memoria RAM</label>
+                    <input id="memoria_ram" name="memoria_ram" type="text" class="form-control">
+                    </div>                         
+                    <div class="col-sm-4">
+                    <label>Unidad de disco flash</label>
+                    <input id="uni_disc_flax" name="uni_disc_flax" type="text" class="form-control">
+                    </div>                    
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Serie monitor</label>
+                    <input id="serie_monitor" name="serie_monitor" type="text" class="form-control" >
+                    </div>                                        
+                    <div class="col-sm-4">
+                    <label>Serie teclado</label>
+                    <input id="serie_teclado" name="serie_teclado" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Serie mouse</label>
+                    <input id="serie_mouse" name="serie_mouse" type="text" class="form-control" >
+                    </div> 
+                    </div>
+                    <div class="form-group">         
+                    <div class="col-sm-4">
+                    <label>Dirección IP</label>
+                    <input id="direccion_ip" name="direccion_ip" type="text" class="form-control" >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Servicio internet</label>
+                    <input id="servicio_internet" name="servicio_internet" type="text" class="form-control" >
+                    </div>                    
                     <div class="col-sm-4">
                     <label>Ubicación del equipo</label>
                     <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
@@ -560,6 +678,8 @@ Editar datos del  equipo </h4>
                     </div>                    
                     </div> -->
 
+
+<!-- 
                     <div class="form-group">                    
                     <div class="col-sm-4">
                     <label>Número sigctic</label>
@@ -569,7 +689,6 @@ Editar datos del  equipo </h4>
                     <label>Numero de inventario</label>
                     <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
                     </div>                    
-
                     <div class="col-sm-4">
                     <label>Marca de CPU</label>    
                     <select class="form-control" selected="true" id="emarca_cpu" name="emarca_cpu">
@@ -581,7 +700,6 @@ Editar datos del  equipo </h4>
                     </select>
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Serie de la CPU</label>
@@ -596,7 +714,6 @@ Editar datos del  equipo </h4>
                     <input id="eprocesador" name="eprocesador" type="text" class="form-control">
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Velocidad del procesador</label>
@@ -611,7 +728,6 @@ Editar datos del  equipo </h4>
                     <input id="edisco_duro" name="edisco_duro" type="text" class="form-control">
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Serie teclado</label>
@@ -623,7 +739,7 @@ Editar datos del  equipo </h4>
                     </div>                                        
                     <div class="col-sm-offset-0 col-sm-4">
                     <label>Versión Windows</label>
-                    <select class="form-control" selected="true" id="eversion_windows" name="eversion_windows">                                
+                    <select class="form-control" selected="true" id="eversion_windows" name="eversion_windows">            
                     <option value="" selected>SELECCIONE</option>
                     <option value="WINDOWS 7" >WINDOWS 7</option>
                     <option value="WINDOWS 10" >WINDOWS 10</option>
@@ -631,7 +747,6 @@ Editar datos del  equipo </h4>
                     </select>                                
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Versión office</label>
@@ -646,7 +761,6 @@ Editar datos del  equipo </h4>
                     <input id="edireccion_ip" name="edireccion_ip" type="text" class="form-control" >
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Nombre del equipo</label>
@@ -661,7 +775,6 @@ Editar datos del  equipo </h4>
                     <input id="etipo_equipo" name="etipo_equipo" type="text" class="form-control" >
                     </div>
                     </div>
-
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Ubicación del equipo</label>
@@ -675,8 +788,127 @@ Editar datos del  equipo </h4>
                     <option value="Piso 7">Piso 7</option>
                     </select>
                     </div>
-                    </div>
+                    </div> -->
 
+                    <div class="form-group">                    
+                    <div class="col-sm-4">
+                    <label>Número sigctic</label>
+                    <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Numero de inventario</label>
+                    <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Serie</label>
+                    <input id="eserie_cpu" name="eserie_cpu" type="text" class="form-control">
+                    </div>        
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Modelo</label>
+                    <input id="enombre_equipo" name="enombre_equipo" type="text" class="form-control">
+                    </div> 
+                    <div class="col-sm-4">
+                    <label>Tipo del equipo</label>
+                    <select  class="form-control" class="selectpicker" id="etipo_equipo" name="etipo_equipo" type="text" data-live-search="true">
+                    <option value="LAP TOP ">LAP TOP </option>
+                    <option value="ESCRITORIO">ESCRITORIO</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Marca</label>    
+                    <select class="form-control" selected="true" id="emarca_cpu" name="emarca_cpu">
+                    <option value="LENOVO">LENOVO</option>
+                    <option value="DELL">DELL</option>
+                    <option value="HP">HP</option>
+                    <option value="OTRO">OTRO</option>
+                    </select>
+                    </div>
+                    </div>
+                     <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-3">
+                    <label>Versión Windows</label>
+                    <select class="form-control" selected="true" id="eversion_windows" name="eversion_windows">
+                    <option value="WINDOWS 7" >WINDOWS 7</option>
+                    <option value="WINDOWS 10" >WINDOWS 10</option>
+                    <option value="LINUX" >LINUX</option> 
+                    </select>                                
+                    </div>
+                    <div class="col-sm-offset-0 col-sm-3">
+                    <label>Versión office</label>
+                    <select class="form-control" selected="true" id="eversion_office" name="eversion_office">                   
+                    <option value="2016" >2016</option>
+                    <option value="2010" >2010</option>
+                    <option value="OTROS" >OTROS</option> 
+                    </select>                                
+                    </div>
+                    <div class="col-sm-3">
+                    <label>Procesador</label>       
+                    <select class="form-control" selected="true" id="eprocesador" name="eprocesador">                   
+                    <option value="INTEL" >INTEL</option>
+                    <option value="AMED" >AMED</option>
+                    </select> 
+                    </div>
+                    <div class="col-sm-3">
+                    <label>Velocidad del procesador</label>
+                    <input id="evelocidad_proc" name="evelocidad_proc" type="text" class="form-control">
+                    </div>
+                     </div>   
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Capacidad de disco duro</label>             
+                    <select class="form-control" selected="true" id="edisco_duro" name="edisco_duro">                   
+                    <option value="250 GB" >250 GB</option>
+                    <option value="320 GB" >320 GB</option>
+                    <option value="500 GB" >500 GB</option>
+                    <option value="1 TB" >1 TB</option>
+                    </select> 
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Capacidad de memoria RAM</label>
+                    <input id="ememoria_ram" name="ememoria_ram" type="text" class="form-control">
+                    </div>                         
+                    <div class="col-sm-4">
+                    <label>Unidad de disco flash</label>
+                    <input id="euni_disc_flax" name="euni_disc_flax" type="text" class="form-control">
+                    </div>                    
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Serie monitor</label>
+                    <input id="eserie_monitor" name="eserie_monitor" type="text" class="form-control" >
+                    </div>                                        
+                    <div class="col-sm-4">
+                    <label>Serie teclado</label>
+                    <input id="eserie_teclado" name="eserie_teclado" type="text" class="form-control"  >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Serie mouse</label>
+                    <input id="eserie_mouse" name="eserie_mouse" type="text" class="form-control" >
+                    </div> 
+                    </div>
+                    <div class="form-group">         
+                    <div class="col-sm-4">
+                    <label>Dirección IP</label>
+                    <input id="edireccion_ip" name="edireccion_ip" type="text" class="form-control" >
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Servicio internet</label>
+                    <input id="eservicio_internet" name="eservicio_internet" type="text" class="form-control" >
+                    </div>                    
+                    <div class="col-sm-4">
+                    <label>Ubicación del equipo</label>
+                    <select  class="form-control" class="selectpicker" name="eubicaeqpo" id="eubicaeqpo" type="text" data-live-search="true">
+                    <option value="Piso m2">Piso m2</option>
+                    <option value="Piso 1">Piso 1</option>
+                    <option value="Piso 2">Piso 2</option>
+                    <option value="Piso 3">Piso 3</option>
+                    <option value="Piso 4">Piso 4</option>
+                    <option value="Piso 7">Piso 7</option>
+                    </select>
+                    </div>
+                    </div>
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
@@ -702,32 +934,34 @@ Editar datos del  equipo </h4>
 </body>
 
 
-    <!--<script src="js/jquery-1.12.3.js"></script>-->
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/jquery.dataTables.min.js"></script>
-    <script src="../../js/dataTables.bootstrap.js"></script>
-    <!--botones DataTables-->   
-    <script src="../../js/dataTables.buttons.min.js"></script>
-    <script src="../../js/buttons.bootstrap.min.js"></script>
-    <!--Libreria para exportar Excel-->
-    <script src="../../js/jszip.min.js"></script>
-    <!--Librerias para exportar PDF-->
-    <script src="../../js/pdfmake.min.js"></script>
-    <script src="../../js/vfs_fonts.js"></script>
-    <!--Librerias para botones de exportación-->
-    <script src="../../js/buttons.html5.min.js"></script>        
 
-    <script src="../../boots/metisMenu/metisMenu.min.js"></script>
-    <script src="../../dist/js/sb-admin-2.js"></script>
-<!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
 
-    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-    <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
-   <link rel="stylesheet" type="text/css" href="../../css/styles.css">
-    <script type="text/javascript" src="../../js/funciones.js"></script>
-    <script type="text/javascript" src="../../js/equipo.js"></script>
+<!-- <script src="../../js/jquery.dataTables.min.js"></script>
+<script src="../../js/buttons.bootstrap.min.js"></script>
+<script src="../../js/jszip.min.js"></script>
+<script src="../../js/pdfmake.min.js"></script>
+<script src="../../js/vfs_fonts.js"></script>
+<script src="../../js/buttons.html5.min.js"></script>        
+<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+<script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
+ --><link rel="stylesheet" type="text/css" href="../../css/styles.css">
+<script type="text/javascript" src="../../js/funciones.js"></script>
+<script type="text/javascript" src="../../js/equipo.js"></script>
+
+
+
+<script src="../../js/jquery-1.12.3.min.js"></script>
+<script src="../../js/select2.js"></script>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/dataTables.bootstrap.js"></script>
+<script src="../../js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../../boots/metisMenu/metisMenu.min.js"></script>
+<script src="../../dist/js/sb-admin-2.js"></script>
+
+
 
   <script type="text/javascript">
         var dataSet = [
@@ -744,10 +978,12 @@ Editar datos del  equipo </h4>
            
         ?>
     
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>',"<?php 
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>',"<?php if($data['num_invntraio'] == '0'){
 
-echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button title='Eliminar área' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
-
+echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+}else{
+echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-success'><i class='fa fa-desktop'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+}
     ?>"
 
 

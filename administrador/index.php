@@ -481,7 +481,7 @@ Reporte pendiente
 
                         <div class="panel-body">
 
-                            <table id="data-table-administrador" class="table table-bordered" width="100%"
+                            <table id="data-table-administrador" class="table table-striped table-bordered" width="100%"
                                 cellspacing="0"></table>
 
                     </div>

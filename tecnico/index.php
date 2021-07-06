@@ -188,6 +188,7 @@ session_start();
                     <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-5">
                         <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
                 </div></div></div>
             </div>
             </div>
@@ -280,7 +281,7 @@ Atender reporte
                     <div class="form-group">
                     <div class="col-sm-12">
                     <label>Respuesta de falla</label> 
-                    <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea onkeyup="mayus(this);" id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     </div>
 
@@ -295,7 +296,7 @@ Atender reporte
                     <div class="form-group" id="externo" style="display: none;">
                     <div class="col-sm-12">
                     <label> Respuesta externa de la falla</label>
-                    <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea onkeyup="mayus(this);" id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     </div>                    
 
@@ -324,7 +325,9 @@ Atender reporte
 
             <div class="form-group"><br>
             <div class="col-sm-offset-0 col-sm-5">
-            <button type="button" id="button" class="btn btn-green btn-lg" onclick="atdRpt();">Aceptar</button>
+            <button type="button" id="button" class="btn btn-green" onclick="atdRpt();">Aceptar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+
             </div>
             <b><p class="alert alert-danger text-center padding error" id="errors">Error al agregar datos de solicitud </p></b>
 
@@ -408,14 +411,14 @@ Atender reporte
                     <div class="form-group">
                     <div class="col-sm-12">
                     <label>Respuesta de falla</label> 
-                    <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
+                    <textarea onkeyup="mayus(this);" id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="falla">
                     <div class="col-sm-12">
                     <label> Respuesta externa de la falla</label>
-                    <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
+                    <textarea onkeyup="mayus(this);" id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>                     
 
@@ -454,8 +457,11 @@ Atender reporte
 <div class="modal-dialog width" role="document" style="/*margin-top: 7em;*/">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: black"  aria-hidden="true">&times;</span>
-</button>
+
+<button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
+<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: black"  aria-hidden="true">&times;</span>
+</button> -->
+
 <h4 class="modal-title" id="exampleModalLabel">
 Favor de validar y agregar datos del  equipo </h4>  
 </div>
@@ -488,6 +494,8 @@ Favor de validar y agregar datos del  equipo </h4>
                     </div>                    
                     </div>
 
+
+
                     <div class="form-group">                    
                     <div class="col-sm-4">
                     <label>Número sigctic</label>
@@ -497,11 +505,28 @@ Favor de validar y agregar datos del  equipo </h4>
                     <label>Numero de inventario</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
                     </div>                    
-
                     <div class="col-sm-4">
-                    <label>Marca de CPU</label>    
+                    <label>Serie</label>
+                    <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
+                    </div>        
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Modelo</label>
+                    <input id="nombre_equipo" name="nombre_equipo" type="text" class="form-control">
+                    </div> 
+                    <div class="col-sm-4">
+                    <label>Tipo del equipo</label>
+                    <select  class="form-control" class="selectpicker" id="tipo_equipo" name="tipo_equipo" type="text" data-live-search="true">
+                    <option value="0">Seleccione tipo equipo</option> 
+                    <option value="LAP TOP ">LAP TOP </option>
+                    <option value="ESCRITORIO">ESCRITORIO</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Marca</label>    
                     <select class="form-control" selected="true" id="marca_cpu" name="marca_cpu">
-                    <option value="" selected>SELECCIONE MARCA DE EQUIPO</option>
+                    <option value="" selected>SELECCIONE MARCA</option>
                     <option value="LENOVO">LENOVO</option>
                     <option value="DELL">DELL</option>
                     <option value="HP">HP</option>
@@ -509,88 +534,81 @@ Favor de validar y agregar datos del  equipo </h4>
                     </select>
                     </div>
                     </div>
-
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Serie de la CPU</label>
-                    <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Capacidad de memoria RAM</label>
-                    <input id="memoria_ram" name="memoria_ram" type="text" class="form-control">
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Procesador</label>
-                    <input id="procesador" name="procesador" type="text" class="form-control">
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Velocidad del procesador</label>
-                    <input id="velocidad_proc" name="velocidad_proc" type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Unidad de disco flash</label>
-                    <input id="uni_disc_flax" name="uni_disc_flax" type="text" class="form-control">
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Capacidad de disco duro</label>
-                    <input id="disco_duro" name="disco_duro" type="text" class="form-control">
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Serie teclado</label>
-                    <input id="serie_teclado" name="serie_teclado" type="text" class="form-control"  >
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Serie monitor</label>
-                    <input id="serie_monitor" name="serie_monitor" type="text" class="form-control" >
-                    </div>                                        
-                    <div class="col-sm-offset-0 col-sm-4">
+                     <div class="form-group">
+                    <div class="col-sm-offset-0 col-sm-3">
                     <label>Versión Windows</label>
-                    <select class="form-control" selected="true" id="version_windows" name="version_windows">                                
+                    <select class="form-control" selected="true" id="version_windows" name="version_windows">                   
                     <option value="" selected>SELECCIONE</option>
                     <option value="WINDOWS 7" >WINDOWS 7</option>
                     <option value="WINDOWS 10" >WINDOWS 10</option>
                     <option value="LINUX" >LINUX</option> 
                     </select>                                
                     </div>
+                    <div class="col-sm-offset-0 col-sm-3">
+                    <label>Versión office</label>
+                    <select class="form-control" selected="true" id="version_office" name="version_office">                   
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="2016" >2016</option>
+                    <option value="2010" >2010</option>
+                    <option value="OTROS" >OTROS</option> 
+                    </select>                                
                     </div>
-
+                    <div class="col-sm-3">
+                    <label>Procesador</label>       
+                    <select class="form-control" selected="true" id="procesador" name="procesador">                   
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="INTEL" >INTEL</option>
+                    <option value="AMED" >AMED</option>
+                    </select> 
+                    </div>
+                    <div class="col-sm-3">
+                    <label>Velocidad del procesador</label>
+                    <input id="velocidad_proc" name="velocidad_proc" type="text" class="form-control">
+                    </div>
+                     </div>   
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Versión office</label>
-                    <input id="version_office" name="version_office" type="text" class="form-control"  >
+                    <label>Capacidad de disco duro</label>             
+                    <select class="form-control" selected="true" id="disco_duro" name="disco_duro">                   
+                    <option value="" selected>SELECCIONE</option>
+                    <option value="250 GB" >250 GB</option>
+                    <option value="320 GB" >320 GB</option>
+                    <option value="500 GB" >500 GB</option>
+                    <option value="1 TB" >1 TB</option>
+                    </select> 
+                    </div>
+                    <div class="col-sm-4">
+                    <label>Capacidad de memoria RAM</label>
+                    <input id="memoria_ram" name="memoria_ram" type="text" class="form-control">
+                    </div>                         
+                    <div class="col-sm-4">
+                    <label>Unidad de disco flash</label>
+                    <input id="uni_disc_flax" name="uni_disc_flax" type="text" class="form-control">
+                    </div>                    
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>Serie monitor</label>
+                    <input id="serie_monitor" name="serie_monitor" type="text" class="form-control" >
+                    </div>                                        
+                    <div class="col-sm-4">
+                    <label>Serie teclado</label>
+                    <input id="serie_teclado" name="serie_teclado" type="text" class="form-control"  >
                     </div>
                     <div class="col-sm-4">
                     <label>Serie mouse</label>
                     <input id="serie_mouse" name="serie_mouse" type="text" class="form-control" >
-                    </div>                    
+                    </div> 
+                    </div>
+                    <div class="form-group">         
                     <div class="col-sm-4">
                     <label>Dirección IP</label>
                     <input id="direccion_ip" name="direccion_ip" type="text" class="form-control" >
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Nombre del equipo</label>
-                    <input id="nombre_equipo" name="nombre_equipo" type="text" class="form-control"  >
                     </div>
                     <div class="col-sm-4">
                     <label>Servicio internet</label>
                     <input id="servicio_internet" name="servicio_internet" type="text" class="form-control" >
                     </div>                    
-                    <div class="col-sm-4">
-                    <label>Tipo equipo</label>
-                    <input id="tipo_equipo" name="tipo_equipo" type="text" class="form-control" >
-                    </div>
-                    </div>
-
-                    <div class="form-group">
                     <div class="col-sm-4">
                     <label>Ubicación del equipo</label>
                     <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
@@ -608,7 +626,8 @@ Favor de validar y agregar datos del  equipo </h4>
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="agrEqpo();">Aceptar</button>
+                    <button type="button" id="button" class="btn btn-green" onclick="agrEqpo();">Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
                     </div>
                     <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos del equipo </p></b>
 
@@ -639,7 +658,7 @@ Favor de validar y agregar datos del  equipo </h4>
     <script src="../boots/metisMenu/metisMenu.min.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
 
-
+    <script src="../js/mayu.js" ></script>
     <script src="../js/buttons.bootstrap.min.js"></script>
     
     <script type="text/javascript" src="calendario/tcal.js"></script> 
@@ -718,7 +737,7 @@ $(document).ready(function(){
 
                     } else if($data['evaluacion'] == '0'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:70%'>Por evaluar</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:70%'>Por evaluar</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop'></i></a>";
 
                     } else if($data['estado_rpt'] == 'Finalizado'){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:70%'>{$data['estado_rpt']}</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";

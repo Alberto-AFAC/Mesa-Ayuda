@@ -165,7 +165,7 @@ unset($_SESSION['consulta']);
                                 <div class="col-md-13">
                                 <label for="validationTextarea">Observaciones.</label>
                                 <!--<div style="color: #6A6507;" class="invalid-feedback"></div>-->
-                                <textarea style="font-size: 18px;" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea><!--placeholder="Es importante que la descripción sea clara..."-->
+                                <textarea style="font-size: 18px;" onkeyup="mayus(this);" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea><!--placeholder="Es importante que la descripción sea clara..."-->
                                 </div>
                                 </div>
 
@@ -193,6 +193,7 @@ unset($_SESSION['consulta']);
 <script src="../boots/bootstrap/js/bootstrap.min.js"></script>    
 <script src="../dist/js/sb-admin-2.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
+<script src="../js/mayu.js"></script>
 <script src="../js/conEqp.js"></script>
    
 </html>

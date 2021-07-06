@@ -97,68 +97,68 @@ unset($_SESSION['consulta']);
                     <div class="form-group">                    
                     <div class="col-sm-3">
                     <label>N° reporte</label>
-                    <input id="nreporte" name="nreporte" type="text" class="form-control">
+                    <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-5">
                     <label>Técnico</label>
-                    <input id="usuario" name="usuario" type="text" class="form-control">
+                    <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-2">
                     <label>Extension</label>
-                    <input id="extension" name="extension" type="text" class="form-control">
+                    <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-2">
                     <label>Ubicación</label>
-                    <input id="ubicacion" name="ubicacion" type="text" class="form-control">
+                    <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-4">
                     <label>Tipo de servicio</label>
-                    <input id="servicio" name="servicio" type="text" class="form-control">
+                    <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
                     <label>Intervención</label>
-                    <input id="intervencion" name="intervencion" type="text" class="form-control">
+                    <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
                     <label>Descripción</label>
-                    <input id="descripcion" name="descripcion" type="text" class="form-control">
+                    <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
                     
                     <div class="form-group">
                     <div class="col-sm-12">
                     <label>Observaciones</label>  
-                    <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
                     <label>Respuesta de falla</label> 
-                    <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="externo">
                     <div class="col-sm-12">
                     <label> Respuesta externa de la falla</label>
-                    <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-6">
                     <label> Fecha reporte</label>
-                    <input id="finicio" name="finicio" type="text" class="form-control" >
+                    <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-6">
                     <label> Fecha finalizada</label>
-                    <input id="ffinal" name="ffinal" type="text" class="form-control" >
+                    <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
                     <p><b>Su opinión es muy importante para nosotros:</b></p>
@@ -283,7 +283,7 @@ unset($_SESSION['consulta']);
                    <div class="form-group">
                     <div class="col-sm-12" id="pndint2">
                     <label>Porque</label>
-                    <textarea id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
+                    <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
                     </div>                             
             </div> 
@@ -293,6 +293,7 @@ unset($_SESSION['consulta']);
 </form>
 
 </body>
+    <script src="../js/mayu.js"></script>
     <script src="../js/conEqp.js"></script>
     <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>

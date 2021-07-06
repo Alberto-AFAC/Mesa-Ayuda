@@ -5,7 +5,8 @@
 	SELECT * 
 	FROM equipo 
 	INNER JOIN asignacion 
-	ON id_equi = id_equipo";
+	ON id_equi = id_equipo
+	WHERE proceso = 'asignado' AND asignacion.estado = 0";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

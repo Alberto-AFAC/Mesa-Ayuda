@@ -235,7 +235,7 @@
                                   <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
                             </div>
                                <div class="panel-body" style="font-size: 12px;">             
-                                    <table id="data-table-area" class="table table-striped table-hover"></table>
+                                    <table id="data-table-area" class="table table-striped table-bordered"></table>
                                 </div>
                         </div>          
                     </div> 

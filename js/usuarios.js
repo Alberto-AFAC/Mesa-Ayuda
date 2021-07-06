@@ -98,7 +98,7 @@ function registrar(){
 	function modificar(){
 
   var frm=$("#Editar").serialize();
-    console.log(frm);
+    //console.log(frm);
     $.ajax({
         url:"../../php/usuarios.php",
         type:'POST',
@@ -227,6 +227,69 @@ var datos_eliminar = function(tbody, table){
 		});
 	});	
 }
+
+
+function datos_detalle(id){
+		$("#Detalles").slideDown("slow");
+			$("#cuadro1").hide("slow");
+
+$.ajax({
+url:'../../php/listar_usuarios.php',
+type:'POST'
+}).done(function(resp){
+    obj = JSON.parse(resp);
+    var res = obj.data;  
+
+        for(i=0; i<res.length;i++){
+        
+        if(obj.data[i].id_usuario==id){
+			var id_usuario = $("#id_usuario").val(obj.data[i].id_usuario),
+			nombre = $("#nombre").val(obj.data[i].nombre+' '+obj.data[i].apellidos),
+			cargo = $("#cargo").val(obj.data[i].cargo),
+			area = $("#area").val(obj.data[i].adscripcion),
+			extension = $("#extension").val(obj.data[i].extension),
+			correo = $("#correo").val(obj.data[i].correo),
+			ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
+			n_empleado = $("#n_empleado").val(obj.data[i].n_empleado),
+			opcion = $("#frmEditar #opcion").val("modificar");
+
+			nempleado = obj.data[i].n_empleado;
+
+			equpios(nempleado);
+
+            }
+
+        }
+    })
+
+}
+
+
+function equpios(nempleado){
+
+
+	$.ajax({
+url:'../../php/asigEqpo.php',
+type:'POST'
+}).done(function(resp){
+    obj = JSON.parse(resp);
+    var res = obj.data;  
+x=0;
+  
+html = '<table class="table table-striped table-bordered"><thead><tr><th style="width:5%"><i class="fa fa-sort-numeric-asc"></i>N°</th><th style="width:15%"><i></i>N° INVENTARIO</th><th style="width:15%"><i></i>N° SIGTIC</th><th style="width:15%"><i></i>N° SERIE</th><th style="width:15%"><i></i>MARCA</th><th style="width:15%"><i></i>TIPO DE EQUIPO </th></tr></thead><tbody>';
+for (e = 0; e < res.length; e++) {
+  if(obj.data[e].n_emp==nempleado){
+x++;
+html += "<tr><td>" + x + "</td><td>" + obj.data[e].num_invntraio + "</td><td>" + obj.data[e].num_sigtic + "</td><td>" + obj.data[e].serie_cpu + "</td><td>" + obj.data[e].marca_cpu + "</td><td>" + obj.data[e].tipo_equipo + "</td></tr>";
+	}
+}
+html += '</tbody></table>';
+$("#eqpos").html(html);
+
+    })
+
+}
+
 
 	var RegistrarUsu = function(){
 		limpiar_datos();

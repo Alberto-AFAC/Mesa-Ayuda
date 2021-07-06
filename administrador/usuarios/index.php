@@ -237,7 +237,7 @@
          <!-- /.row -->
 
 <style type="text/css">
-    #cuadro2,#Editar{
+    #cuadro2,#Editar,#Detalles{
         display: none;
     }
 </style>
@@ -251,7 +251,7 @@
                   <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
             </div>
                <div class="panel-body" style="font-size: 12px;">             
-                    <table id="data-table-area" class="table table-striped table-hover"></table>
+                    <table id="data-table-area" class="table table-striped table-bordered"></table>
                 </div>
         </div>          
     </div>      
@@ -287,61 +287,81 @@
 #frmDetalles input,textarea{ border: 1px solid transparent; }
 </style>
 
- <!-- <form id="frmDetalles" class="form-horizontal" action="" method="POST" >
- <div id="cuadro4" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 
 
-    
-    <div class="row">
-    <div class="modal-body">
+<form id="Detalles" class="form-horizontal" action="" method="POST">
+
+<div id="frmDetalles" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+<div class="modal-dialog-modi" role="document">
+<div class="modal-content">
+
+<div class="modal-header">
+
+<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
+
+
+
+<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-share-alt" ></span></a></button>
+<h4 class="modal-title" id="exampleModalLabel">Información del usuario y sus equipos de computo </h4>
+
+
+</div>
+   
+ <div class="modal-body">
 
     <div class="col-sm-offset-1 col-sm-10">
 
-    <button type="button" id="btnslista" class="close" data-dismiss="modal" aria-label="Close"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-share-alt" ></span></button>
       
-    <h4 class="modal-title" id="exampleModalLabel"></h4></div>
+ </div>
 
     <input type="hidden" id="id_usuario" name="id_usuario">
     <input type="hidden" id="opcion" name="opcion" value="modificar">
 
     <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-3" >
-    <label for="Nombre">Nombre</label>
-    <input id="nombre" style="font-size:17px" name="nombre" type="text"  class="form-control">
-    </div>
     <div class="col-sm-offset-0 col-sm-3" >
-    <label style="color: transparent;">.</label>
-    <input id="apellidos" style="font-size:17px" name="apellidos" type="text"  class="form-control">
+    <label for="Nombre">Nombre</label>
+    <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
     </div>
     <div class="col-sm-offset-0 col-sm-3" >
     <label for="Correo">Correo</label>
-    <input id="correo" style="font-size:17px" name="correo" type="text"  class="form-control">
-    </div>    
+    <input id="correo" name="correo" type="text"  class="form-control" disabled="">
+    </div>
+    <div class="col-sm-offset-0 col-sm-2">
+    <label for="N° empleado">N° empleado</label>
+    <input id="n_empleado" name="n_empleado" type="text" class="form-control" disabled="">
+    </div> 
+    <div class="col-sm-offset-0 col-sm-2">
+    <label for="Extension">Extension</label>
+    <input id="extension" name="extension" type="text" class="form-control" disabled="">
+    </div> 
+    <div class="col-sm-offset-0 col-sm-2">
+    <label for="Adscripción">Cargo</label>
+    <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
+    </div>      
     </div>
     
-    <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-9">
+    <div class="form-group">    
+    <div class="col-sm-offset-0 col-sm-9">
     <label for="Adscripción">Adscripción</label>
-    <input id="adscripcion" name="adscripcion" type="text" class="form-control">
+    <input id="area" name="area" type="text" class="form-control" disabled="">
     </div>
     </div>
-    <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-3">
-    <label for="Extension">Extension</label>
-    <input id="extension" name="extension" type="text" class="form-control">
-    </div>
-    <div class="col-sm-offset-0 col-sm-3">
-    <label for="N° empleado">N° empleado</label>
-    <input id="n_empleado" name="n_empleado" type="text" class="form-control">
-    </div>
-    </div>
+   
+   <div id="eqpos"></div>
 
     </div>
-    </div>
-    
-    </div>
-    </form>
- -->
+
+
+
+</div>
+</div>
+</div>
+</form>
+
+
+
+ 
 <!-- <form class="form-horizontal" action="" method="POST" >
     <div  class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog-modi" role="document">
@@ -633,7 +653,7 @@
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
-echo "<button title='Editar usuario' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></button>   <button title='Eliminar usuario' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></button>   <button title='Detalles usuario' type='button' data-toggle='modal' data-target='#modalDetalles' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></button>";
+echo "<a title='Editar usuario' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>   <a title='Eliminar usuario' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></a>   <a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a>";
 
 
 
@@ -664,3 +684,4 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     </script>
 
 </html>
+<!-- <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$id})' ><i class='fa fa-desktop'></i></a> -->
