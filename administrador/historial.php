@@ -47,7 +47,7 @@
         type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
     <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css" />
-    <link href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
@@ -533,14 +533,6 @@ onclick="location.href='./'" -->
     <!-- /#page-wrapper -->
 
     </div>
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
     <!-- /#wrapper -->
 </body>
 
@@ -571,7 +563,7 @@ onclick="location.href='./'" -->
 <!--COMIENZA TABLA DEL ADMINISTRADOR-->
 
 
-<script href="../assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>

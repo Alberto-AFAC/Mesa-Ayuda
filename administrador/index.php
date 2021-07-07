@@ -36,7 +36,7 @@
 
 
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="../dist/css/sb-admin-2.css" rel="stylesheet"> -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script type="text/javascript" src="../js/funciones.js"></script>
@@ -281,14 +281,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
                 <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
