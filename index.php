@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/icono/iconos/style.css">
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="login/css/master.css"> <!--ligamos la carpeta-->
+    <link rel="stylesheet" href="login/css/master.css">
 	<link rel="stylesheet" href="css/assets/signup-form.css" type="text/css" />
 	<script type="text/javascript" src="val/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="val/validacion.js"></script>
