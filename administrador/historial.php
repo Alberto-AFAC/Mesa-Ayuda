@@ -54,7 +54,54 @@
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <style>
+        .parpadea {
+    animation-name: parpadeo;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
 
+@-moz-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+    </style>
 
 </head>
 
@@ -296,26 +343,11 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="../img/pendiente.svg" width="60px" alt="Bueno" class="img-fluid">
+                                    <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
-                                <div class="col-xs-9 text-right text-warning">
-                                    <div class="huge"><?php echo $row['Pendiente'] ?></div>
-                                    <div>Pendientes</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="../img/realizando.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <div class="col-xs-9 text-right text-primary">
-                                    <div class="huge"><?php echo $row['Proceso'] ?></div>
-                                    <div>Realizando</div>
+                                <div class="col-xs-9 text-right text-danger">
+                                    <div class="huge"><?php echo $row['Cancelado'] ?></div>
+                                    <div>Cancelado</div>
                                 </div>
                             </div>
                         </div>
@@ -327,18 +359,33 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
+                                    <img src="../img/reloj.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
-                                <div class="col-xs-9 text-right text-danger">
-                                    <div class="huge"><?php echo $row['Cancelado'] ?></div>
-                                    <div>Cancelado</div>
+                                <div class="col-xs-9 text-right text-warning">
+                                    <div class="huge"></div>
+                                    <div>Atendidos a tiempo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="zoom col-lg-3 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img class="parpadea" src="../img/fuera de tiempo.svg" width="60px" alt="Bueno" class="img-fluid">
+                                </div>
+                                <div class="col-xs-9 text-right text-primary">
+                                    <div class="huge"></div>
+                                    <div>Atendidos fuera de tiempo</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <?php 
 
 $query = "SELECT id_tecnico, nombre, apellidos FROM usuarios
@@ -631,7 +678,7 @@ var dataSet = [
         "<?php echo $data['ffinal']?>", "<?php echo  $eva ?>",
         "<?php if($data['estado_rpt'] == 'Finalizado'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>Detalles</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%'>Detalles</a>";
 
                     } 
                       ?>"
@@ -658,7 +705,7 @@ $(document).ready(function() {
         },
         // dom: 'Bfrtip',
         // buttons: [
-            
+
         //     'copy', 'csv', 'excel',
         //     {
         //     extend: 'pdfHtml5',
@@ -667,7 +714,7 @@ $(document).ready(function() {
         //     title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
         //     text: 'Descargar PDF',
         //     pageSize: 'A4',
-            
+
         // }],
         orderCellsTop: true,
         fixedHeader: true,
