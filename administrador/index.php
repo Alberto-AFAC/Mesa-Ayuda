@@ -281,7 +281,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -599,7 +598,7 @@ var dataSet = [
 
         "<?php if($data['estado_rpt'] == 'Pendiente'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-warning' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
 
                     } 
                       else if($data['estado_rpt'] == 'En proceso') {
