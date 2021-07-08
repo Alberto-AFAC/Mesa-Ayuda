@@ -191,12 +191,14 @@
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
                                 </li>
                             <li>
-                                    <a href="./"><i class="glyphicon glyphicon-user"></i> Usuarios</a>
+                                    <a href="./"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
                             <li>
                                     <a href="../equipo"><i class="fa fa-desktop"></i> Equipos</a>
                             </li>
-
+                            <li>
+                                    <a href="../tecnico"><i class="fa fa-street-view"></i> Técnico</a>
+                            </li>
                             </ul>                            
                             <!-- /.nav-second-level -->
                         </li>
