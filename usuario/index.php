@@ -99,30 +99,30 @@ unset($_SESSION['consulta']);
                                 <form class="form-horizontal" action="" method="POST" id="ConEquipo" onsubmit="return reporte(this)">
                                 <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>           
                                 <div id="div1">
-                                <div class="radio">
+         <!--                        <div class="radio">
                                 <input checked="checked" type="radio" name="catch" value="true" id="pregunta1">
                                 <label for="pregunta1">¿El equipo que va reportar está a su cargo?</label>
                                 <input type="radio" name="catch" value="false" id="pregunta2">
                                 <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                 <div id="equipo"></div>         
                                 </div>
                                 </div>
                                 <div id="div2" style="display: none;">
-                                <div class="radio">
+                                <!--<div class="radio">
                                 <p id="divp">
                                 ¿El equipo que va reportar está a su cargo? 
                                 <input checked="checked" name="select" type="radio" value="si" id="SI" />
                                 <label for="SI">SI</label>
                                 <input name="select" type="radio" value="no" id="NO" />
                                 <label for="NO">NO</label></p>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
-                                <div class="col-sm-offset-0 col-sm-12">
+      <!--                           <div class="col-sm-offset-0 col-sm-12">
                                 <label id="nota1"></label>    
                                 <label id="nota2">¡Agregue los datos del equipo que desea reportar!</label>
-                                </div>
+                                </div> -->
                                 <input id="nempleado" name="nempleado" type="hidden" value="<?php echo $_SESSION['n_empleado']['n_empleado']?>"/>
 
                                 <input id="idequipo" name="idequipo" type="hidden" value="0" />

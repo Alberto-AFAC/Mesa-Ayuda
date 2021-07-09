@@ -3,7 +3,7 @@
 	session_start();
 	$numEmp = $_SESSION['n_empleado']['n_empleado'];
 	$query = "
-	SELECT marca_cpu,serie_cpu,version_windows,id_equipo,proceso 
+	SELECT marca_cpu,serie_cpu,version_windows,id_equipo,proceso,tipo_equipo
 	FROM equipo 
 	INNER JOIN asignacion 
 	ON id_equi = id_equipo 

@@ -54,9 +54,6 @@ unset($_SESSION['consulta']);
                         <li>
                             <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> Reportes<!--<span class="fa arrow"></span>--></a>
                         </li>
-                        <li>
-                            <a href="rptHist.php"><i class="fa fa-keyboard-o"></i> Historial<!--<span class="fa arrow"></span>--></a>
-                        </li>                        
                     </ul>
                 </div>
             </div>

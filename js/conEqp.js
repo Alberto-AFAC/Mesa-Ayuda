@@ -12,12 +12,12 @@ $.ajax({
             $("#div2").show();
         } else {
             x = 0;
-            equipo = "<div class='panel-body'><table class='table table-bordered' cellspacing='0' width='100%'><tr><th style='width:2%;'>N°</th><th style='width:20%;'>Marca</th><th style='width:20%;'>Número de serie </th><th style='width:20%;'>Versión Windows</th><th style='width:10%;'>Elija su equipo </th></tr>";
+            equipo = "<div class='panel-body'><table class='table table-bordered' cellspacing='0' width='100%'><tr><th style='width:2%;'>N°</th><th style='width:20%;'>Marca</th><th style='width:20%;'>Número de serie </th><th style='width:20%;'>Versión Windows</th><th style='width:20%;'>Tipo de equipo</th><th style='width:10%;'>Elija su equipo </th></tr>";
             for (i = 0; i < res.length; i++) {
                 x++;
                 if (obj.data[i].proceso == 'asignado') {
                     datos = obj.data[i].marca_cpu + "*" + obj.data[i].serie_cpu + "*" + obj.data[i].version_windows + '*' + obj.data[i].id_equipo;
-                    equipo += "<tr'><td>" + x + "</td><td>" + obj.data[i].marca_cpu + "</td><td>" + obj.data[i].serie_cpu + "</td><td>" + obj.data[i].version_windows + "</td><td><a href='#'  onclick='eqpo(" + '"' + datos + '"' + ");'><input name='eqpo' type='radio'/></a></td></tr>";
+                    equipo += "<tr'><td>" + x + "</td><td>" + obj.data[i].marca_cpu + "</td><td>" + obj.data[i].serie_cpu + "</td><td>" + obj.data[i].version_windows + "</td><td>" + obj.data[i].tipo_equipo + "</td><td><a href='#'  onclick='eqpo(" + '"' + datos + '"' + ");'><input name='eqpo' type='radio'/></a></td></tr>";
                 }
             }
             equipo += "</table></div>"

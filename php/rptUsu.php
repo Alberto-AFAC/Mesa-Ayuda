@@ -73,17 +73,15 @@ if(!empty($idtec[$n][0])){
 }	
 
 function registrar($nempleado,$servicio,$intervencion,$descripcion,$obser,$idequipo,$fenvio,$Hinic,$idtec,$conexion){
-	$query="SELECT * FROM asignacion  
-			INNER JOIN reporte
-			ON n_emp = n_empleado
-			INNER JOIN equipo
-			ON id_equi = id_equipo
-			WHERE n_emp = '$nempleado' AND id_equi = '$idequipo' AND estado_rpt = 'Pendiente'";
-	$resultados = mysqli_query($conexion,$query);
-	if($resultados->num_rows == 0){
+	// $query="SELECT * FROM asignacion  
+	// 		INNER JOIN reporte
+	// 		ON n_emp = n_empleado
+	// 		INNER JOIN equipo
+	// 		ON id_equi = id_equipo
+	// 		WHERE n_emp = '$nempleado' AND id_equi = '$idequipo' AND estado_rpt = 'Pendiente'";
+	// $resultados = mysqli_query($conexion,$query);
+	// if($resultados->num_rows == 0){
 
-//		$query = "INSERT INTO reporte VALUES(0,'$nempleado','$servicio','$intervencion','$descripcion','0','0','$fenvio','0','0','0','0','$obser','Pendiente','0',2)";
-//agregar reporte y id equipo
 $query = "INSERT INTO reporte(n_empleado,idequipo,servicio,intervencion,descripcion,usu_observ,falla_interna,falla_xterna,finicio,hinicio,ffinal,hfinal,evaluacion,observa,estado_rpt,pila,idtec) SELECT '$nempleado',id_equipo,'$servicio','$intervencion','$descripcion','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Pendiente','0','$idtec' FROM equipo ORDER BY id_equipo DESC LIMIT 1";
 	
 			if (mysqli_query($conexion,$query)){		
@@ -93,7 +91,7 @@ $query = "INSERT INTO reporte(n_empleado,idequipo,servicio,intervencion,descripc
 					return false;
 					}
 	cerrar($conexion);
-	}								 	
+	//}								 	
 }
 
 function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){

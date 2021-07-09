@@ -188,7 +188,7 @@ session_start();
                     <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-5">
                         <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button> -->
                 </div></div></div>
             </div>
             </div>
@@ -688,8 +688,8 @@ $(document).ready(function(){
 		usuarios.ubicacion,
 		usuarios.extension,
 		reporte.n_reporte,
-		reporte.finicio,
-		reporte.ffinal,
+		DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
+		DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as ftermino,
 		reporte.estado_rpt,
 		reporte.servicio,
 		reporte.intervencion,
@@ -707,10 +707,17 @@ $(document).ready(function(){
 		IF(reporte.hfinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.hinicio, reporte.hfinal)) AS FechaFinal
 		FROM usuarios 
 		LEFT JOIN reporte ON usuarios.n_empleado = reporte.n_empleado
-		WHERE reporte.idtec = '$idtecnico'";
+		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $fila = $idtecnico;
+
+               // ini_set('date.timezone','America/Mexico_City');
+               //  $Final= date('d').'/'.date('m').'/'.date('Y');
+
+            $final = $data['ftermino'];
+            $inicio = $data['finicio'];
+
 
             if($data['FechaFinal'] <= 5){
                 $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['FechaFinal']." hrs</i></span>";
@@ -719,9 +726,13 @@ $(document).ready(function(){
             } else if($data['FechaFinal'] >= 10 ){
                 $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['FechaFinal']." hrs</span>";
             } 
+  
+  $actual = date('d/m/Y');
+
+if($inicio==$actual || $data['estado_rpt'] == 'Pendiente' || $data['estado_rpt'] == 'En proceso' || $data['evaluacion']=='CANCELADO'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Pendiente'){
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Pendiente'){
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
 
@@ -747,7 +758,8 @@ $(document).ready(function(){
                     }
                  ?>"
 ],
-<?php } ?>
+<?php } 
+}?>
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({

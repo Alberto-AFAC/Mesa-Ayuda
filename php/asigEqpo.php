@@ -6,7 +6,7 @@
 	FROM equipo 
 	INNER JOIN asignacion 
 	ON id_equi = id_equipo
-	WHERE proceso = 'asignado' AND asignacion.estado = 0";
+	WHERE asignacion.estado = 0	";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){
@@ -26,7 +26,7 @@
 	}
 		mysqli_free_result($resultado);
 		mysqli_close($conexion);
-
+//proceso = 'asignado' AND
 ?>
 
 
