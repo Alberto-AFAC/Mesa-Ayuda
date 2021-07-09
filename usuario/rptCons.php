@@ -55,7 +55,7 @@ unset($_SESSION['consulta']);
                             <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> Reportes<!--<span class="fa arrow"></span>--></a>
                         </li>
                         <li>
-                            <a href="rptHist.php"><i class="fa fa-keyboard-o"></i> Historial<!--<span class="fa arrow"></span>--></a>
+                            <a href="rptHist.php"><i class="glyphicon glyphicon-header"></i> Historial<!--<span class="fa arrow"></span>--></a>
                         </li>                        
                     </ul>
                 </div>
@@ -341,23 +341,33 @@ unset($_SESSION['consulta']);
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
-        ?>
-    
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
-                     if($data['estado_rpt'] == 'Pendiente'){
-                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
-                    } 
-                      else if($data['estado_rpt'] == 'En proceso') {
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";                        
-                    } else if($data['evaluacion'] == '0'){
+if($data['estado_rpt'] == 'Pendiente'){
+        ?>
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+                  
+                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>"; ?>"
+],
+<?php }else if($data['estado_rpt'] == 'En proceso'){ ?>
+
+   ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+
+                      
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";?>"
+],
+
+<?php }else if($data['evaluacion'] == '0'){ ?>
+
+   ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%'>Evaluar</a>";                        
-                    } else if($data['evaluacion'] != '0'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>Detalles</a>";                        
-                    }
+                    
                  ?>"
 ],
-<?php } ?>
+
+
+<?php } 
+    }?>
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({

@@ -76,6 +76,11 @@ unset($_SESSION['consulta']);
                         <li>
                             <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> Reportes<!--<span class="fa arrow"></span>--></a>
                         </li>
+                        <li>
+                            <a href="rptHist.php"><i class="glyphicon glyphicon-header"></i> Historial<!--<span class="fa arrow"></span>--></a>
+                        </li> 
+
+
                     </ul>
                 </div>
             </div>
@@ -99,9 +104,9 @@ unset($_SESSION['consulta']);
                                 <form class="form-horizontal" action="" method="POST" id="ConEquipo" onsubmit="return reporte(this)">
                                 <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>           
                                 <div id="div1">
-         <!--                        <div class="radio">
+<!--                                 <div class="radio">
                                 <input checked="checked" type="radio" name="catch" value="true" id="pregunta1">
-                                <label for="pregunta1">¿El equipo que va reportar está a su cargo?</label>
+                                <label for="pregunta1">¿Reportar equipo de computo?</label>
                                 <input type="radio" name="catch" value="false" id="pregunta2">
                                 <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
                                 </div> -->

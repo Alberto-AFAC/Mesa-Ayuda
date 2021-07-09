@@ -54,6 +54,10 @@ unset($_SESSION['consulta']);
                         <li>
                             <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> Reportes<!--<span class="fa arrow"></span>--></a>
                         </li>
+                        <li>
+                            <a href="rptHist.php"><i class="glyphicon glyphicon-header"></i> Historial<!--<span class="fa arrow"></span>--></a>
+                        </li> 
+
                     </ul>
                 </div>
             </div>
@@ -62,7 +66,7 @@ unset($_SESSION['consulta']);
             <div class="row">
                 <div class="col-lg-12">
                      <img src="../img/afac.png" class="imgafac">
-                     <h1 class="page-header">Consultar reporte</h1>
+                     <h1 class="page-header">Historial reporte</h1>
                 </div>
             </div>
             <div class="row">   
@@ -338,23 +342,20 @@ unset($_SESSION['consulta']);
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
+if($data['evaluacion'] != '0'){
         ?>
     
     ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
-                     if($data['estado_rpt'] == 'Pendiente'){
-                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
-                    } 
-                      else if($data['estado_rpt'] == 'En proceso') {
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";                        
-                    } else if($data['evaluacion'] == '0'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%'>Evaluar</a>";                        
-                    } else if($data['evaluacion'] != '0'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>Detalles</a>";                        
-                    }
+                    
+                     
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>Finalizado </a>";                        
+                    
                  ?>"
 ],
-<?php } ?>
+<?php } 
+}
+?>
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({
