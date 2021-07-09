@@ -668,13 +668,19 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
 //GRAFICAS PARA MEDIR LA EVALUACIÓN DEL TÉCNICO//
 <?php 
-            $query = " SELECT
-            COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-            COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-            COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
-            COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
-            FROM
-            reporte";
+            $query = "SELECT
+               usuarios.nombre,
+            usuarios.apellidos,
+               COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+              COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+              COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
+              COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
+             FROM
+            reporte
+             INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
+             INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
+         GROUP BY
+                idtec";
             // -- WHERE
             // -- MONTH ( finicio ) = MONTH (
             // -- CURRENT_DATE ())";
@@ -693,24 +699,47 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         $resultado = mysqli_query($conexion, $query);
 ?>
 var piechar = new Chart(document.getElementById("piechart-admin"), {
-    type: 'pie',
+    type: 'bar',
     data: {
 
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Bueno", "Regular", "Malo", "Cancelado"],
-
+        labels: ["Sergio","Angel"],
+        // console.log(data);
+        
         datasets: [{
                 label: "Bueno",
-                backgroundColor: ["#057100", "#0BFD00", "#FD9200", "#FD0000"],
+                backgroundColor: ["#0014c4c0"],
                 borderWidth: 0,
-                data: [<?php echo $row['Bueno']?>, <?php echo $row['Regular']?>, <?php echo $row['Malo']?>,
-                    <?php echo $row['Cancelado']?>
+                data: [<?php echo $row['Bueno']?>
+                ]
+            },
+            {
+                label: "Regular",
+                backgroundColor: ["#5fbfffc0"],
+                borderWidth: 0,
+                data: [<?php echo $row['Regular']?>
+                ]
+            },
+            {
+                label: "Malo",
+                backgroundColor: ["#ec0000c0"],
+                borderWidth: 0,
+                data: [<?php echo $row['Malo']?>
+                ]
+            },
+            {
+                label: "Cancelado",
+                backgroundColor: ["#000000c0"],
+                borderWidth: 0,
+                data: [<?php echo $row['Cancelado']?>
                 ]
             }
-
+        
         ],
         <?php }?>
+       
     },
+   
     options: {
         responsive: true,
         legend: {
@@ -722,9 +751,49 @@ var piechar = new Chart(document.getElementById("piechart-admin"), {
             display: true,
             text: 'Porcentaje de cumplimiento'
         },
-        maintainAspectRatio: false
+        scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
     }
 });
+// var piechar = new Chart(document.getElementById("piechart-admin"), {
+//     type: 'pie',
+//     data: {
+
+//         <?php while($row = mysqli_fetch_array($resultado)){ ?>
+//         labels: ["Bueno", "Regular", "Malo", "Cancelado"],
+
+//         datasets: [{
+//                 label: "Bueno",
+//                 backgroundColor: ["#057100", "#0BFD00", "#FD9200", "#FD0000"],
+//                 borderWidth: 0,
+//                 data: [<?php echo $row['Bueno']?>, <?php echo $row['Regular']?>, <?php echo $row['Malo']?>,
+//                     <?php echo $row['Cancelado']?>
+//                 ]
+//             }
+
+//         ],
+//         <?php }?>
+//     },
+//     options: {
+//         responsive: true,
+//         legend: {
+//             labels: {
+//                 position: 'top',
+//             }
+//         },
+//         title: {
+//             display: true,
+//             text: 'Porcentaje de cumplimiento'
+//         },
+//         maintainAspectRatio: false
+//     }
+// });
 //GRAFICAS PARA MEDIR SOLICITUD DE SERVICIO SEGUN EL CASO
 <?php 
             $query = " SELECT
