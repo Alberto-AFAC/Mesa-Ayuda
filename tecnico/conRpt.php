@@ -442,7 +442,7 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     {title: "Extensión"},
     {title: "Reporte"},
     {title: "Termino"},
-    {title: "Proceso"}
+    {title: "Estado"}
     ],
     });
         </script>

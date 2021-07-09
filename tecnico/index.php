@@ -778,7 +778,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     {title: "Reporte"},
     {title: "Termino"},
     {title: "Tiempo"},
-    {title: "Proceso"}
+    {title: "Estado"}
     ],
     });
 
