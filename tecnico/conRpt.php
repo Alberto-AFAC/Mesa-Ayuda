@@ -432,6 +432,9 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+            "order": [
+            [0, "desc"]
+        ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -442,7 +445,7 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     {title: "Extensión"},
     {title: "Reporte"},
     {title: "Termino"},
-    {title: "Proceso"}
+    {title: "Estado"}
     ],
     });
         </script>

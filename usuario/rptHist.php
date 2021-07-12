@@ -363,6 +363,9 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+    "order": [
+    [0, "desc"]
+    ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,

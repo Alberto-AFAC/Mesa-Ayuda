@@ -245,30 +245,61 @@ Atender reporte
                     <input name="correct" type="radio" value="false" id="false" />
                     </p>
 
-                    <div class="form-group" id="dsprob1" style="display: none;">
-                    <div id="buscador"></div>
+                    <div id="dsprob1" style="display: none;">
+                    
+<!--                <div id="buscador"></div>
                     <div id="select1"></div>  
-                    <div id="select2"></div>
+                    <div id="select2"></div> -->
+                    
+                        <div class="form-group">
+                        <div id="buscador"></div>
+                        <div id="select1"></div>  
+                        <div id="select2"></div>
+                        </div>
+                        <div class="form-group">
+                        <div id="select3"></div>
+                        <div id="select4"></div>
+                        <div id="select5"></div>
+                        </div>
+
                     <input type="hidden" name="rspst" id="rspst">
+
                     </div>
 
-     
                     <div class="form-group" id="dsprob2">
+                    
                     <div class="col-sm-4">
                     <label>Tipo de servicio</label>
-                    <input id="servicio" type="text" class="form-control">
+                    <input id="servicio" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
-                    <input id="intervencion" type="text" class="form-control">
+                    <label style="color:white;">.</label>
+                    <input id="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
-                    <input id="descripcion" type="text" class="form-control">
+                    <label style="color:white;">.</label>
+                    <input id="descripcion" type="text" class="form-control" disabled="">
                     </div>
+
+                    <div class="col-sm-4">
+<!--                     <label>Tipo de servicio</label>
+ -->            <input id="solucion" type="text" class="form-control" disabled="">
+                    </div>
+
+                    <div class="col-sm-4">
+<!--                     <label>Intervención</label>
+ -->             <input id="ultima" type="text" class="form-control" disabled="">
+                    </div>                    
+
+                    <div class="col-sm-4">
+<!--                     <label>Descripción</label>
+ -->               <input id="final" type="text" class="form-control" disabled="">
+                    </div>
+
                     <input type="hidden" name="rspst" id="rspst" value="SI">
+
                     </div>
 
                     <div class="form-group">
@@ -311,11 +342,11 @@ Atender reporte
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Proceso del reporte</label>
+                    <label>Estado del reporte</label>
                     <select class="form-control" selected="true" id="estado_rpt" name="estado_rpt">
-                    <option value="Pendiente">Pendiente</option>
+                    <option value="Por atender">Por atender</option>
                     <option value="Finalizado" >Finalizado</option>
-                    <option value="En proceso" >En proceso</option>
+                    <option value="Pendiente" >Pendiente</option>
                     <option value="Cancelado" >Cancelado</option> 
                     </select>                                
                     </div>
@@ -331,9 +362,9 @@ Atender reporte
             </div>
             <b><p class="alert alert-danger text-center padding error" id="errors">Error al agregar datos de solicitud </p></b>
 
-            <b><p class="alert alert-danger text-center padding error" id="pndnt">¡El reporte está pendiente! </p></b>
+            <b><p class="alert alert-danger text-center padding error" id="pndnt">¡El reporte está Por atender! </p></b>
 
-            <b><p class="alert alert-info text-center padding exito" id="procso">¡El reporte está en proceso!</p></b>
+            <b><p class="alert alert-info text-center padding exito" id="procso">¡El reporte está Pendiente!</p></b>
 
             <b><p class="alert alert-success text-center padding error" id="canclado">¡El reporte se ha cancelado !</p></b>
 
@@ -493,8 +524,6 @@ Favor de validar y agregar datos del  equipo </h4>
                     </select>
                     </div>                    
                     </div>
-
-
 
                     <div class="form-group">                    
                     <div class="col-sm-4">
@@ -671,9 +700,16 @@ Favor de validar y agregar datos del  equipo </h4>
 <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
 $(document).ready(function(){
-  $('#buscador').load('select/buscar.php');
-  $('#select1').load('select/tabla.php');
-  $('#select2').load('select/select.php');    
+  // $('#buscador').load('select/buscar.php');
+  // $('#select1').load('select/tabla.php');
+  // $('#select2').load('select/select.php');    
+
+      $('#buscador').load('select/buscar.php');
+      $('#select1').load('select/tabla.php');
+      $('#select2').load('select/select.php');
+      $('#select3').load('select/penultimo.php');
+      $('#select4').load('select/ultimo.php');
+      $('#select5').load('select/final.php');
   $('#n_empleado').select2();
 }); 
 </script>
@@ -729,17 +765,17 @@ $(document).ready(function(){
   
   $actual = date('d/m/Y');
 
-if($inicio==$actual || $data['estado_rpt'] == 'Pendiente' || $data['estado_rpt'] == 'En proceso' || $data['evaluacion']=='CANCELADO'){
+if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente' || $data['evaluacion']=='CANCELADO'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Pendiente'){
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
                 
-                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>";
+                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>";
 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:70%'>{$data['estado_rpt']}</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";
 
                     } 
-                      else if($data['estado_rpt'] == 'En proceso') {
+                      else if($data['estado_rpt'] == 'Pendiente') {
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:70%'>{$data['estado_rpt']}</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";
 
                     }else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
@@ -767,6 +803,9 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+        "order": [
+            [7, "desc"]
+        ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -778,7 +817,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     {title: "Reporte"},
     {title: "Termino"},
     {title: "Tiempo"},
-    {title: "Proceso"}
+    {title: "Estado"}
     ],
     });
 

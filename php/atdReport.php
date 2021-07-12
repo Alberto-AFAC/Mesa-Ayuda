@@ -23,7 +23,10 @@
 	reporte.evaluacion,
 	reporte.hinicio,
 	reporte.hfinal,
-	reporte.idequipo
+	reporte.idequipo,
+	reporte.solucion,
+	reporte.ultima,
+	reporte.final
 	FROM usuarios 
 	LEFT JOIN reporte ON usuarios.n_empleado = reporte.n_empleado
 	WHERE reporte.idtec = '$idtecnico'";

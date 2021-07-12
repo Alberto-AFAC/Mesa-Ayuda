@@ -164,6 +164,11 @@ unset($_SESSION['consulta']);
                                 <div id="select1"></div>  
                                 <div id="select2"></div>
                                 </div>
+                                <div class="form-group">
+                                    <div id="select3"></div>
+                                    <div id="select4"></div>
+                                    <div id="select5"></div>
+                                </div>
                                 <!--</div>-->
                                 <!--ARÉA DE DESCRIPCIÓN-->
                                 <div class="was-validated">
@@ -206,6 +211,20 @@ unset($_SESSION['consulta']);
    $(document).ready(function(){
       $('#buscador').load('select/buscar.php');
       $('#select1').load('select/tabla.php');
-      $('#select2').load('select/select.php');      
+      $('#select2').load('select/select.php');
+      $('#select3').load('select/penultimo.php');
+      $('#select4').load('select/ultimo.php');
+      $('#select5').load('select/final.php');
+
+      $('#servicio').select2();
+      $('#intervencion').select2();
+      $('#descripcion').select2();
+      $('#solucion').select2();
+      $('#ultima').select2();
+
    });
+
+
+
+
 </script>

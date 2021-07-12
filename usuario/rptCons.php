@@ -342,13 +342,13 @@ unset($_SESSION['consulta']);
             $inicio = $data['finicio'];
 
 
-if($data['estado_rpt'] == 'Pendiente'){
+if($data['estado_rpt'] == 'Por atender'){
         ?>
     ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
                   
-                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Pendiente</a>"; ?>"
+                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>"; ?>"
 ],
-<?php }else if($data['estado_rpt'] == 'En proceso'){ ?>
+<?php }else if($data['estado_rpt'] == 'Pendiente'){ ?>
 
    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
@@ -375,6 +375,9 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
+            "order": [
+            [6, "desc"]
+        ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,

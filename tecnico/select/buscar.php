@@ -1,12 +1,12 @@
+
   <div class="col-sm-offset-0 col-sm-4">
-		<select style="width: 100%;" id="servicio" class="form-control" class="selectpicker" name="servicio" type="text" data-live-search="true">
-                <option value="x">TIPODE SERVICIO</option>
-                <option value="1IMPRESORA/MULTIFUNCIONALES">IMPRESORA/MULTIFUNCIONALES</option>
-                <option value="2SISTEMAS_APLICATIVOS">SISTEMAS APLICATIVOS</option>
-                <option value="3EQUIPO DE CÓMPUTO">EQUIPO DE CÓMPUTO </option>
-                <option value="4SISTEMAS">SISTEMAS</option>
-                <option value="5RED">RED</option>
-                <option value="6OTROS">OTROS</option>
+  <!-- 	<label>TIPODE SERVICIO</label> -->
+		<select  id="servicio" class="form-control" class="selectpicker" name="servicio" type="text" data-live-search="true">
+                <option value="0">TIPODE SERVICIO</option>
+                <option value="1CÓMPUTO">CÓMPUTO</option>
+                <option value="2IMPRESIÓN">IMPRESIÓN</option>
+                <option value="3COMUNICACIONES">COMUNICACIONES </option>
+                <option value="4PROGRAMACIÓN DE EVENTOS/REUNIONES">PROGRAMACIÓN DE EVENTOS/REUNIONES</option>
 				
 		</select>
 	</div>
@@ -14,8 +14,6 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#servicio').select2();
-
 			$('#servicio').change(function(){
 				$.ajax({
 					type:"post",
@@ -27,5 +25,6 @@
 				});
 			});
 		});
+
 	</script>
 	

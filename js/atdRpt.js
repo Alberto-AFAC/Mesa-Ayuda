@@ -46,7 +46,7 @@ function actualizar(){
 
 
 
-//consulta de reporte pendiente
+//consulta de reporte Por atender
 // $.ajax({
 // url:'../php/atdReport.php',
 // type:'POST'
@@ -73,7 +73,7 @@ function actualizar(){
 
 // //        detalles = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension+'*'+obj.data[i].ubicacion+'*'+obj.data[i].servicio+'*'+obj.data[i].intervencion+'*'+obj.data[i].descripcion+'*'+obj.data[i].finicio+'*'+obj.data[i].ffinal;
 
-//         if(obj.data[i].estado_rpt=='Pendiente'){     
+//         if(obj.data[i].estado_rpt=='Por atender'){     
 //         html +="<tr><td>"+obj.data[i].n_reporte+"</td><td>"+obj.data[i].nombre+' '+obj.data[i].apellidos+"</td><td>"+obj.data[i].ubicacion+"</td><td>"+obj.data[i].extension+"</td><td>"+Finicio+"</td><td>"+Finaliza+"</td><td><a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender("+'"'+detalles+'"'+")' style='width:70%'>"+obj.data[i].estado_rpt+"</a> <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender("+'"'+detalles+'"'+")' ><i class='fa fa-desktop text-warning'></i></a></td>";
 //         //<a href='javascript:openEval()' onclick='atender("+'"'+detalles+'"'+")' class='detalle btn btn-info' >"+obj.data[i].estado_rpt+"</a></td></tr>";		
 //             }else if(obj.data[i].estado_rpt=='En proceso'){
@@ -92,7 +92,7 @@ function actualizar(){
 //     $("#reportes").html(html); 
 // })     
 
-//detalles de reporte pendiente
+//detalles de reporte Por atender
 function atender(detalles){
 
 $.ajax({
@@ -116,7 +116,7 @@ type:'POST'
         day = obj.data[i].ffinal.substring(8,10);
         Finaliza = day+'/'+month+'/'+year;
 
-        detalles = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension+'*'+obj.data[i].ubicacion+'*'+obj.data[i].servicio+'*'+obj.data[i].intervencion+'*'+obj.data[i].descripcion+'*'+obj.data[i].usu_observ+'*'+obj.data[i].falla_interna+'*'+Finicio+'*'+Finaliza+'*'+obj.data[i].falla_xterna+'*'+obj.data[i].observa+'*'+obj.data[i].evaluacion+'*'+obj.data[i].estado_rpt+'*'+obj.data[i].hinicio+'*'+obj.data[i].hfinal+'*'+obj.data[i].idequipo;
+        detalles = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension+'*'+obj.data[i].ubicacion+'*'+obj.data[i].servicio+'*'+obj.data[i].intervencion+'*'+obj.data[i].descripcion+'*'+obj.data[i].usu_observ+'*'+obj.data[i].falla_interna+'*'+Finicio+'*'+Finaliza+'*'+obj.data[i].falla_xterna+'*'+obj.data[i].observa+'*'+obj.data[i].evaluacion+'*'+obj.data[i].estado_rpt+'*'+obj.data[i].hinicio+'*'+obj.data[i].hfinal+'*'+obj.data[i].idequipo+'*'+obj.data[i].solucion+'*'+obj.data[i].ultima+'*'+obj.data[i].final;
 
 
    var d=detalles.split("*");
@@ -128,6 +128,27 @@ type:'POST'
     $("#modalAtndr #servicio").val(d[5]);
     $("#modalAtndr #intervencion").val(d[6]);
     $("#modalAtndr #descripcion").val(d[7]);
+
+if(d[19]=='x' || d[19]==''){
+document.getElementById('select3').style.backgroundColo = "#fff";
+}else{
+$("#modalAtndr #solucion").val(d[19]);
+}
+
+if(d[20]=='x' || d[20]==''){
+$("#select4").hide();
+document.getElementById('select4').style.backgroundColo = "#fff";
+}else{
+$("#modalAtndr #ultima").val(d[20]);
+}
+if(d[21]=='x' || d[21]==''){
+document.getElementById('select5').style.backgroundColo = "#fff";
+}else{
+$("#modalAtndr #final").val(d[21]);
+}
+
+
+
     $("#modalAtndr #usu_observ").val(d[8]);
     $("#modalAtndr #falla_interna").val(d[9]);
     $("#modalAtndr #finicio").val(d[10]+ ' a las '+d[16]+' hrs');   
@@ -245,10 +266,13 @@ function atdRpt(){
     var falla_xterna = document.getElementById('falla_xterna').value;
     var estado_rpt = document.getElementById('estado_rpt').value;
     var rspst = document.getElementById('rspst').value;   
+    var solucion = document.getElementById('solucion').value;
+    var ultima = document.getElementById('ultima').value;
+    var final = document.getElementById('final').value;
 
-    datos = servicio+'*'+ intervencion+'*'+ descripcion+'*'+ falla_interna+'*'+ falla_xterna+'*'+ estado_rpt+'*'+rspst;
-
-	   if( nreporte == '' || servicio == 'x' || intervencion == 'x' || descripcion == '0' || falla_interna == '' || estado_rpt == ''){
+    datos = servicio+'*'+ intervencion+'*'+ descripcion+'*'+ falla_interna+'*'+ falla_xterna+'*'+ estado_rpt+'*'+rspst+'*'+solucion+'*'+ultima+'*'+final;
+alert(datos);
+	   if( nreporte == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || solucion == '' || ultima == '' || final == '' || falla_interna == '' || estado_rpt == ''){
             $("#vacios").toggle("toggled");
             setTimeout(function(){
             $('#vacios').toggle('toggled');
@@ -258,11 +282,11 @@ function atdRpt(){
                $.ajax({
                     url:'../php/atdRptFnl.php',
                     type:'POST',
-                    data: 'nreporte='+nreporte+'&servicio='+servicio+'&intervencion='+intervencion+'&descripcion='+descripcion+'&falla_interna='+falla_interna+'&falla_xterna='+falla_xterna+'&estado_rpt='+estado_rpt+'&rspst='+rspst+'&opcion=atender'
+                    data: 'nreporte='+nreporte+'&servicio='+servicio+'&intervencion='+intervencion+'&descripcion='+descripcion+'&solucion='+solucion+'&ultima='+ultima+'&final='+final+'&falla_interna='+falla_interna+'&falla_xterna='+falla_xterna+'&estado_rpt='+estado_rpt+'&rspst='+rspst+'&opcion=atender'
                 }).done(function(respuesta){
                 console.log(respuesta);
 
-                if(respuesta=='Pendiente'){
+                if(respuesta=='Por atender'){
                 $("#pndnt").toggle("toggled");
                 setTimeout(function(){
                 $("#pndnt").toggle("toggled");
@@ -273,7 +297,7 @@ function atdRpt(){
                 setTimeout(function(){
                 $("#exitos").toggle("toggled");
                      },4000);
-                }else if(respuesta=='En proceso'){
+                }else if(respuesta=='Pendiente'){
                 $("#procso").toggle("toggled");
                 setTimeout(function(){
                 $("#procso").toggle("toggled");
@@ -404,7 +428,7 @@ type:'POST'
     var res = obj.data;  
 
     var x = 0;
-       html = '<div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="rportfinal" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>N° reporte</th><th><i></i>Nombre usuario</th><th><i></i>Ubicación</th><th><i></i>Extensión</th><th><i></i>Reporte</th><th><i></i>Termino</th><th><i></i>Proceso</th></tr></thead><tbody>';
+       html = '<div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"> <div class="col-sm-12"><table id="rportfinal" class="table table-striped table-bordered dataTable" style="width:100%" role="grid" aria-describedby="example_info"><thead><tr><th><i class="fa fa-sort-numeric-asc"></i>N° reporte</th><th><i></i>Nombre usuario</th><th><i></i>Ubicación</th><th><i></i>Extensión</th><th><i></i>Reporte</th><th><i></i>Termino</th><th><i></i>Estado</th></tr></thead><tbody>';
         for(i=0; i<res.length;i++){
         x++;
 

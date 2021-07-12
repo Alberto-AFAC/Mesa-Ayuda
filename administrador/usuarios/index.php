@@ -249,7 +249,7 @@
     <div id="cuadro1" class="col-lg-12">
         <div class="panel panel-default">                  
             <div style="padding: 0;" class="panel-heading"> 
-                    <button title="Agregar usuario" type="button" style="color:blue;" class="btn btn-default" data-toggle="modal" onclick="RegistrarUsu()"><i class='fa fa-user-plus text-info' ></i></button>
+                    <!-- <button title="Agregar usuario" type="button" style="color:blue;" class="btn btn-default" data-toggle="modal" onclick="RegistrarUsu()"><i class='fa fa-user-plus text-info' ></i></button> -->
                   <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
             </div>
                <div class="panel-body" style="font-size: 12px;">             
@@ -639,23 +639,25 @@
 
         var dataSet = [
         <?php
-          $query = "SELECT * FROM usuarios 
-          INNER JOIN area ON area_ads = id_area 
-          WHERE usuarios.estado = 0 && id_usuario != 0 ORDER BY id_usuario ASC";
-             $resultado = mysqli_query($conexion, $query);
+          $query = "SELECT * FROM personal 
+          
+          WHERE personal.estado = 0 && gstIdper != 0 ORDER BY gstIdper ASC";
+             $resultado = mysqli_query($conexion2, $query);
         while($data = mysqli_fetch_array($resultado)){
-           $id = $data['id_usuario'];
-            $data['nombre'];
-            $data['apellidos'];
-            $data['adscripcion'];
-
+           $id = $data['gstIdper'];
+           $nemple = $data['gstNmpld'];
+            $nombre = $data['gstNombr'];
+            $apellidos = $data['gstApell'];
+            $area = '';
+     
         ?>
     
-    ['<?php echo $id;?>','<?php echo $data['nombre']?>','<?php echo $data['apellidos']?>', '<?php echo $data['adscripcion']?>' ,"<?php 
+    ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>', '<?php echo $area?>' ,"<?php 
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
-echo "<a title='Editar usuario' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>   <a title='Eliminar usuario' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></a>   <a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a>";
+// <a title='Editar usuario' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>   <a title='Eliminar usuario' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></a>
+echo "   <a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a>";
 
 
 
@@ -675,7 +677,7 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     fixedHeader: true,
     data: dataSet,
     columns: [
-    {title: "ID"},
+    {title: "N° EMP"},
     {title: "NOMBRE"},
     {title: "APELLIDOS"},
     {title: "ADSCIPCIÓN"},

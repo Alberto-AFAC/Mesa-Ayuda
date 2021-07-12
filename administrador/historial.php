@@ -323,7 +323,7 @@
                                             COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente,
                                             COUNT( CASE WHEN estado_rpt = 'Finalizado' THEN 1 END ) AS Finalizado,
                                             COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
-                                            COUNT( CASE WHEN estado_rpt = 'En proceso' THEN 1 END ) AS Proceso 
+                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente 
                                         FROM
                                             reporte";
                                 $resultado = mysqli_query($conexion, $query);
@@ -663,7 +663,7 @@ var dataSet = [
                  FROM
                     reporte 
                 LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado
-                WHERE reporte.estado_rpt = 'Finalizado'";
+                WHERE reporte.estado_rpt = 'Finalizado' || reporte.estado_rpt = 'Cancelado'";
 	    $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             if($data['evaluacion'] == '0'){
@@ -671,14 +671,21 @@ var dataSet = [
             } else {
                 $eva = $data['evaluacion'];
             }
+
+
         ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo $data['nombre'] . " " .$data['apellidos'] ?>",
         "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
         "<?php echo $data['ffinal']?>", "<?php echo  $eva ?>",
-        "<?php if($data['estado_rpt'] == 'Finalizado'){
+        "<?php 
+
+        if($data['estado_rpt'] == 'Finalizado'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%'>Detalles</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%'>Finalizado</a>";
+
+                    }else if($data['estado_rpt'] == 'Cancelado'){
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%'>Por evaluar</a>";
 
                     } 
                       ?>"
@@ -724,7 +731,7 @@ $(document).ready(function() {
                 title: "N°"
             },
             {
-                title: "Nombre"
+                title: "Nombre usuario"
             },
             {
                 title: "Ubicación"
@@ -742,7 +749,7 @@ $(document).ready(function() {
                 title: "Atención"
             },
             {
-                title: "Proceso"
+                title: "Estado"
             }
         ],
     });

@@ -18,9 +18,13 @@
 	if($rspst =='NO'){
 	$servicio  = substr($_POST['servicio'],1);
 	$intervencion = substr($_POST['intervencion'],1);
-	$descripcion = $_POST['descripcion'];
+	$descripcion = substr($_POST['descripcion'],1);
+	$solucion = substr($_POST['solucion'],1);
+	$ultima = substr($_POST['ultima'],1);
+	$final = $_POST['final'];
+
 	
-		if(atender($nreporte,$servicio,$intervencion,$descripcion,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion))
+		if(atender($nreporte,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion))
 			{	echo "$estado_rpt";	}else{	echo "1";	}	
 
 	}else{
@@ -30,9 +34,9 @@
 		}
 	}
 
-	function atender($nreporte,$servicio,$intervencion,$descripcion,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion){
+	function atender($nreporte,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion){
 
-		$query = "UPDATE reporte SET servicio = '$servicio',intervencion = '$intervencion',descripcion = '$descripcion',falla_interna = '$falla_interna',falla_xterna = '$falla_xterna', ffinal = '$Final', estado_rpt = '$estado_rpt', hfinal = '$Hfinal' WHERE n_reporte=$nreporte";
+		$query = "UPDATE reporte SET servicio = '$servicio',intervencion = '$intervencion',descripcion = '$descripcion',solucion='$solucion',ultima='$ultima',final='$final',falla_interna = '$falla_interna',falla_xterna = '$falla_xterna', ffinal = '$Final', estado_rpt = '$estado_rpt', hfinal = '$Hfinal' WHERE n_reporte=$nreporte";
 		if (mysqli_query($conexion,$query)) {
 			return true;
 			}else

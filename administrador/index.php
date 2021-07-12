@@ -264,10 +264,10 @@
                                 <?php 
                                 $query ="SELECT
                                             'total',
-                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente,
+                                            COUNT( CASE WHEN estado_rpt = 'Por atender' THEN 1 END ) AS Por_atender,
                                             COUNT( CASE WHEN estado_rpt = 'Finalizado' THEN 1 END ) AS Finalizado,
                                             COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
-                                            COUNT( CASE WHEN estado_rpt = 'En proceso' THEN 1 END ) AS Proceso 
+                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente 
                                         FROM
                                             reporte 
                                         WHERE
@@ -292,8 +292,8 @@
                                     <img src="../img/pendiente.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <div class="col-xs-9 text-right text-warning">
-                                    <div class="huge"><?php echo $row['Pendiente'] ?></div>
-                                    <div>Pendientes</div>
+                                    <div class="huge"><?php echo $row['Por_atender'] ?></div>
+                                    <div>Por atender</div>
                                 </div>
                             </div>
                         </div>
@@ -307,7 +307,7 @@
                                     <img src="../img/realizando.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <div class="col-xs-9 text-right text-primary">
-                                    <div class="huge"><?php echo $row['Proceso'] ?></div>
+                                    <div class="huge"><?php echo $row['Pendiente'] ?></div>
                                     <div>Realizando</div>
                                 </div>
                             </div>
@@ -323,7 +323,7 @@
                                     <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <div class="col-xs-9 text-right text-danger">
-                                    <div class="huge"><?php echo $row['Proceso'] ?></div>
+                                    <div class="huge"><?php echo $row['Pendiente'] ?></div>
                                     <div>Cancelado</div>
                                 </div>
                             </div>
@@ -362,7 +362,7 @@ onclick="location.href='./'" -->
                                         <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
                                     </p><input type="hidden" id="idequipo">
-                                    Reporte pendiente
+                                    Reporte por atender
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -569,8 +569,10 @@ var dataSet = [
                     usuarios.apellidos,
                     usuarios.ubicacion,
                     usuarios.extension,
-                    reporte.finicio,
-                    reporte.ffinal,
+
+        DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
+        DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as ffinal,
+
                     reporte.evaluacion,
                     reporte.estado_rpt
                  FROM
@@ -593,38 +595,50 @@ var dataSet = [
             } else {
                 $eva = $data['evaluacion'];
             }
+
+
+if($data['estado_rpt'] == 'Por atender'){
         ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre'].' '.$data['apellidos']?>",
         "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA ?>", "<?php echo   $eva?>",
+        "<?php echo $NA ?>",
 
-        "<?php if($data['estado_rpt'] == 'Pendiente'){
+        "<?php if($data['estado_rpt'] == 'Por atender'){
                 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-warning' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
 
                     } 
-                      else if($data['estado_rpt'] == 'En proceso') {
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                      else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
 
-                    }else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
-
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por confirmar</a>";
+                // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por confirmar</a>";
 
                     } else if($data['evaluacion'] == '0'){
 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por evaluar</a>";
 
                     } else if($data['estado_rpt'] == 'Finalizado'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
                     } else if($data['evaluacion']=='CANCELADO'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
-                    }?>"
+                // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                //     }
+}
+                    ?>"],
 
-        //"<?php //echo  $data['estado_rpt']?>"
-    ],
-    <?php } ?>
+    <?php }else if($data['estado_rpt'] == 'Pendiente'){ ?>
+
+    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre'].' '.$data['apellidos']?>",
+        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
+        "<?php echo $NA ?>",
+
+        "<?php 
+             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+
+                    ?>"],
+
+<?php } 
+}?>
 ];
 //       
 
@@ -634,7 +648,7 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
     "order": [
-        [0, "desc"]
+        [6, "desc"]
     ],
     orderCellsTop: true,
     fixedHeader: true,
@@ -643,7 +657,7 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
             title: "N°"
         },
         {
-            title: "Nombre"
+            title: "Nombre usuario"
         },
         {
             title: "Ubicación"
@@ -658,10 +672,7 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
             title: "Fecha termino"
         },
         {
-            title: "Evaluación"
-        },
-        {
-            title: "Proceso"
+            title: "Estado"
         }
     ],
 });

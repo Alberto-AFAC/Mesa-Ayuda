@@ -35,10 +35,7 @@ function eqpo(datos) {
 //registro de reporte
 function reporte() {
 
-    var nempleado = document.getElementById('nempleado').value;
-    var servicio = document.getElementById('servicio').value;
-    var intervencion = document.getElementById('intervencion').value;
-    var descripcion = document.getElementById('descripcion').value;
+    var nempleado = document.getElementById('nempleado').value;    
     var modelo = document.getElementById('modelo').value;
     var serie = document.getElementById('serie').value;
     var obser = document.getElementById('obser').value;
@@ -46,7 +43,17 @@ function reporte() {
     var idequipo = document.getElementById('idequipo').value;
     var proceso = document.getElementById('proceso').value;
 
-    if (nempleado == '' || servicio == 'x' || intervencion == 'x' || descripcion == '0' || modelo == '' || obser == '' || verwind == '' || idequipo == '') {
+    var servicio = document.getElementById('servicio').value;
+    var intervencion = document.getElementById('intervencion').value;
+    var descripcion = document.getElementById('descripcion').value;
+
+    var solucion = document.getElementById('solucion').value;
+    var ultima = document.getElementById('ultima').value;
+    var final = document.getElementById('final').value;
+
+//    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
+
+    if (nempleado == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || modelo == '' || obser == '' || verwind == '' || idequipo == '' || solucion=='0' || ultima=='0' || final=='0') {
         $("#vacio").toggle("toggled");
         setTimeout(function() {
             $('#vacio').toggle('toggled');
@@ -59,7 +66,7 @@ function reporte() {
         $.ajax({
             url: '../php/rptUsu.php',
             type: 'POST',
-            data: 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&modelo=' + modelo + '&serie=' + serie + '&verwind=' + verwind + '&obser=' + obser + '&idequipo=' + idequipo + '&proceso=' + proceso + '&opcion=registrar'
+            data: 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&modelo=' + modelo + '&serie=' + serie + '&verwind=' + verwind + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&proceso=' + proceso + '&opcion=registrar'
         }).done(function(respuesta) {
             console.log(respuesta);
             if (respuesta == 0) {

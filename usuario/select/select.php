@@ -11,135 +11,154 @@
 					}
 
 switch ($id) {
-  case "1":?>
+  case "a":?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="NO RECONOCE DISPOSITIVO">NO RECONOCE DISPOSITIVO</option>
-  <option value="COLOR DE IMPRESIÓN BAJO">COLOR DE IMPRESIÓN BAJO</option>
-  <option value="IMPRESIÓN BORROSA">IMPRESIÓN BORROSA</option>
-  <option value="IMPRIME MUY CLARO">IMPRIME MUY CLARO</option>
-  <option value="IMPRIME MANCHADO">IMPRIME MANCHADO</option>
-  <option value="ATASCO DE PAPEL">ATASCO DE PAPEL</option>
-  <option value="INSTALACIÓN">INSTALACIÓN</option>
-  <option value="NO ENCIENDE">NO ENCIENDE</option>
-  <option value="OTROS">OTROS</option>
+  <option value="0">SELECCIONE</option>
+  <option value="aCPU">CPU</option>
+  <option value="bMONITOR">MONITOR</option>
   </option>
   </select>
   </div>
 
 <?php break;
-  case "2":?>
+  case "b":?>
 
  <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="NO RESPONDE">NO RESPONDE</option>
-  <option value="ESTA LENTO">ESTA LENTO</option>
-  <option value="OTROS">OTROS</option>
+  <option value="0">SELECCIONE</option>
+  <option value="cGENERAL">GENERAL</option>
+  <option value="dPANTALLA">PANTALLA</option>
+  <option value="eTECLADO">TECLADO</option>
+  <option value="fPANEL TÁCTIL/RATÓN">PANEL TÁCTIL/RATÓN</option>
+  <option value="gBATERÍA">BATERÍA</option>
   </option>
   </select>
   </div>
  
  
 <?php break;
-  case "3":
-
-if($desc == 'MONITOR'){
-  ?>
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="PANTALLA DE AZUL">PANTALLA DE AZUL</option>
-  <option value="PANTALLA NEGRA">PANTALLA NEGRA</option>
-  <option value="NO ENCIENDE">NO ENCIENDE</option>
-  <option value="SE BLOQUEO">SE BLOQUEO</option>
-  <option value="OTROS">OTROS</option>
-  </option>
-  </select>
-  </div>
-<?php }elseif($desc=='TECLADO' || $desc=='MOUSE'){ ?>
+  case "c": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="SE BLOQUEO">SE BLOQUEO</option>
-  <option value="NO PRENDE">NO PRENDE</option>
-  <option value="NO DA CLIC">NO DA CLIC</option>
-  <option value="OTROS">OTROS</option>
+  <option value="0">SELECCIONE</option>
+  <option value="hGENERAL">GENERAL</option>
+  <option value="iPANTALLA">PANTALLA</option>
+  <option value="jTECLADO FÍSICO/VIRTUAL">TECLADO FÍSICO/VIRTUAL</option>
+  <option value="kPANEL TÁCTIL/RATÓN">PANEL TÁCTIL/RATÓN</option>
+  <option value="lBATERÍA">BATERÍA</option>
   </option>
   </select>
   </div>
 
-<?php }elseif($desc=='CPU'){ ?>
-  
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="VENTILADOR ACELERADO">VENTILADOR ACELERADO</option>
-  <option value="NO ENCIENDE">NO ENCIENDE</option>
-  <option value="HACE RUIDO">HACE RUIDO</option>
-  <option value="NO PRENDE">NO PRENDE</option>
-  <option value="OTROS">OTROS</option>
-  </option>
-  </select>
-  </div>
-
-<?php }
- break;
- case "4":?>
+<?php break;
+ case "d": ?>
 
  <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="NO PUEDO ACCEDER">NO PUEDO ACCEDER</option>
-  <option value="NO RESPONDE">NO RESPONDE</option>
-  <option value="ESTA LENTO">ESTA LENTO</option>  
-  <option value="OTROS">OTROS</option>
+  <option value="0">SELECCIONE</option>
+  <option value="mIMPRESIÓN">IMPRESIÓN</option>
+  <option value="nESCÁNER">ESCÁNER</option>
   </option>
   </select>
   </div>
  
 <?php break;
-  case "5":if($desc == 'TELEFONÍA'){
-  ?>
+  case "e": ?>
+
+
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="FALLA CONEXIÓN">FALLA CONEXIÓN</option>
-  <option value="FALLA PANTALLA">FALLA PANTALLA</option>
-  <option value="FALLA BOTÓN">FALLA BOTÓN</option>
-  <option value="FALLA BOCINA">FALLA BOCINA</option>
-  <option value="FALLA CABLE">FALLA CABLE</option>
-  <option value="OTROS">OTROS</option>
+  <option value="0">SELECCIONE</option>
+  <option value="oFALLA">FALLA</option>
+  <option value="pSOLICITUD">SOLICITUD</option>
   </option>
   </select>
   </div>
 
-<?php }elseif($desc=='INTERNET'){ ?>
+
+
+<?php break;
+  case "f": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">DESCRIPCIÓN</option>
-  <option value="FALLA CONEXIÓN">FALLA CONEXIÓN</option>
-  <option value="OTROS">OTROS</option>
+  <option value="0">SELECCIONE</option>
+  <option value="qFALLA">FALLA</option>
+  <option value="rSOLICITUD">SOLICITUD</option>
   </option>
   </select>
   </div>
- 
 
-<?php }
+<?php break;
+  case "g": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="sEQUIPO DE ESCRITORIO">EQUIPO DE ESCRITORIO</option>
+  <option value="tLAPTOP">LAPTOP</option>
+  <option value="vTABLET">TABLET</option>
+  <option value="uSMARTPHONE">SMARTPHONE</option>
+  </option>
+  </select>
+  </div>
+
+<?php break;
+  case "h": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="wFALLA">FALLA</option>
+  <option value="xSOLICITUD">SOLICITUD</option>
+  </option>
+  </select>
+  </div>
+
+<?php break;
+  case "j": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="yLAPTOP">LAPTOP</option>
+  <option value="yPROYECTOR/PANTALLA">PROYECTOR/PANTALLA</option>
+  <option value="zDISPOSITIVOS EXTRA (PERIFÉRICOS)">DISPOSITIVOS EXTRA (PERIFÉRICOS)</option>
+  </option>
+  </select>
+  </div>
+
+
+<?php 
   break;
   default: }
 
 }else{ ?>
-<div class="col-sm-offset-0 col-sm-4"><select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true" disabled=""><option value="0">DESCRIPCIÓN</option></select></div>
+
+<input type="hidden" id="descripcion" name="descripcion" value="0">
+
 <?php } ?>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-      $('#descripcion').select2();
+    //$(document).ready(function(){
+     // $('#descripcion').select2();
+   // });
+
+
+$(document).ready(function(){
+  //$('#descripcion').select2();
+$('#descripcion').change(function(){
+  $.ajax({ type:"post", 
+           data:'valor=' + $('#descripcion').val(),
+           url:'session/valor.php',
+  success:function(r){
+    $('#select3').load('select/penultimo.php');
+  }
+        });
     });
+});    
   </script>
   

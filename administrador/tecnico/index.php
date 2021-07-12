@@ -230,8 +230,8 @@ if (isset($_SESSION['usuario'])) {
         <script src="../../js/jquery-1.12.3.min.js"></script>
         <?php
 
-        $sql = "SELECT  id_usuario, nombre,apellidos FROM usuarios WHERE estado = 0 AND id_usuario != 0";
-        $usua = mysqli_query($conexion,$sql);
+        $sql = "SELECT  gstIdper, gstNombr,gstApell FROM personal WHERE estado = 0";
+        $usua = mysqli_query($conexion2,$sql);
 
         $sql = "SELECT  id_usuario, nombre,apellidos FROM usuarios WHERE estado = 0 AND id_usuario != 0";
         $ausua = mysqli_query($conexion,$sql);
@@ -641,6 +641,7 @@ if (isset($_SESSION['usuario'])) {
 <link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
 <script type="text/javascript">
     $(document).ready(function() {
+        $('#idusu').select2();
         $('#aidusu').select2();
         $('#idarea').select2();
         $('#hora').select2();
@@ -688,7 +689,7 @@ $(".toggle-password").click(function() {
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
-       echo "<a title='Editar técnico' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <a title='Restablecer contraseña' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-lock text-warning'></i></a> <a title='Detalles técnico' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a> <a title='Dar de baja técnico' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></a>";
+       echo "<a title='Editar técnico' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>  <a title='Detalles técnico' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a> <a title='Dar de baja técnico' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></a>";
 
 
        ?>"
@@ -732,4 +733,5 @@ $(".toggle-password").click(function() {
 </script>
 
 </html>
+<!-- <a title='Restablecer contraseña' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-lock text-warning'></i></a> -->
 <!-- <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$id})' ><i class='fa fa-desktop'></i></a> -->
