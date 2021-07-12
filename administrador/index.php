@@ -291,7 +291,7 @@
                                 <div class="col-xs-3">
                                     <img src="../img/pendiente.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
-                                <div class="col-xs-9 text-right text-warning">
+                                <div class="col-xs-9 text-right text-danger">
                                     <div class="huge"><?php echo $row['Por_atender'] ?></div>
                                     <div>Por atender</div>
                                 </div>
@@ -322,7 +322,7 @@
                                 <div class="col-xs-3">
                                     <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
-                                <div class="col-xs-9 text-right text-danger">
+                                <div class="col-xs-9 text-right text-warning">
                                     <div class="huge"><?php echo $row['Pendiente'] ?></div>
                                     <div>Cancelado</div>
                                 </div>
@@ -606,7 +606,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-warning' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
 
                     } 
                       else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
@@ -808,14 +808,15 @@ var piechar = new Chart(document.getElementById("piechart-admin"), {
 //GRAFICAS PARA MEDIR SOLICITUD DE SERVICIO SEGUN EL CASO
 <?php 
             $query = " SELECT
-           	COUNT( CASE WHEN servicio = 'IMPRESORA/MULTIFUNCIONALES' THEN 1 END ) AS multifuncionales,
-	        COUNT( CASE WHEN servicio = 'SISTEMAS_APLICATIVOS' THEN 1 END ) AS sistemasAplicativos,
-	        COUNT( CASE WHEN servicio = 'EQUIPO DE CÓMPUTO' THEN 1 END ) AS equipoComputo,
-            COUNT( CASE WHEN servicio = 'SISTEMAS' THEN 1 END ) AS sistemas,
-            COUNT( CASE WHEN servicio = 'RED' THEN 1 END ) AS red,
-            COUNT( CASE WHEN servicio = 'OTROS' THEN 1 END ) AS otros
+       	    COUNT( CASE WHEN servicio = 'SISTEMAS' THEN 1 END ) AS sistemas,
+	        COUNT( CASE WHEN servicio = 'IMPRESIÓN' THEN 1 END ) AS impresion,
+	        COUNT( CASE WHEN servicio = 'CÓMPUTO' THEN 1 END ) AS computo,
+	        COUNT( CASE WHEN servicio = 'COMUNICACIONES' THEN 1 END ) AS comunicaciones,
+	        COUNT( CASE WHEN servicio = 'PROGRAMACIÓN DE EVENTOS/REUNIONES' THEN 1 END ) AS reuniones
             FROM
-            reporte";
+            reporte
+            WHERE
+             MONTH ( finicio ) = MONTH (CURRENT_DATE ())";
             // -- WHERE
             // -- MONTH ( finicio ) = MONTH (
             // -- CURRENT_DATE ())";
@@ -837,16 +838,15 @@ var piechar = new Chart(document.getElementById("piechart-servicios"), {
     type: 'bar',
     data: {
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Impresora/Multifuncionales", "Sistemas Aplicativos", "Equipo de cómputo", "Sistemas", "Red",
-            "Otros"
+        labels: ["Sistemas", "Impresión", "Cómputo", "Comunicaciones", "Programación de eventos/reuniones"
         ],
         datasets: [{
-            label: "Soporte solicitado",
+            label: "Sistemas",
             backgroundColor: ["#707070", "#006C52", "#002FC2", "#EB4E00", "#000D8A"],
             borderWidth: 0,
-            data: [<?php echo $row['multifuncionales']?>, <?php echo $row['sistemasAplicativos']?>,
-                <?php echo $row['equipoComputo']?>, <?php echo $row['sistemas']?>,
-                <?php echo $row['red']?>, <?php echo $row['otros']?>
+            data: [<?php echo $row['sistemas']?>, <?php echo $row['impresion']?>,
+                <?php echo $row['computo']?>, <?php echo $row['comunicaciones']?>,
+                <?php echo $row['reuniones']?>
             ]
         }]
         <?php }?>
@@ -854,7 +854,7 @@ var piechar = new Chart(document.getElementById("piechart-servicios"), {
     options: {
         legend: {
             labels: {
-                fontColor: '#5c6dc0',
+                fontColor: '#green',
             }
         },
         title: {

@@ -656,8 +656,10 @@ var dataSet = [
                     usuarios.apellidos,
                     usuarios.ubicacion,
                     usuarios.extension,
-                    DATE_FORMAT(reporte.finicio,'%d/%m/%Y') AS finicio,
-	                DATE_FORMAT(reporte.ffinal,'%d/%m/%Y') AS ffinal,
+                    -- DATE_FORMAT(reporte.finicio,'%d/%m/%Y') AS finicio,
+	                -- DATE_FORMAT(reporte.ffinal,'%d/%m/%Y') AS ffinal,
+                    reporte.finicio,
+                    reporte.ffinal,
                     reporte.evaluacion,
                     reporte.estado_rpt
                  FROM
@@ -704,7 +706,7 @@ $(document).ready(function() {
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
         "order": [
-            [0, "desc"]
+            [7, "desc"]
         ],
         "language": {
             "searchPlaceholder": "Buscar datos...",
