@@ -233,8 +233,8 @@ if (isset($_SESSION['usuario'])) {
         $sql = "SELECT  gstIdper, gstNombr,gstApell FROM personal WHERE estado = 0";
         $usua = mysqli_query($conexion2,$sql);
 
-        $sql = "SELECT  id_usuario, nombre,apellidos FROM usuarios WHERE estado = 0 AND id_usuario != 0";
-        $ausua = mysqli_query($conexion,$sql);
+        $sql = "SELECT  gstIdper, gstNombr,gstApell FROM personal WHERE estado = 0";
+        $ausua = mysqli_query($conexion2,$sql);
 
 
         $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
@@ -269,7 +269,7 @@ if (isset($_SESSION['usuario'])) {
                         <button title="Agregar técnico" type="button" style="color:blue;" class="btn btn-default"
                         data-toggle="modal" onclick="regisTec()"><i
                         class='fa fa-street-view text-info'>+</i></button>
-                        <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
+                        <p style="text-align: center; float: right; width:95%;" class="mensaje"></p>
                     </div>
                     <div class="panel-body" style="font-size: 12px;">
                         <table id="data-table-area" class="table table-striped table-bordered"></table>
@@ -280,7 +280,7 @@ if (isset($_SESSION['usuario'])) {
 
         <div>
             <form id="EliminarUsuario" action="" method="POST">
-                <input type="hidden" id="id_usuario" name="id_usuario" value="">
+                <input type="hidden" id="idtec" name="idtec" value="">
                 <input type="hidden" id="opcion" name="opcion" value="eliminar">
                 <!-- Modal -->
                 <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog"
@@ -296,8 +296,8 @@ if (isset($_SESSION['usuario'])) {
                             <!--<input id="nombre" name="nombre" />-->
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="eliminar-usuario" class="btn btn-primary"
-                            data-dismiss="modal">Aceptar</button>
+                            <button type="button" class="btn btn-primary"
+                            data-dismiss="modal" onclick="eliminar_usuario()">Aceptar</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
@@ -402,7 +402,7 @@ if (isset($_SESSION['usuario'])) {
                                     <label>Nombre</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="idusu" id="idusu" type="text" data-live-search="true">
-                                    <option selected></option>
+                               
                                     <?php while($rio = mysqli_fetch_row($usua)):?>
                                         <option value="<?php echo $rio[0]?>"><?php echo $rio[1].' '.$rio[2]?>
                                     </option>
@@ -505,7 +505,7 @@ if (isset($_SESSION['usuario'])) {
                                     <label>Nombre</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="aidusu" id="aidusu" type="text" data-live-search="true">
-                                    
+                            
                                     <?php while($ario = mysqli_fetch_row($ausua)):?>
                                         <option value="<?php echo $ario[0]?>" selected><?php echo $ario[1].' '.$ario[2]?>
                                     </option>
@@ -538,7 +538,7 @@ if (isset($_SESSION['usuario'])) {
                         <label>Entrada</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="aentrada" id="aentrada" type="text" data-live-search="true">
-                        <option selected>Seleecione una opción</option>
+                        <option value="0">Seleecione una opción</option>
                         <option value="08:00:00">08:00:00</option>
                         <option value="09:00:00">09:00:00</option>
                     </select>
@@ -547,7 +547,7 @@ if (isset($_SESSION['usuario'])) {
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asalida" id="asalida" type="text" data-live-search="true">
-                    <option selected>Seleecione una opción</option>
+                    <option value="0">Seleecione una opción</option>
                     <option value="18:00:00">18:00:00</option>
                 </select>
             </div>
@@ -568,7 +568,7 @@ if (isset($_SESSION['usuario'])) {
                     <label>Razón</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="observ" id="observ" type="text" data-live-search="true">
-                    <option>Seleecione</option>
+                    <option value="x">Seleecione</option>
                     <option value="VACACIONES">VACACIONES</option>
                     <option value="ASUNTO PERSONAL">ASUNTO PERSONAL</option>
                 </select>
@@ -618,8 +618,8 @@ if (isset($_SESSION['usuario'])) {
 <script src="../../js/jquery.dataTables.min.js"></script>
 <script src="../../js/dataTables.bootstrap.js"></script>
 <!--botones DataTables-->
-<script src="../../js/dataTables.buttons.min.js"></script>
-<script src="../../js/buttons.bootstrap.min.js"></script>
+<!-- <script src="../../js/dataTables.buttons.min.js"></script>
+<script src="../../js/buttons.bootstrap.min.js"></script> -->
 <!--Libreria para exportar Excel-->
 <script src="../../js/jszip.min.js"></script>
 <!--Librerias para exportar PDF-->
@@ -668,35 +668,41 @@ $(".toggle-password").click(function() {
 
     var dataSet = [
     <?php
-    $query = "SELECT * FROM usuarios 
-    INNER JOIN tecnico ON id_usu = id_usuario
-    INNER JOIN area ON area_ads = id_area 
-    WHERE usuarios.estado = 0 && id_usuario != 0 ORDER BY id_usuario ASC";
-    $resultado = mysqli_query($conexion, $query);
-    while($data = mysqli_fetch_array($resultado)){
-       $id = $data['id_usuario'];
-       $data['nombre'];
-       $data['apellidos'];
-       
-       
+        $query = "SELECT * FROM tecnico 
+        WHERE baja = 0";
+        $resultado = mysqli_query($conexion, $query);
+        while($data = mysqli_fetch_array($resultado)){
+           $idusu = $data['id_usu'];
+            $horario = $data['entrada'].' a '.$data['salida']; 
+            $usuario = $data['usuario'];
+            $idtec = $data['id_tecnico'];
 
-       $horario = $data['entrada'].' a '.$data['salida'];
+        $queri = "SELECT * FROM personal 
+            WHERE gstIdper = $idusu AND estado = 0 ORDER BY gstIdper ASC";
+    $resultados = mysqli_query($conexion2,$queri);
+    while($data = mysqli_fetch_array($resultados)){
+       $id = $data['gstIdper'];
+       $nombre = $data['gstNombr'].' '.$data['gstApell'];
+
+
 
        ?>
 
-       ['<?php echo $id;?>', '<?php echo $data['nombre'].' '.$data['apellidos']?>',
-       '<?php echo $data['privilegios']?>', '<?php echo $data['usuario']?>', '<?php echo $horario ?>', "<?php 
+       ['<?php echo $id;?>', '<?php echo $nombre ?>',
+       '<?php echo 'Pendiente'?>', '<?php echo $usuario?>', '<?php echo $horario?>', "<?php 
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
-       echo "<a title='Editar técnico' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>  <a title='Detalles técnico' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a> <a title='Dar de baja técnico' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar'><i class='fa fa-trash-o text-danger'></i></a>";
+       echo "<a title='Editar técnico' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>  <a title='Detalles técnico' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a> <a title='Dar de baja técnico' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='datos_eliminar({$idtec})' ><i class='fa fa-trash-o text-danger'></i></a>";
 
 
        ?>"
 
 
        ],
-   <?php } ?>
+   <?php } 
+}
+   ?>
    ];
 
    var tableGenerarReporte = $('#data-table-area').DataTable({

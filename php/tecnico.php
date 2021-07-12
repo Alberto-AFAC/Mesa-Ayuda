@@ -26,8 +26,8 @@ if($opcion === 'modificar'){
 								}
 
 	}else if($opcion === 'eliminar'){
-		$id_usuario = $_POST["id_usuario"];
-					eliminar($id_usuario, $conexion);
+		$idtec = $_POST["idtec"];
+					eliminar($idtec, $conexion);
 
 	}else if($opcion === 'registrar'){
 
@@ -68,7 +68,7 @@ function registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$conexion
 	}								 	
 }
 	function modificar($idtec, $idusu, $privilg, $usuario, $password,$entrada,$salida,$activo,$observ,$conexion){
-		$query = "UPDATE tecnico SET usuario='$usuario',password='$password',privilegios='$privilg',entrada='$entrada',salida='$salida',activo='$activo',observ='$observ' WHERE id_tecnico=$idtec";
+		$query = "UPDATE tecnico SET id_usu=$idusu,usuario='$usuario',password='$password',privilegios='$privilg',entrada='$entrada',salida='$salida',activo='$activo',observ='$observ' WHERE id_tecnico=$idtec";
 		if (mysqli_query($conexion,$query)) {
 						return true;
 					}else
@@ -78,9 +78,9 @@ function registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$conexion
 		//verificar_resultado($resultado);
 		cerrar($conexion);									 	
 	}
-	function eliminar($id_usuario, $conexion){
+	function eliminar($idtec, $conexion){
 	//	$query = "UPDATE cliente SET estado = 0 WHERE id_cliente = $id_cliente";
-		$query = "UPDATE usuarios set estado = 1 WHERE id_usuario = $id_usuario ";
+		$query = "UPDATE tecnico set baja = 1 WHERE id_tecnico = $idtec ";
 		$resultado = mysqli_query($conexion, $query);
 		verificar_resultado($resultado);
 		cerrar($conexion);

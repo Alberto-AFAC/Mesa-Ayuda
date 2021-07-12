@@ -93,31 +93,33 @@ function datos_detalles(tbody, table) {
     });
 }
 
-var datos_eliminar = function(tbody, table) {
-    $(tbody).on("click", "button.eliminar", function() {
-        var data = table.row($(this).parents("tr")).data();
+var datos_eliminar = function(id) {
+
+    // $(tbody).on("click", "button.eliminar", function() {
+    //     var data = table.row($(this).parents("tr")).data();
         //console.log(data);
-        var id_usuario = $("#EliminarUsuario #id_usuario").val(data.id_usuario);
+        var idtec = $("#EliminarUsuario #idtec").val(id);
         //nombre = $("#frmEliminarcorreo #nombre").val(data.nombre);				
-    });
+    // });
 }
 
-var eliminar_usuario = function() {
+function eliminar_usuario() {
     //para realiza el evento del clic del boton
-    $("#eliminar-usuario").on("click", function() {
-        var id_usuario = $("#EliminarUsuario #id_usuario").val(),
+    
+         var idtec = $("#EliminarUsuario #idtec").val(),
             opcion = $("#EliminarUsuario #opcion").val();
         $.ajax({
             method: "POST",
-            url: "../../php/usuarios.php",
-            data: { "id_usuario": id_usuario, "opcion": opcion }
+            url: "../../php/tecnico.php",
+            data: { "idtec": idtec, "opcion": opcion }
         }).done(function(info) {
+
             var json_info = JSON.parse(info);
             mostrar_mensaje(json_info);
+            location.href = './';
             limpiar_datos();
             listar_usuario();
         });
-    });
 }
 
 
@@ -158,6 +160,7 @@ var regisTec = function() {
 
 
 function datos_editar(id) {
+
     $("#Editar").slideDown("slow");
     $("#cuadro1").hide("slow");
     $.ajax({
@@ -167,10 +170,10 @@ function datos_editar(id) {
         obj = JSON.parse(resp);
         var res = obj.data;
         for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_usuario == id) {
-                var 
+            if (obj.data[i].id_usu == id) {
+                var                     
+                    id_usuario = $("#frmEditar #aidusu").val(obj.data[i].id_usu),
                     idtec = $("#frmEditar #idtec").val(obj.data[i].id_tecnico),
-                    id_usuario = $("#frmEditar #aidusu").val(obj.data[i].id_usuario),
                     privilg = $("#frmEditar #aprivilg").val(obj.data[i].privilegios),
 
                     usuario = $("#frmEditar #ausuario").val(obj.data[i].usuario),
@@ -196,13 +199,13 @@ var mostrar_mensaje = function(informacion) {
         var texto = "",
             color = "";
         if (informacion.respuesta == "BIEN") {
-            texto = "Se han guardado los cambios correctamente.";
+            texto = "El técnico se ha dado de baja con éxito .";
             color = "#379911";
         } else if (informacion.respuesta == "ERROR") {
             texto = "<strong>Error</strong>, no se ejecutó la consulta.";
             color = "#C9302C";
         } else if (informacion.respuesta == "EXISTE") {
-            texto = "<strong>Información!</strong> el correo ya existe.";
+           // texto = "<strong>Información!</strong> el correo ya existe.";
             color = "#5b94c5";
         } else if (informacion.respuesta == "VACIO") {
             texto = "<strong>Advertencia!</strong> debe llenar todos los campos solicitados.";

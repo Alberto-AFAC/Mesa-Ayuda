@@ -1,9 +1,7 @@
 <?php
 	include ("../conexion/conexion.php");
 	header("Content-Type: text/html;charset=utf-8");
-	$query = "SELECT * FROM usuarios 
-    INNER JOIN tecnico ON id_usu = id_usuario
-    WHERE usuarios.estado = 0 && id_usuario != 0 ORDER BY id_usuario ASC";
+	$query = "SELECT * FROM tecnico WHERE baja = 0";
 	$resultado = mysqli_query($conexion, $query);
 
 	if (!$resultado) {

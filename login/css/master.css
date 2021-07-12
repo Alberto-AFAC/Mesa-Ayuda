@@ -27,10 +27,11 @@ main {
      border-radius: 0.9em;
 }
 .caja__trasera div{
-    margin: 81px 40px;
+    margin: 100px 80px;
     color: white;
     transition: all 500ms;
     text-align: center;/*para centrar los botones*/
+
 }
 .caja__trasera div p,
 .caja__trasera div button {
@@ -106,7 +107,7 @@ main {
 }
 .formulario__registro{
     display: none; /*no aparece le formulario registro*/
-    height: 500px;
+    height: 370px;
     margin-left: 3em;
 }
 .formulario__tecnico{

@@ -24,19 +24,22 @@
         <div class="contenedor__todo">
             <div class="caja__trasera">
                 <div class="caja__trase-Login">
-                    <h3>Ya tienes una cuenta?</h3>
-                    <button id="btn__iniciarsesion"><span class="glyphicon glyphicon-user"></span>
-                        Iniciar como usuario</button>
+                    <h3>Usuarios</h3>
+                 <!--    <button id="btn__iniciarsesion"><span class="glyphicon glyphicon-user"></span>
+                        </button> -->
                     <br>
-                    <button id="btn__tecnicosesion"><span class="glyphicon glyphicon-hdd"></span>
-                        Iniciar como técnico</button>
+
+                    <button id="btn__registrar"><span class="glyphicon glyphicon-user"></span>
+                        Iniciar sesión</button>                   
                 </div>
                 <!-- <p style="border: 1px solid red; height: 70px;"></p>-->
                 <div class="caja__trasera-register">
-                    <h3>Aun no tengo una cuenta?</h3>
-                    <p>¡Regístrate para solicitar tu reporte, gracias!</p>
-                    <button id="btn__registrar"><span class="glyphicon glyphicon-list-alt"></span>
-                        Registrarse</button>
+                    <h3>Técnicos</h3>
+                    <!--   -->
+                    <br>
+                    <button id="btn__tecnicosesion"><span class="glyphicon glyphicon-hdd"></span>
+                        Iniciar sesión</button>
+
                 </div>
             </div>
         </div>
@@ -82,7 +85,25 @@
             </form>
 
             <!--Formulario de usuarios-->
-            <form action="" id="form" autocomplete="off" class="formulario__login">
+            <form action="" autocomplete="off" class="formulario__login">
+
+            </form>
+
+
+            <link rel="stylesheet" type="text/css" href="boots/bootstrap/css/select2.css">
+            <script src="js/jquery-1.12.3.min.js"></script>
+<!--             <?php
+
+   /* $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+    $are = mysqli_query($conexion,$sql);
+
+    $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
+    $cargo = mysqli_query($conexion,$sql);*/
+    ?> -->
+
+            <!--Formulario registro-->
+            <form id="form" action="" method="POST" class="formulario__registro" onsubmit="return registrarse(this)">
+
                 <div class="form-header">
                     <h3 class="form-title">
                         <a href="indexx.php"><span class="glyphicon glyphicon-plane"></span></a>
@@ -110,128 +131,6 @@
                     </div>
                     <div class="form-footer">
                         <input type="submit" class="botton" value="Iniciar Sesion" />
-                    </div>
-                </div>
-            </form>
-
-
-            <link rel="stylesheet" type="text/css" href="boots/bootstrap/css/select2.css">
-            <script src="js/jquery-1.12.3.min.js"></script>
-            <?php
-
-    $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
-    $are = mysqli_query($conexion,$sql);
-
-    $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
-    $cargo = mysqli_query($conexion,$sql);
-    ?>
-
-            <!--Formulario registro-->
-            <form id="formusu" action="" method="POST" class="formulario__registro" onsubmit="return registrarse(this)">
-
-                <div class="modal-header" style="padding: 0;">
-
-                    <h4 class="modal-title" id="exampleModalLabel" style="padding:0;"><b>Registrarse</b>
-                        <b>
-                            <p class="alert text-right"
-                                style="padding:0;width:70%;font-size:14px;color:#a94442;float:right;margin:0; display: none;"
-                                id="danger">Ya esta registrado <span class="glyphicon glyphicon-ban-circle"></span> </p>
-                        </b>
-                        <b>
-                            <p class="alert text-right"
-                                style="padding:0;width:70%;font-size:14px;color:green;float:right;right;margin:0;display:none;"
-                                id="exito">Se registro con exitoso <span class="glyphicon glyphicon-ok-circle"></p>
-                        </b>
-                        <b>
-                            <p class="alert text-right"
-                                style="padding:0;width:70%;font-size:14px;color:#a94442;float:right;margin:0;display:none;"
-                                id="aviso_vacio">Llene campos vacíos <span class="glyphicon glyphicon-alert"></span></p>
-                        </b>
-                    </h4>
-                </div>
-
-                <div class="modal-body">
-
-                    <input type="hidden" id="opcion" name="opcion" value="registrar">
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre"
-                                onkeyup="mayus(this);">
-                            <!--<span class="help-block" id="error"></span>-->
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <input id="apellidos" name="apellidos" type="text" class="form-control"
-                                placeholder="Apellidos" onkeyup="mayus(this);">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <select class="form-control" class="selectpicker" name="id_cargo" id="id_cargo" type="text"
-                                data-live-search="true">
-                                <option selected>Seleccione cargo</option>
-                                <?php while($caresp = mysqli_fetch_row($cargo)):?>
-                                <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
-                                <?php endwhile; ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <input id="correo" name="correo" type="text" class="form-control" placeholder="Correo">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <select style="width: 100%" class="form-control" class="selectpicker" name="id_area"
-                                id="id_area" type="text" data-live-search="true">
-                                <option selected>Seleccione area adscripción</option>
-                                <?php while($rea = mysqli_fetch_row($are)):?>
-                                <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-                                <?php endwhile; ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <input id="extension" name="extension" type="text" class="form-control"
-                                placeholder="Extension">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <select class="form-control" class="selectpicker" name="ubicacion" id="ubicacion"
-                                type="text" data-live-search="true">
-                                <option selected>Seleciones ubicación</option>
-                                <option value="Piso m2">Piso m2</option>
-                                <option value="Piso 1">Piso 1</option>
-                                <option value="Piso 2">Piso 2</option>
-                                <option value="Piso 3">Piso 3</option>
-                                <option value="Piso 4">Piso 4</option>
-                                <option value="Piso 7">Piso 7</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-0 col-sm-12">
-                            <input id="n_empleado" name="n_empleado" type="text" class="form-control"
-                                placeholder="N° empleado">
-                            <span class="help-block" id="error"></span>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><br>
-                        <div class="col-sm-offset-0 col-sm-12" style="margin-top: 1em">
-                            <button type="button" class="btn btn-primary" onclick="registrarse();">Guardar</button>
-                            <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
-                        </div>
                     </div>
                 </div>
             </form>
