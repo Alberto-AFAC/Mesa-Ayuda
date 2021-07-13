@@ -271,7 +271,7 @@ function atdRpt(){
     var final = document.getElementById('final').value;
 
     datos = servicio+'*'+ intervencion+'*'+ descripcion+'*'+ falla_interna+'*'+ falla_xterna+'*'+ estado_rpt+'*'+rspst+'*'+solucion+'*'+ultima+'*'+final;
-alert(datos);
+//alert(datos);
 	   if( nreporte == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || solucion == '' || ultima == '' || final == '' || falla_interna == '' || estado_rpt == ''){
             $("#vacios").toggle("toggled");
             setTimeout(function(){
