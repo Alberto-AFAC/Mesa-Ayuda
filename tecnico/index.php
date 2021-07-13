@@ -740,7 +740,7 @@ $(document).ready(function(){
 		reporte.hfinal,
 		reporte.idequipo,
         -- TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()) AS tiempo_transcurrido
-		IF(reporte.hfinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.hinicio, reporte.hfinal)) AS FechaFinal
+		IF(reporte.hfinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
 		FROM usuarios 
 		LEFT JOIN reporte ON usuarios.n_empleado = reporte.n_empleado
 		WHERE  reporte.idtec = '$idtecnico'";
@@ -758,7 +758,7 @@ $(document).ready(function(){
             if($data['FechaFinal'] <= 5){
                 $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['FechaFinal']." hrs</i></span>";
             } else if($data['FechaFinal'] >= 6 ){
-                $tTotal = "<span title='Fuera de tiempo' style='background-color: orange;' class='badge'>".$data['FechaFinal']." hrs</span>";
+                $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['FechaFinal']." hrs</span>";
             } else if($data['FechaFinal'] >= 10 ){
                 $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['FechaFinal']." hrs</span>";
             } 
