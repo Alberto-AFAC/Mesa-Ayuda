@@ -219,9 +219,9 @@
                                 <li>
                                     <a href="equipo"><i class="fa fa-desktop"></i> Equipos</a>
                                 </li>
-                            <li>
+                                <li>
                                     <a href="tecnico"><i class="fa fa-street-view"></i> Técnico</a>
-                            </li>
+                                </li>
 
                             </ul>
                             <!-- /.nav-second-level -->
@@ -516,12 +516,55 @@ onclick="location.href='./'" -->
                     </div>
 
                 </div>
+                <?php 
+                    $query = "SELECT
+                    usuarios.id_usuario,
+                    usuarios.nombre,
+                    usuarios.apellidos,
+                    COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+                    COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+                    COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
+                    COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
+                    FROM
+                    reporte
+                    INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
+                    INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
+                    GROUP BY
+                    idtec";
+                    $resultado = mysqli_query($conexion, $query);
+                    $contador = 0;
+                    while($data = mysqli_fetch_array($resultado)){
+                    $contador++;
+                ?>
                 <div class="col-lg-6 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h5 style="font-weight: bold; text-align: center;">Estadística Mensual de Evaluación</h5>
                             <div class="row">
-                                <canvas id="piechart-admin"></canvas>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Bueno</th>
+                                            <th scope="col">Regular</th>
+                                            <th scope="col">Malo</th>
+                                            <th scope="col">Cancelado</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $contador ?></td>
+                                            <td><?php echo $data['nombre'].' '.$data['apellidos']?></td>
+                                            <td style="color: white; background-color: green;"><?php echo $data['Bueno']?></td>
+                                            <td style="color: white; background-color: orange;"><?php echo $data['Regular']?></td>
+                                            <td style="color: white; background-color: red;"><?php echo $data['Malo']?></td>
+                                            <td><?php echo $data['Cancelado']?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -637,7 +680,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
                     ?>"],
 
-<?php } 
+    <?php } 
 }?>
 ];
 //       
@@ -678,84 +721,72 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
 });
 
 //GRAFICAS PARA MEDIR LA EVALUACIÓN DEL TÉCNICO//
-<?php 
-            $query = "SELECT
-               usuarios.nombre,
-            usuarios.apellidos,
-               COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-              COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-              COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
-              COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
-             FROM
-            reporte
-             INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-             INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
-         GROUP BY
-                idtec";
-            // -- WHERE
-            // -- MONTH ( finicio ) = MONTH (
-            // -- CURRENT_DATE ())";
-    //     $query = "SELECT
-    //     usuarios.nombre,
-    //     usuarios.apellidos,
-    //     COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-    //     COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-    //     COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo 
-    // FROM
-    //     reporte
-    //     INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-    //     INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
-    // GROUP BY
-    //     idtec";
-        $resultado = mysqli_query($conexion, $query);
-?>
-var piechar = new Chart(document.getElementById("piechart-admin"), {
-    type: 'bar',
+// $.ajax({
+//     url: "http://localhost/mesa-ayuda/PHP/evaluacion.php",
+//     method: "GET",
+//     success: function(data) {
+//       console.log("Aqui tiene que recibir el arreglo" + data);
+//       var Tecnico = [];
+//       var Evaluacion = [];
+
+//       for(var i in data) {
+//         Tecnico.push(data[i].nombre);
+//         Evaluacion.push(data[i].evaluacion);
+//       }
+
+//       var chartdata = {
+//         labels: Tecnico,
+//         datasets : [
+//           {
+//             label: 'Total de reportes evaluados',
+//             backgroundColor: 'rgba(200, 200, 200, 0.75)',
+//             borderColor: 'rgba(200, 200, 200, 0.75)',
+//             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+//             hoverBorderColor: 'rgba(200, 200, 200, 1)',
+//             data: Evaluacion
+//           }
+//         ]
+//       };
+
+//       var ctx = $("#mycanvas");
+
+//       var barGraph = new Chart(ctx, {
+//         type: 'bar',
+//         data: chartdata
+//       });
+//     },
+//     error: function(data) {
+//       console.log(data);
+//     }
+//   });
+//
+var piechar = new Chart(document.getElementById("piechart-evaluacion"), {
+    type: 'line',
     data: {
 
-        <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Sergio","Angel"],
-        // console.log(data);
-        
+        labels: ["ENERO"],
         datasets: [{
-                label: "Bueno",
-                backgroundColor: ["#0014c4c0"],
+                label: "Bueno ",
+                backgroundColor: ["#006C52"],
                 borderWidth: 0,
-                data: [<?php echo $row['Bueno']?>
-                ]
+                data: [20],
+                stack: 'combined',
+                type: 'bar'
             },
             {
                 label: "Regular",
-                backgroundColor: ["#5fbfffc0"],
+                backgroundColor: ["#EB4E0"],
                 borderWidth: 0,
-                data: [<?php echo $row['Regular']?>
-                ]
-            },
-            {
-                label: "Malo",
-                backgroundColor: ["#ec0000c0"],
-                borderWidth: 0,
-                data: [<?php echo $row['Malo']?>
-                ]
-            },
-            {
-                label: "Cancelado",
-                backgroundColor: ["#000000c0"],
-                borderWidth: 0,
-                data: [<?php echo $row['Cancelado']?>
-                ]
+                data: [21],
+                stack: 'combined'
             }
-        
-        ],
-        <?php }?>
-       
+        ]
+
     },
-   
     options: {
-        responsive: true,
         legend: {
             labels: {
-                position: 'top',
+                fontColor: '#green',
             }
         },
         title: {
@@ -763,48 +794,13 @@ var piechar = new Chart(document.getElementById("piechart-admin"), {
             text: 'Porcentaje de cumplimiento'
         },
         scales: {
-      x: {
-        stacked: true,
-      },
-      y: {
-        stacked: true
-      }
-    }
+            y: {
+                stacked: true
+            }
+        }
+
     }
 });
-// var piechar = new Chart(document.getElementById("piechart-admin"), {
-//     type: 'pie',
-//     data: {
-
-//         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-//         labels: ["Bueno", "Regular", "Malo", "Cancelado"],
-
-//         datasets: [{
-//                 label: "Bueno",
-//                 backgroundColor: ["#057100", "#0BFD00", "#FD9200", "#FD0000"],
-//                 borderWidth: 0,
-//                 data: [<?php echo $row['Bueno']?>, <?php echo $row['Regular']?>, <?php echo $row['Malo']?>,
-//                     <?php echo $row['Cancelado']?>
-//                 ]
-//             }
-
-//         ],
-//         <?php }?>
-//     },
-//     options: {
-//         responsive: true,
-//         legend: {
-//             labels: {
-//                 position: 'top',
-//             }
-//         },
-//         title: {
-//             display: true,
-//             text: 'Porcentaje de cumplimiento'
-//         },
-//         maintainAspectRatio: false
-//     }
-// });
 //GRAFICAS PARA MEDIR SOLICITUD DE SERVICIO SEGUN EL CASO
 <?php 
             $query = " SELECT
@@ -817,29 +813,13 @@ var piechar = new Chart(document.getElementById("piechart-admin"), {
             reporte
             WHERE
              MONTH ( finicio ) = MONTH (CURRENT_DATE ())";
-            // -- WHERE
-            // -- MONTH ( finicio ) = MONTH (
-            // -- CURRENT_DATE ())";
-    //     $query = "SELECT
-    //     usuarios.nombre,
-    //     usuarios.apellidos,
-    //     COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-    //     COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-    //     COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo 
-    // FROM
-    //     reporte
-    //     INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-    //     INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
-    // GROUP BY
-    //     idtec";
         $resultado = mysqli_query($conexion, $query);
 ?>
 var piechar = new Chart(document.getElementById("piechart-servicios"), {
     type: 'bar',
     data: {
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Sistemas", "Impresión", "Cómputo", "Comunicaciones", "Programación de eventos/reuniones"
-        ],
+        labels: ["Sistemas", "Impresión", "Cómputo", "Comunicaciones", "Programación de eventos/reuniones"],
         datasets: [{
             label: "Sistemas",
             backgroundColor: ["#707070", "#006C52", "#002FC2", "#EB4E00", "#000D8A"],
