@@ -61,7 +61,7 @@
                             <label>Usuario</label>
                             <div class="input-group col-md-12">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                                <input type="text" class="form-control" name="tecn" pattern="[A-Z,a-z,0-9,_-,ñ,Ñ]{1,15}"
+                                <input type="text" autocomplete = "OFF" class="form-control" name="tecn" pattern="[A-Z,a-z,0-9,_-,ñ,Ñ]{1,15}"
                                     required />
                             </div>
                             <span class="help-block" id="error"></span>
@@ -70,7 +70,7 @@
                             <label>Contraseña</label>
                             <div class="input-group col-md-12">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                                <input type="password" name="pass" class="form-control"
+                                <input autocomplete = "OFF"  type="password" name="pass" class="form-control"
                                     pattern="[A-Z,a-z,0-9,_-ñÑ]{1,15}" required />
                             </div>
                             <span class="help-block" id="error"></span>
