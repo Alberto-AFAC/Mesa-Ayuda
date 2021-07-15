@@ -59,8 +59,7 @@ $query = "SELECT idtec FROM reporte ORDER BY n_reporte DESC ";
 $res = mysqli_query($conexion,$query);
 $result = mysqli_fetch_row($res);
 if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
-$query = "SELECT id_tecnico,nombre,apellidos FROM usuarios 
-		  INNER JOIN tecnico ON id_usuario = id_usu 
+$query = "SELECT id_tecnico FROM tecnico 
 		  WHERE privilegios = 'tecnico' AND activo = 0 AND baja = 0 ORDER BY id_tecnico ASC ";
 $result = mysqli_query($conexion,$query);
 $n=0;
