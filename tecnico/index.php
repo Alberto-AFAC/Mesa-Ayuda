@@ -762,13 +762,13 @@ $(document).ready(function(){
             } else if($data['FechaFinal'] >= 10 ){
                 $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['FechaFinal']." hrs</span>";
             } 
-  
+            
   $actual = date('d/m/Y');
 
 if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente' || $data['evaluacion']=='CANCELADO'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
+    ["<?php echo  $data['n_reporte']?>","<?php echo $data['nombre'] . " " . $data['apellidos'] ?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>";
 
