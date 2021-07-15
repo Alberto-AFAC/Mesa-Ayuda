@@ -2,8 +2,8 @@
 session_start(); 
   //evaluaremos si la variable de sesión existe de lo contrario no se hará nada 
   //si la variable sesión existe, se evaluará que tipo de usuario está ingresando de esa manera saber a dónde se debe redireccionar en caso de que ya se haya logeado 
-  if(isset($_SESSION['n_empleado'])){
-    if($_SESSION['n_empleado']['n_empleado'] != ''){}    
+  if(isset($_SESSION['gstNmpld'])){
+    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
  }else{ header('Location: ../');}
 
 unset($_SESSION['consulta']);
@@ -128,7 +128,7 @@ unset($_SESSION['consulta']);
                                 <label id="nota1"></label>    
                                 <label id="nota2">¡Agregue los datos del equipo que desea reportar!</label>
                                 </div> -->
-                                <input id="nempleado" name="nempleado" type="hidden" value="<?php echo $_SESSION['n_empleado']['n_empleado']?>"/>
+                                <input id="nempleado" name="nempleado" type="hidden" value="<?php echo $_SESSION['gstNmpld']['gstNmpld']?>"/>
 
                                 <input id="idequipo" name="idequipo" type="hidden" value="0" />
 

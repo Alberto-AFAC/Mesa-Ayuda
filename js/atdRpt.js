@@ -362,8 +362,8 @@ type:'POST'
 
 function agrEqpo(){
 
-var n_empleado = document.getElementById('n_empleado').value;
-var asignado = document.getElementById('asignado').value;
+// var n_empleado = document.getElementById('n_empleado').value;
+// var asignado = document.getElementById('asignado').value;
 var id_equipo = document.getElementById('id_equipo').value;
 var num_sigtic = document.getElementById('num_sigtic').value;
 var num_invntraio = document.getElementById('num_invntraio').value;
@@ -384,11 +384,11 @@ var nombre_equipo = document.getElementById('nombre_equipo').value;
 var servicio_internet = document.getElementById('servicio_internet').value;
 var tipo_equipo = document.getElementById('tipo_equipo').value;
 var ubicacion = document.getElementById('ubicaeqpo').value;
+var cambio = 0;
 
+datos = id_equipo +'*'+num_sigtic +'*'+num_invntraio +'*'+marca_cpu +'*'+serie_cpu +'*'+memoria_ram +'*'+procesador +'*'+velocidad_proc +'*'+uni_disc_flax +'*'+disco_duro +'*'+serie_teclado +'*'+serie_monitor +'*'+version_windows +'*'+version_office +'*'+serie_mouse +'*'+direccion_ip +'*'+nombre_equipo +'*'+servicio_internet +'*'+tipo_equipo +'*'+ubicacion;
 
-datos = n_empleado +'*'+asignado +'*'+id_equipo +'*'+num_sigtic +'*'+num_invntraio +'*'+marca_cpu +'*'+serie_cpu +'*'+memoria_ram +'*'+procesador +'*'+velocidad_proc +'*'+uni_disc_flax +'*'+disco_duro +'*'+serie_teclado +'*'+serie_monitor +'*'+version_windows +'*'+version_office +'*'+serie_mouse +'*'+direccion_ip +'*'+nombre_equipo +'*'+servicio_internet +'*'+tipo_equipo +'*'+ubicacion;
-
-       if(n_empleado == '0' || asignado == '0' || id_equipo == '0' || num_sigtic == '0' || num_invntraio == '0' || marca_cpu == '0' || serie_cpu == '0' || memoria_ram == '0' || procesador == '0' || velocidad_proc == '0' || uni_disc_flax == '0' || disco_duro == '0' || serie_teclado == '0' || serie_monitor == '0' || version_windows == '0' || version_office == '0' || serie_mouse == '0' || direccion_ip == '0' || nombre_equipo == '0' || servicio_internet == '0' || tipo_equipo == '0' || ubicacion == '0' ){
+       if(id_equipo == '0' || num_sigtic == '0' || num_invntraio == '0' || marca_cpu == '0' || serie_cpu == '0' || memoria_ram == '0' || procesador == '0' || velocidad_proc == '0' || uni_disc_flax == '0' || disco_duro == '0' || serie_teclado == '0' || serie_monitor == '0' || version_windows == '0' || version_office == '0' || serie_mouse == '0' || direccion_ip == '0' || nombre_equipo == '0' || servicio_internet == '0' || tipo_equipo == '0' || ubicacion == '0' ){
             $("#empty").toggle("toggled");
             setTimeout(function(){
             $('#empty').toggle('toggled');
@@ -398,7 +398,7 @@ datos = n_empleado +'*'+asignado +'*'+id_equipo +'*'+num_sigtic +'*'+num_invntra
                $.ajax({
                     url:'../php/agrEqpo.php',
                     type:'POST',
-                    data: 'n_empleado='+n_empleado+'&asignado='+asignado+'&id_equipo='+id_equipo+'&num_sigtic='+num_sigtic+'&num_invntraio='+num_invntraio+'&marca_cpu='+marca_cpu+'&serie_cpu='+serie_cpu+'&memoria_ram='+memoria_ram+'&procesador='+procesador+'&velocidad_proc='+velocidad_proc+'&uni_disc_flax='+uni_disc_flax+'&disco_duro='+disco_duro+'&serie_teclado='+serie_teclado+'&serie_monitor='+serie_monitor+'&version_windows='+version_windows+'&version_office='+version_office+'&serie_mouse='+serie_mouse+'&direccion_ip='+direccion_ip+'&nombre_equipo='+nombre_equipo+'&servicio_internet='+servicio_internet+'&tipo_equipo='+tipo_equipo+'&ubicacion='+ubicacion+'&opcion=agreqpo'
+                    data: 'id_equipo='+id_equipo+'&cambio='+cambio+'&num_sigtic='+num_sigtic+'&num_invntraio='+num_invntraio+'&marca_cpu='+marca_cpu+'&serie_cpu='+serie_cpu+'&memoria_ram='+memoria_ram+'&procesador='+procesador+'&velocidad_proc='+velocidad_proc+'&uni_disc_flax='+uni_disc_flax+'&disco_duro='+disco_duro+'&serie_teclado='+serie_teclado+'&serie_monitor='+serie_monitor+'&version_windows='+version_windows+'&version_office='+version_office+'&serie_mouse='+serie_mouse+'&direccion_ip='+direccion_ip+'&nombre_equipo='+nombre_equipo+'&servicio_internet='+servicio_internet+'&tipo_equipo='+tipo_equipo+'&ubicacion='+ubicacion+'&opcion=actualizar'
                 }).done(function(respuesta){
                 console.log(respuesta);
                 if(respuesta==0){

@@ -280,6 +280,9 @@
                                 <li>
                                     <a href="equipo"><i class="fa fa-desktop"></i> Equipos</a>
                                 </li>
+                            <li>
+                                    <a href="tecnico"><i class="fa fa-street-view"></i> Técnico</a>
+                            </li>
 
                             </ul>
                             <!-- /.nav-second-level -->

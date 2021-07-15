@@ -2,8 +2,8 @@
 session_start(); 
   //evaluaremos si la variable de sesión existe de lo contrario no se hará nada 
   //si la variable sesión existe, se evaluará que tipo de usuario está ingresando de esa manera saber a dónde se debe redireccionar en caso de que ya se haya logeado
-if(isset($_SESSION['n_empleado'])){
-    if($_SESSION['n_empleado']['n_empleado'] != ''){}    
+if(isset($_SESSION['gstNmpld'])){
+    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
 }else{ header('Location: ../');}
 unset($_SESSION['consulta']);
 ?>
@@ -111,8 +111,8 @@ unset($_SESSION['consulta']);
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-2">
-                    <label>Ubicación</label>
-                    <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
+                    <label>Correo</label>
+                    <input id="correo" name="correo" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
 
@@ -123,16 +123,33 @@ unset($_SESSION['consulta']);
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
+                    <label style="color:white;">.</label>
                     <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
+                    <label style="color:white;">.</label>
                     <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
-                    
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
+                    </div>
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="final" name="final" type="text" class="form-control" disabled="">
+                    </div>
+                    </div>
+
                     <div class="form-group">
                     <div class="col-sm-12">
                     <label>Observaciones</label>  
@@ -213,7 +230,7 @@ unset($_SESSION['consulta']);
             <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
                     <div class="form-group">                    
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                     <label>N° reporte</label>
                     <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
                     </div>
@@ -225,9 +242,9 @@ unset($_SESSION['consulta']);
                     <label>Extension</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-2">
-                    <label>Ubicación</label>
-                    <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
+                    <div class="col-sm-3">
+                    <label>Correo</label>
+                    <input id="correo" name="correo" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
 
@@ -238,13 +255,30 @@ unset($_SESSION['consulta']);
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
+                    <label style="color:white;">.</label>
                     <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
+                    <label style="color:white;">.</label>
                     <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
+                    </div>
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="final" name="final" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
@@ -308,16 +342,45 @@ unset($_SESSION['consulta']);
     <script type="text/javascript">
         var dataSet = [
         <?php
-	     $numEmp = $_SESSION['n_empleado']['n_empleado'];
+	     $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
+
+// $query1 = "SELECT gstIdper,gstNombr,gstApell,gstExTel FROM personal WHERE gstNmpld = $numEmp ";
+// $resultado = mysqli_query($conexion2, $query1);
+// while($data = mysqli_fetch_array($resultado)){
+// $id = $data['gstIdper'];
+// $nombre = $data['gstNombr'];
+// $apellidos = $data['gstApell'];
+// $ext = $data['gstExTel'];
+
+//          $query = "SELECT 
+//             reporte.n_reporte,
+//             tecnico.id_usu,
+//             reporte.n_empleado
+//                 FROM reporte
+//                 LEFT JOIN tecnico
+//                 ON id_tecnico = idtec
+//                 WHERE reporte.n_empleado = $numEmp";
+//              $resultado = mysqli_query($conexion, $query);
+//         while($data = mysqli_fetch_array($resultado)){
+
+// $nombre = $data['n_reporte'];
+// $apellidos = '45';
+// $ext = '';
+
+// }
+
+         $query1 = "SELECT gstIdper,gstNombr,gstApell,gstExTel FROM personal WHERE gstNmpld = $numEmp";
+$resultado = mysqli_query($conexion2, $query1);
+while($dato = mysqli_fetch_array($resultado)){
+$ext = $dato['gstExTel'];
+$nombre = $dato['gstNombr'];
+$apellidos = $dato['gstApell'];
+$idpersona = $dato['gstIdper'];
+
          $query = "SELECT 
             reporte.n_reporte,
-            usuarios.nombre,
-            usuarios.apellidos,
-            usuarios.ubicacion,
-            usuarios.extension,
             reporte.hinicio,
             DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
-
             reporte.evaluacion,
             reporte.estado_rpt,
             reporte.descripcion,
@@ -328,29 +391,36 @@ unset($_SESSION['consulta']);
             reporte.falla_interna,
             reporte.falla_xterna,
             reporte.observa,
-            reporte.usu_observ
+            reporte.usu_observ,
+            tecnico.id_usu
                 FROM reporte
                 RIGHT JOIN tecnico
                 ON id_tecnico = idtec
-                LEFT JOIN usuarios
-                ON id_usuario = id_usu
-                WHERE reporte.n_empleado= $numEmp ORDER BY reporte.n_empleado DESC";
+                WHERE reporte.n_empleado = $numEmp";
              $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $fila = $data['n_reporte'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
+            $id_usu = $data['id_usu'];
+
 
 
 if($data['estado_rpt'] == 'Por atender'){
+
+
+
+
         ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
                   
                 echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>"; ?>"
 ],
-<?php }else if($data['estado_rpt'] == 'Pendiente'){ ?>
+<?php 
 
-   ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+}else if($data['estado_rpt'] == 'Pendiente'){ ?>
+
+   ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
                       
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";?>"
@@ -358,7 +428,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
 <?php }else if($data['evaluacion'] == '0'){ ?>
 
-   ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+   ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%'>Evaluar</a>";                        
                     
@@ -366,7 +436,7 @@ if($data['estado_rpt'] == 'Por atender'){
 ],
 
 
-<?php } 
+<?php } }
     }?>
 ];
 
@@ -385,7 +455,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     {title: "N°"},
     {title: "Técnico asignado"},
     {title: "Ext."},
-    {title: "Descripción problema"},
+    {title: "Tipo de servicio"},
     {title: "Fecha envio"},
     {title: "Fecha termino"},
     {title: "Estado"}

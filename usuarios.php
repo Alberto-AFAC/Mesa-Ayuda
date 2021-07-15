@@ -15,8 +15,9 @@ include ("conexion/conexion.php");
         }*/
 
          $id = $_SESSION['usuario']['id_usu'];
-        $query = "SELECT nombre,apellidos FROM usuarios inner JOIN tecnico ON id_usuario = $id ";
-        $result = mysqli_query($conexion,$query);
+        $query = "SELECT gstNombr,gstApell FROM personal
+            WHERE gstIdper = $id ";
+        $result = mysqli_query($conexion2,$query);
         $usu = mysqli_fetch_row($result);
 ?>
 <body>

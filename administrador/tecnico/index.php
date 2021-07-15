@@ -399,10 +399,10 @@ if (isset($_SESSION['usuario'])) {
                             <!-- <input type="hidden" id="opcion" name="opcion" value="registrar"> -->
                             <div class="form-group">
                                 <div class="col-sm-offset-0 col-sm-8">
-                                    <label>Nombre</label>
+                                    <label>Nombre personal</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="idusu" id="idusu" type="text" data-live-search="true">
-                               
+                                    <option value="">SELECCIONE OPCIÓN </option>
                                     <?php while($rio = mysqli_fetch_row($usua)):?>
                                         <option value="<?php echo $rio[0]?>"><?php echo $rio[1].' '.$rio[2]?>
                                     </option>
@@ -570,6 +570,7 @@ if (isset($_SESSION['usuario'])) {
                     name="observ" id="observ" type="text" data-live-search="true">
                     <option value="x">Seleecione</option>
                     <option value="VACACIONES">VACACIONES</option>
+                    <option value="MEDICO">MEDICO</option>
                     <option value="ASUNTO PERSONAL">ASUNTO PERSONAL</option>
                 </select>
             </div>

@@ -11,5 +11,5 @@ include ("../conexion/conexion.php");
         $usu = mysqli_fetch_row($result);*/
 ?>
 <body>
-<a class="navbar-brand" href="./">BIENVENIDO - <?php echo $_SESSION['n_empleado']['nombre'].' '.$_SESSION['n_empleado']['apellidos'];?></a>
+<a class="navbar-brand" href="./">BIENVENIDO - <?php echo $_SESSION['gstNmpld']['gstNombr'].' '.$_SESSION['gstNmpld']['gstApell'];?></a>
 </body>

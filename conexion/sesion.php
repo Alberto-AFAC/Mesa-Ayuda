@@ -8,16 +8,16 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 	//palabra reservada de inicio de session 
 	session_start();
 //para validar tipo de caracteres especificar el tipo de caracteres que va escapar
-	$conexion->set_charset('utf8');
+	$conexion2->set_charset('utf8');
 //creacion de 2 variables. 
 	//datos yamar objeto y funcion
-	$n_empleado = $conexion->real_escape_string($_POST['usua']);
+	$gstNmpld = $conexion2->real_escape_string($_POST['usua']);
 	//$pas = $conexion->real_escape_string($_POST['pass']);
 //declaraciones preparadas realizamos la consulta en variables ponemos signo de interrogacion ya que resiviran los parametros nuetsra instruccion sql
-if($nueva_consulta = $conexion->prepare("SELECT * FROM usuarios WHERE n_empleado= ? AND estado = 0")){
-//pasamos los parametros primer parametro el tipo de datos locovamos dos s para indicar que son dos string, el primer dato variable n_empleado y el segundo dato pas que tre la contraseña
+if($nueva_consulta = $conexion2->prepare("SELECT * FROM personal WHERE gstNmpld= ? AND estado = 0")){
+//pasamos los parametros primer parametro el tipo de datos locovamos dos s para indicar que son dos string, el primer dato variable gstNmpld y el segundo dato pas que tre la contraseña
 	//$pass = md5($pas);
-	$nueva_consulta->bind_param('s', $n_empleado);
+	$nueva_consulta->bind_param('s', $gstNmpld);
 //llamamos el metodo execute para que ejecurte la consulta base de datos 
 	$nueva_consulta->execute();
 //obtener el resultado que devuelve con el metodo, con esto tenenmos el resultado de la consulta
@@ -28,10 +28,10 @@ if($resultado->num_rows == 1){
 	$datos = $resultado->fetch_assoc();
 
 	//creamos una varieble de sesion = valor asignado que contenga esa variable <- arreglo de tipo asociativo que contendra todos los datos del usuario que inicie session 
-		$_SESSION['n_empleado'] = $datos;
+		$_SESSION['gstNmpld'] = $datos;
 	
 	//si encontro datos enviaremos la respuesta 
-		echo json_encode(array('error' => false,'tipo' => $datos['n_empleado'] ));
+		echo json_encode(array('error' => false,'tipo' => $datos['gstNmpld'] ));
 }else{
 	//en caso de que no encuentre 
 		echo json_encode(array('error' => true ));		
@@ -40,5 +40,5 @@ if($resultado->num_rows == 1){
 	$nueva_consulta->close();
 		}
 			}
-			$conexion->close();
+			$conexion2->close();
 	?>

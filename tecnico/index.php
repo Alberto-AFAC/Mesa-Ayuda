@@ -17,8 +17,8 @@ session_start();
                 $Hfinal=date('H:i:s');
                 unset($_SESSION['consulta']);
 
-    $sql = "SELECT n_empleado, nombre, apellidos FROM usuarios WHERE estado = 0 && n_empleado != 0";
-    $usua = mysqli_query($conexion,$sql);
+    $sql = "SELECT gstNmpld, gstNombr, gstApell FROM personal WHERE estado = 0 && gstNmpld != 0";
+    $usua = mysqli_query($conexion2,$sql);
 
 
 ?>
@@ -500,22 +500,20 @@ Favor de validar y agregar datos del  equipo </h4>
                 <input type="hidden" id="id_equipo" name="id_equipo">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
 
-                    <div class="form-group">
+<!--                     <div class="form-group">
                     <div class="col-sm-12">
                     <label>
                     ¿el equipo de cómputo pertenece al usuario?
-                    Seleccione usuario a quien pertenece el equipo </label>              
-                    </div>    
-                                        
+                    Seleccione usuario a quien pertenece el equipo </label>            
+                    </div>              
                     <div class="col-sm-8">
                     <select style="width: 100%" class="form-control" class="selectpicker" id="n_empleado" name="n_empleado" type="text" data-live-search="true">
                     <option selected>Seleccione usuarion</option> 
-                    <?php while($usuario = mysqli_fetch_row($usua)):?>
-                    <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
-                    <?php endwhile; ?>
+                    <?php //while($usuario = mysqli_fetch_row($usua)):?>
+                    <option value="<?php //echo $usuario[0]?>"><?php //echo $usuario[1].' '.$usuario[2]?></option>
+                    <?php //endwhile; ?>
                     </select>
                     </div>
- 
                     <div class="col-sm-4">
                     <select class="form-control" name="asignado" id="asignado">
                     <option value="0">Eleija Opción</option>
@@ -523,7 +521,7 @@ Favor de validar y agregar datos del  equipo </h4>
                     <option value="designado">No pertenece</option>
                     </select>
                     </div>                    
-                    </div>
+                    </div> -->
 
                     <div class="form-group">                    
                     <div class="col-sm-4">
@@ -642,6 +640,7 @@ Favor de validar y agregar datos del  equipo </h4>
                     <label>Ubicación del equipo</label>
                     <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
                     <option value="0">Selecione</option> 
+                    <option value="Planta baja / vus">Planta baja / vus</option>
                     <option value="Piso m2">Piso m2</option>
                     <option value="Piso 1">Piso 1</option>
                     <option value="Piso 2">Piso 2</option>
@@ -747,7 +746,8 @@ $(document).ready(function(){
 	$resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $fila = $idtecnico;
-
+            $nombre = '';
+            $apellidos = ''; 
                // ini_set('date.timezone','America/Mexico_City');
                //  $Final= date('d').'/'.date('m').'/'.date('Y');
 
@@ -768,7 +768,7 @@ $(document).ready(function(){
 if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente' || $data['evaluacion']=='CANCELADO'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>";
 
