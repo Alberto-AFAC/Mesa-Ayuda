@@ -740,7 +740,7 @@ $(document).ready(function(){
 		reporte.hfinal,
 		reporte.idequipo,
         -- TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()) AS tiempo_transcurrido
-		IF(reporte.hfinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
+		IF(reporte.ffinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
 		FROM usuarios 
 		LEFT JOIN reporte ON usuarios.n_empleado = reporte.n_empleado
 		WHERE  reporte.idtec = '$idtecnico'";
