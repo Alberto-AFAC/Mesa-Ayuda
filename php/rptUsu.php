@@ -22,7 +22,7 @@
 	// $modelo = $_POST['modelo'];
 	// $serie = $_POST['serie'];
 	// $verwind = $_POST['verwind'];
-	$proceso = $_POST['proceso'];
+	// $proceso = $_POST['proceso'];
 
 	$idtec = selecTec($conexion);
 	

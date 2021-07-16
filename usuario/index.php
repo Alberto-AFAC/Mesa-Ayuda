@@ -132,9 +132,9 @@ unset($_SESSION['consulta']);
 
                                 <input id="idequipo" name="idequipo" type="hidden" value="0" />
 
-                                <input id="proceso" name="proceso" value="asignado" type="hidden"/>
+                                <!-- <input id="proceso" name="proceso" value="asignado" type="hidden"/> -->
 
-                                <div class="col-sm-offset-0 col-sm-4">
+                                <!-- <div class="col-sm-offset-0 col-sm-4">
                                 <select class="form-control" selected="true" id="modelo" name="modelo">
                                 <option value="" selected>SELECCIONE MARCA DEL CPU</option>
                                 <option value="LENOVO">LENOVO</option>
@@ -142,20 +142,20 @@ unset($_SESSION['consulta']);
                                 <option value="HP">HP</option>
                                 <option value="OTRO">OTRO</option>
                                 </select>
-                                </div>
+                                </div> -->
 
-                                <div class="col-sm-offset-0 col-sm-4">
+                                <!--<div class="col-sm-offset-0 col-sm-4">
                                 <input id="serie" name="serie" type="text" class="form-control" placeholder="Número de serie de la CPU">
-                                </div>
+                                </div>-->
                                 
-                               <div class="col-sm-offset-0 col-sm-4">
+                               <!--<div class="col-sm-offset-0 col-sm-4">
                                 <select class="form-control" selected="true" id="verwind" name="verwind">                                
                                 <option value="" selected>SELECCIONE VERSIÓN WINDOWS</option>
                                   <option value="WINDOWS 7" >WINDOWS 7</option>
                                   <option value="WINDOWS 10" >WINDOWS 10</option>
                                   <option value="LINUX" >LINUX</option> 
                                 </select>                                
-                                </div>
+                                </div>-->
 
                                 </div>
                                 </div>
