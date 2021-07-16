@@ -748,9 +748,6 @@ $(document).ready(function(){
             $fila = $idtecnico;
             $nombre = '';
             $apellidos = ''; 
-               // ini_set('date.timezone','America/Mexico_City');
-               //  $Final= date('d').'/'.date('m').'/'.date('Y');
-
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 

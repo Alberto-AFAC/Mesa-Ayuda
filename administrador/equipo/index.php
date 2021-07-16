@@ -363,11 +363,11 @@ Agregar datos del  equipo </h4>
 
                     <div class="form-group">                    
                     <div class="col-sm-4">
-                    <label>Número sigctic</label>
+                    <label>Número SIGTIC</label>
                     <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
                     </div>
                     <div class="col-sm-4">
-                    <label>Numero de inventario</label>
+                    <label>Número de inventario</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
                     </div>                    
                     <div class="col-sm-4">
@@ -588,11 +588,11 @@ Editar datos del  equipo </h4>
 
                     <div class="form-group">                    
                     <div class="col-sm-4">
-                    <label>Número sigctic</label>
+                    <label>Número SIGTIC</label>
                     <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
                     </div>
                     <div class="col-sm-4">
-                    <label>Numero de inventario</label>
+                    <label>Número de inventario</label>
                     <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
                     </div>                    
                     <div class="col-sm-4">
