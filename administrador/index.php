@@ -531,7 +531,7 @@ onclick="location.href='./'" -->
                         <div class="panel-heading">
                             <h5 style="font-weight: bold; text-align: center;">Estadística Mensual Solicitud Según
                                 Servicio</h5>
-                            <div style="padding-top:50px;" class="row">
+                            <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-servicios"></canvas>
                             </div>
                         </div>
