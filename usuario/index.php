@@ -110,9 +110,7 @@ unset($_SESSION['consulta']);
                                 <input type="radio" name="catch" value="false" id="pregunta2">
                                 <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
                                 </div> -->
-                                <div class="form-group">
-                                <div id="equipo"></div>         
-                                </div>
+                               
                                 </div>
                                 <div id="div2" style="display: none;">
                                 <!--<div class="radio">
@@ -168,6 +166,11 @@ unset($_SESSION['consulta']);
                                     <div id="select3"></div>
                                     <div id="select4"></div>
                                     <div id="select5"></div>
+                                </div>
+
+
+                                <div class="form-group">
+                                <div id="equipo"></div>         
                                 </div>
                                 <!--</div>-->
                                 <!--ARÉA DE DESCRIPCIÓN-->

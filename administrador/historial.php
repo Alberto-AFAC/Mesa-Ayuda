@@ -313,7 +313,8 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="zoom col-lg-3 col-md-6">
+                <h4 style="text-align: center;">SOLICITUD DE REPORTES SEGÚN SERVICIO</h4>
+                <!-- <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -339,9 +340,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="zoom col-lg-3 col-md-6">
+                <!-- <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -355,9 +356,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="zoom col-lg-3 col-md-6">
+                <!-- <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -371,8 +372,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="zoom col-lg-3 col-md-6">
+                </div> -->
+                <!-- <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -387,8 +388,74 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
+            <div class="row">
+            <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                            <div style="padding-top:20px;" class="row">
+                                <canvas id="piechart-servicios"></canvas>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                            <div style="padding-top:20px;" class="row">
+                                <canvas id="piechart-impresion"></canvas>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                            <div style="padding-top:20px;" class="row">
+                                <canvas id="piechart-comunicaciones"></canvas>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                            <div style="padding-top:20px;" class="row">
+                                <canvas id="piechart-eventos"></canvas>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+            
+
+            <!-- <div class="row col-lg-6 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div style="padding-top:20px;" class="row">
+                                <canvas id="piechart-servicios"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-lg-6 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div style="padding-top:20px;" class="row">
+                                <canvas id="piechart-impresion"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             <?php 
 
 $query = "SELECT id_tecnico, nombre, apellidos FROM usuarios
@@ -621,6 +688,7 @@ onclick="location.href='./'" -->
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 <!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
@@ -762,6 +830,159 @@ $(document).ready(function() {
     $('#min, #max').on('change', function() {
         tableGenerarReporte.draw();
     });
+});
+
+//GRÁFICA PARA MEDIR EL EQUIPO DE COMPUTO
+<?php 
+            $query = "SELECT
+       	    COUNT( CASE WHEN servicio = 'COMPUTO' THEN 1 END ) AS COMPUTOPRINCIPAL,
+            COUNT( CASE WHEN intervencion = 'ESCRITORIO' THEN 1 END ) AS INVERVENCIONE,
+            COUNT( CASE WHEN intervencion = 'LAPTOP' THEN 1 END ) AS INVERVENCIONL,
+            COUNT( CASE WHEN intervencion = 'TABLETA' THEN 1 END ) AS INVERVENCIONT
+            FROM
+            reporte";
+        $resultado = mysqli_query($conexion, $query);
+?>
+var piechar = new Chart(document.getElementById("piechart-servicios"), {
+    type: 'polarArea',
+    data: {
+        <?php while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["Escritorio", "Laptop", "Tableta","Total"
+        ],
+        datasets: [{
+            label: "Sistemas",
+            backgroundColor: ["#006E6D","#009C9A","#00D6D4","#5ED0CF"],
+            borderWidth: 0,
+            data: ["<?php echo $row['INVERVENCIONE']?>","<?php echo $row['INVERVENCIONL']?>","<?php echo $row['INVERVENCIONT']?>","<?php echo $row['COMPUTOPRINCIPAL']?>"]
+        }]
+        <?php }?>
+    },
+    options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Computo'
+      }
+    }
+  },
+});
+
+//GRÁFICA PARA MEDIR EL SERVICIO DE IMPRESION
+<?php 
+            $query = "SELECT
+            COUNT( CASE WHEN servicio = 'IMPRESION' THEN 1 END ) AS IMPRESIONPRINCIPAL,
+            COUNT( CASE WHEN intervencion = 'MULTIFUNCIONAL' THEN 1 END ) AS INVERVENCIONM,
+            COUNT( CASE WHEN intervencion = 'IMPRESORA' THEN 1 END ) AS INVERVENCIONI,
+            COUNT( CASE WHEN intervencion = 'ESCANER' THEN 1 END ) AS INVERVENCIONES
+            FROM
+            reporte";
+        $resultado = mysqli_query($conexion, $query);
+?>
+var piechar = new Chart(document.getElementById("piechart-impresion"), {
+    type: 'polarArea',
+    data: {
+        <?php while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["Multifuncional", "Impresora", "Escanner","Total"
+        ],
+        datasets: [{
+            label: "Sistemas",
+            backgroundColor: ["#00CF4B","#00F358","#37FF80","#91FFB9"],
+            borderWidth: 0,
+            data: ["<?php echo $row['INVERVENCIONM']?>","<?php echo $row['INVERVENCIONI']?>","<?php echo $row['INVERVENCIONES']?>","<?php echo $row['IMPRESIONPRINCIPAL']?>"]
+        }]
+        <?php }?>
+    },
+    options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Impresión'
+      }
+    }
+  },
+});
+//GRÁFICA PARA MEDIR EL SERVICIO DE COMUNICACIONES
+<?php 
+            $query = "SELECT
+            COUNT( CASE WHEN servicio = 'COMUNICACIONES' THEN 1 END ) AS COMUNICACIONESPRINCIPAL,
+            COUNT( CASE WHEN intervencion = 'INTERNET' THEN 1 END ) AS INVERVENCIONINT,
+            COUNT( CASE WHEN intervencion = 'TELEFONÍA' THEN 1 END ) AS INVERVENCIONTEL,
+            COUNT( CASE WHEN servicio = 'PROGRAMACIÓN DE EVENTOS/REUNIO' THEN 1 END ) AS PROGRAMACIONPRIN,
+            COUNT( CASE WHEN intervencion = 'PRÉSTAMO DE EQUIPO' THEN 1 END ) AS INVERVENCIONPREST
+            FROM
+            reporte";
+        $resultado = mysqli_query($conexion, $query);
+?>
+var piechar = new Chart(document.getElementById("piechart-comunicaciones"), {
+    type: 'polarArea',
+    data: {
+        <?php while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["Internet", "Telefonía","Total"
+        ],
+        datasets: [{
+            label: "Sistemas",
+            backgroundColor: ["#000075","#2424D1","#3636FF"],
+            borderWidth: 0,
+            data: ["<?php echo $row['INVERVENCIONINT']?>","<?php echo $row['INVERVENCIONTEL']?>","<?php echo $row['COMUNICACIONESPRINCIPAL']?>"]
+        }]
+        <?php }?>
+    },
+    options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Comunicaciones'
+      }
+    }
+  },
+});
+//GRÁFICA PARA MEDIR LA PROGRAMACIÓN DE EVENTOS Y REUNIONES
+<?php 
+            $query = "SELECT
+            COUNT( CASE WHEN servicio = 'PROGRAMACIÓN DE EVENTOS/REUNIO' THEN 1 END ) AS PROGRAMACIONPRIN,
+            COUNT( CASE WHEN intervencion = 'PRÉSTAMO DE EQUIPO' THEN 1 END ) AS INVERVENCIONPREST
+            FROM
+            reporte";
+        $resultado = mysqli_query($conexion, $query);
+?>
+var piechar = new Chart(document.getElementById("piechart-eventos"), {
+    type: 'polarArea',
+    data: {
+        <?php while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["Préstamo de equipo","Total"
+        ],
+        datasets: [{
+            label: "Sistemas",
+            backgroundColor: ["#FF6609","#FF8C47"],
+            borderWidth: 0,
+            data: ["<?php echo $row['INVERVENCIONPREST']?>","<?php echo $row['PROGRAMACIONPRIN']?>"]
+        }]
+        <?php }?>
+    },
+    options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Programación de eventos/reuniones'
+      }
+    }
+  },
 });
 </script>
 

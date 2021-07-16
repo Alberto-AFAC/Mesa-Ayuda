@@ -21,6 +21,7 @@ switch ($id) {
   </option>
   </select>
   </div>
+ 
 
 <?php break;
   case "b":?>

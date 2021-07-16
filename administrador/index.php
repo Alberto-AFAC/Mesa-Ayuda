@@ -377,11 +377,11 @@ onclick="location.href='./'" -->
                                     </div>
                                     <div class="col-sm-5">
                                         <label>Usuario</label>
-                                        <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
+                                        <input id="gstNombr" name="gstNombr" type="text" class="form-control" disabled="">
                                     </div>
                                     <div class="col-sm-2">
                                         <label>Extension</label>
-                                        <input id="extension" name="extension" type="text" class="form-control"
+                                        <input id="gstExTel" name="gstExTel" type="text" class="form-control"
                                             disabled="">
                                     </div>
                                     <div class="col-sm-2">
@@ -569,17 +569,6 @@ onclick="location.href='./'" -->
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h5 style="font-weight: bold; text-align: center;">Estadística Mensual Solicitud Según
-                                Servicio</h5>
-                            <div style="padding-top:20px;" class="row">
-                                <canvas id="piechart-servicios"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -605,28 +594,34 @@ onclick="location.href='./'" -->
 <script type="text/javascript">
 var dataSet = [
     <?php
-
-	    $query = "SELECT
-                    reporte.n_reporte,
-                    usuarios.nombre,
-                    usuarios.apellidos,
-                    usuarios.ubicacion,
-                    usuarios.extension,
-
-        DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
-        DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as ffinal,
-
-                    reporte.evaluacion,
-                    reporte.estado_rpt
-                 FROM
-                    reporte 
-                LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado
-                WHERE
-                MONTH ( finicio ) = MONTH (
-                CURRENT_DATE ()) 
-                ORDER BY  n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query);
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+         evaluacion,
+         estado_rpt 
+         FROM REPORTE
+         WHERE 	MONTH ( finicio ) = MONTH (
+         CURRENT_DATE ()) 
+         AND estado_rpt = 'Por atender'
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
             if($data['ffinal'] == '0000-00-00'){
                 $NA = "Sin fecha";
 
@@ -643,9 +638,9 @@ var dataSet = [
 if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre'].' '.$data['apellidos']?>",
-        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA ?>",
+    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+        "<?php echo  $data['n_reporte']?>", "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>",
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
                 
@@ -666,12 +661,12 @@ if($data['estado_rpt'] == 'Por atender'){
 
                 // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
                 //     }
-}
+                    }
                     ?>"],
 
     <?php }else if($data['estado_rpt'] == 'Pendiente'){ ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data['nombre'].' '.$data['apellidos']?>",
+    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
         "<?php echo $NA ?>",
 
@@ -680,8 +675,9 @@ if($data['estado_rpt'] == 'Por atender'){
 
                     ?>"],
 
-<?php } 
-}?>
+<?php } ?>
+
+        <?php }  } ?>
 ];
 //       
 
@@ -718,199 +714,6 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
             title: "Estado"
         }
     ],
-});
-
-//GRAFICAS PARA MEDIR LA EVALUACIÓN DEL TÉCNICO//
-<?php 
-            $query = "SELECT
-               usuarios.nombre,
-            usuarios.apellidos,
-               COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-              COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-              COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
-              COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
-             FROM
-            reporte
-             INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-             INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
-         GROUP BY
-                idtec";
-            // -- WHERE
-            // -- MONTH ( finicio ) = MONTH (
-            // -- CURRENT_DATE ())";
-    //     $query = "SELECT
-    //     usuarios.nombre,
-    //     usuarios.apellidos,
-    //     COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-    //     COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-    //     COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo 
-    // FROM
-    //     reporte
-    //     INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-    //     INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
-    // GROUP BY
-    //     idtec";
-        $resultado = mysqli_query($conexion, $query);
-?>
-var piechar = new Chart(document.getElementById("piechart-admin"), {
-    type: 'bar',
-    data: {
-
-        <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Sergio","Angel"],
-        // console.log(data);
-        
-        datasets: [{
-                label: "Bueno",
-                backgroundColor: ["#0014c4c0"],
-                borderWidth: 0,
-                data: [<?php echo $row['Bueno']?>
-                ]
-            },
-            {
-                label: "Regular",
-                backgroundColor: ["#5fbfffc0"],
-                borderWidth: 0,
-                data: [<?php echo $row['Regular']?>
-                ]
-            },
-            {
-                label: "Malo",
-                backgroundColor: ["#ec0000c0"],
-                borderWidth: 0,
-                data: [<?php echo $row['Malo']?>
-                ]
-            },
-            {
-                label: "Cancelado",
-                backgroundColor: ["#000000c0"],
-                borderWidth: 0,
-                data: [<?php echo $row['Cancelado']?>
-                ]
-            }
-        
-        ],
-        <?php }?>
-       
-    },
-   
-    options: {
-        responsive: true,
-        legend: {
-            labels: {
-                position: 'top',
-            }
-        },
-        title: {
-            display: true,
-            text: 'Porcentaje de cumplimiento'
-        },
-        scales: {
-      x: {
-        stacked: true,
-      },
-      y: {
-        stacked: true
-      }
-    }
-    }
-});
-// var piechar = new Chart(document.getElementById("piechart-admin"), {
-//     type: 'pie',
-//     data: {
-
-//         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-//         labels: ["Bueno", "Regular", "Malo", "Cancelado"],
-
-//         datasets: [{
-//                 label: "Bueno",
-//                 backgroundColor: ["#057100", "#0BFD00", "#FD9200", "#FD0000"],
-//                 borderWidth: 0,
-//                 data: [<?php echo $row['Bueno']?>, <?php echo $row['Regular']?>, <?php echo $row['Malo']?>,
-//                     <?php echo $row['Cancelado']?>
-//                 ]
-//             }
-
-//         ],
-//         <?php }?>
-//     },
-//     options: {
-//         responsive: true,
-//         legend: {
-//             labels: {
-//                 position: 'top',
-//             }
-//         },
-//         title: {
-//             display: true,
-//             text: 'Porcentaje de cumplimiento'
-//         },
-//         maintainAspectRatio: false
-//     }
-// });
-//GRAFICAS PARA MEDIR SOLICITUD DE SERVICIO SEGUN EL CASO
-<?php 
-            $query = " SELECT
-       	    COUNT( CASE WHEN servicio = 'SISTEMAS' THEN 1 END ) AS sistemas,
-	        COUNT( CASE WHEN servicio = 'IMPRESIÓN' THEN 1 END ) AS impresion,
-	        COUNT( CASE WHEN servicio = 'CÓMPUTO' THEN 1 END ) AS computo,
-	        COUNT( CASE WHEN servicio = 'COMUNICACIONES' THEN 1 END ) AS comunicaciones,
-	        COUNT( CASE WHEN servicio = 'PROGRAMACIÓN DE EVENTOS/REUNIONES' THEN 1 END ) AS reuniones
-            FROM
-            reporte
-            WHERE
-             MONTH ( finicio ) = MONTH (CURRENT_DATE ())";
-            // -- WHERE
-            // -- MONTH ( finicio ) = MONTH (
-            // -- CURRENT_DATE ())";
-    //     $query = "SELECT
-    //     usuarios.nombre,
-    //     usuarios.apellidos,
-    //     COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-    //     COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-    //     COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo 
-    // FROM
-    //     reporte
-    //     INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-    //     INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
-    // GROUP BY
-    //     idtec";
-        $resultado = mysqli_query($conexion, $query);
-?>
-var piechar = new Chart(document.getElementById("piechart-servicios"), {
-    type: 'bar',
-    data: {
-        <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Sistemas", "Impresión", "Cómputo", "Comunicaciones", "Programación de eventos/reuniones"
-        ],
-        datasets: [{
-            label: "Sistemas",
-            backgroundColor: ["#707070", "#006C52", "#002FC2", "#EB4E00", "#000D8A"],
-            borderWidth: 0,
-            data: [<?php echo $row['sistemas']?>, <?php echo $row['impresion']?>,
-                <?php echo $row['computo']?>, <?php echo $row['comunicaciones']?>,
-                <?php echo $row['reuniones']?>
-            ]
-        }]
-        <?php }?>
-    },
-    options: {
-        legend: {
-            labels: {
-                fontColor: '#green',
-            }
-        },
-        title: {
-            display: false,
-            text: 'Porcentaje de cumplimiento'
-        },
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-
-    }
 });
 </script>
 
