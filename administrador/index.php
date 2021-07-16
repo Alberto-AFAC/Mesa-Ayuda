@@ -516,12 +516,55 @@ onclick="location.href='./'" -->
                     </div>
 
                 </div>
+                <?php 
+                    $query = "SELECT
+                    usuarios.id_usuario,
+                    usuarios.nombre,
+                    usuarios.apellidos,
+                    COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+                    COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+                    COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
+                    COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
+                    FROM
+                    reporte
+                    INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
+                    INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
+                    GROUP BY
+                    idtec";
+                    $resultado = mysqli_query($conexion, $query);
+                    $contador = 0;
+                    while($data = mysqli_fetch_array($resultado)){
+                    $contador++;
+                ?>
                 <div class="col-lg-6 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h5 style="font-weight: bold; text-align: center;">Estadística Mensual de Evaluación</h5>
                             <div class="row">
-                                <canvas id="piechart-admin"></canvas>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Bueno</th>
+                                            <th scope="col">Regular</th>
+                                            <th scope="col">Malo</th>
+                                            <th scope="col">Cancelado</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $contador ?></td>
+                                            <td><?php echo $data['nombre'].' '.$data['apellidos']?></td>
+                                            <td style="color: white; background-color: green;"><?php echo $data['Bueno']?></td>
+                                            <td style="color: white; background-color: orange;"><?php echo $data['Regular']?></td>
+                                            <td style="color: white; background-color: red;"><?php echo $data['Malo']?></td>
+                                            <td><?php echo $data['Cancelado']?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
