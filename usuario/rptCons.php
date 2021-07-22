@@ -341,43 +341,10 @@ unset($_SESSION['consulta']);
     <script src="../dist/js/sb-admin-2.js"></script>
     <script type="text/javascript">
         var dataSet = [
-        <?php
+            <?php
 	     $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
-
-// $query1 = "SELECT gstIdper,gstNombr,gstApell,gstExTel FROM personal WHERE gstNmpld = $numEmp ";
-// $resultado = mysqli_query($conexion2, $query1);
-// while($data = mysqli_fetch_array($resultado)){
-// $id = $data['gstIdper'];
-// $nombre = $data['gstNombr'];
-// $apellidos = $data['gstApell'];
-// $ext = $data['gstExTel'];
-
-//          $query = "SELECT 
-//             reporte.n_reporte,
-//             tecnico.id_usu,
-//             reporte.n_empleado
-//                 FROM reporte
-//                 LEFT JOIN tecnico
-//                 ON id_tecnico = idtec
-//                 WHERE reporte.n_empleado = $numEmp";
-//              $resultado = mysqli_query($conexion, $query);
-//         while($data = mysqli_fetch_array($resultado)){
-
-// $nombre = $data['n_reporte'];
-// $apellidos = '45';
-// $ext = '';
-
-// }
-
-         $query1 = "SELECT gstIdper,gstNombr,gstApell,gstExTel FROM personal WHERE gstNmpld = $numEmp";
-$resultado = mysqli_query($conexion2, $query1);
-while($dato = mysqli_fetch_array($resultado)){
-$ext = $dato['gstExTel'];
-$nombre = $dato['gstNombr'];
-$apellidos = $dato['gstApell'];
-$idpersona = $dato['gstIdper'];
-
          $query = "SELECT 
+            tecnico.id_usu,
             reporte.n_reporte,
             reporte.hinicio,
             DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
@@ -391,18 +358,30 @@ $idpersona = $dato['gstIdper'];
             reporte.falla_interna,
             reporte.falla_xterna,
             reporte.observa,
-            reporte.usu_observ,
-            tecnico.id_usu
+            reporte.usu_observ
                 FROM reporte
                 RIGHT JOIN tecnico
                 ON id_tecnico = idtec
-                WHERE reporte.n_empleado = $numEmp";
+                WHERE reporte.n_empleado= $numEmp ORDER BY reporte.n_empleado DESC";
              $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $fila = $data['n_reporte'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
-            $id_usu = $data['id_usu'];
+            $idtecnico=$data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstNmpld,
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                          WHERE
+                          gstIdper = $idtecnico";
+            $result2=mysqli_query($conexion2,$sql2);
+            while($dato=mysqli_fetch_array($result2)){
+                $ext = $dato['gstExTel'];
+                $nombre = $dato['gstNombr'];
+                $apellidos = $dato['gstApell'];
+                // $idpersona = $dato['gstIdper'];
 
 
 
@@ -412,7 +391,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
 
         ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $dato['gstNombr']?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
                   
                 echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>"; ?>"
 ],

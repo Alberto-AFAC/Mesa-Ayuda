@@ -103,15 +103,7 @@ unset($_SESSION['consulta']);
                         <div class="list-group">
                                 <form class="form-horizontal" action="" method="POST" id="ConEquipo" onsubmit="return reporte(this)">
                                 <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>           
-                                <div id="div1">
-<!--                                 <div class="radio">
-                                <input checked="checked" type="radio" name="catch" value="true" id="pregunta1">
-                                <label for="pregunta1">¿Reportar equipo de computo?</label>
-                                <input type="radio" name="catch" value="false" id="pregunta2">
-                                <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
-                                </div> -->
-                               
-                                </div>
+                              
                                 <div id="div2" style="display: none;">
                                 <!--<div class="radio">
                                 <p id="divp">
@@ -167,10 +159,21 @@ unset($_SESSION['consulta']);
                                     <div id="select4"></div>
                                     <div id="select5"></div>
                                 </div>
+                                <!-- <div class="form-group">
+                                <div id="equipo"></div>         
+                                </div> -->
 
 
+                                <div id="div1">
+<!--                                 <div class="radio">
+                                <input checked="checked" type="radio" name="catch" value="true" id="pregunta1">
+                                <label for="pregunta1">¿Reportar equipo de computo?</label>
+                                <input type="radio" name="catch" value="false" id="pregunta2">
+                                <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
+                                </div> -->
                                 <div class="form-group">
                                 <div id="equipo"></div>         
+                                </div>
                                 </div>
                                 <!--</div>-->
                                 <!--ARÉA DE DESCRIPCIÓN-->

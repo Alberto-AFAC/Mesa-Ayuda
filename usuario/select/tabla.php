@@ -110,6 +110,7 @@ $('#intervencion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select2').load('select/select.php');
+    //console.log("aqui perro"+ $('#intervencion').val());
   }
         });
     });

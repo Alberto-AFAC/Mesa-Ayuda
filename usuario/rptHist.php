@@ -327,14 +327,10 @@ unset($_SESSION['consulta']);
         <?php
 	     $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
          $query = "SELECT 
+            tecnico.id_usu,
             reporte.n_reporte,
-            -- usuarios.nombre,
-            -- usuarios.apellidos,
-            -- usuarios.ubicacion,
-            -- usuarios.extension,
             reporte.hinicio,
             DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
-
             reporte.evaluacion,
             reporte.estado_rpt,
             reporte.descripcion,
@@ -355,11 +351,21 @@ unset($_SESSION['consulta']);
             $fila = $data['n_reporte'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
+            $idtecnico=$data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstNmpld,
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                          WHERE
+                          gstIdper = $idtecnico";
+            $result2=mysqli_query($conexion2,$sql2);
+            while($data2=mysqli_fetch_array($result2)){
 
 if($data['evaluacion'] != '0'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo 'Consulta pendiente'?>","<?php echo 'Consulta pendiente'?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $data2['gstNombr']?>","<?php echo  $data2['gstApell']?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
                     
                      
@@ -367,7 +373,7 @@ if($data['evaluacion'] != '0'){
                     
                  ?>"
 ],
-<?php } 
+<?php } }
 }
 ?>
 ];

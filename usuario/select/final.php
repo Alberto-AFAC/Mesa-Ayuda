@@ -4,11 +4,11 @@
 
 				if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
-					if($_SESSION['consulta'] > 0){
+				
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
              $desc = substr($idp, 1);
-					}
+					
 
 //echo $id;
 switch ($id) {
