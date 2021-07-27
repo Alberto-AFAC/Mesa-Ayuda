@@ -352,8 +352,8 @@ unset($_SESSION['consulta']);
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
             $idtecnico=$data['id_usu'];
-            $sql2="SELECT gstNombr,
-                          gstNmpld,
+            $sql2="SELECT gstNmpld,
+                          gstNombr,                          
                           gstApell,
                           gstExTel
                           FROM personal
@@ -362,10 +362,14 @@ unset($_SESSION['consulta']);
             $result2=mysqli_query($conexion2,$sql2);
             while($data2=mysqli_fetch_array($result2)){
 
+                $nombre = $data2[1];
+                $apellidos = $data2[2];
+                $ext = $data2[3];
+
 if($data['evaluacion'] != '0'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data2['gstNombr']?>","<?php echo  $data2['gstApell']?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo  $ext ?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
                     
                      

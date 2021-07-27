@@ -11,7 +11,7 @@
 				
 //echo '>'.$id;
 switch ($id) {
-  case "a": echo $id ?>
+  case "a": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">

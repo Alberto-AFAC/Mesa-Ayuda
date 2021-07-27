@@ -383,16 +383,10 @@ unset($_SESSION['consulta']);
                 $apellidos = $dato['gstApell'];
                 // $idpersona = $dato['gstIdper'];
 
-
-
 if($data['estado_rpt'] == 'Por atender'){
 
-
-
-
         ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $dato['gstNombr']?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
-                  
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php                   
                 echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>"; ?>"
 ],
 <?php 
