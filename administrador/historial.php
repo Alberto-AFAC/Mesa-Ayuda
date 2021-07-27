@@ -54,6 +54,55 @@
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <style>
+        .parpadea {
+    animation-name: parpadeo;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+    </style>
+
 </head>
 
 <body>
@@ -275,9 +324,11 @@
                                 <?php 
                                 $query ="SELECT
                                             'total',
+                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente,
                                             COUNT( CASE WHEN estado_rpt = 'Finalizado' THEN 1 END ) AS Finalizado,
-                                            COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado                 
-                                            FROM
+                                            COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
+                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente 
+                                        FROM
                                             reporte";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
@@ -305,18 +356,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <?php 
-                    $query ="SELECT
-                    TIMESTAMPDIFF( HOUR, hinicio, hfinal ) AS TIEMPO 
-                    FROM
-                    reporte
-                    WHERE estado_rpt= 'Finalizado'";
-                    $resultado = mysqli_query($conexion, $query);
-                    $row = mysqli_fetch_assoc($resultado);
-                    
-                    ?>
-                <div class="zoom col-lg-3 col-md-6">
+                </div> -->
+
+                <!-- <div class="zoom col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -324,7 +366,7 @@
                                     <img src="../img/reloj.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <div class="col-xs-9 text-right text-warning">
-                                    <div class="huge"><?php echo $row['TIEMPO']?></div>
+                                    <div class="huge"></div>
                                     <div>Atendidos a tiempo</div>
                                 </div>
                             </div>
@@ -336,8 +378,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img class="parpadea" src="../img/fuera de tiempo.svg" width="60px" alt="Bueno"
-                                        class="img-fluid">
+                                    <img class="parpadea" src="../img/fuera de tiempo.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <div class="col-xs-9 text-right text-primary">
                                     <div class="huge"></div>
@@ -625,7 +666,10 @@ onclick="location.href='./'" -->
 <!-- <script src="../js/dataTables.buttons.min.js"></script> -->
 <!-- <script src="../js/buttons.bootstrap.min.js"></script> -->
 <!--Libreria para exportar Excel-->
-
+<script src="../js/jszip.min.js"></script>
+<!--Librerias para exportar PDF-->
+<script src="../js/pdfmake.min.js"></script>
+<script src="../js/vfs_fonts.js"></script>
 <!--Librerias para botones de exportación-->
 
 <!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
@@ -644,14 +688,15 @@ onclick="location.href='./'" -->
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script> -->
 <script type="text/javascript" src="../js/area.js"></script>
 
 
@@ -738,19 +783,19 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        dom: 'Bfrtip',
-        buttons: [
+        // dom: 'Bfrtip',
+        // buttons: [
 
-            'copy', 'csv', 'excel', 'print',
-            {
-                extend: 'pdfHtml5',
-                download: 'open',
-                title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-                filename: 'History-Reports',
-                pageSize: 'A4'
+        //     'copy', 'csv', 'excel',
+        //     {
+        //     extend: 'pdfHtml5',
+        //     messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+        //     download: 'open',
+        //     title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+        //     text: 'Descargar PDF',
+        //     pageSize: 'A4',
 
-            }
-        ],
+        // }],
         orderCellsTop: true,
         fixedHeader: true,
         responsive: true,
