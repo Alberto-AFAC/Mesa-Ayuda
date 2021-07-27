@@ -7,7 +7,7 @@
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
 					}
-
+//echo $id;
 
 switch ($id) {
   case "1":?>
@@ -77,7 +77,7 @@ switch ($id) {
               </script>
 
  <?php break;
-   case "0":?>
+   case "x":?>
 
             <input type="hidden" id="intervencion" name="intervencion" value="0">
               <!--Resetear select-->

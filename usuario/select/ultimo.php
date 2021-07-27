@@ -362,7 +362,7 @@ switch ($id) {
 
 }else{ ?>
 <!-- <div class="col-sm-offset-0 col-sm-4"><select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true" disabled=""><option value="0">SELECCIONE OPCIÓN</option></select></div> -->
-<input type="hidden" id="solucion" name="solucion" value="0">
+<input type="hidden" id="ultima" name="ultima" value="0">
 <?php } ?>
 
 <script type="text/javascript">

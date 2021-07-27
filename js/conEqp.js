@@ -51,13 +51,16 @@ function reporte() {
     var ultima = document.getElementById('ultima').value;
     var final = document.getElementById('final').value;
 
+    x = servicio+'/'+intervencion+'/'+descripcion+'/'+solucion+'/'+ultima+'/'+final;
+
+    alert(x);
 
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&opcion=registrar';
 
 
     //    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
 
-    if (nempleado == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || obser == '' || idequipo == '' || solucion == '0' || ultima == '0' || final == '0') {
+    if (nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || idequipo == '' || solucion == '0' || ultima == '0' || final == '0') {
         $("#vacio").toggle("toggled");
         setTimeout(function() {
             $('#vacio').toggle('toggled');
