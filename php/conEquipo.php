@@ -1,14 +1,13 @@
 <?php
 	include("../conexion/conexion.php");
 	session_start();
-	$numEmp = $_SESSION['n_empleado']['n_empleado'];
+	$numEmp = $_SESSION['gstNmpld']['gstNmpld'];
 	$query = "
 	SELECT marca_cpu,serie_cpu,version_windows,id_equipo,proceso,tipo_equipo
 	FROM equipo 
 	INNER JOIN asignacion 
 	ON id_equi = id_equipo 
-	INNER JOIN usuarios 
-	ON n_emp = n_empleado WHERE n_empleado = $numEmp";
+	WHERE n_emp = $numEmp";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

@@ -321,11 +321,11 @@
     <input type="hidden" id="opcion" name="opcion" value="modificar">
 
     <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-3" >
+    <div class="col-sm-offset-0 col-sm-4" >
     <label for="Nombre">Nombre</label>
     <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
     </div>
-    <div class="col-sm-offset-0 col-sm-3" >
+    <div class="col-sm-offset-0 col-sm-4" >
     <label for="Correo">Correo</label>
     <input id="correo" name="correo" type="text"  class="form-control" disabled="">
     </div>
@@ -337,13 +337,14 @@
     <label for="Extension">Extension</label>
     <input id="extension" name="extension" type="text" class="form-control" disabled="">
     </div> 
-    <div class="col-sm-offset-0 col-sm-2">
-    <label for="Adscripción">Cargo</label>
-    <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
-    </div>      
+      
     </div>
     
-    <div class="form-group">    
+    <div class="form-group">  
+    <div class="col-sm-offset-0 col-sm-3">
+    <label for="Adscripción">Cargo</label>
+    <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
+    </div>  
     <div class="col-sm-offset-0 col-sm-9">
     <label for="Adscripción">Adscripción</label>
     <input id="area" name="area" type="text" class="form-control" disabled="">
@@ -652,7 +653,7 @@
      
         ?>
     
-    ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>', '<?php echo $area?>' ,"<?php 
+    ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,"<?php 
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
@@ -680,7 +681,6 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     {title: "N° EMP"},
     {title: "NOMBRE"},
     {title: "APELLIDOS"},
-    {title: "ADSCIPCIÓN"},
     {title: "ACCIÓN"}    
     ],
     });

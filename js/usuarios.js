@@ -172,24 +172,26 @@ listar_usuario();
 function datos_detalle(id){
 $("#Detalles").slideDown("slow");
 $("#cuadro1").hide("slow");
+
 $.ajax({
-url:'../../php/listar_usuarios.php',
+url:'../../php/listar_personal.php',
 type:'POST'
 }).done(function(resp){
 obj = JSON.parse(resp);
 var res = obj.data;  
+//alert(res);
 for(i=0; i<res.length;i++){
-if(obj.data[i].id_usuario==id){
-var id_usuario = $("#id_usuario").val(obj.data[i].id_usuario),
-nombre = $("#nombre").val(obj.data[i].nombre+' '+obj.data[i].apellidos),
-cargo = $("#cargo").val(obj.data[i].cargo),
+if(obj.data[i].gstIdper==id){
+var id_usuario = $("#id_usuario").val(obj.data[i].gstIdper),
+nombre = $("#nombre").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell),
+cargo = $("#cargo").val(obj.data[i].gstGnric),
 area = $("#area").val(obj.data[i].adscripcion),
-extension = $("#extension").val(obj.data[i].extension),
-correo = $("#correo").val(obj.data[i].correo),
-ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
-n_empleado = $("#n_empleado").val(obj.data[i].n_empleado),
+extension = $("#extension").val(obj.data[i].gstExTel),
+correo = $("#correo").val(obj.data[i].gstCinst),
+// ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
+n_empleado = $("#n_empleado").val(obj.data[i].gstNmpld),
 opcion = $("#frmEditar #opcion").val("modificar");
-nempleado = obj.data[i].n_empleado;
+nempleado = obj.data[i].gstNmpld;
 equpios(nempleado);
 }
 }

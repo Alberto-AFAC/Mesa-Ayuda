@@ -19,16 +19,16 @@
 	$obser = $_POST['obser'];
 
 	$idequipo = $_POST['idequipo'];
-	$modelo = $_POST['modelo'];
-	$serie = $_POST['serie'];
-	$verwind = $_POST['verwind'];
-	$proceso = $_POST['proceso'];
+	// $modelo = $_POST['modelo'];
+	// $serie = $_POST['serie'];
+	// $verwind = $_POST['verwind'];
+	// $proceso = $_POST['proceso'];
 
 	$idtec = selecTec($conexion);
 	
-	if($idequipo == 0){
-		registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion);
-	}
+	//if($idequipo == 0){
+	//	registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion);
+	//}
 
 ini_set('date.timezone','America/Mexico_City');
 $fenvio= date('Y').'/'.date('m').'/'.date('d');	

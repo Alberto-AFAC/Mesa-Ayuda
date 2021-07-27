@@ -25,14 +25,10 @@ if($opcion === 'agreqpo'){
 		$servicio_internet = $_POST['servicio_internet'];
 		$tipo_equipo = $_POST['tipo_equipo'];
 		$ubicacion = $_POST['ubicacion'];
-
 		$n_empleado = $_POST['n_empleado'];
-		$id_equipo = $_POST['id_equipo'];
 		$asignado = $_POST['asignado'];
 
-		asignarUsu($n_empleado,$id_equipo,$asignado,$conexion);
-
-   if(agregarEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
+   if(agregarEqpo($n_empleado,$asignado,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
    		{	echo "0";	}else{	echo "1";	}	
 	}else 
 	if($opcion === 'eliminar'){
@@ -61,14 +57,25 @@ if($opcion === 'agreqpo'){
 		$servicio_internet = $_POST['servicio_internet'];
 		$tipo_equipo = $_POST['tipo_equipo'];
 		$ubicacion = $_POST['ubicacion'];
-		$id_equipo = $_POST['idequipo'];
+		$id_equipo = $_POST['id_equipo'];
 
-		   if(agregarEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
+		$cambio = $_POST['cambio'];
+
+		if($cambio=='NO'){
+
+		$n_empleado = $_POST['n_empleado'];
+		$asignado = $_POST['asignado'];
+		asignarUsu($n_empleado,$id_equipo,$asignado,$conexion);
+
+		}else{}
+
+
+		   if(actualEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
    		{	echo "0";	}else{	echo "1";	}	
 	}	
 
 
-function agregarEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion){
+function actualEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion){
 	$query = "UPDATE equipo SET
 num_sigtic = '$num_sigtic',num_invntraio = '$num_invntraio',marca_cpu = '$marca_cpu',
 serie_cpu = '$serie_cpu',memoria_ram = '$memoria_ram',procesador = '$procesador',
@@ -85,6 +92,67 @@ servicio_internet = '$servicio_internet',tipo_equipo = '$tipo_equipo',ubicacion 
 					}
 	cerrar($conexion);
 }
+
+function agregarEqpo(
+	$n_empleado,
+	$asignado,
+	$num_sigtic,
+	$num_invntraio,
+	$marca_cpu,
+	$serie_cpu,
+	$memoria_ram,
+	$procesador,
+	$velocidad_proc,
+	$uni_disc_flax,
+	$disco_duro,
+	$serie_teclado,
+	$serie_monitor,
+	$version_windows,
+	$version_office,
+	$serie_mouse,
+	$direccion_ip,
+	$nombre_equipo,
+	$servicio_internet,
+	$tipo_equipo,
+	$ubicacion,$conexion){
+	$query="SELECT * FROM equipo WHERE serie_cpu = '$serie_cpu' AND estado = 0";
+	$resultados = mysqli_query($conexion,$query);
+	if($resultados->num_rows == 0){
+		$query = "INSERT INTO equipo VALUES(
+0,
+'$num_sigtic',
+'$num_invntraio',
+'$marca_cpu',
+'$serie_cpu',
+'$memoria_ram',
+'$procesador',
+'$velocidad_proc',
+'$uni_disc_flax',
+'$disco_duro',
+'$serie_teclado',
+'$serie_monitor',
+'$version_windows',
+'$version_office',
+'$serie_mouse',
+'$direccion_ip',
+'$nombre_equipo',
+'$servicio_internet',
+'$tipo_equipo',
+'$ubicacion',
+0);";
+			if (mysqli_query($conexion,$query)){
+
+			$queri = "INSERT INTO asignacion(id_equi,n_emp,proceso) SELECT id_equipo,$n_empleado,'$asignado' FROM equipo ORDER BY id_equipo DESC LIMIT 1";
+			mysqli_query($conexion,$queri);
+
+				return true;
+				}else{
+					return false;
+					}
+	cerrar($conexion);
+	}
+}
+
 
 	function eliminar($ideqpo, $conexion){
 	$query = "UPDATE equipo SET estado = 1 WHERE id_equipo = $ideqpo";

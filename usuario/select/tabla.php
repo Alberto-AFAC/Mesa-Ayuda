@@ -77,7 +77,7 @@ switch ($id) {
               </script>
 
  <?php break;
-   case "x":?>
+   case "0":?>
 
             <input type="hidden" id="intervencion" name="intervencion" value="0">
               <!--Resetear select-->
@@ -90,7 +90,7 @@ switch ($id) {
 <!--Resetear select-->
 <input type="hidden" name="intervencion" id="intervencion" value="0">
 <script type="text/javascript">
-//  reset();
+  reset();
 </script>
 <?php }
 }else{ ?>
@@ -110,6 +110,7 @@ $('#intervencion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select2').load('select/select.php');
+    //console.log("aqui perro"+ $('#intervencion').val());
   }
         });
     });

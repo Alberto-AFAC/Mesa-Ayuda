@@ -118,7 +118,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </div>
-                                <input type="text" name="usua" id="usua" class="form-control" pattern="[0-9]{1,7}"
+                                <input type="text" name="usua" id="usua" class="form-control" pattern="[0-9]{1,7}" 
                                     required />
                             </div>
                             <div>

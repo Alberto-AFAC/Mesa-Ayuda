@@ -12,7 +12,9 @@
         }
 
         //$idu = $_SESSION['usuario']['id_usuario'];
-       $idu = $_SESSION['usuario']['id_usu'];
+    $idu = $_SESSION['usuario']['id_usu'];
+ 
+     
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,6 +44,9 @@
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="../../js/equipo.js"></script>
+
 
 
 </head>
@@ -220,7 +225,14 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
+<?php
+    $queri = "SELECT gstNmpld,gstNombr,gstApell FROM personal ORDER BY gstIdper ASC";
+    $result = mysqli_query($conexion2,$queri);
+    $queri = "SELECT gstNmpld,gstNombr,gstApell FROM personal ORDER BY gstIdper ASC";
+    $resul = mysqli_query($conexion2,$queri);  
+    $queri = "SELECT gstNmpld,gstNombr,gstApell FROM personal ORDER BY gstIdper ASC";
+    $resu = mysqli_query($conexion2,$queri);
+?>
     <div id="page-wrapper">
             <!--<h3 class="text-center" style="border: 1px solid red;"> <small class="mensaje">123</small></h3>-->
             <div class="row">
@@ -335,152 +347,27 @@ Agregar datos del  equipo </h4>
                 <input type="hidden" id="id_equipo" name="id_equipo">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
 
-<!--                     <div class="form-group">
-                    <div class="col-sm-12">
-                    <label>
-                    ¿el equipo de cómputo pertenece al usuario?
-                    Seleccione usuario a quien pertenece el equipo </label>              
-                    </div>    
-                                        
-                    <div class="col-sm-8">
-                    <select style="width: 100%" class="form-control" class="selectpicker" id="n_empleado" name="n_empleado" type="text" data-live-search="true">
-                    <option selected>Seleccione usuarion</option> 
-                    <?php //while($usuario = mysqli_fetch_row($usua)):?>
+
+                    <div class="form-group"> 
+                    <div class="col-sm-12" >
+                    <select style="width: 100%" class="form-control" class="selectpicker" id="nempleado" name="nempleado" type="text" data-live-search="true">
+                   <option value="">Seleccione usuario</option>    
+                    <option value="0">NO ASIGNADO</option> 
+                    <?php while($usuario = mysqli_fetch_row($resu)):?>
                     <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
-                    <?php //endwhile; ?>
+                    <?php endwhile; ?>
                     </select>
-                    </div>
- 
-                    <div class="col-sm-4">
-                    <select class="form-control" name="asignado" id="asignado">
-                    <option value="0">Eleija Opción</option>
-                    <option value="asignado">Pertenece</option>
-                    <option value="designado">No pertenece</option>
-                    </select>
-                    </div>                    
-                    </div> -->
-
-
-<!-- ------------------------------------------------------------------------------------------------------///////--------------------
-                    <div class="form-group">                    
-                    <div class="col-sm-4">
-                    <label>Número sigctic</label>
-                    <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Numero de inventario</label>
-                    <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
-                    </div>                    
-
-                    <div class="col-sm-4">
-                    <label>Marca de CPU</label>    
-                    <select class="form-control" selected="true" id="marca_cpu" name="marca_cpu">
-                    <option value="" selected>SELECCIONE MARCA DE EQUIPO</option>
-                    <option value="LENOVO">LENOVO</option>
-                    <option value="DELL">DELL</option>
-                    <option value="HP">HP</option>
-                    <option value="OTRO">OTRO</option>
-                    </select>
+                    <!-- <input type="hidden" name="cambio" id="cambio" > -->
                     </div>
                     </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Serie de la CPU</label>
-                    <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Capacidad de memoria RAM</label>
-                    <input id="memoria_ram" name="memoria_ram" type="text" class="form-control">
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Procesador</label>
-                    <input id="procesador" name="procesador" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Velocidad del procesador</label>
-                    <input id="velocidad_proc" name="velocidad_proc" type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Unidad de disco flash</label>
-                    <input id="uni_disc_flax" name="uni_disc_flax" type="text" class="form-control">
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Capacidad de disco duro</label>
-                    <input id="disco_duro" name="disco_duro" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Serie teclado</label>
-                    <input id="serie_teclado" name="serie_teclado" type="text" class="form-control"  >
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Serie monitor</label>
-                    <input id="serie_monitor" name="serie_monitor" type="text" class="form-control" >
-                    </div>                                        
-                    <div class="col-sm-offset-0 col-sm-4">
-                    <label>Versión Windows</label>
-                    <select class="form-control" selected="true" id="version_windows" name="version_windows">                                
-                    <option value="" selected>SELECCIONE</option>
-                    <option value="WINDOWS 7" >WINDOWS 7</option>
-                    <option value="WINDOWS 10" >WINDOWS 10</option>
-                    <option value="LINUX" >LINUX</option> 
-                    </select>                                
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Versión office</label>
-                    <input id="version_office" name="version_office" type="text" class="form-control"  >
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Serie mouse</label>
-                    <input id="serie_mouse" name="serie_mouse" type="text" class="form-control" >
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Dirección IP</label>
-                    <input id="direccion_ip" name="direccion_ip" type="text" class="form-control" >
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Nombre del equipo</label>
-                    <input id="nombre_equipo" name="nombre_equipo" type="text" class="form-control"  >
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Servicio internet</label>
-                    <input id="servicio_internet" name="servicio_internet" type="text" class="form-control" >
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Tipo equipo</label>
-                    <input id="tipo_equipo" name="tipo_equipo" type="text" class="form-control" >
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Ubicación del equipo</label>
-                    <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
-                    <option value="0">Selecione</option> 
-                    <option value="Piso m2">Piso m2</option>
-                    <option value="Piso 1">Piso 1</option>
-                    <option value="Piso 2">Piso 2</option>
-                    <option value="Piso 3">Piso 3</option>
-                    <option value="Piso 4">Piso 4</option>
-                    <option value="Piso 7">Piso 7</option>
-                    </select>
-                    </div>
-                    </div>
- -->
 
                     <div class="form-group">                    
                     <div class="col-sm-4">
-                    <label>Número sigctic</label>
+                    <label>Número SIGTIC</label>
                     <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
                     </div>
                     <div class="col-sm-4">
-                    <label>Numero de inventario</label>
+                    <label>Número de inventario</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
                     </div>                    
                     <div class="col-sm-4">
@@ -591,6 +478,7 @@ Agregar datos del  equipo </h4>
                     <label>Ubicación del equipo</label>
                     <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
                     <option value="0">Selecione</option> 
+                    <option value="Planta baja / vus">Planta baja / vus</option>
                     <option value="Piso m2">Piso m2</option>
                     <option value="Piso 1">Piso 1</option>
                     <option value="Piso 2">Piso 2</option>
@@ -606,7 +494,7 @@ Agregar datos del  equipo </h4>
                     <div class="col-sm-offset-0 col-sm-5">
                     <button type="button" id="button" class="btn btn-green btn-lg" onclick="agrEqpo();">Aceptar</button>
                     </div>
-                    <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos del equipo </p></b>
+                    <b><p class="alert alert-info text-center padding error" id="danger">Este equipo, existe en la base de datos </p></b>
 
                     <b><p class="alert alert-success text-center padding exito" id="success">¡Se agregaron los datos con éxito!</p></b>
 
@@ -655,150 +543,56 @@ Editar datos del  equipo </h4>
             <div class="modal-body">
                 <input type="hidden" id="idequipo" name="idequipo">
 
-<!--                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>
+                    
                     ¿el equipo de cómputo pertenece al usuario?
-                    Seleccione usuario a quien pertenece el equipo </label>              
-                    </div>    
-                                        
-                    <div class="col-sm-8">
+                    <label for="SI">SI</label>
+                    <input checked="checked" name="correct" type="radio" value="true" id="true" />
+                    <label for="NO">NO</label>
+                    <input name="correct" type="radio" value="false" id="false" />
+                    </div>
+
+                    <div class="form-group" id="usuario1" style="display: none;">
+
+                    <div class="col-sm-12" >
                     <select style="width: 100%" class="form-control" class="selectpicker" id="n_empleado" name="n_empleado" type="text" data-live-search="true">
-                    <option selected>Seleccione usuarion</option> 
-                    <?php //while($usuario = mysqli_fetch_row($usua)):?>
+                   <option value="">Seleccione usuario a quien pertenece el equipo</option>    
+                    <option value="0">NO ASIGNADO</option> 
+                    <?php while($usuario = mysqli_fetch_row($result)):?>
                     <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
-                    <?php //endwhile; ?>
+                    <?php endwhile; ?>
                     </select>
+                    <input type="hidden" name="cambio" id="cambio" >
                     </div>
  
-                    <div class="col-sm-4">
-                    <select class="form-control" name="asignado" id="asignado">
-                    <option value="0">Eleija Opción</option>
+<!--                     <div class="col-sm-4">
+                    <select class="form-control" name="asign" id="asign">
+                    <option value="x">SELECCIONE OPCIÓN</option>
                     <option value="asignado">Pertenece</option>
                     <option value="designado">No pertenece</option>
                     </select>
-                    </div>                    
-                    </div> -->
+                    </div> -->                    
+                    </div> 
 
-
-<!-- 
-                    <div class="form-group">                    
-                    <div class="col-sm-4">
-                    <label>Número sigctic</label>
-                    <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Numero de inventario</label>
-                    <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Marca de CPU</label>    
-                    <select class="form-control" selected="true" id="emarca_cpu" name="emarca_cpu">
-                    <option value="" selected>SELECCIONE MARCA DE EQUIPO</option>
-                    <option value="LENOVO">LENOVO</option>
-                    <option value="DELL">DELL</option>
-                    <option value="HP">HP</option>
-                    <option value="OTRO">OTRO</option>
+                    <div class="form-group" id="usuario2">                       
+                    <div class="col-sm-12">
+                    <select style="width: 100%" class="form-control" class="selectpicker" id="n_emp" name="n_emp" type="text" data-live-search="true" disabled>
+                    <option value="0">NO ASIGNADO</option> 
+                    <?php while($row = mysqli_fetch_row($resul)):?>
+                    <option value="<?php echo $row[0]?>" disabled><?php echo $row[1].' '.$row[2]?></option>
+                    <?php endwhile; ?>
                     </select>
+                    <input type="hidden" name="cambio" id="cambio" value="SI">
                     </div>
                     </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Serie de la CPU</label>
-                    <input id="eserie_cpu" name="eserie_cpu" type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Capacidad de memoria RAM</label>
-                    <input id="ememoria_ram" name="ememoria_ram" type="text" class="form-control">
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Procesador</label>
-                    <input id="eprocesador" name="eprocesador" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Velocidad del procesador</label>
-                    <input id="evelocidad_proc" name="evelocidad_proc" type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Unidad de disco flash</label>
-                    <input id="euni_disc_flax" name="euni_disc_flax" type="text" class="form-control">
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Capacidad de disco duro</label>
-                    <input id="edisco_duro" name="edisco_duro" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Serie teclado</label>
-                    <input id="eserie_teclado" name="eserie_teclado" type="text" class="form-control"  >
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Serie monitor</label>
-                    <input id="eserie_monitor" name="eserie_monitor" type="text" class="form-control" >
-                    </div>                                        
-                    <div class="col-sm-offset-0 col-sm-4">
-                    <label>Versión Windows</label>
-                    <select class="form-control" selected="true" id="eversion_windows" name="eversion_windows">            
-                    <option value="" selected>SELECCIONE</option>
-                    <option value="WINDOWS 7" >WINDOWS 7</option>
-                    <option value="WINDOWS 10" >WINDOWS 10</option>
-                    <option value="LINUX" >LINUX</option> 
-                    </select>                                
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Versión office</label>
-                    <input id="eversion_office" name="eversion_office" type="text" class="form-control"  >
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Serie mouse</label>
-                    <input id="eserie_mouse" name="eserie_mouse" type="text" class="form-control" >
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Dirección IP</label>
-                    <input id="edireccion_ip" name="edireccion_ip" type="text" class="form-control" >
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Nombre del equipo</label>
-                    <input id="enombre_equipo" name="enombre_equipo" type="text" class="form-control"  >
-                    </div>
-                    <div class="col-sm-4">
-                    <label>Servicio internet</label>
-                    <input id="eservicio_internet" name="eservicio_internet" type="text" class="form-control" >
-                    </div>                    
-                    <div class="col-sm-4">
-                    <label>Tipo equipo</label>
-                    <input id="etipo_equipo" name="etipo_equipo" type="text" class="form-control" >
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>Ubicación del equipo</label>
-                    <select  class="form-control" class="selectpicker" name="eubicaeqpo" id="eubicaeqpo" type="text" data-live-search="true">
-                    <option value="0">Selecione</option> 
-                    <option value="Piso m2">Piso m2</option>
-                    <option value="Piso 1">Piso 1</option>
-                    <option value="Piso 2">Piso 2</option>
-                    <option value="Piso 3">Piso 3</option>
-                    <option value="Piso 4">Piso 4</option>
-                    <option value="Piso 7">Piso 7</option>
-                    </select>
-                    </div>
-                    </div> -->
 
                     <div class="form-group">                    
                     <div class="col-sm-4">
-                    <label>Número sigctic</label>
+                    <label>Número SIGTIC</label>
                     <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
                     </div>
                     <div class="col-sm-4">
-                    <label>Numero de inventario</label>
+                    <label>Número de inventario</label>
                     <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
                     </div>                    
                     <div class="col-sm-4">
@@ -902,6 +696,7 @@ Editar datos del  equipo </h4>
                     <div class="col-sm-4">
                     <label>Ubicación del equipo</label>
                     <select  class="form-control" class="selectpicker" name="eubicaeqpo" id="eubicaeqpo" type="text" data-live-search="true">
+                    <option value="Planta baja / vus">Planta baja / vus</option>    
                     <option value="Piso m2">Piso m2</option>
                     <option value="Piso 1">Piso 1</option>
                     <option value="Piso 2">Piso 2</option>
@@ -949,9 +744,6 @@ Editar datos del  equipo </h4>
 <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
  --><link rel="stylesheet" type="text/css" href="../../css/styles.css">
 <script type="text/javascript" src="../../js/funciones.js"></script>
-<script type="text/javascript" src="../../js/equipo.js"></script>
-
-
 
 <script src="../../js/jquery-1.12.3.min.js"></script>
 <script src="../../js/select2.js"></script>
@@ -963,13 +755,31 @@ Editar datos del  equipo </h4>
 <script src="../../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../../dist/js/sb-admin-2.js"></script>
 
-
+<link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#n_empleado').select2();
+  $('#nempleado').select2();
+}); 
+</script>
+<script src="../../js/select2.js"></script> 
 
   <script type="text/javascript">
         var dataSet = [
         <?php
-      
-          $query = "SELECT * FROM equipo WHERE estado = 0 ORDER BY id_equipo ASC";
+
+        $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
+    $resultados = mysqli_query($conexion2,$queri);
+    while($dato = mysqli_fetch_array($resultados)){
+       $id = $dato['gstIdper'];
+       $nombre = $dato['gstNombr'].' '.$dato['gstApell'];
+
+       
+
+
+          $query = "SELECT * FROM equipo 
+                INNER JOIN asignacion ON id_equi = id_equipo 
+                WHERE equipo.estado = 0 ORDER BY id_equipo ASC";
              $resultado = mysqli_query($conexion, $query);
              $n=0;
         while($data = mysqli_fetch_array($resultado)){
@@ -977,20 +787,43 @@ Editar datos del  equipo </h4>
            $id = $data['id_equipo'];
   //          $data['identificador'];
     //        $data['adscripcion'];
-           
-        ?>
+
+if($data['proceso']=='asignado' && $data['n_emp']==$dato['gstNmpld'] && $dato['estado']==0){   ?>    
     
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $nombre?>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
 echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-success'><i class='fa fa-desktop'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }
-    ?>"
+    ?>"],
+
+<?php 
+}else if($data['proceso']=='asignado' && $data['n_emp']==$dato['gstNmpld'] && $dato['estado']==1){   ?> 
+
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<p style="color:red;"><?php echo $nombre.'<br> YA NO LABORA '?></p>',"<?php if($data['num_invntraio'] == '0'){
+
+echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+}else{
+echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-success'><i class='fa fa-desktop'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+}
+    ?>"],
 
 
-    ],
-<?php } ?>
+
+<?php }else if($data['proceso']=='designado' && $dato['gstIdper'] ==1){ ?>
+
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo 'NO ASIGNADO'?>',"<?php if($data['num_invntraio'] == '0'){
+
+echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+}else{
+echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-success'><i class='fa fa-desktop'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
+}
+    ?>"],
+
+<?php } 
+}
+}?>
 ];
 
 var tableGenerarReporte = $('#data-table-area').DataTable({
@@ -1007,6 +840,7 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     {title: "N° SIGTIC"},
     {title: "MARCA"},
     {title: "N° SERIE"},
+    {title: "ASIGNADO"},
     {title: "ACCIÓN"}
 
     ],

@@ -417,7 +417,7 @@
         while($data = mysqli_fetch_array($resultado)){
             $fila = $idtecnico;
  
-if($data['evaluacion'] == 0 && $data['estado_rpt'] =='Finalizado'){
+if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
     ?>
     ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta su evaluación</a>";?>"],
 <?php }else if($data['evaluacion'] != '0'){ ?>

@@ -2,8 +2,8 @@
 session_start(); 
   //evaluaremos si la variable de sesión existe de lo contrario no se hará nada 
   //si la variable sesión existe, se evaluará que tipo de usuario está ingresando de esa manera saber a dónde se debe redireccionar en caso de que ya se haya logeado 
-  if(isset($_SESSION['n_empleado'])){
-    if($_SESSION['n_empleado']['n_empleado'] != ''){}    
+  if(isset($_SESSION['gstNmpld'])){
+    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
  }else{ header('Location: ../');}
 
 unset($_SESSION['consulta']);
@@ -103,17 +103,7 @@ unset($_SESSION['consulta']);
                         <div class="list-group">
                                 <form class="form-horizontal" action="" method="POST" id="ConEquipo" onsubmit="return reporte(this)">
                                 <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>           
-                                <div id="div1">
-<!--                                 <div class="radio">
-                                <input checked="checked" type="radio" name="catch" value="true" id="pregunta1">
-                                <label for="pregunta1">¿Reportar equipo de computo?</label>
-                                <input type="radio" name="catch" value="false" id="pregunta2">
-                                <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
-                                </div> -->
-                                <div class="form-group">
-                                <div id="equipo"></div>         
-                                </div>
-                                </div>
+                              
                                 <div id="div2" style="display: none;">
                                 <!--<div class="radio">
                                 <p id="divp">
@@ -128,13 +118,13 @@ unset($_SESSION['consulta']);
                                 <label id="nota1"></label>    
                                 <label id="nota2">¡Agregue los datos del equipo que desea reportar!</label>
                                 </div> -->
-                                <input id="nempleado" name="nempleado" type="hidden" value="<?php echo $_SESSION['n_empleado']['n_empleado']?>"/>
+                                <input id="nempleado" name="nempleado" type="hidden" value="<?php echo $_SESSION['gstNmpld']['gstNmpld']?>"/>
 
                                 <input id="idequipo" name="idequipo" type="hidden" value="0" />
 
-                                <input id="proceso" name="proceso" value="asignado" type="hidden"/>
+                                <!-- <input id="proceso" name="proceso" value="asignado" type="hidden"/> -->
 
-                                <div class="col-sm-offset-0 col-sm-4">
+                                <!-- <div class="col-sm-offset-0 col-sm-4">
                                 <select class="form-control" selected="true" id="modelo" name="modelo">
                                 <option value="" selected>SELECCIONE MARCA DEL CPU</option>
                                 <option value="LENOVO">LENOVO</option>
@@ -142,20 +132,20 @@ unset($_SESSION['consulta']);
                                 <option value="HP">HP</option>
                                 <option value="OTRO">OTRO</option>
                                 </select>
-                                </div>
+                                </div> -->
 
-                                <div class="col-sm-offset-0 col-sm-4">
+                                <!--<div class="col-sm-offset-0 col-sm-4">
                                 <input id="serie" name="serie" type="text" class="form-control" placeholder="Número de serie de la CPU">
-                                </div>
+                                </div>-->
                                 
-                               <div class="col-sm-offset-0 col-sm-4">
+                               <!--<div class="col-sm-offset-0 col-sm-4">
                                 <select class="form-control" selected="true" id="verwind" name="verwind">                                
                                 <option value="" selected>SELECCIONE VERSIÓN WINDOWS</option>
                                   <option value="WINDOWS 7" >WINDOWS 7</option>
                                   <option value="WINDOWS 10" >WINDOWS 10</option>
                                   <option value="LINUX" >LINUX</option> 
                                 </select>                                
-                                </div>
+                                </div>-->
 
                                 </div>
                                 </div>
@@ -168,6 +158,22 @@ unset($_SESSION['consulta']);
                                     <div id="select3"></div>
                                     <div id="select4"></div>
                                     <div id="select5"></div>
+                                </div>
+                                <!-- <div class="form-group">
+                                <div id="equipo"></div>         
+                                </div> -->
+
+
+                                <div id="div1">
+<!--                                 <div class="radio">
+                                <input checked="checked" type="radio" name="catch" value="true" id="pregunta1">
+                                <label for="pregunta1">¿Reportar equipo de computo?</label>
+                                <input type="radio" name="catch" value="false" id="pregunta2">
+                                <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
+                                </div> -->
+                                <div class="form-group">
+                                <div id="equipo"></div>         
+                                </div>
                                 </div>
                                 <!--</div>-->
                                 <!--ARÉA DE DESCRIPCIÓN-->

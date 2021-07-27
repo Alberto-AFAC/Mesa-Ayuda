@@ -2,8 +2,8 @@
 session_start(); 
   //evaluaremos si la variable de sesión existe de lo contrario no se hará nada 
   //si la variable sesión existe, se evaluará que tipo de usuario está ingresando de esa manera saber a dónde se debe redireccionar en caso de que ya se haya logeado
-if(isset($_SESSION['n_empleado'])){
-    if($_SESSION['n_empleado']['n_empleado'] != ''){}    
+if(isset($_SESSION['gstNmpld'])){
+    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
 }else{ header('Location: ../');}
 unset($_SESSION['consulta']);
 ?>
@@ -239,16 +239,32 @@ unset($_SESSION['consulta']);
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
+                    <label style="color:white;">.</label>
                     <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
+                    <label style="color:white;">.</label>
                     <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
+                    </div>
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="final" name="final" type="text" class="form-control" disabled="">
+                    </div>
+                    </div>
                     <div class="form-group" id="obsrvcns">
                     <div class="col-sm-12">
                     <label>Observaciones</label>  
@@ -309,16 +325,12 @@ unset($_SESSION['consulta']);
     <script type="text/javascript">
         var dataSet = [
         <?php
-	     $numEmp = $_SESSION['n_empleado']['n_empleado'];
+	     $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
          $query = "SELECT 
+            tecnico.id_usu,
             reporte.n_reporte,
-            usuarios.nombre,
-            usuarios.apellidos,
-            usuarios.ubicacion,
-            usuarios.extension,
             reporte.hinicio,
             DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
-
             reporte.evaluacion,
             reporte.estado_rpt,
             reporte.descripcion,
@@ -333,19 +345,31 @@ unset($_SESSION['consulta']);
                 FROM reporte
                 RIGHT JOIN tecnico
                 ON id_tecnico = idtec
-                LEFT JOIN usuarios
-                ON id_usuario = id_usu
                 WHERE reporte.n_empleado= $numEmp ORDER BY reporte.n_empleado DESC";
              $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $fila = $data['n_reporte'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
+            $idtecnico=$data['id_usu'];
+            $sql2="SELECT gstNmpld,
+                          gstNombr,                          
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                          WHERE
+                          gstIdper = $idtecnico";
+            $result2=mysqli_query($conexion2,$sql2);
+            while($data2=mysqli_fetch_array($result2)){
+
+                $nombre = $data2[1];
+                $apellidos = $data2[2];
+                $ext = $data2[3];
 
 if($data['evaluacion'] != '0'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['extension']?>","<?php echo $data['descripcion']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo  $ext ?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
                     
                      
@@ -353,7 +377,7 @@ if($data['evaluacion'] != '0'){
                     
                  ?>"
 ],
-<?php } 
+<?php } }
 }
 ?>
 ];
@@ -373,7 +397,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     {title: "N°"},
     {title: "Técnico asignado"},
     {title: "Ext."},
-    {title: "Descripción problema"},
+    {title: "Tipo de servicio"},
     {title: "Fecha envio"},
     {title: "Fecha termino"},
     {title: "Estado"}

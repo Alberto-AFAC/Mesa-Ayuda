@@ -1,6 +1,6 @@
 
   <div class="col-sm-offset-0 col-sm-4">
-		<select  id="servicio" class="form-control" class="selectpicker" name="servicio" type="text" data-live-search="true">
+  <select  id="servicio" class="form-control" class="selectpicker" name="servicio" type="text" data-live-search="true">
                 <option value="0">TIPODE SERVICIO</option>
                 <option value="1CÓMPUTO">CÓMPUTO</option>
                 <option value="2IMPRESIÓN">IMPRESIÓN</option>

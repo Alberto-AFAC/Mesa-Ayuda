@@ -35,13 +35,13 @@ function eqpo(datos) {
 //registro de reporte
 function reporte() {
 
-    var nempleado = document.getElementById('nempleado').value;    
-    var modelo = document.getElementById('modelo').value;
-    var serie = document.getElementById('serie').value;
+    var nempleado = document.getElementById('nempleado').value;
+    // var modelo = document.getElementById('modelo').value;
+    // var serie = document.getElementById('serie').value;
     var obser = document.getElementById('obser').value;
-    var verwind = document.getElementById('verwind').value;
+    // var verwind = document.getElementById('verwind').value;
     var idequipo = document.getElementById('idequipo').value;
-    var proceso = document.getElementById('proceso').value;
+    // var proceso = document.getElementById('proceso').value;
 
     var servicio = document.getElementById('servicio').value;
     var intervencion = document.getElementById('intervencion').value;
@@ -51,9 +51,13 @@ function reporte() {
     var ultima = document.getElementById('ultima').value;
     var final = document.getElementById('final').value;
 
-//    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
 
-    if (nempleado == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || modelo == '' || obser == '' || verwind == '' || idequipo == '' || solucion=='0' || ultima=='0' || final=='0') {
+    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&opcion=registrar';
+
+
+    //    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
+
+    if (nempleado == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || obser == '' || idequipo == '' || solucion == '0' || ultima == '0' || final == '0') {
         $("#vacio").toggle("toggled");
         setTimeout(function() {
             $('#vacio').toggle('toggled');
@@ -61,12 +65,12 @@ function reporte() {
         return;
     } else {
         //bloquear boton 
-  //      document.getElementById('button').disabled = 'false';
-//        document.getElementById('button').style.color = "silver";
+        //      document.getElementById('button').disabled = 'false';
+        //        document.getElementById('button').style.color = "silver";
         $.ajax({
             url: '../php/rptUsu.php',
             type: 'POST',
-            data: 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&modelo=' + modelo + '&serie=' + serie + '&verwind=' + verwind + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&proceso=' + proceso + '&opcion=registrar'
+            data: datos
         }).done(function(respuesta) {
             console.log(respuesta);
             if (respuesta == 0) {
@@ -146,13 +150,13 @@ $.ajax({
     for (ii = 0; ii < res.length; ii++) {
         if (obj.data[ii].evaluacion == '0') {
             //para bloquerar radio boton que dice ¿El equipo que va reportar está a su cargo?
-           // document.getElementById('pregunta1').disabled = 'false';
+            // document.getElementById('pregunta1').disabled = 'false';
             //$('#button').hide();
         }
     }
 })
 
-//consulta de reporte pendiente
+//consulta de reporte Por atender
 $.ajax({
     url: '../php/conReport.php',
     type: 'POST'
@@ -176,10 +180,10 @@ $.ajax({
 
         detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].usu_observ;
 
-        if (obj.data[i].estado_rpt == 'Pendiente') {
+        if (obj.data[i].estado_rpt == 'Por atender') {
             //
             html += "<tr><td>" + obj.data[i].n_reporte + "</td><td>" + obj.data[i].nombre + ' ' + obj.data[i].apellidos + "</td><td>" + obj.data[i].extension + "</td><td>" + obj.data[i].descripcion + "</td><td>" + Finicio + "</td><td>" + Finaliza + "</td><td><a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle(" + '"' + detalles + '"' + ")' style='width:100%'>" + obj.data[i].estado_rpt + "</a></td></tr>";
-        } else if (obj.data[i].estado_rpt == 'En proceso') {
+        } else if (obj.data[i].estado_rpt == 'Pendiente') {
             html += "<tr><td>" + obj.data[i].n_reporte + "</td><td>" + obj.data[i].nombre + ' ' + obj.data[i].apellidos + "</td><td>" + obj.data[i].extension + "</td><td>" + obj.data[i].descripcion + "</td><td>" + Finicio + "</td><td>" + Finaliza + "</td><td><a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle(" + '"' + detalles + '"' + ")' style='width:100%'>" + obj.data[i].estado_rpt + "</a></td></tr>";
             /*<a href='#' type='button' data-toggle='modal' data-target='#modalDtlls' class='detalle btn btn-success' onclick='detalle("+'"'+detalles+'"'+")' style='width:100%'>"+obj.data[i].estado_rpt+"</a>        <a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-info'  onclick='evaluar("+'"'+detalles+'"'+")' style='width:100%'>Evaluar</a></td></tr>";*/
         } else if (obj.data[i].evaluacion == '0') {
@@ -195,6 +199,9 @@ $.ajax({
 //consulta datos para evaluar reporte
 function evaluar(fila) {
 
+    $("#modalDtll #ultima").show();
+    $("#modalDtll #final").show();
+
     $.ajax({
         url: '../php/conReport.php',
         type: 'POST'
@@ -216,29 +223,35 @@ function evaluar(fila) {
                 day = obj.data[i].ffinal.substring(8, 10);
                 Finaliza = day + '/' + month + '/' + year;
 
-                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].usu_observ;
+                $("#modalEval #nreporte").val(obj.data[i].n_reporte);
+                $("#modalEval #servicio").val(obj.data[i].servicio);
+                $("#modalEval #intervencion").val(obj.data[i].intervencion);
+                $("#modalEval #descripcion").val(obj.data[i].descripcion);
+                $("#modalEval #solucion").val(obj.data[i].solucion);
+                if (obj.data[i].ultima == 'x' || obj.data[i].ultima == '') {
+                    $("#modalEval #ultima").hide();
+                } else {
+                    $("#modalEval #ultima").val(obj.data[i].ultima);
+                }
+                if (obj.data[i].final == 'x') {
 
-
-                var d = detalles.split("*");
-                $("#modalEval #nreporte").val(d[0]);
-                $("#modalEval #usuario").val(d[1] + ' ' + d[2]);
-                $("#modalEval #extension").val(d[3]);
-                $("#modalEval #ubicacion").val(d[4]);
-                $("#modalEval #servicio").val(d[5]);
-                $("#modalEval #intervencion").val(d[6]);
-                $("#modalEval #descripcion").val(d[7]);
-                $("#modalEval #falla_interna").val(d[8]);
-                $("#modalEval #finicio").val(d[9]);
-                $("#modalEval #ffinal").val(d[10]);
-                if (d[11] == 0) {
+                    $("#modalEval #final").hide();
+                } else {
+                    $("#modalEval #final").val(obj.data[i].final);
+                }
+                $("#modalEval #falla_interna").val(obj.data[i].falla_interna);
+                $("#modalEval #finicio").val(Finicio);
+                $("#modalEval #ffinal").val(Finaliza);
+                if (obj.data[i].falla_xterna == 0) {
                     $("#externo").hide();
                 } else {
-                    $("#modalEval #falla_xterna").val(d[11]);
+                    $("#externo").show();
+                    $("#modalEval #falla_xterna").val(obj.data[i].falla_xterna);
                 }
-                $("#modalEval #estado_rpt").val(d[14]);
-                $("#modalEval #usu_observ").val(d[17]);
+                $("#modalEval #estado_rpt").val(obj.data[i].estado_rpt);
+                $("#modalEval #usu_observ").val(obj.data[i].usu_observ);
 
-                if (d[14] == 'Cancelado') {
+                if (obj.data[i].estado_rpt == 'Cancelado') {
                     $("#div1").hide();
                     $("#div2").show();
                 } else {
@@ -246,13 +259,20 @@ function evaluar(fila) {
                     $("#div2").hide();
                 }
 
+                persona(obj.data[i].id_usu);
+
             }
         }
     })
 }
 
+
 //detalles del reporte
 function detalle(fila) {
+
+    $("#modalDtll #ultima").show();
+    $("#modalDtll #final").show();
+
     $.ajax({
         url: '../php/conReport.php',
         type: 'POST'
@@ -264,6 +284,8 @@ function detalle(fila) {
 
             if (obj.data[i].n_reporte == fila) {
 
+                persona(obj.data[i].id_usu)
+
                 year = obj.data[i].finicio.substring(0, 4);
                 month = obj.data[i].finicio.substring(5, 7);
                 day = obj.data[i].finicio.substring(8, 10);
@@ -274,53 +296,92 @@ function detalle(fila) {
                 day = obj.data[i].ffinal.substring(8, 10);
                 Finaliza = day + '/' + month + '/' + year;
 
-                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].usu_observ;
+                $("#modalDtll #nreporte").val(obj.data[i].n_reporte);
 
-                var d = detalles.split("*");
+                $("#modalDtll #servicio").val(obj.data[i].servicio);
+                $("#modalDtll #intervencion").val(obj.data[i].intervencion);
+                $("#modalDtll #descripcion").val(obj.data[i].descripcion);
 
-                $("#modalDtll #nreporte").val(d[0]);
-                $("#modalDtll #usuario").val(d[1] + ' ' + d[2]);
-                $("#modalDtll #extension").val(d[3]);
-                $("#modalDtll #ubicacion").val(d[4]);
-                $("#modalDtll #servicio").val(d[5]);
-                $("#modalDtll #intervencion").val(d[6]);
-                $("#modalDtll #descripcion").val(d[7]);
+                $("#modalDtll #solucion").val(obj.data[i].solucion);
 
-                $("#modalDtll #falla_interna").val(d[8]);
-                $("#modalDtll #finicio").val(d[9] + ' a las ' + d[15] + ' hrs');
+                if (obj.data[i].ultima == 'x' || obj.data[i].ultima == '') {
+                    $("#modalDtll #ultima").hide();
+                } else {
+                    $("#modalDtll #ultima").val(obj.data[i].ultima);
+                }
+                if (obj.data[i].final == 'x') {
 
-                if (d[11] == 0 || d[11] == '') {
+                    $("#modalDtll #final").hide();
+                } else {
+                    $("#modalDtll #final").val(obj.data[i].final);
+                }
+
+
+                $("#modalDtll #falla_interna").val(obj.data[i].falla_interna);
+                $("#modalDtll #finicio").val(Finicio + ' a las ' + obj.data[i].hinicio + ' hrs');
+
+                if (obj.data[i].falla_xterna == 0 || obj.data[i].falla_xterna == '') {
                     $("#falla").hide();
                 } else {
                     $("#falla").show();
-                    $("#modalDtll #falla_xterna").val(d[11]);
+                    $("#modalDtll #falla_xterna").val(obj.data[i].falla_xterna);
                 }
-                $("#modalDtll #observa").val(d[12]);
-                $("#modalDtll #evaluacion").val(d[13]);
-                if (d[13] == '0' && d[14] == 'Pendiente') {
+                $("#modalDtll #observa").val(obj.data[i].observa);
+                $("#modalDtll #evaluacion").val(obj.data[i].evaluacion);
+                if (obj.data[i].evaluacion == '0' && obj.data[i].estado_rpt == 'Por atender') {
                     $("#obsrvcns").show();
-                    $("#modalDtll #usu_observ").val(d[17]);
+                    $("#modalDtll #usu_observ").val(obj.data[i].usu_observ);
                     $("#rspsta").hide();
                     $("#pndint1").hide();
                     $("#pndint2").hide();
-                    $("#modalDtll #ffinal").val('Pendiente');
-                } else if (d[13] == '0' && d[14] == 'En proceso') {
-                    $("#modalDtll #usu_observ").val(d[17]);
+                    $("#modalDtll #ffinal").val('Por atender');
+                } else if (obj.data[i].evaluacion == '0' && obj.data[i].estado_rpt == 'Pendiente') {
+                    $("#modalDtll #usu_observ").val(obj.data[i].usu_observ);
                     $("#pndint1").hide();
                     $("#pndint2").hide();
-                    $("#modalDtll #ffinal").val('En proceso');
+                    $("#modalDtll #ffinal").val('Pendiente');
                 } else {
-                    $("#modalDtll #usu_observ").val(d[17]);
+                    $("#modalDtll #usu_observ").val(obj.data[i].usu_observ);
                     $("#obsrvcns").show();
                     $("#rspsta").show();
                     $("#pndint1").show();
                     $("#pndint2").show();
-                    $("#modalDtll #ffinal").val(d[10] + ' a las ' + d[16] + ' hrs');
+                    $("#modalDtll #ffinal").val(Finaliza + ' a las ' + obj.data[i].hfinal + ' hrs');
                 }
             }
         }
     })
 }
+
+function persona(id_usu) {
+
+    $.ajax({
+        url: '../php/personal_listar.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        for (i = 0; i < res.length; i++) {
+
+            if (obj.data[i].gstIdper == id_usu) {
+
+                $("#modalDtll #usuario").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                $("#modalDtll #extension").val(obj.data[i].gstExTel);
+                $("#modalDtll #correo").val(obj.data[i].gstCinst);
+
+                $("#modalEval #usuario").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                $("#modalEval #extension").val(obj.data[i].gstExTel);
+                $("#modalEval #correo").val(obj.data[i].gstCinst);
+
+
+            }
+        }
+    })
+}
+
+
+
 
 //registrar evaluacion por parte del usuario
 function evlRpt() {

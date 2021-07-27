@@ -1,410 +1,227 @@
 <?php session_start();
-  
+
   $id=0;
 
 				if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
-					if($_SESSION['consulta'] > 0){
+				
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
              $desc = substr($idp, 1);
-					}
-//echo $id;
+				
+//echo '>'.$id;
 switch ($id) {
-  case "a":?>
+  case "a": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0LEDS ENCENDIDOS">LEDS ENCENDIDOS</option>  
-  <option value="0VENTILADOR ACELERADO">VENTILADOR ACELERADO</option>  
-  <option value="0ALARMA ACTIVA">ALARMA ACTIVA</option>  
-  <option value="0EQUIPO DESCONECTADO">EQUIPO DESCONECTADO</option>  
+  <option value="aNO ENCIENDE">NO ENCIENDE</option>
+  <option value="bLENTO">LENTO</option>
+  <option value="cINSTALACIÓN DE APLICACIONES">INSTALACIÓN DE APLICACIONES</option>
+  <option value="dASISTENCIA TÉCNICA">ASISTENCIA TÉCNICA</option>
   </select>
   </div>
-
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
-
 <?php break;
   case "b":?>
 
  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0PASMADO POR COMPLETO">PASMADO POR COMPLETO</option>
-  <option value="0LENTO AL INICIAR">LENTO AL INICIAR</option>
-  <option value="0LENTO AL EJECUTAR UNA APLICACIÓN ES ESPECÍFICO">LENTO AL EJECUTAR UNA APLICACIÓN ES ESPECÍFICO</option>
+  <option value="eNO ENCIENDE">NO ENCIENDE</option>
+  <option value="fPROBLEMA EN COLORACIÓN">PROBLEMA EN COLORACIÓN</option>
+  <option value="gCOMPORTAMIENTO INUSUAL">COMPORTAMIENTO INUSUAL</option>
   </select>
   </div>
-   <input type="hidden" name="final" id="final" value="x">
- 
+  <input type="hidden" name="ultima" id="ultima" value="x">
+  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "c": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE /ZIADO">FORMATEO/INSTALACIÓN DE /ZIADO</option>
-  <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
-  <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
-  <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>
+  <option value="hNO ENCIENDE">NO ENCIENDE</option>
+  <option value="iLENTO">LENTO</option>
+  <option value="jINSTALACIÓN DE APLICACIONES">INSTALACIÓN DE APLICACIONES</option>
+  <option value="kASISTENCIA TÉCNICA">ASISTENCIA TÉCNICA</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
-
 <?php break;
  case "d": ?>
 
  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0CONFIGURACIÓN/PERSONALIZACIÓN">CONFIGURACIÓN/PERSONALIZACIÓN</option>
-  <option value="0RESPALDO DE INFORMACIÓN">RESPALDO DE INFORMACIÓN</option>
-  <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>
-  <option value="0REUBICACIÓN DE EQUIPO">REUBICACIÓN DE EQUIPO</option>
-  <option value="0CONFIGURACIÓN DE CARPETA COMPARTIDA">CONFIGURACIÓN DE CARPETA COMPARTIDA</option>
+  <option value="lNO ENCIENDE">NO ENCIENDE</option>
+  <option value="mPROBLEMA EN COLORACIÓN">PROBLEMA EN COLORACIÓN</option>
+  <option value="nCAMBIO DE COLOR COMPORTAMIENTO INUSUAL">CAMBIO DE COLOR COMPORTAMIENTO INUSUAL</option>
   </select>
   </div>
-   <input type="hidden" name="final" id="final" value="x">
-
+  <input type="hidden" name="ultima" id="ultima" value="x">
+  <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "e": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0PANTALLA NEGRA">PANTALLA NEGRA</option>
-  <option value="0PANTALLA AZUL">PANTALLA AZUL</option>
-  <option value="0PANTALLA DAÑADA">PANTALLA DAÑADA</option>
-  <option value="0BOTÓN DAÑADO">BOTÓN DAÑADO</option>
-  <option value="0DESCONECTADO">DESCONECTADO</option>
+  <option value="oFALLA">FALLA</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "f": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0PANTALLA MUY CLARA">PANTALLA MUY CLARA</option>
-  <option value="0PANTALLA MUY OSCURA">PANTALLA MUY OSCURA</option>
-  <option value="0IMAGEN DIFUMINADA">IMAGEN DIFUMINADA</option>
-  <option value="0CAMBIO DE COLOR">CAMBIO DE COLOR</option>
+  <option value="pFALLA">FALLA</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "g": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0ICONOS PARPADEAN">ICONOS PARPADEAN</option>
-  <option value="0LÍNEAS CON MOVIMIENTO (VERTICALES-HORIZONTALES)">LÍNEAS CON MOVIMIENTO (VERTICALES-HORIZONTALES)</option>
-  <option value="0IMAGEN ROTADA (90°-180°-270°-360°)">IMAGEN ROTADA (90°-180°-270°-360°)</option>
+  <option value="qFALLA">FALLA</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "h": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0LEDS ENCENDIDOS">LEDS ENCENDIDOS</option>
-  <option value="0VENTILADOR ACELERADO">VENTILADOR ACELERADO</option>
-  <option value="0ALARMA ACTIVA">ALARMA ACTIVA</option>
+  <option value="rNO ENCIENDE">NO ENCIENDE</option>
+  <option value="sLENTO">LENTO</option>
+  <option value="tINSTALACIÓN DE APLICACIONES">INSTALACIÓN DE APLICACIONES</option>
+  <option value="uASISTENCIA TÉCNICA">ASISTENCIA TÉCNICA</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "i": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0PASMADO POR COMPLETO">PASMADO POR COMPLETO</option>
-  <option value="0LENTO AL INICIAR">LENTO AL INICIAR</option>
-  <option value="0LENTO AL EJECUTAR UNA APLICACIÓN ES ESPECÍFICO">LENTO AL EJECUTAR UNA APLICACIÓN ES ESPECÍFICO</option>
+  <option value="vNO ENCIENDE">NO ENCIENDE</option>
+  <option value="wPROBLEMA EN COLORACIÓN">PROBLEMA EN COLORACIÓN</option>
+  <option value="xCAMBIO DE COLOR COMPORTAMIENTO INUSUAL">CAMBIO DE COLOR COMPORTAMIENTO INUSUAL</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "j": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO">FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO</option>
-  <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
-  <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
-  <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>
+  <option value="yFALLA">FALLA</option>
   </select>
   </div>  
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "k": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0CONFIGURACIÓN/PERSONALIZACIÓN">CONFIGURACIÓN/PERSONALIZACIÓN</option>
-  <option value="0RESPALDO DE INFORMACIÓN">RESPALDO DE INFORMACIÓN</option>
-  <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>
-  <option value="0CONFIGURACIÓN DE CARPETA COMPARTIDA">CONFIGURACIÓN DE CARPETA COMPARTIDA</option>
+  <option value="zFALLA">FALLA</option>
   </option>
   </select>
   </div>  
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "l": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0PANTALLA NEGRA">PANTALLA NEGRA</option>
-  <option value="0PANTALLA AZUL">PANTALLA AZUL</option>
-  <option value="0PANTALLA DAÑADA">PANTALLA DAÑADA</option>
+  <option value="9FALLA">FALLA</option>
   </select>
   </div>  
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "m": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0PANTALLA MUY CLARA">PANTALLA MUY CLARA</option>
-  <option value="0PANTALLA MUY OSCURA">PANTALLA MUY OSCURA</option>
-  <option value="0IMAGEN DIFUMINADA">IMAGEN DIFUMINADA</option>
+  <option value="8FALLA">FALLA</option>
+  <option value="7SOLICITUD">SOLICITUD</option>
   </select>
   </div>  
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
-
 <?php break;
   case "n": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0ICONOS PARPADEAN">ICONOS PARPADEAN</option>
-  <option value="0LÍNEAS CON MOVIMIENTO (VERTICALES-HORIZONTALES)">LÍNEAS CON MOVIMIENTO (VERTICALES-HORIZONTALES)</option>
-  <option value="0IMAGEN ROTADA (90°-180°-270°-360°)">IMAGEN ROTADA (90°-180°-270°-360°)</option>
+  <option value="6FALLA">FALLA</option>
+  <option value="5SOLICITUD">SOLICITUD</option>
   </select>
   </div>  
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
-
 <?php break;
   case "o": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0NO FUNCIONAN LAS TECLAS NUMÉRICAS">NO FUNCIONAN LAS TECLAS NUMÉRICAS</option>
-  <option value="0NO FUNCIONA NINGUNA TECLA">NO FUNCIONA NINGUNA TECLA</option>
-  <option value="0TECLAS INTERCAMBIADAS AL ESCRIBIR">TECLAS INTERCAMBIADAS AL ESCRIBIR</option>
-  <option value="0NO FUNCIONAN SÍMBOLOS">NO FUNCIONAN SÍMBOLOS</option>
-  <option value="0DERRAME DE LÍQUIDO">DERRAME DE LÍQUIDO</option>
-  </select>
-  </div> 
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "p": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0CURSOR SIN MOVIMIENTO">CURSOR SIN MOVIMIENTO</option>
-  <option value="0NO SE REFLEJA ADECUADAMENTE EL DESPLAZAMIENTO">NO SE REFLEJA ADECUADAMENTE EL DESPLAZAMIENTO</option>
-  <option value="0DOBLE CLIC">DOBLE CLIC</option>
-  <option value="0LOS BOTONES NO RESPONDEN (IZQUIERDO/DERECHO)">LOS BOTONES NO RESPONDEN (IZQUIERDO/DERECHO)</option>
-  </select>
-  </div> 
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "q": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0SE CALIENTA">SE CALIENTA</option>
-  <option value="0NO CARGA EN ABSOLUTO">NO CARGA EN ABSOLUTO</option>
-  <option value="0NO DURA LA CARGA">NO DURA LA CARGA</option>
-  <option value="0INFLADA">INFLADA</option>
-  </select>
-  </div> 
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "r": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0LEDS ENCENDIDOS">LEDS ENCENDIDOS</option>
-  </select>
-  </div> 
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "s": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0PASMADO POR COMPLETO">PASMADO POR COMPLETO</option>
-  <option value="0LENTO AL INICIAR">LENTO AL INICIAR</option>
-  <option value="0LENTO AL EJECUTAR UNA APLICACIÓN ES ESPECÍFICO">LENTO AL EJECUTAR UNA APLICACIÓN ES ESPECÍFICO</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "t": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO">FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO</option>
-  <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
-  <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
-  <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "u": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0CONFIGURACIÓN/PERSONALIZACIÓN">CONFIGURACIÓN/PERSONALIZACIÓN</option>
-  <option value="0RESPALDO DE INFORMACIÓN">RESPALDO DE INFORMACIÓN</option>
-  <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>
-  <option value="0CONFIGURACIÓN DE CARPETA COMPARTIDA">CONFIGURACIÓN DE CARPETA COMPARTIDA</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "v": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0PANTALLA NEGRA">PANTALLA NEGRA</option>
-  <option value="0PANTALLA AZUL">PANTALLA AZUL</option>
-  <option value="0PANTALLA DAÑADA">PANTALLA DAÑADA</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "w": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0PANTALLA MUY CLARA">PANTALLA MUY CLARA</option>
-  <option value="0PANTALLA MUY OSCURA">PANTALLA MUY OSCURA</option>
-  <option value="0IMAGEN DIFUMINADA">IMAGEN DIFUMINADA</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "x": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0ICONOS PARPADEAN">ICONOS PARPADEAN</option>
-  <option value="0LÍNEAS CON MOVIMIENTO (VERTICALES-HORIZONTALES)">LÍNEAS CON MOVIMIENTO (VERTICALES-HORIZONTALES)</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "y": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0NO FUNCIONAN LAS TECLAS NUMÉRICAS">NO FUNCIONAN LAS TECLAS NUMÉRICAS</option>
-  <option value="0NO FUNCIONA NINGUNA TECLA">NO FUNCIONA NINGUNA TECLA</option>
-  <option value="0TECLAS INTERCAMBIADAS AL ESCRIBIR">TECLAS INTERCAMBIADAS AL ESCRIBIR</option>
-  <option value="0NO FUNCIONAN SÍMBOLOS">NO FUNCIONAN SÍMBOLOS</option>
-  <option value="0DERRAME DE LÍQUIDO">DERRAME DE LÍQUIDO</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "z": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0CURSOR SIN MOVIMIENTO">CURSOR SIN MOVIMIENTO</option>
-  <option value="0NO SE REFLEJA ADECUADAMENTE EL DESPLAZAMIENTO">NO SE REFLEJA ADECUADAMENTE EL DESPLAZAMIENTO</option>
-  <option value="0DOBLE CLIC">DOBLE CLIC</option>
-  <option value="0LOS BOTONES NO RESPONDEN (IZQUIERDO/DERECHO)">LOS BOTONES NO RESPONDEN (IZQUIERDO/DERECHO)</option>
-  </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "9": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="0SE CALIENTA">SE CALIENTA</option>
-  <option value="0NO CARGA EN ABSOLUTO">NO CARGA EN ABSOLUTO</option>
-  <option value="0NO DURA LA CARGA">NO DURA LA CARGA</option>
-  <option value="0INFLADA">INFLADA</option>
-   </select>
-  </div>
-  <input type="hidden" name="final" id="final" value="x">
-
-<?php break;
-  case "8": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="0NO IMPRIME">NO IMPRIME</option>
   <option value="0HOJA ATORADA">HOJA ATORADA</option>
   <option value="0MALA CALIDAD">MALA CALIDAD</option>
   <option value="0ARRUGADA LAS HOJAS">ARRUGADA LAS HOJAS</option>
   <option value="0RUIDOS AL IMPRIMIR">RUIDOS AL IMPRIMIR</option>
-   </select>
-  </div>
+  </select>
+  </div> 
+
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
-  case "7": ?>
+  case "p": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FALTA CONSUMIBLE">FALTA CONSUMIBLE</option>
-  <option value="0INSTALACIÓN/CONFIGURACIÓN">INSTALACIÓN/CONFIGURACIÓN</option>
-  <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>
-  <option value="0REUBICACIÓN DE EQUIPO">REUBICACIÓN DE EQUIPO</option>
-   </select>
-  </div>
+  <option value="0FALTA CONSUMIBLE">FALTA CONSUMIBLE</option>  
+  <option value="0INSTALACIÓN/CONFIGURACIÓN">INSTALACIÓN/CONFIGURACIÓN</option>  
+  <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>  
+  <option value="0REUBICACIÓN DE EQUIPO">REUBICACIÓN DE EQUIPO</option>  
+  <option value="0COMPARTIR IMPRESORA">COMPARTIR IMPRESORA</option>  
+  </select>
+  </div> 
+
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
-  case "6": ?>
+  case "q": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="0NO ESCANEA">NO ESCANEA</option>
   <option value="0HOJA ATORADA">HOJA ATORADA</option>
@@ -412,120 +229,158 @@ switch ($id) {
   <option value="0ARRUGADA LAS HOJAS">ARRUGADA LAS HOJAS</option>
   <option value="0RUIDOS AL ESCANEAR">RUIDOS AL ESCANEAR</option>
   <option value="0LÍNEA EN ESCANEO">LÍNEA EN ESCANEO</option>
-   </select>
-  </div>
+  </select>
+  </div> 
+
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
-  case "5": ?>
+  case "r": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="0INSTALACIÓN/CONFIGURACIÓN">INSTALACIÓN/CONFIGURACIÓN</option>
   <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>
-  <option value="0REUBICACIÓN DE EQUIPO">REUBICACIÓN DE EQUIPO</option>
-   </select>
-  </div>
+  <option value="0COMPARTIR ESCÁNER">COMPARTIR ESCÁNER</option>
+  </select>
+  </div> 
+
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
-  case "4": ?>
+  case "s": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0SIN ACCESO WEB EN USUARIO">SIN ACCESO WEB EN USUARIO</option>
-  <option value="0SIN ACCESO WEB EN EL ÁREA">SIN ACCESO WEB EN EL ÁREA</option>
-  <option value="0SIN ACCESO A PÁGINA ESPECÍFICA">SIN ACCESO A PÁGINA ESPECÍFICA</option>
-  <option value="0NAVEGACIÓN WEB LENTA">NAVEGACIÓN WEB LENTA</option>
-  <option value="0IP DUPLICADA">IP DUPLICADA</option>
-   </select>
+  <option value="4FALLA">FALLA</option>
+  <option value="3SOLICITUD">SOLICITUD</option>
+  </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
+  <input type="hidden" name="final" id="final" value="x">
+<?php break;
+  case "t": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="2RED ALÁMBRICA (ETHERNET)">RED ALÁMBRICA (ETHERNET)</option>
+  <option value="1RED INALÁMBRICA (WIFI)">RED INALÁMBRICA (WIFI)</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
+  <input type="hidden" name="final" id="final" value="x">
+<?php break;
+  case "v": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="_RED INALÁMBRICA (WIFI)">RED INALÁMBRICA (WIFI)</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
+  <input type="hidden" name="final" id="final" value="x">
+<?php break;
+  case "u": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="|RED INALÁMBRICA (WIFI)">RED INALÁMBRICA (WIFI)</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
+  <input type="hidden" name="final" id="final" value="x">
+<?php break;
+  case "w": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO ENCIENDE">NO ENCIENDE</option>
+  <option value="0BOTONES DAÑADOS">BOTONES DAÑADOS</option>
+  <option value="0SE ENCUENTRA REGISTRANDO">SE ENCUENTRA REGISTRANDO</option>
+  <option value="0NO SALEN LLAMADAS INTERNAS/LOCALES/CELULAR/L. D. NACIONAL/ L. D. MUNDIAL">NO SALEN LLAMADAS INTERNAS/LOCALES/CELULAR/L. D. NACIONAL/ L. D. MUNDIAL</option>
+  <option value="0NO SE ESCUCHA TIMBRE DE LLAMADA">NO SE ESCUCHA TIMBRE DE LLAMADA</option>
+  <option value="0NO ME ESCUCHAN">NO ME ESCUCHAN</option>
+  <option value="0NO ESCUCHO A LA OTRA PERSONA">NO ESCUCHO A LA OTRA PERSONA</option>
+  <option value="0NO REGISTRA LLAMADAS PERDIDAS/RECIBIDAS/REALIZADAS">NO REGISTRA LLAMADAS PERDIDAS/RECIBIDAS/REALIZADAS</option>
+  <option value="0NO SIRVE ALTAVOZ">NO SIRVE ALTAVOZ</option>
+  <option value="0NO SIRVE BOCINA">NO SIRVE BOCINA</option>
+  <option value="0SE ESCUCHA INTERFERENCIA DE AUDIO">SE ESCUCHA INTERFERENCIA DE AUDIO</option>
+  </select>
+  </div>
+
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
-  case "3": ?>
+  case "x": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0ACCESO A LA RED">ACCESO A LA RED</option>
-  <option value="0PÁGINA WEB BLOQUEADA">PÁGINA WEB BLOQUEADA</option>
-  <option value="0CATEGORÍA DE PÁGINAS WEB BLOQUEADA">CATEGORÍA DE PÁGINAS WEB BLOQUEADA</option>
-   </select>
+  <option value="0ASIGNACIÓN DE EQUIPO TELEFÓNICO">ASIGNACIÓN DE EQUIPO TELEFÓNICO</option>
+  <option value="0ACTUALIZACIÓN DE NOMBRE EN PANTALLA">ACTUALIZACIÓN DE NOMBRE EN PANTALLA</option>
+  <option value="0ACTUALIZACIÓN DE BOTONES ACCESO DIRECTO">ACTUALIZACIÓN DE BOTONES ACCESO DIRECTO</option>
+  <option value="0SOLICITUD DE AMPLIACIÓN DE SERVICIO LOCALES">SOLICITUD DE AMPLIACIÓN DE SERVICIO LOCALES</option>
+  <option value="0SOLICITUD DE AMPLIACIÓN DE SERVICIO CELULAR">SOLICITUD DE AMPLIACIÓN DE SERVICIO CELULAR</option>
+  <option value="0SOLICITUD DE AMPLIACIÓN DE SERVICIO D. NACIONAL">SOLICITUD DE AMPLIACIÓN DE SERVICIO D. NACIONAL</option>
+  <option value="0SOLICITUD DE AMPLIACIÓN DE SERVICIO L. D. MUNDIAL">SOLICITUD DE AMPLIACIÓN DE SERVICIO L. D. MUNDIAL</option>
+  <option value="0ACTIVACIÓN DE FUNCIÓN SECRETARIAL">ACTIVACIÓN DE FUNCIÓN SECRETARIAL</option>  
+  <option value="0DESVIÓ DE LLAMADAS">DESVIÓ DE LLAMADAS</option>  
+  </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="x">
   <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
-  case "2": ?>
+  case "z": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="aFALLA">FALLA</option>
-  <option value="bSOLICITUD">SOLICITUD</option>
-   </select>
+  <option value="0MICRÓFONO">MICRÓFONO</option>
+  <option value="0WEBCAM">WEBCAM</option>
+  <option value="0BOCINAS">BOCINAS</option>
+  <option value="0CONEXIÓN INALÁMBRICA INTERNET">CONEXIÓN INALÁMBRICA INTERNET</option>
+  <option value="0CABLES Y/O ADAPTADORES DE AUDIO/VIDEO">CABLES Y/O ADAPTADORES DE AUDIO/VIDEO</option>
+  </select>
   </div>
 
-<?php break;
-  case "1": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="cFALLA">FALLA</option>
-  <option value="dSOLICITUD">SOLICITUD</option>
-   </select>
-  </div>
-
-<?php break;
-  case "_": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="eFALLA">FALLA</option>
-  <option value="fSOLICITUD">SOLICITUD</option>
-   </select>
-  </div>  
-
-<?php break;
-  case "|": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="gFALLA">FALLA</option>
-  <option value="hSOLICITUD">SOLICITUD</option>
-   </select>
-  </div>  
-
+  <input type="hidden" name="ultima" id="ultima" value="x">
+  <input type="hidden" name="final" id="final" value="x">
 
 <?php 
   break;
   default: }
 
 }else{ ?>
-<!-- <div class="col-sm-offset-0 col-sm-4"><select  id="ultima" class="form-control" class="selectpicker" name="ultima" type="text" data-live-search="true" disabled=""><option value="0">SELECCIONE OPCIÓN</option></select></div> -->
-<input type="hidden" id="ultima" name="ultima" value="0">
+<!-- <div class="col-sm-offset-0 col-sm-4"><select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true" disabled=""><option value="0">SELECCIONE OPCIÓN</option></select></div> -->
+<input type="hidden" id="solucion" name="solucion" value="0">
 <?php } ?>
 
 <script type="text/javascript">
-    
+
+
+
 $(document).ready(function(){
-  //$('#ultima').select2();
-$('#ultima').change(function(){
+ // $('#solucion').select2();
+$('#solucion').change(function(){
   $.ajax({ type:"post", 
-           data:'valor=' + $('#ultima').val(),
+           data:'valor=' + $('#solucion').val(),
            url:'session/valor.php',
   success:function(r){
-    $('#select5').load('select/final.php');
+    $('#select4').load('select/ultimo.php');
+    console.log("Si esta entrando" + $('#solucion').val());
   }
         });
     });
 });
 
-
   </script>
-  
