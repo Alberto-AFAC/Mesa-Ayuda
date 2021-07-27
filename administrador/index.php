@@ -219,9 +219,9 @@
                                 <li>
                                     <a href="equipo"><i class="fa fa-desktop"></i> Equipos</a>
                                 </li>
-                            <li>
+                                <li>
                                     <a href="tecnico"><i class="fa fa-street-view"></i> Técnico</a>
-                            </li>
+                                </li>
 
                             </ul>
                             <!-- /.nav-second-level -->
@@ -569,6 +569,17 @@ onclick="location.href='./'" -->
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h5 style="font-weight: bold; text-align: center;">Estadística Mensual Solicitud Según
+                                Servicio</h5>
+                            <div style="padding-top:50px;" class="row">
+                                <canvas id="piechart-servicios"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -714,6 +725,136 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
             title: "Estado"
         }
     ],
+});
+
+//GRAFICAS PARA MEDIR LA EVALUACIÓN DEL TÉCNICO//
+// $.ajax({
+//     url: "http://localhost/mesa-ayuda/PHP/evaluacion.php",
+//     method: "GET",
+//     success: function(data) {
+//       console.log("Aqui tiene que recibir el arreglo" + data);
+//       var Tecnico = [];
+//       var Evaluacion = [];
+
+//       for(var i in data) {
+//         Tecnico.push(data[i].nombre);
+//         Evaluacion.push(data[i].evaluacion);
+//       }
+
+//       var chartdata = {
+//         labels: Tecnico,
+//         datasets : [
+//           {
+//             label: 'Total de reportes evaluados',
+//             backgroundColor: 'rgba(200, 200, 200, 0.75)',
+//             borderColor: 'rgba(200, 200, 200, 0.75)',
+//             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+//             hoverBorderColor: 'rgba(200, 200, 200, 1)',
+//             data: Evaluacion
+//           }
+//         ]
+//       };
+
+//       var ctx = $("#mycanvas");
+
+//       var barGraph = new Chart(ctx, {
+//         type: 'bar',
+//         data: chartdata
+//       });
+//     },
+//     error: function(data) {
+//       console.log(data);
+//     }
+//   });
+//
+var piechar = new Chart(document.getElementById("piechart-evaluacion"), {
+    type: 'line',
+    data: {
+
+        labels: ["ENERO"],
+        datasets: [{
+                label: "Bueno ",
+                backgroundColor: ["#006C52"],
+                borderWidth: 0,
+                data: [20],
+                stack: 'combined',
+                type: 'bar'
+            },
+            {
+                label: "Regular",
+                backgroundColor: ["#EB4E0"],
+                borderWidth: 0,
+                data: [21],
+                stack: 'combined'
+            }
+        ]
+
+    },
+    options: {
+        legend: {
+            labels: {
+                fontColor: '#green',
+            }
+        },
+        title: {
+            display: true,
+            text: 'Porcentaje de cumplimiento'
+        },
+        scales: {
+            y: {
+                stacked: true
+            }
+        }
+
+    }
+});
+//GRAFICAS PARA MEDIR SOLICITUD DE SERVICIO SEGUN EL CASO
+<?php 
+            $query = " SELECT
+       	    COUNT( CASE WHEN servicio = 'SISTEMAS' THEN 1 END ) AS sistemas,
+	        COUNT( CASE WHEN servicio = 'IMPRESIÓN' THEN 1 END ) AS impresion,
+	        COUNT( CASE WHEN servicio = 'CÓMPUTO' THEN 1 END ) AS computo,
+	        COUNT( CASE WHEN servicio = 'COMUNICACIONES' THEN 1 END ) AS comunicaciones,
+	        COUNT( CASE WHEN servicio = 'PROGRAMACIÓN DE EVENTOS/REUNIONES' THEN 1 END ) AS reuniones
+            FROM
+            reporte
+            WHERE
+             MONTH ( finicio ) = MONTH (CURRENT_DATE ())";
+        $resultado = mysqli_query($conexion, $query);
+?>
+var piechar = new Chart(document.getElementById("piechart-servicios"), {
+    type: 'bar',
+    data: {
+        <?php while($row = mysqli_fetch_array($resultado)){ ?>
+        labels: ["Sistemas", "Impresión", "Cómputo", "Comunicaciones", "Programación de eventos/reuniones"],
+        datasets: [{
+            label: "Sistemas",
+            backgroundColor: ["#707070", "#006C52", "#002FC2", "#EB4E00", "#000D8A"],
+            borderWidth: 0,
+            data: [<?php echo $row['sistemas']?>, <?php echo $row['impresion']?>,
+                <?php echo $row['computo']?>, <?php echo $row['comunicaciones']?>,
+                <?php echo $row['reuniones']?>
+            ]
+        }]
+        <?php }?>
+    },
+    options: {
+        legend: {
+            labels: {
+                fontColor: '#green',
+            }
+        },
+        title: {
+            display: false,
+            text: 'Porcentaje de cumplimiento'
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+
+    }
 });
 </script>
 
