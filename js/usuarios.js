@@ -171,7 +171,6 @@ listar_usuario();
 
 function datos_detalle(id){
 
-	alert(id);
 $("#Detalles").slideDown("slow");
 $("#cuadro1").hide("slow");
 
@@ -184,10 +183,28 @@ var res = obj.data;
 //alert(res);
 for(i=0; i<res.length;i++){
 if(obj.data[i].gstIdper==id){
+
+idarea = obj.data[i].gstIDara;
+
+$.ajax({
+url:'../../php/area_listar.php',
+type:'POST'
+}).done(function(resps){
+obj = JSON.parse(resps);
+var res = obj.data;  
+
+for(ii=0; ii<res.length;ii++){
+
+if(obj.data[ii].id_area==idarea){
+
+	area = $("#area").val(obj.data[ii].adscripcion);
+		}
+	}
+})
+
 var id_usuario = $("#id_usuario").val(obj.data[i].gstIdper),
 nombre = $("#nombre").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell),
 cargo = $("#cargo").val(obj.data[i].gstGnric),
-area = $("#area").val(obj.data[i].adscripcion),
 extension = $("#extension").val(obj.data[i].gstExTel),
 correo = $("#correo").val(obj.data[i].gstCinst),
 // ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
