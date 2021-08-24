@@ -415,6 +415,7 @@ if (isset($_SESSION['usuario'])) {
                             name="privilg" id="privilg" type="text" data-live-search="true">
                             <option selected>Seleccione</option>
                             <option value="tecnico">Técnico</option>
+                            <option value="admin">Administrador</option>
                         </select>
                     </div>
 
@@ -517,6 +518,7 @@ if (isset($_SESSION['usuario'])) {
                             <select style="width: 100%" class="form-control" class="selectpicker"
                             name="aprivilg" id="aprivilg" type="text" data-live-search="true">                         
                             <option value="tecnico">Técnico</option>
+                            <option value="admin">Administrador</option>
                         </select>
                     </div>
 
@@ -676,7 +678,14 @@ $(".toggle-password").click(function() {
             $horario = $data['entrada'].' a '.$data['salida']; 
             $usuario = $data['usuario'];
             $idtec = $data['id_tecnico'];
+            // $privilegios = strtoupper($data['privilegios']);
 
+            if(strtoupper($data['privilegios'])== 'ADMIN'){
+                $privilegios = 'ADMINISTRADOR';
+
+            } else {
+                $privilegios = 'TÉCNICO';
+            }
 
         $queri = "SELECT * FROM personal 
             WHERE gstIdper = $idusu AND estado = 0 ORDER BY gstIdper ASC";
