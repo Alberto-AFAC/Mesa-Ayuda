@@ -171,8 +171,6 @@ listar_usuario();
 
 function datos_detalle(id){
 
-alert(id);
-
 $("#Detalles").slideDown("slow");
 $("#cuadro1").hide("slow");
 
