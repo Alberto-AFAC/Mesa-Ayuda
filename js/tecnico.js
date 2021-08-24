@@ -123,32 +123,56 @@ function eliminar_usuario() {
 }
 
 
-function datos_detalle(id) {
-    $("#Detalles").slideDown("slow");
-    $("#cuadro1").hide("slow");
-    $.ajax({
-        url: '../../php/listar_usuarios.php',
-        type: 'POST'
-    }).done(function(resp) {
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        for (i = 0; i < res.length; i++) {
-            if (obj.data[i].id_usuario == id) {
-                var id_usuario = $("#id_usuario").val(obj.data[i].id_usuario),
-                    nombre = $("#nombre").val(obj.data[i].nombre + ' ' + obj.data[i].apellidos),
-                    cargo = $("#cargo").val(obj.data[i].cargo),
-                    area = $("#area").val(obj.data[i].adscripcion),
-                    extension = $("#extension").val(obj.data[i].extension),
-                    correo = $("#correo").val(obj.data[i].correo),
-                    ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
-                    n_empleado = $("#n_empleado").val(obj.data[i].n_empleado),
-                    opcion = $("#frmEditar #opcion").val("modificar");
-                nempleado = obj.data[i].n_empleado;
-                equpios(nempleado);
-            }
+function datos_detalle(id){
+
+alert(id);
+
+$("#Detalles").slideDown("slow");
+$("#cuadro1").hide("slow");
+
+$.ajax({
+url:'../../php/listar_personal.php',
+type:'POST'
+}).done(function(resp){
+obj = JSON.parse(resp);
+var res = obj.data;  
+//alert(res);
+for(i=0; i<res.length;i++){
+if(obj.data[i].gstIdper==id){
+
+idarea = obj.data[i].gstIDara;
+
+$.ajax({
+url:'../../php/area_listar.php',
+type:'POST'
+}).done(function(resps){
+obj = JSON.parse(resps);
+var res = obj.data;  
+
+for(ii=0; ii<res.length;ii++){
+
+if(obj.data[ii].id_area==idarea){
+
+    area = $("#area").val(obj.data[ii].adscripcion);
         }
-    })
+    }
+})
+
+var id_usuario = $("#id_usuario").val(obj.data[i].gstIdper),
+nombre = $("#nombre").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell),
+cargo = $("#cargo").val(obj.data[i].gstGnric),
+extension = $("#extension").val(obj.data[i].gstExTel),
+correo = $("#correo").val(obj.data[i].gstCinst),
+// ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
+n_empleado = $("#n_empleado").val(obj.data[i].gstNmpld),
+opcion = $("#frmEditar #opcion").val("modificar");
+nempleado = obj.data[i].gstNmpld;
+equpios(nempleado);
 }
+}
+})
+}
+
 
 
 
