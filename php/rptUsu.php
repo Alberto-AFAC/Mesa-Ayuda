@@ -34,7 +34,7 @@ ini_set('date.timezone','America/Mexico_City');
 $fenvio= date('Y').'/'.date('m').'/'.date('d');	
 $Hinic=date('H:i');
 
-if(registrar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$idequipo,$fenvio,$Hinic,$idtec,$conexion)){
+if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$idtec,$conexion)){
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
 		 	}else{	echo "1";	}	
@@ -76,7 +76,10 @@ if(!empty($idtec[$n][0])){
 }
 }	
 
-function registrar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$idequipo,$fenvio,$Hinic,$idtec,$conexion){
+
+
+
+function registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$idtec,$conexion){
 	// $query="SELECT * FROM asignacion  
 	// 		INNER JOIN reporte
 	// 		ON n_emp = n_empleado
@@ -86,8 +89,7 @@ function registrar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ul
 	// $resultados = mysqli_query($conexion,$query);
 	// if($resultados->num_rows == 0){
 
-$query = "INSERT INTO reporte(n_empleado,idequipo,servicio,intervencion,descripcion,solucion,ultima,final,usu_observ,falla_interna,falla_xterna,finicio,hinicio,ffinal,hfinal,evaluacion,observa,estado_rpt,pila,idtec) SELECT '$nempleado',id_equipo,'$servicio','$intervencion','$descripcion','$solucion','$ultima','$final','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Por atender','0','$idtec' FROM equipo ORDER BY id_equipo DESC LIMIT 1";
-	
+$query = "INSERT INTO reporte VALUES(0,'$nempleado','$idequipo','$servicio','$intervencion','$descripcion','$solucion','$ultima','$final','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Por atender','0','$idtec');";
 			if (mysqli_query($conexion,$query)){		
 				
 				return true;

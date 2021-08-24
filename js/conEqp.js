@@ -35,12 +35,18 @@ function eqpo(datos) {
 //registro de reporte
 function reporte() {
 
+    var idequipo = document.getElementById('idequipo').value;
+
+    //var idequipo = $('input[name=eqpo]:checked').val();
+
+    alert(idequipo);
+
     var nempleado = document.getElementById('nempleado').value;
     // var modelo = document.getElementById('modelo').value;
     // var serie = document.getElementById('serie').value;
     var obser = document.getElementById('obser').value;
     // var verwind = document.getElementById('verwind').value;
-    var idequipo = document.getElementById('idequipo').value;
+//     var idequipo = document.getElementById('idequipo').value;
     // var proceso = document.getElementById('proceso').value;
 
     var servicio = document.getElementById('servicio').value;
@@ -51,6 +57,12 @@ function reporte() {
     var ultima = document.getElementById('ultima').value;
     var final = document.getElementById('final').value;
 
+    alert(servicio);
+
+    if(servicio=='1CÓMPUTO'){
+        idequipo = '';
+    }
+
     x = servicio+'/'+intervencion+'/'+descripcion+'/'+solucion+'/'+ultima+'/'+final;
 
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&opcion=registrar';
@@ -58,7 +70,7 @@ function reporte() {
 
     //    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
 
-    if (nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || idequipo == '' || solucion == '0' || ultima == '0' || final == '0') {
+    if (idequipo = '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || idequipo == '' || solucion == '0' || ultima == '0' || final == '0') {
         $("#vacio").toggle("toggled");
         setTimeout(function() {
             $('#vacio').toggle('toggled');
