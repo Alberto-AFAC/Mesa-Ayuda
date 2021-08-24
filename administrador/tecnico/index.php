@@ -699,7 +699,7 @@ $(".toggle-password").click(function() {
        ?>
 
        ['<?php echo $id;?>', '<?php echo $nombre ?>',
-       '<?php echo 'Pendiente'?>', '<?php echo $usuario?>', '<?php echo $horario?>', "<?php 
+       '<?php echo $privilegios?>', '<?php echo $usuario?>', '<?php echo $horario?>', "<?php 
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
