@@ -180,18 +180,17 @@ type:'POST'
 obj = JSON.parse(resp);
 var res = obj.data;  
 x=0;
-html = '<table class="table table-striped table-bordered"><thead><tr><th style="width:5%"><i class="fa fa-sort-numeric-asc"></i>N°</th><th style="width:15%"><i></i>N° INVENTARIO</th><th style="width:15%"><i></i>N° SIGTIC</th><th style="width:15%"><i></i>N° SERIE</th><th style="width:15%"><i></i>MARCA</th><th style="width:15%"><i></i>TIPO DE EQUIPO </th></tr></thead><tbody>';
+html = '<table class="table table-striped table-bordered"><thead><tr><th style="width:5%"><i class="fa fa-sort-numeric-asc"></i>N°</th><th style="width:15%"><i></i>N° INVENTARIO</th><th style="width:15%"><i></i>N° SERIE</th><th style="width:15%"><i></i>MARCA</th><th style="width:15%"><i></i>TIPO DE EQUIPO </th></tr></thead><tbody>';
 for (e = 0; e < res.length; e++) {
 if(obj.data[e].n_emp==nempleado){
 x++;
-html += "<tr><td>" + x + "</td><td>" + obj.data[e].num_invntraio + "</td><td>" + obj.data[e].num_sigtic + "</td><td>" + obj.data[e].serie_cpu + "</td><td>" + obj.data[e].marca_cpu + "</td><td>" + obj.data[e].tipo_equipo + "</td></tr>";
+html += "<tr><td>" + x + "</td><td>" + obj.data[e].num_invntraio + "</td><td>" + obj.data[e].serie_cpu + "</td><td>" + obj.data[e].marca_cpu + "</td><td>" + obj.data[e].tipo_equipo + "</td></tr>";
 }
 }
 html += '</tbody></table>';
 $("#eqpos").html(html);
 })
 }
-
 var regisTec = function() {
     limpiar_datos();
     $("#cuadro2").slideDown("slow");
