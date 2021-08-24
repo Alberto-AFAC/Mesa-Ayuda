@@ -53,8 +53,6 @@ function reporte() {
 
     x = servicio+'/'+intervencion+'/'+descripcion+'/'+solucion+'/'+ultima+'/'+final;
 
-    alert(x);
-
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&opcion=registrar';
 
 
