@@ -1,35 +1,22 @@
 <?php
-	include("../conexion/conexion.php");
- session_start();
-
-	
-// $id = $_SESSION['usuario']['id_climan'];
-
-
-
-$query = "SELECT * FROM area WHERE estado = 0";	
-
-	$resultado =mysqli_query($conexion,$query);
-
-	if(!$resultado){
-		die("error");
-	}else{
-
+	include ("../conexion/conexion.php");
+	header("Content-Type: text/html;charset=utf-8");
+	$query = "SELECT id_area,adscripcion FROM area WHERE estado = 0";
+	$resultado = mysqli_query($conexion2, $query);
+	if (!$resultado) {
+		die("error");//EN CASO DE NO HABER RESULTADO
+	}else{//arreglo -funcion , parametro de resultado
 		while($data = mysqli_fetch_assoc($resultado)){
-
-			$arreglo["data"][] = $data;
-		}
-
-		if(isset($arreglo) && !empty($arreglo)){
-
-			echo json_encode($arreglo);	
-
-		}else{
-
-			echo $arreglo = '0';
-		}
+			//variable arreglo..para no tener problemas con la comas,comillas,tilde etc
+	$arreglo["data"][] = $data;	
+				//array_map("utf8_decode", $data)
+		}//al tener toda los datos en data de la variable arreglo lo pasamos formato json
+		if(isset($arreglo) && !empty($arreglo)) {
+				echo json_encode($arreglo);
+			}else
+			{
+					echo $arreglo='""';				
+			}
 	}
 	mysqli_free_result($resultado);
 	mysqli_close($conexion);
-
-?>

@@ -1,9 +1,10 @@
 <?php
 	include ("../conexion/conexion.php");
 	header("Content-Type: text/html;charset=utf-8");
-	$query = "SELECT gstIdper,gstNombr,gstApell,gstGnric,gstExTel,gstCinst,gstNmpld FROM personal INNER JOIN codigo ON codigo.gstIdpst = personal.gstIdpst WHERE personal.estado = 0";
+	$query = "SELECT gstIdper,gstNombr,gstApell,gstGnric,gstExTel,gstCinst,gstNmpld,gstIDara FROM personal 
+			  INNER JOIN codigo ON codigo.gstIdpst = personal.gstIdpst 
+			  WHERE personal.estado = 0";
 	$resultado = mysqli_query($conexion2, $query);
-
 	if (!$resultado) {
 		die("error");//EN CASO DE NO HABER RESULTADO
 	}else{//arreglo -funcion , parametro de resultado
@@ -21,3 +22,12 @@
 	}
 	mysqli_free_result($resultado);
 	mysqli_close($conexion);
+
+
+
+
+
+
+// SELECT adscripcion FROM personal 
+// INNER JOIN area ON  area.id_area = personal.gstIDara
+// WHERE personal.estado = 0 ORDER BY area.id_area ASC
