@@ -1,11 +1,7 @@
 <?php
 	include ("../conexion/conexion.php");
 	header("Content-Type: text/html;charset=utf-8");
-	$query = "SELECT gstIdper,gstNombr,gstApell,gstGnric,adscripcion,gstExTel,gstCinst,gstNmpld
-	FROM personal 
-	INNER JOIN codigo ON codigo.gstIdpst = personal.gstIdpst
-    INNER JOIN area ON  area.id_area = personal.gstIDara
-	WHERE personal.estado = 0 ORDER BY area.id_area ASC";
+	$query = "SELECT gstIdper,gstNombr,gstApell,gstGnric,gstExTel,gstCinst,gstNmpld FROM personal INNER JOIN codigo ON codigo.gstIdpst = personal.gstIdpst WHERE personal.estado = 0";
 	$resultado = mysqli_query($conexion2, $query);
 
 	if (!$resultado) {
