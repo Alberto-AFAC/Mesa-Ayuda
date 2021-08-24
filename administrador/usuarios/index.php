@@ -337,7 +337,6 @@
     <label for="Extension">Extension</label>
     <input id="extension" name="extension" type="text" class="form-control" disabled="">
     </div> 
-      
     </div>
     
     <div class="form-group">  
