@@ -334,38 +334,37 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <input type="hidden" id="id_usuario" name="id_usuario">
                             <input type="hidden" id="opcion" name="opcion" value="modificar">
+
                             <div class="form-group">
-                                <div class="col-sm-offset-0 col-sm-3">
-                                    <label for="Nombre">Nombre</label>
-                                    <input id="nombre" name="nombre" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-3">
-                                    <label for="Correo">Correo</label>
-                                    <input id="correo" name="correo" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-2">
-                                    <label for="N° empleado">N° empleado</label>
-                                    <input id="n_empleado" name="n_empleado" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-2">
-                                    <label for="Extension">Extension</label>
-                                    <input id="extension" name="extension" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-2">
-                                    <label for="Adscripción">Cargo</label>
-                                    <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
-                                </div>
+                            <div class="col-sm-offset-0 col-sm-4" >
+                            <label for="Nombre">Nombre</label>
+                            <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-0 col-sm-9">
-                                    <label for="Adscripción">Adscripción</label>
-                                    <input id="area" name="area" type="text" class="form-control" disabled="">
-                                </div>
+                            <div class="col-sm-offset-0 col-sm-4" >
+                            <label for="Correo">Correo</label>
+                            <input id="correo" name="correo" type="text"  class="form-control" disabled="">
                             </div>
+                            <div class="col-sm-offset-0 col-sm-2">
+                            <label for="N° empleado">N° empleado</label>
+                            <input id="n_empleado" name="n_empleado" type="text" class="form-control" disabled="">
+                            </div> 
+                            <div class="col-sm-offset-0 col-sm-2">
+                            <label for="Extension">Extension</label>
+                            <input id="extension" name="extension" type="text" class="form-control" disabled="">
+                            </div> 
+                            </div>
+                            
+                            <div class="form-group">  
+                            <div class="col-sm-offset-0 col-sm-3">
+                            <label for="Adscripción">Cargo</label>
+                            <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
+                            </div>  
+                            <div class="col-sm-offset-0 col-sm-9">
+                            <label for="Adscripción">Adscripción</label>
+                            <input id="area" name="area" type="text" class="form-control" disabled="">
+                            </div>
+                            </div>    
+                          
                             <div id="eqpos"></div>
                         </div>
                     </div>
