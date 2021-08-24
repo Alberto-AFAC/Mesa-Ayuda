@@ -202,9 +202,9 @@
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
+                                <!-- <li>
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
-                                </li>
+                                </li> -->
                             <li>
                                     <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
@@ -362,15 +362,15 @@ Agregar datos del  equipo </h4>
                     </div>
 
                     <div class="form-group">                    
-                    <div class="col-sm-4">
+                    <!-- <div class="col-sm-4">
                     <label>Número SIGTIC</label>
                     <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
-                    </div>
-                    <div class="col-sm-4">
+                    </div> -->
+                    <div class="col-sm-6">
                     <label>Número de inventario</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
                     </div>                    
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                     <label>Serie</label>
                     <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
                     </div>        
@@ -587,15 +587,15 @@ Editar datos del  equipo </h4>
                     </div>
 
                     <div class="form-group">                    
-                    <div class="col-sm-4">
+                    <!-- <div class="col-sm-4">
                     <label>Número SIGTIC</label>
                     <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
-                    </div>
-                    <div class="col-sm-4">
+                    </div> -->
+                    <div class="col-sm-6">
                     <label>Número de inventario</label>
                     <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
                     </div>                    
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                     <label>Serie</label>
                     <input id="eserie_cpu" name="eserie_cpu" type="text" class="form-control">
                     </div>        

@@ -524,10 +524,10 @@ Favor de validar y agregar datos del  equipo </h4>
                     </div> -->
 
                     <div class="form-group">                    
-                    <div class="col-sm-4">
+                    <!-- <div class="col-sm-4">
                     <label>Número sigctic</label>
                     <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
-                    </div>
+                    </div> -->
                     <div class="col-sm-4">
                     <label>Numero de inventario</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
