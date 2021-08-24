@@ -202,9 +202,9 @@
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-<!--                                 <li>
+                                <li>
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
-                                </li> -->
+                                </li>
                             <li>
                                     <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
@@ -790,7 +790,7 @@ $(document).ready(function(){
 
 if($data['proceso']=='asignado' && $data['n_emp']==$dato['gstNmpld'] && $dato['estado']==0){   ?>    
     
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $nombre?>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','INVENTARIO','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $nombre?>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
@@ -801,7 +801,7 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 <?php 
 }else if($data['proceso']=='asignado' && $data['n_emp']==$dato['gstNmpld'] && $dato['estado']==1){   ?> 
 
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<p style="color:red;"><?php echo $nombre.'<br> YA NO LABORA '?></p>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','INVENTARIO','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<p style="color:red;"><?php echo $nombre.'<br> YA NO LABORA '?></p>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
