@@ -811,7 +811,7 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 
 
 
-<?php }else if($data['proceso']=='designado' && $dato['gstIdper'] ==1){ ?>
+<?php }else if($data['proceso']=='designado'){ ?>
 
     ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo 'NO ASIGNADO'?>',"<?php if($data['num_invntraio'] == '0'){
 

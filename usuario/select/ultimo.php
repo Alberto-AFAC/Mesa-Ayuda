@@ -371,13 +371,13 @@ switch ($id) {
 
 $(document).ready(function(){
  // $('#solucion').select2();
-$('#solucion').change(function(){
+$('#ultima').change(function(){
   $.ajax({ type:"post", 
-           data:'valor=' + $('#solucion').val(),
+           data:'valor=' + $('#ultima').val(),
            url:'session/valor.php',
   success:function(r){
-    $('#select4').load('select/ultimo.php');
-    console.log("Si esta entrando" + $('#solucion').val());
+    $('#select5').load('select/final.php');
+    console.log("Si esta entrando" + $('#ultima').val());
   }
         });
     });
