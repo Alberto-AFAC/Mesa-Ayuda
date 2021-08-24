@@ -676,6 +676,7 @@ $(".toggle-password").click(function() {
             $horario = $data['entrada'].' a '.$data['salida']; 
             $usuario = $data['usuario'];
             $idtec = $data['id_tecnico'];
+            
 
         $queri = "SELECT * FROM personal 
             WHERE gstIdper = $idusu AND estado = 0 ORDER BY gstIdper ASC";
