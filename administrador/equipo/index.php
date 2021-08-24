@@ -423,7 +423,7 @@ Agregar datos del  equipo </h4>
                     <select class="form-control" selected="true" id="procesador" name="procesador">                   
                     <option value="" selected>SELECCIONE</option>
                     <option value="INTEL" >INTEL</option>
-                    <option value="AMED" >AMED</option>
+                    <option value="AMD" >AMD</option>
                     </select> 
                     </div>
                     <div class="col-sm-3">
@@ -643,7 +643,7 @@ Editar datos del  equipo </h4>
                     <label>Procesador</label>       
                     <select class="form-control" selected="true" id="eprocesador" name="eprocesador">                   
                     <option value="INTEL" >INTEL</option>
-                    <option value="AMED" >AMED</option>
+                    <option value="AMD" >AMD</option>
                     </select> 
                     </div>
                     <div class="col-sm-3">

@@ -585,7 +585,7 @@ Favor de validar y agregar datos del  equipo </h4>
                     <select class="form-control" selected="true" id="procesador" name="procesador">                   
                     <option value="" selected>SELECCIONE</option>
                     <option value="INTEL" >INTEL</option>
-                    <option value="AMED" >AMED</option>
+                    <option value="AMD" >AMD</option>
                     </select> 
                     </div>
                     <div class="col-sm-3">
