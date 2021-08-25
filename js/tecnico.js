@@ -12,7 +12,7 @@ function tecnico() {
 
     datos = 'idusu=' + idusu + '&privilg=' + privilg + '&usuario=' + usuario + '&password=' + password + '&entrada=' + entrada + '&salida=' + salida + '&opcion=registrar';
 
-   //alert(datos);
+    //alert(datos);
 
     if (idusu == '' || privilg == '' || usuario == '' || password == '' || entrada == '' || salida == '') {
 
@@ -97,99 +97,99 @@ var datos_eliminar = function(id) {
 
     // $(tbody).on("click", "button.eliminar", function() {
     //     var data = table.row($(this).parents("tr")).data();
-        //console.log(data);
-        var idtec = $("#EliminarUsuario #idtec").val(id);
-        //nombre = $("#frmEliminarcorreo #nombre").val(data.nombre);				
+    //console.log(data);
+    var idtec = $("#EliminarUsuario #idtec").val(id);
+    //nombre = $("#frmEliminarcorreo #nombre").val(data.nombre);				
     // });
 }
 
 function eliminar_usuario() {
     //para realiza el evento del clic del boton
-    
-         var idtec = $("#EliminarUsuario #idtec").val(),
-            opcion = $("#EliminarUsuario #opcion").val();
-        $.ajax({
-            method: "POST",
-            url: "../../php/tecnico.php",
-            data: { "idtec": idtec, "opcion": opcion }
-        }).done(function(info) {
 
-            var json_info = JSON.parse(info);
-            mostrar_mensaje(json_info);
-            location.href = './';
-            limpiar_datos();
-            listar_usuario();
-        });
+    var idtec = $("#EliminarUsuario #idtec").val(),
+        opcion = $("#EliminarUsuario #opcion").val();
+    $.ajax({
+        method: "POST",
+        url: "../../php/tecnico.php",
+        data: { "idtec": idtec, "opcion": opcion }
+    }).done(function(info) {
+
+        var json_info = JSON.parse(info);
+        mostrar_mensaje(json_info);
+        location.href = './';
+        limpiar_datos();
+        listar_usuario();
+    });
 }
 
 
-function datos_detalle(id){
+function datos_detalle(id) {
 
-$("#Detalles").slideDown("slow");
-$("#cuadro1").hide("slow");
+    $("#Detalles").slideDown("slow");
+    $("#cuadro1").hide("slow");
 
-$.ajax({
-url:'../../php/listar_personal.php',
-type:'POST'
-}).done(function(resp){
-obj = JSON.parse(resp);
-var res = obj.data;  
-//alert(res);
-for(i=0; i<res.length;i++){
-if(obj.data[i].gstIdper==id){
+    $.ajax({
+        url: '../../php/listar_personal.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        //alert(res);
+        for (i = 0; i < res.length; i++) {
+            if (obj.data[i].gstIdper == id) {
 
-idarea = obj.data[i].gstIDara;
+                idarea = obj.data[i].gstIDara;
 
-$.ajax({
-url:'../../php/area_listar.php',
-type:'POST'
-}).done(function(resps){
-obj = JSON.parse(resps);
-var res = obj.data;  
+                $.ajax({
+                    url: '../../php/area_listar.php',
+                    type: 'POST'
+                }).done(function(resps) {
+                    obj = JSON.parse(resps);
+                    var res = obj.data;
 
-for(ii=0; ii<res.length;ii++){
+                    for (ii = 0; ii < res.length; ii++) {
 
-if(obj.data[ii].id_area==idarea){
+                        if (obj.data[ii].id_area == idarea) {
 
-    area = $("#area").val(obj.data[ii].adscripcion);
+                            area = $("#area").val(obj.data[ii].adscripcion);
+                        }
+                    }
+                })
+
+                var id_usuario = $("#id_usuario").val(obj.data[i].gstIdper),
+                    nombre = $("#nombre").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell),
+                    cargo = $("#cargo").val(obj.data[i].gstGnric),
+                    extension = $("#extension").val(obj.data[i].gstExTel),
+                    correo = $("#correo").val(obj.data[i].gstCinst),
+                    // ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
+                    n_empleado = $("#n_empleado").val(obj.data[i].gstNmpld),
+                    opcion = $("#frmEditar #opcion").val("modificar");
+                nempleado = obj.data[i].gstNmpld;
+                equpios(nempleado);
+            }
         }
-    }
-})
-
-var id_usuario = $("#id_usuario").val(obj.data[i].gstIdper),
-nombre = $("#nombre").val(obj.data[i].gstNombr+' '+obj.data[i].gstApell),
-cargo = $("#cargo").val(obj.data[i].gstGnric),
-extension = $("#extension").val(obj.data[i].gstExTel),
-correo = $("#correo").val(obj.data[i].gstCinst),
-// ubicacion = $("#ubicacion").val(obj.data[i].ubicacion),
-n_empleado = $("#n_empleado").val(obj.data[i].gstNmpld),
-opcion = $("#frmEditar #opcion").val("modificar");
-nempleado = obj.data[i].gstNmpld;
-equpios(nempleado);
-}
-}
-})
+    })
 }
 
 
-function equpios(nempleado){
-$.ajax({
-url:'../../php/asigEqpo.php',
-type:'POST'
-}).done(function(resp){
-obj = JSON.parse(resp);
-var res = obj.data;  
-x=0;
-html = '<table class="table table-striped table-bordered"><thead><tr><th style="width:5%"><i class="fa fa-sort-numeric-asc"></i>N°</th><th style="width:15%"><i></i>N° INVENTARIO</th><th style="width:15%"><i></i>N° SERIE</th><th style="width:15%"><i></i>MARCA</th><th style="width:15%"><i></i>TIPO DE EQUIPO </th></tr></thead><tbody>';
-for (e = 0; e < res.length; e++) {
-if(obj.data[e].n_emp==nempleado){
-x++;
-html += "<tr><td>" + x + "</td><td>" + obj.data[e].num_invntraio + "</td><td>" + obj.data[e].serie_cpu + "</td><td>" + obj.data[e].marca_cpu + "</td><td>" + obj.data[e].tipo_equipo + "</td></tr>";
-}
-}
-html += '</tbody></table>';
-$("#eqpos").html(html);
-})
+function equpios(nempleado) {
+    $.ajax({
+        url: '../../php/asigEqpo.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        x = 0;
+        html = '<table class="table table-striped table-bordered"><thead><tr><th style="width:5%"><i class="fa fa-sort-numeric-asc"></i>N°</th><th style="width:15%"><i></i>N° INVENTARIO</th><th style="width:15%"><i></i>N° SERIE</th><th style="width:15%"><i></i>MARCA</th><th style="width:15%"><i></i>TIPO DE EQUIPO </th></tr></thead><tbody>';
+        for (e = 0; e < res.length; e++) {
+            if (obj.data[e].n_emp == nempleado) {
+                x++;
+                html += "<tr><td>" + x + "</td><td>" + obj.data[e].num_invntraio + "</td><td>" + obj.data[e].serie_cpu + "</td><td>" + obj.data[e].marca_cpu + "</td><td>" + obj.data[e].tipo_equipo + "</td></tr>";
+            }
+        }
+        html += '</tbody></table>';
+        $("#eqpos").html(html);
+    })
 }
 var regisTec = function() {
     limpiar_datos();
@@ -210,13 +210,13 @@ function datos_editar(id) {
         var res = obj.data;
         for (i = 0; i < res.length; i++) {
             if (obj.data[i].id_usu == id) {
-                var                     
+                var
                     id_usuario = $("#frmEditar #aidusu").val(obj.data[i].id_usu),
                     idtec = $("#frmEditar #idtec").val(obj.data[i].id_tecnico),
                     privilg = $("#frmEditar #aprivilg").val(obj.data[i].privilegios),
 
                     usuario = $("#frmEditar #ausuario").val(obj.data[i].usuario),
-                    
+
                     password = $("#frmEditar #apassword").val(obj.data[i].password),
 
 
@@ -225,7 +225,7 @@ function datos_editar(id) {
                     salida = $("#frmEditar #asalida").val(obj.data[i].salida),
 
                     activo = $("#frmEditar #activo").val(obj.data[i].activo),
-                    
+
                     observ = $("#frmEditar #observ").val(obj.data[i].observ),
 
                     opcion = $("#frmEditar #opcion").val("modificar");
@@ -244,7 +244,7 @@ var mostrar_mensaje = function(informacion) {
             texto = "<strong>Error</strong>, no se ejecutó la consulta.";
             color = "#C9302C";
         } else if (informacion.respuesta == "EXISTE") {
-           // texto = "<strong>Información!</strong> el correo ya existe.";
+            // texto = "<strong>Información!</strong> el correo ya existe.";
             color = "#5b94c5";
         } else if (informacion.respuesta == "VACIO") {
             texto = "<strong>Advertencia!</strong> debe llenar todos los campos solicitados.";
