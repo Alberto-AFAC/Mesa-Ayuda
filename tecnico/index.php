@@ -718,10 +718,6 @@ $(document).ready(function(){
         <?php
 	    $idtecnico = $_SESSION['usuario']['id_tecnico'];
 	    $query = "SELECT 
-		usuarios.nombre,
-		usuarios.apellidos,
-		usuarios.ubicacion,
-		usuarios.extension,
 		reporte.n_reporte,
 		DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
 		DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as ftermino,
@@ -738,16 +734,30 @@ $(document).ready(function(){
 		reporte.hinicio,
 		reporte.hfinal,
 		reporte.idequipo,
+        n_empleado empleado,
         -- TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()) AS tiempo_transcurrido
 		IF(reporte.ffinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
-		FROM usuarios 
-		LEFT JOIN reporte ON usuarios.n_empleado = reporte.n_empleado
+		FROM reporte 
 		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+         $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+
+
             $fila = $idtecnico;
-            $nombre = '';
-            $apellidos = ''; 
+            $nombre = $data2['gstNombr'];
+            $apellidos = $data2['gstApell']; 
+            $ubicacion = '';
+            $extension = $data2['gstExTel'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
@@ -765,7 +775,7 @@ $(document).ready(function(){
 if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente' || $data['evaluacion']=='CANCELADO'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo $data['nombre'] . " " . $data['apellidos'] ?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
+    ["<?php echo  $data['n_reporte']?>","<?php echo $nombre . " " . $apellidos ?>","<?php echo $extension?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>";
 
@@ -792,7 +802,9 @@ if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt
                  ?>"
 ],
 <?php } 
-}?>
+}
+}
+?>
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({
@@ -801,7 +813,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
         "order": [
-            [7, "desc"]
+            [6, "desc"]
         ],
     orderCellsTop: true,
     fixedHeader: true,
@@ -809,7 +821,6 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     columns: [
     {title: "N°"},
     {title: "Nombre usuario"},
-    {title: "Ubicación"},
     {title: "Extensión"},
     {title: "Reporte"},
     {title: "Termino"},
