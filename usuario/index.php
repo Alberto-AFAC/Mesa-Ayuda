@@ -187,7 +187,7 @@ unset($_SESSION['consulta']);
 
                                 <div class="form-group"><br>
                                 <div class="col-sm-offset-0 col-sm-5">
-                                <button type="button"class="btn btn-green btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Generar reporte</button>
+                                <button type="button"class="btn btn-green btn-lg" id="button1" data-toggle="modal" data-target="#exampleModalCenter">Generar reporte</button>
                                 <!-- <button type="button" id="button" class="btn btn-green btn-lg" onclick="reporte();">Generar reporte</button> -->
                                 <!--THIS CONTAINER IS FOR CHARGUE THE MODAL FUNCTION -->
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

@@ -85,6 +85,7 @@ function reporte() {
                 setTimeout(function() {
                     $("#exito").toggle("toggled");
                 }, 15000);
+                $("#button1").hide();
                 $('#exampleModalCenter').modal('hide');
             } else if (respuesta == 1) {
                 $("#error").toggle("toggled");
