@@ -187,9 +187,9 @@
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
+<!--                                 <li>
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
-                                </li>
+                                </li> -->
                             <li>
                                     <a href="./"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
@@ -337,7 +337,6 @@
     <label for="Extension">Extension</label>
     <input id="extension" name="extension" type="text" class="form-control" disabled="">
     </div> 
-      
     </div>
     
     <div class="form-group">  

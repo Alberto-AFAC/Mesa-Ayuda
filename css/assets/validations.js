@@ -53,15 +53,9 @@ $('document').ready(function()
 		   unhighlight: function(element, errorClass, validClass) {
 			  $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
 			  $(element).closest('.form-group').find('.help-block').html('');
-		   },
-		   
-
-		   
-		   }); 
-		   
-		   
-		
-});
+		   },   		   
+		}); 		   		   		
+	});
 
 
 $('document').ready(function()
@@ -87,7 +81,7 @@ $('document').ready(function()
 				usua: {
 				required: true,
 				validnumer: true,
-				minlength: 7
+				minlength: 6
 				},
 
 		   },
@@ -145,7 +139,7 @@ $('document').ready(function()
 				n_empleado: {
 				required: true,
 				validnumer: true,
-				minlength: 7
+				minlength: 6
 				},
 		   },
 		   messages:

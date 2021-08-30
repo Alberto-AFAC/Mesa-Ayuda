@@ -193,9 +193,9 @@ if (isset($_SESSION['usuario'])) {
                     <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span
                         class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li>
+<!--                             <li>
                                 <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
@@ -334,38 +334,37 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <input type="hidden" id="id_usuario" name="id_usuario">
                             <input type="hidden" id="opcion" name="opcion" value="modificar">
+
                             <div class="form-group">
-                                <div class="col-sm-offset-0 col-sm-3">
-                                    <label for="Nombre">Nombre</label>
-                                    <input id="nombre" name="nombre" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-3">
-                                    <label for="Correo">Correo</label>
-                                    <input id="correo" name="correo" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-2">
-                                    <label for="N° empleado">N° empleado</label>
-                                    <input id="n_empleado" name="n_empleado" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-2">
-                                    <label for="Extension">Extension</label>
-                                    <input id="extension" name="extension" type="text" class="form-control"
-                                    disabled="">
-                                </div>
-                                <div class="col-sm-offset-0 col-sm-2">
-                                    <label for="Adscripción">Cargo</label>
-                                    <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
-                                </div>
+                            <div class="col-sm-offset-0 col-sm-4" >
+                            <label for="Nombre">Nombre</label>
+                            <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-0 col-sm-9">
-                                    <label for="Adscripción">Adscripción</label>
-                                    <input id="area" name="area" type="text" class="form-control" disabled="">
-                                </div>
+                            <div class="col-sm-offset-0 col-sm-4" >
+                            <label for="Correo">Correo</label>
+                            <input id="correo" name="correo" type="text"  class="form-control" disabled="">
                             </div>
+                            <div class="col-sm-offset-0 col-sm-2">
+                            <label for="N° empleado">N° empleado</label>
+                            <input id="n_empleado" name="n_empleado" type="text" class="form-control" disabled="">
+                            </div> 
+                            <div class="col-sm-offset-0 col-sm-2">
+                            <label for="Extension">Extension</label>
+                            <input id="extension" name="extension" type="text" class="form-control" disabled="">
+                            </div> 
+                            </div>
+                            
+                            <div class="form-group">  
+                            <div class="col-sm-offset-0 col-sm-3">
+                            <label for="Adscripción">Cargo</label>
+                            <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
+                            </div>  
+                            <div class="col-sm-offset-0 col-sm-9">
+                            <label for="Adscripción">Adscripción</label>
+                            <input id="area" name="area" type="text" class="form-control" disabled="">
+                            </div>
+                            </div>    
+                          
                             <div id="eqpos"></div>
                         </div>
                     </div>
@@ -416,6 +415,7 @@ if (isset($_SESSION['usuario'])) {
                             name="privilg" id="privilg" type="text" data-live-search="true">
                             <option selected>Seleccione</option>
                             <option value="tecnico">Técnico</option>
+                            <option value="admin">Administrador</option>
                         </select>
                     </div>
 
@@ -504,7 +504,7 @@ if (isset($_SESSION['usuario'])) {
                                 <div class="col-sm-offset-0 col-sm-8">
                                     <label>Nombre</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker"
-                                    name="aidusu" id="aidusu" type="text" data-live-search="true">
+                                    name="aidusu" id="aidusu" type="text" data-live-search="true" disabled="">
                             
                                     <?php while($ario = mysqli_fetch_row($ausua)):?>
                                         <option value="<?php echo $ario[0]?>" selected><?php echo $ario[1].' '.$ario[2]?>
@@ -518,6 +518,7 @@ if (isset($_SESSION['usuario'])) {
                             <select style="width: 100%" class="form-control" class="selectpicker"
                             name="aprivilg" id="aprivilg" type="text" data-live-search="true">                         
                             <option value="tecnico">Técnico</option>
+                            <option value="admin">Administrador</option>
                         </select>
                     </div>
 
@@ -643,7 +644,7 @@ if (isset($_SESSION['usuario'])) {
 <script type="text/javascript">
     $(document).ready(function() {
         $('#idusu').select2();
-        $('#aidusu').select2();
+        //$('#aidusu').select2();
         $('#idarea').select2();
         $('#hora').select2();
     });
@@ -677,6 +678,14 @@ $(".toggle-password").click(function() {
             $horario = $data['entrada'].' a '.$data['salida']; 
             $usuario = $data['usuario'];
             $idtec = $data['id_tecnico'];
+            // $privilegios = strtoupper($data['privilegios']);
+
+            if(strtoupper($data['privilegios'])== 'ADMIN'){
+                $privilegios = 'ADMINISTRADOR';
+
+            } else {
+                $privilegios = 'TÉCNICO';
+            }
 
         $queri = "SELECT * FROM personal 
             WHERE gstIdper = $idusu AND estado = 0 ORDER BY gstIdper ASC";
@@ -690,7 +699,7 @@ $(".toggle-password").click(function() {
        ?>
 
        ['<?php echo $id;?>', '<?php echo $nombre ?>',
-       '<?php echo 'Pendiente'?>', '<?php echo $usuario?>', '<?php echo $horario?>', "<?php 
+       '<?php echo $privilegios?>', '<?php echo $usuario?>', '<?php echo $horario?>', "<?php 
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 

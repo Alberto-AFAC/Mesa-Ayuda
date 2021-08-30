@@ -202,9 +202,9 @@
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
+                                <!-- <li>
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
-                                </li>
+                                </li> -->
                             <li>
                                     <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
@@ -362,15 +362,15 @@ Agregar datos del  equipo </h4>
                     </div>
 
                     <div class="form-group">                    
-                    <div class="col-sm-4">
+                    <!-- <div class="col-sm-4">
                     <label>Número SIGTIC</label>
                     <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
-                    </div>
-                    <div class="col-sm-4">
+                    </div> -->
+                    <div class="col-sm-6">
                     <label>Número de inventario</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
                     </div>                    
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                     <label>Serie</label>
                     <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
                     </div>        
@@ -423,7 +423,7 @@ Agregar datos del  equipo </h4>
                     <select class="form-control" selected="true" id="procesador" name="procesador">                   
                     <option value="" selected>SELECCIONE</option>
                     <option value="INTEL" >INTEL</option>
-                    <option value="AMED" >AMED</option>
+                    <option value="AMD" >AMD</option>
                     </select> 
                     </div>
                     <div class="col-sm-3">
@@ -587,15 +587,15 @@ Editar datos del  equipo </h4>
                     </div>
 
                     <div class="form-group">                    
-                    <div class="col-sm-4">
+                    <!-- <div class="col-sm-4">
                     <label>Número SIGTIC</label>
                     <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
-                    </div>
-                    <div class="col-sm-4">
+                    </div> -->
+                    <div class="col-sm-6">
                     <label>Número de inventario</label>
                     <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
                     </div>                    
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                     <label>Serie</label>
                     <input id="eserie_cpu" name="eserie_cpu" type="text" class="form-control">
                     </div>        
@@ -643,7 +643,7 @@ Editar datos del  equipo </h4>
                     <label>Procesador</label>       
                     <select class="form-control" selected="true" id="eprocesador" name="eprocesador">                   
                     <option value="INTEL" >INTEL</option>
-                    <option value="AMED" >AMED</option>
+                    <option value="AMD" >AMD</option>
                     </select> 
                     </div>
                     <div class="col-sm-3">
@@ -769,28 +769,28 @@ $(document).ready(function(){
         <?php
 
         $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
-    $resultados = mysqli_query($conexion2,$queri);
-    while($dato = mysqli_fetch_array($resultados)){
-       $id = $dato['gstIdper'];
-       $nombre = $dato['gstNombr'].' '.$dato['gstApell'];
+        $resultados = mysqli_query($conexion2,$queri);
+        $n=0;
+        while($dato = mysqli_fetch_array($resultados)){
 
+        $nombre = $dato['gstNombr'].' '.$dato['gstApell'];
+        $n_emp =$dato['gstNmpld'];
+        
+
+        $query = "SELECT * FROM equipo 
+        INNER JOIN asignacion ON id_equi = id_equipo 
+        WHERE n_emp = $n_emp AND equipo.estado = 0 ORDER BY id_equipo ASC";
+        $resultado = mysqli_query($conexion, $query);
        
-
-
-          $query = "SELECT * FROM equipo 
-                INNER JOIN asignacion ON id_equi = id_equipo 
-                WHERE equipo.estado = 0 ORDER BY id_equipo ASC";
-             $resultado = mysqli_query($conexion, $query);
-             $n=0;
         while($data = mysqli_fetch_array($resultado)){
-           $n++;
-           $id = $data['id_equipo'];
+       $n++;
+             $id = $data['id_equipo'];
   //          $data['identificador'];
     //        $data['adscripcion'];
 
-if($data['proceso']=='asignado' && $data['n_emp']==$dato['gstNmpld'] && $dato['estado']==0){   ?>    
+if($data['proceso']=='asignado'){   ?>    
     
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $nombre?>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $nombre?>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
@@ -799,9 +799,9 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
     ?>"],
 
 <?php 
-}else if($data['proceso']=='asignado' && $data['n_emp']==$dato['gstNmpld'] && $dato['estado']==1){   ?> 
+}else if($data['proceso']=='asignado'){   ?> 
 
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<p style="color:red;"><?php echo $nombre.'<br> YA NO LABORA '?></p>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<p style="color:red;"><?php echo $nombre.'<br> YA NO LABORA '?></p>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
@@ -811,9 +811,9 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 
 
 
-<?php }else if($data['proceso']=='designado' && $dato['gstIdper'] ==1){ ?>
+<?php }else if($data['proceso']=='designado'){ ?>
 
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['num_sigtic']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo 'NO ASIGNADO'?>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo 'NO ASIGNADO'?>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-info'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
@@ -837,7 +837,6 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     columns: [
     {title: "N°"},
     {title: "N° INVENTARIO"},    
-    {title: "N° SIGTIC"},
     {title: "MARCA"},
     {title: "N° SERIE"},
     {title: "ASIGNADO"},

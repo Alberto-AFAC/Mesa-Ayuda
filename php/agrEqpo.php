@@ -6,7 +6,6 @@ include ("../conexion/conexion.php");
 
 if($opcion === 'agreqpo'){
 			
-		$num_sigtic = $_POST['num_sigtic'];
 		$num_invntraio = $_POST['num_invntraio'];
 		$marca_cpu = $_POST['marca_cpu'];
 		$serie_cpu = $_POST['serie_cpu'];
@@ -28,7 +27,7 @@ if($opcion === 'agreqpo'){
 		$n_empleado = $_POST['n_empleado'];
 		$asignado = $_POST['asignado'];
 
-   if(agregarEqpo($n_empleado,$asignado,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
+   if(agregarEqpo($n_empleado,$asignado,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
    		{	echo "0";	}else{	echo "1";	}	
 	}else 
 	if($opcion === 'eliminar'){
@@ -38,7 +37,6 @@ if($opcion === 'agreqpo'){
 		eliminar($ideqpo, $conexion);
 	}else if($opcion === 'actualizar'){
 
-		$num_sigtic = $_POST['num_sigtic'];
 		$num_invntraio = $_POST['num_invntraio'];
 		$marca_cpu = $_POST['marca_cpu'];
 		$serie_cpu = $_POST['serie_cpu'];
@@ -70,14 +68,14 @@ if($opcion === 'agreqpo'){
 		}else{}
 
 
-		   if(actualEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
+		   if(actualEqpo($id_equipo,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion))
    		{	echo "0";	}else{	echo "1";	}	
 	}	
 
 
-function actualEqpo($id_equipo,$num_sigtic,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion){
+function actualEqpo($id_equipo,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion){
 	$query = "UPDATE equipo SET
-num_sigtic = '$num_sigtic',num_invntraio = '$num_invntraio',marca_cpu = '$marca_cpu',
+num_invntraio = '$num_invntraio',marca_cpu = '$marca_cpu',
 serie_cpu = '$serie_cpu',memoria_ram = '$memoria_ram',procesador = '$procesador',
 velocidad_proc = '$velocidad_proc',uni_disc_flax = '$uni_disc_flax',disco_duro = '$disco_duro',
 serie_teclado = '$serie_teclado',serie_monitor = '$serie_monitor',
@@ -96,7 +94,6 @@ servicio_internet = '$servicio_internet',tipo_equipo = '$tipo_equipo',ubicacion 
 function agregarEqpo(
 	$n_empleado,
 	$asignado,
-	$num_sigtic,
 	$num_invntraio,
 	$marca_cpu,
 	$serie_cpu,
@@ -120,7 +117,6 @@ function agregarEqpo(
 	if($resultados->num_rows == 0){
 		$query = "INSERT INTO equipo VALUES(
 0,
-'$num_sigtic',
 '$num_invntraio',
 '$marca_cpu',
 '$serie_cpu',
