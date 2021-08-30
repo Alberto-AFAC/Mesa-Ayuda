@@ -187,8 +187,39 @@ unset($_SESSION['consulta']);
 
                                 <div class="form-group"><br>
                                 <div class="col-sm-offset-0 col-sm-5">
-                                <button type="button" id="button" class="btn btn-green btn-lg" onclick="reporte();">Generar reporte</button>
+                                <button type="button"class="btn btn-green btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Generar reporte</button>
+                                <!-- <button type="button" id="button" class="btn btn-green btn-lg" onclick="reporte();">Generar reporte</button> -->
+                                <!--THIS CONTAINER IS FOR CHARGUE THE MODAL FUNCTION -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <p style="text-align: center; font-size: 20px;" class="modal-title" id="exampleModalLongTitle">¡ATENCIÓN!</p>
+                                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+                                        <!-- <span aria-hidden="true">&times;</span> -->
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p style="text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
+                                        <br><select class="form-control">
+                                        <option selected>Seleccionar SEDE...</option>
+                                        <option value="Las flores">Las flores</option>
+                                        <option value="Hangar 8">Hangar 8</option>
+                                        <option value="CIAAC">CIAAC</option>
+                                        <option value="Licencias">Licencias</option>
+                                        <option value="Terminal 1">Terminal 1</option>
+                                        <option value="Terminal 2">Terminal 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" id="button" onclick="reporte();" class="btn btn-primary">Generar Reporte</button>
+                                    </div>
+                                    </div>
                                 </div>
+                                </div>
+                                
+                            </div>
                                 <b><p class="alert alert-danger text-center padding error" id="error">Usted tiene un reporte pendiente del equipo asignado o falta que evalué dicho reporte</p></b>
                                 <b><p class="alert alert-success text-center padding reporte" id="exito">¡Su reporte se generó con éxitos, se le asigno un técnico! Para más detalles, de su lado izquierdo: Reportes</p></b>
                                 <b><p class="alert alert-warning text-center padding aviso" id="vacio">Llene campos vacíos</p></b>

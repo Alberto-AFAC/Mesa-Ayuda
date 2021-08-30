@@ -432,21 +432,34 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-6">
+                    <div class="col-sm-offset-0 col-sm-4">
                         <label>Entrada</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="entrada" id="entrada" type="text" data-live-search="true">
-                        <option selected>Seleecione una opción</option>
+                        <option selected>Seleccione entrada</option>
                         <option value="08:00:00">08:00:00</option>
                         <option value="09:00:00">09:00:00</option>
                     </select>
                 </div>
-                <div class="col-sm-offset-0 col-sm-6">
+                <div class="col-sm-offset-0 col-sm-4">
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="salida" id="salida" type="text" data-live-search="true">
-                    <option selected>Seleecione una opción</option>
+                    <option selected>Seleccione salida</option>
                     <option value="18:00:00">18:00:00</option>
+                </select>
+            </div>
+            <div class="col-sm-offset-0 col-sm-4">
+                    <label>SEDE</label>
+                    <select style="width: 100%" class="form-control" class="selectpicker"
+                    name="sede" id="sede" type="text" data-live-search="true">
+                    <option selected>Seleccione SEDE</option>
+                    <option value="Las flores">Las flores</option>
+                    <option value="Hangar 8">Hangar 8</option>
+                    <option value="CIAAC">CIAAC</option>
+                    <option value="Licencias">Licencias</option>
+                    <option value="Terminal 1">Terminal 1</option>
+                    <option value="Terminal 2">Terminal 2</option>
                 </select>
             </div>
         </div>
@@ -535,7 +548,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-6">
+                    <div class="col-sm-offset-0 col-sm-4">
                         <label>Entrada</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="aentrada" id="aentrada" type="text" data-live-search="true">
@@ -544,12 +557,25 @@ if (isset($_SESSION['usuario'])) {
                         <option value="09:00:00">09:00:00</option>
                     </select>
                 </div>
-                <div class="col-sm-offset-0 col-sm-6">
+                <div class="col-sm-offset-0 col-sm-4">
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asalida" id="asalida" type="text" data-live-search="true">
                     <option value="0">Seleecione una opción</option>
                     <option value="18:00:00">18:00:00</option>
+                </select>
+            </div>
+            <div class="col-sm-offset-0 col-sm-4">
+                    <label>SEDE</label>
+                    <select style="width: 100%" class="form-control" class="selectpicker"
+                    name="asede" id="asede" type="text" data-live-search="true">
+                    <option selected>Seleccione SEDE</option>
+                    <option value="Las flores">Las flores</option>
+                    <option value="Hangar 8">Hangar 8</option>
+                    <option value="CIAAC">CIAAC</option>
+                    <option value="Licencias">Licencias</option>
+                    <option value="Terminal 1">Terminal 1</option>
+                    <option value="Terminal 2">Terminal 2</option>
                 </select>
             </div>
         </div>

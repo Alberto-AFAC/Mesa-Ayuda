@@ -8,13 +8,14 @@ function tecnico() {
     var password = document.getElementById('password').value;
     var entrada = document.getElementById('entrada').value;
     var salida = document.getElementById('salida').value;
+    var sede = document.getElementById('sede').value;
 
 
-    datos = 'idusu=' + idusu + '&privilg=' + privilg + '&usuario=' + usuario + '&password=' + password + '&entrada=' + entrada + '&salida=' + salida + '&opcion=registrar';
+    datos = 'idusu=' + idusu + '&privilg=' + privilg + '&usuario=' + usuario + '&password=' + password + '&entrada=' + entrada + '&salida=' + salida + '&sede=' + sede + '&opcion=registrar';
 
     //alert(datos);
 
-    if (idusu == '' || privilg == '' || usuario == '' || password == '' || entrada == '' || salida == '') {
+    if (idusu == '' || privilg == '' || usuario == '' || password == '' || entrada == '' || salida == '' || sede == '') {
 
         $('#vacio').slideDown('slow');
         setTimeout(function() {
@@ -223,6 +224,8 @@ function datos_editar(id) {
                     entrada = $("#frmEditar #aentrada").val(obj.data[i].entrada),
 
                     salida = $("#frmEditar #asalida").val(obj.data[i].salida),
+
+                    sede = $("#frmEditar #asede").val(obj.data[i].sede),
 
                     activo = $("#frmEditar #activo").val(obj.data[i].activo),
 
