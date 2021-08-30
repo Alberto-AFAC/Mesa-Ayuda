@@ -10,47 +10,11 @@
              $desc = substr($idp, 1);
 					
 
-echo $id;
+//echo $id;
 switch ($id) {
   case "a":?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="NO CAPTURA LA VOZ">NO CAPTURA LA VOZ</option>
-  <option value="NO ENCIENDE">NO ENCIENDE</option>
-  <option value="NO LO RECONOCE EL EQUIPO">NO LO RECONOCE EL EQUIPO</option>
-  </select>
-  </div>
-
-<?php break;
-  case "b":?>
-
- <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" name="final" class="form-control" class="selectpicker" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="NO CAPTURA EL VIDEO">NO CAPTURA EL VIDEO</option>
-  <option value="NO ENCIENDE">NO ENCIENDE</option>
-  <option value="NO LO RECONOCE EL EQUIPO">NO LO RECONOCE EL EQUIPO</option>
-  </select>
-  </div>
-
-<?php break;
-  case "c": ?>
-
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="NO SE ESCUCHA EL AUDIO">NO SE ESCUCHA EL AUDIO</option>
-  <option value="NO ENCIENDE">NO ENCIENDE</option>
-  <option value="NO LO RECONOCE EL EQUIPO">NO LO RECONOCE EL EQUIPO</option>
-  </select>
-  </div>
-
-<?php break;
- case "d": ?>
-
- <div class="col-sm-offset-0 col-sm-4">
   <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="SIN ACCESO WEB EN USUARIO">SIN ACCESO WEB EN USUARIO</option>
@@ -62,9 +26,9 @@ switch ($id) {
   </div>
 
 <?php break;
-  case "e": ?>
+  case "b":?>
 
-  <div class="col-sm-offset-0 col-sm-4">
+ <div class="col-sm-offset-0 col-sm-4">
   <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="ACCESO A LA RED">ACCESO A LA RED</option>
@@ -73,8 +37,9 @@ switch ($id) {
   </select>
   </div>
 
+
 <?php break;
-  case "f": ?>
+  case "c": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
@@ -87,14 +52,65 @@ switch ($id) {
   </div>
 
 <?php break;
+ case "d": ?>
+
+ <div class="col-sm-offset-0 col-sm-4">
+  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="ACCESO A LA RED">ACCESO A LA RED</option>
+  <option value="PÁGINA WEB BLOQUEADA">PÁGINA WEB BLOQUEADA</option>
+  <option value="CATEGORÍA DE PÁGINAS WEB BLOQUEADA">CATEGORÍA DE PÁGINAS WEB BLOQUEADA</option>
+  </select>
+  </div>
+
+<?php break;
+  case "e": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="SIN ACCESO WEB EN USUARIO">SIN ACCESO WEB EN USUARIO</option>
+  <option value="SIN ACCESO WEB EN EL ÁREA">SIN ACCESO WEB EN EL ÁREA</option>
+  <option value="SIN ACCESO A PÁGINA ESPECÍFICA">SIN ACCESO A PÁGINA ESPECÍFICA</option>
+  <option value="NAVEGACIÓN WEB LENTA">NAVEGACIÓN WEB LENTA</option>
+  </select>
+  </div>
+
+<?php break;
+  case "f": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+
+  <option value="ACCESO A LA RED">ACCESO A LA RED</option>
+  <option value="PÁGINA WEB BLOQUEADA">PÁGINA WEB BLOQUEADA</option>
+  <option value="CATEGORÍA DE PÁGINAS WEB BLOQUEADA">CATEGORÍA DE PÁGINAS WEB BLOQUEADA</option>
+  </select>
+  </div>
+
+<?php break;
   case "g": ?>
+
+  <div class="col-sm-offset-0 col-sm-4">
+  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="SIN ACCESO WEB EN USUARIO">SIN ACCESO WEB EN USUARIO</option>
+  <option value="SIN ACCESO WEB EN EL ÁREA">SIN ACCESO WEB EN EL ÁREA</option>
+  <option value="SIN ACCESO A PÁGINA ESPECÍFICA">SIN ACCESO A PÁGINA ESPECÍFICA</option>
+  <option value="NAVEGACIÓN WEB LENTA">NAVEGACIÓN WEB LENTA</option>
+  </select>
+  </div>
+
+<?php break;
+  case "h": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="ACCESO A LA RED">ACCESO A LA RED</option>
   <option value="PÁGINA WEB BLOQUEADA">PÁGINA WEB BLOQUEADA</option>
-  <option value="CATEGORÍA DE PÁGINAS WEB BLOQUEADA">CATEGORÍA DE PÁGINAS WEB BLOQUEADA</option> 
+  <option value="CATEGORÍA DE PÁGINAS WEB BLOQUEADA">CATEGORÍA DE PÁGINAS WEB BLOQUEADA</option>
   </select>
   </div>
 

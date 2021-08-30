@@ -66,7 +66,7 @@ switch ($id) {
             <div class="col-sm-offset-0 col-sm-4">
             <select  id="intervencion" class="form-control" class="selectpicker" name="intervencion" type="text" data-live-search="true">
             <option value="0">SELECCIONE</option>
-            <option value="iPRÉSTAMO DE EQUIPO">PRÉSTAMO DE EQUIPO</option>
+            <option value="jPRÉSTAMO DE EQUIPO">PRÉSTAMO DE EQUIPO</option>
             </option>
             </select>
             </div>
@@ -110,7 +110,7 @@ $('#intervencion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select2').load('select/select.php');
-    console.log("aqui perro--chupas"+ $('#intervencion').val());
+    //console.log("aqui perro"+ $('#intervencion').val());
   }
         });
     });
