@@ -9,7 +9,6 @@
              $id = $idp[0];
              $desc = substr($idp, 1);
              ?>
-              <script>console.log("no estoy funcionando")</script>
              <?php
 					
 //echo '>'.$id;

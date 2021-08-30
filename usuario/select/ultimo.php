@@ -9,7 +9,7 @@
              $id = $idp[0];
              $desc = substr($idp, 1);
 				
-echo $id;
+//echo $id;
 switch ($id) {
   /*CPU*/
   case "a": ?>

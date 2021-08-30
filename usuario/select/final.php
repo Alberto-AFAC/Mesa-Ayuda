@@ -10,7 +10,7 @@
              $desc = substr($idp, 1);
 					
 
-echo $id;
+//echo $id;
 switch ($id) {
   case "a":?>
 
