@@ -12,11 +12,12 @@ if($opcion === 'modificar'){
 		$password = $_POST['apassword'];
 		$entrada = $_POST['aentrada'];
 		$salida = $_POST['asalida'];
+		$sede = $_POST['asede'];
 		$activo = $_POST['activo'];
 		$observ = $_POST['observ'];
 		//$orden = $_POST['orden'];
-		if($idtec != '' && $idusu!= '' && $privilg != '' && $usuario != '' && $password != '' && $entrada != '' && $salida != ''){
-		if(modificar($idtec, $idusu, $privilg, $usuario, $password,$entrada,$salida,$activo,$observ, $conexion)){
+		if($idtec != '' && $idusu!= '' && $privilg != '' && $usuario != '' && $password != '' && $entrada != '' && $salida != '' && $sede != ''){
+		if(modificar($idtec, $idusu, $privilg, $usuario, $password,$entrada,$salida,$sede,$activo,$observ, $conexion)){
 					echo "0";
 				}else{
 						echo "2";
@@ -38,9 +39,12 @@ $usuario = $_POST['usuario'];
 $password = $_POST['password'];
 $entrada = $_POST['entrada'];
 $salida = $_POST['salida'];
+$sede = $_POST['sede'];
 
 
-if(registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$conexion))
+
+
+if(registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$sede,$conexion))
 					{
 						echo "0";
 					}
@@ -48,13 +52,13 @@ if(registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$conexion))
 						echo "1";
 					}
 	}	
-function registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$conexion){
+function registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$sede,$conexion){
 
 	$query="SELECT * FROM tecnico WHERE id_usu='$idusu' AND baja= 0";
 		$resultados = mysqli_query($conexion,$query);
 		if($resultados->num_rows == 0)
 		{
-		$query = "INSERT INTO tecnico VALUES(0, '$idusu','$usuario','$password','$privilg','$entrada','$salida',0,'',0);";
+		$query = "INSERT INTO tecnico VALUES(0, '$idusu','$usuario','$password','$privilg','$entrada','$salida','$sede',0,'',0);";
 			if (mysqli_query($conexion,$query)) {		
 		
 				return true;
@@ -67,8 +71,8 @@ function registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$conexion
 		}else{		
 	}								 	
 }
-	function modificar($idtec, $idusu, $privilg, $usuario, $password,$entrada,$salida,$activo,$observ,$conexion){
-		$query = "UPDATE tecnico SET id_usu=$idusu,usuario='$usuario',password='$password',privilegios='$privilg',entrada='$entrada',salida='$salida',activo='$activo',observ='$observ' WHERE id_tecnico=$idtec";
+	function modificar($idtec, $idusu, $privilg, $usuario, $password,$entrada,$salida,$sede,$activo,$observ,$conexion){
+		$query = "UPDATE tecnico SET id_usu=$idusu,usuario='$usuario',password='$password',privilegios='$privilg',entrada='$entrada',salida='$salida',sede='$sede',activo='$activo',observ='$observ' WHERE id_tecnico=$idtec";
 		if (mysqli_query($conexion,$query)) {
 						return true;
 					}else
