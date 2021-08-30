@@ -276,18 +276,18 @@
                     <label>N° reporte</label>
                     <input id="n_reporte" name="n_reporte" type="text" class="form-control" class="disabled" disabled="">
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                     <label>Usuario</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                     <label>Extension</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-2">
+                    <!-- <div class="col-sm-2">
                     <label>Ubicación</label>
                     <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
-                    </div>                    
+                    </div> -->                    
                     </div>
 
                     <div class="form-group">
@@ -389,43 +389,59 @@
              var dataSet = [
         <?php
 	    $idtecnico = $_SESSION['usuario']['id_tecnico'];
-		$query = "SELECT 
-		usuarios.nombre,
-		usuarios.apellidos,
-		usuarios.ubicacion,
-		usuarios.extension,
-		reporte.n_reporte,
+        $query = "SELECT 
+        reporte.n_reporte,
         DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
-        DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as ffinal,        
-		reporte.estado_rpt,
-		reporte.servicio,
-		reporte.intervencion,
-		reporte.descripcion,
-		reporte.usu_observ,
-		reporte.n_reporte,
-		reporte.falla_interna,
-		reporte.falla_xterna,
-		reporte.observa,
-		reporte.evaluacion,
-		reporte.hinicio,
-		reporte.hfinal,
-		reporte.idequipo
-		FROM usuarios 
-		LEFT JOIN reporte ON usuarios.n_empleado = reporte.n_empleado
-		WHERE reporte.idtec = '$idtecnico'";
-	$resultado = mysqli_query($conexion, $query);
+        DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as ftermino,
+        reporte.estado_rpt,
+        reporte.servicio,
+        reporte.intervencion,
+        reporte.descripcion,
+        reporte.usu_observ,
+        reporte.n_reporte,
+        reporte.falla_interna,
+        reporte.falla_xterna,
+        reporte.observa,
+        reporte.evaluacion,
+        reporte.hinicio,
+        reporte.hfinal,
+        reporte.idequipo,
+        n_empleado empleado,
+        -- TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()) AS tiempo_transcurrido
+        IF(reporte.ffinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
+        FROM reporte 
+        WHERE  reporte.idtec = '$idtecnico'";
+    $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+         $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
             $fila = $idtecnico;
+            $nombre = $data2['gstNombr'];
+            $apellidos = $data2['gstApell']; 
+            $servicio= $data['servicio'];
+            $extension = $data2['gstExTel'];
+            $final = $data['ftermino'];
+            $inicio = $data['finicio'];
+
  
 if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
     ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta su evaluación</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta su evaluación</a>";?>"],
 <?php }else if($data['evaluacion'] != '0'){ ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['evaluacion']}</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['evaluacion']}</a>";?>"],
 <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?> 
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $data['nombre']." ".$data['apellidos']?>","<?php echo $data['ubicacion']?>","<?php echo $data['extension']?>","<?php echo $data['finicio']?>","<?php echo $data['ffinal']?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta que confirme</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta que confirme</a>";?>"],
 <?php  } 
-    }   ?>
+    }  
+} ?>
 ];
 var tableGenerarReporte = $('#data-table-consulta').DataTable({
     "language": {
@@ -441,8 +457,8 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     columns: [
     {title: "N°"},
     {title: "Nombre usuario"},
-    {title: "Ubicación"},
-    {title: "Extensión"},
+    {title: "Ext."},
+    {title: "Servicio"},
     {title: "Reporte"},
     {title: "Termino"},
     {title: "Estado"}

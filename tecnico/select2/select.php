@@ -4,14 +4,14 @@
 
 				if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
-			
+					if($_SESSION['consulta'] > 0){
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
              $desc = substr($idp, 1);
-            
-					
+					}
+
 switch ($id) {
-  case "a"://  echo $_SESSION['consulta'];?>
+  case "a":?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
@@ -21,10 +21,10 @@ switch ($id) {
   </option>
   </select>
   </div>
- 
 
 <?php break;
-  case "b": ?>
+  case "b":?>
+
  <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
@@ -117,8 +117,7 @@ switch ($id) {
   </option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "j": ?>
 
@@ -131,8 +130,7 @@ switch ($id) {
   </option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 
 <?php 
   break;
@@ -158,7 +156,6 @@ $('#descripcion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select3').load('select/penultimo.php');
-    //console.log("Si esta entrando aqui" + $('#descripcion').val())
   }
         });
     });

@@ -4,54 +4,57 @@
 
 				if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
-					if($_SESSION['consulta'] > 0){
+			
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
              $desc = substr($idp, 1);
-					}
-
+            
+					
 switch ($id) {
-  case "a":?>
+  case "a"://  echo $_SESSION['consulta'];?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="aCPU">CPU</option>
   <option value="bMONITOR">MONITOR</option>
+  <option value="cTECLADO">TECLADO</option>
+  <option value="dRATÓN">RATÓN</option>
+  <option value="eDISPOSITIVOS EXTRA (PERIFÉRICOS)">DISPOSITIVOS EXTRA (PERIFÉRICOS)</option>
   </option>
   </select>
   </div>
+ 
 
 <?php break;
-  case "b":?>
-
+  case "b": ?>
  <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="cGENERAL">GENERAL</option>
-  <option value="dPANTALLA">PANTALLA</option>
-  <option value="eTECLADO">TECLADO</option>
-  <option value="fPANEL TÁCTIL/RATÓN">PANEL TÁCTIL/RATÓN</option>
-  <option value="gBATERÍA">BATERÍA</option>
+  <option value="fGENERAL">GENERAL</option>
+  <option value="gPANTALLA">PANTALLA</option>
+  <option value="hTECLADO">TECLADO</option>
+  <option value="iPANEL TÁCTIL/RATÓN">PANEL TÁCTIL/RATÓN</option>
+  <option value="jBATERÍA">BATERÍA</option>
   </option>
   </select>
   </div>
  
  
-<?php break;
-  case "c": ?>
+  <?php break;
+    case "c": ?>
 
-  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
-  <option value="0">SELECCIONE</option>
-  <option value="hGENERAL">GENERAL</option>
-  <option value="iPANTALLA">PANTALLA</option>
-  <option value="jTECLADO FÍSICO/VIRTUAL">TECLADO FÍSICO/VIRTUAL</option>
-  <option value="kPANEL TÁCTIL/RATÓN">PANEL TÁCTIL/RATÓN</option>
-  <option value="lBATERÍA">BATERÍA</option>
-  </option>
-  </select>
-  </div>
+    <div class="col-sm-offset-0 col-sm-4">
+    <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+    <option value="kGENERAL">GENERAL</option>
+    <option value="lPANTALLA">PANTALLA</option>
+    <option value="mTECLADO FÍSICO/VIRTUAL">TECLADO FÍSICO/VIRTUAL</option>
+    <option value="nPANEL TÁCTIL/RATÓN">PANEL TÁCTIL/RATÓN</option>
+    <option value="oBATERÍA">BATERÍA</option>
+    </option>
+    </select>
+    </div>
 
 <?php break;
  case "d": ?>
@@ -59,8 +62,8 @@ switch ($id) {
  <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="mIMPRESIÓN">IMPRESIÓN</option>
-  <option value="nESCÁNER">ESCÁNER</option>
+  <option value="pIMPRESIÓN">IMPRESIÓN</option>
+  <option value="qESCÁNER">ESCÁNER</option>
   </option>
   </select>
   </div>
@@ -72,8 +75,8 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="oFALLA">FALLA</option>
-  <option value="pSOLICITUD">SOLICITUD</option>
+  <option value="rFALLA">FALLA</option>
+  <option value="sSOLICITUD">SOLICITUD</option>
   </option>
   </select>
   </div>
@@ -86,8 +89,8 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="qFALLA">FALLA</option>
-  <option value="rSOLICITUD">SOLICITUD</option>
+  <option value="tFALLA">FALLA</option>
+  <option value="vSOLICITUD">SOLICITUD</option>
   </option>
   </select>
   </div>
@@ -98,10 +101,10 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="sEQUIPO DE ESCRITORIO">EQUIPO DE ESCRITORIO</option>
-  <option value="tLAPTOP">LAPTOP</option>
-  <option value="vTABLET">TABLET</option>
-  <option value="uSMARTPHONE">SMARTPHONE</option>
+  <option value="uEQUIPO DE ESCRITORIO">EQUIPO DE ESCRITORIO</option>
+  <option value="wLAPTOP">LAPTOP</option>
+  <option value="xTABLET">TABLET</option>
+  <option value="xSMARTPHONE">SMARTPHONE</option>
   </option>
   </select>
   </div>
@@ -112,25 +115,25 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="wFALLA">FALLA</option>
-  <option value="xSOLICITUD">SOLICITUD</option>
+  <option value="yFALLA">FALLA</option>
+  <option value="zSOLICITUD">SOLICITUD</option>
   </option>
   </select>
   </div>
 
 <?php break;
-  case "j": ?>
+  case "i": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
   <select  id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="yLAPTOP">LAPTOP</option>
-  <option value="yPROYECTOR/PANTALLA">PROYECTOR/PANTALLA</option>
-  <option value="zDISPOSITIVOS EXTRA (PERIFÉRICOS)">DISPOSITIVOS EXTRA (PERIFÉRICOS)</option>
+  <option value="1LAPTOP">LAPTOP</option>
+  <option value="1PROYECTOR/PANTALLA">PROYECTOR/PANTALLA</option>
+  <option value="2DISPOSITIVOS EXTRA (PERIFÉRICOS)">DISPOSITIVOS EXTRA (PERIFÉRICOS)</option>
   </option>
   </select>
   </div>
-
+  
 
 <?php 
   break;
@@ -156,6 +159,7 @@ $('#descripcion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select3').load('select/penultimo.php');
+    console.log("Si esta entrando aqui" + $('#descripcion').val())
   }
         });
     });

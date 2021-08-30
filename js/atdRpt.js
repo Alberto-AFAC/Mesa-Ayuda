@@ -94,6 +94,7 @@
 	//detalles de reporte Por atender
 	function atender(detalles) {
 
+
 	    $.ajax({
 	        url: '../php/atdReport.php',
 	        type: 'POST'
@@ -105,6 +106,7 @@
 
 	            if (obj.data[i].n_reporte == detalles) {
 
+
 	                year = obj.data[i].finicio.substring(0, 4);
 	                month = obj.data[i].finicio.substring(5, 7);
 	                day = obj.data[i].finicio.substring(8, 10);
@@ -115,15 +117,15 @@
 	                day = obj.data[i].ffinal.substring(8, 10);
 	                Finaliza = day + '/' + month + '/' + year;
 
-	                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].usu_observ + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].idequipo + '*' + obj.data[i].solucion + '*' + obj.data[i].ultima + '*' + obj.data[i].final;
+	                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].usu_observ + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].idequipo + '*' + obj.data[i].solucion + '*' + obj.data[i].ultima + '*' + obj.data[i].final+'*'+obj.data[i].n_empleado;
 
 
 	                var d = detalles.split("*");
 
 	                $("#modalAtndr #n_reporte").val(d[0]);
-	                $("#modalAtndr #usuario").val(d[1] + ' ' + d[2]);
-	                $("#modalAtndr #extension").val(d[3]);
-	                $("#modalAtndr #ubicacion").val(d[4]);
+	                // $("#modalAtndr #usuario").val(d[1] + ' ' + d[2]);
+	                // $("#modalAtndr #extension").val(d[3]);
+//	                $("#modalAtndr #ubicacion").val(d[4]);
 	                $("#modalAtndr #servicio").val(d[5]);
 	                $("#modalAtndr #intervencion").val(d[6]);
 	                $("#modalAtndr #descripcion").val(d[7]);
@@ -157,13 +159,45 @@
 	                $("#modalAtndr #idequipo").val(d[18]);
 
 	                //ID equipo para busqueda en la función
+	         
 	                ComprobarEqpo(d[18]);
+	                personal(d[22]);
 
 	            }
 	        }
 	    })
 
 	}
+
+
+function personal(n_empleado){
+
+	    $.ajax({
+	        url: '../php/listar_personal.php',
+	        type: 'POST'
+	    }).done(function(resp) {
+	        obj = JSON.parse(resp);
+	        var res = obj.data;
+
+	        for (i = 0; i < res.length; i++) {
+
+	            if (obj.data[i].gstNmpld == n_empleado) {
+
+					$("#modalAtndr #usuario").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+					$("#modalAtndr #extension").val(obj.data[i].gstExTel);
+
+					$("#modalDtll #usuario").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+					$("#modalDtll #extension").val(obj.data[i].gstExTel);
+
+	            }
+	        }
+	    })
+
+
+
+
+
+}
 
 	//detalles del reporte atendido 
 	function detalle(detalles) {
@@ -190,14 +224,14 @@
 	                day = obj.data[i].ffinal.substring(8, 10);
 	                Finaliza = day + '/' + month + '/' + year;
 
-	                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].usu_observ + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].idequipo;
+	                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].usu_observ + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].idequipo+'*'+obj.data[i].n_empleado;
 
 
 	                var d = detalles.split("*");
 	                $("#modalDtll #n_reporte").val(d[0]);
-	                $("#modalDtll #usuario").val(d[1] + ' ' + d[2]);
-	                $("#modalDtll #extension").val(d[3]);
-	                $("#modalDtll #ubicacion").val(d[4]);
+	                // $("#modalDtll #usuario").val(d[1] + ' ' + d[2]);
+	                // $("#modalDtll #extension").val(d[3]);
+	                // $("#modalDtll #ubicacion").val(d[4]);
 	                $("#modalDtll #servicio").val(d[5]);
 	                $("#modalDtll #intervencion").val(d[6]);
 	                $("#modalDtll #descripcion").val(d[7]);
@@ -215,6 +249,8 @@
 	                $("#modalDtll #evaluacion").val(d[14]);
 
 	                $("#modalDtll #estado_rpt").val(d[15]);
+
+					personal(d[19]);
 
 	            }
 	        }

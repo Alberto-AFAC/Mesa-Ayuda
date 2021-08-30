@@ -4,10 +4,10 @@
 	$idtecnico = $_SESSION['usuario']['id_tecnico'];
 	$query = "
 	SELECT 
-	usuarios.nombre,
-	usuarios.apellidos,
-	usuarios.ubicacion,
-	usuarios.extension,
+	-- usuarios.nombre,
+	-- usuarios.apellidos,
+	-- usuarios.ubicacion,
+	-- usuarios.extension,
 	reporte.n_reporte,
 	reporte.finicio,
 	reporte.ffinal,
@@ -26,9 +26,9 @@
 	reporte.idequipo,
 	reporte.solucion,
 	reporte.ultima,
-	reporte.final
-	FROM usuarios 
-	LEFT JOIN reporte ON usuarios.n_empleado = reporte.n_empleado
+	reporte.final,
+	reporte.n_empleado
+	FROM reporte 
 	WHERE reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
 
