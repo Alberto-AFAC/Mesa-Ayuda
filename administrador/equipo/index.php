@@ -367,31 +367,31 @@ Agregar datos del  equipo </h4>
                     <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
                     </div> -->
                     <div class="col-sm-6">
-                    <label>Número de inventario</label>
+                    <label>NÚMERO DE INVENTARIO</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
                     </div>                    
                     <div class="col-sm-6">
-                    <label>Serie</label>
+                    <label>SERIE</label>
                     <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
                     </div>        
                     </div>
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Modelo</label>
+                    <label>MODELO</label>
                     <input id="nombre_equipo" name="nombre_equipo" type="text" class="form-control">
                     </div> 
                     <div class="col-sm-4">
-                    <label>Tipo del equipo</label>
+                    <label>TIPO DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" id="tipo_equipo" name="tipo_equipo" type="text" data-live-search="true">
-                    <option value="0">Seleccione tipo equipo</option> 
-                    <option value="LAP TOP ">LAP TOP </option>
+                    <option value="0">SELECCIONE...</option> 
+                    <option value="LAP TOP ">LAPTOP </option>
                     <option value="ESCRITORIO">ESCRITORIO</option>
                     </select>
                     </div>
                     <div class="col-sm-4">
-                    <label>Marca</label>    
+                    <label>MARCA</label>    
                     <select class="form-control" selected="true" id="marca_cpu" name="marca_cpu">
-                    <option value="" selected>SELECCIONE MARCA</option>
+                    <option value="" selected>SELECCIONE...</option>
                     <option value="LENOVO">LENOVO</option>
                     <option value="DELL">DELL</option>
                     <option value="HP">HP</option>
@@ -401,41 +401,41 @@ Agregar datos del  equipo </h4>
                     </div>
                      <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-3">
-                    <label>Versión Windows</label>
+                    <label>VERSIÓN DE WINDOWS</label>
                     <select class="form-control" selected="true" id="version_windows" name="version_windows">                   
-                    <option value="" selected>SELECCIONE</option>
+                    <option value="" selected>SELECCIONE...</option>
                     <option value="WINDOWS 7" >WINDOWS 7</option>
                     <option value="WINDOWS 10" >WINDOWS 10</option>
                     <option value="LINUX" >LINUX</option> 
                     </select>                                
                     </div>
                     <div class="col-sm-offset-0 col-sm-3">
-                    <label>Versión office</label>
+                    <label>VERSIÓN OFFICE</label>
                     <select class="form-control" selected="true" id="version_office" name="version_office">                   
-                    <option value="" selected>SELECCIONE</option>
+                    <option value="" selected>SELECCIONE...</option>
                     <option value="2016" >2016</option>
                     <option value="2010" >2010</option>
                     <option value="OTROS" >OTROS</option> 
                     </select>                                
                     </div>
                     <div class="col-sm-3">
-                    <label>Procesador</label>       
+                    <label>PROCESADOR</label>       
                     <select class="form-control" selected="true" id="procesador" name="procesador">                   
-                    <option value="" selected>SELECCIONE</option>
+                    <option value="" selected>SELECCIONE...</option>
                     <option value="INTEL" >INTEL</option>
                     <option value="AMD" >AMD</option>
                     </select> 
                     </div>
                     <div class="col-sm-3">
-                    <label>Velocidad del procesador</label>
+                    <label>VELOCIDAD DEL PROCESADOR</label>
                     <input id="velocidad_proc" name="velocidad_proc" type="text" class="form-control">
                     </div>
                      </div>   
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Capacidad de disco duro</label>             
+                    <label>CAPACIDAD DISCO DURO</label>             
                     <select class="form-control" selected="true" id="disco_duro" name="disco_duro">                   
-                    <option value="" selected>SELECCIONE</option>
+                    <option value="" selected>SELECCIONE...</option>
                     <option value="250 GB" >250 GB</option>
                     <option value="320 GB" >320 GB</option>
                     <option value="500 GB" >500 GB</option>
@@ -443,48 +443,48 @@ Agregar datos del  equipo </h4>
                     </select> 
                     </div>
                     <div class="col-sm-4">
-                    <label>Capacidad de memoria RAM</label>
+                    <label>CAPACIDAD MEMORIA RAM</label>
                     <input id="memoria_ram" name="memoria_ram" type="text" class="form-control">
                     </div>                         
                     <div class="col-sm-4">
-                    <label>Unidad de disco flash</label>
+                    <label>UNIDAD DISCO FLASH</label>
                     <input id="uni_disc_flax" name="uni_disc_flax" type="text" class="form-control">
                     </div>                    
                     </div>
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Serie monitor</label>
+                    <label>SERIE MONITOR</label>
                     <input id="serie_monitor" name="serie_monitor" type="text" class="form-control" >
                     </div>                                        
                     <div class="col-sm-4">
-                    <label>Serie teclado</label>
+                    <label>SERIE TECLADO</label>
                     <input id="serie_teclado" name="serie_teclado" type="text" class="form-control"  >
                     </div>
                     <div class="col-sm-4">
-                    <label>Serie mouse</label>
+                    <label>SERIE MOUSE</label>
                     <input id="serie_mouse" name="serie_mouse" type="text" class="form-control" >
                     </div> 
                     </div>
                     <div class="form-group">         
                     <div class="col-sm-4">
-                    <label>Dirección IP</label>
+                    <label>DIRECCIÓN IP</label>
                     <input id="direccion_ip" name="direccion_ip" type="text" class="form-control" >
                     </div>
                     <div class="col-sm-4">
-                    <label>Servicio internet</label>
+                    <label>SERVICIO INTERNET</label>
                     <input id="servicio_internet" name="servicio_internet" type="text" class="form-control" >
                     </div>                    
                     <div class="col-sm-4">
-                    <label>Ubicación del equipo</label>
+                    <label>UBICACIÓN DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
-                    <option value="0">Selecione</option> 
-                    <option value="Planta baja / vus">Planta baja / vus</option>
-                    <option value="Piso m2">Piso m2</option>
-                    <option value="Piso 1">Piso 1</option>
-                    <option value="Piso 2">Piso 2</option>
-                    <option value="Piso 3">Piso 3</option>
-                    <option value="Piso 4">Piso 4</option>
-                    <option value="Piso 7">Piso 7</option>
+                    <option value="0">SELECCIONE...</option> 
+                    <option value="Planta baja / vus">PLANTA BAJA / VUS</option>
+                    <option value="Piso m2">PISO M2</option>
+                    <option value="Piso 1">PISO 1</option>
+                    <option value="Piso 2">PISO 2</option>
+                    <option value="Piso 3">PISO 3</option>
+                    <option value="Piso 4">PISO 4</option>
+                    <option value="Piso 7">PISO 7</option>
                     </select>
                     </div>
                     </div>
@@ -538,14 +538,14 @@ Agregar datos del  equipo </h4>
 <div class="modal-header">
 <button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
 <h4 class="modal-title" id="exampleModalLabel">
-Editar datos del  equipo </h4>  
+EDITAR DATOS DEL EQUIPO </h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="idequipo" name="idequipo">
 
                     <div class="col-sm-12">
                     
-                    ¿el equipo de cómputo pertenece al usuario?
+                    ¿EL EQUIPO DE CÓMPUTO PERTENECE AL USUARIO?
                     <label for="SI">SI</label>
                     <input checked="checked" name="correct" type="radio" value="true" id="true" />
                     <label for="NO">NO</label>
@@ -556,7 +556,7 @@ Editar datos del  equipo </h4>
 
                     <div class="col-sm-12" >
                     <select style="width: 100%" class="form-control" class="selectpicker" id="n_empleado" name="n_empleado" type="text" data-live-search="true">
-                   <option value="">Seleccione usuario a quien pertenece el equipo</option>    
+                   <option value="">SELECCIONE USUARIO A QUIEN PERTENECE EL EQUIPO</option>    
                     <option value="0">NO ASIGNADO</option> 
                     <?php while($usuario = mysqli_fetch_row($result)):?>
                     <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
@@ -592,28 +592,28 @@ Editar datos del  equipo </h4>
                     <input id="enum_sigtic" name="enum_sigtic" type="text" class="form-control" class="disabled">
                     </div> -->
                     <div class="col-sm-6">
-                    <label>Número de inventario</label>
+                    <label>NÚMERO DE INVENTARIO</label>
                     <input id="enum_invntraio" name="enum_invntraio" type="text" class="form-control">
                     </div>                    
                     <div class="col-sm-6">
-                    <label>Serie</label>
+                    <label>SERIE</label>
                     <input id="eserie_cpu" name="eserie_cpu" type="text" class="form-control">
                     </div>        
                     </div>
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Modelo</label>
+                    <label>MODELO</label>
                     <input id="enombre_equipo" name="enombre_equipo" type="text" class="form-control">
                     </div> 
                     <div class="col-sm-4">
-                    <label>Tipo del equipo</label>
+                    <label>TIPO DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" id="etipo_equipo" name="etipo_equipo" type="text" data-live-search="true">
-                    <option value="LAP TOP ">LAP TOP </option>
+                    <option value="LAP TOP ">LAPTOP</option>
                     <option value="ESCRITORIO">ESCRITORIO</option>
                     </select>
                     </div>
                     <div class="col-sm-4">
-                    <label>Marca</label>    
+                    <label>MARCA</label>    
                     <select class="form-control" selected="true" id="emarca_cpu" name="emarca_cpu">
                     <option value="LENOVO">LENOVO</option>
                     <option value="DELL">DELL</option>
@@ -624,7 +624,7 @@ Editar datos del  equipo </h4>
                     </div>
                      <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-3">
-                    <label>Versión Windows</label>
+                    <label>VERSIÓN WINDOWS</label>
                     <select class="form-control" selected="true" id="eversion_windows" name="eversion_windows">
                     <option value="WINDOWS 7" >WINDOWS 7</option>
                     <option value="WINDOWS 10" >WINDOWS 10</option>
@@ -632,7 +632,7 @@ Editar datos del  equipo </h4>
                     </select>                                
                     </div>
                     <div class="col-sm-offset-0 col-sm-3">
-                    <label>Versión office</label>
+                    <label>VERSIÓN OFFICE</label>
                     <select class="form-control" selected="true" id="eversion_office" name="eversion_office">                   
                     <option value="2016" >2016</option>
                     <option value="2010" >2010</option>
@@ -640,20 +640,20 @@ Editar datos del  equipo </h4>
                     </select>                                
                     </div>
                     <div class="col-sm-3">
-                    <label>Procesador</label>       
+                    <label>PROCESADOR</label>       
                     <select class="form-control" selected="true" id="eprocesador" name="eprocesador">                   
                     <option value="INTEL" >INTEL</option>
                     <option value="AMD" >AMD</option>
                     </select> 
                     </div>
                     <div class="col-sm-3">
-                    <label>Velocidad del procesador</label>
+                    <label>VELOCIDAD DEL PROCESADOR</label>
                     <input id="evelocidad_proc" name="evelocidad_proc" type="text" class="form-control">
                     </div>
                      </div>   
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Capacidad de disco duro</label>             
+                    <label>CAPACIDAD DE DISCO DURO</label>             
                     <select class="form-control" selected="true" id="edisco_duro" name="edisco_duro">                   
                     <option value="250 GB" >250 GB</option>
                     <option value="320 GB" >320 GB</option>
@@ -662,47 +662,47 @@ Editar datos del  equipo </h4>
                     </select> 
                     </div>
                     <div class="col-sm-4">
-                    <label>Capacidad de memoria RAM</label>
+                    <label>CAPACIDAD DE MEMORIA RAM</label>
                     <input id="ememoria_ram" name="ememoria_ram" type="text" class="form-control">
                     </div>                         
                     <div class="col-sm-4">
-                    <label>Unidad de disco flash</label>
+                    <label>UNIDAD DE DISCO FLASH</label>
                     <input id="euni_disc_flax" name="euni_disc_flax" type="text" class="form-control">
                     </div>                    
                     </div>
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Serie monitor</label>
+                    <label>SERIE MONITOR</label>
                     <input id="eserie_monitor" name="eserie_monitor" type="text" class="form-control" >
                     </div>                                        
                     <div class="col-sm-4">
-                    <label>Serie teclado</label>
+                    <label>SERIE TECLADO</label>
                     <input id="eserie_teclado" name="eserie_teclado" type="text" class="form-control"  >
                     </div>
                     <div class="col-sm-4">
-                    <label>Serie mouse</label>
+                    <label>SERIE MOUSE</label>
                     <input id="eserie_mouse" name="eserie_mouse" type="text" class="form-control" >
                     </div> 
                     </div>
                     <div class="form-group">         
                     <div class="col-sm-4">
-                    <label>Dirección IP</label>
+                    <label>DIRECCIÓN IP</label>
                     <input id="edireccion_ip" name="edireccion_ip" type="text" class="form-control" >
                     </div>
                     <div class="col-sm-4">
-                    <label>Servicio internet</label>
+                    <label>SERVICIO INTERNET</label>
                     <input id="eservicio_internet" name="eservicio_internet" type="text" class="form-control" >
                     </div>                    
                     <div class="col-sm-4">
-                    <label>Ubicación del equipo</label>
+                    <label>UBICACIÓN DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" name="eubicaeqpo" id="eubicaeqpo" type="text" data-live-search="true">
-                    <option value="Planta baja / vus">Planta baja / vus</option>    
-                    <option value="Piso m2">Piso m2</option>
-                    <option value="Piso 1">Piso 1</option>
-                    <option value="Piso 2">Piso 2</option>
-                    <option value="Piso 3">Piso 3</option>
-                    <option value="Piso 4">Piso 4</option>
-                    <option value="Piso 7">Piso 7</option>
+                    <option value="Planta baja / vus">PLANTA BAJA / VUS</option>    
+                    <option value="Piso m2">PISO M2</option>
+                    <option value="Piso 1">PISO 1</option>
+                    <option value="Piso 2">PISO 2</option>
+                    <option value="Piso 3">PISO 3</option>
+                    <option value="Piso 4">PISO 4</option>
+                    <option value="Piso 7">PISO 7</option>
                     </select>
                     </div>
                     </div>
