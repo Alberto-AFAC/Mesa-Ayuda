@@ -486,7 +486,7 @@ onclick="location.href='./'" -->
                                         <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
                                     </p><input type="hidden" id="idequipo">
-                                    Detalles Reporte
+                                    DETALLES REPORTE
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -495,24 +495,24 @@ onclick="location.href='./'" -->
                                 <input type="hidden" id="opcion" name="opcion" value="atender">
                                 <div class="form-group">
                                     <div class="col-sm-3">
-                                        <label>N° reporte</label>
+                                        <label>N° REPORTE</label>
                                         <input id="n_reporte" name="n_reporte" type="text" class="form-control"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-5">
-                                        <label>Usuario</label>
-                                        <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
+                                    <div class="col-sm-6">
+                                        <label>USUARIO</label>
+                                        <input id="gstNombr" name="gstNombr" type="text" class="form-control" disabled="">
                                     </div>
-                                    <div class="col-sm-2">
-                                        <label>Extension</label>
-                                        <input id="extension" name="extension" type="text" class="form-control"
+                                    <div class="col-sm-3">
+                                        <label>EXTENSIÓN</label>
+                                        <input id="gstExTel" name="gstExTel" type="text" class="form-control"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-2">
+<!--                                     <div class="col-sm-2">
                                         <label>Ubicación</label>
                                         <input id="ubicacion" name="ubicacion" type="text" class="form-control"
                                             disabled="">
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="form-group" id="dsprob1" style="display: none;">
@@ -523,27 +523,38 @@ onclick="location.href='./'" -->
                                 </div>
 
 
-                                <div class="form-group" id="dsprob2">
+                                <div class="form-group">
                                     <div class="col-sm-4">
-                                        <label>Tipo de servicio</label>
+                                        <label>TIPO DE SERVICIO</label>
                                         <input id="servicio" type="text" class="form-control" disabled="">
                                     </div>
-
                                     <div class="col-sm-4">
-                                        <label>Intervención</label>
+                                        <label></label>
                                         <input id="intervencion" type="text" class="form-control" disabled="">
                                     </div>
-
                                     <div class="col-sm-4">
-                                        <label>Descripción</label>
+                                        <label></label>
                                         <input id="descripcion" type="text" class="form-control" disabled="">
                                     </div>
-                                    <input type="hidden" name="rspst" id="rspst" value="SI">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <input id="solucion" type="text" class="form-control" disabled="">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input id="ultima" type="text" class="form-control" disabled="">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input id="final" type="text" class="form-control" disabled="">
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label>Observaciones del usuario al problema</label>
+                                        <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label>
                                         <textarea id="usu_observ" name="usu_observ" class="form-control"
                                             id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                                     </div>
@@ -551,23 +562,30 @@ onclick="location.href='./'" -->
 
                                 <div class="form-group" id="externo" style="display: none;">
                                     <div class="col-sm-12">
-                                        <label> Respuesta externa de la falla</label>
+                                        <label>RESPUESTA EXTERNA DE LA FALLA</label>
                                         <textarea id="falla_xterna" name="falla_xterna" class="form-control"
                                             id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <label> Fecha reporte</label>
+                                    <div class="col-sm-3">
+                                        <label>FECHA REPORTE</label>
                                         <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                                     </div>
-                                    <div class="col-sm-4" id="asignado">
-                                        <label>Técnico asignado</label>
+
+                                    <div class="col-sm-3">
+                                        <label>FECHA FINALIZADA</label>
+                                        <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
+                                    </div>
+
+
+                                    <div class="col-sm-6" id="asignado">
+                                        <label>TÉCNICO ASIGNADO</label>
                                         <input class="form-control" selected="true" id="nomtec" name="nomtec"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-4" style="display: none;" id="reasigar">
+<!--                                     <div class="col-sm-4" style="display: none;" id="reasigar">
                                         <label>Reasignar técnico </label>
                                         <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
                                             name="idtec" type="text" data-live-search="true">
@@ -577,7 +595,7 @@ onclick="location.href='./'" -->
                                                 <?php echo $usuario[1].' '.$usuario[2]?></option>
                                             <?php endwhile; ?>
                                         </select>
-                                    </div>
+                                    </div> -->
 
                                     <!--      <div class="col-sm-4">
                     <button type="button" class="btn btn-warning" id="asignartec" onclick="tecReasignar();">REASIGNAR TÉCNICO</button>        
@@ -588,7 +606,7 @@ onclick="location.href='./'" -->
                                 <div class="form-group" style="display: none;" id="button"><br>
                                     <div class="col-sm-offset-0 col-sm-5">
                                         <button type="button" class="btn btn-green btn-lg"
-                                            onclick="tecReasignar();">Aceptar</button>
+                                            onclick="tecReasignar();">ACEPTAR</button>
                                     </div>
                                     <b>
                                         <p class="alert alert-danger text-center padding error" id="error">Error al
@@ -697,7 +715,7 @@ onclick="location.href='./'" -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
-<script type="text/javascript" src="../js/area.js"></script>
+<!-- <script type="text/javascript" src="../js/area.js"></script> -->
 
 
 <script type="text/javascript">
@@ -728,8 +746,10 @@ var dataSet = [
         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
         YEAR(finicio) AS año,
         evaluacion,
-        estado_rpt 
+        estado_rpt,
+        id_usu 
         FROM REPORTE
+        INNER JOIN tecnico ON idtec = id_tecnico 
         WHERE 	MONTH ( finicio ) = MONTH (
         CURRENT_DATE ()) 
         AND estado_rpt = 'Finalizado' || estado_rpt = 'Cancelado'
@@ -738,14 +758,28 @@ var dataSet = [
         $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
         $idempleado=$data['empleado'];
+        $idper = $data['id_usu'];
         $sql2="SELECT gstNombr,
                           gstApell,
-                          gstExTel
+                          gstExTel,
+                          gstNmpld
                           FROM personal
                         WHERE
                         gstNmpld = $idempleado";
     $result2=mysqli_query($conexion2,$sql2);
+    
     while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){   
+
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
             } else {
@@ -755,7 +789,7 @@ var dataSet = [
 
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data2['gstExTel']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo $eva ?> ",
+    ["<?php echo $data['año']."-".$data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>","<?php echo $eva ?> ",
         "<?php 
 
         if($data['estado_rpt'] == 'Finalizado'){
@@ -768,7 +802,7 @@ var dataSet = [
                     } 
                       ?>"
     ],
-    <?php } } ?>
+    <?php } } }?>
 ];
 //       
 $(document).ready(function() {
@@ -812,13 +846,13 @@ $(document).ready(function() {
                 title: "NOMBRE USUARIO"
             },
             {
-                title: "EXTENSIÓN"
-            },
-            {
                 title: "INICIO"
             },
             {
                 title: "FINALIZA"
+            },
+            {
+                title: "TÉCNICO"
             },
             {
                 title: "ATENCIÓN"
