@@ -7,7 +7,7 @@
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
 					}
-
+//echo $id;
 
 switch ($id) {
   case "1":?>
@@ -66,7 +66,7 @@ switch ($id) {
             <div class="col-sm-offset-0 col-sm-4">
             <select  id="intervencion" class="form-control" class="selectpicker" name="intervencion" type="text" data-live-search="true">
             <option value="0">SELECCIONE</option>
-            <option value="jPRÉSTAMO DE EQUIPO">PRÉSTAMO DE EQUIPO</option>
+            <option value="iPRÉSTAMO DE EQUIPO">PRÉSTAMO DE EQUIPO</option>
             </option>
             </select>
             </div>
@@ -90,7 +90,7 @@ switch ($id) {
 <!--Resetear select-->
 <input type="hidden" name="intervencion" id="intervencion" value="0">
 <script type="text/javascript">
-//  reset();
+  reset();
 </script>
 <?php }
 }else{ ?>
@@ -110,6 +110,7 @@ $('#intervencion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select2').load('select/select.php');
+    console.log("aqui perro--chupas"+ $('#intervencion').val());
   }
         });
     });

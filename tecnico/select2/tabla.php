@@ -7,7 +7,7 @@
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
 					}
-//echo $id;
+
 
 switch ($id) {
   case "1":?>
@@ -90,7 +90,7 @@ switch ($id) {
 <!--Resetear select-->
 <input type="hidden" name="intervencion" id="intervencion" value="0">
 <script type="text/javascript">
-  reset();
+//  reset();
 </script>
 <?php }
 }else{ ?>
@@ -110,7 +110,6 @@ $('#intervencion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select2').load('select/select.php');
-    //console.log("aqui perro"+ $('#intervencion').val());
   }
         });
     });

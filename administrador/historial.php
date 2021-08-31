@@ -689,14 +689,14 @@ onclick="location.href='./'" -->
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
-<!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script> -->
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="../js/area.js"></script>
 
 
@@ -783,19 +783,19 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        // dom: 'Bfrtip',
-        // buttons: [
+        dom: 'Bfrtip',
+        buttons: [
 
-        //     'copy', 'csv', 'excel',
-        //     {
-        //     extend: 'pdfHtml5',
-        //     messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-        //     download: 'open',
-        //     title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-        //     text: 'Descargar PDF',
-        //     pageSize: 'A4',
+            'copy', 'csv', 'excel',
+            {
+            extend: 'pdfHtml5',
+            messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+            download: 'open',
+            title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+            text: 'Descargar PDF',
+            pageSize: 'A4',
 
-        // }],
+        }],
         orderCellsTop: true,
         fixedHeader: true,
         responsive: true,

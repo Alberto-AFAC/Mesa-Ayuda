@@ -58,21 +58,20 @@ include('conexion/conexion.php');
 // 	echo 'Proximo técnico: '.$pila[0][0];
 // }
 
-$especialidad = 'tecnico';
-$idtec = selecTec($conexion,$especialidad);
+$sede = 'CIAAC';
+$idtec = selecTec($conexion,$sede);
 
 
 echo $idtec;
 
-function selecTec($conexion,$especialidad){
+function selecTec($conexion,$sede){
 
 $query = "SELECT idtec FROM reporte ORDER BY n_reporte DESC ";
 $res = mysqli_query($conexion,$query);
 $result = mysqli_fetch_row($res);
 if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
-$query = "SELECT id_tecnico,nombre,apellidos FROM usuarios 
-		  INNER JOIN tecnico ON id_usuario = id_usu 
-		  WHERE privilegios = '$especialidad' AND activo = 0 AND baja = 0 ORDER BY id_tecnico ASC ";
+$query = "SELECT id_tecnico FROM tecnico 
+		  WHERE sede = '$sede' AND activo = 0 AND baja = 0 ORDER BY id_tecnico ASC ";
 $result = mysqli_query($conexion,$query);
 $n=0;
 while ($res = mysqli_fetch_row($result)) {

@@ -1,14 +1,14 @@
 <?php session_start();
-
+  
   $id=0;
 
 				if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
-				
+					if($_SESSION['consulta'] > 0){
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
              $desc = substr($idp, 1);
-					
+					}
 
 //echo $id;
 switch ($id) {
@@ -36,8 +36,8 @@ switch ($id) {
   <option value="CATEGORÍA DE PÁGINAS WEB BLOQUEADA">CATEGORÍA DE PÁGINAS WEB BLOQUEADA</option>
   </select>
   </div>
-
-
+ 
+ 
 <?php break;
   case "c": ?>
 
@@ -62,7 +62,7 @@ switch ($id) {
   <option value="CATEGORÍA DE PÁGINAS WEB BLOQUEADA">CATEGORÍA DE PÁGINAS WEB BLOQUEADA</option>
   </select>
   </div>
-
+ 
 <?php break;
   case "e": ?>
 
@@ -122,3 +122,6 @@ switch ($id) {
 <!-- <div class="col-sm-offset-0 col-sm-4"><select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true" disabled=""><option value="0">SELECCIONE OPCIÓN</option></select></div> -->
 <input type="hidden" id="final" name="final" value="0">
 <?php } ?>
+
+
+  

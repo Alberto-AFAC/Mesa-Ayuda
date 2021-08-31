@@ -24,7 +24,9 @@
 	// $verwind = $_POST['verwind'];
 	// $proceso = $_POST['proceso'];
 
-	$idtec = selecTec($conexion);
+	$sede = $_POST['sede'];
+
+	$idtec = selecTec($sede,$conexion);
 	
 	//if($idequipo == 0){
 	//	registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion);
@@ -53,14 +55,14 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 		}else{	echo "1";	}	
 	}
 
-function selecTec($conexion){
+function selecTec($sede,$conexion){
 
 $query = "SELECT idtec FROM reporte ORDER BY n_reporte DESC ";
 $res = mysqli_query($conexion,$query);
 $result = mysqli_fetch_row($res);
 if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
 $query = "SELECT id_tecnico FROM tecnico 
-		  WHERE privilegios = 'tecnico' AND activo = 0 AND baja = 0 ORDER BY id_tecnico ASC ";
+		  WHERE sede = '$sede' AND privilegios = 'tecnico' AND activo = 0 AND baja = 0 ORDER BY id_tecnico ASC ";
 $result = mysqli_query($conexion,$query);
 $n=0;
 while ($res = mysqli_fetch_row($result)) {

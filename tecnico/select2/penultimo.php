@@ -1,17 +1,14 @@
 <?php session_start();
   
-  $id=0;//esto comentalo y ponle el defaul 0
+  $id=0;
 
 				if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
 
-					
+					if($_SESSION['consulta'] > 0){
 						 $idp=$_SESSION['consulta'];
              $id = $idp[0];
              $desc = substr($idp, 1);
-             ?>
-              <script>console.log("no estoy funcionando")</script>
-             <?php
-					
+					}
 //echo '>'.$id;
 switch ($id) {
   case "a":?>
@@ -25,8 +22,7 @@ switch ($id) {
   <option value="dASISTENCIA TÉCNICA">ASISTENCIA TÉCNICA</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "b":?>
 
@@ -38,8 +34,7 @@ switch ($id) {
   <option value="gCOMPORTAMIENTO INUSUAL">COMPORTAMIENTO INUSUAL</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+ 
  
 <?php break;
   case "c": ?>
@@ -53,8 +48,7 @@ switch ($id) {
   <option value="kASISTENCIA TÉCNICA">ASISTENCIA TÉCNICA</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
  case "d": ?>
 
@@ -66,8 +60,7 @@ switch ($id) {
   <option value="nCAMBIO DE COLOR COMPORTAMIENTO INUSUAL">CAMBIO DE COLOR COMPORTAMIENTO INUSUAL</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+ 
 <?php break;
   case "e": ?>
 
@@ -77,8 +70,7 @@ switch ($id) {
   <option value="oFALLA">FALLA</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "f": ?>
 
@@ -88,8 +80,7 @@ switch ($id) {
   <option value="pFALLA">FALLA</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "g": ?>
 
@@ -99,8 +90,7 @@ switch ($id) {
   <option value="qFALLA">FALLA</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "h": ?>
 
@@ -113,8 +103,7 @@ switch ($id) {
   <option value="uASISTENCIA TÉCNICA">ASISTENCIA TÉCNICA</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "i": ?>
 
@@ -126,8 +115,7 @@ switch ($id) {
   <option value="xCAMBIO DE COLOR COMPORTAMIENTO INUSUAL">CAMBIO DE COLOR COMPORTAMIENTO INUSUAL</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "j": ?>
 
@@ -137,8 +125,7 @@ switch ($id) {
   <option value="yFALLA">FALLA</option>
   </select>
   </div>  
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "k": ?>
 
@@ -149,8 +136,7 @@ switch ($id) {
   </option>
   </select>
   </div>  
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "l": ?>
 
@@ -160,8 +146,7 @@ switch ($id) {
   <option value="9FALLA">FALLA</option>
   </select>
   </div>  
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "m": ?>
 
@@ -172,8 +157,7 @@ switch ($id) {
   <option value="7SOLICITUD">SOLICITUD</option>
   </select>
   </div>  
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "n": ?>
 
@@ -184,8 +168,7 @@ switch ($id) {
   <option value="5SOLICITUD">SOLICITUD</option>
   </select>
   </div>  
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "o": ?>
 
@@ -263,8 +246,7 @@ switch ($id) {
   <option value="3SOLICITUD">SOLICITUD</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "t": ?>
 
@@ -275,8 +257,7 @@ switch ($id) {
   <option value="1RED INALÁMBRICA (WIFI)">RED INALÁMBRICA (WIFI)</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "v": ?>
 
@@ -286,8 +267,7 @@ switch ($id) {
   <option value="_RED INALÁMBRICA (WIFI)">RED INALÁMBRICA (WIFI)</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "u": ?>
 
@@ -297,8 +277,7 @@ switch ($id) {
   <option value="|RED INALÁMBRICA (WIFI)">RED INALÁMBRICA (WIFI)</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="x">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "w": ?>
 
@@ -380,7 +359,6 @@ $('#solucion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select4').load('select/ultimo.php');
-    console.log("Si esta entrando" + $('#solucion').val());
   }
         });
     });

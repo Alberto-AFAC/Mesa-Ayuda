@@ -35,6 +35,8 @@ function eqpo(datos) {
 //registro de reporte
 function reporte() {
 
+    var sede = document.getElementById('sede').value;
+
     var nempleado = document.getElementById('nempleado').value;
     // var modelo = document.getElementById('modelo').value;
     // var serie = document.getElementById('serie').value;
@@ -59,7 +61,7 @@ function reporte() {
 
     x = servicio + '/' + intervencion + '/' + descripcion + '/' + solucion + '/' + ultima + '/' + final;
 
-    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&opcion=registrar';
+    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo +'&sede='+sede+'&opcion=registrar';
 
     //    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
 
@@ -87,6 +89,7 @@ function reporte() {
                 }, 15000);
                 $("#button1").hide();
                 $('#exampleModalCenter').modal('hide');
+
             } else if (respuesta == 1) {
                 $("#error").toggle("toggled");
                 setTimeout(function() {
