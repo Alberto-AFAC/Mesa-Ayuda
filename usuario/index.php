@@ -39,8 +39,8 @@ unset($_SESSION['consulta']);
     <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" href="../css/button/estilos.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script> 
+    <script src="../dist/sweetAlert2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../dist/sweetAlert2/sweetalert2.min.css">
 </head>
 <script>
     function Alertaempleado() {
@@ -193,7 +193,7 @@ unset($_SESSION['consulta']);
                                 <!--ARÉA DE DESCRIPCIÓN-->
                                 <div class="was-validated">
                                 <div class="col-md-13">
-                                <label for="validationTextarea">Observaciones.</label>
+                                <label for="validationTextarea">OBSERVACIONES</label>
                                 <!--<div style="color: #6A6507;" class="invalid-feedback"></div>-->
                                 <textarea style="font-size: 18px;" onkeyup="mayus(this);" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea><!--placeholder="Es importante que la descripción sea clara..."-->
                                 </div>
@@ -214,7 +214,7 @@ unset($_SESSION['consulta']);
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p style="text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
+                                        <p style="text-transform: uppercase; text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
                                         <br><select class="form-control" id="sede" name="sede">
                                         <option selected>Seleccionar SEDE...</option>
                                         <option value="Las flores">Las flores</option>
@@ -274,10 +274,4 @@ unset($_SESSION['consulta']);
       $('#ultima').select2();
 
    });
-
-
-   $(document).ready(function() {
-    $('#myModal').modal('toggle')
-});
-
 </script>

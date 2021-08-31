@@ -12,7 +12,7 @@ $.ajax({
             $("#div2").show();
         } else {
             x = 0;
-            equipo = "<div class='panel-body'><table class='table table-bordered' cellspacing='0' width='100%'><tr><th style='width:2%;'>N°</th><th style='width:20%;'>Marca</th><th style='width:20%;'>Número de serie </th><th style='width:20%;'>Versión Windows</th><th style='width:20%;'>Tipo de equipo</th><th style='width:10%;'>Elija su equipo </th></tr>";
+            equipo = "<div class='panel-body'><table class='table table-bordered' cellspacing='0' width='100%'><tr><th style='width:2%;'>N°</th><th style='width:20%;'>MARCA</th><th style='width:20%;'>NÚMERO DE SERIE </th><th style='width:20%;'>VERSIÓN WINDOWS</th><th style='width:20%;'>TIPO DE EQUIPO</th><th style='width:10%;'>ELIJA SU EQUIPO </th></tr>";
             for (i = 0; i < res.length; i++) {
                 x++;
                 if (obj.data[i].proceso == 'asignado') {
@@ -67,9 +67,10 @@ function reporte() {
 
     if (nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
         $("#vacio").toggle("toggled");
+        $('#exampleModalCenter').modal('hide');
         setTimeout(function() {
             $('#vacio').toggle('toggled');
-        }, 2000);
+        }, 1000);
         return;
     } else {
         //bloquear boton 
