@@ -413,7 +413,7 @@ onclick="location.href='./'" -->
                                 <h4 class="modal-title" id="exampleModalLabel">
                                     <p>
 
-                                        <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
+                                        <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%;font-size: 12px;'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
                                     </p><input type="hidden" id="idequipo">
                                     Reporte por atender
@@ -676,16 +676,16 @@ if($data['estado_rpt'] == 'Por atender'){
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%'>POR ATENDER</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>POR ATENDER</a>";
 
                     } 
                       else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
 
-                // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por confirmar</a>";
+                // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%;font-size: 12px;'>Por confirmar</a>";
 
                     } else if($data['evaluacion'] == '0'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>POR EVALUAR</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%;font-size: 12px;'>POR EVALUAR</a>";
 
                     }  
                     ?> "],
@@ -697,7 +697,7 @@ if($data['estado_rpt'] == 'Por atender'){
         "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php 
-             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>PENDIENTE</a>";
+             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>PENDIENTE</a>";
 
                     ?>"],
 
