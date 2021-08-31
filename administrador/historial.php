@@ -721,24 +721,30 @@ $.fn.dataTable.ext.search.push(
 );
 var dataSet = [
     <?php
-	    $query = "SELECT
-                    reporte.n_reporte,
-                    usuarios.nombre,
-                    usuarios.apellidos,
-                    usuarios.ubicacion,
-                    usuarios.extension,
-                    -- DATE_FORMAT(reporte.finicio,'%d/%m/%Y') AS finicio,
-	                -- DATE_FORMAT(reporte.ffinal,'%d/%m/%Y') AS ffinal,
-                    reporte.finicio,
-                    reporte.ffinal,
-                    reporte.evaluacion,
-                    reporte.estado_rpt
-                 FROM
-                    reporte 
-                LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado
-                WHERE reporte.estado_rpt = 'Finalizado' || reporte.estado_rpt = 'Cancelado'";
-	    $resultado = mysqli_query($conexion, $query);
+        $query1 = "SELECT 
+        n_reporte,
+        n_empleado empleado,
+        DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+        DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        evaluacion,
+        estado_rpt 
+        FROM REPORTE
+        WHERE 	MONTH ( finicio ) = MONTH (
+        CURRENT_DATE ()) 
+        AND estado_rpt = 'Finalizado' || estado_rpt = 'Cancelado'
+        ORDER BY
+        n_reporte DESC";
+        $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
+        $idempleado=$data['empleado'];
+        $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
             } else {
@@ -748,9 +754,7 @@ var dataSet = [
 
         ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo $data['nombre'] . " " .$data['apellidos'] ?>",
-        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $data['ffinal']?>", "<?php echo  $eva ?>",
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data2['gstExTel']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo $eva ?> ",
         "<?php 
 
         if($data['estado_rpt'] == 'Finalizado'){
@@ -763,7 +767,7 @@ var dataSet = [
                     } 
                       ?>"
     ],
-    <?php } ?>
+    <?php } } ?>
 ];
 //       
 $(document).ready(function() {
@@ -777,7 +781,7 @@ $(document).ready(function() {
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
         "order": [
-            [7, "desc"]
+            [6, "desc"]
         ],
         "language": {
             "searchPlaceholder": "Buscar datos...",
@@ -805,9 +809,6 @@ $(document).ready(function() {
             },
             {
                 title: "Nombre usuario"
-            },
-            {
-                title: "Ubicación"
             },
             {
                 title: "Extensión"
