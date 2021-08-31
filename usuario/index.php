@@ -38,12 +38,25 @@ unset($_SESSION['consulta']);
     <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/button/estilos.css">  
+    <link rel="stylesheet" href="../css/button/estilos.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script> 
 </head>
-
-<body>
+<script>
+    function Alertaempleado() {
+    fecha = new Date();
+    hora = fecha.getHours();
+    if (hora >= 18 && hora < 24) {
+        texto = "Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.";
+    }
+    if (hora >= 0 && hora < 8) {
+        texto = "Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.";
+    }
+    document.getElementById('alerta').innerHTML = texto;
+}
+</script>
+<body onload="Alertaempleado()">
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -91,6 +104,7 @@ unset($_SESSION['consulta']);
             <div class="col-lg-12">
                 <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                 <h1 class="page-header">Generar reporte</h1>
+                <p style="text-transform: uppercase; font-size: 13px; text-align: right;" id="alerta"></p>
             </div>
         </div>
 
@@ -262,6 +276,8 @@ unset($_SESSION['consulta']);
    });
 
 
-
+   $(document).ready(function() {
+    $('#myModal').modal('toggle')
+});
 
 </script>
