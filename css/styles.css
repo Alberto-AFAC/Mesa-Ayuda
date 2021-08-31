@@ -140,6 +140,9 @@
     }
 }
 
+#page-wrapper > div > div >h1{
+    font-size: 25px;
+}
 
 /*stylo de radio*/
 
