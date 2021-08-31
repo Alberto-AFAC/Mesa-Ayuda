@@ -21,15 +21,15 @@ type:'POST'
         day = obj.data[i].ffinal.substring(8,10);
         Finaliza = day+'/'+month+'/'+year;
 
-        detalles = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension+'*'+obj.data[i].ubicacion+'*'+obj.data[i].servicio+'*'+obj.data[i].intervencion+'*'+obj.data[i].descripcion+'*'+obj.data[i].usu_observ+'*'+obj.data[i].falla_interna+'*'+Finicio+'*'+Finaliza+'*'+obj.data[i].falla_xterna+'*'+obj.data[i].observa+'*'+obj.data[i].evaluacion+'*'+obj.data[i].estado_rpt+'*'+obj.data[i].hinicio+'*'+obj.data[i].hfinal+'*'+obj.data[i].idequipo+'*'+obj.data[i].idtec;
+        detalles = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension+'*'+obj.data[i].ubicacion+'*'+obj.data[i].servicio+'*'+obj.data[i].intervencion+'*'+obj.data[i].descripcion+'*'+obj.data[i].usu_observ+'*'+obj.data[i].falla_interna+'*'+Finicio+'*'+Finaliza+'*'+obj.data[i].falla_xterna+'*'+obj.data[i].observa+'*'+obj.data[i].evaluacion+'*'+obj.data[i].estado_rpt+'*'+obj.data[i].hinicio+'*'+obj.data[i].hfinal+'*'+obj.data[i].idequipo+'*'+obj.data[i].idtec+'*'+obj.data[i].n_empleado;
 
 
    var d=detalles.split("*");
 
     $("#modalAtndr #n_reporte").val(d[0]);
-    $("#modalAtndr #usuario").val(d[1]+' '+d[2]);
-    $("#modalAtndr #extension").val(d[3]);
-    $("#modalAtndr #ubicacion").val(d[4]);
+    // $("#modalAtndr #usuario").val(d[1]+' '+d[2]);
+    // $("#modalAtndr #extension").val(d[3]);
+    // $("#modalAtndr #ubicacion").val(d[4]);
     $("#modalAtndr #servicio").val(d[5]);
     $("#modalAtndr #intervencion").val(d[6]);
     $("#modalAtndr #descripcion").val(d[7]);
@@ -44,48 +44,85 @@ type:'POST'
     $("#modalAtndr #idequipo").val(d[18]);
 
 //ID reporte para traer datos  
-    consultaID(d[0]);
+   // consultaID(d[0]);
 
 //personal
-    personal(d[19]);
-            }
-        }
-    })
 
-}
-
-
-
-
-
-function consultaID(id){
-
-$.ajax({
-url:'../php/conTecnico.php',
-type:'POST'
-}).done(function(resp){
-    obj = JSON.parse(resp);
-    var res = obj.data;  
-
-        for(i=0; i<res.length;i++){
-        
-        if(obj.data[i].n_reporte==id){
-
-        nombre = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension;
-
-   var d=nombre.split("*");
-
-
-$("#modalAtndr #nomtec").val(d[1]+' '+d[2]);
-
-            }
-        }
-    })
-}
-
-function personal(idper){
+    nreport = d[0]+'*'+d[20];
     
+    personal(nreport);
+
+
+            }
+        }
+    })
+
 }
+
+function personal(nreport){
+
+ var r=nreport.split("*");
+
+    nrepor = r[0];
+    nemple = r[1];
+
+        $.ajax({
+            url: '../php/conTecnico.php',
+            type: 'POST',
+            data: 'nrepor=' + nrepor 
+        }).done(function(respuesta) {            
+          obj = JSON.parse(respuesta);
+
+         // alert(respuesta);
+        // var res = obj.data;
+        var res = obj.data;
+
+        for (i = 0; i < res.length; i++) {
+
+         //  alert('------>'+obj.data[i].gstNmpld );
+
+        if(obj.data[i].gstNmpld == nemple) {
+
+        usuario = obj.data[i].gstNombr+' '+obj.data[i].gstApell;
+        ext = obj.data[i].gstExTel;
+        $("#modalAtndr #gstNombr").val(usuario);
+        $("#modalAtndr #gstExTel").val(ext);
+
+        }else{
+
+        tecnico = obj.data[i].gstNombr+' '+obj.data[i].gstApell;
+        $("#modalAtndr #nomtec").val(tecnico);
+
+                 }
+             }
+        });    
+}
+
+// function consultaID(id){
+
+// $.ajax({
+// url:'../php/conTecnico.php',
+// type:'POST'
+// }).done(function(resp){
+//     obj = JSON.parse(resp);
+//     var res = obj.data;  
+
+//         for(i=0; i<res.length;i++){
+        
+//         if(obj.data[i].n_reporte==id){
+
+//         nombre = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension;
+
+//    var d=nombre.split("*");
+
+
+// $("#modalAtndr #nomtec").val(d[1]+' '+d[2]);
+
+//             }
+//         }
+//     })
+// }
+
 
 // ¿Requiere reasignar técnico?
 $(document).ready(function() {

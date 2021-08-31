@@ -1,11 +1,16 @@
 <?php
 	include("../conexion/conexion.php");
 
-	$query = "SELECT * FROM reporte 
-			INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-			INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario
-			";
+	$nrepor = $_POST['nrepor'];
+
+	$query = "SELECT * FROM reporte INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico WHERE n_reporte = $nrepor";
 	$resultado = mysqli_query($conexion, $query);
+	$datas = mysqli_fetch_assoc($resultado);
+	$idper = $datas['id_usu'];
+	$nempl = $datas['n_empleado'];
+
+	$query = "SELECT * FROM personal WHERE gstIdper = $idper || gstNmpld = $nempl ";
+	$resultado = mysqli_query($conexion2, $query);
 
 	if(!$resultado){
 		die("error");

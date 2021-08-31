@@ -375,20 +375,20 @@ onclick="location.href='./'" -->
                                         <input id="n_reporte" name="n_reporte" type="text" class="form-control"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                         <label>Usuario</label>
                                         <input id="gstNombr" name="gstNombr" type="text" class="form-control" disabled="">
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <label>Extension</label>
                                         <input id="gstExTel" name="gstExTel" type="text" class="form-control"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-2">
+<!--                                     <div class="col-sm-2">
                                         <label>Ubicación</label>
                                         <input id="ubicacion" name="ubicacion" type="text" class="form-control"
                                             disabled="">
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="form-group" id="dsprob1" style="display: none;">
