@@ -366,6 +366,7 @@
                INNER JOIN tecnico ON idtec = id_tecnico
                GROUP BY id_usu";
             $resultado = mysqli_query($conexion, $query1);
+            $contador = 0;
               while($data = mysqli_fetch_array($resultado)){
                   $idper = $data['id_usu'];
                   $sql2="SELECT gstIdper,
@@ -377,7 +378,7 @@
                               WHERE
                               gstIdper = $idper";
           $result2=mysqli_query($conexion2,$sql2);
-          $contador = 0;
+          
           while($data2=mysqli_fetch_array($result2)){      
                     $contador++;
                 ?>
