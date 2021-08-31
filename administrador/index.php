@@ -332,17 +332,6 @@
                 </div>
             </div>
 
-            <?php 
-
-$query = "SELECT id_tecnico, nombre, apellidos FROM usuarios
-        INNER JOIN tecnico ON tecnico.id_usu = usuarios.id_usuario
-        WHERE   privilegios = 'tecnico' AND usuarios.estado = 0";
-$result = mysqli_query($conexion,$query);
-
-
-?>
-
-
             <form class="form-horizontal" action="" method="POST">
                 <div class="modal fade" id="modalAtndr" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel">
@@ -454,15 +443,24 @@ onclick="location.href='./'" -->
                                             disabled="">
                                     </div>
                                     <div class="col-sm-4" style="display: none;" id="reasigar">
-                                        <label>Reasignar técnico </label>
-                                        <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
-                                            name="idtec" type="text" data-live-search="true">
-                                            <option value="0">Seleccione técnico</option>
-                                            <?php while($usuario = mysqli_fetch_row($result)):?>
-                                            <option value="<?php echo $usuario[0]?>">
-                                                <?php echo $usuario[1].' '.$usuario[2]?></option>
-                                            <?php endwhile; ?>
-                                        </select>
+                                    <label>Reasignar técnico </label>
+                                    <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
+                                    name="idtec" type="text" data-live-search="true">
+                                    <option value="0">Seleccione técnico</option>
+                                    <?php 
+                                    $query = "SELECT * FROM tecnico WHERE baja = 0 AND privilegios='tecnico'";
+                                    $resultado = mysqli_query($conexion, $query);
+                                    while($datas = mysqli_fetch_assoc($resultado)){
+                                    $idper = $datas['id_usu'];
+                                    $idtec = $datas['id_tecnico'];
+                                    $quer = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstIdper = $idper AND estado = 0";
+                                    $result = mysqli_query($conexion2,$quer);    
+                                    while($usuario = mysqli_fetch_row($result)):?>
+                                    <option value="<?php echo $idtec?>">
+                                    <?php echo $usuario[1].' '.$usuario[2]?>
+                                    </option>
+                                    <?php endwhile; } ?>
+                                    </select>
                                     </div>
 
                                     <!--      <div class="col-sm-4">
@@ -600,24 +598,40 @@ var dataSet = [
          DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
         YEAR(finicio) AS año,
          evaluacion,
-         estado_rpt 
+         estado_rpt,
+         id_usu
          FROM REPORTE
+         INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE 	MONTH ( finicio ) = MONTH (
          CURRENT_DATE ()) 
-         AND estado_rpt = 'Por atender'
+    
      ORDER BY
          n_reporte DESC";
 	$resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
             $sql2="SELECT gstNombr,
                           gstApell,
-                          gstExTel
+                          gstExTel,
+                          gstNmpld
                           FROM personal
                         WHERE
                         gstNmpld = $idempleado";
     $result2=mysqli_query($conexion2,$sql2);
     while($data2=mysqli_fetch_array($result2)){
+
+
+    
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data3=mysqli_fetch_array($result2)){         
         // $ext = $dato['gstExTel'];
         // $nombre = $dato['gstNombr'];
         // $apellidos = $dato['gstApell'];
@@ -640,7 +654,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
     ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
          "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA?>",
+        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
                 
@@ -662,22 +676,22 @@ if($data['estado_rpt'] == 'Por atender'){
                 // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
                 //     }
                     }
-                    ?>"],
+                    ?> "],
 
-    <?php }else if($data['estado_rpt'] == 'Pendiente'){ ?>
+    <?php } /* if($data['estado_rpt'] == 'Pendiente'){*/ ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo  $data['ubicacion']?>", "<?php echo  $data['extension']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA ?>",
+    // ["<?php //echo  $data['n_reporte']?>", "<?php //echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    //      "<?php //echo  $data2['gstExTel']?>", "<?php //echo $data['finicio']?>",
+    //     "<?php //echo $NA?>",
 
-        "<?php 
-             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+    //     "<?php 
+    //          echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
 
-                    ?>"],
+    //                 ?>"],
 
-<?php } ?>
+<?php /* } */?>
 
-        <?php }  } ?>
+        <?php }  }} ?>
 ];
 //       
 
@@ -706,6 +720,9 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         },
         {
             title: "Fecha termino"
+        },
+        {
+            title: "Técnico"
         },
         {
             title: "Estado"
