@@ -806,25 +806,25 @@ $(document).ready(function() {
         responsive: true,
         data: dataSet,
         columns: [{
-                title: "N°"
+                title: "FOLIO"
             },
             {
-                title: "Nombre usuario"
+                title: "NOMBRE USUARIO"
             },
             {
-                title: "Extensión"
+                title: "EXTENSIÓN"
             },
             {
-                title: "Inicio"
+                title: "INICIO"
             },
             {
-                title: "Finaliza"
+                title: "FINALIZA"
             },
             {
-                title: "Atención"
+                title: "ATENCIÓN"
             },
             {
-                title: "Estado"
+                title: "ESTADO"
             }
         ],
     });
