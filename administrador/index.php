@@ -242,7 +242,7 @@
                     <h1 class='page-header'>ADMINISTRADOR</h1>
                     <?php
                     echo
-                    "<marquee style='color: white; background-color: #1489D8;' width='100%' direction='left'>
+                    "<marquee style='text-transform: uppercase; color: white; background-color: #1489D8;' width='100%' direction='left'>
                         Estadisticas generales mostradas al mes de $fecha
                     </marquee>";
                     ?>
@@ -278,7 +278,7 @@
                                 ?>
                                 <div class="col-xs-9 text-right text-success">
                                     <div class="huge"><?php echo $row['Finalizado'] ?></div>
-                                    <div>Finalizados</div>
+                                    <div>FINALIZADOS</div>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +293,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right text-danger">
                                     <div class="huge"><?php echo $row['Por_atender'] ?></div>
-                                    <div>Por atender</div>
+                                    <div>POR ATENDER</div>
                                 </div>
                             </div>
                         </div>
@@ -308,7 +308,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right text-primary">
                                     <div class="huge"><?php echo $row['Pendiente'] ?></div>
-                                    <div>Realizando</div>
+                                    <div>REALIZANDO</div>
                                 </div>
                             </div>
                         </div>
@@ -324,14 +324,79 @@
                                 </div>
                                 <div class="col-xs-9 text-right text-warning">
                                     <div class="huge"><?php echo $row['Pendiente'] ?></div>
-                                    <div>Cancelado</div>
+                                    <div>CANCELADOS</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <button data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm" style="float: right;"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> EVALUACIÓN MENSUAL</button><br><br>
+            <!--MODAL EVALUATION STADISTICS-->
+            <?php 
+                date_default_timezone_set('America/Mexico_City');
+                $hoy = date("m.d.y, g:i a"); 
+               $query1 = "SELECT 
+                id_usu,
+               	COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
+                COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
+                COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
+                COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
+               FROM REPORTE
+               INNER JOIN tecnico ON idtec = id_tecnico";
+            $resultado = mysqli_query($conexion, $query1);
+              while($data = mysqli_fetch_array($resultado)){
+                  $idper = $data['id_usu'];
+                  $sql2="SELECT gstIdper,
+                                gstNombr,
+                                gstApell,
+                                gstExTel,
+                                gstNmpld
+                                FROM personal
+                              WHERE
+                              gstIdper = $idper";
+          $result2=mysqli_query($conexion2,$sql2);
+          $contador = 0;
+          while($data2=mysqli_fetch_array($result2)){      
+                    $contador++;
+                ?>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                    <p style="text-align: right; font-size: 16px;">FECHA DE CORTE: <?php echo $hoy?></p>
+                <table class="table table-hover table-bordered table-sm">
+                                    <thead>
+                                        <tr style="font-size: 13px;">
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE</th>
+                                            <th scope="col">BUENO</th>
+                                            <th scope="col">REGULAR</th>
+                                            <th scope="col">MALO</th>
+                                            <th scope="col">CANCELADO</th>
 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $contador ?></td>
+                                            <td><?php echo $data2['gstNombr']." ".$data2['gstApell'] ?></td>
+                                            <td><?php echo $data['Bueno'] ?></td>
+                                            <td><?php echo $data['Regular'] ?></td>
+                                            <td><?php echo $data['Malo'] ?></td>
+                                            <td><?php echo $data['Cancelado'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <?php } } ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+            <!--FINISH STADISTICS-->
             <form class="form-horizontal" action="" method="POST">
                 <div class="modal fade" id="modalAtndr" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel">
@@ -526,64 +591,7 @@ onclick="location.href='./'" -->
                     </div>
 
                 </div>
-                <?php 
-                    // $query = "SELECT
-                    // usuarios.id_usuario,
-                    // usuarios.nombre,
-                    // usuarios.apellidos,
-                    // COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-                    // COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-                    // COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
-                    // COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
-                    // FROM
-                    // reporte
-                    // INNER JOIN tecnico ON reporte.idtec = tecnico.id_tecnico
-                    // INNER JOIN usuarios ON tecnico.id_usu = usuarios.id_usuario 
-                    // GROUP BY
-                    // idtec";
-                    // $resultado = mysqli_query($conexion, $query);
-                    // $contador = 0;
-                    // while($data = mysqli_fetch_array($resultado)){
-                    // $contador++;
-                ?>
-                <div class="col-lg-6 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h5 style="font-weight: bold; text-align: center;">Estadística Mensual de Evaluación</h5>
-                            <div class="row">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Bueno</th>
-                                            <th scope="col">Regular</th>
-                                            <th scope="col">Malo</th>
-                                            <th scope="col">Cancelado</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="color: white; background-color: yellow;"></td>
-                                            <td style="color: white; background-color: yellow;"></td>
-                                            <td style="color: white; background-color: yellow;"></td>
-                                            <td style="color: white; background-color: yellow;"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    </div>
+             
     <!-- /#wrapper -->
 </body>
 
@@ -714,22 +722,22 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
             title: "N°"
         },
         {
-            title: "Nombre usuario"
+            title: "USUARIO"
         },
         {
-            title: "Extensión"
+            title: "EXT."
         },
         {
-            title: "Fecha Reporte"
+            title: "FECHA REPORTE"
         },
         {
-            title: "Fecha termino"
+            title: "FECHA TERMINO"
         },
         {
-            title: "Técnico"
+            title: "TÉCNICO"
         },
         {
-            title: "Estado"
+            title: "ESTADO"
         }
     ],
 });
