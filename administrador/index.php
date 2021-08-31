@@ -639,7 +639,7 @@ if($data['estado_rpt'] == 'Por atender'){
         ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo  $data['n_reporte']?>", "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+         "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
         "<?php echo $NA?>",
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
@@ -687,7 +687,7 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
     "order": [
-        [6, "desc"]
+        [5, "desc"]
     ],
     orderCellsTop: true,
     fixedHeader: true,
@@ -697,9 +697,6 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         },
         {
             title: "Nombre usuario"
-        },
-        {
-            title: "Ubicación"
         },
         {
             title: "Extensión"

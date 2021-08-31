@@ -201,7 +201,7 @@ unset($_SESSION['consulta']);
                                     </div>
                                     <div class="modal-body">
                                         <p style="text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
-                                        <br><select class="form-control">
+                                        <br><select class="form-control" id="sede" name="sede">
                                         <option selected>Seleccionar SEDE...</option>
                                         <option value="Las flores">Las flores</option>
                                         <option value="Hangar 8">Hangar 8</option>

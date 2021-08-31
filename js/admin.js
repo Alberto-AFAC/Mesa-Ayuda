@@ -46,11 +46,17 @@ type:'POST'
 //ID reporte para traer datos  
     consultaID(d[0]);
 
+//personal
+    personal(d[19]);
             }
         }
     })
 
 }
+
+
+
+
 
 function consultaID(id){
 
@@ -77,6 +83,9 @@ $("#modalAtndr #nomtec").val(d[1]+' '+d[2]);
     })
 }
 
+function personal(idper){
+    
+}
 
 // ¿Requiere reasignar técnico?
 $(document).ready(function() {
