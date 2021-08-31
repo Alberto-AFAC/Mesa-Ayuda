@@ -98,30 +98,6 @@ function personal(nreport){
         });    
 }
 
-// function consultaID(id){
-
-// $.ajax({
-// url:'../php/conTecnico.php',
-// type:'POST'
-// }).done(function(resp){
-//     obj = JSON.parse(resp);
-//     var res = obj.data;  
-
-//         for(i=0; i<res.length;i++){
-        
-//         if(obj.data[i].n_reporte==id){
-
-//         nombre = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension;
-
-//    var d=nombre.split("*");
-
-
-// $("#modalAtndr #nomtec").val(d[1]+' '+d[2]);
-
-//             }
-//         }
-//     })
-// }
 
 
 // ¿Requiere reasignar técnico?
