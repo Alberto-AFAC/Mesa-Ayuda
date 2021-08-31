@@ -304,7 +304,7 @@
 
 
 
-<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-share-alt" ></span></a></button>
+<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
 <h4 class="modal-title" id="exampleModalLabel">INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO </h4>
 
 

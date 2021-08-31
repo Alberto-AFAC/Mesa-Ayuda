@@ -426,12 +426,12 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     data: dataSet,
     columns: [
     {title: "N°"},
-    {title: "Técnico asignado"},
-    {title: "Ext."},
-    {title: "Tipo de servicio"},
-    {title: "Fecha envio"},
-    {title: "Fecha termino"},
-    {title: "Estado"}
+    {title: "TÉCNICO ASIGNADO"},
+    {title: "EXT."},
+    {title: "TIPO DE SERVICIO"},
+    {title: "FECHA ENVIO"},
+    {title: "FECHA TERMINO"},
+    {title: "ESTADO"}
     ],
     });
 

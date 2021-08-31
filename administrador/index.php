@@ -597,6 +597,7 @@ var dataSet = [
          n_empleado empleado,
          DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
          DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
          id_usu
@@ -652,7 +653,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
          "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
         "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
