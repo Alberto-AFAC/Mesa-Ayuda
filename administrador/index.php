@@ -335,7 +335,7 @@
             <!--MODAL EVALUATION STADISTICS-->
             <?php 
                 date_default_timezone_set('America/Mexico_City');
-                $hoy = date("m.d.y, g:i a"); 
+                $hoy = date("d.m.y, g:i a"); 
                $query1 = "SELECT 
                 id_usu,
                	COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
