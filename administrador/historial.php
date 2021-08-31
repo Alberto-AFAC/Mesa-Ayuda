@@ -300,7 +300,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
-                    <h1 class="page-header">Historial de Reportes</h1>
+                    <h1 class="page-header">HISTORIAL DE REPORTES</h1>
                     <?php
                     echo
                     "<marquee style='color: white; background-color: #1489D8;' width='100%' direction='left'>
@@ -671,6 +671,18 @@ onclick="location.href='./'" -->
     <!-- /#wrapper -->
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+<script src="https://oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+ -->
+
 
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
@@ -691,31 +703,27 @@ onclick="location.href='./'" -->
 <!--Librerias para botones de exportación-->
 
 <!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
-<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
 <!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+
 <!--COMIENZA TABLA DEL ADMINISTRADOR-->
 
 
 <script src="../js/bootstrap.min.js"></script>
 
 <script src="../js/jquery.dataTables.min.js"></script>
-<script src="../js/dataTables.bootstrap.js"></script>
-<script src="../js/dataTables.buttons.min.js"></script>
+<!-- <script src="../js/dataTables.bootstrap.js"></script> -->
+<!-- <script src="../js/dataTables.buttons.min.js"></script> -->
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+
 <!-- <script type="text/javascript" src="../js/area.js"></script> -->
+
+
+
 
 
 <script type="text/javascript">
@@ -794,10 +802,10 @@ var dataSet = [
 
         if($data['estado_rpt'] == 'Finalizado'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%'>Finalizado</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%'>FINALIZADO</a>";
 
                     }else if($data['estado_rpt'] == 'Cancelado'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%'>Por evaluar</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%'>POR EVALUAR</a>";
 
                     } 
                       ?>"

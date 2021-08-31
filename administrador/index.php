@@ -239,7 +239,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
-                    <h1 class='page-header'>Administrador</h1>
+                    <h1 class='page-header'>ADMINISTRADOR</h1>
                     <?php
                     echo
                     "<marquee style='text-transform: uppercase; color: white; background-color: #1489D8;' width='100%' direction='left'>
@@ -676,7 +676,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%'>POR ATENDER</a>";
 
                     } 
                       else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
@@ -685,15 +685,9 @@ if($data['estado_rpt'] == 'Por atender'){
 
                     } else if($data['evaluacion'] == '0'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por evaluar</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>POR EVALUAR</a>";
 
-                    } else if($data['estado_rpt'] == 'Finalizado'){
-                // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
-                    } else if($data['evaluacion']=='CANCELADO'){
-
-                // echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
-                //     }
-                    }
+                    }  
                     ?> "],
 
     <?php }  if($data['estado_rpt'] == 'Pendiente'){ ?>
@@ -703,7 +697,7 @@ if($data['estado_rpt'] == 'Por atender'){
         "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php 
-             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>PENDIENTE</a>";
 
                     ?>"],
 
