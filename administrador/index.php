@@ -679,18 +679,18 @@ if($data['estado_rpt'] == 'Por atender'){
                     }
                     ?> "],
 
-    <?php } /* if($data['estado_rpt'] == 'Pendiente'){*/ ?>
+    <?php }  if($data['estado_rpt'] == 'Pendiente'){ ?>
 
-    // ["<?php //echo  $data['n_reporte']?>", "<?php //echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-    //      "<?php //echo  $data2['gstExTel']?>", "<?php //echo $data['finicio']?>",
-    //     "<?php //echo $NA?>",
+    ["<?php echo   $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+         "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
-    //     "<?php 
-    //          echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
+        "<?php 
+             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";
 
-    //                 ?>"],
+                    ?>"],
 
-<?php /* } */?>
+<?php  } ?>
 
         <?php }  }} ?>
 ];
