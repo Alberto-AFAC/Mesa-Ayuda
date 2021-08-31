@@ -21,7 +21,7 @@ type:'POST'
         day = obj.data[i].ffinal.substring(8,10);
         Finaliza = day+'/'+month+'/'+year;
 
-        detalles = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension+'*'+obj.data[i].ubicacion+'*'+obj.data[i].servicio+'*'+obj.data[i].intervencion+'*'+obj.data[i].descripcion+'*'+obj.data[i].usu_observ+'*'+obj.data[i].falla_interna+'*'+Finicio+'*'+Finaliza+'*'+obj.data[i].falla_xterna+'*'+obj.data[i].observa+'*'+obj.data[i].evaluacion+'*'+obj.data[i].estado_rpt+'*'+obj.data[i].hinicio+'*'+obj.data[i].hfinal+'*'+obj.data[i].idequipo+'*'+obj.data[i].idtec+'*'+obj.data[i].n_empleado;
+        detalles = obj.data[i].n_reporte+'*'+obj.data[i].nombre+'*'+obj.data[i].apellidos+'*'+obj.data[i].extension+'*'+obj.data[i].ubicacion+'*'+obj.data[i].servicio+'*'+obj.data[i].intervencion+'*'+obj.data[i].descripcion+'*'+obj.data[i].usu_observ+'*'+obj.data[i].falla_interna+'*'+Finicio+'*'+Finaliza+'*'+obj.data[i].falla_xterna+'*'+obj.data[i].observa+'*'+obj.data[i].evaluacion+'*'+obj.data[i].estado_rpt+'*'+obj.data[i].hinicio+'*'+obj.data[i].hfinal+'*'+obj.data[i].idequipo+'*'+obj.data[i].idtec+'*'+obj.data[i].n_empleado+'*'+obj.data[i].solucion+'*'+obj.data[i].ultima+'*'+obj.data[i].final;
 
 
    var d=detalles.split("*");
@@ -35,13 +35,21 @@ type:'POST'
     $("#modalAtndr #descripcion").val(d[7]);
     $("#modalAtndr #usu_observ").val(d[8]);
     $("#modalAtndr #falla_interna").val(d[9]);
-    $("#modalAtndr #finicio").val(d[10]+ ' a las '+d[16]+' hrs');   
+    $("#modalAtndr #finicio").val(d[10]+ ' / '+d[16]+' hrs');   
 
-    $("#modalAtndr #ffinal").val(d[11]);
+    $("#modalAtndr #ffinal").val(d[11]+ ' / '+d[17]+' hrs');
 
     $("#modalAtndr #estado_rpt").val(d[15]);
 
     $("#modalAtndr #idequipo").val(d[18]);
+
+    if(d[21]=='x' ||d[21]==''){ $("#solucion").hide();}else{$("#solucion").show();$("#modalAtndr #solucion").val(d[21]);}
+
+    if(d[22]=='x' ||d[22]==''){ $("#ultima").hide();}else{$("#ultima").show();$("#modalAtndr #ultima").val(d[22]);}
+
+    if(d[23]=='x' ||d[21]==''){ $("#final").hide();}else{$("#final").show();$("#modalAtndr #final").val(d[23]);}
+
+
 
 //ID reporte para traer datos  
    // consultaID(d[0]);

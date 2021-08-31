@@ -388,23 +388,35 @@ onclick="location.href='./'" -->
                                 </div>
 
 
-                                <div class="form-group" id="dsprob2">
+                                <div class="form-group">
                                     <div class="col-sm-4">
-                                        <label>Tipo de servicio</label>
+                                        <label>TIPO DE SERVICIO</label>
                                         <input id="servicio" type="text" class="form-control" disabled="">
                                     </div>
-
                                     <div class="col-sm-4">
-                                        <label>Intervención</label>
+                                        <label></label>
                                         <input id="intervencion" type="text" class="form-control" disabled="">
                                     </div>
-
                                     <div class="col-sm-4">
-                                        <label>Descripción</label>
+                                        <label></label>
                                         <input id="descripcion" type="text" class="form-control" disabled="">
                                     </div>
-                                    <input type="hidden" name="rspst" id="rspst" value="SI">
                                 </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <input id="solucion" type="text" class="form-control" disabled="">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input id="ultima" type="text" class="form-control" disabled="">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input id="final" type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
@@ -621,17 +633,15 @@ var dataSet = [
     $result2=mysqli_query($conexion2,$sql2);
     while($data2=mysqli_fetch_array($result2)){
 
-
-    
-            $sql2="SELECT gstNombr,
+            $sql3="SELECT gstNombr,
                           gstApell,
                           gstExTel,
                           gstNmpld
                           FROM personal
                         WHERE
                         gstIdper = $idper";
-    $result2=mysqli_query($conexion2,$sql2);
-    while($data3=mysqli_fetch_array($result2)){         
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
         // $ext = $dato['gstExTel'];
         // $nombre = $dato['gstNombr'];
         // $apellidos = $dato['gstApell'];
