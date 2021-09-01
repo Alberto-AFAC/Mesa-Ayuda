@@ -75,7 +75,7 @@ var dataSet = [
 
         if($data['estado_rpt'] == 'Finalizado'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>FINALIZADO</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>DETALLES</a>";
 
                     }else if($data['estado_rpt'] == 'Cancelado'){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>DETALLES</a>";
@@ -139,7 +139,7 @@ $(document).ready(function() {
                 title: "ATENCIÓN"
             },
             {
-                title: "ESTADO"
+                title: "DETALLES"
             }
         ],
     });
