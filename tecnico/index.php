@@ -109,7 +109,7 @@ session_start();
     <div class="row">
         <div class="col-lg-12">
              <img src="../img/afac.png" class="imgafac">
-             <h1 class="page-header">Atender reporte</h1>
+             <h1 class="page-header">ATENDER REPORTE</h1>
         </div>
     </div>
     <div class="row">   
@@ -391,22 +391,22 @@ Atender reporte
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
-<h4 class="modal-title" id="exampleModalLabel">Detalles del reporte - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>  
+<h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE - <input style="text-transform: uppercase;" class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
                     <div class="form-group">                    
                     <div class="col-sm-3">
-                    <label>N° reporte</label>
+                    <label>N° REPORTE</label>
                     <input id="n_reporte" name="n_reporte" type="text" class="form-control" class="disabled" disabled="">
                     </div>
                     <div class="col-sm-6">
-                    <label>Usuario</label>
+                    <label>USUARIO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-3">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
                     <!-- <div class="col-sm-2">
@@ -417,59 +417,59 @@ Atender reporte
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
+                    <label>INTERVENCIÓN</label>
                     <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
+                    <label>DESCRIPCIÓN</label>
                     <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Observaciones del usuario al problema</label> 
+                    <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label> 
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label> 
+                    <label>RESPUESTA DE FALLA</label> 
                     <textarea onkeyup="mayus(this);" id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="falla">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label> RESPUESTA EXTERNA A LA FALLA</label>
                     <textarea onkeyup="mayus(this);" id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label> Fecha reporte</label>
+                    <label> FECHA DE REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control"  disabled="">
                     </div>
                     <div class="col-sm-4">
-                    <label> Fecha finalizada</label>
+                    <label> FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-4">
-                    <label> Su evaluación de reporte</label>
+                    <label> SU EVALUACIÓN DE REPORTE</label>
                     <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
                    <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Porque</label>
+                    <label>¿POR QUÉ?</label>
                     <textarea id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
                     </div> 
@@ -736,7 +736,7 @@ $(document).ready(function(){
 		reporte.idequipo,
         n_empleado empleado,
         -- TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()) AS tiempo_transcurrido
-		IF(reporte.ffinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
+        IF(reporte.ffinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, reporte.finicio), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
 		FROM reporte 
 		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
