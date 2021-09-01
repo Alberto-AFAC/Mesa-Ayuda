@@ -483,7 +483,7 @@ onclick="location.href='./'" -->
                                 <h4 class="modal-title" id="exampleModalLabel">
                                     <p>
 
-                                        <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
+                                        <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%;font-size: 12px;'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
                                     </p><input type="hidden" id="idequipo">
                                     DETALLES REPORTE
@@ -802,10 +802,10 @@ var dataSet = [
 
         if($data['estado_rpt'] == 'Finalizado'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%'>FINALIZADO</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>FINALIZADO</a>";
 
                     }else if($data['estado_rpt'] == 'Cancelado'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%'>POR EVALUAR</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>POR EVALUAR</a>";
 
                     } 
                       ?>"
