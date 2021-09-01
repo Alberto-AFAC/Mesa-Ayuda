@@ -489,7 +489,7 @@ onclick="location.href='./'" -->
                                         <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%;font-size: 12px;'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
                                     </p><input type="hidden" id="idequipo">
-                                    Reporte por atender
+                                    REPORTE POR ATENDER
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -498,16 +498,16 @@ onclick="location.href='./'" -->
                                 <input type="hidden" id="opcion" name="opcion" value="atender">
                                 <div class="form-group">
                                     <div class="col-sm-3">
-                                        <label>N° reporte</label>
+                                        <label>N° REPORTE</label>
                                         <input id="n_reporte" name="n_reporte" type="text" class="form-control"
                                             disabled="">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Usuario</label>
+                                        <label>USUARIO</label>
                                         <input id="gstNombr" name="gstNombr" type="text" class="form-control" disabled="">
                                     </div>
                                     <div class="col-sm-3">
-                                        <label>Extension</label>
+                                        <label>EXTENSIÓN</label>
                                         <input id="gstExTel" name="gstExTel" type="text" class="form-control"
                                             disabled="">
                                     </div>
@@ -558,7 +558,7 @@ onclick="location.href='./'" -->
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label>Observaciones del usuario al problema</label>
+                                        <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label>
                                         <textarea id="usu_observ" name="usu_observ" class="form-control"
                                             id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                                     </div>
@@ -566,7 +566,7 @@ onclick="location.href='./'" -->
 
                                 <div class="form-group" id="externo" style="display: none;">
                                     <div class="col-sm-12">
-                                        <label> Respuesta externa de la falla</label>
+                                        <label> RESPUESTA EXTERNA DE LA FALLA</label>
                                         <textarea id="falla_xterna" name="falla_xterna" class="form-control"
                                             id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
@@ -574,13 +574,13 @@ onclick="location.href='./'" -->
 
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <label> Fecha reporte</label>
+                                        <label> FECHA REPORTE</label>
                                         <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                                     </div>
 
                                     <br>
                                     <div class="col-sm-4">
-                                        <label>¿Requiere reasignar técnico?</label><br>
+                                        <label>¿REQUIERE REASIGNAR TÉCNICO?</label><br>
                                         <label for="SI">SI</label>
                                         <input name="OK" type="radio" value="SI" id="SI" />
                                         <label for="NO">NO</label>
@@ -588,15 +588,15 @@ onclick="location.href='./'" -->
                                     </div>
 
                                     <div class="col-sm-4" id="asignado">
-                                        <label>Técnico asignado</label>
+                                        <label>TÉCNICO ASIGNADO</label>
                                         <input class="form-control" selected="true" id="nomtec" name="nomtec"
                                             disabled="">
                                     </div>
                                     <div class="col-sm-4" style="display: none;" id="reasigar">
-                                    <label>Reasignar técnico </label>
+                                    <label>REASIGNAR TÉCNICO</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
                                     name="idtec" type="text" data-live-search="true">
-                                    <option value="0">Seleccione técnico</option>
+                                    <option value="0">SELECCIONE...</option>
                                     <?php 
                                     $query = "SELECT * FROM tecnico WHERE baja = 0 AND privilegios='tecnico'";
                                     $resultado = mysqli_query($conexion, $query);
