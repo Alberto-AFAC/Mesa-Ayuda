@@ -44,6 +44,7 @@
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+  
 </head>
 
 <body>
@@ -257,7 +258,7 @@
 
 
                 <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
+                    <div data-toggle="modal" data-target="#finalizados" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -271,10 +272,10 @@
                                             COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
                                             COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente 
                                         FROM
-                                            reporte 
+                                            reporte
                                         WHERE
-                                            MONTH ( finicio ) = MONTH (
-                                            CURRENT_DATE ())";
+                                      MONTH ( finicio ) = MONTH (
+                                      CURRENT_DATE ())";
                                 $resultado = mysqli_query($conexion, $query);
                                 $row = mysqli_fetch_assoc($resultado);
                                 ?>
@@ -287,7 +288,7 @@
                     </div>
                 </div>
                 <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
+                    <div data-toggle="modal" data-target="#poratender" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -302,7 +303,7 @@
                     </div>
                 </div>
                 <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
+                    <div data-toggle="modal" data-target="#pendiente" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -318,14 +319,14 @@
                 </div>
 
                 <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
+                    <div data-toggle="modal" data-target="#cancelado" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
                                     <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <div class="col-xs-9 text-right text-warning">
-                                    <div class="huge"><?php echo $row['Pendiente'] ?></div>
+                                    <div class="huge"><?php echo $row['Cancelado'] ?></div>
                                     <div>CANCELADOS</div>
                                 </div>
                             </div>
@@ -343,13 +344,13 @@
                     <p style="text-align: right; font-size: 16px;">FECHA DE CORTE: <?php echo $hoy?></p>
                 <table class="table table-hover table-bordered table-sm">
                                     <thead>
-                                        <tr style="font-size: 13px;">
-                                            <th scope="col">#</th>
-                                            <th scope="col">NOMBRE</th>
-                                            <th scope="col">BUENO</th>
-                                            <th scope="col">REGULAR</th>
-                                            <th scope="col">MALO</th>
-                                            <th scope="col">CANCELADO</th>
+                                        <tr style="color: white; background-color: #1489D8; font-size: 12px;">
+                                            <th>#</th>
+                                            <th style="width: 100%;">TÉCNICO</th>
+                                            <th>BUENO</th>
+                                            <th>REGULAR</th>
+                                            <th>MALO</th>
+                                            <th>CANCELADO</th>
 
                                         </tr>
                                     </thead>
@@ -364,6 +365,9 @@
                 COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
                FROM REPORTE
                INNER JOIN tecnico ON idtec = id_tecnico
+               WHERE
+                                      MONTH ( finicio ) = MONTH (
+                                      CURRENT_DATE ())
                GROUP BY id_usu";
             $resultado = mysqli_query($conexion, $query1);
             $contador = 0;
@@ -404,6 +408,67 @@
             </div>
             </div>
             <!--FINISH STADISTICS-->
+
+             <!--MODAL EVALUATION STADISTICS-->
+            
+             <div class="modal fade" id="finalizados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                <table id="data-table-finalizados" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>          
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="modal fade" id="poratender" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                <table id="data-table-por-atender" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>          
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                <table id="data-table-pendiente" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>          
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="modal fade" id="cancelado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                <table id="data-table-cancelado" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>          
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+            <!--FINISH STADISTICS-->
+
+
             <form class="form-horizontal" action="" method="POST">
                 <div class="modal fade" id="modalAtndr" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel">
@@ -629,8 +694,8 @@ var dataSet = [
          id_usu
          FROM REPORTE
          INNER JOIN tecnico ON idtec = id_tecnico 
-         WHERE 	MONTH ( finicio ) = MONTH (
-         CURRENT_DATE ()) 
+        --  WHERE 	MONTH ( finicio ) = MONTH (
+        --  CURRENT_DATE ()) 
     
      ORDER BY
          n_reporte DESC";
@@ -720,7 +785,7 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
     "order": [
-        [5, "desc"]
+        [6, "desc"]
     ],
     orderCellsTop: true,
     fixedHeader: true,
@@ -748,6 +813,430 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         }
     ],
 });
+</script>
+<script type="text/javascript">
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM REPORTE
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE 	MONTH ( finicio ) = MONTH (
+         CURRENT_DATE ()) 
+    
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Finalizado'){
+        ?>
+
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+          "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+        "aqui va"],
+
+    <?php } ?>
+        <?php }  }} ?>
+];
+//       
+
+var tableGenerarReporte = $('#data-table-finalizados').DataTable({
+    
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength : 5,
+    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+
+// TODO POR ATENDER
+
+
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM REPORTE
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE 	MONTH ( finicio ) = MONTH (
+         CURRENT_DATE ()) 
+    
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Por atender'){
+        ?>
+
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+          "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+        "aqui va"],
+
+    <?php } ?>
+        <?php }  }} ?>
+];
+//       
+
+var tableGenerarReporte = $('#data-table-por-atender').DataTable({
+    
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength : 5,
+    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+
+//TODO REALIZANDO
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM REPORTE
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE 	MONTH ( finicio ) = MONTH (
+         CURRENT_DATE ()) 
+    
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Pendiente'){
+        ?>
+
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+          "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+        "aqui va"],
+
+    <?php } ?>
+        <?php }  }} ?>
+];
+//       
+
+var tableGenerarReporte = $('#data-table-pendiente').DataTable({
+    
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength : 5,
+    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+
+// TODO CANCELADO
+
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM REPORTE
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE 	MONTH ( finicio ) = MONTH (
+         CURRENT_DATE ()) 
+    
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Cancelado'){
+        ?>
+
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+          "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+        "aqui va"],
+
+    <?php } ?>
+        <?php }  }} ?>
+];
+//       
+
+var tableGenerarReporte = $('#data-table-cancelado').DataTable({
+    
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength : 5,
+    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+
 </script>
 
 </html>
