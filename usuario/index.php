@@ -217,13 +217,25 @@ unset($_SESSION['consulta']);
                                     <div class="modal-body">
                                         <p style="text-transform: uppercase; text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
                                         <br><select class="form-control" id="sede" name="sede">
-                                        <option selected>SELECIONAR SEDE...</option>
+                                            
+                                <?php $query ="SELECT DISTINCT sede FROM tecnico WHERE id_tecnico != 0 AND baja = 0";
+                                    $resultado = mysqli_query($conexion, $query); ?>
+                                    <option selected>SELECIONAR SEDE...</option>
+                                 <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
+                                       <option value="<?php echo $row['sede']?>"><?php echo $row['sede']?></option>
+                                <?php } ?>
+
+
+<!--                                         
                                         <option value="LAS FLORES">LAS FLORES</option>
                                         <option value="HANGAR 8">HANGAR 8</option>
                                         <option value="CIAAC">CIAAC</option>
                                         <option value="LICENCIAS">LICENCIAS</option>
                                         <option value="TERMINAL 1">TERMINAL 1</option>
-                                        <option value="TERMINAL 2">TERMINAL 2</option>
+                                        <option value="TERMINAL 2">TERMINAL 2</option> -->
+
+
+
                                         </select>
                                     </div>
                                     <div class="modal-footer">
