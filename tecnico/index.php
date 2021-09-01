@@ -772,35 +772,36 @@ $(document).ready(function(){
             
   $actual = date('d/m/Y');
 
-if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente' || $data['evaluacion']=='CANCELADO'){
+if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente'){
         ?>
     
     ["<?php echo  $data['n_reporte']?>","<?php echo $nombre . " " . $apellidos ?>","<?php echo $extension?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>";
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; 
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>"; 
 
-                if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     } 
                       else if($data['estado_rpt'] == 'Pendiente') {
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     }else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:80%'>Por confirmar</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por confirmar</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     } else if($data['evaluacion'] == '0'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:80%'>Por evaluar</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por evaluar</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     } else if($data['estado_rpt'] == 'Finalizado'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
-                    } else if($data['evaluacion']=='CANCELADO'){
+                    } 
+                    else if($data['evaluacion']=='CANCELADO'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
                     }
                  ?>"
 ],
@@ -826,8 +827,8 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     {title: "Nombre usuario"},
     {title: "Ext."},
     {title: "Servicio"},
-    {title: "Reporte"},
-    {title: "Termino"},
+    {title: "INICIO"},
+    {title: "TERMINO"},
     {title: "Tiempo"},
     {title: "Estado"}
     ],

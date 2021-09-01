@@ -95,6 +95,8 @@
 	function atender(detalles) {
 
 
+		alert(detalles);
+
 	    $.ajax({
 	        url: '../php/atdReport.php',
 	        type: 'POST'
