@@ -498,7 +498,8 @@ FAVOR DE VALIDAR Y AGREGAR DATOS DEL EQUIPO </b></h4>
                 <input type="hidden" id="id_equipo" name="id_equipo">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
 
-                    <div class="form-group">                    
+                    <div class="form-group">  
+                                      
                     <div class="col-sm-4">
                     <label>NUMERO DE INVENTARIO</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
