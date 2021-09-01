@@ -389,7 +389,7 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="cerrar"><a><span class="icon-cross"></span></a></div>
 
-                            <h4 class="modal-title" id="exampleModalLabel">Agregar Técnico</h4>
+                            <h4 class="modal-title" id="exampleModalLabel">AGREGAR TÉCNICO</h4>
 
                         </div>
 
@@ -397,7 +397,7 @@ if (isset($_SESSION['usuario'])) {
                             <!-- <input type="hidden" id="opcion" name="opcion" value="registrar"> -->
                             <div class="form-group">
                                 <div class="col-sm-offset-0 col-sm-8">
-                                    <label>Nombre personal</label>
+                                    <label>NOMBRE</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="idusu" id="idusu" type="text" data-live-search="true">
                                     <option value="">SELECCIONE OPCIÓN </option>
@@ -409,33 +409,33 @@ if (isset($_SESSION['usuario'])) {
                         </div>
 
                         <div class="col-sm-offset-0 col-sm-4">
-                            <label>Especialidad </label>
+                            <label>ESPECIALIDAD </label>
                             <select style="width: 100%" class="form-control" class="selectpicker"
                             name="privilg" id="privilg" type="text" data-live-search="true">
-                            <option selected>Seleccione</option>
-                            <option value="tecnico">Técnico</option>
-                            <option value="admin">Administrador</option>
+                            <option selected>SELECCIONE...</option>
+                            <option value="tecnico">TÉCNICO</option>
+                            <option value="admin">ADMINISTRADOR</option>
                         </select>
                     </div>
 
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-6">
-                        <label for="usuario">Usuario</label>
-                        <input id="usuario" name="usuario" type="text" class="form-control">
+                        <label for="usuario">USUARIO</label>
+                        <input style="text-transform: uppercase;" id="usuario" name="usuario" type="text" class="form-control">
                     </div>
                     <div class="col-sm-offset-0 col-sm-6">
-                        <label for="password">Contraseña</label>
+                        <label for="password">CONTRASEÑA</label>
                         <input id="password" name="password" type="password" class="form-control">
                         <!-- <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-4">
-                        <label>Entrada</label>
+                        <label>ENTRADA</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="entrada" id="entrada" type="text" data-live-search="true">
-                        <option selected>Seleccione entrada</option>
+                        <option selected>SELECCIONE...</option>
                         <option value="08:00:00">08:00:00</option>
                         <option value="09:00:00">09:00:00</option>
                     </select>
@@ -444,7 +444,7 @@ if (isset($_SESSION['usuario'])) {
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="salida" id="salida" type="text" data-live-search="true">
-                    <option selected>Seleccione salida</option>
+                    <option selected>SELECCIONE...</option>
                     <option value="18:00:00">18:00:00</option>
                 </select>
             </div>
@@ -452,13 +452,13 @@ if (isset($_SESSION['usuario'])) {
                     <label>SEDE</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="sede" id="sede" type="text" data-live-search="true">
-                    <option selected>Seleccione SEDE</option>
-                    <option value="Las flores">Las flores</option>
-                    <option value="Hangar 8">Hangar 8</option>
+                    <option selected>SELECCIONE...</option>
+                    <option value="Las flores">LAS FLORES</option>
+                    <option value="HANGAR 8">HANGAR 8</option>
                     <option value="CIAAC">CIAAC</option>
-                    <option value="Licencias">Licencias</option>
-                    <option value="Terminal 1">Terminal 1</option>
-                    <option value="Terminal 2">Terminal 2</option>
+                    <option value="LICENCIAS">LICENCIAS</option>
+                    <option value="TERMINAL 1">TERMINAL 1</option>
+                    <option value="TERMINAL 2">TERMINAL 2</option>
                 </select>
             </div>
         </div>
