@@ -824,13 +824,13 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     data: dataSet,
     columns: [
     {title: "N°"},
-    {title: "Nombre usuario"},
-    {title: "Ext."},
-    {title: "Servicio"},
+    {title: "NOMBRE USUARIO"},
+    {title: "EXT."},
+    {title: "SERVICIO"},
     {title: "INICIO"},
     {title: "TERMINO"},
-    {title: "Tiempo"},
-    {title: "Estado"}
+    {title: "TIEMPO"},
+    {title: "ESTADO"}
     ],
     });
 

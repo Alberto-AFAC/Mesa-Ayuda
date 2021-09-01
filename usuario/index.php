@@ -248,8 +248,8 @@ unset($_SESSION['consulta']);
                                 
                             </div>
                                 <b><p class="alert alert-danger text-center padding error" id="error">Usted tiene un reporte pendiente del equipo asignado o falta que evalué dicho reporte</p></b>
-                                <b><p class="alert alert-success text-center padding reporte" id="exito">¡Su reporte se generó con éxitos, se le asigno un técnico! Para más detalles, de su lado izquierdo: Reportes</p></b>
-                                <b><p class="alert alert-warning text-center padding aviso" id="vacio">Llene campos vacíos</p></b>
+                                <b><p style="text-transform: uppercase;" class="alert alert-success text-center padding reporte" id="exito">¡Su reporte se generó con éxito, se le asigno un técnico! Para más detalles, de su lado izquierdo: Reportes</p></b>
+                                <b><p style="text-transform: uppercase;" class="alert alert-warning text-center padding aviso" id="vacio">Llene campos vacíos</p></b>
                                 </div>
                             </form> 
                         </div>
