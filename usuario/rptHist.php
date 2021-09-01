@@ -209,7 +209,7 @@ unset($_SESSION['consulta']);
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
 
-<h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE</h4>
+<h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE</b></h4>
 </div>
             <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
@@ -371,10 +371,13 @@ if($data['evaluacion'] != '0'){
     
     ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo  $ext ?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
-                    
+                  if($data['estado_rpt']=='Finalizado'){
+            echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO </a>";
+            
+                  }else{
+            echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>CANCELADO </a>";
+                  }  
                      
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>FINALIZADO </a>";                        
-                    
                  ?>"
 ],
 <?php } }
