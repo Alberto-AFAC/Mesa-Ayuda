@@ -118,7 +118,7 @@
     <div class="row">
         <div class="col-lg-12">
              <img src="../img/afac.png" class="imgafac">
-             <h1 class="page-header">Consulta de reportes </h1>
+             <h1 class="page-header">CONSULTA DE REPORTES </h1>
         </div>
     </div>
     <div class="row">   
@@ -142,7 +142,7 @@
                                 ?>
                                 <div class="col-xs-9 text-right text-success">
                                     <div class="huge"><?php echo $row['excelente'] ?></div>
-                                    <div>Bueno</div>
+                                    <div>BUENO</div>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right text-warning">
                                     <div class="huge"><?php echo $row['regular'] ?></div>
-                                    <div>Regular</div>
+                                    <div>REGULAR</div>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right text-danger">
                                     <div class="huge"><?php echo $row['malo'] ?></div>
-                                    <div>Malo</div>
+                                    <div>MALO</div>
                                 </div>
                             </div>
                         </div>
@@ -196,25 +196,25 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" id="btnlistar" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">Actualizar Contraseña</h4>
+                            <h4 class="modal-title" id="exampleModalLabel">ACTUALIZAR CONTRASEÑA</h4>
                                     <div class="alert alert-success text-center" style="display:none;" id="echo">
-                                    <p>Contraseña actualizado</p>
+                                    <p>CONTRASEÑA ACTUALIZADA</p>
                                     </div>
 
                                     <div class="alert alert-info text-center" style="display:none;" id="invalida">
-                                    <p>Comprobación de contraseña no coicide</p>
+                                    <p>LAS CONTRASEÑAS NO COINCIDEN</p>
                                     </div>
 
                                     <div class="alert alert-danger text-center" style="display:none;" id="falso">
-                                    <p>Contraseña incorrecto</p>
+                                    <p>CONTRASEÑA INCORRECTO</p>
                                     </div>
 
                                     <div class="alert alert-warning text-center" style="display:none;" id="vacio">
-                                    <p>Debes escribir contenido en el campo vacio</p>
+                                    <p>DEBES ESCRIBIR CONTENIDO EN EL CAMPO VACIO</p>
                                     </div>
 
                                     <div class="alert alert-danger text-center" style="display:none;" id="error">
-                                    <p>No se pudo actualizar los datos</p>
+                                    <p>DATOS NO ACTUALIZADOS</p>
                                     </div>
                 </div>
 
@@ -223,27 +223,27 @@
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label for="usuario">Usuario</label>
+                    <label for="usuario">USUARIO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" value="<?php echo $_SESSION['usuario']['usuario'];?>" disabled>
                     </div>
                     </div> 
                     
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label for="password">Contraseña</label>
+                    <label for="password">CONTRASEÑA</label>
                     <input id="password" name="password" type="text" class="form-control">
                     </div>
                     </div>
                     
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label for="pass">Nueva Contraseña</label>
+                    <label for="pass">NUEVA CONTRASEÑA</label>
                     <input id="pass" name="pass" type="text" class="form-control">
                     </div>
                     </div>
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label for="pass2">Corroborar su nueva contraseña</label>
+                    <label for="pass2">CONFIRMA CONTRASEÑA</label>
                     <input id="pass2" name="pass2" type="text" class="form-control" >
                     </div>
                     </div>                     
