@@ -211,7 +211,7 @@ session_start();
 
 <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%; font-size:12px;'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
-</p><input type="hidden" id="idequipo">ATENDER REPORTE</h4> 
+</p><input type="hidden" id="idequipo"><b>ATENDER REPORTE</b></h4> 
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">

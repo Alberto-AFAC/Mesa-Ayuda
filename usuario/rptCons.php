@@ -198,7 +198,7 @@ unset($_SESSION['consulta']);
                    <div class="form-group" id="externo">
                     <div class="col-sm-12">
                     <label>¿DESCRIBA POR QUÉ?</label>
-                    <textarea id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                     </div>
                     </div> 
                                
