@@ -47,6 +47,9 @@ function reporte() {
     var servicio = document.getElementById('servicio').value;
     // alert(servicio);
 
+
+   // alert(servicio+' '+idequipo);
+
     if (servicio == '1CÓMPUTO' && idequipo == '0') {
         idequipo = '';
     }
@@ -63,9 +66,10 @@ function reporte() {
 
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&opcion=registrar';
 
+    
     //    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
 
-    if (nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
+    if (idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
         $("#vacio").toggle("toggled");
         $('#exampleModalCenter').modal('hide');
         setTimeout(function() {
@@ -73,7 +77,8 @@ function reporte() {
         }, 1000);
         return;
     } else {
-        //bloquear boton 
+
+       //bloquear boton 
         //      document.getElementById('button').disabled = 'false';
         //        document.getElementById('button').style.color = "silver";
         $.ajax({
