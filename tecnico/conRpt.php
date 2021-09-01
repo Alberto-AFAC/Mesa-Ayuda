@@ -266,7 +266,7 @@
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
-<h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE - <input style="text-transform: uppercase;" class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>  
+<h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE - <input style="text-transform: uppercase;" class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
@@ -436,7 +436,24 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
     ?>
     ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>"],
 <?php }else if($data['evaluacion'] != '0'){ ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>",
+
+
+    "<?php 
+if($data['evaluacion']=='CANCELADO'){
+    echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}else if($data['evaluacion']=='BUENO'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}else if($data['evaluacion']=='REGULAR'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}else if($data['evaluacion']=='MALO'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}
+
+
+
+
+?>"],
 <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?> 
     ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>"],
 <?php  } 
