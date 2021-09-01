@@ -266,22 +266,22 @@
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
-<h4 class="modal-title" id="exampleModalLabel">Detalles del reporte - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>  
+<h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE - <input style="text-transform: uppercase;" class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
                     <div class="form-group">                    
                     <div class="col-sm-3">
-                    <label>N° reporte</label>
+                    <label>N° REPORTE</label>
                     <input id="n_reporte" name="n_reporte" type="text" class="form-control" class="disabled" disabled="">
                     </div>
                     <div class="col-sm-6">
-                    <label>Usuario</label>
+                    <label>USUARIO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-3">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
                     <!-- <div class="col-sm-2">
@@ -292,59 +292,59 @@
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
+                    <label>INTERVENCIÓN</label>
                     <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
+                    <label>DESCRIPCIÓN</label>
                     <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Observaciones del usuario al problema</label> 
+                    <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label> 
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label> 
+                    <label>RESPUESTA A LA FALLA</label> 
                     <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="falla">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label> RESPUESTA EXTERNA A LA FALLA</label>
                     <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label> Fecha reporte</label>
+                    <label> FECHA REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control"  disabled="">
                     </div>
                     <div class="col-sm-4">
-                    <label> Fecha finalizada</label>
+                    <label> FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-4">
-                    <label> Su evaluación de reporte</label>
+                    <label> SU EVALUACIÓN DE REPORTE</label>
                     <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
                    <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Porque</label>
+                    <label>¿POR QUÉ?</label>
                     <textarea id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
                     </div> 
@@ -434,11 +434,11 @@
  
 if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
     ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta su evaluación</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>FALTA SU EVALUACIÓN</a>";?>"],
 <?php }else if($data['evaluacion'] != '0'){ ?>
     ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['evaluacion']}</a>";?>"],
 <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?> 
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta que confirme</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>FALTA QUE CONFIRME</a>";?>"],
 <?php  } 
     }  
 } ?>
@@ -456,12 +456,12 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     data: dataSet,
     columns: [
     {title: "N°"},
-    {title: "Nombre usuario"},
-    {title: "Ext."},
-    {title: "Servicio"},
-    {title: "Reporte"},
-    {title: "Termino"},
-    {title: "Estado"}
+    {title: "NOMBRE USUARIO"},
+    {title: "EXT."},
+    {title: "SERVICIO"},
+    {title: "REPORTE"},
+    {title: "TERMINO"},
+    {title: "ESTADO"}
     ],
     });
         </script>
