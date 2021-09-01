@@ -95,8 +95,6 @@
 	function atender(detalles) {
 
 
-		alert(detalles);
-
 	    $.ajax({
 	        url: '../php/atdReport.php',
 	        type: 'POST'
@@ -133,19 +131,26 @@
 	                $("#modalAtndr #descripcion").val(d[7]);
 
 	                if (d[19] == 'x' || d[19] == '') {
-	                    document.getElementById('select3').style.backgroundColo = "#fff";
+	                   	$("#modalAtndr #solucion").hide();
+	                    //document.getElementById('select3').style.backgroundColo = "#fff";
 	                } else {
+	                	$("#modalAtndr #solucion").show();
 	                    $("#modalAtndr #solucion").val(d[19]);
 	                }
 
 	                if (d[20] == 'x' || d[20] == '') {
-	                    $("#select4").hide();
-	                    document.getElementById('select4').style.backgroundColo = "#fff";
+	                    $("#modalAtndr #ultima").hide();
+	                    //$("#select4").hide();
+	                   // document.getElementById('select4').style.backgroundColo = "#fff";
 	                } else {
+	                    $("#modalAtndr #ultima").show();
 	                    $("#modalAtndr #ultima").val(d[20]);
 	                }
+
 	                if (d[21] == 'x' || d[21] == '') {
-	                    document.getElementById('select5').style.backgroundColo = "#fff";
+	                	$("#modalAtndr #final").show();	                	
+	                	$("#modalAtndr #final").hide();
+	                    //document.getElementById('select5').style.backgroundColo = "#fff";
 	                } else {
 	                    $("#modalAtndr #final").val(d[21]);
 	                }
