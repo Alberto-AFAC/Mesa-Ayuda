@@ -54,59 +54,8 @@
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-    <style>
-        .parpadea {
-    animation-name: parpadeo;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    -webkit-animation-name: parpadeo;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-}
-
-@-moz-keyframes parpadeo {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@-webkit-keyframes parpadeo {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@keyframes parpadeo {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-    </style>
-
 </head>
-
 <body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -312,88 +261,29 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+       
+
+	
+<div class="panel-group-1" id="accordion" role="tablist" aria-multiselectable="true">
+
+    <div class="panel-1 panel-default-1">
+        <div class="panel-heading-1" role="tab" id="headingOne">
+            <h4 class="panel-title-1">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="more-less-1 glyphicon glyphicon-plus"></i>
+                    SOLICITUD DE REPORTES SEGÚN SERVICIO
+                </a>
+            </h4>
+            
+        </div>
+        <div id="collapseOne" class="panel-collapse-1 collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body-1">
+                  
             <div class="row">
-                <h4 style="text-align: center;">SOLICITUD DE REPORTES SEGÚN SERVICIO</h4>
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="../img/realizado.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <?php 
-                                $query ="SELECT
-                                            'total',
-                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente,
-                                            COUNT( CASE WHEN estado_rpt = 'Finalizado' THEN 1 END ) AS Finalizado,
-                                            COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
-                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente 
-                                        FROM
-                                            reporte";
-                                $resultado = mysqli_query($conexion, $query);
-                                $row = mysqli_fetch_assoc($resultado);
-                                ?>
-                                <div class="col-xs-9 text-right text-success">
-                                    <div class="huge"><?php echo $row['Finalizado'] ?></div>
-                                    <div>Finalizados</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <div class="col-xs-9 text-right text-danger">
-                                    <div class="huge"><?php echo $row['Cancelado'] ?></div>
-                                    <div>Cancelado</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="../img/reloj.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <div class="col-xs-9 text-right text-warning">
-                                    <div class="huge"></div>
-                                    <div>Atendidos a tiempo</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img class="parpadea" src="../img/fuera de tiempo.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <div class="col-xs-9 text-right text-primary">
-                                    <div class="huge"></div>
-                                    <div>Atendidos fuera de tiempo</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="row">
+           
             <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel-1 panel-default-1">
+                        <div class="panel-heading-1">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-servicios"></canvas>
@@ -403,8 +293,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel-1 panel-default-1">
+                        <div class="panel-heading-1">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-impresion"></canvas>
@@ -414,8 +304,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel-1 panel-default-1">
+                        <div class="panel-heading-1">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-comunicaciones"></canvas>
@@ -424,9 +314,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                <div style="padding-top: 10px;" class="col-lg-4 col-md-6">
+                    <div class="panel-1 panel-default-1">
+                        <div class="panel-heading-1">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-eventos"></canvas>
@@ -436,7 +326,10 @@
                     </div>
                 </div>
 </div>
-            
+
+            </div>
+        </div>
+   
 
             <!-- <div class="row col-lg-6 col-md-6">
                     <div class="panel panel-default">
@@ -720,4 +613,14 @@ onclick="location.href='./'" -->
 <script type="text/javascript" src="../js/admin.js"></script>
 <!-- <script type="text/javascript" src="../js/area.js"></script> -->
 <?php include('../php/admin-historial.php');?>
+<script>
+    function toggleIcon(e) {
+        $(e.target)
+            .prev('.panel-heading-1')
+            .find(".more-less-1")
+            .toggleClass('glyphicon-plus glyphicon-minus');
+    }
+    $('.panel-group-1').on('hidden.bs.collapse', toggleIcon);
+    $('.panel-group-1').on('shown.bs.collapse', toggleIcon);
+    </script>
 </html>
