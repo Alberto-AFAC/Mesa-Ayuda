@@ -141,7 +141,7 @@ switch ($id) {
 
 }else{ ?>
 
-<input type="hidden" id="descripcion" name="descripcion" value="0">
+<input type="hidden" id="descripcion" name="descripcion" value="x">
 
 <?php } ?>
 

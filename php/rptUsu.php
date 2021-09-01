@@ -36,7 +36,7 @@ ini_set('date.timezone','America/Mexico_City');
 $fenvio= date('Y').'/'.date('m').'/'.date('d');	
 $Hinic=date('H:i');
 
-if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$idtec,$conexion)){
+if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion)){
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
 		 	}else{	echo "1";	}	
@@ -57,7 +57,7 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 
 function selecTec($sede,$conexion){
 
-$query = "SELECT idtec FROM reporte ORDER BY n_reporte DESC ";
+$query = "SELECT idtec FROM reporte WHERE pila = '$sede' ORDER BY n_reporte DESC ";
 $res = mysqli_query($conexion,$query);
 $result = mysqli_fetch_row($res);
 if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
@@ -81,7 +81,7 @@ if(!empty($idtec[$n][0])){
 
 
 
-function registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$idtec,$conexion){
+function registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion){
 	// $query="SELECT * FROM asignacion  
 	// 		INNER JOIN reporte
 	// 		ON n_emp = n_empleado
@@ -91,7 +91,7 @@ function registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$so
 	// $resultados = mysqli_query($conexion,$query);
 	// if($resultados->num_rows == 0){
 
-$query = "INSERT INTO reporte VALUES(0,'$nempleado','$idequipo','$servicio','$intervencion','$descripcion','$solucion','$ultima','$final','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Por atender','0','$idtec');";
+$query = "INSERT INTO reporte VALUES(0,'$nempleado','$idequipo','$servicio','$intervencion','$descripcion','$solucion','$ultima','$final','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Por atender','$sede','$idtec');";
 			if (mysqli_query($conexion,$query)){		
 				
 				return true;

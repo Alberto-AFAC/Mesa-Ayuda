@@ -294,7 +294,6 @@ switch ($id) {
   <option value="0INFLADA">INFLADA</option>
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="xx">
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "w": ?>

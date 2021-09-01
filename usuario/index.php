@@ -41,6 +41,7 @@ unset($_SESSION['consulta']);
     <link rel="stylesheet" href="../css/button/estilos.css"> 
     <script src="../dist/sweetAlert2/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../dist/sweetAlert2/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <script>
     function Alertaempleado() {
@@ -103,7 +104,7 @@ unset($_SESSION['consulta']);
         <div class="row">
             <div class="col-lg-12">
                 <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
-                <h1 class="page-header">Generar reporte</h1>
+                <h1 class="page-header">GENERAR REPORTE</h1>
                 <p style="text-transform: uppercase; font-size: 13px; text-align: right;" id="alerta"></p>
             </div>
         </div>
@@ -201,7 +202,7 @@ unset($_SESSION['consulta']);
 
                                 <div class="form-group"><br>
                                 <div class="col-sm-offset-0 col-sm-5">
-                                <button type="button"class="btn btn-green btn-lg" id="button1" data-toggle="modal" data-target="#exampleModalCenter">Generar reporte</button>
+                                <button style="font-size: 13px;" type="button"class="btn btn-green btn-lg" id="button1" data-toggle="modal" data-target="#exampleModalCenter">GENERAR REPORTE</button>
                                 <!-- <button type="button" id="button" class="btn btn-green btn-lg" onclick="reporte();">Generar reporte</button> -->
                                 <!--THIS CONTAINER IS FOR CHARGUE THE MODAL FUNCTION -->
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -216,18 +217,18 @@ unset($_SESSION['consulta']);
                                     <div class="modal-body">
                                         <p style="text-transform: uppercase; text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
                                         <br><select class="form-control" id="sede" name="sede">
-                                        <option selected>Seleccionar SEDE...</option>
-                                        <option value="Las flores">Las flores</option>
-                                        <option value="Hangar 8">Hangar 8</option>
+                                        <option selected>SELECIONAR SEDE...</option>
+                                        <option value="LAS FLORES">LAS FLORES</option>
+                                        <option value="HANGAR 8">HANGAR 8</option>
                                         <option value="CIAAC">CIAAC</option>
-                                        <option value="Licencias">Licencias</option>
-                                        <option value="Terminal 1">Terminal 1</option>
-                                        <option value="Terminal 2">Terminal 2</option>
+                                        <option value="LICENCIAS">LICENCIAS</option>
+                                        <option value="TERMINAL 1">TERMINAL 1</option>
+                                        <option value="TERMINAL 2">TERMINAL 2</option>
                                         </select>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="button" id="button" onclick="reporte();" class="btn btn-primary">Generar Reporte</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                                        <button style="font-size: 13px;" type="button" id="button" onclick="reporte();" class="btn btn-primary">GENERAR REPORTE</button>
                                     </div>
                                     </div>
                                 </div>
