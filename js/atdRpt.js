@@ -155,8 +155,6 @@
 	                    $("#modalAtndr #final").val(d[21]);
 	                }
 
-
-
 	                $("#modalAtndr #usu_observ").val(d[8]);
 	                $("#modalAtndr #falla_interna").val(d[9]);
 	                $("#modalAtndr #finicio").val(d[10] + ' a las ' + d[16] + ' hrs');
@@ -252,8 +250,19 @@ function personal(n_empleado){
 	                    $("#falla").show();
 	                    $("#modalDtll #falla_xterna").val(d[12]);
 	                }
-	                $("#modalDtll #observa").val(d[13]);
-	                $("#modalDtll #evaluacion").val(d[14]);
+	                
+	                if(d[13]=='0'){
+	                $("#modalDtll #observa").val('');	                	
+	                }else{
+	                $("#modalDtll #observa").val(d[13]);	                	
+	                }
+
+	                if(d[14]=='0'){
+	                $("#modalDtll #evaluacion").val('');	                	
+	                }else{
+	                $("#modalDtll #evaluacion").val(d[14]);	                	
+	                }
+
 
 	                $("#modalDtll #estado_rpt").val(d[15]);
 
