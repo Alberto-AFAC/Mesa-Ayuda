@@ -325,9 +325,8 @@ if (isset($_SESSION['usuario'])) {
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><a
                             href="./" style="color: black"><span style="color: black;"
                             aria-hidden="true"
-                            class="glyphicon glyphicon-share-alt"></span></a></button>
-                            <h4 class="modal-title" id="exampleModalLabel">Información del usuario y sus equipos
-                            de computo </h4>
+                            class="glyphicon glyphicon-remove"></span></a></button>
+                            <h4 class="modal-title" id="exampleModalLabel">INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO </h4>
                         </div>
                         <div class="modal-body">
                             <div class="col-sm-offset-1 col-sm-10">
@@ -337,30 +336,30 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="form-group">
                             <div class="col-sm-offset-0 col-sm-4" >
-                            <label for="Nombre">Nombre</label>
+                            <label for="Nombre">NOMBRE</label>
                             <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
                             </div>
                             <div class="col-sm-offset-0 col-sm-4" >
-                            <label for="Correo">Correo</label>
+                            <label for="Correo">CORREO</label>
                             <input id="correo" name="correo" type="text"  class="form-control" disabled="">
                             </div>
                             <div class="col-sm-offset-0 col-sm-2">
-                            <label for="N° empleado">N° empleado</label>
+                            <label for="N° empleado">N° EMPLEADO</label>
                             <input id="n_empleado" name="n_empleado" type="text" class="form-control" disabled="">
                             </div> 
                             <div class="col-sm-offset-0 col-sm-2">
-                            <label for="Extension">Extension</label>
+                            <label for="Extension">EXTENSIÓN</label>
                             <input id="extension" name="extension" type="text" class="form-control" disabled="">
                             </div> 
                             </div>
                             
                             <div class="form-group">  
                             <div class="col-sm-offset-0 col-sm-3">
-                            <label for="Adscripción">Cargo</label>
+                            <label for="Adscripción">CARGO</label>
                             <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
                             </div>  
                             <div class="col-sm-offset-0 col-sm-9">
-                            <label for="Adscripción">Adscripción</label>
+                            <label for="Adscripción">ADSCRIPCIÓN</label>
                             <input id="area" name="area" type="text" class="form-control" disabled="">
                             </div>
                             </div>    
