@@ -1,11 +1,7 @@
 <?php
 	include("../conexion/conexion.php");
 
-	$query = "SELECT
- 					*
-                 FROM
-                    reporte 
-                LEFT JOIN usuarios ON reporte.n_empleado = usuarios.n_empleado";
+	$query = "SELECT * FROM reporte";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

@@ -38,12 +38,25 @@ unset($_SESSION['consulta']);
     <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/button/estilos.css">  
+    <link rel="stylesheet" href="../css/button/estilos.css"> 
+    <script src="../dist/sweetAlert2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../dist/sweetAlert2/sweetalert2.min.css">
 </head>
-
-<body>
+<script>
+    function Alertaempleado() {
+    fecha = new Date();
+    hora = fecha.getHours();
+    if (hora >= 18 && hora < 24) {
+        texto = "Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.";
+    }
+    if (hora >= 0 && hora < 8) {
+        texto = "Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.";
+    }
+    document.getElementById('alerta').innerHTML = texto;
+}
+</script>
+<body onload="Alertaempleado()">
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -91,6 +104,7 @@ unset($_SESSION['consulta']);
             <div class="col-lg-12">
                 <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                 <h1 class="page-header">Generar reporte</h1>
+                <p style="text-transform: uppercase; font-size: 13px; text-align: right;" id="alerta"></p>
             </div>
         </div>
 
@@ -179,7 +193,7 @@ unset($_SESSION['consulta']);
                                 <!--ARÉA DE DESCRIPCIÓN-->
                                 <div class="was-validated">
                                 <div class="col-md-13">
-                                <label for="validationTextarea">Observaciones.</label>
+                                <label for="validationTextarea">OBSERVACIONES</label>
                                 <!--<div style="color: #6A6507;" class="invalid-feedback"></div>-->
                                 <textarea style="font-size: 18px;" onkeyup="mayus(this);" id="obser" name="obser" class="form-control is-invalid" id="validationTextarea" rows="3" required></textarea><!--placeholder="Es importante que la descripción sea clara..."-->
                                 </div>
@@ -200,7 +214,7 @@ unset($_SESSION['consulta']);
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p style="text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
+                                        <p style="text-transform: uppercase; text-align: center; font-size: 18px;">Para poder continuar es necesario indicar la SEDE en la que te encuentras</p>
                                         <br><select class="form-control" id="sede" name="sede">
                                         <option selected>Seleccionar SEDE...</option>
                                         <option value="Las flores">Las flores</option>
@@ -260,8 +274,4 @@ unset($_SESSION['consulta']);
       $('#ultima').select2();
 
    });
-
-
-
-
 </script>
