@@ -209,32 +209,32 @@ unset($_SESSION['consulta']);
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
 
-<h4 class="modal-title" id="exampleModalLabel">Detalles del reporte</h4>
+<h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE</h4>
 </div>
             <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
                     <div class="form-group">                    
                     <div class="col-sm-3">
-                    <label>N° reporte</label>
+                    <label>N° REPORTE</label>
                     <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-5">
-                    <label>Técnico</label>
+                    <label>TÉCNICO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-2">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-2">
-                    <label>Ubicación</label>
+                    <label>UBICACIÓN</label>
                     <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
@@ -267,42 +267,42 @@ unset($_SESSION['consulta']);
                     </div>
                     <div class="form-group" id="obsrvcns">
                     <div class="col-sm-12">
-                    <label>Observaciones</label>  
+                    <label>OBSERVACIONES</label>  
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="rspsta">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label>  
+                    <label>RESPUESTA DE FALLA</label>  
                     <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="falla">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label>RESPUESTA EXTERNA DE LA FALLA</label>
                     <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label> Fecha reporte</label>
+                    <label>FECHA REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-4">
-                    <label> Fecha finalizada</label>
+                    <label>FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-4" id="pndint1">
-                    <label> Su evaluación de reporte</label>
+                    <label>SU EVALUACIÓN DE REPORTE</label>
                     <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
                    <div class="form-group">
                     <div class="col-sm-12" id="pndint2">
-                    <label>Porque</label>
+                    <label>¿POR QUÉ?</label>
                     <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
                     </div>                             
@@ -373,7 +373,7 @@ if($data['evaluacion'] != '0'){
 
                     
                      
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>Finalizado </a>";                        
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%'>FINALIZADO </a>";                        
                     
                  ?>"
 ],
