@@ -31,19 +31,27 @@
 
     <!-- Bootstrap Core CSS -->
 
-
     <!-- MetisMenu CSS -->
-    <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
-
+<!--     <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    
+    <script type="text/javascript" src="../js/funciones.js"></script>
+    <script type="text/javascript" src="../js/area.js"></script> -->
     <link rel="stylesheet" type="text/css" href="../css/historial.css">
+    <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
+    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+
+
 </head>
 <body>
     <div id="wrapper">
@@ -554,7 +562,7 @@ onclick="location.href='./'" -->
     </div>
     <!-- /#wrapper -->
 </body>
-<script src="../js/jquery-1.12.3.min.js"></script>
+<!-- <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
@@ -562,6 +570,19 @@ onclick="location.href='./'" -->
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
+ -->
+
+<script src="../js/jquery-1.12.3.min.js"></script>
+<script src="../js/select2.js"></script>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dataTables.bootstrap.js"></script>
+<script src="../js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../boots/metisMenu/metisMenu.min.js"></script>
+<script src="../dist/js/sb-admin-2.js"></script>
+<script type="text/javascript" src="../js/admin.js"></script> 
+
 <?php include('../php/admin-historial.php');?>
 <script>
     function toggleIcon(e) {
