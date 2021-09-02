@@ -1,23 +1,5 @@
 <?php include('../conexion/conexion.php');?>
 <script type="text/javascript">
-var minDate, maxDate;
-$.fn.dataTable.ext.search.push(
-    function(settings, data, dataIndex) {
-        var min = minDate.val();
-        var max = maxDate.val();
-        var date = new Date(data[5]);
-
-        if (
-            (min === null && max === null) ||
-            (min === null && date <= max) ||
-            (min <= date && max === null) ||
-            (min <= date && date <= max)
-        ) {
-            return true;
-        }
-        return false;
-    }
-);
 var dataSet = [
     <?php
         $query1 = "SELECT 
@@ -86,14 +68,14 @@ var dataSet = [
     <?php } } }?>
 ];
 //       
-$(document).ready(function() {
-    var printCounter = 0;
-    minDate = new DateTime($('#min'), {
-        format: 'Do MMMM YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-        format: 'Do MMMM YYYY'
-    });
+// $(document).ready(function() {
+//     var printCounter = 0;
+//     minDate = new DateTime($('#min'), {
+//         format: 'Do MMMM YYYY'
+//     });
+//     maxDate = new DateTime($('#max'), {
+//         format: 'Do MMMM YYYY'
+//     });
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
         "order": [
@@ -103,19 +85,19 @@ $(document).ready(function() {
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
-        dom: 'Bfrtip',
-        buttons: [
+        // dom: 'Bfrtip',
+        // buttons: [
 
-            'copy', 'csv', 'excel',
-            {
-            extend: 'pdfHtml5',
-            messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-            download: 'open',
-            title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-            text: 'Descargar PDF',
-            pageSize: 'A4',
+        //     'copy', 'csv', 'excel',
+        //     {
+        //     extend: 'pdfHtml5',
+        //     messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+        //     download: 'open',
+        //     title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+        //     text: 'Descargar PDF',
+        //     pageSize: 'A4',
 
-        }],
+        // }],
         orderCellsTop: true,
         fixedHeader: true,
         responsive: true,
@@ -144,10 +126,10 @@ $(document).ready(function() {
         ],
     });
     //Cierre de la función
-    $('#min, #max').on('change', function() {
-        tableGenerarReporte.draw();
-    });
-});
+    // $('#min, #max').on('change', function() {
+    //     tableGenerarReporte.draw();
+    // });
+// });
 
 //GRÁFICA PARA MEDIR EL EQUIPO DE COMPUTO
 <?php 

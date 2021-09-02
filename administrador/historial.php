@@ -35,26 +35,15 @@
     <!-- MetisMenu CSS -->
     <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-
-    <!-- Morris Charts CSS -->
-    <link href="../boots/morrisjs/morris.css" rel="stylesheet">
-    <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-    <link href="//cdn.datatables.net/datetime/1.1.0/css/dataTables.dateTime.min.css" rel="stylesheet">
-    <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet">
-    </link>
-    <link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" rel="stylesheet"
-        type="text/css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css" />
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/historial.css">
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
-    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
 </head>
 <body>
     <div id="wrapper">
@@ -532,15 +521,15 @@ onclick="location.href='./'" -->
                     <div id="cuadro1" class="col-lg-12">
                         <div class="panel panel-default">
                             <div style="padding-top: 13px;" class="col-lg-5">
-                                <div class="input-group">
+                                <!-- <div class="input-group">
                                     <span class="input-group-btn">
                                         <span class="btn btn-default"><i class="fa fa-calendar-check-o"
                                                 aria-hidden="true"></i></span>
                                     </span>
                                     <input type="text" placeholder="Desde" id="min" name="min" class="form-control">
-                                </div>
+                                </div> -->
                             </div>
-                            <div style="padding-top: 13px;" class="col-lg-5">
+                            <!-- <div style="padding-top: 13px;" class="col-lg-5">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Hasta" id="max" name="max">
                                     <span class="input-group-btn">
@@ -548,9 +537,9 @@ onclick="location.href='./'" -->
                                                 aria-hidden="true"></i></span>
                                     </span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        </br></br></br>
+                        </br>
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
                     </div>
@@ -565,55 +554,14 @@ onclick="location.href='./'" -->
     </div>
     <!-- /#wrapper -->
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-<script src="https://oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script> -->
-<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
- -->
-
-
 <script src="../js/jquery-1.12.3.min.js"></script>
-<script src="../js/select2.js"></script>
-<!--<script src="js/jquery-1.12.3.js"></script>-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="//cdn.datatables.net/datetime/1.1.0/js/dataTables.dateTime.min.js"></script>
-
-<!-- <script src="../js/jquery.dataTables.min.js"></script> -->
-<!-- <script src="../js/dataTables.bootstrap.js"></script> -->
-<!--botones DataTables-->
-<!-- <script src="../js/dataTables.buttons.min.js"></script> -->
-<!-- <script src="../js/buttons.bootstrap.min.js"></script> -->
-<!--Libreria para exportar Excel-->
-<script src="../js/jszip.min.js"></script>
-<!--Librerias para exportar PDF-->
-<script src="../js/pdfmake.min.js"></script>
-<script src="../js/vfs_fonts.js"></script>
-<!--Librerias para botones de exportación-->
-
-<!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
-
-
-<!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-
-<!--COMIENZA TABLA DEL ADMINISTRADOR-->
-
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-
 <script src="../js/jquery.dataTables.min.js"></script>
-<!-- <script src="../js/dataTables.bootstrap.js"></script> -->
-<!-- <script src="../js/dataTables.buttons.min.js"></script> -->
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
-<!-- <script type="text/javascript" src="../js/area.js"></script> -->
 <?php include('../php/admin-historial.php');?>
 <script>
     function toggleIcon(e) {
