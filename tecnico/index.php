@@ -641,7 +641,7 @@ $(document).ready(function(){
 		reporte.hfinal,
 		reporte.idequipo,
         n_empleado empleado,
-        IF(reporte.hinicio = TRUE, TIMESTAMPDIFF(HOUR, reporte.hinicio, NOW()),TIMESTAMPDIFF(HOUR,reporte.finicio, reporte.ffinal)) AS HORAFINAL
+        IF(reporte.hinicio = TRUE, TIMESTAMPDIFF(MINUTE, reporte.finicio, NOW()),TIMESTAMPDIFF(HOUR,reporte.finicio, reporte.ffinal)) AS HORAFINAL
 		FROM reporte 
 		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
@@ -667,11 +667,11 @@ $(document).ready(function(){
             $inicio = $data['finicio'];
 
 
-            if($data['HORAFINAL'] <= 5){
+            if($data['HORAFINAL'] <= 5 || $data['HORAFINAL'] <=10){
                 $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['HORAFINAL']." hrs</i></span>";
-            } else if($data['HORAFINAL'] >= 6 ){
+            } else if($data['HORAFINAL'] <= 6 || $data['HORAFINAL'] <=15){
                 $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['HORAFINAL']." hrs</span>";
-            } else if($data['HORAFINAL'] >= 10 ){
+            } else if($data['HORAFINAL'] >= 24 ){
                 $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['HORAFINAL']." hrs</span>";
             } 
             
