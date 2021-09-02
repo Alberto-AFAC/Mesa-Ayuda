@@ -88,4 +88,16 @@ if(!empty($idtec[$n][0])){
 }	
 
 
+// echo "<br>";
+
+// $valor1 = '11';
+// $valor2 = 'CIAAC';
+
+// $valor3 = $valor1.','.$valor2;
+
+// $valor3;
+
+//  $valor = explode(',', $valor3);
+//  echo $valor[1];
+
 ?>

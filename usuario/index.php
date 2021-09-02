@@ -225,17 +225,6 @@ unset($_SESSION['consulta']);
                                        <option value="<?php echo $row['sede']?>"><?php echo $row['sede']?></option>
                                 <?php } ?>
 
-
-<!--                                         
-                                        <option value="LAS FLORES">LAS FLORES</option>
-                                        <option value="HANGAR 8">HANGAR 8</option>
-                                        <option value="CIAAC">CIAAC</option>
-                                        <option value="LICENCIAS">LICENCIAS</option>
-                                        <option value="TERMINAL 1">TERMINAL 1</option>
-                                        <option value="TERMINAL 2">TERMINAL 2</option> -->
-
-
-
                                         </select>
                                     </div>
                                     <div class="modal-footer">
