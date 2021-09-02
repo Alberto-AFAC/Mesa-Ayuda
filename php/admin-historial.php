@@ -1,12 +1,45 @@
 <?php include('../conexion/conexion.php');?>
 <script type="text/javascript">
+$(document).ready(function() {
+  $('.input-daterange input').each(function() {
+                $(this).datepicker('clearDates');
+               
+            });
+            $.fn.datepicker.dates['en'] = {
+    days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    daysShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+    daysMin:  ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    monthsShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+    today: "Hoy",
+    clear: "Clear",
+    format: "mm/dd/yyyy",
+    titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+    weekStart: 0
+};
+    // Extend dataTables search
+    $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var min = $('#min').val();
+                    var max = $('#max').val();
+                    var createdAt = data[2] || 3; // Our date column in the table
+
+                    if (
+                        (min == "" || max == "") ||
+                        (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
+                    ) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
 var dataSet = [
     <?php
         $query1 = "SELECT 
         n_reporte,
         n_empleado empleado,
-        DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
-        DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        DATE_FORMAT(finicio, '%d-%m-%Y' ) AS finicio,
+        DATE_FORMAT(ffinal, '%d-%m-%Y' ) AS ffinal,
         YEAR(finicio) AS año,
         evaluacion,
         estado_rpt,
@@ -125,6 +158,16 @@ var dataSet = [
             }
         ],
     });
+
+    $('.date-range-filter').change(function() {
+                var table = $('#data-table-administrador').DataTable();
+                table.draw();
+            });
+
+
+            $('.date-range-filter').datepicker();
+         
+});
     //Cierre de la función
     // $('#min, #max').on('change', function() {
     //     tableGenerarReporte.draw();

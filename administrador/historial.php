@@ -28,20 +28,6 @@
     <meta name="author" content="">
 
     <title>Sistema</title>
-
-    <!-- Bootstrap Core CSS -->
-
-    <!-- MetisMenu CSS -->
-<!--     <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-    <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    
-    <script type="text/javascript" src="../js/funciones.js"></script>
-    <script type="text/javascript" src="../js/area.js"></script> -->
     <link rel="stylesheet" type="text/css" href="../css/historial.css">
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
@@ -50,6 +36,7 @@
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
 
 
 </head>
@@ -548,6 +535,25 @@ onclick="location.href='./'" -->
                             </div> -->
                         </div>
                         </br>
+                        <div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        Desde
+      </span>
+      <input type="text" class="form-control date-range-filter" placeholder="Fecha minima" data-date-format="dd-mm-yyyy" id="min">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+      Hasta
+      </span>
+      <input type="text" class="form-control date-range-filter" placeholder="Fecha maxíma" data-date-format="dd-mm-yyyy" id="max">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+                     <br><br>
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
                     </div>
@@ -562,16 +568,6 @@ onclick="location.href='./'" -->
     </div>
     <!-- /#wrapper -->
 </body>
-<!-- <script src="../js/jquery-1.12.3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.dataTables.min.js"></script>
-<script src="../boots/metisMenu/metisMenu.min.js"></script>
-<script src="../dist/js/sb-admin-2.js"></script>
-<script type="text/javascript" src="../js/admin.js"></script>
- -->
-
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -582,6 +578,11 @@ onclick="location.href='./'" -->
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="../js/datapicker-es.js"></script>
+
 
 <?php include('../php/admin-historial.php');?>
 <script>
