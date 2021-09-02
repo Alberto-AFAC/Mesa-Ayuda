@@ -38,6 +38,18 @@
     cursor: pointer;
 }
 
+.reportea {
+    background: white;
+    color: black;
+    width: 82%;
+    float: right;
+    margin-top: -3em;
+    border: 2px solid blue;
+    padding: 1em 0em;
+    text-align: center;
+    display: none;
+ 
+}
 .reporte {
     background: white;
     color: black;
@@ -47,6 +59,27 @@
     padding: 1em 0em;
     text-align: center;
     display: none;
+}
+.reportev {
+    background: white;
+    color: black;
+    width: 80%;
+    float: right;
+    margin-top: -3em;
+    border: 2px solid yellow;
+    padding: 1em 0em;
+    text-align: center;
+    display: none;
+   }
+
+.slct{
+    background: white;
+    color: black;
+    width: 80%;
+    float: left;
+    border: 2px solid yellow;
+    padding: 1em 0em;
+    text-align: center;   
 }
 
 

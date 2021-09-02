@@ -286,7 +286,7 @@ session_start();
             <div class="form-group"><br>
             <div class="col-sm-offset-0 col-sm-5">
             <button type="button" id="button" class="btn btn-green" onclick="atdRpt();">ACEPTAR</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">SALIR</button>
 
             </div>
             <b><p class="alert alert-danger text-center padding error" id="errors">Error al agregar datos de solicitud </p></b>

@@ -93,16 +93,16 @@ unset($_SESSION['consulta']);
 <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>-->
 <button type="button" onclick="location.href='rptCons.php'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="exampleModalLabel">EVALUAR REPORTE - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>
+<h4 class="modal-title" id="exampleModalLabel"><b>EVALUAR REPORTE - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>
 </div>
             <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
                     <div class="form-group">                    
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                     <label>N° REPORTE</label>
                     <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                     <label>TÉCNICO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
@@ -110,7 +110,7 @@ unset($_SESSION['consulta']);
                     <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                     <label>CORREO</label>
                     <input id="correo" name="correo" type="text" class="form-control" disabled="">
                     </div>                    
