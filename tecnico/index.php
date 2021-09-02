@@ -641,7 +641,7 @@ $(document).ready(function(){
 		reporte.hfinal,
 		reporte.idequipo,
         n_empleado empleado,
-        IF(reporte.hinicio = TRUE, TIMESTAMPDIFF(MINUTE, reporte.finicio, NOW()),TIMESTAMPDIFF(HOUR,reporte.finicio, reporte.ffinal)) AS HORAFINAL
+        IF(reporte.ffinal = '00/00/0000', TIMESTAMPDIFF(HOUR, reporte.finicio, NOW()),TIMESTAMPDIFF(HOUR,reporte.finicio, reporte.ffinal)) AS HORAFINAL
 		FROM reporte 
 		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
