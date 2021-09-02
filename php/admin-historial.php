@@ -100,15 +100,6 @@ var dataSet = [
     ],
     <?php } } }?>
 ];
-//       
-// $(document).ready(function() {
-//     var printCounter = 0;
-//     minDate = new DateTime($('#min'), {
-//         format: 'Do MMMM YYYY'
-//     });
-//     maxDate = new DateTime($('#max'), {
-//         format: 'Do MMMM YYYY'
-//     });
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
         "order": [
@@ -118,6 +109,30 @@ var dataSet = [
             "searchPlaceholder": "Buscar datos...",
             "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
         },
+        dom: 'Bfrtip',
+        buttons: [{
+          title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+          extend: 'print',
+          text: '<span class="glyphicon glyphicon-file"> IMPRIMIR REPORTE</span>',
+          className: "addNewRecord",
+          orientation: 'portrait',
+          customize: function (win) {
+            $(win.document.body)
+                        .css( 'font-size', '10pt' )
+                        .prepend(
+                            '<img src="../img/afac.png" style="position:absolute; top:0; left:0;" />'
+                        );
+ 
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+            }
+        
+        }
+            // 'copy', 'csv', 'excel', 'pdf', 'print'
+            // 'print'
+        ],
+
         // dom: 'Bfrtip',
         // buttons: [
 
