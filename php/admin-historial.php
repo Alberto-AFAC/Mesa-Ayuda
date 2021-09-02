@@ -111,16 +111,17 @@ var dataSet = [
         },
         dom: 'Bfrtip',
         buttons: [{
-          title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+          // title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+          title: 'Departamento de Soporte Técnico',
           extend: 'print',
           text: '<span class="glyphicon glyphicon-file"> IMPRIMIR REPORTE</span>',
           className: "addNewRecord",
-          orientation: 'portrait',
+          // orientation: 'portrait',
           customize: function (win) {
             $(win.document.body)
                         .css( 'font-size', '10pt' )
                         .prepend(
-                            '<img src="../img/afac.png" style="position:absolute; top:0; left:0;" />'
+                            '<img src="" style="position:absolute; top:0; left:0;" />'
                         );
  
                     $(win.document.body).find( 'table' )
