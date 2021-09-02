@@ -85,15 +85,15 @@ var dataSet = [
 
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>","<?php echo $eva ?> ",
+    ["<?php echo $data['año']."-".$data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
         "<?php 
 
         if($data['estado_rpt'] == 'Finalizado'){
                 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>DETALLES</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>$eva </a>";
 
                     }else if($data['estado_rpt'] == 'Cancelado'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>DETALLES</a>";
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>$eva</a>";
 
                     } 
                       ?>"
@@ -112,7 +112,7 @@ var dataSet = [
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
         "order": [
-            [6, "desc"]
+            [5, "desc"]
         ],
         "language": {
             "searchPlaceholder": "Buscar datos...",
@@ -149,9 +149,6 @@ var dataSet = [
             },
             {
                 title: "TÉCNICO"
-            },
-            {
-                title: "ATENCIÓN"
             },
             {
                 title: "DETALLES"
