@@ -148,7 +148,8 @@ form h4 {
     font-size: 15px;
 }
 
-.panel-group-1 .panel-1 {
+
+/* .panel-group-1 .panel-1 {
     border-radius: 0;
     box-shadow: none;
     border-color: #EEEEEE;
@@ -180,7 +181,7 @@ form h4 {
 
 .panel-default-1>.panel-heading-1+.panel-collapse-1>.panel-body-1 {
     border-top-color: #ac0000;
-}
+} */
 
 
 /*stylo de radio*/

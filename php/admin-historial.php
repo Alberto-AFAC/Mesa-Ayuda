@@ -203,7 +203,7 @@ var piechar = new Chart(document.getElementById("piechart-impresion"), {
     type: 'polarArea',
     data: {
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Multifuncional", "Impresora", "Escanner","Total"
+        labels: ["M-Funcional", "Impr", "Escann","Total"
         ],
         datasets: [{
             label: "Sistemas",

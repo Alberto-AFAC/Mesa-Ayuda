@@ -51,6 +51,7 @@
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/historial.css">
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
@@ -264,26 +265,26 @@
        
 
 	
-<div class="panel-group-1" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-    <div class="panel-1 panel-default-1">
-        <div class="panel-heading-1" role="tab" id="headingOne">
-            <h4 class="panel-title-1">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <i class="more-less-1 glyphicon glyphicon-plus"></i>
+                    <i class="more-less glyphicon glyphicon-plus"></i>
                     SOLICITUD DE REPORTES SEGÚN SERVICIO
                 </a>
             </h4>
             
         </div>
-        <div id="collapseOne" class="panel-collapse-1 collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body-1">
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
                   
             <div class="row">
            
             <div class="col-lg-4 col-md-6">
-                    <div class="panel-1 panel-default-1">
-                        <div class="panel-heading-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-servicios"></canvas>
@@ -293,8 +294,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel-1 panel-default-1">
-                        <div class="panel-heading-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-impresion"></canvas>
@@ -304,8 +305,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel-1 panel-default-1">
-                        <div class="panel-heading-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-comunicaciones"></canvas>
@@ -315,8 +316,8 @@
                     </div>
                 </div>
                 <div style="padding-top: 10px;" class="col-lg-4 col-md-6">
-                    <div class="panel-1 panel-default-1">
-                        <div class="panel-heading-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                             <div class="row">
                             <div style="padding-top:20px;" class="row">
                                 <canvas id="piechart-eventos"></canvas>
@@ -329,6 +330,7 @@
 
             </div>
         </div>
+    </div></div>
    
 
             <!-- <div class="row col-lg-6 col-md-6">
@@ -616,11 +618,11 @@ onclick="location.href='./'" -->
 <script>
     function toggleIcon(e) {
         $(e.target)
-            .prev('.panel-heading-1')
-            .find(".more-less-1")
+            .prev('.panel-heading')
+            .find(".more-less")
             .toggleClass('glyphicon-plus glyphicon-minus');
     }
-    $('.panel-group-1').on('hidden.bs.collapse', toggleIcon);
-    $('.panel-group-1').on('shown.bs.collapse', toggleIcon);
+    $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+    $('.panel-group').on('shown.bs.collapse', toggleIcon);
     </script>
 </html>
