@@ -126,76 +126,7 @@ session_start();
          </div>   
     </div>
 
-    <form id="frmEditar" class="form-horizontal" action="" method="POST">
-    <div class="modal fade" id="modalEditar" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" id="btnlistar" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">ACTUALIZAR CONTRASEÑA</h4>
-                                    <div class="alert alert-success text-center padding" style="display:none; color: white;" id="echo">
-                                    <p>Contraseña actualizada</p>
-                                    </div>
-
-                                    <div class="alert alert-info text-center padding" style="display:none; color: white;" id="invalida">
-                                    <p>Comprobación de contraseña no coicide</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center padding" style="display:none; color: white;" id="falso">
-                                    <p>Contraseña incorrecta</p>
-                                    </div>
-
-                                    <div class="alert alert-warning text-center padding" style="display:none; color: white;" id="vacio">
-                                    <p>Debes escribir contenido en el campo vacio</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center padding" style="display:none; color: white;" id="error">
-                                    <p>No se pudo actualizar los datos</p>
-                                    </div>
-                </div>
-
-            <div class="modal-body">
-                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
-                <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="usuario">USUARIO</label>
-                    <input id="usuario" name="usuario" type="text" class="form-control" value="<?php echo $_SESSION['usuario']['usuario'];?>" disabled>
-                    </div>
-                    </div> 
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="password">CONTRASEÑA</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    </div>
-                    </div>
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass">NUEVA CONTRASEÑA</label>
-                    <input id="pass" name="pass" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass2">CORROBORAR SU NUEVA CONTRASEÑA</label>
-                    <input id="pass2" name="pass2" type="text" class="form-control" >
-                    </div>
-                    </div>                     
-            <!-- </div> -->            
-                    <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-5">
-                        <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar</button>
-                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button> -->
-                </div></div></div>
-            </div>
-            </div>
-        </div>
-    </div>
-</form>  
-
+<?php include('conActu.php');?>
 
 <form class="form-horizontal" action="" method="POST">
     <div class="modal fade" id="modalAtndr" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -499,7 +430,10 @@ FAVOR DE VALIDAR Y AGREGAR DATOS DEL EQUIPO </b></h4>
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
 
                     <div class="form-group">  
-                                      
+                     <div class="col-sm-4">
+                    <label>RESPONSABLE </label>
+                    <input id="usua" name="usua" type="text" class="form-control" disabled="">
+                    </div>                                      
                     <div class="col-sm-4">
                     <label>NUMERO DE INVENTARIO</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">

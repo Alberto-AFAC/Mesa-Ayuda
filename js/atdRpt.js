@@ -194,6 +194,7 @@ function personal(n_empleado){
 					$("#modalDtll #usuario").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
 					$("#modalDtll #extension").val(obj.data[i].gstExTel);
 
+					$("#modalVal #usua").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
 	            }
 	        }
 	    })
