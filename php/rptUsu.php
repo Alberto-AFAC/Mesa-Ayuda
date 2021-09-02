@@ -6,41 +6,37 @@
 	$informacion = [];//<---Arreglo
 
  if($opcion === 'registrar'){
-			
-	$nempleado = $_POST['nempleado'];
+
+	$idequipo = $_POST['idequipo'];
 	$servicio  = substr($_POST['servicio'],1);
 	$intervencion = substr($_POST['intervencion'],1);
 	$descripcion = substr($_POST['descripcion'],1);
-
 	$solucion = substr($_POST['solucion'],1);
 	$ultima = substr($_POST['ultima'],1);
 	$final = $_POST['final'];
 
+if(consultar($idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion)){
+
+
+			
+	$nempleado = $_POST['nempleado'];
 	$obser = $_POST['obser'];
-
-	$idequipo = $_POST['idequipo'];
-	// $modelo = $_POST['modelo'];
-	// $serie = $_POST['serie'];
-	// $verwind = $_POST['verwind'];
-	// $proceso = $_POST['proceso'];
-
 	$sede = $_POST['sede'];
 
 	$idtec = selecTec($sede,$conexion);
-	
-	//if($idequipo == 0){
-	//	registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion);
-	//}
 
-ini_set('date.timezone','America/Mexico_City');
-$fenvio= date('Y').'/'.date('m').'/'.date('d');	
-$Hinic=date('H:i');
+	ini_set('date.timezone','America/Mexico_City');
+	$fenvio= date('Y').'/'.date('m').'/'.date('d');	
+	$Hinic=date('H:i');
 
 if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion)){
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
 		 	}else{	echo "1";	}	
-		
+
+		}else{
+			echo "1";
+		}	
 	}
 	
 
@@ -79,17 +75,27 @@ if(!empty($idtec[$n][0])){
 }	
 
 
+function consultar($idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion){
+
+$query="SELECT * FROM reporte WHERE 
+servicio = '$servicio' AND
+intervencion = '$intervencion' AND
+descripcion = '$descripcion' AND
+solucion = '$solucion' AND
+ultima = '$ultima' AND
+final = '$final' AND
+idequipo = '$idequipo'";
+$resultado= mysqli_query($conexion,$query);
+		if($resultado->num_rows==0){
+		return true;
+		}else{
+		return false;	
+		}
+		$this->conexion->cerrar();
+}
 
 
 function registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion){
-	// $query="SELECT * FROM asignacion  
-	// 		INNER JOIN reporte
-	// 		ON n_emp = n_empleado
-	// 		INNER JOIN equipo
-	// 		ON id_equi = id_equipo
-	// 		WHERE n_emp = '$nempleado' AND id_equi = '$idequipo' AND estado_rpt = 'Pendiente'";
-	// $resultados = mysqli_query($conexion,$query);
-	// if($resultados->num_rows == 0){
 
 $query = "INSERT INTO reporte VALUES(0,'$nempleado','$idequipo','$servicio','$intervencion','$descripcion','$solucion','$ultima','$final','$obser','0','0','$fenvio','$Hinic','0','0','0','0','Por atender','$sede','$idtec');";
 			if (mysqli_query($conexion,$query)){		

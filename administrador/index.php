@@ -488,8 +488,8 @@ onclick="location.href='./'" -->
 
                                         <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%;font-size: 12px;'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
-                                    </p><input type="hidden" id="idequipo">
-                                    REPORTE POR ATENDER
+                                    </p><input type="hidden" id="idequipo"><b>
+                                    REPORTE POR ATENDER</b>
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -573,7 +573,7 @@ onclick="location.href='./'" -->
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <label> FECHA REPORTE</label>
                                         <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                                     </div>
@@ -587,12 +587,12 @@ onclick="location.href='./'" -->
                                         <input name="OK" type="radio" value="NO" id="NO" checked="checked" />
                                     </div>
 
-                                    <div class="col-sm-4" id="asignado">
+                                    <div class="col-sm-5" id="asignado">
                                         <label>TÉCNICO ASIGNADO</label>
                                         <input class="form-control" selected="true" id="nomtec" name="nomtec"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-4" style="display: none;" id="reasigar">
+                                    <div class="col-sm-5" style="display: none;" id="reasigar">
                                     <label>REASIGNAR TÉCNICO</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
                                     name="idtec" type="text" data-live-search="true">
@@ -603,10 +603,11 @@ onclick="location.href='./'" -->
                                     while($datas = mysqli_fetch_assoc($resultado)){
                                     $idper = $datas['id_usu'];
                                     $idtec = $datas['id_tecnico'];
+                                    $sede = $datas['sede'];
                                     $quer = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstIdper = $idper AND estado = 0";
                                     $result = mysqli_query($conexion2,$quer);    
                                     while($usuario = mysqli_fetch_row($result)):?>
-                                    <option value="<?php echo $idtec?>">
+                                    <option value="<?php echo $sede.','.$idtec?>">
                                     <?php echo $usuario[1].' '.$usuario[2]?>
                                     </option>
                                     <?php endwhile; } ?>
@@ -621,8 +622,8 @@ onclick="location.href='./'" -->
 
                                 <div class="form-group" style="display: none;" id="button"><br>
                                     <div class="col-sm-offset-0 col-sm-5">
-                                        <button type="button" class="btn btn-green btn-lg"
-                                            onclick="tecReasignar();">Aceptar</button>
+                                        <button type="button" class="btn btn-green"
+                                            onclick="tecReasignar();">ACEPTAR</button>
                                     </div>
                                     <b>
                                         <p class="alert alert-danger text-center padding error" id="error">Error al

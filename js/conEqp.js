@@ -36,24 +36,14 @@ function eqpo(datos) {
 function reporte() {
 
     var sede = document.getElementById('sede').value;
-
     var nempleado = document.getElementById('nempleado').value;
-    // var modelo = document.getElementById('modelo').value;
-    // var serie = document.getElementById('serie').value;
     var obser = document.getElementById('obser').value;
-    // var verwind = document.getElementById('verwind').value;
     var idequipo = document.getElementById('idequipo').value;
-    // var proceso = document.getElementById('proceso').value;
     var servicio = document.getElementById('servicio').value;
-    // alert(servicio);
-
-
-   // alert(servicio+' '+idequipo);
 
     if (servicio == '1CÓMPUTO' && idequipo == '0') {
         idequipo = '';
     }
-
 
     var intervencion = document.getElementById('intervencion').value;
     var descripcion = document.getElementById('descripcion').value;
@@ -66,15 +56,21 @@ function reporte() {
 
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&opcion=registrar';
 
-    
-    //    alert(servicio+'*'+intervencion+'*'+descripcion+'*'+solucion+'*'+ultima+'*'+final);
 
-    if (idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
+
+    if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
+        
+        // if(sede == '0'){
+        //    document.getElementById('sede').style.color = "red"; 
+        // }else{
+        //     document.getElementById('sede').style.color = "black";
+        // }
+
         $("#vacio").toggle("toggled");
         $('#exampleModalCenter').modal('hide');
         setTimeout(function() {
             $('#vacio').toggle('toggled');
-        }, 1000);
+        }, 2000);
         return;
     } else {
 
@@ -89,6 +85,8 @@ function reporte() {
             console.log(respuesta);
             if (respuesta == 0) {
                 $("#button").hide();
+                    // $('#vacio').hide();
+                    // $("#error").hide();
                 $("#exito").toggle("toggled");
                 setTimeout(function() {
                     $("#exito").toggle("toggled");
@@ -97,10 +95,13 @@ function reporte() {
                 $('#exampleModalCenter').modal('hide');
 
             } else if (respuesta == 1) {
+                    // $("#exito").hide();
+                    // $('#vacio').hide();
                 $("#error").toggle("toggled");
                 setTimeout(function() {
                     $("#error").toggle("toggled");
-                }, 2000);
+                }, 5000);
+                 $('#exampleModalCenter').modal('hide');
             }
         });
     }

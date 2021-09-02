@@ -220,21 +220,10 @@ unset($_SESSION['consulta']);
                                             
                                 <?php $query ="SELECT DISTINCT sede FROM tecnico WHERE id_tecnico != 0 AND baja = 0";
                                     $resultado = mysqli_query($conexion, $query); ?>
-                                    <option selected>SELECIONAR SEDE...</option>
+                                    <option value="0" selected>SELECIONAR SEDE...</option>
                                  <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
                                        <option value="<?php echo $row['sede']?>"><?php echo $row['sede']?></option>
                                 <?php } ?>
-
-
-<!--                                         
-                                        <option value="LAS FLORES">LAS FLORES</option>
-                                        <option value="HANGAR 8">HANGAR 8</option>
-                                        <option value="CIAAC">CIAAC</option>
-                                        <option value="LICENCIAS">LICENCIAS</option>
-                                        <option value="TERMINAL 1">TERMINAL 1</option>
-                                        <option value="TERMINAL 2">TERMINAL 2</option> -->
-
-
 
                                         </select>
                                     </div>
@@ -247,9 +236,9 @@ unset($_SESSION['consulta']);
                                 </div>
                                 
                             </div>
-                                <b><p class="alert alert-danger text-center padding error" id="error">Usted tiene un reporte pendiente del equipo asignado o falta que evalué dicho reporte</p></b>
-                                <b><p style="text-transform: uppercase;" class="alert alert-success text-center padding reporte" id="exito">¡Su reporte se generó con éxito, se le asigno un técnico! Para más detalles, de su lado izquierdo: Reportes</p></b>
-                                <b><p style="text-transform: uppercase;" class="alert alert-warning text-center padding aviso" id="vacio">Llene campos vacíos</p></b>
+                                <b><p style="text-transform: uppercase;"  class="alert alert-danger text-center padding reportea" id="error">Su reporte con la descripción del problema ya está asignada, para más detalles de su lado izquierdo </p></b>
+                                <b><p style="text-transform: uppercase;" class="alert alert-success text-center padding reporte" id="exito">¡Su reporte se generó con éxito, se le asigno un técnico!, Para más detalles de su lado izquierdo: Reportes</p></b>
+                                <b><p style="text-transform: uppercase;" class="alert alert-warning text-center padding reportev" id="vacio">Llene campos vacíos</p></b>
                                 </div>
                             </form> 
                         </div>
