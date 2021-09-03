@@ -220,7 +220,7 @@ var piechar = new Chart(document.getElementById("piechart-servicios"), {
       },
       title: {
         display: true,
-        text: 'Computo'
+        text: 'COMPUTO'
       }
     }
   },
@@ -244,7 +244,7 @@ var piechar = new Chart(document.getElementById("piechart-impresion"), {
         labels: ["M-Funcional", "Impr", "Escann","Total"
         ],
         datasets: [{
-            label: "Sistemas",
+            label: "SISTEMAS",
             backgroundColor: ["#00CF4B","#00F358","#37FF80","#91FFB9"],
             borderWidth: 0,
             data: ["<?php echo $row['INVERVENCIONM']?>","<?php echo $row['INVERVENCIONI']?>","<?php echo $row['INVERVENCIONES']?>","<?php echo $row['IMPRESIONPRINCIPAL']?>"]
@@ -259,7 +259,7 @@ var piechar = new Chart(document.getElementById("piechart-impresion"), {
       },
       title: {
         display: true,
-        text: 'Impresión'
+        text: 'IMPRESIÓN'
       }
     }
   },
@@ -283,7 +283,7 @@ var piechar = new Chart(document.getElementById("piechart-comunicaciones"), {
         labels: ["Internet", "Telefonía","Total"
         ],
         datasets: [{
-            label: "Sistemas",
+            label: "SISTEMAS",
             backgroundColor: ["#000075","#2424D1","#3636FF"],
             borderWidth: 0,
             data: ["<?php echo $row['INVERVENCIONINT']?>","<?php echo $row['INVERVENCIONTEL']?>","<?php echo $row['COMUNICACIONESPRINCIPAL']?>"]
@@ -298,7 +298,7 @@ var piechar = new Chart(document.getElementById("piechart-comunicaciones"), {
       },
       title: {
         display: true,
-        text: 'Comunicaciones'
+        text: 'COMUNICACIONES'
       }
     }
   },
@@ -319,7 +319,7 @@ var piechar = new Chart(document.getElementById("piechart-eventos"), {
         labels: ["Préstamo de equipo","Total"
         ],
         datasets: [{
-            label: "Sistemas",
+            label: "SISTEMAS",
             backgroundColor: ["#FF6609","#FF8C47"],
             borderWidth: 0,
             data: ["<?php echo $row['INVERVENCIONPREST']?>","<?php echo $row['PROGRAMACIONPRIN']?>"]
@@ -334,7 +334,7 @@ var piechar = new Chart(document.getElementById("piechart-eventos"), {
       },
       title: {
         display: true,
-        text: 'Programación de eventos/reuniones'
+        text: 'PROGRAMACIÓN DE EVENTOS/REUNIONES'
       }
     }
   },
