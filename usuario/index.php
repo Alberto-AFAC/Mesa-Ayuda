@@ -48,7 +48,7 @@ unset($_SESSION['consulta']);
     fecha = new Date();
     hora = fecha.getHours();
     if (hora >= 18 && hora < 24) {
-        texto = "Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.";
+        texto = "<span style='font-weight:bold;font-size: 15px;' class='parpadea'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.</span>";
     }
     if (hora >= 0 && hora < 8) {
         texto = "Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.";
