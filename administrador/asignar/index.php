@@ -438,7 +438,7 @@ Agregar datos del  equipo </h4>
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="agrEqpo();">Aceptar</button>
+                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="agrEqpo();">ACEPTAR</button>
                     </div>
                     <b><p class="alert alert-info text-center padding error" id="danger">Este equipo, existe en la base de datos </p></b>
 
@@ -454,7 +454,7 @@ Agregar datos del  equipo </h4>
 </form>
 
 
-<form id="EqpoEliminar" action="" method="POST">
+<form id="EqpoEliminar" action="" method="POST" style="text-transform: uppercase;">
     <input type="hidden" id="ideqpo" name="ideqpo" value="">
     <input type="hidden" id="opcion" name="opcion" value="eliminar">
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
@@ -467,8 +467,8 @@ Agregar datos del  equipo </h4>
                     ¿Está seguro de eliminar este equipo? <strong data-name=""></strong>           
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="eliminareqpo();" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                    
+                    <button type="button" onclick="eliminareqpo();" class="btn btn-primary" data-dismiss="modal">ACAPTAR</button>   
+               <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>                    
                 </div>
             </div>
         </div>

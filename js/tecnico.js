@@ -50,7 +50,7 @@ function tecnico() {
 function modificar() {
     var frm = $("#Editar").serialize();
     //console.log(frm);
-    alert(frm);
+    //alert(frm);
     $.ajax({
         url: "../../php/tecnico.php",
         type: 'POST',

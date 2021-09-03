@@ -192,11 +192,14 @@
                             <a href="./"><i class="glyphicon glyphicon-home"></i> Inicio</a>
                         </li> -->
                         <li>
-                            <a href="./"><i class="glyphicon glyphicon-home"></i> Inicio<span
-                                    class="fa arrow"></span></a>
+
+                            <a href="historial.php"><i class="fa fa-list-alt"></i> Historial<span
+                                    class="fa arrow"></span></a> 
+                                             
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="historial.php"><i class="fa fa-list-alt"></i> Historial</a>
+                            <a href="./"><i class="glyphicon glyphicon-home"></i> Inicio</a>
+                          
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

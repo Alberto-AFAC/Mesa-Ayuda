@@ -24,7 +24,7 @@
 .aviso {
     margin: 0;
     color: #fff;
-    width: 40%;
+    width: 60%;
     float: right;
     padding: 0.4em 0;
     display: none;
@@ -185,6 +185,21 @@ form h4 {
 border-top: 1px solid silver;
 }
 
+#vacio,
+#danger,
+#success,
+#empty,
+#danger1,
+#success2,
+#empty1,
+#danger2,
+#success2,
+#empty2,
+#exito
+{
+    text-transform: uppercase;
+    font-size: 12px;
+}
 /* .panel-group-1 .panel-1 {
     border-radius: 0;
     box-shadow: none;

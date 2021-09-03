@@ -154,8 +154,8 @@
                                     <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
                             <li>
-                                    <a href="./"><i class="fa fa-desktop"></i> Equipos </a>
-                                   
+                                    <a href="./"><i class="fa fa-desktop"></i> Equipos <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level"><li><a href="../asignar"> Por asignar</a></li></ul>
                             </li>
                             <li>
                                     <a href="../tecnico"><i class="fa fa-street-view"></i> Técnico</a>
@@ -286,8 +286,8 @@
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="exampleModalLabel">
-Agregar datos del  equipo </h4>  
+<h4 class="modal-title" id="exampleModalLabel"><b>
+AGREGAR DATOS DEL EQUIPO </b></h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_equipo" name="id_equipo">
@@ -297,7 +297,7 @@ Agregar datos del  equipo </h4>
                     <div class="form-group"> 
                     <div class="col-sm-12" >
                     <select style="width: 100%" class="form-control" class="selectpicker" id="nempleado" name="nempleado" type="text" data-live-search="true">
-                   <option value="">Seleccione usuario</option>    
+                   <option value="">SELECCIONE USUARIO</option>    
                     <option value="0">NO ASIGNADO</option> 
                     <?php while($usuario = mysqli_fetch_row($resu)):?>
                     <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
@@ -438,7 +438,7 @@ Agregar datos del  equipo </h4>
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="agrEqpo();">Aceptar</button>
+                    <button type="button" id="button" class="btn btn-green" onclick="agrEqpo();">ACEPTAR</button>
                     </div>
                     <b><p class="alert alert-info text-center padding error" id="danger">Este equipo, existe en la base de datos </p></b>
 
@@ -454,7 +454,7 @@ Agregar datos del  equipo </h4>
 </form>
 
 
-<form id="EqpoEliminar" action="" method="POST">
+<form id="EqpoEliminar" action="" method="POST" style="text-transform: uppercase;">
     <input type="hidden" id="ideqpo" name="ideqpo" value="">
     <input type="hidden" id="opcion" name="opcion" value="eliminar">
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
@@ -467,8 +467,8 @@ Agregar datos del  equipo </h4>
                     ¿Está seguro de eliminar este equipo? <strong data-name=""></strong>           
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="eliminareqpo();" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                    
+                    <button type="button" onclick="eliminareqpo();" class="btn btn-primary" data-dismiss="modal">ACEPTAR</button>   
+               <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>                    
                 </div>
             </div>
         </div>
@@ -655,7 +655,7 @@ EDITAR DATOS DEL EQUIPO </b></h4>
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="edtEqpo();">Aceptar</button>
+                    <button type="button" id="button" class="btn btn-green" onclick="edtEqpo();">ACEPTAR</button>
                     </div>
                     <b><p class="alert alert-danger text-center padding error" id="danger1">Error al agregar datos del equipo </p></b>
 
