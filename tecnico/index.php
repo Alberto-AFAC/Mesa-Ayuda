@@ -109,7 +109,7 @@ session_start();
     <div class="row">
         <div class="col-lg-12">
              <img src="../img/afac.png" class="imgafac">
-             <h1 class="page-header">Atender reporte</h1>
+             <h1 class="page-header">ATENDER REPORTE</h1>
         </div>
     </div>
     <div class="row">   
@@ -126,76 +126,7 @@ session_start();
          </div>   
     </div>
 
-    <form id="frmEditar" class="form-horizontal" action="" method="POST">
-    <div class="modal fade" id="modalEditar" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" id="btnlistar" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">Actualizar Contraseña</h4>
-                                    <div class="alert alert-success text-center padding" style="display:none; color: white;" id="echo">
-                                    <p>Contraseña actualizada</p>
-                                    </div>
-
-                                    <div class="alert alert-info text-center padding" style="display:none; color: white;" id="invalida">
-                                    <p>Comprobación de contraseña no coicide</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center padding" style="display:none; color: white;" id="falso">
-                                    <p>Contraseña incorrecta</p>
-                                    </div>
-
-                                    <div class="alert alert-warning text-center padding" style="display:none; color: white;" id="vacio">
-                                    <p>Debes escribir contenido en el campo vacio</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center padding" style="display:none; color: white;" id="error">
-                                    <p>No se pudo actualizar los datos</p>
-                                    </div>
-                </div>
-
-            <div class="modal-body">
-                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
-                <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="usuario">Usuario</label>
-                    <input id="usuario" name="usuario" type="text" class="form-control" value="<?php echo $_SESSION['usuario']['usuario'];?>" disabled>
-                    </div>
-                    </div> 
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="password">Contraseña</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    </div>
-                    </div>
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass">Nueva Contraseña</label>
-                    <input id="pass" name="pass" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass2">Corroborar su nueva contraseña</label>
-                    <input id="pass2" name="pass2" type="text" class="form-control" >
-                    </div>
-                    </div>                     
-            <!-- </div> -->            
-                    <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-5">
-                        <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar</button>
-                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button> -->
-                </div></div></div>
-            </div>
-            </div>
-        </div>
-    </div>
-</form>  
-
+<?php include('conActu.php');?>
 
 <form class="form-horizontal" action="" method="POST">
     <div class="modal fade" id="modalAtndr" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -209,26 +140,24 @@ session_start();
 
 <h4 class="modal-title" id="exampleModalLabel"><p>
 
-<!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
+<!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%; font-size:12px;'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
-</p><input type="hidden" id="idequipo">
-Atender reporte
-</h4> 
+</p><input type="hidden" id="idequipo"><b>ATENDER REPORTE</b></h4> 
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
                 <input type="hidden" id="opcion" name="opcion" value="atender">
                     <div class="form-group">                    
                     <div class="col-sm-3">
-                    <label>N° reporte</label>
+                    <label>N° REPORTE</label>
                     <input id="n_reporte" name="n_reporte" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-6">
-                    <label>Usuario</label>
+                    <label>USUARIO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-3">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
               <!--       <div class="col-sm-2">
@@ -238,7 +167,7 @@ Atender reporte
                     </div>
                     
                     <p id="divp">
-                    ¿Es correcta la descripción del problema que selecciono el usuario?
+                    ¿ES CORRECTA LA DESCRIPCIÓN DEL PROBLEMA QUE SELECCIONO EL USUARIO?
                     <label for="SI">SI</label>
                     <input checked="checked" name="correct" type="radio" value="true" id="true" />
                     <label for="NO">NO</label>
@@ -269,7 +198,7 @@ Atender reporte
                     <div class="form-group" id="dsprob2">
                     
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" type="text" class="form-control" disabled="">
                     </div>
 
@@ -304,20 +233,20 @@ Atender reporte
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Observaciones del usuario al problema</label> 
+                    <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label> 
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label> 
+                    <label>RESPUESTA DE FALLA</label> 
                     <textarea onkeyup="mayus(this);" id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     </div>
 
                     <p id="divp">
-                    ¿El soporte es externo?
+                    ¿EL SOPORTE ES EXTERNO?
                     <label for="SI">SI</label>
                     <input name="select" type="radio" value="si" id="SI" />
                     <label for="NO">NO</label>
@@ -326,28 +255,28 @@ Atender reporte
                     
                     <div class="form-group" id="externo" style="display: none;">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label> RESPUESTA EXTERNA DE LA FALLA</label>
                     <textarea onkeyup="mayus(this);" id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     </div>                    
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label> Fecha reporte</label>
+                    <label> FECHA REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control"  disabled="">
                     </div>
                     <div class="col-sm-4">
-                    <label> Fecha finalizada</label>
+                    <label> FECHA FINALIZADA</label>
                     <input type="text" value="<?php echo $Final.' a las '.$Hfinal.' hrs'?>" class="form-control"  disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Estado del reporte</label>
+                    <label>ESTADO DEL REPORTE</label>
                     <select class="form-control" selected="true" id="estado_rpt" name="estado_rpt">
-                    <option value="Por atender">Por atender</option>
-                    <option value="Finalizado" >Finalizado</option>
-                    <option value="Pendiente" >Pendiente</option>
-                    <option value="Cancelado" >Cancelado</option> 
+                    <option value="Por atender">POR ATENDER</option>
+                    <option value="Finalizado" >FINALIZADO</option>
+                    <option value="Pendiente" >PENDIENTE</option>
+                    <option value="Cancelado" >CANCELADO</option> 
                     </select>                                
                     </div>
 
@@ -356,8 +285,8 @@ Atender reporte
 
             <div class="form-group"><br>
             <div class="col-sm-offset-0 col-sm-5">
-            <button type="button" id="button" class="btn btn-green" onclick="atdRpt();">Aceptar</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+            <button type="button" id="button" class="btn btn-green" onclick="atdRpt();">ACEPTAR</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">SALIR</button>
 
             </div>
             <b><p class="alert alert-danger text-center padding error" id="errors">Error al agregar datos de solicitud </p></b>
@@ -391,22 +320,22 @@ Atender reporte
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
-<h4 class="modal-title" id="exampleModalLabel">Detalles del reporte - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>  
+<h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE - <input style="text-transform: uppercase;" class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
                     <div class="form-group">                    
                     <div class="col-sm-3">
-                    <label>N° reporte</label>
+                    <label>N° REPORTE</label>
                     <input id="n_reporte" name="n_reporte" type="text" class="form-control" class="disabled" disabled="">
                     </div>
                     <div class="col-sm-6">
-                    <label>Usuario</label>
+                    <label>USUARIO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-3">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
                     <!-- <div class="col-sm-2">
@@ -417,59 +346,59 @@ Atender reporte
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
+                    <label>INTERVENCIÓN</label>
                     <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
+                    <label>DESCRIPCIÓN</label>
                     <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Observaciones del usuario al problema</label> 
+                    <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label> 
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label> 
+                    <label>RESPUESTA DE FALLA</label> 
                     <textarea onkeyup="mayus(this);" id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="falla">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label> RESPUESTA EXTERNA A LA FALLA</label>
                     <textarea onkeyup="mayus(this);" id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label> Fecha reporte</label>
+                    <label> FECHA DE REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control"  disabled="">
                     </div>
                     <div class="col-sm-4">
-                    <label> Fecha finalizada</label>
+                    <label> FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-4">
-                    <label> Su evaluación de reporte</label>
+                    <label> SU EVALUACIÓN DE REPORTE</label>
                     <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
                    <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Porque</label>
+                    <label>¿POR QUÉ?</label>
                     <textarea id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
                     </div> 
@@ -493,65 +422,42 @@ Atender reporte
 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: black"  aria-hidden="true">&times;</span>
 </button> -->
 
-<h4 class="modal-title" id="exampleModalLabel">
-Favor de validar y agregar datos del  equipo </h4>  
+<h4 class="modal-title" id="exampleModalLabel"><b>
+FAVOR DE VALIDAR Y AGREGAR DATOS DEL EQUIPO </b></h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_equipo" name="id_equipo">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
 
-<!--                     <div class="form-group">
-                    <div class="col-sm-12">
-                    <label>
-                    ¿el equipo de cómputo pertenece al usuario?
-                    Seleccione usuario a quien pertenece el equipo </label>            
-                    </div>              
-                    <div class="col-sm-8">
-                    <select style="width: 100%" class="form-control" class="selectpicker" id="n_empleado" name="n_empleado" type="text" data-live-search="true">
-                    <option selected>Seleccione usuarion</option> 
-                    <?php //while($usuario = mysqli_fetch_row($usua)):?>
-                    <option value="<?php //echo $usuario[0]?>"><?php //echo $usuario[1].' '.$usuario[2]?></option>
-                    <?php //endwhile; ?>
-                    </select>
-                    </div>
+                    <div class="form-group">  
+                     <div class="col-sm-4">
+                    <label>RESPONSABLE </label>
+                    <input id="usua" name="usua" type="text" class="form-control" disabled="">
+                    </div>                                      
                     <div class="col-sm-4">
-                    <select class="form-control" name="asignado" id="asignado">
-                    <option value="0">Eleija Opción</option>
-                    <option value="asignado">Pertenece</option>
-                    <option value="designado">No pertenece</option>
-                    </select>
-                    </div>                    
-                    </div> -->
-
-                    <div class="form-group">                    
-                    <!-- <div class="col-sm-4">
-                    <label>Número sigctic</label>
-                    <input id="num_sigtic" name="num_sigtic" type="text" class="form-control" class="disabled">
-                    </div> -->
-                    <div class="col-sm-4">
-                    <label>Numero de inventario</label>
+                    <label>NUMERO DE INVENTARIO</label>
                     <input id="num_invntraio" name="num_invntraio" type="text" class="form-control">
                     </div>                    
                     <div class="col-sm-4">
-                    <label>Serie</label>
+                    <label>SERIE</label>
                     <input id="serie_cpu" name="serie_cpu" type="text" class="form-control">
                     </div>        
                     </div>
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Modelo</label>
+                    <label>MODELO</label>
                     <input id="nombre_equipo" name="nombre_equipo" type="text" class="form-control">
                     </div> 
                     <div class="col-sm-4">
-                    <label>Tipo del equipo</label>
+                    <label>TIPO DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" id="tipo_equipo" name="tipo_equipo" type="text" data-live-search="true">
-                    <option value="0">Seleccione tipo equipo</option> 
+                    <option value="0">SELECCIONE TIPO EQUIPO</option> 
                     <option value="LAP TOP ">LAP TOP </option>
                     <option value="ESCRITORIO">ESCRITORIO</option>
                     </select>
                     </div>
                     <div class="col-sm-4">
-                    <label>Marca</label>    
+                    <label>MARCA</label>    
                     <select class="form-control" selected="true" id="marca_cpu" name="marca_cpu">
                     <option value="" selected>SELECCIONE MARCA</option>
                     <option value="LENOVO">LENOVO</option>
@@ -572,7 +478,7 @@ Favor de validar y agregar datos del  equipo </h4>
                     </select>                                
                     </div>
                     <div class="col-sm-offset-0 col-sm-3">
-                    <label>Versión office</label>
+                    <label>VERSIÓN OFFICE</label>
                     <select class="form-control" selected="true" id="version_office" name="version_office">                   
                     <option value="" selected>SELECCIONE</option>
                     <option value="2016" >2016</option>
@@ -581,7 +487,7 @@ Favor de validar y agregar datos del  equipo </h4>
                     </select>                                
                     </div>
                     <div class="col-sm-3">
-                    <label>Procesador</label>       
+                    <label>PROCESADOR</label>       
                     <select class="form-control" selected="true" id="procesador" name="procesador">                   
                     <option value="" selected>SELECCIONE</option>
                     <option value="INTEL" >INTEL</option>
@@ -589,13 +495,13 @@ Favor de validar y agregar datos del  equipo </h4>
                     </select> 
                     </div>
                     <div class="col-sm-3">
-                    <label>Velocidad del procesador</label>
+                    <label>VELOCIDAD DEL PROCESADOR</label>
                     <input id="velocidad_proc" name="velocidad_proc" type="text" class="form-control">
                     </div>
                      </div>   
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Capacidad de disco duro</label>             
+                    <label>CAPACIDAD DE DISCO DURO</label>             
                     <select class="form-control" selected="true" id="disco_duro" name="disco_duro">                   
                     <option value="" selected>SELECCIONE</option>
                     <option value="250 GB" >250 GB</option>
@@ -605,48 +511,48 @@ Favor de validar y agregar datos del  equipo </h4>
                     </select> 
                     </div>
                     <div class="col-sm-4">
-                    <label>Capacidad de memoria RAM</label>
+                    <label>CAPACIDAD DE MEMORIA RAM</label>
                     <input id="memoria_ram" name="memoria_ram" type="text" class="form-control">
                     </div>                         
                     <div class="col-sm-4">
-                    <label>Unidad de disco flash</label>
+                    <label>UNIDAD DE DISCO FLASH</label>
                     <input id="uni_disc_flax" name="uni_disc_flax" type="text" class="form-control">
                     </div>                    
                     </div>
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Serie monitor</label>
+                    <label>SERIE MONITOR</label>
                     <input id="serie_monitor" name="serie_monitor" type="text" class="form-control" >
                     </div>                                        
                     <div class="col-sm-4">
-                    <label>Serie teclado</label>
+                    <label>SERIE TECLADO</label>
                     <input id="serie_teclado" name="serie_teclado" type="text" class="form-control"  >
                     </div>
                     <div class="col-sm-4">
-                    <label>Serie mouse</label>
+                    <label>SERIE MOUSE</label>
                     <input id="serie_mouse" name="serie_mouse" type="text" class="form-control" >
                     </div> 
                     </div>
                     <div class="form-group">         
                     <div class="col-sm-4">
-                    <label>Dirección IP</label>
+                    <label>DIRECCIÓN IP</label>
                     <input id="direccion_ip" name="direccion_ip" type="text" class="form-control" >
                     </div>
                     <div class="col-sm-4">
-                    <label>Servicio internet</label>
+                    <label>SERVICIO INTERNET</label>
                     <input id="servicio_internet" name="servicio_internet" type="text" class="form-control" >
                     </div>                    
                     <div class="col-sm-4">
-                    <label>Ubicación del equipo</label>
+                    <label>UBICACIÓN DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" name="ubicaeqpo" id="ubicaeqpo" type="text" data-live-search="true">
-                    <option value="0">Selecione</option> 
-                    <option value="Planta baja / vus">Planta baja / vus</option>
-                    <option value="Piso m2">Piso m2</option>
-                    <option value="Piso 1">Piso 1</option>
-                    <option value="Piso 2">Piso 2</option>
-                    <option value="Piso 3">Piso 3</option>
-                    <option value="Piso 4">Piso 4</option>
-                    <option value="Piso 7">Piso 7</option>
+                    <option value="0">SELECCIONE</option> 
+                    <option value="PLANTA BAJA / VUS">PLANTA BAJA / VUS</option>
+                    <option value="PISO M2">PISO M2</option>
+                    <option value="PISO 1">PISO 1</option>
+                    <option value="PISO 2">PISO 2</option>
+                    <option value="PISO 3">PISO 3</option>
+                    <option value="PISO 4">PISO 4</option>
+                    <option value="PISO 7">PISO 7</option>
                     </select>
                     </div>
                     </div>
@@ -654,8 +560,8 @@ Favor de validar y agregar datos del  equipo </h4>
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-green" onclick="agrEqpo();">Aceptar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+                    <button type="button" id="button" class="btn btn-green" onclick="agrEqpo();">ACEPTAR</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">SALIR</button>
                     </div>
                     <b><p class="alert alert-danger text-center padding error" id="danger">Error al agregar datos del equipo </p></b>
 
@@ -735,8 +641,7 @@ $(document).ready(function(){
 		reporte.hfinal,
 		reporte.idequipo,
         n_empleado empleado,
-        -- TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()) AS tiempo_transcurrido
-		IF(reporte.ffinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, NOW()), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
+        IF(reporte.ffinal = '00/00/0000', TIMESTAMPDIFF(HOUR, reporte.finicio, NOW()),TIMESTAMPDIFF(HOUR,reporte.finicio, reporte.ffinal)) AS HORAFINAL 
 		FROM reporte 
 		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
@@ -757,50 +662,52 @@ $(document).ready(function(){
             $nombre = $data2['gstNombr'];
             $apellidos = $data2['gstApell']; 
             $ubicacion = '';
+            $arg = '';
             $extension = $data2['gstExTel'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
 
-            if($data['FechaFinal'] <= 5){
-                $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['FechaFinal']." hrs</i></span>";
-            } else if($data['FechaFinal'] >= 6 ){
-                $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['FechaFinal']." hrs</span>";
-            } else if($data['FechaFinal'] >= 10 ){
-                $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['FechaFinal']." hrs</span>";
+            if($data['HORAFINAL'] <= 5 || $data['HORAFINAL'] <=10){
+                $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['HORAFINAL']." hrs</i></span>";
+            } else if($data['HORAFINAL'] <= 6 || $data['HORAFINAL'] <=15){
+                $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['HORAFINAL']." hrs</span>";
+            } else if($data['HORAFINAL'] >= 24 ){
+                $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['HORAFINAL']." hrs</span>";
             } 
             
   $actual = date('d/m/Y');
 
-if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente' || $data['evaluacion']=='CANCELADO'){
+if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente'){
         ?>
     
     ["<?php echo  $data['n_reporte']?>","<?php echo $nombre . " " . $apellidos ?>","<?php echo $extension?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php echo $tTotal ?>","<?php if($data['estado_rpt'] == 'Por atender'){
                 
-                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>";
+                // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>Por atender</a>";
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; 
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%; font-size:12px;'>POR ATENDER</a>"; 
 
-                if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     } 
                       else if($data['estado_rpt'] == 'Pendiente') {
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%; font-size:12px;'>PENDIENTE</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     }else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:80%'>Por confirmar</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>POR CONFIRMAR</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     } else if($data['evaluacion'] == '0'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:80%'>Por evaluar</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>POR EVALUAR</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     } else if($data['estado_rpt'] == 'Finalizado'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
-                    } else if($data['evaluacion']=='CANCELADO'){
+                    } 
+                    else if($data['evaluacion']=='CANCELADO'){
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:80%'>{$data['estado_rpt']}</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a>";}
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>CANCELADO</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
                     }
                  ?>"
 ],
@@ -823,13 +730,13 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     data: dataSet,
     columns: [
     {title: "N°"},
-    {title: "Nombre usuario"},
-    {title: "Ext."},
-    {title: "Servicio"},
-    {title: "Reporte"},
-    {title: "Termino"},
-    {title: "Tiempo"},
-    {title: "Estado"}
+    {title: "NOMBRE USUARIO"},
+    {title: "EXT."},
+    {title: "SERVICIO"},
+    {title: "INICIO"},
+    {title: "TERMINO"},
+    {title: "TIEMPO"},
+    {title: "ESTADO"}
     ],
     });
 

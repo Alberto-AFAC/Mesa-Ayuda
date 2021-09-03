@@ -118,7 +118,7 @@
     <div class="row">
         <div class="col-lg-12">
              <img src="../img/afac.png" class="imgafac">
-             <h1 class="page-header">Consulta de reportes </h1>
+             <h1 class="page-header">CONSULTA DE REPORTES </h1>
         </div>
     </div>
     <div class="row">   
@@ -142,7 +142,7 @@
                                 ?>
                                 <div class="col-xs-9 text-right text-success">
                                     <div class="huge"><?php echo $row['excelente'] ?></div>
-                                    <div>Bueno</div>
+                                    <div>BUENO</div>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right text-warning">
                                     <div class="huge"><?php echo $row['regular'] ?></div>
-                                    <div>Regular</div>
+                                    <div>REGULAR</div>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right text-danger">
                                     <div class="huge"><?php echo $row['malo'] ?></div>
-                                    <div>Malo</div>
+                                    <div>MALO</div>
                                 </div>
                             </div>
                         </div>
@@ -189,73 +189,8 @@
          </div>   
     </div>
 
-    <form id="frmEditar" class="form-horizontal" action="" method="POST">
-    <div class="modal fade" id="modalEditar" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" id="btnlistar" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">Actualizar Contraseña</h4>
-                                    <div class="alert alert-success text-center" style="display:none;" id="echo">
-                                    <p>Contraseña actualizado</p>
-                                    </div>
 
-                                    <div class="alert alert-info text-center" style="display:none;" id="invalida">
-                                    <p>Comprobación de contraseña no coicide</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="falso">
-                                    <p>Contraseña incorrecto</p>
-                                    </div>
-
-                                    <div class="alert alert-warning text-center" style="display:none;" id="vacio">
-                                    <p>Debes escribir contenido en el campo vacio</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="error">
-                                    <p>No se pudo actualizar los datos</p>
-                                    </div>
-                </div>
-
-            <div class="modal-body">
-                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
-                <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="usuario">Usuario</label>
-                    <input id="usuario" name="usuario" type="text" class="form-control" value="<?php echo $_SESSION['usuario']['usuario'];?>" disabled>
-                    </div>
-                    </div> 
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="password">Contraseña</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    </div>
-                    </div>
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass">Nueva Contraseña</label>
-                    <input id="pass" name="pass" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass2">Corroborar su nueva contraseña</label>
-                    <input id="pass2" name="pass2" type="text" class="form-control" >
-                    </div>
-                    </div>                     
-            </div>            
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar</button>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</form>  
+<?php include('conActu.php');?>
 
 
 <form class="form-horizontal" action="" method="POST">
@@ -266,22 +201,22 @@
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
-<h4 class="modal-title" id="exampleModalLabel">Detalles del reporte - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>  
+<h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE - <input style="text-transform: uppercase;" class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>  
 </div>
             <div class="modal-body">
                 <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
                     <div class="form-group">                    
                     <div class="col-sm-3">
-                    <label>N° reporte</label>
+                    <label>N° REPORTE</label>
                     <input id="n_reporte" name="n_reporte" type="text" class="form-control" class="disabled" disabled="">
                     </div>
                     <div class="col-sm-6">
-                    <label>Usuario</label>
+                    <label>USUARIO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-3">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
                     <!-- <div class="col-sm-2">
@@ -292,59 +227,59 @@
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label>Intervención</label>
+                    <label>INTERVENCIÓN</label>
                     <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label>Descripción</label>
+                    <label>DESCRIPCIÓN</label>
                     <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Observaciones del usuario al problema</label> 
+                    <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label> 
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label> 
+                    <label>RESPUESTA A LA FALLA</label> 
                     <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="falla">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label> RESPUESTA EXTERNA A LA FALLA</label>
                     <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3"  disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label> Fecha reporte</label>
+                    <label> FECHA REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control"  disabled="">
                     </div>
                     <div class="col-sm-4">
-                    <label> Fecha finalizada</label>
+                    <label> FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-4">
-                    <label> Su evaluación de reporte</label>
+                    <label> SU EVALUACIÓN DE REPORTE</label>
                     <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
                    <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Porque</label>
+                    <label>¿POR QUÉ?</label>
                     <textarea id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
                     </div> 
@@ -434,11 +369,28 @@
  
 if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
     ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta su evaluación</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>"],
 <?php }else if($data['evaluacion'] != '0'){ ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['evaluacion']}</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>",
+
+
+    "<?php 
+if($data['evaluacion']=='CANCELADO'){
+    echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}else if($data['evaluacion']=='BUENO'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}else if($data['evaluacion']=='REGULAR'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}else if($data['evaluacion']=='MALO'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+}
+
+
+
+
+?>"],
 <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?> 
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%'>Falta que confirme</a>";?>"],
+    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $extension?>","<?php echo $servicio?>","<?php echo $inicio ?>","<?php echo $final ?>","<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>"],
 <?php  } 
     }  
 } ?>
@@ -456,12 +408,12 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     data: dataSet,
     columns: [
     {title: "N°"},
-    {title: "Nombre usuario"},
-    {title: "Ext."},
-    {title: "Servicio"},
-    {title: "Reporte"},
-    {title: "Termino"},
-    {title: "Estado"}
+    {title: "NOMBRE USUARIO"},
+    {title: "EXT."},
+    {title: "SERVICIO"},
+    {title: "REPORTE"},
+    {title: "TERMINO"},
+    {title: "ESTADO"}
     ],
     });
         </script>

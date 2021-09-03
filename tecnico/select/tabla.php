@@ -79,7 +79,7 @@ switch ($id) {
  <?php break;
    case "x":?>
 
-            <input type="hidden" id="intervencion" name="intervencion" value="0">
+            <input type="hidden" id="intervencion" name="intervencion" value="x">
               <!--Resetear select-->
             <script type="text/javascript">
             reset();
@@ -88,14 +88,14 @@ switch ($id) {
 
   default:?>
 <!--Resetear select-->
-<input type="hidden" name="intervencion" id="intervencion" value="0">
+<input type="hidden" name="intervencion" id="intervencion" value="x">
 <script type="text/javascript">
   reset();
 </script>
 <?php }
 }else{ ?>
  
-<input type="hidden" id="intervencion" name="intervencion" value="0">
+<input type="hidden" id="intervencion" name="intervencion" value="x">
 
 <?php } ?>
     	

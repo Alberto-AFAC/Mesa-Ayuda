@@ -58,7 +58,7 @@ include('conexion/conexion.php');
 // 	echo 'Proximo técnico: '.$pila[0][0];
 // }
 
-$sede = 'CIAAC';
+$sede = 'LAS FLORES';
 $idtec = selecTec($conexion,$sede);
 
 
@@ -66,7 +66,7 @@ echo $idtec;
 
 function selecTec($conexion,$sede){
 
-$query = "SELECT idtec FROM reporte ORDER BY n_reporte DESC ";
+$query = "SELECT idtec FROM reporte WHERE pila = '$sede' ORDER BY n_reporte DESC ";
 $res = mysqli_query($conexion,$query);
 $result = mysqli_fetch_row($res);
 if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
@@ -87,5 +87,17 @@ if(!empty($idtec[$n][0])){
 }
 }	
 
+
+// echo "<br>";
+
+// $valor1 = '11';
+// $valor2 = 'CIAAC';
+
+// $valor3 = $valor1.','.$valor2;
+
+// $valor3;
+
+//  $valor = explode(',', $valor3);
+//  echo $valor[1];
 
 ?>

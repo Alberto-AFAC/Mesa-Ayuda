@@ -65,7 +65,7 @@ unset($_SESSION['consulta']);
             <div class="row">
                 <div class="col-lg-12">
                      <img src="../img/afac.png" class="imgafac">
-                     <h1 class="page-header">Consultar reporte</h1>
+                     <h1 class="page-header">CONSULTAR REPORTE</h1>
                 </div>
             </div>
             <div class="row">   
@@ -93,32 +93,32 @@ unset($_SESSION['consulta']);
 <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>-->
 <button type="button" onclick="location.href='rptCons.php'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="exampleModalLabel">Evaluar reporte - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></h4>
+<h4 class="modal-title" id="exampleModalLabel"><b>EVALUAR REPORTE - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>
 </div>
             <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
                     <div class="form-group">                    
-                    <div class="col-sm-3">
-                    <label>N° reporte</label>
+                    <div class="col-sm-2">
+                    <label>N° REPORTE</label>
                     <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-5">
-                    <label>Técnico</label>
+                    <div class="col-sm-4">
+                    <label>TÉCNICO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-2">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-2">
-                    <label>Correo</label>
+                    <div class="col-sm-4">
+                    <label>CORREO</label>
                     <input id="correo" name="correo" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
@@ -135,55 +135,55 @@ unset($_SESSION['consulta']);
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label style="color:white;">.</label>
+              
                     <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label style="color:white;">.</label>
+               
                     <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label style="color:white;">.</label>
+                
                     <input id="final" name="final" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Observaciones</label>  
+                    <label>OBSERVACIONES</label>  
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label> 
+                    <label>RESPUESTA DE FALLA</label> 
                     <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="externo">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label>RESPUESTA EXTERNA DE LA FALLA</label>
                     <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-6">
-                    <label> Fecha reporte</label>
+                    <label> FECHA REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-6">
-                    <label> Fecha finalizada</label>
+                    <label> FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
-                    <p><b>Su opinión es muy importante para nosotros:</b></p>
+                    <p><b>SU OPINIÓN ES MUY IMPORTANTE PARA NOSOTROS</b></p>
                     <p id="div1">
-                    ¿Como le pareció el servicio?
+                    ¿COMO LE PARECIÓ EL SERVICIO?
                     <label for="BUENO">BUENO</label>
                     <input name="evaluacion" type="radio" value="BUENO" id="BUENO" />
                     <label for="REGULAR">REGULAR</label>
@@ -192,19 +192,19 @@ unset($_SESSION['consulta']);
                     <input name="evaluacion" type="radio" value="MALO" id="MALO" />
                     </p>
                     <p id="div2">
-                        <label for="Cancelado">Cancelado</label>
+                        <label for="Cancelado">CANCELADO</label>
                         <input name="evaluacion" type="radio" value="CANCELADO" id="CANCELADO" />
                     <p>
                    <div class="form-group" id="externo">
                     <div class="col-sm-12">
-                    <label>Describa ¿Por qué?</label>
-                    <textarea id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    <label>¿DESCRIBA POR QUÉ?</label>
+                    <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                     </div>
                     </div> 
                                
             <div class="form-group"><br>
             <div class="col-sm-offset-0 col-sm-5">
-            <button type="button" id="button" class="btn btn-green btn-lg" onclick="evlRpt();">Aceptar</button>
+            <button type="button" id="button" class="btn btn-green" onclick="evlRpt();">ACEPTAR</button>
             </div>
             <b><p class="alert alert-danger text-center padding error" id="error">Error al evaluar técnico</p></b>
             <b><p class="alert alert-success text-center padding exito" id="exito">¡El técnico ha sido evaluado con éxito!</p></b>
@@ -225,32 +225,32 @@ unset($_SESSION['consulta']);
 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>
 
-<h4 class="modal-title" id="exampleModalLabel">Detalles del reporte</h4>
+<h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE</h4>
 </div>
             <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
                     <div class="form-group">                    
                     <div class="col-sm-2">
-                    <label>N° reporte</label>
+                    <label>N° REPORTE</label>
                     <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-5">
-                    <label>Técnico</label>
+                    <div class="col-sm-4">
+                    <label>TÉCNICO</label>
                     <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-2">
-                    <label>Extension</label>
+                    <label>EXTENSIÓN</label>
                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                     </div>
-                    <div class="col-sm-3">
-                    <label>Correo</label>
+                    <div class="col-sm-4">
+                    <label>CORREO</label>
                     <input id="correo" name="correo" type="text" class="form-control" disabled="">
                     </div>                    
                     </div>
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label>Tipo de servicio</label>
+                    <label>TIPO DE SERVICIO</label>
                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                     </div>
 
@@ -267,59 +267,59 @@ unset($_SESSION['consulta']);
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label style="color:white;">.</label>
+                    
                     <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
                     </div>
 
                     <div class="col-sm-4">
-                    <label style="color:white;">.</label>
+                    
                     <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
                     </div>                    
 
                     <div class="col-sm-4">
-                    <label style="color:white;">.</label>
+                    
                     <input id="final" name="final" type="text" class="form-control" disabled="">
                     </div>
                     </div>
 
                     <div class="form-group" id="obsrvcns">
                     <div class="col-sm-12">
-                    <label>Observaciones</label>  
+                    <label>OBSERVACIONES</label>  
                     <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="rspsta">
                     <div class="col-sm-12">
-                    <label>Respuesta de falla</label>  
+                    <label>RESPUESTA DE FALLA</label>  
                     <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>
                     
                     <div class="form-group" id="falla">
                     <div class="col-sm-12">
-                    <label> Respuesta externa de la falla</label>
+                    <label>RESPUESTA EXTERNA DE LA FALLA</label>
                     <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                     </div>
                     </div>                     
 
                     <div class="form-group">
                     <div class="col-sm-4">
-                    <label> Fecha reporte</label>
+                    <label> FECHA REPORTE</label>
                     <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                     </div>
                     <div class="col-sm-4">
-                    <label> Fecha finalizada</label>
+                    <label> FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
                     <div class="col-sm-4" id="pndint1">
-                    <label> Su evaluación de reporte</label>
+                    <label> SU EVALUACIÓN DE REPORTE</label>
                     <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
                     </div>
                     </div>
                    <div class="form-group">
                     <div class="col-sm-12" id="pndint2">
-                    <label>Porque</label>
+                    <label>¿POR QUÉ?</label>
                     <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
                     </div>                             
@@ -387,7 +387,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
         ?>
     ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php                   
-                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%'>Por atender</a>"; ?>"
+                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>POR ATENDER</a>"; ?>"
 ],
 <?php 
 
@@ -396,14 +396,14 @@ if($data['estado_rpt'] == 'Por atender'){
    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
                       
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%'>{$data['estado_rpt']}</a>";?>"
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>PENDIENTE</a>";?>"
 ],
 
 <?php }else if($data['evaluacion'] == '0'){ ?>
 
    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%'>Evaluar</a>";                        
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>EVALUAR</a>";                        
                     
                  ?>"
 ],
@@ -419,7 +419,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
             "order": [
-            [6, "desc"]
+            [0, "desc"]
         ],
     orderCellsTop: true,
     fixedHeader: true,
@@ -429,8 +429,8 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     {title: "TÉCNICO ASIGNADO"},
     {title: "EXT."},
     {title: "TIPO DE SERVICIO"},
-    {title: "FECHA ENVIO"},
-    {title: "FECHA TERMINO"},
+    {title: "ENVIO"},
+    {title: "TERMINO"},
     {title: "ESTADO"}
     ],
     });

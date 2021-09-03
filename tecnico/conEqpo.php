@@ -131,74 +131,7 @@
          </div>   
     </div>
 
-    <form id="frmEditar" class="form-horizontal" action="" method="POST">
-    <div class="modal fade" id="modalEditar" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" id="btnlistar" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">Actualizar Contraseña</h4>
-                                    <div class="alert alert-success text-center" style="display:none;" id="echo">
-                                    <p>Contraseña actualizado</p>
-                                    </div>
-
-                                    <div class="alert alert-info text-center" style="display:none;" id="invalida">
-                                    <p>Comprobación de contraseña no coicide</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="falso">
-                                    <p>Contraseña incorrecto</p>
-                                    </div>
-
-                                    <div class="alert alert-warning text-center" style="display:none;" id="vacio">
-                                    <p>Debes escribir contenido en el campo vacio</p>
-                                    </div>
-
-                                    <div class="alert alert-danger text-center" style="display:none;" id="error">
-                                    <p>No se pudo actualizar los datos</p>
-                                    </div>
-                </div>
-
-            <div class="modal-body">
-                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
-                <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="usuario">Usuario</label>
-                    <input id="usuario" name="usuario" type="text" class="form-control" value="<?php echo $_SESSION['usuario']['usuario'];?>" disabled>
-                    </div>
-                    </div> 
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="password">Contraseña</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    </div>
-                    </div>
-                    
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass">Nueva Contraseña</label>
-                    <input id="pass" name="pass" type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label for="pass2">Corroborar su nueva contraseña</label>
-                    <input id="pass2" name="pass2" type="text" class="form-control" >
-                    </div>
-                    </div>                     
-            </div>            
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar</button>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</form>  
-
+<?php include('conActu.php');?>
 
 <form class="form-horizontal" action="" method="POST">
     <div class="modal fade" id="modalAtndr" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

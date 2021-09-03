@@ -131,24 +131,29 @@
 	                $("#modalAtndr #descripcion").val(d[7]);
 
 	                if (d[19] == 'x' || d[19] == '') {
-	                    document.getElementById('select3').style.backgroundColo = "#fff";
+	                   	$("#modalAtndr #solucion").hide();
+	                    //document.getElementById('select3').style.backgroundColo = "#fff";
 	                } else {
+	                	$("#modalAtndr #solucion").show();
 	                    $("#modalAtndr #solucion").val(d[19]);
 	                }
 
 	                if (d[20] == 'x' || d[20] == '') {
-	                    $("#select4").hide();
-	                    document.getElementById('select4').style.backgroundColo = "#fff";
+	                    $("#modalAtndr #ultima").hide();
+	                    //$("#select4").hide();
+	                   // document.getElementById('select4').style.backgroundColo = "#fff";
 	                } else {
+	                    $("#modalAtndr #ultima").show();
 	                    $("#modalAtndr #ultima").val(d[20]);
 	                }
+
 	                if (d[21] == 'x' || d[21] == '') {
-	                    document.getElementById('select5').style.backgroundColo = "#fff";
+	                	$("#modalAtndr #final").show();	                	
+	                	$("#modalAtndr #final").hide();
+	                    //document.getElementById('select5').style.backgroundColo = "#fff";
 	                } else {
 	                    $("#modalAtndr #final").val(d[21]);
 	                }
-
-
 
 	                $("#modalAtndr #usu_observ").val(d[8]);
 	                $("#modalAtndr #falla_interna").val(d[9]);
@@ -189,6 +194,7 @@ function personal(n_empleado){
 					$("#modalDtll #usuario").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
 					$("#modalDtll #extension").val(obj.data[i].gstExTel);
 
+					$("#modalVal #usua").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
 	            }
 	        }
 	    })
@@ -245,8 +251,19 @@ function personal(n_empleado){
 	                    $("#falla").show();
 	                    $("#modalDtll #falla_xterna").val(d[12]);
 	                }
-	                $("#modalDtll #observa").val(d[13]);
-	                $("#modalDtll #evaluacion").val(d[14]);
+	                
+	                if(d[13]=='0'){
+	                $("#modalDtll #observa").val('');	                	
+	                }else{
+	                $("#modalDtll #observa").val(d[13]);	                	
+	                }
+
+	                if(d[14]=='0'){
+	                $("#modalDtll #evaluacion").val('');	                	
+	                }else{
+	                $("#modalDtll #evaluacion").val(d[14]);	                	
+	                }
+
 
 	                $("#modalDtll #estado_rpt").val(d[15]);
 

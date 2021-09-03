@@ -11,7 +11,7 @@
              ?>
              <?php
 					
-//echo '>'.$id;
+//cho '>'.$id;
 switch ($id) /*aCPU*/{
   case "a":?>
 
@@ -25,7 +25,6 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
-  <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "b": /*bMONITOR*/?>
 
@@ -37,7 +36,6 @@ switch ($id) /*aCPU*/{
   <option value="gCOMPORTAMIENTO INUSUAL">COMPORTAMIENTO INUSUAL</option>
   </select>
   </div>
-  <input type="hidden" name="final" id="final" value="x">
  
 <?php break;
   case "c": /*TECLADO*/?>
@@ -48,7 +46,6 @@ switch ($id) /*aCPU*/{
   <option value="hFALLA">FALLA</option>
   </select>
   </div>
-  <input type="hidden" name="final" id="final" value="x">
 <?php break;
  case "d": /*RATÓN*/?>
 
@@ -58,7 +55,6 @@ switch ($id) /*aCPU*/{
   <option value="iFALLA">FALLA</option>
   </select>
   </div>
-  <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "e": /*DISPOSITIVOS EXTRA (PERIFÉRICOS)*/?>
 
@@ -102,7 +98,7 @@ switch ($id) /*aCPU*/{
   <option value="tFALLA">FALLA</option>
   </select>
   </div>
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "i": /*PANEL TÁCTIL/RATÓN*/?>
 
@@ -113,7 +109,6 @@ switch ($id) /*aCPU*/{
   </select>
   </div>
 
-  <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "j": /*BATERÍA*/?>
 
@@ -123,8 +118,6 @@ switch ($id) /*aCPU*/{
   <option value="vFALLA">FALLA</option>
   </select>
   </div>  
-  <input type="hidden" name="final" id="final" value="x">
-
 
 <?php break;
   case "k": /*TABLETA-GENERAL*/?>
@@ -139,7 +132,7 @@ switch ($id) /*aCPU*/{
   </option>
   </select>
   </div>  
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "l": /*TABLETA-PANTALLA*/?>
 
@@ -152,7 +145,6 @@ switch ($id) /*aCPU*/{
   </select>
   </div>  
 
-  <input type="hidden" name="final" id="final" value="x">
 <?php break;
   case "m": /*TECLADO FÍSICO/VIRTUAL*/?>
 
@@ -172,7 +164,7 @@ switch ($id) /*aCPU*/{
   <option value="5FALLA">FALLA</option>
   </select>
   </div>  
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "o": /*BATERÍA*/?>
 
@@ -182,7 +174,6 @@ switch ($id) /*aCPU*/{
   <option value="6FALLA">FALLA</option>
   </select>
   </div> 
-  <input type="hidden" name="final" id="final" value="x">
   
 <?php break;
   case "p": ?>
@@ -194,7 +185,6 @@ switch ($id) /*aCPU*/{
   <option value="8SOLICITUD">SOLICITUD</option>
   </select>
   </div> 
-  <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
   case "q": ?>
@@ -206,8 +196,6 @@ switch ($id) /*aCPU*/{
   <option value="/SOLICITUD">SOLICITUD</option>
   </select>
   </div> 
-
-  <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
   case "r": ?>
@@ -281,8 +269,7 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
-  <input type="hidden" name="ultima" id="ultima" value="xx">
-  <input type="hidden" name="final" id="final" value="x">
+
 <?php break;
   case "w": ?>
 
@@ -293,7 +280,6 @@ switch ($id) /*aCPU*/{
   <option value="_RED INALÁMBRICA (WIFI)  ">RED INALÁMBRICA (WIFI) </option> 
   </select>
   </div>
-  <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
   case "x": ?>
@@ -304,7 +290,6 @@ switch ($id) /*aCPU*/{
   <option value=".RED INALÁMBRICA (WIFI)">RED INALÁMBRICA (WIFI)</option>  
   </select>
   </div>
-  <input type="hidden" name="final" id="final" value="x">
 
 <?php break;
   case "y": ?>

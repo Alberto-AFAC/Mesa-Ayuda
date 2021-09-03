@@ -325,9 +325,8 @@ if (isset($_SESSION['usuario'])) {
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><a
                             href="./" style="color: black"><span style="color: black;"
                             aria-hidden="true"
-                            class="glyphicon glyphicon-share-alt"></span></a></button>
-                            <h4 class="modal-title" id="exampleModalLabel">Información del usuario y sus equipos
-                            de computo </h4>
+                            class="glyphicon glyphicon-remove"></span></a></button>
+                            <h4 class="modal-title" id="exampleModalLabel">INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO </h4>
                         </div>
                         <div class="modal-body">
                             <div class="col-sm-offset-1 col-sm-10">
@@ -337,30 +336,30 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="form-group">
                             <div class="col-sm-offset-0 col-sm-4" >
-                            <label for="Nombre">Nombre</label>
+                            <label for="Nombre">NOMBRE</label>
                             <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
                             </div>
                             <div class="col-sm-offset-0 col-sm-4" >
-                            <label for="Correo">Correo</label>
+                            <label for="Correo">CORREO</label>
                             <input id="correo" name="correo" type="text"  class="form-control" disabled="">
                             </div>
                             <div class="col-sm-offset-0 col-sm-2">
-                            <label for="N° empleado">N° empleado</label>
+                            <label for="N° empleado">N° EMPLEADO</label>
                             <input id="n_empleado" name="n_empleado" type="text" class="form-control" disabled="">
                             </div> 
                             <div class="col-sm-offset-0 col-sm-2">
-                            <label for="Extension">Extension</label>
+                            <label for="Extension">EXTENSIÓN</label>
                             <input id="extension" name="extension" type="text" class="form-control" disabled="">
                             </div> 
                             </div>
                             
                             <div class="form-group">  
                             <div class="col-sm-offset-0 col-sm-3">
-                            <label for="Adscripción">Cargo</label>
+                            <label for="Adscripción">CARGO</label>
                             <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
                             </div>  
                             <div class="col-sm-offset-0 col-sm-9">
-                            <label for="Adscripción">Adscripción</label>
+                            <label for="Adscripción">ADSCRIPCIÓN</label>
                             <input id="area" name="area" type="text" class="form-control" disabled="">
                             </div>
                             </div>    
@@ -390,7 +389,7 @@ if (isset($_SESSION['usuario'])) {
 
                             <div class="cerrar"><a><span class="icon-cross"></span></a></div>
 
-                            <h4 class="modal-title" id="exampleModalLabel">Agregar Técnico</h4>
+                            <h4 class="modal-title" id="exampleModalLabel">AGREGAR TÉCNICO</h4>
 
                         </div>
 
@@ -398,7 +397,7 @@ if (isset($_SESSION['usuario'])) {
                             <!-- <input type="hidden" id="opcion" name="opcion" value="registrar"> -->
                             <div class="form-group">
                                 <div class="col-sm-offset-0 col-sm-8">
-                                    <label>Nombre personal</label>
+                                    <label>NOMBRE</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="idusu" id="idusu" type="text" data-live-search="true">
                                     <option value="">SELECCIONE OPCIÓN </option>
@@ -410,33 +409,33 @@ if (isset($_SESSION['usuario'])) {
                         </div>
 
                         <div class="col-sm-offset-0 col-sm-4">
-                            <label>Especialidad </label>
+                            <label>ESPECIALIDAD </label>
                             <select style="width: 100%" class="form-control" class="selectpicker"
                             name="privilg" id="privilg" type="text" data-live-search="true">
-                            <option selected>Seleccione</option>
-                            <option value="tecnico">Técnico</option>
-                            <option value="admin">Administrador</option>
+                            <option selected>SELECCIONE...</option>
+                            <option value="tecnico">TÉCNICO</option>
+                            <option value="admin">ADMINISTRADOR</option>
                         </select>
                     </div>
 
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-6">
-                        <label for="usuario">Usuario</label>
-                        <input id="usuario" name="usuario" type="text" class="form-control">
+                        <label for="usuario">USUARIO</label>
+                        <input style="text-transform: uppercase;" id="usuario" name="usuario" type="text" class="form-control">
                     </div>
                     <div class="col-sm-offset-0 col-sm-6">
-                        <label for="password">Contraseña</label>
+                        <label for="password">CONTRASEÑA</label>
                         <input id="password" name="password" type="password" class="form-control">
                         <!-- <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-4">
-                        <label>Entrada</label>
+                        <label>ENTRADA</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="entrada" id="entrada" type="text" data-live-search="true">
-                        <option selected>Seleccione entrada</option>
+                        <option selected>SELECCIONE...</option>
                         <option value="08:00:00">08:00:00</option>
                         <option value="09:00:00">09:00:00</option>
                     </select>
@@ -445,7 +444,7 @@ if (isset($_SESSION['usuario'])) {
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="salida" id="salida" type="text" data-live-search="true">
-                    <option selected>Seleccione salida</option>
+                    <option selected>SELECCIONE...</option>
                     <option value="18:00:00">18:00:00</option>
                 </select>
             </div>
@@ -453,13 +452,13 @@ if (isset($_SESSION['usuario'])) {
                     <label>SEDE</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="sede" id="sede" type="text" data-live-search="true">
-                    <option selected>Seleccione SEDE</option>
-                    <option value="Las flores">Las flores</option>
-                    <option value="Hangar 8">Hangar 8</option>
+                    <option selected>SELECCIONE...</option>
+                    <option value="Las flores">LAS FLORES</option>
+                    <option value="HANGAR 8">HANGAR 8</option>
                     <option value="CIAAC">CIAAC</option>
-                    <option value="Licencias">Licencias</option>
-                    <option value="Terminal 1">Terminal 1</option>
-                    <option value="Terminal 2">Terminal 2</option>
+                    <option value="LICENCIAS">LICENCIAS</option>
+                    <option value="TERMINAL 1">TERMINAL 1</option>
+                    <option value="TERMINAL 2">TERMINAL 2</option>
                 </select>
             </div>
         </div>
@@ -687,93 +686,7 @@ $(".toggle-password").click(function() {
 });
 </script>
 <script src="../../js/select2.js"></script>
-
-
-<script type="text/javascript">
-    $(document).on("ready", function() {
-//ocultar();
-});
-
-    var dataSet = [
-    <?php
-        $query = "SELECT * FROM tecnico 
-        WHERE baja = 0";
-        $resultado = mysqli_query($conexion, $query);
-        while($data = mysqli_fetch_array($resultado)){
-           $idusu = $data['id_usu'];
-            $horario = $data['entrada'].' a '.$data['salida']; 
-            $usuario = $data['usuario'];
-            $idtec = $data['id_tecnico'];
-            // $privilegios = strtoupper($data['privilegios']);
-
-            if(strtoupper($data['privilegios'])== 'ADMIN'){
-                $privilegios = 'ADMINISTRADOR';
-
-            } else {
-                $privilegios = 'TÉCNICO';
-            }
-
-        $queri = "SELECT * FROM personal 
-            WHERE gstIdper = $idusu AND estado = 0 ORDER BY gstIdper ASC";
-    $resultados = mysqli_query($conexion2,$queri);
-    while($data = mysqli_fetch_array($resultados)){
-       $id = $data['gstIdper'];
-       $nombre = $data['gstNombr'].' '.$data['gstApell'];
-
-
-
-       ?>
-
-       ['<?php echo $id;?>', '<?php echo $nombre ?>',
-       '<?php echo $privilegios?>', '<?php echo $usuario?>', '<?php echo $horario?>', "<?php 
-
-// echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
-
-       echo "<a title='Editar técnico' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>  <a title='Detalles técnico' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a> <a title='Dar de baja técnico' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='datos_eliminar({$idtec})' ><i class='fa fa-trash-o text-danger'></i></a>";
-
-
-       ?>"
-
-
-       ],
-   <?php } 
-}
-   ?>
-   ];
-
-   var tableGenerarReporte = $('#data-table-area').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    "order": [
-    [0, "desc"]
-    ],
-    orderCellsTop: true,
-    fixedHeader: true,
-    data: dataSet,
-    columns: [{
-        title: "ID"
-    },
-    {
-        title: "NOMBRE"
-    },
-    {
-        title: "PRIVILEGIOS"
-    },
-    {
-        title: "USUARIO"
-    },
-    {
-        title: "HORARIO"
-    },
-    {
-        title: "ACCIÓN"
-    }
-    ],
-});
-</script>
-
+<?php include('../../php/admin-tecnico.php');?>
 </html>
 <!-- <a title='Restablecer contraseña' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-lock text-warning'></i></a> -->
 <!-- <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$id})' ><i class='fa fa-desktop'></i></a> -->

@@ -28,25 +28,7 @@
     <meta name="author" content="">
 
     <title>Sistema</title>
-
-    <!-- Bootstrap Core CSS -->
-
-
-    <!-- MetisMenu CSS -->
-    <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-
-    <!-- Morris Charts CSS -->
-    <link href="../boots/morrisjs/morris.css" rel="stylesheet">
-    <link href="../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-    <link href="//cdn.datatables.net/datetime/1.1.0/css/dataTables.dateTime.min.css" rel="stylesheet">
-    <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet">
-    </link>
-    <link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" rel="stylesheet"
-        type="text/css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="../css/historial.css">
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -54,59 +36,11 @@
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-    <style>
-        .parpadea {
-    animation-name: parpadeo;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    -webkit-animation-name: parpadeo;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-}
-
-@-moz-keyframes parpadeo {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@-webkit-keyframes parpadeo {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@keyframes parpadeo {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-    </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
+    <!-- CREACIÓN DE BOTONES -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
 </head>
-
 <body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -304,7 +238,7 @@
                     <?php
                     echo
                     "<marquee style='color: white; background-color: #1489D8;' width='100%' direction='left'>
-                        Estadisticas generales mostradas año $fecha
+                        ESTADISTICAS GENERALES MOSTRADAS AL AÑO $fecha
                     </marquee>";
                     ?>
                 </div>
@@ -312,85 +246,26 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+       
+
+	
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="more-less glyphicon glyphicon-plus"></i>
+                    SOLICITUD DE REPORTES SEGÚN SERVICIO
+                </a>
+            </h4>
+            
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                  
             <div class="row">
-                <h4 style="text-align: center;">SOLICITUD DE REPORTES SEGÚN SERVICIO</h4>
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="../img/realizado.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <?php 
-                                $query ="SELECT
-                                            'total',
-                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente,
-                                            COUNT( CASE WHEN estado_rpt = 'Finalizado' THEN 1 END ) AS Finalizado,
-                                            COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
-                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente 
-                                        FROM
-                                            reporte";
-                                $resultado = mysqli_query($conexion, $query);
-                                $row = mysqli_fetch_assoc($resultado);
-                                ?>
-                                <div class="col-xs-9 text-right text-success">
-                                    <div class="huge"><?php echo $row['Finalizado'] ?></div>
-                                    <div>Finalizados</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <div class="col-xs-9 text-right text-danger">
-                                    <div class="huge"><?php echo $row['Cancelado'] ?></div>
-                                    <div>Cancelado</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="../img/reloj.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <div class="col-xs-9 text-right text-warning">
-                                    <div class="huge"></div>
-                                    <div>Atendidos a tiempo</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="zoom col-lg-3 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img class="parpadea" src="../img/fuera de tiempo.svg" width="60px" alt="Bueno" class="img-fluid">
-                                </div>
-                                <div class="col-xs-9 text-right text-primary">
-                                    <div class="huge"></div>
-                                    <div>Atendidos fuera de tiempo</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="row">
+           
             <div class="col-lg-4 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -424,7 +299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div style="padding-top: 10px;" class="col-lg-4 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -436,7 +311,11 @@
                     </div>
                 </div>
 </div>
-            
+
+            </div>
+        </div>
+    </div></div>
+   
 
             <!-- <div class="row col-lg-6 col-md-6">
                     <div class="panel panel-default">
@@ -637,15 +516,15 @@ onclick="location.href='./'" -->
                     <div id="cuadro1" class="col-lg-12">
                         <div class="panel panel-default">
                             <div style="padding-top: 13px;" class="col-lg-5">
-                                <div class="input-group">
+                                <!-- <div class="input-group">
                                     <span class="input-group-btn">
                                         <span class="btn btn-default"><i class="fa fa-calendar-check-o"
                                                 aria-hidden="true"></i></span>
                                     </span>
                                     <input type="text" placeholder="Desde" id="min" name="min" class="form-control">
-                                </div>
+                                </div> -->
                             </div>
-                            <div style="padding-top: 13px;" class="col-lg-5">
+                            <!-- <div style="padding-top: 13px;" class="col-lg-5">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Hasta" id="max" name="max">
                                     <span class="input-group-btn">
@@ -653,9 +532,28 @@ onclick="location.href='./'" -->
                                                 aria-hidden="true"></i></span>
                                     </span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        </br></br></br>
+                        </br>
+                        <div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        Desde
+      </span>
+      <input type="text" class="form-control date-range-filter" placeholder="Fecha minima" data-date-format="dd-mm-yyyy" id="min">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+      Hasta
+      </span>
+      <input type="text" class="form-control date-range-filter" placeholder="Fecha maxíma" data-date-format="dd-mm-yyyy" id="max">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+                     <br><br>
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
                     </div>
@@ -670,364 +568,36 @@ onclick="location.href='./'" -->
     </div>
     <!-- /#wrapper -->
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-<script src="https://oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script> -->
-<!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
- -->
-
-
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
-<!--<script src="js/jquery-1.12.3.js"></script>-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="//cdn.datatables.net/datetime/1.1.0/js/dataTables.dateTime.min.js"></script>
-
-<!-- <script src="../js/jquery.dataTables.min.js"></script> -->
-<!-- <script src="../js/dataTables.bootstrap.js"></script> -->
-<!--botones DataTables-->
-<!-- <script src="../js/dataTables.buttons.min.js"></script> -->
-<!-- <script src="../js/buttons.bootstrap.min.js"></script> -->
-<!--Libreria para exportar Excel-->
-<script src="../js/jszip.min.js"></script>
-<!--Librerias para exportar PDF-->
-<script src="../js/pdfmake.min.js"></script>
-<script src="../js/vfs_fonts.js"></script>
-<!--Librerias para botones de exportación-->
-
-<!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
-
-
-<!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-
-<!--COMIENZA TABLA DEL ADMINISTRADOR-->
-
-
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-
-<script src="../js/jquery.dataTables.min.js"></script>
-<!-- <script src="../js/dataTables.bootstrap.js"></script> -->
-<!-- <script src="../js/dataTables.buttons.min.js"></script> -->
+<script src="../js/dataTables.bootstrap.js"></script>
+<script src="../js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
-<script type="text/javascript" src="../js/admin.js"></script>
+<script type="text/javascript" src="../js/admin.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<!-- BOTTONES DE IMPRESIÓN PARA CREAR EL FORMATO DEL PDF -->
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script>
 
-
-<!-- <script type="text/javascript" src="../js/area.js"></script> -->
-
-
-
-
-
-<script type="text/javascript">
-var minDate, maxDate;
-$.fn.dataTable.ext.search.push(
-    function(settings, data, dataIndex) {
-        var min = minDate.val();
-        var max = maxDate.val();
-        var date = new Date(data[5]);
-
-        if (
-            (min === null && max === null) ||
-            (min === null && date <= max) ||
-            (min <= date && max === null) ||
-            (min <= date && date <= max)
-        ) {
-            return true;
-        }
-        return false;
+<?php include('../php/admin-historial.php');?>
+<script>
+    function toggleIcon(e) {
+        $(e.target)
+            .prev('.panel-heading')
+            .find(".more-less")
+            .toggleClass('glyphicon-plus glyphicon-minus');
     }
-);
-var dataSet = [
-    <?php
-        $query1 = "SELECT 
-        n_reporte,
-        n_empleado empleado,
-        DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
-        DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
-        YEAR(finicio) AS año,
-        evaluacion,
-        estado_rpt,
-        id_usu 
-        FROM REPORTE
-        INNER JOIN tecnico ON idtec = id_tecnico 
-        WHERE 	MONTH ( finicio ) = MONTH (
-        CURRENT_DATE ()) 
-        AND estado_rpt = 'Finalizado' || estado_rpt = 'Cancelado'
-        ORDER BY
-        n_reporte DESC";
-        $resultado = mysqli_query($conexion, $query1);
-        while($data = mysqli_fetch_array($resultado)){
-        $idempleado=$data['empleado'];
-        $idper = $data['id_usu'];
-        $sql2="SELECT gstNombr,
-                          gstApell,
-                          gstExTel,
-                          gstNmpld
-                          FROM personal
-                        WHERE
-                        gstNmpld = $idempleado";
-    $result2=mysqli_query($conexion2,$sql2);
-    
-    while($data2=mysqli_fetch_array($result2)){
-
-            $sql3="SELECT gstNombr,
-                          gstApell,
-                          gstExTel,
-                          gstNmpld
-                          FROM personal
-                        WHERE
-                        gstIdper = $idper";
-    $result3=mysqli_query($conexion2,$sql3);
-    while($data3=mysqli_fetch_array($result3)){   
-
-            if($data['evaluacion'] == '0'){
-                $eva = "SIN EVALUAR";
-            } else {
-                $eva = $data['evaluacion'];
-            }
-
-
-        ?>
-
-    ["<?php echo $data['año']."-".$data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>","<?php echo $eva ?> ",
-        "<?php 
-
-        if($data['estado_rpt'] == 'Finalizado'){
-                
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-success' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>FINALIZADO</a>";
-
-                    }else if($data['estado_rpt'] == 'Cancelado'){
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>POR EVALUAR</a>";
-
-                    } 
-                      ?>"
-    ],
-    <?php } } }?>
-];
-//       
-$(document).ready(function() {
-    var printCounter = 0;
-    minDate = new DateTime($('#min'), {
-        format: 'Do MMMM YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-        format: 'Do MMMM YYYY'
-    });
-    var tableGenerarReporte = $('#data-table-administrador').DataTable({
-
-        "order": [
-            [6, "desc"]
-        ],
-        "language": {
-            "searchPlaceholder": "Buscar datos...",
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-        },
-        dom: 'Bfrtip',
-        buttons: [
-
-            'copy', 'csv', 'excel',
-            {
-            extend: 'pdfHtml5',
-            messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-            download: 'open',
-            title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-            text: 'Descargar PDF',
-            pageSize: 'A4',
-
-        }],
-        orderCellsTop: true,
-        fixedHeader: true,
-        responsive: true,
-        data: dataSet,
-        columns: [{
-                title: "FOLIO"
-            },
-            {
-                title: "NOMBRE USUARIO"
-            },
-            {
-                title: "INICIO"
-            },
-            {
-                title: "FINALIZA"
-            },
-            {
-                title: "TÉCNICO"
-            },
-            {
-                title: "ATENCIÓN"
-            },
-            {
-                title: "ESTADO"
-            }
-        ],
-    });
-    //Cierre de la función
-    $('#min, #max').on('change', function() {
-        tableGenerarReporte.draw();
-    });
-});
-
-//GRÁFICA PARA MEDIR EL EQUIPO DE COMPUTO
-<?php 
-            $query = "SELECT
-       	    COUNT( CASE WHEN servicio = 'COMPUTO' THEN 1 END ) AS COMPUTOPRINCIPAL,
-            COUNT( CASE WHEN intervencion = 'ESCRITORIO' THEN 1 END ) AS INVERVENCIONE,
-            COUNT( CASE WHEN intervencion = 'LAPTOP' THEN 1 END ) AS INVERVENCIONL,
-            COUNT( CASE WHEN intervencion = 'TABLETA' THEN 1 END ) AS INVERVENCIONT
-            FROM
-            reporte";
-        $resultado = mysqli_query($conexion, $query);
-?>
-var piechar = new Chart(document.getElementById("piechart-servicios"), {
-    type: 'polarArea',
-    data: {
-        <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Escritorio", "Laptop", "Tableta","Total"
-        ],
-        datasets: [{
-            label: "Sistemas",
-            backgroundColor: ["#006E6D","#009C9A","#00D6D4","#5ED0CF"],
-            borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONE']?>","<?php echo $row['INVERVENCIONL']?>","<?php echo $row['INVERVENCIONT']?>","<?php echo $row['COMPUTOPRINCIPAL']?>"]
-        }]
-        <?php }?>
-    },
-    options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Computo'
-      }
-    }
-  },
-});
-
-//GRÁFICA PARA MEDIR EL SERVICIO DE IMPRESION
-<?php 
-            $query = "SELECT
-            COUNT( CASE WHEN servicio = 'IMPRESION' THEN 1 END ) AS IMPRESIONPRINCIPAL,
-            COUNT( CASE WHEN intervencion = 'MULTIFUNCIONAL' THEN 1 END ) AS INVERVENCIONM,
-            COUNT( CASE WHEN intervencion = 'IMPRESORA' THEN 1 END ) AS INVERVENCIONI,
-            COUNT( CASE WHEN intervencion = 'ESCANER' THEN 1 END ) AS INVERVENCIONES
-            FROM
-            reporte";
-        $resultado = mysqli_query($conexion, $query);
-?>
-var piechar = new Chart(document.getElementById("piechart-impresion"), {
-    type: 'polarArea',
-    data: {
-        <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Multifuncional", "Impresora", "Escanner","Total"
-        ],
-        datasets: [{
-            label: "Sistemas",
-            backgroundColor: ["#00CF4B","#00F358","#37FF80","#91FFB9"],
-            borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONM']?>","<?php echo $row['INVERVENCIONI']?>","<?php echo $row['INVERVENCIONES']?>","<?php echo $row['IMPRESIONPRINCIPAL']?>"]
-        }]
-        <?php }?>
-    },
-    options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Impresión'
-      }
-    }
-  },
-});
-//GRÁFICA PARA MEDIR EL SERVICIO DE COMUNICACIONES
-<?php 
-            $query = "SELECT
-            COUNT( CASE WHEN servicio = 'COMUNICACIONES' THEN 1 END ) AS COMUNICACIONESPRINCIPAL,
-            COUNT( CASE WHEN intervencion = 'INTERNET' THEN 1 END ) AS INVERVENCIONINT,
-            COUNT( CASE WHEN intervencion = 'TELEFONÍA' THEN 1 END ) AS INVERVENCIONTEL,
-            COUNT( CASE WHEN servicio = 'PROGRAMACIÓN DE EVENTOS/REUNIO' THEN 1 END ) AS PROGRAMACIONPRIN,
-            COUNT( CASE WHEN intervencion = 'PRÉSTAMO DE EQUIPO' THEN 1 END ) AS INVERVENCIONPREST
-            FROM
-            reporte";
-        $resultado = mysqli_query($conexion, $query);
-?>
-var piechar = new Chart(document.getElementById("piechart-comunicaciones"), {
-    type: 'polarArea',
-    data: {
-        <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Internet", "Telefonía","Total"
-        ],
-        datasets: [{
-            label: "Sistemas",
-            backgroundColor: ["#000075","#2424D1","#3636FF"],
-            borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONINT']?>","<?php echo $row['INVERVENCIONTEL']?>","<?php echo $row['COMUNICACIONESPRINCIPAL']?>"]
-        }]
-        <?php }?>
-    },
-    options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Comunicaciones'
-      }
-    }
-  },
-});
-//GRÁFICA PARA MEDIR LA PROGRAMACIÓN DE EVENTOS Y REUNIONES
-<?php 
-            $query = "SELECT
-            COUNT( CASE WHEN servicio = 'PROGRAMACIÓN DE EVENTOS/REUNIO' THEN 1 END ) AS PROGRAMACIONPRIN,
-            COUNT( CASE WHEN intervencion = 'PRÉSTAMO DE EQUIPO' THEN 1 END ) AS INVERVENCIONPREST
-            FROM
-            reporte";
-        $resultado = mysqli_query($conexion, $query);
-?>
-var piechar = new Chart(document.getElementById("piechart-eventos"), {
-    type: 'polarArea',
-    data: {
-        <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Préstamo de equipo","Total"
-        ],
-        datasets: [{
-            label: "Sistemas",
-            backgroundColor: ["#FF6609","#FF8C47"],
-            borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONPREST']?>","<?php echo $row['PROGRAMACIONPRIN']?>"]
-        }]
-        <?php }?>
-    },
-    options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Programación de eventos/reuniones'
-      }
-    }
-  },
-});
-</script>
-
+    $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+    $('.panel-group').on('shown.bs.collapse', toggleIcon);
+    </script>
 </html>
