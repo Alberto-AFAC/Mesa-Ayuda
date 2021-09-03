@@ -136,9 +136,11 @@
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
                                 </li> -->
                             <li>
-                                    <a href="./"><i class="fa fa-users"></i> Usuarios <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level"><li><a href="../bajas">Bajas</a></li></ul>
+                            <a href="./"><i class="fa fa-user"></i> Bajas <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level"><li><a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a></li>
+                            </ul>
                             </li>
+
                             <li>
                                     <a href="../equipo"><i class="fa fa-desktop"></i> Equipos</a>
                             </li>
@@ -161,7 +163,7 @@
             <!--<h3 class="text-center" style="border: 1px solid red;"> <small class="mensaje">123</small></h3>-->
             <div class="row">
                 <div class="col-lg-12">
-             <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">         <h1 class="page-header">Usuarios</h1>                    
+             <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">         <h1 class="page-header">BAJAS DE USUARIOS </h1>                    
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -248,10 +250,8 @@
 
 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
 
-
-
-<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
-<h4 class="modal-title" id="exampleModalLabel">INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO </h4>
+<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="bajas.php" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
+<h4 class="modal-title" id="exampleModalLabel"><b>INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO</b> </h4>
 
 
 </div>
@@ -575,6 +575,6 @@
     });
 </script>
 <script src="../../js/select2.js"></script> 
-<?php include('../../php/admin-usuarios.php');?>
+<?php include('../../php/admin-baja.php');?>
 </html>
 <!-- <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$id})' ><i class='fa fa-desktop'></i></a> -->

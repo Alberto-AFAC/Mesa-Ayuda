@@ -2,8 +2,7 @@
 	include ("../conexion/conexion.php");
 	header("Content-Type: text/html;charset=utf-8");
 	$query = "SELECT gstIdper,gstNombr,gstApell,gstGnric,gstExTel,gstCinst,gstNmpld,gstIDara FROM personal 
-			  INNER JOIN codigo ON codigo.gstIdpst = personal.gstIdpst 
-			  WHERE personal.estado = 0";
+			  INNER JOIN codigo ON codigo.gstIdpst = personal.gstIdpst";
 	$resultado = mysqli_query($conexion2, $query);
 	if (!$resultado) {
 		die("error");//EN CASO DE NO HABER RESULTADO

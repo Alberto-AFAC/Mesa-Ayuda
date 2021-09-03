@@ -1,7 +1,7 @@
 <?php
 	include ("../conexion/conexion.php");
 	header("Content-Type: text/html;charset=utf-8");
-	$query = "SELECT gstIdper,gstNombr,gstApell,gstExTel,gstCinst,gstNmpld
+	$query = "SELECT gstIdper,gstNombr,gstApell,gstExTel,gstCinst,gstNmpld,estado
 	FROM personal 
 	WHERE personal.estado = 0";
 	$resultado = mysqli_query($conexion2, $query);
