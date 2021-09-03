@@ -419,7 +419,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
             "order": [
-            [6, "desc"]
+            [0, "desc"]
         ],
     orderCellsTop: true,
     fixedHeader: true,

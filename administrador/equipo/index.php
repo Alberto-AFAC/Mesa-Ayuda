@@ -742,7 +742,7 @@ EDITAR DATOS DEL EQUIPO </h4>
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
 <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
- --><link rel="stylesheet" type="text/css" href="../../css/styles.css">
+ -->
 <script type="text/javascript" src="../../js/funciones.js"></script>
 
 <script src="../../js/jquery-1.12.3.min.js"></script>

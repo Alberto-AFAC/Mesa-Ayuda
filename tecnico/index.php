@@ -641,8 +641,7 @@ $(document).ready(function(){
 		reporte.hfinal,
 		reporte.idequipo,
         n_empleado empleado,
-        -- TIMESTAMPDIFF( HOUR, reporte.hinicio, NOW()) AS tiempo_transcurrido
-        IF(reporte.ffinal = 00-00-00, TIMESTAMPDIFF( HOUR, reporte.finicio, reporte.finicio), TIMESTAMPDIFF(HOUR, reporte.finicio, reporte.ffinal)) AS FechaFinal
+        IF(reporte.ffinal = '00/00/0000', TIMESTAMPDIFF(HOUR, reporte.finicio, NOW()),TIMESTAMPDIFF(HOUR,reporte.finicio, reporte.ffinal)) AS HORAFINAL 
 		FROM reporte 
 		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
@@ -663,17 +662,18 @@ $(document).ready(function(){
             $nombre = $data2['gstNombr'];
             $apellidos = $data2['gstApell']; 
             $ubicacion = '';
+            $arg = '';
             $extension = $data2['gstExTel'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
 
-            if($data['FechaFinal'] <= 5){
-                $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['FechaFinal']." hrs</i></span>";
-            } else if($data['FechaFinal'] >= 6 ){
-                $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['FechaFinal']." hrs</span>";
-            } else if($data['FechaFinal'] >= 10 ){
-                $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['FechaFinal']." hrs</span>";
+            if($data['HORAFINAL'] <= 5 || $data['HORAFINAL'] <=10){
+                $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['HORAFINAL']." hrs</i></span>";
+            } else if($data['HORAFINAL'] <= 6 || $data['HORAFINAL'] <=15){
+                $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['HORAFINAL']." hrs</span>";
+            } else if($data['HORAFINAL'] >= 24 ){
+                $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['HORAFINAL']." hrs</span>";
             } 
             
   $actual = date('d/m/Y');
