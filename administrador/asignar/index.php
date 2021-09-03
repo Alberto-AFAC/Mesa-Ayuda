@@ -145,7 +145,7 @@
                             <a href="../"><i class="glyphicon glyphicon-home"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-gears"></i> Registros<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <!-- <li>
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
@@ -154,8 +154,8 @@
                                     <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
                             <li>
-                                    <a href="./"><i class="fa fa-desktop"></i> Equipos </a>
-                                   
+                                    <a href="./"><i class="glyphicon glyphicon-retweet"></i> Por asignar <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level"><li><a href="../equipo"> Equipos</a></li></ul>
                             </li>
                             <li>
                                     <a href="../tecnico"><i class="fa fa-street-view"></i> Técnico</a>
@@ -184,7 +184,7 @@
             <div class="row">
                 <div class="col-lg-12">
              <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
-                    <h1 class="page-header">EQUIPOS ASIGNADOS </h1>                    
+                    <h1 class="page-header">POR ASIGNAR </h1>                    
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -688,7 +688,7 @@ EDITAR DATOS DEL EQUIPO </b></h4>
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
 <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
- -->
+ --><link rel="stylesheet" type="text/css" href="../../css/styles.css">
 <script type="text/javascript" src="../../js/funciones.js"></script>
 
 <script src="../../js/jquery-1.12.3.min.js"></script>
@@ -709,5 +709,5 @@ $(document).ready(function(){
 }); 
 </script>
 <script src="../../js/select2.js"></script> 
-<?php include('../../php/admin-equipos.php');?>
+<?php include('../../php/admin-asignar.php');?>
 </html>

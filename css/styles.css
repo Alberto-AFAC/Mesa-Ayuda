@@ -181,6 +181,9 @@ form h4 {
     font-size: 15px;
 }
 
+#obaja,#oasignado,#odesignado,#ototal,#ocompu{
+border-top: 1px solid silver;
+}
 
 /* .panel-group-1 .panel-1 {
     border-radius: 0;
