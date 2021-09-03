@@ -154,8 +154,8 @@
                                     <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
                             </li>
                             <li>
-                                    <a href="./"><i class="fa fa-desktop"></i> Equipos <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level"><li><a href="../asignar"> Por asignar</a></li></ul>
+                                    <a href="./"><i class="fa fa-desktop"></i> Equipos </a>
+                                   
                             </li>
                             <li>
                                     <a href="../tecnico"><i class="fa fa-street-view"></i> Técnico</a>
