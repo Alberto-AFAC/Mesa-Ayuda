@@ -662,6 +662,7 @@ $(document).ready(function(){
             $nombre = $data2['gstNombr'];
             $apellidos = $data2['gstApell']; 
             $ubicacion = '';
+            $arg = '';
             $extension = $data2['gstExTel'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
