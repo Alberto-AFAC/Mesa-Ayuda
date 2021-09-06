@@ -283,8 +283,8 @@ session_start();
                     </div> 
 
 
-            <div class="form-group"><br>
-            <div class="col-sm-offset-0 col-sm-5">
+            <div class="form-group" style="text-transform: uppercase;"><br>
+            <div class="col-sm-offset-0 col-sm-4">
             <button type="button" id="button" class="btn btn-green" onclick="atdRpt();">ACEPTAR</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">SALIR</button>
 
@@ -295,7 +295,7 @@ session_start();
 
             <b><p class="alert alert-info text-center padding exito" id="procso">¡El reporte está Pendiente!</p></b>
 
-            <b><p class="alert alert-success text-center padding error" id="canclado">¡El reporte se ha cancelado !</p></b>
+            <b><p class="alert alert-warning text-center padding error" id="canclado">¡El reporte se ha cancelado !</p></b>
 
             <b><p class="alert alert-success text-center padding exito" id="exitos">¡El reporte ha finalizado  !</p></b>
             
