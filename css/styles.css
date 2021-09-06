@@ -190,6 +190,8 @@ form h4 {
     border-top: 1px solid silver;
 }
 
+#aviso,
+#error,
 #vacio,
 #danger,
 #success,

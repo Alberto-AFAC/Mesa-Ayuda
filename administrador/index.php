@@ -487,7 +487,7 @@ onclick="location.href='./'" -->
                                         <input class="form-control" selected="true" id="nomtec" name="nomtec"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-5" style="display: none;" id="reasigar">
+                                    <div class="col-sm-7" style="display: none;" id="reasigar">
                                     <label>REASIGNAR TÉCNICO</label>
                                     <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
                                     name="idtec" type="text" data-live-search="true">
@@ -503,7 +503,7 @@ onclick="location.href='./'" -->
                                     $result = mysqli_query($conexion2,$quer);    
                                     while($usuario = mysqli_fetch_row($result)):?>
                                     <option value="<?php echo $sede.','.$idtec?>">
-                                    <?php echo $usuario[1].' '.$usuario[2]?>
+                                    <?php echo $usuario[1].' '.$usuario[2].' &#10132; '.''.$sede?>
                                     </option>
                                     <?php endwhile; } ?>
                                     </select>
@@ -515,8 +515,8 @@ onclick="location.href='./'" -->
                                 </div>
 
 
-                                <div class="form-group" style="display: none;" id="button"><br>
-                                    <div class="col-sm-offset-0 col-sm-5">
+                                <div class="form-group" style="display: none;" id="button" ><br>
+                                    <div class="col-sm-offset-0 col-sm-4">
                                         <button type="button" class="btn btn-green"
                                             onclick="tecReasignar();">ACEPTAR</button>
                                     </div>
