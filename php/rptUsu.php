@@ -7,7 +7,7 @@
 
  if($opcion === 'registrar'){
 
-	$idequipo = $_POST['idequipo'];
+	$nempleado = $_POST['nempleado'];	
 	$servicio  = substr($_POST['servicio'],1);
 	$intervencion = substr($_POST['intervencion'],1);
 	$descripcion = substr($_POST['descripcion'],1);
@@ -15,11 +15,11 @@
 	$ultima = substr($_POST['ultima'],1);
 	$final = $_POST['final'];
 
-if(consultar($idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion)){
+if(consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion)){
 
 
 			
-	$nempleado = $_POST['nempleado'];
+	$idequipo = $_POST['idequipo'];
 	$obser = $_POST['obser'];
 	$sede = $_POST['sede'];
 
@@ -32,6 +32,7 @@ if(consultar($idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$f
 if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion)){
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
+			echo "0";
 		 	}else{	echo "1";	}	
 
 		}else{
@@ -75,16 +76,17 @@ if(!empty($idtec[$n][0])){
 }	
 
 
-function consultar($idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion){
+function consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion){
 
 $query="SELECT * FROM reporte WHERE 
+n_empleado = $nempleado AND
 servicio = '$servicio' AND
 intervencion = '$intervencion' AND
 descripcion = '$descripcion' AND
 solucion = '$solucion' AND
 ultima = '$ultima' AND
 final = '$final' AND
-idequipo = '$idequipo'";
+evaluacion = '0'";
 $resultado= mysqli_query($conexion,$query);
 		if($resultado->num_rows==0){
 		return true;

@@ -93,7 +93,7 @@ unset($_SESSION['consulta']);
 <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>-->
 <button type="button" onclick="location.href='rptCons.php'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="exampleModalLabel"><b>EVALUAR REPORTE - <input class="transparent" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>
+<h4 class="modal-title" id="exampleModalLabel"><b>EVALUAR REPORTE - <input class="transparent" style="text-transform: uppercase;" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>
 </div>
             <div class="modal-body">
                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
@@ -203,7 +203,7 @@ unset($_SESSION['consulta']);
                     </div> 
                                
             <div class="form-group"><br>
-            <div class="col-sm-offset-0 col-sm-5">
+            <div class="col-sm-offset-0 col-sm-4">
             <button type="button" id="button" class="btn btn-green" onclick="evlRpt();">ACEPTAR</button>
             </div>
             <b><p class="alert alert-danger text-center padding error" id="error">Error al evaluar técnico</p></b>

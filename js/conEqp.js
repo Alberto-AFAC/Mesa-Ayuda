@@ -82,8 +82,11 @@ function reporte() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            console.log(respuesta);
+           // console.log(respuesta);
+           
             if (respuesta == 0) {
+
+
                 $("#button").hide();
                     // $('#vacio').hide();
                     // $("#error").hide();
