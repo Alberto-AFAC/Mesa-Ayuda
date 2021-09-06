@@ -44,6 +44,8 @@
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <script src="../../js/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="../../js/equipo.js"></script>
 </head>
@@ -223,7 +225,7 @@
                                   <p style="padding: 0.5em; text-align: center; float: right; width:95%;" class="mensaje"></p>
                             </div>
                                <div class="panel-body" style="font-size: 12px;">             
-                                    <table id="data-table-area" class="table table-striped table-bordered"></table>
+                                    <table id="data-table-area" width="100%" class="table table-striped table-bordered"></table>
                                 </div>
                         </div>          
                     </div>
@@ -692,6 +694,8 @@ EDITAR DATOS DEL EQUIPO </b></h4>
 <script src="../../js/jquery-1.12.3.min.js"></script>
 <script src="../../js/select2.js"></script>
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/dataTables.bootstrap.js"></script>
 <script src="../../js/dataTables.buttons.min.js"></script>
