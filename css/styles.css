@@ -48,8 +48,8 @@
     padding: 1em 0em;
     text-align: center;
     display: none;
- 
 }
+
 .reporte {
     background: white;
     color: black;
@@ -60,6 +60,7 @@
     text-align: center;
     display: none;
 }
+
 .reportev {
     background: white;
     color: black;
@@ -70,16 +71,16 @@
     padding: 1em 0em;
     text-align: center;
     display: none;
-   }
+}
 
-.slct{
+.slct {
     background: white;
     color: black;
     width: 80%;
     float: left;
     border: 2px solid yellow;
     padding: 1em 0em;
-    text-align: center;   
+    text-align: center;
 }
 
 
@@ -181,8 +182,12 @@ form h4 {
     font-size: 15px;
 }
 
-#obaja,#oasignado,#odesignado,#ototal,#ocompu{
-border-top: 1px solid silver;
+#obaja,
+#oasignado,
+#odesignado,
+#ototal,
+#ocompu {
+    border-top: 1px solid silver;
 }
 
 #vacio,
@@ -195,11 +200,24 @@ border-top: 1px solid silver;
 #danger2,
 #success2,
 #empty2,
-#exito
-{
+#exito {
     text-transform: uppercase;
     font-size: 12px;
 }
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('../img/loader.gif') 50% 50% no-repeat;
+    opacity: .8;
+    background-size: 5%;
+}
+
+
 /* .panel-group-1 .panel-1 {
     border-radius: 0;
     box-shadow: none;

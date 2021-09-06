@@ -46,21 +46,6 @@
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
     <script src="../../js/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="../../js/equipo.js"></script>
-    <style>
-        .loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url('../../img/loader.gif') 50% 50% no-repeat;
-    opacity: .8;
-    background-size: 5%;
-}
-        </style>
-
-
 </head>
 
 <body>
