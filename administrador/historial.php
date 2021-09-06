@@ -41,6 +41,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
 </head>
 <body>
+
+<div class="loader"></div>
+
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -602,5 +605,8 @@ onclick="location.href='./'" -->
     }
     $('.panel-group').on('hidden.bs.collapse', toggleIcon);
     $('.panel-group').on('shown.bs.collapse', toggleIcon);
+    $(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
     </script>
 </html>
