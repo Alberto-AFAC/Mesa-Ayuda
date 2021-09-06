@@ -49,7 +49,7 @@ session_start();
 </head>
 
 <body>
-
+<div class="loader"></div>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -577,5 +577,10 @@ onclick="location.href='./'" -->
 <script src="../dist/js/sb-admin-2.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
 <script src="../js/status.js"></script>
+<script>
+       $(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
 <?php include('../php/admin-index.php');?>
 </html>

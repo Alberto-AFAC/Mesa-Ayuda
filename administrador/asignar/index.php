@@ -52,6 +52,7 @@
 </head>
 
 <body>
+<div class="loader"></div>
 
     <div id="wrapper">
 
@@ -707,6 +708,9 @@ $(document).ready(function(){
   $('#n_empleado').select2();
   $('#nempleado').select2();
 }); 
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
 </script>
 <script src="../../js/select2.js"></script> 
 <?php include('../../php/admin-asignar.php');?>

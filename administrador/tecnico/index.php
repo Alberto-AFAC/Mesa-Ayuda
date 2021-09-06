@@ -38,7 +38,7 @@ if (isset($_SESSION['usuario'])) {
 </head>
 
 <body>
-
+<div class="loader"></div>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -630,6 +630,9 @@ $(".toggle-password").click(function() {
     } else {
         input.attr("type", "password");
     }
+});
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
 });
 </script>
 <script src="../../js/select2.js"></script>
