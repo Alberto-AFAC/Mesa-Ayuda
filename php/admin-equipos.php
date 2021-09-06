@@ -61,6 +61,10 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 ];
 
 var tableGenerarReporte = $('#data-table-area').DataTable({
+    rowReorder: {
+            selector: 'td:nth-child(3)'
+        },
+    responsive: true,
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -74,7 +78,7 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     {title: "MARCA"},
     {title: "N° SERIE"},
     {title: "ASIGNADO"},
-    {title: "ACCIÓN"}
+    {title: "ACCIÓN", "width": "10%"}
 
     ],
     });
