@@ -274,6 +274,5 @@ unset($_SESSION['consulta']);
       $('#descripcion').select2();
       $('#solucion').select2();
       $('#ultima').select2();
-
    });
 </script>
