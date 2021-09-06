@@ -220,7 +220,7 @@ var piechar = new Chart(document.getElementById("piechart-servicios"), {
       },
       title: {
         display: true,
-        text: 'Computo'
+        text: 'COMPUTO'
       }
     }
   },
@@ -259,7 +259,7 @@ var piechar = new Chart(document.getElementById("piechart-impresion"), {
       },
       title: {
         display: true,
-        text: 'Impresión'
+        text: 'IMPRESIÓN'
       }
     }
   },
@@ -298,7 +298,7 @@ var piechar = new Chart(document.getElementById("piechart-comunicaciones"), {
       },
       title: {
         display: true,
-        text: 'Comunicaciones'
+        text: 'COMUNICACIONES'
       }
     }
   },
@@ -334,7 +334,7 @@ var piechar = new Chart(document.getElementById("piechart-eventos"), {
       },
       title: {
         display: true,
-        text: 'Programación de eventos/reuniones'
+        text: 'PROGRAMACIÓN DE EVENTOS/REUNIONES'
       }
     }
   },
