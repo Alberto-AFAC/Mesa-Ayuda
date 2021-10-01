@@ -701,6 +701,8 @@ var dataSet = [
     <?php
 	    $idtecnico = $_SESSION['usuario']['id_tecnico'];
 	    $query = "SELECT 
+        DATE_FORMAT(reporte.finicio, '%d/%m/%Y') AS iniciotab,
+        DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as finaltab,
 		reporte.n_reporte,
 		reporte.finicio, 
 		reporte.ffinal,
@@ -717,8 +719,7 @@ var dataSet = [
 		reporte.hinicio,
 		reporte.hfinal,
 		reporte.idequipo,
-        n_empleado empleado,
-        IF(reporte.ffinal = '00/00/0000', TIMESTAMPDIFF(HOUR, reporte.finicio, NOW()),TIMESTAMPDIFF(HOUR,reporte.finicio, reporte.ffinal)) AS HORAFINAL 
+        n_empleado empleado
 		FROM reporte 
 		WHERE  reporte.idtec = '$idtecnico'";
 	$resultado = mysqli_query($conexion, $query);
@@ -753,8 +754,8 @@ var dataSet = [
 
         }
 
-
-
+            $finaltab = $data['finaltab'];
+            $iniciotab = $data['iniciotab']; 
             $fila = $idtecnico;
             $nombre = $data2['gstNombr'];
             $apellidos = $data2['gstApell']; 
@@ -765,13 +766,13 @@ var dataSet = [
             $inicio = $data['finicio'];
 
 
-            if($data['HORAFINAL'] <= 5 || $data['HORAFINAL'] <=10){
-                $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['HORAFINAL']." hrs</i></span>";
-            } else if($data['HORAFINAL'] <= 6 || $data['HORAFINAL'] <=15){
-                $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['HORAFINAL']." hrs</span>";
-            } else if($data['HORAFINAL'] >= 24 ){
-                $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['HORAFINAL']." hrs</span>";
-            } 
+            // if($data['HORAFINAL'] <= 5 || $data['HORAFINAL'] <=10){
+            //     $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['HORAFINAL']." hrs</i></span>";
+            // } else if($data['HORAFINAL'] <= 6 || $data['HORAFINAL'] <=15){
+            //     $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['HORAFINAL']." hrs</span>";
+            // } else if($data['HORAFINAL'] >= 24 ){
+            //     $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['HORAFINAL']." hrs</span>";
+            // } 
             
   $actual = date('d/m/Y');
 
@@ -779,7 +780,7 @@ if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt
         ?>
 
     ["<?php echo $data['n_reporte'] ?>", "<?php echo $nombre . " " . $apellidos ?>", "<?php echo $extension?>",
-        "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php echo $tiempos ?>", "<?php if($data['estado_rpt'] == 'Por atender'){
+        "<?php echo $data['servicio']?>", "<?php echo $iniciotab ?>", "<?php echo $finaltab?>", "<?php echo $tiempos ?>", "<?php if($data['estado_rpt'] == 'Por atender'){
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>Por atender</a>";
 
