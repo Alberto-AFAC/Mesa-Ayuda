@@ -383,6 +383,8 @@ if (isset($_SESSION['usuario'])) {
                         <option selected>SELECCIONE...</option>
                         <option value="08:00:00">08:00:00</option>
                         <option value="09:00:00">09:00:00</option>
+                        <option value="10:00:00">10:00:00</option>
+                        <option value="15:00:00">15:00:00</option>
                     </select>
                 </div>
                 <div class="col-sm-offset-0 col-sm-4">
@@ -390,7 +392,11 @@ if (isset($_SESSION['usuario'])) {
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="salida" id="salida" type="text" data-live-search="true">
                     <option selected>SELECCIONE...</option>
+                    <option value="15:00:00">15:00:00</option>
+                    <option value="16:00:00">16:00:00</option>
+                    <option value="17:00:00">17:00:00</option>
                     <option value="18:00:00">18:00:00</option>
+                    <option value="19:00:00">19:00:00</option>
                 </select>
             </div>
             <div class="col-sm-offset-0 col-sm-4">
@@ -500,6 +506,8 @@ if (isset($_SESSION['usuario'])) {
                         <option value="0">SELEECIONE UNA OPCIÓN</option>
                         <option value="08:00:00">08:00:00</option>
                         <option value="09:00:00">09:00:00</option>
+                        <option value="10:00:00">10:00:00</option>
+                        <option value="15:00:00">15:00:00</option>
                     </select>
                 </div>
                 <div class="col-sm-offset-0 col-sm-4">
@@ -507,7 +515,11 @@ if (isset($_SESSION['usuario'])) {
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asalida" id="asalida" type="text" data-live-search="true">
                     <option value="0">SELEECIONE UNA OPCIÓN</option>
+                    <option value="15:00:00">15:00:00</option>
+                    <option value="16:00:00">16:00:00</option>
+                    <option value="17:00:00">17:00:00</option>
                     <option value="18:00:00">18:00:00</option>
+                    <option value="19:00:00">19:00:00</option>
                 </select>
             </div>
             <div class="col-sm-offset-0 col-sm-4">
