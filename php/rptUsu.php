@@ -58,32 +58,63 @@ ini_set('date.timezone','America/Mexico_City');
 $actual=date('H:i:00');
 $hora = $actual;
 
+///////////BUSQUEDA TÉCNICOS EN UN RANGO DE HORA ENTRADA A 18:00:00//////////////
 $query="SELECT id_tecnico FROM tecnico 
 		  WHERE sede = '$sede' AND activo = 0 AND baja = 0 AND '$hora' BETWEEN entrada AND salida ORDER BY id_tecnico ASC ";
 	$resultados = mysqli_query($conexion,$query);
 	if($resultados->num_rows == 0){
-	
-	$query = "SELECT idtec FROM reporte WHERE pila = '$sede' ORDER BY n_reporte DESC ";
-	$res = mysqli_query($conexion,$query);
-	$result = mysqli_fetch_row($res);
-	if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
-	$query = "SELECT id_tecnico FROM tecnico 
-			  WHERE sede = '$sede' AND activo = 0 AND baja = 0 AND '08:00:00' >= entrada ORDER BY id_tecnico ASC ";
-	$result = mysqli_query($conexion,$query);
-	$n=0;
-	while ($res = mysqli_fetch_row($result)) {
-	if($idtecnico >= $res[0]){
-	$n++;
-	}
-	$idtec[] = array($res[0]);
-	}
-	if(!empty($idtec[$n][0])){
-		return $idtec[$n][0];
-	}else{
-		return $idtec[0][0];
-	}
+///////////BUSQUEDA TÉCNICOS EN UN RANGO DE HORA ENTRADA ANTES DE LAS 09:00:00//////////////
+$query="SELECT id_tecnico FROM tecnico 
+		  WHERE  sede = '$sede' AND activo = 0 AND baja = 0 AND '08:00:00' >= entrada ORDER BY id_tecnico ASC ";
+	$resultados = mysqli_query($conexion,$query);
+	if($resultados->num_rows == 0){
+//SI EL REPORTE SE GENERA DESPUÉS DE LAS 18:00:00 SE ASIGNA A LOS TÉCNICOS QUE ENTRAN ANTES DE LAS 09:00:00//
+			$query = "SELECT idtec FROM reporte WHERE pila = '$sede' ORDER BY n_reporte DESC ";
+			$res = mysqli_query($conexion,$query);
+			$result = mysqli_fetch_row($res);
+			if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
+			$query = "SELECT id_tecnico FROM tecnico 
+					  WHERE sede = '$sede' AND activo = 0 AND baja = 0 ORDER BY id_tecnico ASC ";
+			$result = mysqli_query($conexion,$query);
+			$n=0;
+			while ($res = mysqli_fetch_row($result)) {
+			if($idtecnico >= $res[0]){
+			$n++;
+			}
+			$idtec[] = array($res[0]);
+			}
+			if(!empty($idtec[$n][0])){
+				return $idtec[$n][0];
+			}else{
+				return $idtec[0][0];
+			}		
+
 	}else{
 
+///////////TÉCNICOS EN UN RANGO DE HORA ENTRADA A 18:00:00//////////////
+
+		$query = "SELECT idtec FROM reporte WHERE pila = '$sede' ORDER BY n_reporte DESC ";
+		$res = mysqli_query($conexion,$query);
+		$result = mysqli_fetch_row($res);
+		if(!empty($result[0])){	$idtecnico = $result[0];	}else{	$idtecnico = 0;	}
+		$query = "SELECT id_tecnico FROM tecnico 
+		  WHERE sede = '$sede' AND activo = 0 AND baja = 0 AND '08:00:00' >= entrada ORDER BY id_tecnico ASC ";
+		$result = mysqli_query($conexion,$query);
+		$n=0;
+		while ($res = mysqli_fetch_row($result)) {
+		if($idtecnico >= $res[0]){
+		$n++;
+		}
+		$idtec[] = array($res[0]);
+		}
+		if(!empty($idtec[$n][0])){
+		return $idtec[$n][0];
+		}else{
+		return $idtec[0][0];
+			}
+		}
+	}else{
+///////////TÉCNICOS EN UN RANGO DE HORA ENTRADA A 18:00:00//////////////
 	$query = "SELECT idtec FROM reporte WHERE pila = '$sede' ORDER BY n_reporte DESC ";
 	$res = mysqli_query($conexion,$query);
 	$result = mysqli_fetch_row($res);
