@@ -215,23 +215,16 @@
                                                         $contador1++;
                                                         $Atiempo = $contador1;
 
-                                                    }else{
-                                                    $Atiempo = '0';
-                                                    }
+                                                    } 
                                                     if($totalFinal >=12){
                                                         $contador2++;
                                                         $destiempo = $contador2;
 
-                                                    }else{
-                                                    $destiempo = '0';    
                                                     } 
 
                                                
                                             ?>
-            <?php }
-
-            //$Atiempo = '0';
-            ?>
+            <?php }?>
 
             <!-- MODAL DE DESEMPEÑO -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
