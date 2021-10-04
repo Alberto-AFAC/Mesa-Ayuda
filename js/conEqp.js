@@ -355,12 +355,12 @@ function detalle(fila) {
                     $("#rspsta").hide();
                     $("#pndint1").hide();
                     $("#pndint2").hide();
-                    $("#modalDtll #ffinal").val('Por atender');
+                    $("#modalDtll #ffinal").val('POR ATENDER');
                 } else if (obj.data[i].evaluacion == '0' && obj.data[i].estado_rpt == 'Pendiente') {
                     $("#modalDtll #usu_observ").val(obj.data[i].usu_observ);
                     $("#pndint1").hide();
                     $("#pndint2").hide();
-                    $("#modalDtll #ffinal").val('Pendiente');
+                    $("#modalDtll #ffinal").val('PENDIENTE');
                 } else {
                     $("#modalDtll #usu_observ").val(obj.data[i].usu_observ);
                     $("#obsrvcns").show();

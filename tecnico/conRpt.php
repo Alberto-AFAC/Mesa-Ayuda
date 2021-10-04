@@ -203,8 +203,8 @@
                                                 reporte
                                                 WHERE estado_rpt = 'Finalizado' AND idtec = $idtecnico";
                                                 $resultado = mysqli_query($conexion, $query);
-                                                $contador1=0;
-                                                $contador2=0;
+                                                $Atiempo=0;
+                                                $destiempo=0;
                                                 while($row = mysqli_fetch_assoc($resultado)){
                                                     $fechafinalizada1 = new DateTime($row['finicio']."".$row['hinicio']);
                                                     $fechafinalizada2 = new DateTime($row['ffinal']."".$row['hfinal']);
@@ -212,14 +212,10 @@
                                                     $totalFinal = $intervalo->format('%H');//00 años 0 meses 0 días 08 horas 0 minutos 0 segundos
                                                   
                                                     if($totalFinal < 12){
-                                                        $contador1++;
-                                                        $Atiempo = $contador1;
-
+                                                        $Atiempo++;
                                                     } 
                                                     if($totalFinal >=12){
-                                                        $contador2++;
-                                                        $destiempo = $contador2;
-
+                                                        $destiempo++;
                                                     } 
 
                                                
