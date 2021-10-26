@@ -1,6 +1,3 @@
-<?php 
-include('../conexion/conexion.php');
-?>
 <script type="text/javascript">
 var dataSet = [
     <?php
