@@ -112,14 +112,14 @@ var dataSet = [
         dom: 'Bfrtip',
         buttons: [{
           // title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-          title: 'Departamento de Soporte Técnico',
+          title: '',
           extend: 'print',
           text: '<span class="glyphicon glyphicon-file"> IMPRIMIR REPORTE</span>',
           className: "addNewRecord",
           // orientation: 'portrait',
           customize: function (win) {
             $(win.document.body)
-                        .css( 'font-size', '10pt' )
+                        .css( 'font-size', '6pt' )
                         .prepend(
                             '<img src="" style="position:absolute; top:0; left:0;" />'
                         );
@@ -133,20 +133,6 @@ var dataSet = [
             // 'copy', 'csv', 'excel', 'pdf', 'print'
             // 'print'
         ],
-
-        // dom: 'Bfrtip',
-        // buttons: [
-
-        //     'copy', 'csv', 'excel',
-        //     {
-        //     extend: 'pdfHtml5',
-        //     messageTop: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-        //     download: 'open',
-        //     title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-        //     text: 'Descargar PDF',
-        //     pageSize: 'A4',
-
-        // }],
         orderCellsTop: true,
         fixedHeader: true,
         responsive: true,
