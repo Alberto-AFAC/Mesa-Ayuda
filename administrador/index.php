@@ -311,8 +311,19 @@ session_start();
             <div class="modal-dialog" style="width: 720px;" role="document">
                 <div class="modal-content">
                 <div class="modal-body">
-                <table id="data-table-finalizados" class="table table-striped table-bordered" width="100%"
-                                cellspacing="0"></table>          
+                <table id="data-table-finalizados" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+    </table>
+                       
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
@@ -580,6 +591,20 @@ onclick="location.href='./'" -->
 <script>
        $(window).load(function() {
     $(".loader").fadeOut("slow");
+});
+var tableGenerarReporte = $('#data-table-finalizados').DataTable({
+    "ajax": "../php/data-finalizados.php",
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength : 5,
+    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    orderCellsTop: true,
+    fixedHeader: true,
 });
 </script>
 <?php include('../php/admin-index.php');?>
