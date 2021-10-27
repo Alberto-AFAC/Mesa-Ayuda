@@ -44,7 +44,7 @@ var dataSet = [
         evaluacion,
         estado_rpt,
         id_usu 
-        FROM REPORTE
+        FROM reporte
         INNER JOIN tecnico ON idtec = id_tecnico 
         WHERE 	MONTH ( finicio ) = MONTH (
         CURRENT_DATE ()) 
