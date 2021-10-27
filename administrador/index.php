@@ -45,11 +45,11 @@ session_start();
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-  
+
 </head>
 
 <body>
-<div class="loader"></div>
+    <div class="loader"></div>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -109,7 +109,7 @@ session_start();
                             <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-<!--                                 <li>
+                                <!--                                 <li>
                                     <a href="area"><i class="fa fa-list-alt"></i> Areas</a>
                                 </li> -->
                                 <li>
@@ -118,9 +118,9 @@ session_start();
                                 <li>
                                     <a href="equipo"><i class="fa fa-desktop"></i> Equipos</a>
                                 </li>
-                            <li>
+                                <li>
                                     <a href="tecnico"><i class="fa fa-street-view"></i> Técnico</a>
-                            </li>
+                                </li>
 
                             </ul>
                             <!-- /.nav-second-level -->
@@ -230,27 +230,29 @@ session_start();
                     </div>
                 </div>
             </div>
-            <button data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm" style="float: right;"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> EVALUACIÓN MENSUAL</button><br><br>
+            <button data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-sm" style="float: right;"><i
+                    class="fa fa-calendar-check-o" aria-hidden="true"></i> EVALUACIÓN MENSUAL</button><br><br>
             <!--MODAL EVALUATION STADISTICS-->
-            
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-body">
-                    <p style="text-align: right; font-size: 16px;">FECHA DE CORTE: <?php echo $hoy?></p>
-                <table class="table table-hover table-bordered table-sm">
-                                    <thead>
-                                        <tr style="color: white; background-color: #1489D8; font-size: 12px;">
-                                            <th>#</th>
-                                            <th style="width: 100%;">TÉCNICO</th>
-                                            <th>BUENO</th>
-                                            <th>REGULAR</th>
-                                            <th>MALO</th>
-                                            <th>CANCELADO</th>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p style="text-align: right; font-size: 16px;">FECHA DE CORTE: <?php echo $hoy?></p>
+                            <table class="table table-hover table-bordered table-sm">
+                                <thead>
+                                    <tr style="color: white; background-color: #1489D8; font-size: 12px;">
+                                        <th>#</th>
+                                        <th style="width: 100%;">TÉCNICO</th>
+                                        <th>BUENO</th>
+                                        <th>REGULAR</th>
+                                        <th>MALO</th>
+                                        <th>CANCELADO</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
                                     <?php 
                 
                $query1 = "SELECT 
@@ -282,96 +284,90 @@ session_start();
           while($data2=mysqli_fetch_array($result2)){      
                     $contador++;
                 ?>
-                                        <tr>
-                                            <td><?php echo $contador ?></td>
-                                            <td><?php echo $data2['gstNombr']." ".$data2['gstApell'] ?></td>
-                                            <td><?php echo $data['Bueno'] ?></td>
-                                            <td><?php echo $data['Regular'] ?></td>
-                                            <td><?php echo $data['Malo'] ?></td>
-                                            <td><?php echo $data['Cancelado'] ?></td>
-                                        
-                                        </tr>
-                                        <?php } } ?>
-                                    </tbody>
-                             
-                                </table>
-                              
+                                    <tr>
+                                        <td><?php echo $contador ?></td>
+                                        <td><?php echo $data2['gstNombr']." ".$data2['gstApell'] ?></td>
+                                        <td><?php echo $data['Bueno'] ?></td>
+                                        <td><?php echo $data['Regular'] ?></td>
+                                        <td><?php echo $data['Malo'] ?></td>
+                                        <td><?php echo $data['Cancelado'] ?></td>
+
+                                    </tr>
+                                    <?php } } ?>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
-                </div>
-                </div>
-            </div>
             </div>
             <!--FINISH STADISTICS-->
 
-             <!--MODAL EVALUATION STADISTICS-->
-            
-             <div class="modal fade" id="finalizados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="width: 720px;" role="document">
-                <div class="modal-content">
-                <div class="modal-body">
-                <table id="data-table-finalizados" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-    </table>
-                       
+            <!--MODAL EVALUATION STADISTICS-->
+
+            <div class="modal fade" id="finalizados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" style="width: 720px;" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <table id="data-table-finalizados" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
-                </div>
-                </div>
-            </div>
             </div>
 
-            <div class="modal fade" id="poratender" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="width: 720px;" role="document">
-                <div class="modal-content">
-                <div class="modal-body">
-                <table id="data-table-por-atender" class="table table-striped table-bordered" width="100%"
-                                cellspacing="0"></table>          
+            <div class="modal fade" id="poratender" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" style="width: 720px;" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <table id="data-table-por-atender" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
-                </div>
-                </div>
-            </div>
             </div>
 
-            <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="width: 720px;" role="document">
-                <div class="modal-content">
-                <div class="modal-body">
-                <table id="data-table-pendiente" class="table table-striped table-bordered" width="100%"
-                                cellspacing="0"></table>          
+            <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" style="width: 720px;" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <table id="data-table-pendiente" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
-                </div>
-                </div>
-            </div>
             </div>
 
-            <div class="modal fade" id="cancelado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="width: 720px;" role="document">
-                <div class="modal-content">
-                <div class="modal-body">
-                <table id="data-table-cancelado" class="table table-striped table-bordered" width="100%"
-                                cellspacing="0"></table>          
+            <div class="modal fade" id="cancelado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" style="width: 720px;" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <table id="data-table-cancelado" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
-                </div>
-                </div>
-            </div>
             </div>
             <!--FINISH STADISTICS-->
 
@@ -395,7 +391,7 @@ onclick="location.href='./'" -->
                                         <!--<a style="color: blue" href='#' type='button' data-toggle='modal' data-target='#modalVal' style='width:100%;font-size: 12px;'>Favor de validar, ¿el equipo de cómputo pertenece al usuario?</a>-->
 
                                     </p><input type="hidden" id="idequipo"><b>
-                                    REPORTE POR ATENDER</b>
+                                        REPORTE POR ATENDER</b>
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -410,14 +406,15 @@ onclick="location.href='./'" -->
                                     </div>
                                     <div class="col-sm-6">
                                         <label>USUARIO</label>
-                                        <input id="gstNombr" name="gstNombr" type="text" class="form-control" disabled="">
+                                        <input id="gstNombr" name="gstNombr" type="text" class="form-control"
+                                            disabled="">
                                     </div>
                                     <div class="col-sm-3">
                                         <label>EXTENSIÓN</label>
                                         <input id="gstExTel" name="gstExTel" type="text" class="form-control"
                                             disabled="">
                                     </div>
-<!--                                     <div class="col-sm-2">
+                                    <!--                                     <div class="col-sm-2">
                                         <label>Ubicación</label>
                                         <input id="ubicacion" name="ubicacion" type="text" class="form-control"
                                             disabled="">
@@ -499,11 +496,11 @@ onclick="location.href='./'" -->
                                             disabled="">
                                     </div>
                                     <div class="col-sm-7" style="display: none;" id="reasigar">
-                                    <label>REASIGNAR TÉCNICO</label>
-                                    <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
-                                    name="idtec" type="text" data-live-search="true">
-                                    <option value="0">SELECCIONE...</option>
-                                    <?php 
+                                        <label>REASIGNAR TÉCNICO</label>
+                                        <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
+                                            name="idtec" type="text" data-live-search="true">
+                                            <option value="0">SELECCIONE...</option>
+                                            <?php 
                                     $query = "SELECT * FROM tecnico WHERE baja = 0 AND privilegios='tecnico'";
                                     $resultado = mysqli_query($conexion, $query);
                                     while($datas = mysqli_fetch_assoc($resultado)){
@@ -513,11 +510,11 @@ onclick="location.href='./'" -->
                                     $quer = "SELECT gstIdper,gstNombr,gstApell FROM personal WHERE gstIdper = $idper AND estado = 0";
                                     $result = mysqli_query($conexion2,$quer);    
                                     while($usuario = mysqli_fetch_row($result)):?>
-                                    <option value="<?php echo $sede.','.$idtec?>">
-                                    <?php echo $usuario[1].' '.$usuario[2].' &#10132; '.''.$sede?>
-                                    </option>
-                                    <?php endwhile; } ?>
-                                    </select>
+                                            <option value="<?php echo $sede.','.$idtec?>">
+                                                <?php echo $usuario[1].' '.$usuario[2].' &#10132; '.''.$sede?>
+                                            </option>
+                                            <?php endwhile; } ?>
+                                        </select>
                                     </div>
 
                                     <!--      <div class="col-sm-4">
@@ -526,7 +523,7 @@ onclick="location.href='./'" -->
                                 </div>
 
 
-                                <div class="form-group" style="display: none;" id="button" ><br>
+                                <div class="form-group" style="display: none;" id="button"><br>
                                     <div class="col-sm-offset-0 col-sm-4">
                                         <button type="button" class="btn btn-green"
                                             onclick="tecReasignar();">ACEPTAR</button>
@@ -571,8 +568,8 @@ onclick="location.href='./'" -->
                     </div>
 
                 </div>
-             
-    <!-- /#wrapper -->
+
+                <!-- /#wrapper -->
 </body>
 
 
@@ -589,23 +586,10 @@ onclick="location.href='./'" -->
 <script type="text/javascript" src="../js/admin.js"></script>
 <script src="../js/status.js"></script>
 <script>
-       $(window).load(function() {
+$(window).load(function() {
     $(".loader").fadeOut("slow");
-});
-var tableGenerarReporte = $('#data-table-finalizados').DataTable({
-    "ajax": "../php/data-finalizados.php",
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    "order": [
-        [0, "desc"]
-    ],
-    pageLength : 5,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
-    orderCellsTop: true,
-    fixedHeader: true,
 });
 </script>
 <?php include('../php/admin-index.php');?>
+
 </html>
