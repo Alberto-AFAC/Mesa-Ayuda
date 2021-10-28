@@ -16,7 +16,7 @@ if($opcion === 'modificar'){
 		$activo = $_POST['activo'];
 		$observ = $_POST['observ'];
 		//$orden = $_POST['orden'];
-		if($idtec != '' && $idusu!= '' && $privilg != '' && $usuario != '' && $password != '' && $entrada != '' && $salida != '' && $sede != ''){
+		if($idtec != '' && $idusu!= '' && $privilg != '' && $usuario != '' && $password != '' && $entrada != '' && $salida != '' && $sede != '' && $observ != '0'){
 		if(modificar($idtec, $idusu, $privilg, $usuario, $password,$entrada,$salida,$sede,$activo,$observ, $conexion)){
 					echo "0";
 				}else{

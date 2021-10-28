@@ -234,10 +234,10 @@ if (isset($_SESSION['usuario'])) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                            <h4 class="modal-title" id="modalProyectoEliminarLabel">Eliminar usuario</h4>
+                            <h4 class="modal-title" id="modalProyectoEliminarLabel">Eliminar técnico</h4>
                         </div>
                         <div class="modal-body">
-                            ¿Está seguro de eliminar este usuario? <strong data-name=""></strong>
+                            ¿Está seguro de eliminar técnico? <strong data-name=""></strong>
                             <!--<input id="nombre" name="nombre" />-->
                         </div>
                         <div class="modal-footer">
@@ -271,7 +271,7 @@ if (isset($_SESSION['usuario'])) {
                             href="./" style="color: black"><span style="color: black;"
                             aria-hidden="true"
                             class="glyphicon glyphicon-remove"></span></a></button>
-                            <h4 class="modal-title" id="exampleModalLabel">INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO </h4>
+                            <h4 class="modal-title" id="exampleModalLabel">INFORMACIÓN DEL TÉCNICO Y SUS EQUIPOS DE COMPUTO </h4>
                         </div>
                         <div class="modal-body">
                             <div class="col-sm-offset-1 col-sm-10">
@@ -500,7 +500,7 @@ if (isset($_SESSION['usuario'])) {
                         <label>Entrada</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="aentrada" id="aentrada" type="text" data-live-search="true">
-                        <option value="0">SELEECIONE UNA OPCIÓN</option>
+                        <option value="0">SELEECIONE...</option>
                     <?php for($i=1; $i<=24; $i++){                          
                         if($i<10){ ?>
                             <option value="<?php echo '0'.$i.':00:00'?>"><?php echo '0'.$i.':00:00'?></option>
@@ -514,7 +514,7 @@ if (isset($_SESSION['usuario'])) {
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asalida" id="asalida" type="text" data-live-search="true">
-                    <option value="0">SELEECIONE UNA OPCIÓN</option>
+                    <option value="0">SELEECIONE...</option>
                     <?php for($i=1; $i<=24; $i++){                          
                         if($i<10){ ?>
                             <option value="<?php echo '0'.$i.':00:00'?>"><?php echo '0'.$i.':00:00'?></option>
@@ -528,7 +528,7 @@ if (isset($_SESSION['usuario'])) {
                     <label>SEDE</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asede" id="asede" type="text" data-live-search="true">
-                    <option selected>SELECCIONE SEDE</option>
+                    <option selected>SELECCIONE...</option>
                     <option value="LAS FLORES">LAS FLORES</option>
                     <option value="HANGAR 8">HANGAR 8</option>
                     <option value="CIAAC">CIAAC</option>
@@ -554,7 +554,7 @@ if (isset($_SESSION['usuario'])) {
                     <label>RAZÓN</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="observ" id="observ" type="text" data-live-search="true">
-                    <option value="" selected="selected">SELEECIONE...</option>
+                    <option value="0" selected="selected">SELEECIONE...</option>
                     <option value="VACACIONES">VACACIONES</option>
                     <option value="MEDICO">MEDICO</option>
                     <option value="ASUNTO PERSONAL">ASUNTO PERSONAL</option>

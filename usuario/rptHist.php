@@ -66,7 +66,7 @@ unset($_SESSION['consulta']);
             <div class="row">
                 <div class="col-lg-12">
                      <img src="../img/afac.png" class="imgafac">
-                     <h1 class="page-header">Historial reporte</h1>
+                     <h1 class="page-header">HISTORIAL REPORTE</h1>
                 </div>
             </div>
             <div class="row">   
