@@ -100,10 +100,10 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="./"><i class="glyphicon glyphicon-home"></i> Inicio</a>
+                            <a href="./"><i class="glyphicon glyphicon-home"></i> INICIO</a>
                         </li>
                         <li>
-                            <a href="conRpt.php"><i class="fa fa-keyboard-o"></i> Consultar reportes</a>
+                            <a href="conRpt.php"><i class="fa fa-keyboard-o"></i> CONSULTAR REPORTES</a>
                             <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
                             <!-- /.nav-second-level -->
                         </li>

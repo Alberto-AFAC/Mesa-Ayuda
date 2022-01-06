@@ -75,7 +75,7 @@ unset($_SESSION['consulta']);
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">                   
-                     <li><a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesión</a>
+                     <li><a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                 </li>
@@ -85,13 +85,13 @@ unset($_SESSION['consulta']);
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="./"><i class="fa fa-home"></i> Inicio</a>
+                            <a href="./"><i class="fa fa-home"></i> INICIO</a>
                         </li>      
                         <li>
-                            <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> Reportes<!--<span class="fa arrow"></span>--></a>
+                            <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> REPORTES<!--<span class="fa arrow"></span>--></a>
                         </li>
                         <li>
-                            <a href="rptHist.php"><i class="glyphicon glyphicon-header"></i> Historial<!--<span class="fa arrow"></span>--></a>
+                            <a href="rptHist.php"><i class="glyphicon glyphicon-header"></i> HISTORIAL<!--<span class="fa arrow"></span>--></a>
                         </li> 
 
 
