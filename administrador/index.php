@@ -80,7 +80,7 @@ session_start();
                         <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
-                        class="fa fa-pencil-square-o"></i> Actualizar</a>
+                        class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>
 
                         <li><a href="../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
