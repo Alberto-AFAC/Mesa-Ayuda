@@ -401,9 +401,10 @@ if (isset($_SESSION['usuario'])) {
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="sede" id="sede" type="text" data-live-search="true">
                     <option selected>SELECCIONE...</option>
-                    <option value="LAS FLORES">LAS FLORES</option>
-                    <option value="HANGAR 8">HANGAR 8</option>
+                    <option value="AIFA">AIFA</option>
                     <option value="CIAAC">CIAAC</option>
+                    <option value="HANGAR 8">HANGAR 8</option>
+                    <option value="LAS FLORES">LAS FLORES</option>
                     <option value="LICENCIAS">LICENCIAS</option>
                     <option value="TERMINAL 1">TERMINAL 1</option>
                     <option value="TERMINAL 2">TERMINAL 2</option>
@@ -529,9 +530,10 @@ if (isset($_SESSION['usuario'])) {
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asede" id="asede" type="text" data-live-search="true">
                     <option selected>SELECCIONE...</option>
-                    <option value="LAS FLORES">LAS FLORES</option>
-                    <option value="HANGAR 8">HANGAR 8</option>
+                    <option value="AIFA">AIFA</option>
                     <option value="CIAAC">CIAAC</option>
+                    <option value="HANGAR 8">HANGAR 8</option>
+                    <option value="LAS FLORES">LAS FLORES</option>
                     <option value="LICENCIAS">LICENCIAS</option>
                     <option value="TERMINAL 1">TERMINAL 1</option>
                     <option value="TERMINAL 2">TERMINAL 2</option>
