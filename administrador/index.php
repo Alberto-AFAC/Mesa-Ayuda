@@ -501,7 +501,7 @@ onclick="location.href='./'" -->
                                         <input class="form-control" selected="true" id="nomtec" name="nomtec"
                                             disabled="">
                                     </div>
-                                    <div class="col-sm-7" style="display: none;" id="reasigar">
+                                    <div class="col-sm-12" style="display: none;" id="reasigar">
                                         <label>REASIGNAR TÉCNICO</label>
                                         <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
                                             name="idtec" type="text" data-live-search="true">

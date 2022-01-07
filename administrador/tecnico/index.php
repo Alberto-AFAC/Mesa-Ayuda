@@ -550,7 +550,7 @@ if (isset($_SESSION['usuario'])) {
                         <option value="1">INACTIVO</option>
                     </select>
                 </div>
-                <div class="col-sm-offset-0 col-sm-8">
+                <div class="col-sm-offset-0 col-sm-8" id="ocultarO">
                     <label>RAZÓN</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="observ" id="observ" type="text" data-live-search="true">
@@ -654,3 +654,15 @@ $(window).load(function() {
 </html>
 <!-- <a title='Restablecer contraseña' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-lock text-warning'></i></a> -->
 <!-- <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$id})' ><i class='fa fa-desktop'></i></a> -->
+
+
+<script type="text/javascript">
+
+// if ($('#activo').val() == 0) {
+// $(".curp").css("display", "none");
+// $(".rfc").css("display", "none");
+// };
+
+ 
+
+</script>

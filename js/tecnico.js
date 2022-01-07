@@ -50,7 +50,7 @@ function tecnico() {
 function modificar() {
     var frm = $("#Editar").serialize();
     //console.log(frm);
-    //alert(frm);
+    // alert(frm);
     $.ajax({
         url: "../../php/tecnico.php",
         type: 'POST',
@@ -232,10 +232,28 @@ function datos_editar(id) {
                     observ = $("#frmEditar #observ").val(obj.data[i].observ),
 
                     opcion = $("#frmEditar #opcion").val("modificar");
+
+                    if(obj.data[i].activo==0){
+
+                        $("#ocultarO").hide();
+                    }                    
             }
         }
     })
 }
+
+//CTIVIDADES ACTIVO O NO ACTIVO
+$('#activo').change(function() {
+
+if ($('#activo').val() == 0) {
+$("#ocultarO").css("display", "none");
+};
+
+if ($('#activo').val() == 1) {
+$("#ocultarO").css("display", "block");
+};
+
+});   
 
 var mostrar_mensaje = function(informacion) {
         var texto = "",
