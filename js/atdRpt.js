@@ -1,3 +1,5 @@
+
+//ACTUALIZAR CONTRASEÑA SOLO TÉCNICOS
 	function actualizar() {
 
 	    var id_usuario = $('#id_usuario').val();
@@ -42,8 +44,6 @@
 	        }
 	    });
 	}
-
-
 
 	//consulta de reporte Por atender
 	// $.ajax({

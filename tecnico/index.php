@@ -71,20 +71,20 @@ session_start();
                 <!-- /.dropdown -->
 
                 <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
-                                    class="fa fa-pencil-square-o"></i> Actualizar</a>
-                        </li>-
-                        <li><a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar
-                                Sesión</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-user">
+        <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
+                    class="fa fa-pencil-square-o"></i> Actualizar</a>
+        </li>-
+        <li><a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar
+                Sesión</a>
+        </li>
+    </ul>
+    <!-- /.dropdown-user -->
+</li>
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->

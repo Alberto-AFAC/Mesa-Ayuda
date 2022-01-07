@@ -1,6 +1,9 @@
 	
 function actualizar(){
 
+alert('hola2');
+
+
 var id_usuario=$('#id_usuario').val();
 var usuario=$('#usuario').val();
 var password=$('#password').val();

@@ -1,3 +1,49 @@
+//ACTUALIZAR CONTRASEÑA SOLO ADMINISTRADOR
+    function actualizar() {
+
+        var id_usuario = $('#id_usuario').val();
+        var usuario = $('#usuario').val();
+        var password = $('#password').val();
+        var pass = $('#pass').val();
+        var pass2 = $('#pass2').val();
+
+        datos = 'usuario=' + usuario + '&password=' + password + '&pass=' + pass + '&pass2=' + pass2 + '&id_usuario=' + id_usuario + '&opcion=modificar'
+
+        $.ajax({
+            url: '../conexion/actualizar.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 7) {
+                $('#echo').toggle('toggle');
+                setTimeout(function() {
+                    $('#echo').toggle('toggle');
+                }, 2000);
+            } else if (respuesta == 2) {
+                $('#invalida').toggle('toggle');
+                setTimeout(function() {
+                    $('#invalida').toggle('toggle');
+                }, 2000);
+            } else if (respuesta == 3) {
+                $('#falso').toggle('toggle');
+                setTimeout(function() {
+                    $('#falso').toggle('toggle');
+                }, 2000);
+            } else if (respuesta == 4) {
+                $('#vacio').toggle('toggle');
+                setTimeout(function() {
+                    $('#vacio').toggle('toggle');
+                }, 2000);
+            } else if (respuesta == 1) {
+                $('#error').toggle('toggle');
+                setTimeout(function() {
+                    $('#error').toggle('toggle');
+                }, 2000);
+            }
+        });
+    }
+
 function atender(detalles){
 
 $.ajax({

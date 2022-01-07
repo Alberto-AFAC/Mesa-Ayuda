@@ -79,6 +79,10 @@ session_start();
                     <ul class="dropdown-menu dropdown-user">
                         <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
+                        <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
+                        class="fa fa-pencil-square-o"></i> Actualizar</a>
+                        </li>
+
                         <li><a href="../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
@@ -305,6 +309,9 @@ session_start();
                 </div>
             </div>
             <!--FINISH STADISTICS-->
+
+
+ <?php include('conActu.php');?>
 
             <!--MODAL EVALUATION STADISTICS-->
 
