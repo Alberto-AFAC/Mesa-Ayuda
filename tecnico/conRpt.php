@@ -49,6 +49,7 @@
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
+
     <script type="text/javascript" src="../js/atdRpt.js"></script>
 
 
@@ -306,7 +307,42 @@
                     </div> -->
                             </div>
 
-                            <div class="form-group">
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                    <label>TIPO DE SERVICIO</label>
+                    <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
+                    </div>
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                    <label style="color:white;">.</label>
+                    <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-4">
+              
+                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
+                    </div>
+
+                    <div class="col-sm-4">
+               
+                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                    </div>                    
+
+                    <div class="col-sm-4">
+                
+                    <input id="final" name="final" type="text" class="form-control" disabled="">
+                    </div>
+                    </div>
+
+<!--                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label>TIPO DE SERVICIO</label>
                                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
@@ -323,7 +359,7 @@
                                     <input id="descripcion" name="descripcion" type="text" class="form-control"
                                         disabled="">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <div class="col-sm-12">

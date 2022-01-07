@@ -306,7 +306,7 @@ session_start();
                                     <div class="col-sm-offset-0 col-sm-4">
                                         <button type="button" id="button" class="btn btn-green"
                                             onclick="atdRpt();">ACEPTAR</button>
-                                        <button type="button" class="btn btn-default"
+                                        <button type="button" onclick="location.href='./'" class="btn btn-default"
                                             data-dismiss="modal">SALIR</button>
 
                                     </div>

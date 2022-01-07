@@ -198,16 +198,10 @@ function personal(n_empleado){
 	            }
 	        }
 	    })
-
-
-
-
-
 }
 
 	//detalles del reporte atendido 
 	function detalle(detalles) {
-
 
 	    $.ajax({
 	        url: '../php/atdReport.php',
@@ -230,17 +224,72 @@ function personal(n_empleado){
 	                day = obj.data[i].ffinal.substring(8, 10);
 	                Finaliza = day + '/' + month + '/' + year;
 
-	                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].usu_observ + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].idequipo+'*'+obj.data[i].n_empleado;
-
+	                detalles = 
+	                	  obj.data[i].n_reporte + 
+	                '*' + obj.data[i].nombre + 
+	                '*' + obj.data[i].apellidos + 
+	                '*' + obj.data[i].extension + 
+	                '*' + obj.data[i].ubicacion + 
+	                '*' + obj.data[i].servicio + 
+	                '*' + obj.data[i].intervencion + 
+	                '*' + obj.data[i].descripcion + 
+	                '*' + obj.data[i].usu_observ + 
+	                '*' + obj.data[i].falla_interna + 
+	                '*' + Finicio + 
+	                '*' + Finaliza + 
+	                '*' + obj.data[i].falla_xterna + 
+	                '*' + obj.data[i].observa + 
+	                '*' + obj.data[i].evaluacion + 
+	                '*' + obj.data[i].estado_rpt + 
+	                '*' + obj.data[i].hinicio + 
+	                '*' + obj.data[i].hfinal + 
+	                '*' + obj.data[i].idequipo+
+	                '*'+obj.data[i].n_empleado+
+	                '*'+obj.data[i].solucion+
+	                '*'+obj.data[i].ultima+
+	                '*'+obj.data[i].final;
 
 	                var d = detalles.split("*");
 	                $("#modalDtll #n_reporte").val(d[0]);
 	                // $("#modalDtll #usuario").val(d[1] + ' ' + d[2]);
 	                // $("#modalDtll #extension").val(d[3]);
 	                // $("#modalDtll #ubicacion").val(d[4]);
-	                $("#modalDtll #servicio").val(d[5]);
-	                $("#modalDtll #intervencion").val(d[6]);
-	                $("#modalDtll #descripcion").val(d[7]);
+	                // $("#modalDtll #servicio").val(d[5]);
+	                // $("#modalDtll #intervencion").val(d[6]);
+	                // $("#modalDtll #descripcion").val(d[7]);
+
+
+					$("#modalDtll #servicio").val(d[5]);
+					$("#modalDtll #intervencion").val(d[6]);
+					$("#modalDtll #descripcion").val(d[7]);
+
+					if (d[20] == 'x' || d[20] == '') {
+					$("#modalDtll #solucion").hide();
+					//document.getElementById('select3').style.backgroundColo = "#fff";
+					} else {
+					$("#modalDtll #solucion").show();
+					$("#modalDtll #solucion").val(d[20]);
+					}
+
+					if (d[21] == 'x' || d[21] == '') {
+					$("#modalDtll #ultima").hide();
+					//$("#select4").hide();
+					// document.getElementById('select4').style.backgroundColo = "#fff";
+					} else {
+					$("#modalDtll #ultima").show();
+					$("#modalDtll #ultima").val(d[21]);
+					}
+
+					if (d[22] == 'x' || d[22] == '') {
+					$("#modalDtll #final").show();	                	
+					$("#modalDtll #final").hide();
+					//document.getElementById('select5').style.backgroundColo = "#fff";
+					} else {
+					$("#modalDtll #final").val(d[22]);
+					}
+
+
+
 	                $("#modalDtll #usu_observ").val(d[8]);
 	                $("#modalDtll #falla_interna").val(d[9]);
 	                $("#modalDtll #finicio").val(d[10] + ' a las ' + d[16] + ' hrs');
