@@ -530,7 +530,7 @@ session_start();
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-0 col-sm-3">
-                                        <label>Versión Windows</label>
+                                        <label>VERSIÓN WINDOWS</label>
                                         <select class="form-control" selected="true" id="version_windows"
                                             name="version_windows">
                                             <option value="" selected>SELECCIONE</option>
@@ -558,7 +558,7 @@ session_start();
                                         </select>
                                     </div>
                                     <div class="col-sm-3">
-                                        <label>VELOCIDAD DEL PROCESADOR</label>
+                                        <label>VELOCIDAD PROCESADOR</label>
                                         <input id="velocidad_proc" name="velocidad_proc" type="text"
                                             class="form-control">
                                     </div>
@@ -618,6 +618,8 @@ session_start();
                                             <option value="PISO 2">PISO 2</option>
                                             <option value="PISO 3">PISO 3</option>
                                             <option value="PISO 4">PISO 4</option>
+                                            <option value="PISO 5">PISO 5</option>
+                                            <option value="PISO 6">PISO 6</option>
                                             <option value="PISO 7">PISO 7</option>
                                         </select>
                                     </div>
@@ -625,7 +627,7 @@ session_start();
 
 
                                 <div class="form-group"><br>
-                                    <div class="col-sm-offset-0 col-sm-5">
+                                    <div class="col-sm-offset-0 col-sm-4">
                                         <button type="button" id="button" class="btn btn-green"
                                             onclick="agrEqpo();">ACEPTAR</button>
                                         <button type="button" class="btn btn-default"

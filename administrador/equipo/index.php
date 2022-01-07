@@ -430,11 +430,11 @@ AGREGAR DATOS DEL EQUIPO </b></h4>
                     <option value="Piso 2">PISO 2</option>
                     <option value="Piso 3">PISO 3</option>
                     <option value="Piso 4">PISO 4</option>
-                    <option value="Piso 7">PISO 7</option>
+                    <option value="Piso 5">PISO 5</option>
+                    <option value="Piso 6">PISO 6</option>                    <option value="Piso 7">PISO 7</option>
                     </select>
                     </div>
                     </div>
-
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
@@ -647,7 +647,9 @@ EDITAR DATOS DEL EQUIPO </b></h4>
                     <option value="Piso 1">PISO 1</option>
                     <option value="Piso 2">PISO 2</option>
                     <option value="Piso 3">PISO 3</option>
-                    <option value="Piso 4">PISO 4</option>
+                    <option value="Piso 4">PISO 4</option>                    
+                    <option value="Piso 5">PISO 5</option>                    
+                    <option value="Piso 6">PISO 6</option>
                     <option value="Piso 7">PISO 7</option>
                     </select>
                     </div>

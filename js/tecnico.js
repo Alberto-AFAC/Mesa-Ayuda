@@ -50,7 +50,7 @@ function tecnico() {
 function modificar() {
     var frm = $("#Editar").serialize();
     //console.log(frm);
-    // alert(frm);
+     alert(frm);
     $.ajax({
         url: "../../php/tecnico.php",
         type: 'POST',
@@ -247,10 +247,12 @@ $('#activo').change(function() {
 
 if ($('#activo').val() == 0) {
 $("#ocultarO").css("display", "none");
+$("#mostrarO").css("display", "block");
 };
 
 if ($('#activo').val() == 1) {
 $("#ocultarO").css("display", "block");
+$("#mostrarO").css("display", "none");
 };
 
 });   
