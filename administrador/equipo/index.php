@@ -129,7 +129,7 @@
                     <ul class="dropdown-menu dropdown-user">
                     <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../../conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesión</a>
+                        <li><a href="../../conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -142,23 +142,23 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
             <li>
-                            <a href="../"><i class="glyphicon glyphicon-home"></i> Inicio</a>
+                            <a href="../"><i class="glyphicon glyphicon-home"></i> INICIO</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-gears"></i> Registros<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-gears"></i> REGISTROS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <!-- <li>
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
                                 </li> -->
                             <li>
-                                    <a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a>
+                                    <a href="../usuarios"><i class="fa fa-users"></i> USUARIOS</a>
                             </li>
                             <li>
-                                    <a href="./"><i class="fa fa-desktop"></i> Equipos <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level"><li><a href="../asignar"> Por asignar</a></li></ul>
+                                    <a href="./"><i class="fa fa-desktop"></i> EQUIPOS <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level"><li><a href="../asignar"> POR ASIGNAR</a></li></ul>
                             </li>
                             <li>
-                                    <a href="../tecnico"><i class="fa fa-street-view"></i> Técnico</a>
+                                    <a href="../tecnico"><i class="fa fa-street-view"></i> TÉCNICO</a>
                             </li>
                             </ul>                            
                             <!-- /.nav-second-level -->

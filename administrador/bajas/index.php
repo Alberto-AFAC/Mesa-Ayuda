@@ -114,7 +114,7 @@
                     <ul class="dropdown-menu dropdown-user">
                     <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesión</a>
+                        <li><a href="../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -127,25 +127,25 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
         <li>
-                            <a href="../"><i class="glyphicon glyphicon-home"></i> Inicio</a>
+                            <a href="../"><i class="glyphicon glyphicon-home"></i> INICIO</a>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i> REGISTROS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 <!--                                 <li>
                                     <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
                                 </li> -->
                             <li>
                             <a href="./"><i class="fa fa-user"></i> Bajas <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level"><li><a href="../usuarios"><i class="fa fa-users"></i> Usuarios</a></li>
+                            <ul class="nav nav-second-level"><li><a href="../usuarios"><i class="fa fa-users"></i> USUARIOS</a></li>
                             </ul>
                             </li>
 
                             <li>
-                                    <a href="../equipo"><i class="fa fa-desktop"></i> Equipos</a>
+                                    <a href="../equipo"><i class="fa fa-desktop"></i> EQUIPOS</a>
                             </li>
                             <li>
-                                    <a href="../tecnico"><i class="fa fa-street-view"></i> Técnico</a>
+                                    <a href="../tecnico"><i class="fa fa-street-view"></i> TÉCNICO</a>
                             </li>
                             </ul>                            
                             <!-- /.nav-second-level -->

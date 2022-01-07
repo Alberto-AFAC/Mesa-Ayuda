@@ -79,8 +79,7 @@ session_start();
                     <ul class="dropdown-menu dropdown-user">
                         <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar
-                                Sesión</a>
+                        <li><a href="../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -96,30 +95,30 @@ session_start();
                             <a href="./"><i class="glyphicon glyphicon-home"></i> Inicio</a>
                         </li> -->
                         <li>
-                            <a href="./"><i class="glyphicon glyphicon-home"></i> Inicio<span
+                            <a href="./"><i class="glyphicon glyphicon-home"></i> INICIO<span
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="historial.php"><i class="fa fa-list-alt"></i> Historial</a>
+                                    <a href="historial.php"><i class="fa fa-list-alt"></i> HISTORIAL</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-cog"></i> Registros<span
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i> REGISTROS<span
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <!--                                 <li>
                                     <a href="area"><i class="fa fa-list-alt"></i> Areas</a>
                                 </li> -->
                                 <li>
-                                    <a href="usuarios"><i class="fa fa-users"></i> Usuarios</a>
+                                    <a href="usuarios"><i class="fa fa-users"></i> USUARIOS</a>
                                 </li>
                                 <li>
-                                    <a href="equipo"><i class="fa fa-desktop"></i> Equipos</a>
+                                    <a href="equipo"><i class="fa fa-desktop"></i> EQUIPOS</a>
                                 </li>
                                 <li>
-                                    <a href="tecnico"><i class="fa fa-street-view"></i> Técnico</a>
+                                    <a href="tecnico"><i class="fa fa-street-view"></i> TÉCNICO</a>
                                 </li>
 
                             </ul>
