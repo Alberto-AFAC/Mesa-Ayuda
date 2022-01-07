@@ -18,21 +18,21 @@ $(document).ready(function() {
     weekStart: 0
 };
     // Extend dataTables search
-    $.fn.dataTable.ext.search.push(
-                function(settings, data, dataIndex) {
-                    var min = $('#min').val();
-                    var max = $('#max').val();
-                    var createdAt = data[2] || 3; // Our date column in the table
+    // $.fn.dataTable.ext.search.push(
+    //             function(settings, data, dataIndex) {
+    //                 var min = $('#min').val();
+    //                 var max = $('#max').val();
+    //                 var createdAt = data[2] || 3; // Our date column in the table
 
-                    if (
-                        (min == "" || max == "") ||
-                        (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
-                    ) {
-                        return true;
-                    }
-                    return false;
-                }
-            );
+    //                 if (
+    //                     (min == "" || max == "") ||
+    //                     (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
+    //                 ) {
+    //                     return true;
+    //                 }
+    //                 return false;
+    //             }
+    //         );
 var dataSet = [
     <?php
         $query1 = "SELECT 
@@ -158,13 +158,13 @@ var dataSet = [
         ],
     });
 
-    $('.date-range-filter').change(function() {
-                var table = $('#data-table-administrador').DataTable();
-                table.draw();
-            });
+    // $('.date-range-filter').change(function() {
+    //             var table = $('#data-table-administrador').DataTable();
+    //             table.draw();
+    //         });
 
 
-            $('.date-range-filter').datepicker();
+    //         $('.date-range-filter').datepicker();
          
 });
     //Cierre de la función
