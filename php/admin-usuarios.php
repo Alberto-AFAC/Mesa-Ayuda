@@ -49,7 +49,7 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     {title: "N° EMP"},
     {title: "NOMBRE"},
     {title: "APELLIDOS"},
-    {title: "CEARGO"},    
+    {title: "CARGO"},    
     {title: "ACCIÓN"}    
     ],
     });
