@@ -542,7 +542,7 @@ onclick="location.href='./'" -->
                         </div>
                         </br>
                         <div class="row">
-  <!-- <div class="col-lg-6">
+  <div class="col-lg-6">
     <div class="input-group">
       <span class="input-group-addon">
         Desde
@@ -559,7 +559,7 @@ onclick="location.href='./'" -->
     </div>
   </div>
 </div>
-                     <br><br> -->
+                     <br><br>
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
                     </div>
