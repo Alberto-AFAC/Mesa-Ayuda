@@ -59,7 +59,7 @@ function reporte() {
 
 
     if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
-        
+
         // if(sede == '0'){
         //    document.getElementById('sede').style.color = "red"; 
         // }else{
@@ -74,7 +74,7 @@ function reporte() {
         return;
     } else {
 
-       //bloquear boton 
+        //bloquear boton 
         //      document.getElementById('button').disabled = 'false';
         //        document.getElementById('button').style.color = "silver";
         $.ajax({
@@ -82,14 +82,14 @@ function reporte() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-           // console.log(respuesta);
-           
+            // console.log(respuesta);
+
             if (respuesta == 0) {
 
 
                 $("#button").hide();
-                    // $('#vacio').hide();
-                    // $("#error").hide();
+                // $('#vacio').hide();
+                // $("#error").hide();
                 $("#exito").toggle("toggled");
                 setTimeout(function() {
                     $("#exito").toggle("toggled");
@@ -98,13 +98,13 @@ function reporte() {
                 $('#exampleModalCenter').modal('hide');
 
             } else if (respuesta == 1) {
-                    // $("#exito").hide();
-                    // $('#vacio').hide();
+                // $("#exito").hide();
+                // $('#vacio').hide();
                 $("#error").toggle("toggled");
                 setTimeout(function() {
                     $("#error").toggle("toggled");
                 }, 5000);
-                 $('#exampleModalCenter').modal('hide');
+                $('#exampleModalCenter').modal('hide');
             }
         });
     }
@@ -408,10 +408,15 @@ function persona(id_usu) {
 function evlRpt() {
 
     var nreporte = document.getElementById('nreporte').value;
-    var evaluacion = $('input[name=evaluacion]:checked').val();
+    var conocimientos = $('input[name=conocimientos]:checked').val();
+    var actitud = $('input[name=actitud]:checked').val();
+    var habilidades = $('input[name=habilidades]:checked').val();
+    var respuesta = $('input[name=respuesta]:checked').val();
+    var solucion = $('input[name=solucion]:checked').val();
+    var calidad = $('input[name=calidad]:checked').val();
     var observa = document.getElementById('observa').value;
-
-    if (!document.querySelector('input[name=evaluacion]:checked') || nreporte == '' || observa == '') {
+    alert(nreporte + respuesta + observa);
+    if (nreporte == '' || observa == '') {
 
         //      alert('Error, rellena el campo horario');
 
@@ -426,7 +431,7 @@ function evlRpt() {
         $.ajax({
             url: '../php/rptUsu.php',
             type: 'POST',
-            data: 'nreporte=' + nreporte + '&evaluacion=' + evaluacion + '&observa=' + observa + '&opcion=evaluar'
+            data: 'nreporte=' + nreporte + '&conocimientos=' + conocimientos + '&actitud=' + actitud + '&habilidades=' + habilidades + '&respuesta=' + respuesta + '&solucion=' + solucion + '&calidad=' + calidad + '&observa=' + observa + '&opcion=evaluar'
         }).done(function(respuesta) {
             console.log(respuesta);
             if (respuesta == 0) {
