@@ -404,7 +404,7 @@ unset($_SESSION['consulta']);
                             </div> -->
                         <!-- </div> -->
 
-                        <div class="form-group">
+                        <!-- <div class="form-group"> -->
                             <!-- <div class="col-sm-4">
 
                                 <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
@@ -414,12 +414,12 @@ unset($_SESSION['consulta']);
 
                                 <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
                             </div> -->
-
+<!-- 
                             <div class="col-sm-4">
 
                                 <input id="final" name="final" type="text" class="form-control" disabled="">
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div -->
 
                         <!-- <div class="form-group"> -->
                             <!-- <div class="col-sm-12">
@@ -436,14 +436,14 @@ unset($_SESSION['consulta']);
                                     id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                             </div> -->
                         <!-- </div> -->
-
+<!-- 
                         <div class="form-group" id="externo">
                             <div class="col-sm-12">
                                 <label>RESPUESTA EXTERNA DE LA FALLA</label>
                                 <textarea id="falla_xterna" name="falla_xterna" class="form-control"
                                     id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="form-group"> -->
                             <!-- <div class="col-sm-6">
@@ -694,6 +694,17 @@ if($data['estado_rpt'] == 'Por atender'){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>PENDIENTE</a>";?>"
     ],
 
+    <?php }else if($data['estado_rpt'] == 'Cancelado'){ ?>
+
+    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+        "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
+
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>CONFIRMAR</a>";                        
+                    
+                 ?>"
+    ],
+
+
     <?php }else if($data['evaluacion'] == '0'){ ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
@@ -705,8 +716,9 @@ if($data['estado_rpt'] == 'Por atender'){
     ],
 
 
-    <?php } }
-    }?>
+<?php } 
+        }
+            }?>
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({

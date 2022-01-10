@@ -54,6 +54,9 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 
 		if(evaluar($nreporte,$conocimientos,$actitud, $habilidades, $respuesta, $solucion, $calidad,$observa,$conexion)){
 		echo "0";
+
+		validaRport($nreporte,$conexion);
+
 		}else{	echo "1";	}	
 	}
 
@@ -194,6 +197,7 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 	cerrar($conexion);
 	}
 }
+	
 	function evaluar($nreporte,$conocimientos,$actitud, $habilidades,$respuesta, $solucion, $calidad, $observa,$conexion){
 		$query = "INSERT INTO evaluacion VALUES(0,$nreporte,'$conocimientos','$actitud','$habilidades','$respuesta', '$solucion', '$calidad','$observa',0)";
 		if (mysqli_query($conexion,$query)) {
@@ -204,6 +208,25 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 			}
 		cerrar($conexion);
 	}
+
+	function validaRport($nreporte,$conexion){
+
+	$query = "UPDATE reporte SET evaluacion = '1' WHERE n_reporte = $nreporte";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+	cerrar($conexion);
+
+	}
+
+
+
+
 	//TODO AQUI VA LA EVALUACIÓN PARA ACTUALIZAR
 
 // function enviarCorreo($nempleado,$conexion){
