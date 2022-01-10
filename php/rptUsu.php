@@ -44,10 +44,15 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 	if($opcion === 'evaluar'){
 
 	$nreporte = $_POST['nreporte'];
-	$evaluacion = $_POST['evaluacion'];
+	$conocimientos = $_POST['conocimientos'];
+	$actitud = $_POST['actitud'];
+	$habilidades = $_POST['habilidades'];
+	$respuesta = $_POST['respuesta'];
+	$solucion = $_POST['solucion'];
+	$calidad = $_POST['calidad'];
 	$observa = $_POST['observa'];
 
-		if(evaluar($nreporte,$evaluacion,$observa,$conexion)){
+		if(evaluar($nreporte,$conocimientos,$actitud, $habilidades, $respuesta, $solucion, $calidad,$observa,$conexion)){
 		echo "0";
 		}else{	echo "1";	}	
 	}
@@ -189,9 +194,8 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 	cerrar($conexion);
 	}
 }
-	function evaluar($nreporte,$evaluacion,$observa,$conexion){
-
-		$query = "UPDATE reporte SET evaluacion='$evaluacion',observa='$observa' WHERE n_reporte=$nreporte";
+	function evaluar($nreporte,$conocimientos,$actitud, $habilidades,$respuesta, $solucion, $calidad, $observa,$conexion){
+		$query = "INSERT INTO evaluacion VALUES(0,$nreporte,'$conocimientos','$actitud','$habilidades','$respuesta', '$solucion', '$calidad','$observa',0)";
 		if (mysqli_query($conexion,$query)) {
 			return true;
 			}else
@@ -200,6 +204,7 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 			}
 		cerrar($conexion);
 	}
+	//TODO AQUI VA LA EVALUACIÓN PARA ACTUALIZAR
 
 // function enviarCorreo($nempleado,$conexion){
 // 	// AQUÍ SE CREA Y ENVÍA EL REPORTE PARA EL TECNICO

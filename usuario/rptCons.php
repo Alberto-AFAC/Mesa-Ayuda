@@ -9,6 +9,7 @@ unset($_SESSION['consulta']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,28 +20,32 @@ unset($_SESSION['consulta']);
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
-   <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
 </head>
+
 <body>
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-               <?php include("usuarios.php");?>
+                <?php include("usuarios.php");?>
             </div>
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown"><!--Notificación de correos-->                    
-                   <?php //include("../php/correo.php");?>
-                </li>          
-                 <li class="dropdown">
+                <li class="dropdown">
+                    <!--Notificación de correos-->
+                    <?php //include("../php/correo.php");?>
+                </li>
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">                   
+                    <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+                            <a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                                SESIÓN</a>
                         </li>
                     </ul>
                 </li>
@@ -50,13 +55,17 @@ unset($_SESSION['consulta']);
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="./"><i class="fa fa-home"></i> INICIO</a>
-                        </li>      
-                        <li>
-                            <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> REPORTES<!--<span class="fa arrow"></span>--></a>
                         </li>
                         <li>
-                            <a href="rptHist.php"><i class="glyphicon glyphicon-header"></i> HISTORIAL<!--<span class="fa arrow"></span>--></a>
-                        </li>                        
+                            <a href="rptCons.php"><i class="fa fa-keyboard-o"></i> REPORTES
+                                <!--<span class="fa arrow"></span>-->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="rptHist.php"><i class="glyphicon glyphicon-header"></i> HISTORIAL
+                                <!--<span class="fa arrow"></span>-->
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -64,284 +73,567 @@ unset($_SESSION['consulta']);
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                     <img src="../img/afac.png" class="imgafac">
-                     <h1 class="page-header">CONSULTAR REPORTE</h1>
+                    <img src="../img/afac.png" class="imgafac">
+                    <h1 class="page-header">CONSULTAR REPORTE</h1>
                 </div>
             </div>
-            <div class="row">   
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-cherri">
                         <div class="panel-heading"></div>
                     </div>
                 </div>
-                 <div class="panel-body">
+                <div class="panel-body">
                     <div class="col-lg-12">
 
-                    <table id="data-table-reporte" class="table table-striped table-hover"></table>
+                        <table id="data-table-reporte" class="table table-striped table-hover"></table>
                     </div>
-                 </div>   
+                </div>
             </div>
         </div>
-      </div>  
+    </div>
 
-<form class="form-horizontal" action="" method="POST" onsubmit="return evlRpt(this)">
-    <div class="modal fade" id="modalEval" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <form class="form-horizontal" action="" method="POST" onsubmit="return evlRpt(this)">
+        <div class="modal fade" id="modalEval" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel">
 
-<div class="modal-dialog width" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
+            <div class="modal-dialog width" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
 </button>-->
-<button type="button" onclick="location.href='rptCons.php'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="exampleModalLabel"><b>EVALUAR REPORTE - <input class="transparent" style="text-transform: uppercase;" id="estado_rpt" name="estado_rpt" disabled=""></b></h4>
-</div>
-            <div class="modal-body">
-                <input type="hidden" id="opcion" name="opcion" value="evaluar">
-                    <div class="form-group">                    
-                    <div class="col-sm-2">
-                    <label>N° REPORTE</label>
-                    <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
+                        <button type="button" onclick="location.href='rptCons.php'" class="close" data-dismiss="modal"
+                            aria-label="Close"><span style="color: black" aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel"><b>EVALUAR REPORTE - <input class="transparent"
+                                    style="text-transform: uppercase;" id="estado_rpt" name="estado_rpt"
+                                    disabled=""></b></h4>
                     </div>
-                    <div class="col-sm-4">
-                    <label>TÉCNICO</label>
-                    <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
-                    </div>                    
-                    <div class="col-sm-2">
-                    <label>EXTENSIÓN</label>
-                    <input id="extension" name="extension" type="text" class="form-control" disabled="">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>CORREO</label>
-                    <input id="correo" name="correo" type="text" class="form-control" disabled="">
-                    </div>                    
-                    </div>
+                    <div class="modal-body">
+                        <div class="jumbotron">
+                            <div class="container">
+                                <p style='font-size: 15px; text-align: justify;'>EL DEPARTAMENTO DE SOPORTE TÉCNICO Y
+                                    REDES, SE ESMERA
+                                    PARA
+                                    OFRECER CONSISTENTEMENTE EL MEJOR
+                                    SOPORTE TÉCNICO POSIBLE Y SUPERAR SUS EXPECTATIVAS DE LOS SERVICIOS INFORMÁTICOS
+                                    BRINDADOS.
+                                    POR LO TANTO, AGRADECEMOS SU VALIOSO APOYO A FIN DE QUE SE TOME ALGUNOS MINUTOS PARA
+                                    COMPARTIR CON NOSOTROS SU RETROALIMENTACIÓN ACERCA DE SU EXPERIENCIA CON EL SOPORTE,
+                                    PARA
+                                    QUE PODAMOS CONTINUAR MEJORANDO NUESTRO SERVICIO.</p>
+                                <input type="hidden" id="opcion" name="opcion" value="evaluar">
+                                <span style="font-weight: bold; font-size: 13px;">ID: <input
+                                        style=" background: transparent; border:none;" id="nreporte" name="nreporte"
+                                        type="text" disabled></span><br>
+                                <span style="font-weight: bold; font-size: 13px;">CATEGORÍA: <input
+                                        style=" background: transparent; border:none;" id="servicio" name="servicio"
+                                        type="text" disabled></span><br>
+                                <span style="font-weight: bold; font-size: 13px;">SUBCATEGORÍA: <input
+                                        style=" background: transparent; border:none;" id="intervencion"
+                                        name="intervencion" type="text" disabled></span><br>
+                                <span style="font-weight: bold; font-size: 13px;">FECHA DE SOLICITUD: <input
+                                        style=" background: transparent; border:none;" id="finicio" name="finicio"
+                                        type="text" disabled></span><br>
+                                <span style="font-weight: bold; font-size: 13px;">FECHA DE RESOLUCIÓN: <input
+                                        style=" background: transparent; border:none;" id="ffinal" name="ffinal"
+                                        type="text" disabled></span><br>
+                                <span style="font-weight: bold; font-size: 13px;">TÉCNICO ASIGNADO: <input
+                                        style="width: 50%; background: transparent; border:none;" id="usuario"
+                                        name="usuario" type="text" disabled></span><br><br>
+                                <p style='font-size: 15px; text-align: justify;'>POR FAVOR, CALIFIQUE SU SATISFACCIÓN
+                                    CON EL SOPORTE TÉCNICO TELEFÓNICO O EN SITIO QUE RECIBIÓ; EN DONDE 1 ES TOTALMENTE
+                                    INSATISFECHO Y 10 EXTREMADAMENTE SATISFECHO, 0 NO SE APLICA</p>
+                                    <input type="hidden" id="opcion" name="opcion" value="evaluar">
+                                <!-- TABLE TO EVALUATION -->
+                                <table style="width:100%">
+                                    <tr>
+                                        <th></th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                        <th>5</th>
+                                        <th>6</th>
+                                        <th>7</th>
+                                        <th>8</th>
+                                        <th>9</th>
+                                        <th>10</th>
+                                    </tr>
+                                    <tr>
+                                        <td>CONOCIMIENTOS DEL TÉCNICO</td>
+                                        <td><label>
+                                                <input type="radio" value ="1" name="conocimientos">
+                                            </label></td>
+                                        <td><label>
+                                                <input type="radio" value ="2" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="3" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="4" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="5" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="6" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="7" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="8" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="9" name="conocimientos">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="10" name="conocimientos">
+                                            </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ACTITUD DE SERVICIO DEL TÉCNICO</td>
+                                        <td><label>
+                                                <input type="radio" value ="1" name="actitud">
+                                            </label></td>
+                                        <td><label>
+                                                <input type="radio" value ="2" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="3" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="4" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="5" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="6" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="7" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="8" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="9" name="actitud">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="10" name="actitud">
+                                            </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>HABILIDADES DE COMUNICACIÓN DEL TÉCNICO</td>
+                                        <td><label>
+                                                <input type="radio" value ="1" name="habilidades">
+                                            </label></td>
+                                        <td><label>
+                                                <input type="radio" value ="2" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="3" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="4" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="5" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="6" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="7" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="8" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="9" name="habilidades">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="10" name="habilidades">
+                                            </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TIEMPO DE RESPUESTA</td>
+                                        <td><label>
+                                                <input type="radio" value ="1" name="respuesta">
+                                            </label></td>
+                                        <td><label>
+                                                <input type="radio" value ="2" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="3" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="4" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="5" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="6" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="7" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="8" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="9" name="respuesta">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="10" name="respuesta">
+                                            </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TIEMPO DE SOLUCIÓN</td>
+                                        <td><label>
+                                                <input type="radio" value ="1" name="solucion">
+                                            </label></td>
+                                        <td><label>
+                                                <input type="radio" value ="2" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="3" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="4" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="5" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="6" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="7" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="8" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="9" name="solucion">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="10" name="solucion">
+                                            </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CALIDAD GENERAL DEL SERVICIO RECIBIDO</td>
+                                        <td><label>
+                                                <input type="radio" value ="1" name="calidad">
+                                            </label></td>
+                                        <td><label>
+                                                <input type="radio" value ="2"name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="3" name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="4" name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="5" name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="6" name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="7" name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="8" name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="9" name="calidad">
+                                            </label></td>
+                                            <td><label>
+                                                <input type="radio" value ="10" name="calidad">
+                                            </label></td>
+                                    </tr>
+                                </table><br>
+                                <p style='font-weight: bold; font-size: 15px; text-align: justify;'>BRINDE CUALQUIER COMENTARIO ADICIONAL ACERCA DE SU EXPERIENCIA</p>
+                                <div>
+                                <textarea onkeyup="mayus(this);" placeholder="(SUS COMENTARIOS DETALLADOS NOS AYUDARÁN A MEJORAR SU EXPERIENCIA.)" id="observa" name="observa" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="2"></textarea>
+                            </div>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>TIPO DE SERVICIO</label>
-                    <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
-                    </div>
+                      
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-2">
+                                <label>N° REPORTE</label>
+                                <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
+                            </div> -->
+                            <!-- <div class="col-sm-4">
+                                <label>TÉCNICO</label>
+                                <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
+                            </div> -->
+                            <!-- <div class="col-sm-2">
+                                <label>EXTENSIÓN</label>
+                                <input id="extension" name="extension" type="text" class="form-control" disabled="">
+                            </div> -->
+                            <!-- <div class="col-sm-4">
+                                <label>CORREO</label>
+                                <input id="correo" name="correo" type="text" class="form-control" disabled="">
+                            </div> -->
+                        <!-- </div>  -->
 
-                    <div class="col-sm-4">
-                    <label style="color:white;">.</label>
-                    <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
-                    </div>                    
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-4">
+                                <label>TIPO DE SERVICIO</label>
+                                <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
+                            </div> -->
+<!-- 
+                            <div class="col-sm-4">
+                                <label style="color:white;">.</label>
+                                <input id="intervencion" name="intervencion" type="text" class="form-control"
+                                    disabled="">
+                            </div> -->
 
-                    <div class="col-sm-4">
-                    <label style="color:white;">.</label>
-                    <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
-                    </div>
-                    </div>
+                            <!-- <div class="col-sm-4">
+                                <label style="color:white;">.</label>
+                                <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
+                            </div> -->
+                        <!-- </div> -->
 
-                    <div class="form-group">
-                    <div class="col-sm-4">
-              
-                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
-                    </div>
+                        <div class="form-group">
+                            <!-- <div class="col-sm-4">
 
-                    <div class="col-sm-4">
-               
-                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
-                    </div>                    
+                                <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
+                            </div> -->
+<!-- 
+                            <div class="col-sm-4">
 
-                    <div class="col-sm-4">
-                
-                    <input id="final" name="final" type="text" class="form-control" disabled="">
-                    </div>
-                    </div>
+                                <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                            </div> -->
 
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label>OBSERVACIONES</label>  
-                    <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                    </div>
-                    </div>
+                            <div class="col-sm-4">
 
-                    <div class="form-group">
-                    <div class="col-sm-12">
-                    <label>RESPUESTA DE FALLA</label> 
-                    <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                    </div>
-                    </div>
-                    
-                    <div class="form-group" id="externo">
-                    <div class="col-sm-12">
-                    <label>RESPUESTA EXTERNA DE LA FALLA</label>
-                    <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                    </div>
-                    </div>                     
+                                <input id="final" name="final" type="text" class="form-control" disabled="">
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                    <div class="col-sm-6">
-                    <label> FECHA REPORTE</label>
-                    <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-12">
+                                <label>OBSERVACIONES</label>
+                                <textarea id="usu_observ" name="usu_observ" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                            </div> -->
+                        <!-- </div> -->
+
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-12">
+                                <label>RESPUESTA DE FALLA</label>
+                                <textarea id="falla_interna" name="falla_interna" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                            </div> -->
+                        <!-- </div> -->
+
+                        <div class="form-group" id="externo">
+                            <div class="col-sm-12">
+                                <label>RESPUESTA EXTERNA DE LA FALLA</label>
+                                <textarea id="falla_xterna" name="falla_xterna" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-6">
+                                <label> FECHA REPORTE</label>
+                                <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
+                            </div> -->
+                            <!-- <div class="col-sm-6">
+                                <label> FECHA FINALIZADA</label>
+                                <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
+                            </div> -->
+                        <!-- </div> -->
+                       
+                        <!-- <p id="div1"> -->
+                            <!-- ¿COMO LE PARECIÓ EL SERVICIO? -->
+                            <!-- <label for="BUENO">BUENO</label>
+                            <input name="evaluacion" type="radio" value="BUENO" id="BUENO" />
+                            <label for="REGULAR">REGULAR</label>
+                            <input name="evaluacion" type="radio" value="REGULAR" id="REGULAR" />
+                            <label for="MALO">MALO</label>
+                            <input name="evaluacion" type="radio" value="MALO" id="MALO" /> -->
+                        <!-- </p> -->
+                        <!-- <p id="div2">
+                            <label for="Cancelado">CANCELADO</label>
+                            <input name="evaluacion" type="radio" value="CANCELADO" id="CANCELADO" />
+                        <p> -->
+                        <!-- <div class="form-group" id="externo">
+                            <div class="col-sm-12">
+                                <label>¿DESCRIBA POR QUÉ?</label>
+                                <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="2"></textarea>
+                            </div>
+                        </div> -->
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-0 col-sm-4">
+                                <button type="button" id="button" class="btn btn-green"
+                                    onclick="evlRpt();">ACEPTAR</button>
+                            </div>
+                            <b>
+                                <p class="alert alert-danger text-center padding error" id="error">Error al evaluar
+                                    técnico</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-success text-center padding exito" id="exito">¡El técnico ha sido
+                                    evaluado con éxito!</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario que
+                                    evalué al técnico</p>
+                            </b>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                    <label> FECHA FINALIZADA</label>
-                    <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
-                    </div>                    
-                    </div>
-                    <p><b>SU OPINIÓN ES MUY IMPORTANTE PARA NOSOTROS</b></p>
-                    <p id="div1">
-                    ¿COMO LE PARECIÓ EL SERVICIO?
-                    <label for="BUENO">BUENO</label>
-                    <input name="evaluacion" type="radio" value="BUENO" id="BUENO" />
-                    <label for="REGULAR">REGULAR</label>
-                    <input name="evaluacion" type="radio" value="REGULAR" id="REGULAR" />
-                    <label for="MALO">MALO</label>
-                    <input name="evaluacion" type="radio" value="MALO" id="MALO" />
-                    </p>
-                    <p id="div2">
-                        <label for="Cancelado">CANCELADO</label>
-                        <input name="evaluacion" type="radio" value="CANCELADO" id="CANCELADO" />
-                    <p>
-                   <div class="form-group" id="externo">
-                    <div class="col-sm-12">
-                    <label>¿DESCRIBA POR QUÉ?</label>
-                    <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                    </div>
-                    </div> 
-                               
-            <div class="form-group"><br>
-            <div class="col-sm-offset-0 col-sm-4">
-            <button type="button" id="button" class="btn btn-green" onclick="evlRpt();">ACEPTAR</button>
-            </div>
-            <b><p class="alert alert-danger text-center padding error" id="error">Error al evaluar técnico</p></b>
-            <b><p class="alert alert-success text-center padding exito" id="exito">¡El técnico ha sido evaluado con éxito!</p></b>
-            <b><p class="alert alert-warning text-center padding aviso" id="vacio">Es necesario que evalué al técnico</p></b>
-            </div>
-            </div> 
-            </div>
+                </div>
             </div>
         </div>
-</form>
+    </form>
 
-<form class="form-horizontal" action="" method="POST">
-    <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <form class="form-horizontal" action="" method="POST">
+        <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel">
 
-<div class="modal-dialog width" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarCampo()"><span style="color: black"  aria-hidden="true">&times;</span>
-</button>
+            <div class="modal-dialog width" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            onclick="limpiarCampo()"><span style="color: black" aria-hidden="true">&times;</span>
+                        </button>
 
-<h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE</h4>
-</div>
-            <div class="modal-body">
-                <input type="hidden" id="opcion" name="opcion" value="evaluar">
-                    <div class="form-group">                    
-                    <div class="col-sm-2">
-                    <label>N° REPORTE</label>
-                    <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
+                        <h4 class="modal-title" id="exampleModalLabel">DETALLES DEL REPORTE</h4>
                     </div>
-                    <div class="col-sm-4">
-                    <label>TÉCNICO</label>
-                    <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
-                    </div>                    
-                    <div class="col-sm-2">
-                    <label>EXTENSIÓN</label>
-                    <input id="extension" name="extension" type="text" class="form-control" disabled="">
-                    </div>
-                    <div class="col-sm-4">
-                    <label>CORREO</label>
-                    <input id="correo" name="correo" type="text" class="form-control" disabled="">
-                    </div>                    
-                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="opcion" name="opcion" value="evaluar">
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label>N° REPORTE</label>
+                                <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>TÉCNICO</label>
+                                <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
+                            </div>
+                            <div class="col-sm-2">
+                                <label>EXTENSIÓN</label>
+                                <input id="extension" name="extension" type="text" class="form-control" disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>CORREO</label>
+                                <input id="correo" name="correo" type="text" class="form-control" disabled="">
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>TIPO DE SERVICIO</label>
-                    <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
-                    </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label>TIPO DE SERVICIO</label>
+                                <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
+                            </div>
 
-                    <div class="col-sm-4">
-                    <label style="color:white;">.</label>
-                    <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
-                    </div>                    
+                            <div class="col-sm-4">
+                                <label style="color:white;">.</label>
+                                <input id="intervencion" name="intervencion" type="text" class="form-control"
+                                    disabled="">
+                            </div>
 
-                    <div class="col-sm-4">
-                    <label style="color:white;">.</label>
-                    <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
-                    </div>
-                    </div>
+                            <div class="col-sm-4">
+                                <label style="color:white;">.</label>
+                                <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    
-                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
-                    </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
 
-                    <div class="col-sm-4">
-                    
-                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
-                    </div>                    
+                                <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
+                            </div>
 
-                    <div class="col-sm-4">
-                    
-                    <input id="final" name="final" type="text" class="form-control" disabled="">
-                    </div>
-                    </div>
+                            <div class="col-sm-4">
 
-                    <div class="form-group" id="obsrvcns">
-                    <div class="col-sm-12">
-                    <label>OBSERVACIONES</label>  
-                    <textarea id="usu_observ" name="usu_observ" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                    </div>
-                    </div>
-                    
-                    <div class="form-group" id="rspsta">
-                    <div class="col-sm-12">
-                    <label>RESPUESTA DE FALLA</label>  
-                    <textarea id="falla_interna" name="falla_interna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                    </div>
-                    </div>
-                    
-                    <div class="form-group" id="falla">
-                    <div class="col-sm-12">
-                    <label>RESPUESTA EXTERNA DE LA FALLA</label>
-                    <textarea id="falla_xterna" name="falla_xterna" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                    </div>
-                    </div>                     
+                                <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                            </div>
 
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label> FECHA REPORTE</label>
-                    <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
+                            <div class="col-sm-4">
+
+                                <input id="final" name="final" type="text" class="form-control" disabled="">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="obsrvcns">
+                            <div class="col-sm-12">
+                                <label>OBSERVACIONES</label>
+                                <textarea id="usu_observ" name="usu_observ" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="rspsta">
+                            <div class="col-sm-12">
+                                <label>RESPUESTA DE FALLA</label>
+                                <textarea id="falla_interna" name="falla_interna" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="falla">
+                            <div class="col-sm-12">
+                                <label>RESPUESTA EXTERNA DE LA FALLA</label>
+                                <textarea id="falla_xterna" name="falla_xterna" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label> FECHA REPORTE</label>
+                                <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
+                            </div>
+                            <div class="col-sm-4">
+                                <label> FECHA FINALIZADA</label>
+                                <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
+                            </div>
+                            <div class="col-sm-4" id="pndint1">
+                                <label> SU EVALUACIÓN DE REPORTE</label>
+                                <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12" id="pndint2">
+                                <label>¿POR QUÉ?</label>
+                                <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-4">
-                    <label> FECHA FINALIZADA</label>
-                    <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
-                    </div>                    
-                    <div class="col-sm-4" id="pndint1">
-                    <label> SU EVALUACIÓN DE REPORTE</label>
-                    <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
-                    </div>
-                    </div>
-                   <div class="form-group">
-                    <div class="col-sm-12" id="pndint2">
-                    <label>¿POR QUÉ?</label>
-                    <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
-                    </div>
-                    </div>                             
-            </div> 
-            </div>
+                </div>
             </div>
         </div>
-</form>
+    </form>
 
 </body>
-    <script src="../js/mayu.js"></script>
-    <script src="../js/conEqp.js"></script>
-    <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.dataTables.min.js"></script>
-    <script src="../js/dataTables.bootstrap.js"></script>
-    <script src="../js/dataTables.buttons.min.js"></script>
-    <script src="../boots/metisMenu/metisMenu.min.js"></script>
-    <script src="../dist/js/sb-admin-2.js"></script>
-    <script type="text/javascript">
-        var dataSet = [
-            <?php
+<script src="../js/mayu.js"></script>
+<script src="../js/conEqp.js"></script>
+<script src="../boots/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/dataTables.bootstrap.js"></script>
+<script src="../js/dataTables.buttons.min.js"></script>
+<script src="../boots/metisMenu/metisMenu.min.js"></script>
+<script src="../dist/js/sb-admin-2.js"></script>
+<script type="text/javascript">
+var dataSet = [
+    <?php
 	     $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
          $query = "SELECT 
             tecnico.id_usu,
@@ -385,55 +677,72 @@ unset($_SESSION['consulta']);
 
 if($data['estado_rpt'] == 'Por atender'){
 
-        ?>
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php                   
+        ?>["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+        "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>",
+        "<?php                   
                 echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>POR ATENDER</a>"; ?>"
-],
-<?php 
+    ],
+    <?php 
 
 }else if($data['estado_rpt'] == 'Pendiente'){ ?>
 
-   ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+        "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>",
+        "<?php 
 
                       
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>PENDIENTE</a>";?>"
-],
+    ],
 
-<?php }else if($data['evaluacion'] == '0'){ ?>
+    <?php }else if($data['evaluacion'] == '0'){ ?>
 
-   ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo $ext?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+        "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>EVALUAR</a>";                        
                     
                  ?>"
-],
+    ],
 
 
-<?php } }
+    <?php } }
     }?>
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({
     "language": {
-    "searchPlaceholder": "Buscar datos...",
-    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
-            "order": [
-            [0, "desc"]
-        ],
+    "order": [
+        [0, "desc"]
+    ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
-    columns: [
-    {title: "N°"},
-    {title: "TÉCNICO ASIGNADO"},
-    {title: "EXT."},
-    {title: "TIPO DE SERVICIO"},
-    {title: "ENVIO"},
-    {title: "TERMINO"},
-    {title: "ESTADO"}
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "TÉCNICO ASIGNADO"
+        },
+        {
+            title: "EXT."
+        },
+        {
+            title: "TIPO DE SERVICIO"
+        },
+        {
+            title: "ENVIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "ESTADO"
+        }
     ],
-    });
+});
+</script>
 
-    </script>
 </html>
