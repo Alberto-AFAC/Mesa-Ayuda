@@ -436,9 +436,7 @@ function evlRpt() {
             console.log(respuesta);
             if (respuesta == 0) {
                 $("#exito").toggle("toggled");
-                setTimeout(function() {
-                    $("#exito").toggle("toggled");
-                }, 3000);
+                setTimeout("location.href = 'rptCons';", 4000);
             } else if (respuesta == 1) {
                 $("#error").toggle("toggled");
                 setTimeout(function() {

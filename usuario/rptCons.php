@@ -143,6 +143,7 @@ unset($_SESSION['consulta']);
                                 <p style='font-size: 15px; text-align: justify;'>POR FAVOR, CALIFIQUE SU SATISFACCIÓN
                                     CON EL SOPORTE TÉCNICO TELEFÓNICO O EN SITIO QUE RECIBIÓ; EN DONDE 1 ES TOTALMENTE
                                     INSATISFECHO Y 10 EXTREMADAMENTE SATISFECHO, 0 NO SE APLICA</p>
+                                    <input type="hidden" id="opcion" name="opcion" value="evaluar">
                                 <!-- TABLE TO EVALUATION -->
                                 <table style="width:100%">
                                     <tr>
@@ -356,58 +357,63 @@ unset($_SESSION['consulta']);
                                                 <input type="radio" value ="10" name="calidad">
                                             </label></td>
                                     </tr>
-                                </table>
+                                </table><br>
+                                <p style='font-weight: bold; font-size: 15px; text-align: justify;'>BRINDE CUALQUIER COMENTARIO ADICIONAL ACERCA DE SU EXPERIENCIA</p>
+                                <div>
+                                <textarea onkeyup="mayus(this);" placeholder="(SUS COMENTARIOS DETALLADOS NOS AYUDARÁN A MEJORAR SU EXPERIENCIA.)" id="observa" name="observa" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="2"></textarea>
+                            </div>
                             </div>
                         </div>
 
-                        <input type="hidden" id="opcion" name="opcion" value="evaluar">
-                        <div class="form-group">
-                            <div class="col-sm-2">
+                      
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-2">
                                 <label>N° REPORTE</label>
                                 <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
-                            </div>
-                            <div class="col-sm-4">
+                            </div> -->
+                            <!-- <div class="col-sm-4">
                                 <label>TÉCNICO</label>
                                 <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
-                            </div>
-                            <div class="col-sm-2">
+                            </div> -->
+                            <!-- <div class="col-sm-2">
                                 <label>EXTENSIÓN</label>
                                 <input id="extension" name="extension" type="text" class="form-control" disabled="">
-                            </div>
-                            <div class="col-sm-4">
+                            </div> -->
+                            <!-- <div class="col-sm-4">
                                 <label>CORREO</label>
                                 <input id="correo" name="correo" type="text" class="form-control" disabled="">
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div>  -->
 
-                        <div class="form-group">
-                            <div class="col-sm-4">
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-4">
                                 <label>TIPO DE SERVICIO</label>
                                 <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
-                            </div>
-
+                            </div> -->
+<!-- 
                             <div class="col-sm-4">
                                 <label style="color:white;">.</label>
                                 <input id="intervencion" name="intervencion" type="text" class="form-control"
                                     disabled="">
-                            </div>
+                            </div> -->
 
-                            <div class="col-sm-4">
+                            <!-- <div class="col-sm-4">
                                 <label style="color:white;">.</label>
                                 <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
 
                         <div class="form-group">
-                            <div class="col-sm-4">
+                            <!-- <div class="col-sm-4">
 
                                 <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
-                            </div>
-
+                            </div> -->
+<!-- 
                             <div class="col-sm-4">
 
                                 <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
-                            </div>
+                            </div> -->
 
                             <div class="col-sm-4">
 
@@ -415,21 +421,21 @@ unset($_SESSION['consulta']);
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-12">
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-12">
                                 <label>OBSERVACIONES</label>
                                 <textarea id="usu_observ" name="usu_observ" class="form-control"
                                     id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
 
-                        <div class="form-group">
-                            <div class="col-sm-12">
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-12">
                                 <label>RESPUESTA DE FALLA</label>
                                 <textarea id="falla_interna" name="falla_interna" class="form-control"
                                     id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
 
                         <div class="form-group" id="externo">
                             <div class="col-sm-12">
@@ -439,39 +445,39 @@ unset($_SESSION['consulta']);
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                        <!-- <div class="form-group"> -->
+                            <!-- <div class="col-sm-6">
                                 <label> FECHA REPORTE</label>
                                 <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
-                            </div>
-                            <div class="col-sm-6">
+                            </div> -->
+                            <!-- <div class="col-sm-6">
                                 <label> FECHA FINALIZADA</label>
                                 <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
-                            </div>
-                        </div>
-                        <p><b>SU OPINIÓN ES MUY IMPORTANTE PARA NOSOTROS</b></p>
-                        <p id="div1">
-                            ¿COMO LE PARECIÓ EL SERVICIO?
+                            </div> -->
+                        <!-- </div> -->
+                       
+                        <!-- <p id="div1"> -->
+                            <!-- ¿COMO LE PARECIÓ EL SERVICIO? -->
                             <!-- <label for="BUENO">BUENO</label>
                             <input name="evaluacion" type="radio" value="BUENO" id="BUENO" />
                             <label for="REGULAR">REGULAR</label>
                             <input name="evaluacion" type="radio" value="REGULAR" id="REGULAR" />
                             <label for="MALO">MALO</label>
                             <input name="evaluacion" type="radio" value="MALO" id="MALO" /> -->
-                        </p>
-                        <p id="div2">
+                        <!-- </p> -->
+                        <!-- <p id="div2">
                             <label for="Cancelado">CANCELADO</label>
                             <input name="evaluacion" type="radio" value="CANCELADO" id="CANCELADO" />
-                        <p>
-                        <div class="form-group" id="externo">
+                        <p> -->
+                        <!-- <div class="form-group" id="externo">
                             <div class="col-sm-12">
                                 <label>¿DESCRIBA POR QUÉ?</label>
                                 <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control"
                                     id="exampleFormControlTextarea1" rows="2"></textarea>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="form-group"><br>
+                        <div class="form-group">
                             <div class="col-sm-offset-0 col-sm-4">
                                 <button type="button" id="button" class="btn btn-green"
                                     onclick="evlRpt();">ACEPTAR</button>
