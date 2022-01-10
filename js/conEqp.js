@@ -415,7 +415,7 @@ function evlRpt() {
     var solucion = $('input[name=solucion]:checked').val();
     var calidad = $('input[name=calidad]:checked').val();
     var observa = document.getElementById('observa').value;
-    alert(nreporte + respuesta + observa);
+    //alert(nreporte + respuesta + observa);
     if (!document.querySelector('input[name=conocimientos]:checked') || !document.querySelector('input[name=actitud]:checked') || !document.querySelector('input[name=habilidades]:checked') || !document.querySelector('input[name=respuesta]:checked') || !document.querySelector('input[name=solucion]:checked') || !document.querySelector('input[name=calidad]:checked') || nreporte == '' || observa == '') {
 
         //      alert('Error, rellena el campo horario');
