@@ -24,6 +24,35 @@ unset($_SESSION['consulta']);
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td,
+    #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 8px;
+        padding-bottom: 1px;
+        text-align: left;
+        background-color: #1489D8;
+        color: white;
+    }
+    </style>
 </head>
 
 <body>
@@ -111,7 +140,7 @@ unset($_SESSION['consulta']);
                     <div class="modal-body">
                         <div class="jumbotron">
                             <div class="container">
-                                <p style='font-size: 15px; text-align: justify;'>EL DEPARTAMENTO DE SOPORTE TÉCNICO Y
+                                <p style='font-size: 12px; text-align: justify;'>EL DEPARTAMENTO DE SOPORTE TÉCNICO Y
                                     REDES, SE ESMERA
                                     PARA
                                     OFRECER CONSISTENTEMENTE EL MEJOR
@@ -122,30 +151,30 @@ unset($_SESSION['consulta']);
                                     PARA
                                     QUE PODAMOS CONTINUAR MEJORANDO NUESTRO SERVICIO.</p>
                                 <input type="hidden" id="opcion" name="opcion" value="evaluar">
-                                <span style="font-weight: bold; font-size: 13px;">ID: <input
+                                <span style="font-weight: bold; font-size: 12px;">ID: <input
                                         style=" background: transparent; border:none;" id="nreporte" name="nreporte"
                                         type="text" disabled></span><br>
-                                <span style="font-weight: bold; font-size: 13px;">CATEGORÍA: <input
+                                <span style="font-weight: bold; font-size: 12px;">CATEGORÍA: <input
                                         style=" background: transparent; border:none;" id="servicio" name="servicio"
                                         type="text" disabled></span><br>
-                                <span style="font-weight: bold; font-size: 13px;">SUBCATEGORÍA: <input
+                                <span style="font-weight: bold; font-size: 12px;">SUBCATEGORÍA: <input
                                         style=" background: transparent; border:none;" id="intervencion"
                                         name="intervencion" type="text" disabled></span><br>
-                                <span style="font-weight: bold; font-size: 13px;">FECHA DE SOLICITUD: <input
+                                <span style="font-weight: bold; font-size: 12px;">FECHA DE SOLICITUD: <input
                                         style=" background: transparent; border:none;" id="finicio" name="finicio"
                                         type="text" disabled></span><br>
-                                <span style="font-weight: bold; font-size: 13px;">FECHA DE RESOLUCIÓN: <input
+                                <span style="font-weight: bold; font-size: 12px;">FECHA DE RESOLUCIÓN: <input
                                         style=" background: transparent; border:none;" id="ffinal" name="ffinal"
                                         type="text" disabled></span><br>
-                                <span style="font-weight: bold; font-size: 13px;">TÉCNICO ASIGNADO: <input
+                                <span style="font-weight: bold; font-size: 12px;">TÉCNICO ASIGNADO: <input
                                         style="width: 50%; background: transparent; border:none;" id="usuario"
                                         name="usuario" type="text" disabled></span><br><br>
-                                <p style='font-size: 15px; text-align: justify;'>POR FAVOR, CALIFIQUE SU SATISFACCIÓN
+                                <p style='font-size: 12px; text-align: justify;'>POR FAVOR, CALIFIQUE SU SATISFACCIÓN
                                     CON EL SOPORTE TÉCNICO TELEFÓNICO O EN SITIO QUE RECIBIÓ; EN DONDE 1 ES TOTALMENTE
                                     INSATISFECHO Y 10 EXTREMADAMENTE SATISFECHO, 0 NO SE APLICA</p>
-                                    <input type="hidden" id="opcion" name="opcion" value="evaluar">
+                                <input type="hidden" id="opcion" name="opcion" value="evaluar">
                                 <!-- TABLE TO EVALUATION -->
-                                <table style="width:100%">
+                                <table id="customers" style="width:100%">
                                     <tr>
                                         <th></th>
                                         <th>1</th>
@@ -160,261 +189,275 @@ unset($_SESSION['consulta']);
                                         <th>10</th>
                                     </tr>
                                     <tr>
-                                        <td>CONOCIMIENTOS DEL TÉCNICO</td>
+                                        <td style='font-weight: bold; font-size: 12px;'>CONOCIMIENTOS DEL TÉCNICO</td>
                                         <td><label>
-                                                <input type="radio" value ="1" name="conocimientos">
+                                                <input type="radio" value="1" name="conocimientos">
                                             </label></td>
                                         <td><label>
-                                                <input type="radio" value ="2" name="conocimientos">
+                                                <input type="radio" value="2" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="3" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="3" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="4" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="4" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="5" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="5" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="6" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="6" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="7" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="7" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="8" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="8" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="9" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="9" name="conocimientos">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="10" name="conocimientos">
+                                        <td><label>
+                                                <input type="radio" value="10" name="conocimientos">
                                             </label></td>
                                     </tr>
                                     <tr>
-                                        <td>ACTITUD DE SERVICIO DEL TÉCNICO</td>
+                                        <td style='font-weight: bold; font-size: 12px;'>ACTITUD DE SERVICIO DEL TÉCNICO
+                                        </td>
                                         <td><label>
-                                                <input type="radio" value ="1" name="actitud">
+                                                <input type="radio" value="1" name="actitud">
                                             </label></td>
                                         <td><label>
-                                                <input type="radio" value ="2" name="actitud">
+                                                <input type="radio" value="2" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="3" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="3" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="4" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="4" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="5" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="5" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="6" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="6" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="7" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="7" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="8" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="8" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="9" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="9" name="actitud">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="10" name="actitud">
+                                        <td><label>
+                                                <input type="radio" value="10" name="actitud">
                                             </label></td>
                                     </tr>
                                     <tr>
-                                        <td>HABILIDADES DE COMUNICACIÓN DEL TÉCNICO</td>
+                                        <td style='font-weight: bold; font-size: 12px;'>HABILIDADES DE COMUNICACIÓN DEL
+                                            TÉCNICO</td>
                                         <td><label>
-                                                <input type="radio" value ="1" name="habilidades">
+                                                <input type="radio" value="1" name="habilidades">
                                             </label></td>
                                         <td><label>
-                                                <input type="radio" value ="2" name="habilidades">
+                                                <input type="radio" value="2" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="3" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="3" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="4" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="4" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="5" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="5" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="6" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="6" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="7" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="7" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="8" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="8" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="9" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="9" name="habilidades">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="10" name="habilidades">
+                                        <td><label>
+                                                <input type="radio" value="10" name="habilidades">
                                             </label></td>
                                     </tr>
                                     <tr>
-                                        <td>TIEMPO DE RESPUESTA</td>
+                                        <td style='font-weight: bold; font-size: 12px;'>TIEMPO DE RESPUESTA</td>
                                         <td><label>
-                                                <input type="radio" value ="1" name="respuesta">
+                                                <input type="radio" value="1" name="respuesta">
                                             </label></td>
                                         <td><label>
-                                                <input type="radio" value ="2" name="respuesta">
+                                                <input type="radio" value="2" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="3" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="3" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="4" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="4" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="5" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="5" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="6" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="6" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="7" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="7" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="8" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="8" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="9" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="9" name="respuesta">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="10" name="respuesta">
+                                        <td><label>
+                                                <input type="radio" value="10" name="respuesta">
                                             </label></td>
                                     </tr>
                                     <tr>
-                                        <td>TIEMPO DE SOLUCIÓN</td>
+                                        <td style='font-weight: bold; font-size: 12px;'>TIEMPO DE SOLUCIÓN</td>
                                         <td><label>
-                                                <input type="radio" value ="1" name="solucion">
+                                                <input type="radio" value="1" name="solucion">
                                             </label></td>
                                         <td><label>
-                                                <input type="radio" value ="2" name="solucion">
+                                                <input type="radio" value="2" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="3" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="3" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="4" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="4" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="5" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="5" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="6" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="6" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="7" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="7" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="8" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="8" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="9" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="9" name="solucion">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="10" name="solucion">
+                                        <td><label>
+                                                <input type="radio" value="10" name="solucion">
                                             </label></td>
                                     </tr>
                                     <tr>
-                                        <td>CALIDAD GENERAL DEL SERVICIO RECIBIDO</td>
+                                        <td style='font-weight: bold; font-size: 12px;'>CALIDAD GENERAL DEL SERVICIO
+                                            RECIBIDO</td>
                                         <td><label>
-                                                <input type="radio" value ="1" name="calidad">
+                                                <input type="radio" value="1" name="calidad">
                                             </label></td>
                                         <td><label>
-                                                <input type="radio" value ="2"name="calidad">
+                                                <input type="radio" value="2" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="3" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="3" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="4" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="4" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="5" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="5" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="6" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="6" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="7" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="7" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="8" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="8" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="9" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="9" name="calidad">
                                             </label></td>
-                                            <td><label>
-                                                <input type="radio" value ="10" name="calidad">
+                                        <td><label>
+                                                <input type="radio" value="10" name="calidad">
                                             </label></td>
                                     </tr>
-                                </table><br>
-                                <p style='font-weight: bold; font-size: 15px; text-align: justify;'>BRINDE CUALQUIER COMENTARIO ADICIONAL ACERCA DE SU EXPERIENCIA</p>
+                                </table><br><br>
+                                <p style='font-weight: bold; font-size: 12px; text-align: justify;'>BRINDE CUALQUIER
+                                    COMENTARIO ADICIONAL ACERCA DE SU EXPERIENCIA</p>
                                 <div>
-                                <textarea onkeyup="mayus(this);" placeholder="(SUS COMENTARIOS DETALLADOS NOS AYUDARÁN A MEJORAR SU EXPERIENCIA.)" id="observa" name="observa" class="form-control"
-                                    id="exampleFormControlTextarea1" rows="2"></textarea>
-                            </div>
+                                    <textarea style='font-weight: bold; font-size: 12px; text-align: justify;' onkeyup="mayus(this);"
+                                        placeholder="(SUS COMENTARIOS DETALLADOS NOS AYUDARÁN A MEJORAR SU EXPERIENCIA.)"
+                                        id="observa" name="observa" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="2"></textarea><br>
+                                    <p style='font-weight: bold; font-size: 12px; text-align: justify;'> *NO SUMINISTRE
+                                        INFORMACIÓN CONFIDENCIAL O INFORMACIÓN QUE PERTENEZCA A ALGUNA PERSONA
+                                        ESPECÍFICAMENTE.</p>
+                                    <br>
+                                    <p style='font-size: 12px; text-align: justify;'> APRECIAMOS QUE
+                                        DEDIQUE EL TIEMPO A COMPARTIR SUS OPINIONES. SU RETROALIMENTACIÓN ES
+                                        INCREÍBLEMENTE VALIOSA PARA NOSOTROS A FIN DE MEJORAR AÚN MÁS SU EXPERIENCIA CON
+                                        NOSOTROS.</p>
+                                </div>
                             </div>
                         </div>
 
-                      
+
                         <!-- <div class="form-group"> -->
-                            <!-- <div class="col-sm-2">
+                        <!-- <div class="col-sm-2">
                                 <label>N° REPORTE</label>
                                 <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
                             </div> -->
-                            <!-- <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                                 <label>TÉCNICO</label>
                                 <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
                             </div> -->
-                            <!-- <div class="col-sm-2">
+                        <!-- <div class="col-sm-2">
                                 <label>EXTENSIÓN</label>
                                 <input id="extension" name="extension" type="text" class="form-control" disabled="">
                             </div> -->
-                            <!-- <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                                 <label>CORREO</label>
                                 <input id="correo" name="correo" type="text" class="form-control" disabled="">
                             </div> -->
                         <!-- </div>  -->
 
                         <!-- <div class="form-group"> -->
-                            <!-- <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                                 <label>TIPO DE SERVICIO</label>
                                 <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                             </div> -->
-<!-- 
+                        <!-- 
                             <div class="col-sm-4">
                                 <label style="color:white;">.</label>
                                 <input id="intervencion" name="intervencion" type="text" class="form-control"
                                     disabled="">
                             </div> -->
 
-                            <!-- <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                                 <label style="color:white;">.</label>
                                 <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
                             </div> -->
                         <!-- </div> -->
 
                         <!-- <div class="form-group"> -->
-                            <!-- <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
 
                                 <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
                             </div> -->
-<!-- 
+                        <!-- 
                             <div class="col-sm-4">
 
                                 <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
                             </div> -->
-<!-- 
+                        <!-- 
                             <div class="col-sm-4">
 
                                 <input id="final" name="final" type="text" class="form-control" disabled="">
@@ -422,7 +465,7 @@ unset($_SESSION['consulta']);
                         <!-- </div -->
 
                         <!-- <div class="form-group"> -->
-                            <!-- <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                                 <label>OBSERVACIONES</label>
                                 <textarea id="usu_observ" name="usu_observ" class="form-control"
                                     id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
@@ -430,13 +473,13 @@ unset($_SESSION['consulta']);
                         <!-- </div> -->
 
                         <!-- <div class="form-group"> -->
-                            <!-- <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                                 <label>RESPUESTA DE FALLA</label>
                                 <textarea id="falla_interna" name="falla_interna" class="form-control"
                                     id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                             </div> -->
                         <!-- </div> -->
-<!-- 
+                        <!-- 
                         <div class="form-group" id="externo">
                             <div class="col-sm-12">
                                 <label>RESPUESTA EXTERNA DE LA FALLA</label>
@@ -446,19 +489,19 @@ unset($_SESSION['consulta']);
                         </div> -->
 
                         <!-- <div class="form-group"> -->
-                            <!-- <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                                 <label> FECHA REPORTE</label>
                                 <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
                             </div> -->
-                            <!-- <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                                 <label> FECHA FINALIZADA</label>
                                 <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                             </div> -->
                         <!-- </div> -->
-                       
+
                         <!-- <p id="div1"> -->
-                            <!-- ¿COMO LE PARECIÓ EL SERVICIO? -->
-                            <!-- <label for="BUENO">BUENO</label>
+                        <!-- ¿COMO LE PARECIÓ EL SERVICIO? -->
+                        <!-- <label for="BUENO">BUENO</label>
                             <input name="evaluacion" type="radio" value="BUENO" id="BUENO" />
                             <label for="REGULAR">REGULAR</label>
                             <input name="evaluacion" type="radio" value="REGULAR" id="REGULAR" />
@@ -716,7 +759,7 @@ if($data['estado_rpt'] == 'Por atender'){
     ],
 
 
-<?php } 
+    <?php } 
         }
             }?>
 ];
