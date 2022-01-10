@@ -17,7 +17,7 @@ function agrEqpo() {
     var version_windows = document.getElementById('version_windows').value;
     var version_office = document.getElementById('version_office').value;
     var serie_mouse = document.getElementById('serie_mouse').value;
-    var direccion_ip = document.getElementById('direccion_ip').value;
+    var direccion_ip = document.getElementById('direccion_ip').value;//
     var nombre_equipo = document.getElementById('nombre_equipo').value;
     var servicio_internet = document.getElementById('servicio_internet').value;
     var tipo_equipo = document.getElementById('tipo_equipo').value;

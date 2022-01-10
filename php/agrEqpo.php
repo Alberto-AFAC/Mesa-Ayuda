@@ -73,6 +73,17 @@ if($opcion === 'agreqpo'){
 	}	
 
 
+// function ip_equipo(){
+// 	$query="SELECT * FROM equipo WHERE direccion_ip = '$direccion_ip' AND estado = 0 || serie_cpu = '$serie_cpu' AND estado = 0";
+// 	$resultados = mysqli_query($conexion,$query);
+// 	if($resultados->num_rows == 0){
+
+// 	}else{
+
+// 	}
+// 	cerrar($conexion);
+// }
+
 function actualEqpo($id_equipo,$num_invntraio,$marca_cpu,$serie_cpu,$memoria_ram,$procesador,$velocidad_proc,$uni_disc_flax,$disco_duro,$serie_teclado,$serie_monitor,$version_windows,$version_office,$serie_mouse,$direccion_ip,$nombre_equipo,$servicio_internet,$tipo_equipo,$ubicacion,$conexion){
 	$query = "UPDATE equipo SET
 num_invntraio = '$num_invntraio',marca_cpu = '$marca_cpu',
@@ -112,7 +123,7 @@ function agregarEqpo(
 	$servicio_internet,
 	$tipo_equipo,
 	$ubicacion,$conexion){
-	$query="SELECT * FROM equipo WHERE serie_cpu = '$serie_cpu' AND estado = 0";
+	$query="SELECT * FROM equipo WHERE direccion_ip = '$direccion_ip' AND estado = 0 || serie_cpu = '$serie_cpu' AND estado = 0";
 	$resultados = mysqli_query($conexion,$query);
 	if($resultados->num_rows == 0){
 		$query = "INSERT INTO equipo VALUES(

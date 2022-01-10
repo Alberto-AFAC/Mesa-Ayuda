@@ -24,7 +24,7 @@
 
 if($data['proceso']=='asignado'){   ?>    
     
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $nombre?>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $data['direccion_ip']?>','<?php echo $nombre?>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-warning'><i class='fa fa-desktop'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
@@ -35,7 +35,7 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 <?php 
 }else if($data['proceso']=='asignado'){   ?> 
 
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<p style="color:red;"><?php echo $nombre.'<br> YA NO LABORA '?></p>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $data['direccion_ip']?>','<p style="color:red;"><?php echo $nombre.'<br> YA NO LABORA '?></p>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-warning'><i class='fa fa-desktop'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
@@ -47,7 +47,7 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 
 <?php }else if($data['proceso']=='designado'){ ?>
 
-    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo 'NO ASIGNADO'?>',"<?php if($data['num_invntraio'] == '0'){
+    ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo $data['direccion_ip']?>','<?php echo 'NO ASIGNADO'?>',"<?php if($data['num_invntraio'] == '0'){
 
 echo "<a title='Faltan datos del equipo' href='javascript:openEqpo()' onclick='eqpoedit({$id})' class='detalle btn btn-warning'><i class='fa fa-desktop'></i></a> <button title='Eliminar equipo' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 }else{
@@ -61,6 +61,9 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 ];
 
 var tableGenerarReporte = $('#data-table-area').DataTable({
+            "order": [
+            [0, "desc"]
+        ],
     rowReorder: {
             selector: 'td:nth-child(3)'
         },
@@ -77,6 +80,7 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     {title: "N° INVENTARIO"},    
     {title: "MARCA"},
     {title: "N° SERIE"},
+    {title: "DIRECCIÓN-IP"},    
     {title: "ASIGNADO"},
     {title: "ACCIÓN", "width": "10%"}
 

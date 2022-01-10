@@ -218,10 +218,52 @@
         </div>      
  -->    
 
+<?php
+
+$query="SELECT direccion_ip, count(*) AS ttlip FROM equipo WHERE direccion_ip!=0 AND estado = 0 GROUP BY direccion_ip HAVING COUNT(*)>1";
+ $resultados = mysqli_query($conexion,$query);
+$ttlip = 0;
+while ($per = mysqli_fetch_row($resultados)) {
+         // echo $per[0];
+         // echo '<br>';
+         $ttlip++;
+}
+
+$query="SELECT num_invntraio, count(*) AS ttlip FROM equipo WHERE estado = 0 GROUP BY num_invntraio HAVING COUNT(*)>1";
+ $resultados = mysqli_query($conexion,$query);
+$ttlin = 0;
+while ($per = mysqli_fetch_row($resultados)) {
+         // echo $per[0];
+         // echo '<br>';
+         $ttlin++;
+}
+
+// $query="SELECT * FROM equipo WHERE direccion_ip = '$direccion_ip' AND estado = 0 || serie_cpu = '$serie_cpu' AND estado = 0";
+//  $resultados = mysqli_query($conexion,$query);
+//  if($resultados->num_rows == 0){
+
+//  }else{
+
+//  }
+
+?>
+
+
+
                     <div id="list" class="col-lg-12">
                         <div class="panel panel-default">                  
                             <div style="padding: 0;" class="panel-heading"> 
 <button title="Agregar equipo de computo" ttype="button" class="btn btn-default" data-toggle="modal" onclick="openEquipo()"><i class='fa fa-desktop text-info' ><b>+</b></i></button>
+
+<?php if($ttlip!=0){ ?>
+<button title="Dirección IP duplicado" ttype="button" class="btn btn-warning" data-toggle="modal" onclick="openDireccion()"><i class='fa fa-warning' ><b> IP</b></i></button>
+<?php } ?>
+
+<?php if($ttlin!=0){ ?>
+<button title="Numero de inventario duplicado" ttype="button" class="btn btn-warning" data-toggle="modal" onclick="openInventario()"><i class='fa fa-warning' ><b> N°</b></i></button>
+<?php } ?>
+
+
                                   <p style="padding: 0.5em; text-align: center; float: right; width:95%;" class="mensaje"></p>
                             </div>
                                <div class="panel-body" style="font-size: 12px;">             
@@ -233,50 +275,120 @@
 </div>
 
 
-<!-- <form  class="form-horizontal" action="" method="POST" onsubmit="return registrar(this)">
-    <div id="ProyectoRegistrar" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" id="EditarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog-modi" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
+<!----------------------IP DIRECCIÓN----------------------------->
 
-                <button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
-                <div class="cerrar"><a ><span class="icon-cross"></span></a></div>
-                <h4 class="modal-title" id="exampleModalLabel">Agregar</h4>
+<form id="Frmdupli" class="form-horizontal" action="" method="POST" style="width: 50%; margin: 0 auto;">
+  <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+   
 
-                </div>
-                
-                <div class="modal-body">
-                <input type="hidden" id="opcion" name="opcion" value="registrar">            
-                <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-10">
-                <label for="identificador">Identificador:</label>
-                <input id="identificador" name="identificador" type="text" class="form-control">
-                </div>
-                </div>    
-                <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-10">
-                <label for="adscripcion">Área:</label>
-                <input id="adscripcion" name="adscripcion" type="text" class="form-control">
-                </div>
-                </div>
+<div class="modal-dialog-modi" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="exampleModalLabel"><b>
+DIRECCIONES IP DUPLICADAS </b></h4>  
+</div>
+            <div class="modal-body">
 
-                <input type="hidden" name="ideqpo" id="ideqpo" value="0">
 
-                <div class="form-group"><br>
-                <div class="col-sm-offset-1 col-sm-5">
-                <button type="button" class="btn btn-primary" onclick="registrar();">Guardar</button>
-                <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
-                </div>
-                <b><p class="alert alert-danger text-center padding error" id="error">El área ya esta registrada</p></b>
-                <b><p class="alert alert-success text-center padding exito" id="exito">Área registrada</p></b>
-                <b><p class="alert alert-warning text-center padding aviso" id="vacio">Llene campos vacíos</p></b>
-                </div>                    
-                </div>
+<table class="table table-bordered"  cellspacing="0" >
+<thead>
+<tr>
+<th style="width: 5%;">N°</th>                        
+<th style="width: 15%"> SERIE CPU </th>
+<th style="width: 15%;">DIRECCIÓN IP</th>
+<th style="width: 10%;">DUPLICADOS</th>
+</tr>
+</thead>  
+<tbody>
+
+<?php 
+
+$query="SELECT direccion_ip,num_invntraio, count(*) AS ttlip,serie_cpu FROM equipo WHERE direccion_ip!=0 AND estado = 0 GROUP BY direccion_ip HAVING COUNT(*)>1";
+ $resultados = mysqli_query($conexion,$query);
+$n=1;
+while ($per = mysqli_fetch_row($resultados)) {
+?>
+
+             <tr>
+                <td><?php echo$n++?></td>
+                <td><?php echo$per[3]?></td>
+                <td><?php echo $per[0]?></td>
+                <td><?php echo $per[2]?></td>
+            </tr>
+
+<?php } ?>
+
+
+</tbody>                  
+</table>
+
+
+
+            </div>            
             </div>
-        </div>
+            </div>
     </div>
-</form> -->
+</form>
 
+
+<!------------------------NÚMERO DE INVETARIO--------------------------->
+
+<form id="Frminvet" class="form-horizontal" action="" method="POST" style="width: 50%; margin: 0 auto;">
+  <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+   
+
+<div class="modal-dialog-modi" role="document" style="/*margin-top: 7em;*/">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" onclick="location.href='./'" class="close" data-dismiss="modal" aria-label="Close" ><span style="color: black"  aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="exampleModalLabel"><b>
+NÚMERO DE INVENTARIOS DUPLICADOS </b></h4>  
+</div>
+            <div class="modal-body">
+
+
+<table class="table table-bordered"  cellspacing="0" >
+<thead>
+<tr>
+<th style="width: 5%;">N°</th>                        
+<th style="width: 15%"> SERIE CPU </th>
+<th style="width: 15%;">NÚMERO DE INVENTARIO</th>
+<th style="width: 10%;">DUPLICADOS</th>
+</tr>
+</thead>  
+<tbody>
+
+<?php 
+
+$query="SELECT num_invntraio,direccion_ip, count(*) AS ttlip,serie_cpu FROM equipo WHERE estado = 0 GROUP BY num_invntraio HAVING COUNT(*)>1";
+ $resultados = mysqli_query($conexion,$query);
+$n=1;
+while ($per = mysqli_fetch_row($resultados)) {
+?>
+
+             <tr>
+                <td><?php echo$n++?></td>
+                <td><?php echo$per[3]?></td>
+                <td><?php echo $per[0]?></td>
+                <td><?php echo $per[2]?></td>
+            </tr>
+
+<?php } ?>
+
+
+</tbody>                  
+</table>
+
+
+
+            </div>            
+            </div>
+            </div>
+    </div>
+</form>
+
+<!------------------------------------------>
 
 <form id="Frmeqpo" class="form-horizontal" action="" method="POST">
   <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -437,7 +549,7 @@ AGREGAR DATOS DEL EQUIPO </b></h4>
                     </div>
 
                     <div class="form-group"><br>
-                    <div class="col-sm-offset-0 col-sm-5">
+                    <div class="col-sm-offset-0 col-sm-4">
                     <button type="button" id="button" class="btn btn-green" onclick="agrEqpo();">ACEPTAR</button>
                     </div>
                     <b><p class="alert alert-info text-center padding error" id="danger">Este equipo, existe en la base de datos </p></b>
@@ -656,7 +768,7 @@ EDITAR DATOS DEL EQUIPO </b></h4>
                     </div>
 
                     <div class="form-group"><br>
-                    <div class="col-sm-offset-0 col-sm-5">
+                    <div class="col-sm-offset-0 col-sm-4">
                     <button type="button" id="button" class="btn btn-green" onclick="edtEqpo();">ACEPTAR</button>
                     </div>
                     <b><p class="alert alert-danger text-center padding error" id="danger1">Error al agregar datos del equipo </p></b>

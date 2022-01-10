@@ -43,3 +43,15 @@ function openEqpo(){
   $("#Edteqpo").slideDown(250);//Muestra contenedor editar 1
   $("#list").slideUp("fast");//Oculta lista
 }
+
+ function openDireccion(){
+    $("#Frmdupli").slideDown(250);//Muestra contenedor duplicados ip
+    $("#list").slideUp("fast");//Oculta lista
+   // listar_area();
+}
+
+ function openInventario(){
+    $("#Frminvet").slideDown(250);//Muestra contenedor duplicados invetarios
+    $("#list").slideUp("fast");//Oculta lista
+   // listar_area();
+}
