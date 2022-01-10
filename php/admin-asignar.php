@@ -64,6 +64,9 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 ];
 
 var tableGenerarReporte = $('#data-table-area').DataTable({
+                "order": [
+            [0, "desc"]
+        ],
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
