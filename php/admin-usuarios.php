@@ -15,6 +15,30 @@
             $cargo = $data['gstCargo'];
             $area = '';
      
+     $querys = "SELECT * FROM prioridad WHERE n_empleado = $nemple AND estado = 0";
+    // // $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
+        // $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
+        $resultados = mysqli_query($conexion,$querys);
+ 
+        if($data = mysqli_fetch_array($resultados)){
+            $ridad = $data["prioridads"];
+
+            
+            if($ridad=='ALTA'){
+            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-success">'.$ridad.'</a>';
+            }else if($ridad=='MEDIA'){
+            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-info">'.$ridad.'</a>';
+            }else if($ridad=='BAJA'){
+            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-warning">'.$ridad.'</a>';
+            }
+
+
+            
+
+
+            }else{
+            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-default">ASIGNE</a>';    
+            }
 
         $query = "SELECT * FROM asignacion WHERE n_emp = $nemple AND estado = 0";
         // $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
@@ -25,13 +49,13 @@
 
         ?>
     
-    ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,'<?php echo $cargo ?>' ,"<?php 
+    ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,'<?php echo $cargo ?>' , '<?php echo $prio ?>' ,"<?php 
 
 echo "   <a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-success'><i class='fa fa-desktop text-silver'></i></a>";?>"],
 <?php }else{ ?>
-    ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,'<?php echo $cargo ?>' ,"<?php 
+    ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,'<?php echo $cargo ?>', '<?php echo $prio ?>' ,"<?php 
 
-echo "   <a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a>";?>"],
+echo "<a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a>";?>"],
 <?php
 }
  }?>
@@ -50,6 +74,7 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     {title: "NOMBRE"},
     {title: "APELLIDOS"},
     {title: "CARGO"},    
+    {title: "PRIORIDAD"},    
     {title: "ACCIÓN"}    
     ],
     });

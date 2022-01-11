@@ -167,7 +167,6 @@ var eliminar_usuario = function() {
     });
 }
 
-
 function datos_detalle(id) {
 
     $("#Detalles").slideDown("slow");
@@ -272,6 +271,92 @@ function datos_editar(id) {
 }
 
 
+
+function datos_prioridad(id) {
+
+    $("#Dtllsprio").slideDown("slow");
+    $("#cuadro1").hide("slow");
+
+    $.ajax({
+        url: '../../php/listar_personal.php',
+        type: 'POST'
+    }).done(function(resp) {
+        obj = JSON.parse(resp);
+        var res = obj.data;
+
+
+        for (i = 0; i < res.length; i++) {
+            if (obj.data[i].gstIdper == id) {
+
+                idarea = obj.data[i].gstIDara;
+                // alert(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                var id_usuario = $("#idusup").val(obj.data[i].gstIdper),
+                    n_empleado = $("#nempleo").val(obj.data[i].gstNmpld),
+                    nombre = $("#usuario").val(obj.data[i].gstNombr + ' ' + obj.data[i].gstApell);
+                    nemp = obj.data[i].gstNmpld;
+                $.ajax({
+                    url: '../../php/prioridad.php',
+                    type: 'POST'
+                }).done(function(resps) {
+                    obj = JSON.parse(resps);
+                    var res = obj.data;
+
+                    for (ii = 0; ii < res.length; ii++) {
+
+                        if (obj.data[ii].gstNmpld == nemp) {
+
+                            prioridad = $("#prioridad").val(obj.data[ii].prio);
+
+                            if(obj.data[ii].prio=='0'){
+                            $("#opcions").val('agregar');                                   
+                            }else{
+                            $("#opcions").val('editar');                                     
+                            }
+
+                        }
+                    }
+                })
+
+            }
+        }
+    })
+}
+
+function asignar() {
+    var nempleo = document.getElementById('nempleo').value;
+    var prioridad = document.getElementById('prioridad').value;
+    var opcions = document.getElementById('opcions').value;
+        
+       // alert(nempleo+' * '+prioridad+' * '+opcions);
+
+    if (prioridad=='0') {
+        $('#vaciop').slideDown('slow');
+        setTimeout(function() {
+            $('#vaciop').slideUp('slow');
+        }, 2000);
+        return;
+    } else {
+
+        $.ajax({
+            url: '../../php/usuarios.php',
+            type: 'POST',
+            data: 'nempleo=' + nempleo + '&prioridad=' + prioridad + '&opcion='+opcions
+        }).done(function(respuesta) {
+
+            if (respuesta == 0) {
+                $('#exitop').slideDown('slow');
+                setTimeout(function() {
+                    $('#exitop').slideUp('slow');
+                }, 2000);
+            } else {
+                // $('#danger').slideDown('slow');
+                // setTimeout(function() {
+                //     $('#danger').slideUp('slow');
+                // }, 2000);
+            }
+        });
+    }
+}
 
 var mostrar_mensaje = function(informacion) {
         var texto = "",

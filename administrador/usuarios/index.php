@@ -186,7 +186,7 @@
          <!-- /.row -->
 
 <style type="text/css">
-    #cuadro2,#Editar,#Detalles{
+    #cuadro2,#Editar,#Detalles,#Dtllsprio{
         display: none;
     }
 </style>
@@ -308,6 +308,80 @@
 </div>
 </form>
 
+
+<form id="Dtllsprio" class="form-horizontal" action="" method="POST">
+
+<div id="frmDetalles" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+<div class="modal-dialog-modi" role="document">
+<div class="modal-content">
+
+<div class="modal-header">
+
+<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
+
+
+
+<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
+<h4 class="modal-title" id="exampleModalLabel"><b>ASIGNAR PRIORIDAD PARA ATENCIÓN DE SERVICIO</b> </h4>
+
+
+</div>
+   
+ <div class="modal-body">
+
+    <div class="col-sm-offset-1 col-sm-10">
+
+      
+ </div>
+
+    <input type="hidden" id="idusup" name="idusup">
+    <input id="nempleo" name="nempleo" type="hidden" class="form-control" disabled="">
+    <input type="hidden" id="opcions" name="opcions" class="form-control" disabled="">
+
+    <div class="form-group">
+    <div class="col-sm-offset-0 col-sm-6" >
+    <label for="Nombre">NOMBRE</label>
+    <input id="usuario" name="usuario" type="text"  class="form-control" disabled="">
+    </div>
+            <div class="col-sm-offset-0 col-sm-6">
+                    <label>PRIORIDAD DE ATENCIÓN </label>
+                    <select style="width: 100%" class="form-control" class="selectpicker"
+                    name="prioridad" id="prioridad" type="text" data-live-search="true">
+                    <option value="0" selected>SELECCIONE...</option>
+                    <option value="BAJA">BAJA</option>
+                    <option value="MEDIA">MEDIA</option>
+                    <option value="ALTA">ALTA</option>
+                </select>
+            </div>
+        </div>
+    
+          <div class="form-group"><br>
+            <div class="col-sm-offset-0 col-sm-3">
+                <button type="button" id="button" class="btn btn-green"
+                onclick="asignar();">ACEPTAR</button>
+            </div>
+   <!--          <b>
+                <p class="alert alert-danger text-center padding error" id="danger">El técnico ya esta agregado </p>
+            </b> -->
+
+            <b>
+                <p class="alert alert-success text-center padding exito" id="exitop">¡Prioridad asignada con éxito!</p>
+            </b>
+
+            <b>
+                <p class="alert alert-warning text-center padding aviso" id="vaciop">Seleccione prioridad </p>
+            </b>
+        </div>
+
+    </div>
+
+
+
+</div>
+</div>
+</div>
+</form>
 
 
  
