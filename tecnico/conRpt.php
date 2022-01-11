@@ -51,6 +51,7 @@
     <script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
 
     <script type="text/javascript" src="../js/atdRpt.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 </head>
@@ -126,7 +127,7 @@
                     <h1 class="page-header">CONSULTA DE REPORTES </h1>
                 </div>
             </div>
-              
+
             <div class="row">
 
                 <div class="col-lg-4 col-md-6">
@@ -265,7 +266,7 @@
                                 
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                <div style="color: gray;" class="huge"><?php echo $tiempoRespuesta ?></div>
+                                    <div style="color: gray;" class="huge"><?php echo $tiempoRespuesta ?></div>
                                     <div>TIEMPO DE RESPUESTA</div>
                                 </div>
                             </div>
@@ -297,7 +298,7 @@
                                 }
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                <div style="color: gray;" class="huge"><?php echo $solucion ?></div>
+                                    <div style="color: gray;" class="huge"><?php echo $solucion ?></div>
                                     <div>TIEMPO DE SOLUCIÓN</div>
                                 </div>
                             </div>
@@ -330,7 +331,7 @@
                                 }
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                <div style="color: gray;" class="huge"><?php echo $calidadServicio ?></div>
+                                    <div style="color: gray;" class="huge"><?php echo $calidadServicio ?></div>
                                     <div>CALIDAD DEL SERVICIO</div>
                                 </div>
                             </div>
@@ -557,19 +558,19 @@
                                         <label> FECHA FINALIZADA</label>
                                         <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <!-- <div class="col-sm-4">
                                         <label> SU EVALUACIÓN DE REPORTE</label>
                                         <input id="evaluacion" name="evaluacion" type="text" class="form-control"
                                             disabled="">
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="col-sm-12">
                                         <label>¿POR QUÉ?</label>
                                         <textarea id="observa" name="observa" class="form-control"
                                             id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -580,6 +581,25 @@
 
         </div>
         <!-- /.row -->
+    </div>
+    <!-- MODAL DE DETALLES EVALUACIÓN -->
+
+    <div class="modal fade" id="modalDetalleEvaluacion" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel">
+
+        <div class="modal-dialog width" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        onclick="limpiarCampo()"><span style="color: black" aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">EVALUACIÓN INDIVIDUAL DE SERVICIO</h4>
+                </div>
+                <div class="modal-body">
+                <canvas id="piechart-licencias"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- /#wrapper -->
@@ -658,7 +678,8 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
     ?>["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
-        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>"
+        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>",
+        "<span style='color: gray'>NO DISPONIBLE</span>"
     ],
     <?php }else if($data['evaluacion'] != '0'){ ?>["<?php echo  $data['n_reporte']?>",
         "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>",
@@ -668,6 +689,7 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
         "<?php 
 if($data['evaluacion']=='CANCELADO'){
     echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>DETALLES</a>";
+
 }else if($data['evaluacion']=='1'){
         echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO</a>";
 }
@@ -675,7 +697,9 @@ if($data['evaluacion']=='CANCELADO'){
 
 
 
-?>"],
+?>", "<a href='#' type='button' data-toggle='modal' data-target='#modalDetalleEvaluacion' class='detalle btn btn-default' onclick='evaluacionID(<?php echo $data['n_reporte'] ?>)' style='width:100%; font-size:12px;'>DETALLES</a>"
+        ],
+
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
         "<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
@@ -716,9 +740,72 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
         },
         {
             title: "ESTADO"
+        },
+        {
+            title: "EVALUACIÓN"
         }
     ],
 });
+
+function evaluacionID(idEvaluacion) {
+    alert(idEvaluacion)
+
+}
+<?php 
+    $idReporte = $data['n_reporte'];
+    $queryReportes = "SELECT n_reporte,
+    evaluacion.co_tecnico,
+    evaluacion.act_servicio,
+    evaluacion.hab_comun,
+    evaluacion.tiempo_resp,
+    evaluacion.tiempo_soluc,
+    evaluacion.calidad_genral,
+    evaluacion.estado
+    FROM
+    reporte
+    INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+    where n_reporte = 1"; 
+    $resEvaluacion = mysqli_query($conexion, $queryReportes);
+                         ?>
+var piechar = new Chart(document.getElementById("piechart-licencias"), {
+    type: 'bar',
+    data: {
+        <?php  while($dataEvaluaciones = mysqli_fetch_array($resEvaluacion)){ ?>
+        labels: ["CONOCIMIENTOS DEL TÉCNICO","ACTITUD DE SERVICIO DEL TÉCNICO","HABILIDADES DE COMUNICACIÓN DEL TÉCNICO","TIEMPO DE RESPUESTA","TIEMPO DE SOLUCIÓN","CALIDAD GENERAL DEL SERVICIO RECIBIDO"],
+        datasets: [{
+            label: "EVALUACIÓN DE SERVICIO",
+            backgroundColor: ["#337ab7", "#095892"],
+            borderWidth: 0,
+            data: ["<?php echo $dataEvaluaciones['co_tecnico'] ?>","<?php echo $dataEvaluaciones['act_servicio']?>","<?php echo $dataEvaluaciones['hab_comun']?>","<?php echo $dataEvaluaciones['tiempo_resp']?>","<?php echo $dataEvaluaciones['tiempo_soluc']?>","<?php echo $dataEvaluaciones['calidad_genral']?>"
+            ]
+        }, ]
+        <?php } ?>
+
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            // legend: {
+            //   position: 'top',
+            // },
+            title: {
+                display: true,
+                // text: 'Aqui va el titulo'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    },
+});
+
+
+
+
+
+
 </script>
 
 </html>
