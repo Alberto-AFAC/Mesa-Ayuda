@@ -126,6 +126,7 @@
                     <h1 class="page-header">CONSULTA DE REPORTES </h1>
                 </div>
             </div>
+              
             <div class="row">
 
                 <div class="col-lg-4 col-md-6">
@@ -158,6 +159,7 @@
                                 $resultado2 = mysqli_query($conexion, $query2);
                                 $row2 = mysqli_fetch_assoc($resultado2);
                                 $totalRegistros = $row2['parapromedio']/$promediototal;
+                                $totalRegistros = substr($totalRegistros,0,3);
                                
                                 ?>
                                 <div class="col-xs-9 text-right">
@@ -185,6 +187,7 @@
                                 $resultado3 = mysqli_query($conexion, $query3);
                                 $row3 = mysqli_fetch_assoc($resultado3);
                                 $totalRegistros2 = $row3['parapromedio']/$promediototal;
+                                $totalRegistros2 = substr($totalRegistros2,0,3);
                                 ?>
                                 <div class="col-xs-9 text-right">
                                     <div style="color: gray;" class="huge"><?php echo $totalRegistros2 ?></div>
@@ -212,6 +215,7 @@
                                 $resultado3 = mysqli_query($conexion, $query4);
                                 $row4 = mysqli_fetch_assoc($resultado3);
                                 $totalRegistros3 = $row4['parapromedio']/$promediototal;
+                                $totalRegistros3 = substr($totalRegistros3,0,3);
                                 ?>
                                 <div class="col-xs-9 text-right">
                                     <div style="color: gray;" class="huge"><?php echo $totalRegistros3 ?></div>
@@ -238,6 +242,8 @@
                                 $resultado5 = mysqli_query($conexion, $query5);
                                 $row5 = mysqli_fetch_assoc($resultado5);
                                 $totalRegistros4 = $row5['parapromedio']/$promediototal;
+                                $totalRegistros4 = substr($totalRegistros4,0,3);
+                                
                                 ?>
                                 <div class="col-xs-9 text-right">
                                 <div style="color: gray;" class="huge"><?php echo $totalRegistros4 ?></div>
@@ -264,6 +270,7 @@
                                 $resultadoSolucion = mysqli_query($conexion, $querySolucion);
                                 $datoSolucion = mysqli_fetch_assoc($resultadoSolucion);
                                 $totalSolucion = $datoSolucion['parapromedio']/$promediototal;
+                                $totalSolucion = substr($totalSolucion,0,3);
                                 ?>
                                 <div class="col-xs-9 text-right">
                                 <div style="color: gray;" class="huge"><?php echo $totalSolucion ?></div>
@@ -291,6 +298,7 @@
                                 $resultadoCalidad = mysqli_query($conexion, $queryCalidad);
                                 $datoCalidad = mysqli_fetch_assoc($resultadoCalidad);
                                 $totalCalidad = $datoCalidad['parapromedio']/$promediototal;
+                                $totalCalidad = substr($totalCalidad,0,3);
                                 ?>
                                 <div class="col-xs-9 text-right">
                                 <div style="color: gray;" class="huge"><?php echo $totalCalidad ?></div>
@@ -304,9 +312,6 @@
                     <button style="float: right;" data-toggle="modal" data-target="#exampleModal"
                         class="btn btn-info">CONSULTAR DESEMPEÑO</button>
                 </div>
-
-
-
 
                 <?php
                                                 $query ="SELECT
@@ -379,13 +384,14 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="col-lg-12">
+                    <div style="padding-top: 30px;" class="col-lg-12">
                         <?php //include("../html/consultar.html");?>
                         <table style="width: 100%" id="data-table-consulta" class="table table-striped table-hover">
                         </table>
                     </div>
                 </div>
             </div>
+            <br><br>
 
 
             <?php include('conActu.php');?>
