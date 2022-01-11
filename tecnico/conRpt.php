@@ -158,12 +158,16 @@
                                                         WHERE idtec = $idtecnico";
                                 $resultado2 = mysqli_query($conexion, $query2);
                                 $row2 = mysqli_fetch_assoc($resultado2);
-                                $totalRegistros = $row2['parapromedio']/$promediototal;
-                                $totalRegistros = substr($totalRegistros,0,3);
-                               
+                                if(isset($row2['parapromedio']) == ''){
+                                    $conocimientos = "0";
+
+                                }else {
+                                      $conocimientos = $row2['parapromedio'] / $promediototal;
+                                      $conocimientos = substr($conocimientos,0,3);
+                                }
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                    <div style="color: gray;" class="huge"><?php echo $totalRegistros ?></div>
+                                    <div style="color: gray;" class="huge"><?php echo $conocimientos ?></div>
                                     <div>CONOCIMIENTOS</div>
                                 </div>
                             </div>
@@ -186,11 +190,16 @@
                                                 WHERE idtec = $idtecnico";
                                 $resultado3 = mysqli_query($conexion, $query3);
                                 $row3 = mysqli_fetch_assoc($resultado3);
-                                $totalRegistros2 = $row3['parapromedio']/$promediototal;
-                                $totalRegistros2 = substr($totalRegistros2,0,3);
+                                if(isset($row3['parapromedio']) == ''){
+                                    $servicio = "0";
+
+                                }else {
+                                      $servicio = $row3['parapromedio'] / $promediototal;
+                                      $servicio = substr($servicio,0,3);
+                                }
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                    <div style="color: gray;" class="huge"><?php echo $totalRegistros2 ?></div>
+                                    <div style="color: gray;" class="huge"><?php echo $servicio ?></div>
                                     <div>ACTITUD DE SERVICIO</div>
                                 </div>
                             </div>
@@ -214,11 +223,16 @@
                                                 WHERE idtec = $idtecnico";
                                 $resultado3 = mysqli_query($conexion, $query4);
                                 $row4 = mysqli_fetch_assoc($resultado3);
-                                $totalRegistros3 = $row4['parapromedio']/$promediototal;
-                                $totalRegistros3 = substr($totalRegistros3,0,3);
+                                if(isset($row4['parapromedio']) == ''){
+                                    $habilidades = "0";
+
+                                }else {
+                                      $habilidades = $row4['parapromedio'] / $promediototal;
+                                      $habilidades = substr($habilidades,0,3);
+                                }
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                    <div style="color: gray;" class="huge"><?php echo $totalRegistros3 ?></div>
+                                    <div style="color: gray;" class="huge"><?php echo $habilidades ?></div>
                                     <div>HABILIDADES DE COMUNICACIÓN</div>
                                 </div>
                             </div>
@@ -241,12 +255,17 @@
                                                 WHERE idtec = $idtecnico";
                                 $resultado5 = mysqli_query($conexion, $query5);
                                 $row5 = mysqli_fetch_assoc($resultado5);
-                                $totalRegistros4 = $row5['parapromedio']/$promediototal;
-                                $totalRegistros4 = substr($totalRegistros4,0,3);
+                                if(isset($row5['parapromedio']) == ''){
+                                    $tiempoRespuesta = "0";
+
+                                }else {
+                                      $tiempoRespuesta = $row5['parapromedio'] / $promediototal;
+                                      $tiempoRespuesta = substr($tiempoRespuesta,0,3);
+                                }
                                 
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                <div style="color: gray;" class="huge"><?php echo $totalRegistros4 ?></div>
+                                <div style="color: gray;" class="huge"><?php echo $tiempoRespuesta ?></div>
                                     <div>TIEMPO DE RESPUESTA</div>
                                 </div>
                             </div>
@@ -269,11 +288,16 @@
                                                 WHERE idtec = $idtecnico";
                                 $resultadoSolucion = mysqli_query($conexion, $querySolucion);
                                 $datoSolucion = mysqli_fetch_assoc($resultadoSolucion);
-                                $totalSolucion = $datoSolucion['parapromedio']/$promediototal;
-                                $totalSolucion = substr($totalSolucion,0,3);
+                                if(isset($datoSolucion['parapromedio']) == ''){
+                                    $solucion = "0";
+
+                                }else {
+                                      $solucion = $datoSolucion['parapromedio'] / $promediototal;
+                                      $solucion = substr($solucion,0,3);
+                                }
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                <div style="color: gray;" class="huge"><?php echo $totalSolucion ?></div>
+                                <div style="color: gray;" class="huge"><?php echo $solucion ?></div>
                                     <div>TIEMPO DE SOLUCIÓN</div>
                                 </div>
                             </div>
@@ -297,11 +321,16 @@
                                                 WHERE idtec = $idtecnico";
                                 $resultadoCalidad = mysqli_query($conexion, $queryCalidad);
                                 $datoCalidad = mysqli_fetch_assoc($resultadoCalidad);
-                                $totalCalidad = $datoCalidad['parapromedio']/$promediototal;
-                                $totalCalidad = substr($totalCalidad,0,3);
+                                if(isset($datoCalidad['parapromedio']) == ''){
+                                    $calidadServicio = "0";
+
+                                }else {
+                                      $calidadServicio = $datoCalidad['parapromedio'] / $promediototal;
+                                      $calidadServicio = substr($calidadServicio,0,3);
+                                }
                                 ?>
                                 <div class="col-xs-9 text-right">
-                                <div style="color: gray;" class="huge"><?php echo $totalCalidad ?></div>
+                                <div style="color: gray;" class="huge"><?php echo $calidadServicio ?></div>
                                     <div>CALIDAD DEL SERVICIO</div>
                                 </div>
                             </div>
@@ -638,13 +667,9 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
 
         "<?php 
 if($data['evaluacion']=='CANCELADO'){
-    echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
-}else if($data['evaluacion']=='BUENO'){
-        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
-}else if($data['evaluacion']=='REGULAR'){
-        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
-}else if($data['evaluacion']=='MALO'){
-        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+    echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>DETALLES</a>";
+}else if($data['evaluacion']=='1'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO</a>";
 }
 
 
