@@ -44,6 +44,8 @@ var dataSet = [
         // $nombre = $dato['gstNombr'];
         // $apellidos = $dato['gstApell'];
         // $idpersona = $dato['gstIdper'];
+           $nemple = $data2['gstNmpld'];
+
             if($data['ffinal'] == '0000-00-00'){
                 $NA = "Sin fecha";
 
@@ -57,10 +59,21 @@ var dataSet = [
             }
 
 
+$querys = "SELECT * FROM prioridad WHERE n_empleado = $nemple AND estado = 0";
+$resultados = mysqli_query($conexion,$querys); 
+if($datas = mysqli_fetch_array($resultados)){
+$prio = $datas["prioridads"];
+  
+
+}else{
+$prio = 'NORMAL';
+}
+
+
 if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['n_reporte']?>","<?php echo $prio ?>" ,"<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
          "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
         "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
@@ -82,9 +95,9 @@ if($data['estado_rpt'] == 'Por atender'){
 
     <?php }  if($data['estado_rpt'] == 'Pendiente'){ ?>
 
-    ["<?php echo   $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-         "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+  ["<?php echo $data['n_reporte']?>","<?php echo $prio ?>" ,"<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+  "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+  "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php 
              echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>PENDIENTE</a>";
@@ -103,7 +116,7 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
     "order": [
-        [6, "desc"]
+        [1, "asc"],[0,"asc"]
     ],
     orderCellsTop: true,
     fixedHeader: true,
@@ -111,6 +124,9 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
     columns: [{
             title: "N°"
         },
+        {
+            title: "PRIORIDAD"
+        },        
         {
             title: "USUARIO"
         },

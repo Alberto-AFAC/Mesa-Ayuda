@@ -349,8 +349,8 @@
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="prioridad" id="prioridad" type="text" data-live-search="true">
                     <option value="0" selected>SELECCIONE...</option>
-                    <option value="BAJA">BAJA</option>
-                    <option value="MEDIA">MEDIA</option>
+<!--                     <option value="BAJA">BAJA</option>
+ -->                    <option value="MEDIA">MEDIA</option>
                     <option value="ALTA">ALTA</option>
                 </select>
             </div>

@@ -16,10 +16,7 @@
             $area = '';
      
      $querys = "SELECT * FROM prioridad WHERE n_empleado = $nemple AND estado = 0";
-    // // $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
-        // $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
         $resultados = mysqli_query($conexion,$querys);
- 
         if($data = mysqli_fetch_array($resultados)){
             $ridad = $data["prioridads"];
 
@@ -31,9 +28,6 @@
             }else if($ridad=='BAJA'){
             $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-warning">'.$ridad.'</a>';
             }
-
-
-            
 
 
             }else{
