@@ -46,6 +46,22 @@ if(registrar($nombre,$apellidos,$id_cargo,$id_area,$extension,$correo,$ubicacion
 					else{
 						echo "1";
 					}
+	}else if($opcion === 'agregar'){
+
+	$nempleo = $_POST['nempleo'];
+	$prioridad = $_POST['prioridad'];
+
+	if(ggrprrdd($nempleo,$prioridad,$conexion))
+	{	echo "0";	}else{	echo "1";	}
+
+	}else if($opcion === 'editar'){
+
+	$nempleo = $_POST['nempleo'];
+	$prioridad = $_POST['prioridad'];
+
+	if(dtrprrdd($nempleo,$prioridad,$conexion))
+	{	echo "0";	}else{	echo "1";	}
+
 	}	
 function registrar($nombre,$apellidos,$id_cargo,$id_area,$extension,$correo,$ubicacion,$n_empleado,$conexion){
 
@@ -93,6 +109,31 @@ function registrar($nombre,$apellidos,$id_cargo,$id_area,$extension,$correo,$ubi
 			//todo codificado a formato JSON esta variable va hacer un arreglo 
 				echo json_encode($informacion);
 	}
+	function ggrprrdd($nempleo,$prioridad,$conexion){
+
+		$query = "INSERT INTO prioridad VALUES(0,'$prioridad','$nempleo',0);";
+		if (mysqli_query($conexion,$query)) {		
+			return true;
+		}else{
+			return false;
+		}
+		$this->conexion->cerrar();		
+	}
+
+	function dtrprrdd($nempleo,$prioridad,$conexion){
+
+	$query = "UPDATE prioridad SET prioridads='$prioridad' WHERE n_empleado=$nempleo";
+	if (mysqli_query($conexion,$query)) {
+	return true;
+	}else
+	{
+	return false;
+	}
+	//verificar_resultado($resultado);
+	cerrar($conexion);	
+
+	}
+
 
 	function cerrar($conexion){
 		mysqli_close($conexion);
