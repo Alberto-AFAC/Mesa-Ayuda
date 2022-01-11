@@ -126,30 +126,49 @@
                     <h1 class="page-header">CONSULTA DE REPORTES </h1>
                 </div>
             </div>
+              
             <div class="row">
 
                 <div class="col-lg-4 col-md-6">
-
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="../img/like.svg" width="60px" alt="Bueno" class="img-fluid">
+                                    <img src="../img/conocimiento.png" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <?php 
-	                             $idtecnico = $_SESSION['usuario']['id_tecnico'];
-                                $query ="SELECT 'calificacion', COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS excelente,
-                                                                COUNT(CASE WHEN evaluacion = 'REGULAR' THEN 1 END) AS regular,
-                                                                COUNT(CASE WHEN evaluacion = 'MALO' THEN 1 END) AS malo                    
-                                                FROM
-                                                    reporte
+	                            $idtecnico = $_SESSION['usuario']['id_tecnico'];
+                                $query ="SELECT *
+                                FROM
+                                reporte
+                                INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
                                                 WHERE idtec = $idtecnico";
                                 $resultado = mysqli_query($conexion, $query);
-                                $row = mysqli_fetch_assoc($resultado);
+                                $promediototal = 0;
+                                while($row = mysqli_fetch_assoc($resultado))
+                                {
+                                    $promediototal ++;
+
+                                }
+                                $query2 ="SELECT *,
+                                        SUM(co_tecnico) AS parapromedio
+                                        FROM
+                                        reporte
+                                        INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                                                        WHERE idtec = $idtecnico";
+                                $resultado2 = mysqli_query($conexion, $query2);
+                                $row2 = mysqli_fetch_assoc($resultado2);
+                                if(isset($row2['parapromedio']) == ''){
+                                    $conocimientos = "0";
+
+                                }else {
+                                      $conocimientos = $row2['parapromedio'] / $promediototal;
+                                      $conocimientos = substr($conocimientos,0,3);
+                                }
                                 ?>
-                                <div class="col-xs-9 text-right text-success">
-                                    <div class="huge"><?php echo $row['excelente'] ?></div>
-                                    <div>BUENO</div>
+                                <div class="col-xs-9 text-right">
+                                    <div style="color: gray;" class="huge"><?php echo $conocimientos ?></div>
+                                    <div>CONOCIMIENTOS</div>
                                 </div>
                             </div>
                         </div>
@@ -160,11 +179,28 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="../img/manos-abiertas.svg" width="60px" alt="regular" class="img-fluid">
+                                    <img src="../img/actitud.png" width="60px" alt="regular" class="img-fluid">
                                 </div>
-                                <div class="col-xs-9 text-right text-warning">
-                                    <div class="huge"><?php echo $row['regular'] ?></div>
-                                    <div>REGULAR</div>
+                                <?php
+                                $query3 ="SELECT *,
+                                SUM(act_servicio) AS parapromedio
+                                FROM
+                                reporte
+                                INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                                                WHERE idtec = $idtecnico";
+                                $resultado3 = mysqli_query($conexion, $query3);
+                                $row3 = mysqli_fetch_assoc($resultado3);
+                                if(isset($row3['parapromedio']) == ''){
+                                    $servicio = "0";
+
+                                }else {
+                                      $servicio = $row3['parapromedio'] / $promediototal;
+                                      $servicio = substr($servicio,0,3);
+                                }
+                                ?>
+                                <div class="col-xs-9 text-right">
+                                    <div style="color: gray;" class="huge"><?php echo $servicio ?></div>
+                                    <div>ACTITUD DE SERVICIO</div>
                                 </div>
                             </div>
                         </div>
@@ -176,23 +212,137 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="../img/dislike.svg" width="60px" alt="malo" class="img-fluid">
+                                    <img src="../img/comunicacion.png" width="60px" alt="malo" class="img-fluid">
                                 </div>
-                                <div class="col-xs-9 text-right text-danger">
-                                    <div class="huge"><?php echo $row['malo'] ?></div>
-                                    <div>MALO</div>
+                                <?php
+                                $query4 ="SELECT *,
+                                SUM(hab_comun) AS parapromedio
+                                FROM
+                                reporte
+                                INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                                                WHERE idtec = $idtecnico";
+                                $resultado3 = mysqli_query($conexion, $query4);
+                                $row4 = mysqli_fetch_assoc($resultado3);
+                                if(isset($row4['parapromedio']) == ''){
+                                    $habilidades = "0";
+
+                                }else {
+                                      $habilidades = $row4['parapromedio'] / $promediototal;
+                                      $habilidades = substr($habilidades,0,3);
+                                }
+                                ?>
+                                <div class="col-xs-9 text-right">
+                                    <div style="color: gray;" class="huge"><?php echo $habilidades ?></div>
+                                    <div>HABILIDADES DE COMUNICACIÓN</div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/respuesta.png" width="60px" alt="Bueno" class="img-fluid">
+                                </div>
+                                <?php
+                                $query5 ="SELECT *,
+                                SUM(tiempo_resp) AS parapromedio
+                                FROM
+                                reporte
+                                INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                                                WHERE idtec = $idtecnico";
+                                $resultado5 = mysqli_query($conexion, $query5);
+                                $row5 = mysqli_fetch_assoc($resultado5);
+                                if(isset($row5['parapromedio']) == ''){
+                                    $tiempoRespuesta = "0";
+
+                                }else {
+                                      $tiempoRespuesta = $row5['parapromedio'] / $promediototal;
+                                      $tiempoRespuesta = substr($tiempoRespuesta,0,3);
+                                }
+                                
+                                ?>
+                                <div class="col-xs-9 text-right">
+                                <div style="color: gray;" class="huge"><?php echo $tiempoRespuesta ?></div>
+                                    <div>TIEMPO DE RESPUESTA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/solucion.png" width="60px" alt="regular" class="img-fluid">
+                                </div>
+                                <?php
+                                $querySolucion ="SELECT *,
+                                SUM(tiempo_soluc) AS parapromedio
+                                FROM
+                                reporte
+                                INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                                                WHERE idtec = $idtecnico";
+                                $resultadoSolucion = mysqli_query($conexion, $querySolucion);
+                                $datoSolucion = mysqli_fetch_assoc($resultadoSolucion);
+                                if(isset($datoSolucion['parapromedio']) == ''){
+                                    $solucion = "0";
+
+                                }else {
+                                      $solucion = $datoSolucion['parapromedio'] / $promediototal;
+                                      $solucion = substr($solucion,0,3);
+                                }
+                                ?>
+                                <div class="col-xs-9 text-right">
+                                <div style="color: gray;" class="huge"><?php echo $solucion ?></div>
+                                    <div>TIEMPO DE SOLUCIÓN</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/calidad.png" width="60px" alt="malo" class="img-fluid">
+                                </div>
+                                <?php
+                                $queryCalidad ="SELECT *,
+                                SUM(calidad_genral) AS parapromedio
+                                FROM
+                                reporte
+                                INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                                                WHERE idtec = $idtecnico";
+                                $resultadoCalidad = mysqli_query($conexion, $queryCalidad);
+                                $datoCalidad = mysqli_fetch_assoc($resultadoCalidad);
+                                if(isset($datoCalidad['parapromedio']) == ''){
+                                    $calidadServicio = "0";
+
+                                }else {
+                                      $calidadServicio = $datoCalidad['parapromedio'] / $promediototal;
+                                      $calidadServicio = substr($calidadServicio,0,3);
+                                }
+                                ?>
+                                <div class="col-xs-9 text-right">
+                                <div style="color: gray;" class="huge"><?php echo $calidadServicio ?></div>
+                                    <div>CALIDAD DEL SERVICIO</div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <button style="float: right;" data-toggle="modal" data-target="#exampleModal"
                         class="btn btn-info">CONSULTAR DESEMPEÑO</button>
                 </div>
 
-            </div>
-
-
-            <?php
+                <?php
                                                 $query ="SELECT
                                 
                                                 reporte.n_reporte,
@@ -221,128 +371,141 @@
 
                                                
                                             ?>
-            <?php }?>
+                <?php }?>
 
-            <!-- MODAL DE DESEMPEÑO -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <p style="text-align: center; font-weight: bold;">RECUERDA ATENDER LAS SOLICITUDES EN TIEMPO.</p>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p style="font-size: 58px; color: gray; text-align:center;" class="card-text"><?php echo $Atiempo; ?></p>
-                                            <center><span style="background-color: green; font-size: 18px;" class="badge">EN TIEMPO</span></center>
+                <!-- MODAL DE DESEMPEÑO -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <p style="text-align: center; font-weight: bold;">RECUERDA ATENDER LAS SOLICITUDES EN
+                                    TIEMPO.</p>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <p style="font-size: 58px; color: gray; text-align:center;"
+                                                    class="card-text"><?php echo $Atiempo; ?></p>
+                                                <center><span style="background-color: green; font-size: 18px;"
+                                                        class="badge">EN TIEMPO</span></center>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                        <p style="font-size: 58px; color: gray; text-align:center;" class="card-text"><?php echo $destiempo ?></p>
-                                            <center><span style="background-color: gray; font-size: 18px;" class="badge">FUERA DE TIEMPO</span></center>
+                                    <div class="col-sm-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <p style="font-size: 58px; color: gray; text-align:center;"
+                                                    class="card-text"><?php echo $destiempo ?></p>
+                                                <center><span style="background-color: gray; font-size: 18px;"
+                                                        class="badge">FUERA DE TIEMPO</span></center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel-body">
-                <div class="col-lg-12">
-                    <?php //include("../html/consultar.html");?>
-                    <table style="width: 100%" id="data-table-consulta" class="table table-striped table-hover"></table>
+                <div class="panel-body">
+                    <div style="padding-top: 30px;" class="col-lg-12">
+                        <?php //include("../html/consultar.html");?>
+                        <table style="width: 100%" id="data-table-consulta" class="table table-striped table-hover">
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+            <br><br>
 
 
-        <?php include('conActu.php');?>
+            <?php include('conActu.php');?>
 
 
-        <form class="form-horizontal" action="" method="POST">
-            <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel">
+            <form class="form-horizontal" action="" method="POST">
+                <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel">
 
-                <div class="modal-dialog width" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                onclick="limpiarCampo()"><span style="color: black" aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE - <input
-                                        style="text-transform: uppercase;" class="transparent" id="estado_rpt"
-                                        name="estado_rpt" disabled=""></b></h4>
-                        </div>
-                        <div class="modal-body">
-                            <input type="hidden" id="id_usuario" name="id_usuario"
-                                value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
-                            <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label>N° REPORTE</label>
-                                    <input id="n_reporte" name="n_reporte" type="text" class="form-control"
-                                        class="disabled" disabled="">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>USUARIO</label>
-                                    <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
-                                </div>
-                                <div class="col-sm-3">
-                                    <label>EXTENSIÓN</label>
-                                    <input id="extension" name="extension" type="text" class="form-control" disabled="">
-                                </div>
-                                <!-- <div class="col-sm-2">
+                    <div class="modal-dialog width" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    onclick="limpiarCampo()"><span style="color: black"
+                                        aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE - <input
+                                            style="text-transform: uppercase;" class="transparent" id="estado_rpt"
+                                            name="estado_rpt" disabled=""></b></h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" id="id_usuario" name="id_usuario"
+                                    value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
+                                <input type="hidden" id="opcion" name="opcion" value="actualizar">
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label>N° REPORTE</label>
+                                        <input id="n_reporte" name="n_reporte" type="text" class="form-control"
+                                            class="disabled" disabled="">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>USUARIO</label>
+                                        <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>EXTENSIÓN</label>
+                                        <input id="extension" name="extension" type="text" class="form-control"
+                                            disabled="">
+                                    </div>
+                                    <!-- <div class="col-sm-2">
                     <label>Ubicación</label>
                     <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
                     </div> -->
-                            </div>
+                                </div>
 
 
-                    <div class="form-group">
-                    <div class="col-sm-4">
-                    <label>TIPO DE SERVICIO</label>
-                    <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
-                    </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label>TIPO DE SERVICIO</label>
+                                        <input id="servicio" name="servicio" type="text" class="form-control"
+                                            disabled="">
+                                    </div>
 
-                    <div class="col-sm-4">
-                    <label style="color:white;">.</label>
-                    <input id="intervencion" name="intervencion" type="text" class="form-control" disabled="">
-                    </div>                    
+                                    <div class="col-sm-4">
+                                        <label style="color:white;">.</label>
+                                        <input id="intervencion" name="intervencion" type="text" class="form-control"
+                                            disabled="">
+                                    </div>
 
-                    <div class="col-sm-4">
-                    <label style="color:white;">.</label>
-                    <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
-                    </div>
-                    </div>
+                                    <div class="col-sm-4">
+                                        <label style="color:white;">.</label>
+                                        <input id="descripcion" name="descripcion" type="text" class="form-control"
+                                            disabled="">
+                                    </div>
+                                </div>
 
-                    <div class="form-group">
-                    <div class="col-sm-4">
-              
-                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
-                    </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
 
-                    <div class="col-sm-4">
-               
-                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
-                    </div>                    
+                                        <input id="solucion" name="solucion" type="text" class="form-control"
+                                            disabled="">
+                                    </div>
 
-                    <div class="col-sm-4">
-                
-                    <input id="final" name="final" type="text" class="form-control" disabled="">
-                    </div>
-                    </div>
+                                    <div class="col-sm-4">
 
-<!--                             <div class="form-group">
+                                        <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                                    </div>
+
+                                    <div class="col-sm-4">
+
+                                        <input id="final" name="final" type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+
+                                <!--                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label>TIPO DE SERVICIO</label>
                                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
@@ -361,62 +524,62 @@
                                 </div>
                             </div> -->
 
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label>
-                                    <textarea id="usu_observ" name="usu_observ" class="form-control"
-                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label>
+                                        <textarea id="usu_observ" name="usu_observ" class="form-control"
+                                            id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label>RESPUESTA A LA FALLA</label>
-                                    <textarea id="falla_interna" name="falla_interna" class="form-control"
-                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>RESPUESTA A LA FALLA</label>
+                                        <textarea id="falla_interna" name="falla_interna" class="form-control"
+                                            id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group" id="falla">
-                                <div class="col-sm-12">
-                                    <label> RESPUESTA EXTERNA A LA FALLA</label>
-                                    <textarea id="falla_xterna" name="falla_xterna" class="form-control"
-                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                <div class="form-group" id="falla">
+                                    <div class="col-sm-12">
+                                        <label> RESPUESTA EXTERNA A LA FALLA</label>
+                                        <textarea id="falla_xterna" name="falla_xterna" class="form-control"
+                                            id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <label> FECHA REPORTE</label>
-                                    <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label> FECHA REPORTE</label>
+                                        <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label> FECHA FINALIZADA</label>
+                                        <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label> SU EVALUACIÓN DE REPORTE</label>
+                                        <input id="evaluacion" name="evaluacion" type="text" class="form-control"
+                                            disabled="">
+                                    </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <label> FECHA FINALIZADA</label>
-                                    <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>¿POR QUÉ?</label>
+                                        <textarea id="observa" name="observa" class="form-control"
+                                            id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
+                                    </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <label> SU EVALUACIÓN DE REPORTE</label>
-                                    <input id="evaluacion" name="evaluacion" type="text" class="form-control"
-                                        disabled="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label>¿POR QUÉ?</label>
-                                    <textarea id="observa" name="observa" class="form-control"
-                                        id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
-                                </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
 
 
-    </div>
-    <!-- /.row -->
+        </div>
+        <!-- /.row -->
     </div>
 
     <!-- /#wrapper -->
@@ -492,7 +655,7 @@ var dataSet = [
 
  
 if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
-    ?>["<?php echo $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>",
+    ?>["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>"
@@ -504,13 +667,9 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
 
         "<?php 
 if($data['evaluacion']=='CANCELADO'){
-    echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
-}else if($data['evaluacion']=='BUENO'){
-        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
-}else if($data['evaluacion']=='REGULAR'){
-        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
-}else if($data['evaluacion']=='MALO'){
-        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>{$data['evaluacion']}</a>";
+    echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>DETALLES</a>";
+}else if($data['evaluacion']=='1'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO</a>";
 }
 
 
@@ -537,7 +696,7 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
-    columns: [ {
+    columns: [{
             title: "N°"
         },
         {
