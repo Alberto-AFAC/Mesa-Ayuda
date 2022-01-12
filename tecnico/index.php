@@ -729,12 +729,14 @@ var dataSet = [
             $idempleado=$data['empleado'];
          $sql2="SELECT gstNombr,
                           gstApell,
-                          gstExTel
+                          gstExTel,
+                          gstNmpld
                           FROM personal
                         WHERE
                         gstNmpld = $idempleado";
     $result2=mysqli_query($conexion2,$sql2);
     while($data2=mysqli_fetch_array($result2)){
+           $nemple = $data2['gstNmpld'];
         // COMPARTE DATES WITH DATA IS ZERO
         $hoy = date("y-m-d g:i a"); 
         $fecha1 = new DateTime($data['finicio']."".$data['hinicio']);
@@ -755,6 +757,15 @@ var dataSet = [
             $tiempos = $totalFinal;
 
         }
+
+
+    $querys = "SELECT * FROM prioridad WHERE n_empleado = $nemple AND estado = 0";
+    $resultados = mysqli_query($conexion,$querys); 
+    if($datas = mysqli_fetch_array($resultados)){
+    $prio = $datas["prioridads"];
+    }else{
+    $prio = 'NORMAL';
+    }
 
             $finaltab = $data['finaltab'];
             $iniciotab = $data['iniciotab']; 
@@ -781,7 +792,7 @@ var dataSet = [
 if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente'){
         ?>
 
-    ["<?php echo $data['n_reporte'] ?>", "<?php echo $nombre . " " . $apellidos ?>", "<?php echo $extension?>",
+    ["<?php echo $data['n_reporte'] ?>","<?php echo $prio ?>" ,"<?php echo $nombre . " " . $apellidos ?>", "<?php echo $extension?>",
         "<?php echo $data['servicio']?>", "<?php echo $iniciotab ?>", "<?php echo $finaltab?>", "<?php echo $tiempos ?>", "<?php if($data['estado_rpt'] == 'Por atender'){
                 
                 // echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>Por atender</a>";
@@ -824,13 +835,16 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
     "order": [
-        [7, "desc"]
+        [1, "asc"],[0,"asc"]
     ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
     columns: [{
             title: "N°"
+        },
+        {
+            title: "PRIORIDAD"
         },
         {
             title: "NOMBRE USUARIO"
