@@ -243,64 +243,9 @@ session_start();
                     <div class="modal-content">
                         <div class="modal-body">
                             <p style="text-align: right; font-size: 16px;">FECHA DE CORTE: <?php echo $hoy?></p>
-                            <table class="table table-hover table-bordered table-sm">
-                                <thead>
-                                    <tr style="color: white; background-color: #1489D8; font-size: 12px;">
-                                        <th>#</th>
-                                        <th style="width: 100%;">TÉCNICO</th>
-                                        <th>BUENO</th>
-                                        <th>REGULAR</th>
-                                        <th>MALO</th>
-                                        <th>CANCELADO</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-                
-               $query1 = "SELECT 
-                id_usu,
-               	COUNT( CASE WHEN evaluacion = 'BUENO' THEN 1 END ) AS Bueno,
-                COUNT( CASE WHEN evaluacion = 'REGULAR' THEN 1 END ) AS Regular,
-                COUNT( CASE WHEN evaluacion = 'MALO' THEN 1 END ) AS Malo,
-                COUNT( CASE WHEN evaluacion = 'CANCELADO' THEN 1 END ) AS Cancelado
-               FROM REPORTE
-               INNER JOIN tecnico ON idtec = id_tecnico
-               WHERE
-                                      MONTH ( finicio ) = MONTH (
-                                      CURRENT_DATE ())
-               GROUP BY id_usu";
-            $resultado = mysqli_query($conexion, $query1);
-            $contador = 0;
-              while($data = mysqli_fetch_array($resultado)){
-                  $idper = $data['id_usu'];
-                  $sql2="SELECT gstIdper,
-                                gstNombr,
-                                gstApell,
-                                gstExTel,
-                                gstNmpld
-                                FROM personal
-                              WHERE
-                              gstIdper = $idper";
-          $result2=mysqli_query($conexion2,$sql2);
-          
-          while($data2=mysqli_fetch_array($result2)){      
-                    $contador++;
-                ?>
-                                    <tr>
-                                        <td><?php echo $contador ?></td>
-                                        <td><?php echo $data2['gstNombr']." ".$data2['gstApell'] ?></td>
-                                        <td><?php echo $data['Bueno'] ?></td>
-                                        <td><?php echo $data['Regular'] ?></td>
-                                        <td><?php echo $data['Malo'] ?></td>
-                                        <td><?php echo $data['Cancelado'] ?></td>
-
-                                    </tr>
-                                    <?php } } ?>
-                                </tbody>
-
-                            </table>
-
+                            <div class="table-responsive">
+                                <div id="evaluacion"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
@@ -568,6 +513,9 @@ onclick="location.href='./'" -->
                         <div class="panel-body">
 
                             <table id="data-table-administrador" class="table table-striped table-bordered" width="100%"
+                                cellspacing="0"></table>
+
+                                <table id="data-table-evaluacion" class="table table-striped table-bordered" width="100%"
                                 cellspacing="0"></table>
 
                         </div>

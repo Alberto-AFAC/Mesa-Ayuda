@@ -76,13 +76,6 @@ var dataSet = [
     $result3=mysqli_query($conexion2,$sql3);
     while($data3=mysqli_fetch_array($result3)){   
 
-            if($data['evaluacion'] == '0'){
-                $eva = "SIN EVALUAR";
-            } else {
-                $eva = $data['evaluacion'];
-            }
-
-
         ?>
 
     ["<?php echo $data['año']."-".$data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
@@ -96,10 +89,11 @@ var dataSet = [
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>CANCELADO</a>";
 
                     } 
-                      ?>"
+                      ?>","<a href='#' type='button' data-toggle='modal' data-target='#modalEvaluacion' class='detalle btn btn-default' onclick='evaluaciont(<?php echo $data['n_reporte']?>)' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>"
     ],
     <?php } } }?>
 ];
+
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
         "order": [
@@ -154,6 +148,9 @@ var dataSet = [
             },
             {
                 title: "DETALLES"
+            },
+            {
+                title: "EVALUACION"
             }
         ],
     });
@@ -325,4 +322,8 @@ var piechar = new Chart(document.getElementById("piechart-eventos"), {
     }
   },
 });
+
+function evaluaciont(principal){
+alert(principal);
+}
 </script>

@@ -148,6 +148,87 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
     ],
 });
 
+// TABLE DE LA EVALUACIÓN DE LOS TÉCNICOS
+var dataSet = [<?php 
+                
+               $query1 = "SELECT
+               * 
+           FROM
+               reporte
+               INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte 
+               INNER JOIN tecnico ON tecnico.id_tecnico = reporte.idtec
+               GROUP BY id_usu";
+            $resultado = mysqli_query($conexion, $query1);
+            $contador = 0;
+              while($data = mysqli_fetch_array($resultado)){
+                ?>
+                            ["<?php echo $data['usuario']?>","<?php echo $data['n_empleado']?>","<?php echo $data['sede']?>","<button data-toggle='modal' data-target='#exampleModal' onclick='desempeno(<?php echo $data['idtec'] ?>);' class='btn btn-info btn-sm' style='width: 100%;'><i class='fa fa-calendar-check-o' aria-hidden='true'></i> DESEMPEÑO</button>"],      
+                                    <?php } ?>
+    
+    ];     
+
+var tableGenerarReporte = $('#data-table-evaluacion').DataTable({
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [1, "asc"],[0,"asc"]
+    ],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "USUARIO"
+        },      
+        {
+            title: "N° EMPLEADO"
+        },
+        {
+            title: "SEDE"
+        },
+        {
+            title: "DETALLES"
+        }
+    ],
+});
+
+function desempeno(id){
+    // alert(id);
+    $.ajax({
+        url: '../php/desempeno.php',
+        type: 'POST'
+    }).done(function(resp) {
+
+        obj = JSON.parse(resp);
+        var res = obj.data;
+        var x = 0;
+        html =
+            '<table style="font-size: 10px;" class="table table-bordered"><tr><th>CONOCIMIENTOS</th><th>ACTITUD DE SERVICIO</th><th>HABILIDADES DE COMUNICACIÓN</th><th>TIEMPO DE RESPUESTA</th><th>TIEMPO DE SOLUCIÓN</th><th>CALIDAD GENERAL DEL SERVICIO</th>';
+
+
+        for (i = 0; i < res.length; i++) {
+            x++;
+            // var totaleva = obj.data[i].comunicacion / 3;
+            if (obj.data[i].idtec == id) {
+                html += "<tr><td>" + obj.data[i].comunicacion + "</td><td>" + obj.data[i].servicios + "</td><td>" + obj.data[i].hcomunicacion + "</td><td>" + obj.data[i].tiemporespuesta + "</td><td>" + obj.data[i].tiemsolucion + "</td><td>" + obj.data[i].calidad + "</td></tr>";
+            }
+        }
+        html += '</table>';
+        $("#evaluacion").html(html);
+    })
+
+}
+
+
+
+
+
+
+
+
+
+
 var dataSet = [
     <?php
          $query1 = "SELECT 
