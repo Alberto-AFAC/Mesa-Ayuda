@@ -1,15 +1,15 @@
 <?php session_start();
 //si la variable ssesion existe realizara las siguiente evaluacion 
-    if (isset($_SESSION['usuario'])) {
-        //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "tecnico"){
-            //y se redirecciona al directorio que le corresponde
-            header("Location: ../");
-            }
-        }else{
-            //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
-            header('Location: ../');
-        }
+    // if (isset($_SESSION['usuario'])) {
+    //     //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
+    //     if($_SESSION['usuario']['privilegios'] != "tecnico"){
+    //         //y se redirecciona al directorio que le corresponde
+    //         header("Location: ../");
+    //         }
+    //     }else{
+    //         //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
+    //         header('Location: ../');
+    //     }
 
         //$idu = $_SESSION['usuario']['id_usuario'];
        
@@ -102,14 +102,37 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
+                        <a href="historial.php"><i class="fa fa-list-alt"></i> HISTORIAL<span
+                                    class="fa arrow"></span></a> 
+                                             
+                            <ul class="nav nav-second-level">
+                                <li>
                             <a href="./"><i class="glyphicon glyphicon-home"></i> INICIO</a>
-                        </li>
-                        <li>
-                            <a href="conRpt.php"><i class="fa fa-keyboard-o"></i> CONSULTAR REPORTES</a>
-                            <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
+                          
+                                </li>
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i> REGISTROS<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+<!--                                 <li>
+                                    <a href="area"><i class="fa fa-list-alt"></i> Areas</a>
+                                </li> -->
+                                <li>
+                                    <a href="usuarios"><i class="fa fa-users"></i> USUARIOS</a>
+                                </li>
+                                <li>
+                                    <a href="equipo"><i class="fa fa-desktop"></i> EQUIPOS</a>
+                                </li>
+                            <li>
+                                    <a href="tecnico"><i class="fa fa-street-view"></i> TÉCNICO</a>
+                            </li>
 
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
 
 
                     </ul>
@@ -118,10 +141,8 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
         <div id="page-wrapper">
         <?php
-	    $idtecnico = $_SESSION['usuario']['id_tecnico'];
         $query = "SELECT 
         reporte.n_reporte,
         reporte.finicio comparacioni,

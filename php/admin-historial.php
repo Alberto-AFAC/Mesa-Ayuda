@@ -89,7 +89,7 @@ var dataSet = [
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>CANCELADO</a>";
 
                     } 
-                      ?>","<a href='#' type='button' data-toggle='modal' data-target='#modalEvaluacion' class='detalle btn btn-default' onclick='evaluaciont(<?php echo $data['n_reporte']?>)' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>"
+                      ?>","<a href='evaluacion.php?data=<?php echo base64_encode($data['n_reporte'])?>'' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>"
     ],
     <?php } } }?>
 ];
@@ -171,6 +171,62 @@ var dataSet = [
 // });
 
 //GRÁFICA PARA MEDIR EL EQUIPO DE COMPUTO
+// GRAFICA QUE PERMITE RECIBIR EL VALOR DE LAS EVALUACIONES DEL REPORTE
+<?php 
+
+    $datos = $_GET['data'];
+    $queryReportes = "SELECT n_reporte,
+    evaluacion.co_tecnico,
+    evaluacion.act_servicio,
+    evaluacion.hab_comun,
+    evaluacion.tiempo_resp,
+    evaluacion.tiempo_soluc,
+    evaluacion.calidad_genral,
+    evaluacion.estado
+    FROM
+    reporte
+    INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+    where n_reporte = '$datos'"; 
+    $resEvaluacion = mysqli_query($conexion, $queryReportes);
+                         ?>
+var piechar = new Chart(document.getElementById("piechart-licencias"), {
+    type: 'bar',
+    data: {
+        <?php  while($dataEvaluaciones = mysqli_fetch_array($resEvaluacion)){ ?>
+        labels: ["CONOCIMIENTOS DEL TÉCNICO","ACTITUD DE SERVICIO DEL TÉCNICO","HABILIDADES DE COMUNICACIÓN DEL TÉCNICO","TIEMPO DE RESPUESTA","TIEMPO DE SOLUCIÓN","CALIDAD GENERAL DEL SERVICIO RECIBIDO"],
+        datasets: [{
+            label: "EVALUACIÓN DE SERVICIO",
+            backgroundColor: ["#337ab7", "#095892"],
+            borderWidth: 0,
+            data: ["<?php echo $dataEvaluaciones['co_tecnico'] ?>","<?php echo $dataEvaluaciones['act_servicio']?>","<?php echo $dataEvaluaciones['hab_comun']?>","<?php echo $dataEvaluaciones['tiempo_resp']?>","<?php echo $dataEvaluaciones['tiempo_soluc']?>","<?php echo $dataEvaluaciones['calidad_genral']?>"
+            ]
+        }, ]
+        <?php } ?>
+
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            // legend: {
+            //   position: 'top',
+            // },
+            title: {
+                display: true,
+                // text: 'Aqui va el titulo'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    },
+});
+
+
+
+
+
 <?php 
             $query = "SELECT
        	    COUNT( CASE WHEN servicio = 'COMPUTO' THEN 1 END ) AS COMPUTOPRINCIPAL,

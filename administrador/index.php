@@ -80,10 +80,11 @@ session_start();
                         <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
-                        class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
+                                    class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>
 
-                        <li><a href="../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+                        <li><a href="../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                                SESIÓN</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -256,7 +257,7 @@ session_start();
             <!--FINISH STADISTICS-->
 
 
- <?php include('conActu.php');?>
+            <?php include('conActu.php');?>
 
             <!--MODAL EVALUATION STADISTICS-->
 
@@ -510,18 +511,34 @@ onclick="location.href='./'" -->
                 <div id="cuadro1" class="col-lg-12">
                     <div class="panel panel-default">
 
-                        <div class="panel-body">
+                        <div  class="panel-body">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a style="color: gray;" href="#home"
+                                        aria-controls="home" role="tab" data-toggle="tab">PENDIENTES Y POR ATENDER</a>
+                                </li>
+                                <li role="presentation"><a style="color: gray;" href="#profile" aria-controls="profile"
+                                        role="tab" data-toggle="tab">EVALUACION INDIVIDUAL TECNICOS</a></li>
+                            </ul>
 
-                            <table id="data-table-administrador" class="table table-striped table-bordered" width="100%"
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="home"><br><br>
+ <table id="data-table-administrador" class="table table-striped table-bordered" width="100%"
                                 cellspacing="0"></table>
 
-                                <table id="data-table-evaluacion" class="table table-striped table-bordered" width="100%"
-                                cellspacing="0"></table>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="profile">AQUÍ VAN LAS EVALUACIONES</div>
+                            </div>
+                           
+
+
 
                         </div>
                     </div>
 
                 </div>
+
+                <!-- Nav tabs -->
 
                 <!-- /#wrapper -->
 </body>

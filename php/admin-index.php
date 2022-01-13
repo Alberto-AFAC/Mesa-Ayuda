@@ -167,66 +167,6 @@ var dataSet = [<?php
     
     ];     
 
-var tableGenerarReporte = $('#data-table-evaluacion').DataTable({
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    "order": [
-        [1, "asc"],[0,"asc"]
-    ],
-    orderCellsTop: true,
-    fixedHeader: true,
-    data: dataSet,
-    columns: [{
-            title: "USUARIO"
-        },      
-        {
-            title: "N° EMPLEADO"
-        },
-        {
-            title: "SEDE"
-        },
-        {
-            title: "DETALLES"
-        }
-    ],
-});
-
-function desempeno(id){
-    // alert(id);
-    $.ajax({
-        url: '../php/desempeno.php',
-        type: 'POST'
-    }).done(function(resp) {
-
-        obj = JSON.parse(resp);
-        var res = obj.data;
-        var x = 0;
-        html =
-            '<table style="font-size: 10px;" class="table table-bordered"><tr><th>CONOCIMIENTOS</th><th>ACTITUD DE SERVICIO</th><th>HABILIDADES DE COMUNICACIÓN</th><th>TIEMPO DE RESPUESTA</th><th>TIEMPO DE SOLUCIÓN</th><th>CALIDAD GENERAL DEL SERVICIO</th>';
-
-
-        for (i = 0; i < res.length; i++) {
-            x++;
-            // var totaleva = obj.data[i].comunicacion / 3;
-            if (obj.data[i].idtec == id) {
-                html += "<tr><td>" + obj.data[i].comunicacion + "</td><td>" + obj.data[i].servicios + "</td><td>" + obj.data[i].hcomunicacion + "</td><td>" + obj.data[i].tiemporespuesta + "</td><td>" + obj.data[i].tiemsolucion + "</td><td>" + obj.data[i].calidad + "</td></tr>";
-            }
-        }
-        html += '</table>';
-        $("#evaluacion").html(html);
-    })
-
-}
-
-
-
-
-
-
-
-
 
 
 var dataSet = [
@@ -300,6 +240,10 @@ if($data['estado_rpt'] == 'Finalizado'){
         <?php }  }} ?>
 ];
 //       
+
+
+
+
 
 var tableGenerarReporte = $('#data-table-finalizados').DataTable({
     
