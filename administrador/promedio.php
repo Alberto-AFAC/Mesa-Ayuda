@@ -270,7 +270,13 @@ while($row = mysqli_fetch_assoc($resultado))
                   $calidadTecnico = $dataEvaluaciones['calidad'] / $promediototal;
                   $calidadTecnico = substr($calidadTecnico,0,3);
             }
-            
+            $desempeño = $conocimientos + $actitudTecnico + $habilidadTecnico + $tiempoTecnico + $solucionTecnico + $calidadTecnico;
+            if($desempeño >= 50){
+                $finalPromedio = "<span style='font-weight: bold; color: green;'>EXCELENTE DESEMPEÑO, SEGUN LAS EVALUACIONES DE CADA USUARIO</span>";
+
+            }else{
+                $finalPromedio = "<span style='font-weight: bold; color: red;'>BAJO DESEMPEÑO, SEGUN LAS EVALUACIONES DE CADA USUARIO</span>";
+            }
             ?>
                             labels: ["CONOCIMIENTOS DEL TÉCNICO", "ACTITUD DE SERVICIO DEL TÉCNICO",
                                 "HABILIDADES DE COMUNICACIÓN DEL TÉCNICO", "TIEMPO DE RESPUESTA",
@@ -308,43 +314,29 @@ while($row = mysqli_fetch_assoc($resultado))
 
     $datos = base64_decode($_GET['data']);
     $datosCliente = "SELECT
-	reporte.n_reporte,
-	DATE_FORMAT( reporte.finicio, '%d/%m/%Y' ) AS finicio,
-	DATE_FORMAT( reporte.ffinal, '%d/%m/%Y' ) AS ftermino,
-	reporte.estado_rpt,
-	reporte.servicio,
-	reporte.intervencion,
-	reporte.descripcion,
-	reporte.usu_observ,
-	reporte.n_reporte,
-	reporte.falla_interna,
-	reporte.falla_xterna,
-	reporte.observa,
-	reporte.evaluacion,
-	reporte.hinicio,
-	reporte.hfinal,
-	reporte.idequipo,
-	n_empleado empleado,
-	evaluacion.co_tecnico
+	id_tecnico,
+	usuario,
+	sede,
+	activo
 FROM
-	reporte
-	INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+	tecnico
+	INNER JOIN reporte ON idtec = tecnico.id_tecnico
 WHERE
-	evaluacion.id_reporte = '$datos'"; 
+    idtec = '$datos'"; 
     $resEvaluacion = mysqli_query($conexion, $datosCliente);
     $dataCliente = mysqli_fetch_array($resEvaluacion);
+    if($dataCliente['activo'] == 0){
+        $status = "<p class='badge' style='background-color: green; color: white; font-size: 17px;'>ESTATUS: DISPONIBLE</p>";
+
+    } else{
+        $status = "<p class='badge' style='background-color: orange; color: white; font-size: 17px;'>ESTATUS: NO DISPONIBLE</p>";
+    }
     ?>
                     <div style="text-align: center;" class="col-sm-3">
-                        <p style="color: gray; font-size: 17px;">REPORTE: <?php echo $dataCliente['n_reporte']?></p>
-                        <p style="color: gray; font-size: 17px;">FECHA INICIO: <?php echo $dataCliente['finicio']?></p>
-                        <p style="color: gray; font-size: 17px;">FECHA TERMINO: <?php echo $dataCliente['ftermino']?>
-                        </p>
-                        <p style="color: gray; font-size: 17px;">SERVICIO: <?php echo $dataCliente['servicio']?></p>
-                        <p style="color: gray; font-size: 17px;">DESCRIPCIÓN: <?php echo $dataCliente['usu_observ']?>
-                        </p>
-                        <p class="badge" style="background-color: green; color: white; font-size: 17px;">ESTATUS: <span
-                                style="text-transform: uppercase;"><?php echo $dataCliente['estado_rpt']?></span></p>
-
+                        <p style="color: gray; font-size: 17px;">USUARIO: <?php echo $dataCliente['usuario']?></p>
+                        <p style="color: gray; font-size: 17px;">SEDE: <?php echo $dataCliente['sede']?></p>
+                        <?php echo $status ?>
+                        <?php echo $finalPromedio ?>
                     </div>
                 </div>
 
