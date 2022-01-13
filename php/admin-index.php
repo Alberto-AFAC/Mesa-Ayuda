@@ -73,9 +73,10 @@ $prio = 'NORMAL';
 if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-    ["<?php echo $data['n_reporte']?>","<?php echo $prio ?>" ,"<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-         "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
-        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+    ["<?php echo $data['n_reporte']?>", "<?php echo $prio ?>",
+        "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+        "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
                 
@@ -95,18 +96,19 @@ if($data['estado_rpt'] == 'Por atender'){
 
     <?php }  if($data['estado_rpt'] == 'Pendiente'){ ?>
 
-  ["<?php echo $data['n_reporte']?>","<?php echo $prio ?>" ,"<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-  "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
-  "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+    ["<?php echo $data['n_reporte']?>", "<?php echo $prio ?>",
+        "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+        "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php 
              echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>PENDIENTE</a>";
 
                     ?>"],
 
-<?php  } ?>
+    <?php  } ?>
 
-        <?php }  }} ?>
+    <?php }  }} ?>
 ];
 //       
 
@@ -116,7 +118,8 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
     },
     "order": [
-        [1, "asc"],[0,"asc"]
+        [1, "asc"],
+        [0, "asc"]
     ],
     orderCellsTop: true,
     fixedHeader: true,
@@ -126,7 +129,7 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
         },
         {
             title: "PRIORIDAD"
-        },        
+        },
         {
             title: "USUARIO"
         },
@@ -148,6 +151,96 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
     ],
 });
 
+// EVALUACION CON PROMEDIO DE CADA TÉCNICO
+var dataSet = [
+    <?php
+         $query1 = "SELECT
+                    	id_tecnico,
+                    	id_usu,
+                    	reporte.idtec,
+                    	reporte.n_reporte,
+                        sede
+                        
+                    FROM
+                    	REPORTE
+                    	INNER JOIN tecnico ON idtec = id_tecnico
+                    	INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                    WHERE
+                    	MONTH ( finicio ) = MONTH (
+                    	CURRENT_DATE ()) 
+                    GROUP BY
+                    	id_usu";
+	$resultado = mysqli_query($conexion, $query1);
+    $contadorPersonas = 0;
+        while($data = mysqli_fetch_array($resultado)){
+            
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstIdper,
+            gstNombr,
+            gstApell,
+            gstExTel,
+            gstNmpld
+            FROM personal
+        WHERE
+        gstIdper = $idper";
+$result2=mysqli_query($conexion2,$sql2);
+
+    while($data2=mysqli_fetch_array($result2)){         
+        $contadorPersonas ++;
+    ?>
+
+    ["<?php echo $contadorPersonas ?>","<?php echo $data2['gstNombr'].' '.$data2['gstApell']?>","<?php echo $data2['gstNmpld']?>","<?php echo $data['sede']?>","<a href='promedio.php?data=<?php echo $data['idtec']?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACION</a>"],
+    <?php } } ?>
+
+];
+//       
+
+
+
+
+
+var tableGenerarReporte = $('#data-table-promedio').DataTable({
+
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "asc"]
+    ],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "NOMBRE"
+        },
+        {
+            title: "N° EMPLEADO"
+        },
+        {
+            title: "SEDE"
+        },
+        {
+            title: "DETALLES"
+        }
+    ],
+});
+// TODO HASTA AQUI TERMINA
+
+
+
+
+
+
+
 // TABLE DE LA EVALUACIÓN DE LOS TÉCNICOS
 var dataSet = [<?php 
                 
@@ -161,11 +254,12 @@ var dataSet = [<?php
             $resultado = mysqli_query($conexion, $query1);
             $contador = 0;
               while($data = mysqli_fetch_array($resultado)){
-                ?>
-                            ["<?php echo $data['usuario']?>","<?php echo $data['n_empleado']?>","<?php echo $data['sede']?>","<button data-toggle='modal' data-target='#exampleModal' onclick='desempeno(<?php echo $data['idtec'] ?>);' class='btn btn-info btn-sm' style='width: 100%;'><i class='fa fa-calendar-check-o' aria-hidden='true'></i> DESEMPEÑO</button>"],      
-                                    <?php } ?>
-    
-    ];     
+                ?>["<?php echo $data['usuario']?>", "<?php echo $data['n_empleado']?>", "<?php echo $data['sede']?>",
+        "<button data-toggle='modal' data-target='#exampleModal' onclick='desempeno(<?php echo $data['idtec'] ?>);' class='btn btn-info btn-sm' style='width: 100%;'><i class='fa fa-calendar-check-o' aria-hidden='true'></i> DESEMPEÑO</button>"
+        ],
+    <?php } ?>
+
+];
 
 
 
@@ -231,13 +325,13 @@ if($data['estado_rpt'] == 'Finalizado'){
         ?>
 
     ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-          "<?php echo $data['finicio']?>",
-        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+        "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
 
     <?php } ?>
-        <?php }  }} ?>
+    <?php }  }} ?>
 ];
 //       
 
@@ -246,7 +340,7 @@ if($data['estado_rpt'] == 'Finalizado'){
 
 
 var tableGenerarReporte = $('#data-table-finalizados').DataTable({
-    
+
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -254,8 +348,11 @@ var tableGenerarReporte = $('#data-table-finalizados').DataTable({
     "order": [
         [0, "desc"]
     ],
-    pageLength : 5,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -342,18 +439,18 @@ if($data['estado_rpt'] == 'Por atender'){
         ?>
 
     ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-          "<?php echo $data['finicio']?>",
-        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+        "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
 
     <?php } ?>
-        <?php }  }} ?>
+    <?php }  }} ?>
 ];
 //       
 
 var tableGenerarReporte = $('#data-table-por-atender').DataTable({
-    
+
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -361,8 +458,11 @@ var tableGenerarReporte = $('#data-table-por-atender').DataTable({
     "order": [
         [0, "desc"]
     ],
-    pageLength : 5,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -447,18 +547,18 @@ if($data['estado_rpt'] == 'Pendiente'){
         ?>
 
     ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-          "<?php echo $data['finicio']?>",
-        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+        "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
 
     <?php } ?>
-        <?php }  }} ?>
+    <?php }  }} ?>
 ];
 //       
 
 var tableGenerarReporte = $('#data-table-pendiente').DataTable({
-    
+
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -466,8 +566,11 @@ var tableGenerarReporte = $('#data-table-pendiente').DataTable({
     "order": [
         [0, "desc"]
     ],
-    pageLength : 5,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -553,18 +656,18 @@ if($data['estado_rpt'] == 'Cancelado'){
         ?>
 
     ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-          "<?php echo $data['finicio']?>",
-        "<?php echo $NA?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+        "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
 
     <?php } ?>
-        <?php }  }} ?>
+    <?php }  }} ?>
 ];
 //       
 
 var tableGenerarReporte = $('#data-table-cancelado').DataTable({
-    
+
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -572,8 +675,11 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
     "order": [
         [0, "desc"]
     ],
-    pageLength : 5,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
     orderCellsTop: true,
     fixedHeader: true,
     data: dataSet,
@@ -594,5 +700,4 @@ var tableGenerarReporte = $('#data-table-cancelado').DataTable({
         }
     ],
 });
-
 </script>
