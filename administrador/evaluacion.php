@@ -265,7 +265,8 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
 	reporte.hfinal,
 	reporte.idequipo,
 	n_empleado empleado,
-	evaluacion.co_tecnico
+	evaluacion.co_tecnico,
+    evaluacion.observaciones
 FROM
 	reporte
 	INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
@@ -279,7 +280,7 @@ WHERE
                 <p style="color: gray; font-size: 17px;">FECHA INICIO: <?php echo $dataCliente['finicio']?></p>
                 <p style="color: gray; font-size: 17px;">FECHA TERMINO: <?php echo $dataCliente['ftermino']?></p>
                 <p style="color: gray; font-size: 17px;">SERVICIO: <?php echo $dataCliente['servicio']?></p>
-                <p style="color: gray; font-size: 17px;">DESCRIPCIÓN: <?php echo $dataCliente['usu_observ']?></p>
+                <p style="color: gray; font-size: 17px;">RESPUESTA DEL CLIENTE: <?php echo $dataCliente['observaciones']?></p>
                 <p class="badge" style="background-color: green; color: white; font-size: 17px;">ESTATUS: <span style="text-transform: uppercase;"><?php echo $dataCliente['estado_rpt']?></span></p>
    
             </div>
