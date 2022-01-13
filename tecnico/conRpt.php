@@ -583,25 +583,6 @@
         <!-- /.row -->
     </div>
     <!-- MODAL DE DETALLES EVALUACIÓN -->
-
-    <div class="modal fade" id="modalDetalleEvaluacion" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel">
-
-        <div class="modal-dialog width" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="limpiarCampo()"><span style="color: black" aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="exampleModalLabel">EVALUACIÓN INDIVIDUAL DE SERVICIO</h4>
-                </div>
-                <div class="modal-body">
-                <canvas id="piechart-licencias"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- /#wrapper -->
 </body>
 
@@ -697,7 +678,7 @@ if($data['evaluacion']=='CANCELADO'){
 
 
 
-?>", "<a href='#' type='button' data-toggle='modal' data-target='#modalDetalleEvaluacion' class='detalle btn btn-default' onclick='evaluacionID(<?php echo $data['n_reporte'] ?>)' style='width:100%; font-size:12px;'>DETALLES</a>"
+?>", "<a href='evaluacion.php?data=<?php echo base64_encode($data['n_reporte'])?>' type='button' class='detalle btn btn-default'  style='width:100%; font-size:12px;'>DETALLES</a>"
         ],
 
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
@@ -751,8 +732,10 @@ function evaluacionID(idEvaluacion) {
     alert(idEvaluacion)
 
 }
+
 <?php 
-    $idReporte = $data['n_reporte'];
+
+    $datos = $_GET['data'];
     $queryReportes = "SELECT n_reporte,
     evaluacion.co_tecnico,
     evaluacion.act_servicio,
@@ -764,7 +747,7 @@ function evaluacionID(idEvaluacion) {
     FROM
     reporte
     INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
-    where n_reporte = 1"; 
+    where n_reporte = '$datos'"; 
     $resEvaluacion = mysqli_query($conexion, $queryReportes);
                          ?>
 var piechar = new Chart(document.getElementById("piechart-licencias"), {
