@@ -684,7 +684,7 @@ if($data['evaluacion']=='CANCELADO'){
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
         "<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
-        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>"
+        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>","<span style='color: gray;'>NO DISPONIBLE</span>"
     ],
     <?php  } 
     }  
