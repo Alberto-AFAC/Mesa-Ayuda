@@ -182,7 +182,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <img src="../img/afac.png" class="imgafac">
-                    <h1 class="page-header">CONSULTA DE REPORTES </h1>
+                    <h1 class="page-header">DESEMPEÑO GENERAL PERSONAL SERVICIO TÉCNICO </h1>
                 </div>
             </div>
 
@@ -193,7 +193,7 @@
                     </div>
                     <script>
                     <?php 
- $datos = $_GET['data'];
+$datos = base64_decode($_GET['data']);
 $totalPro ="SELECT *
 FROM
 reporte

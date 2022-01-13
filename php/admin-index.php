@@ -189,7 +189,7 @@ $result2=mysqli_query($conexion2,$sql2);
         $contadorPersonas ++;
     ?>
 
-    ["<?php echo $contadorPersonas ?>","<?php echo $data2['gstNombr'].' '.$data2['gstApell']?>","<?php echo $data2['gstNmpld']?>","<?php echo $data['sede']?>","<a href='promedio.php?data=<?php echo $data['idtec']?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACION</a>"],
+    ["<?php echo $contadorPersonas ?>","<?php echo $data2['gstNombr'].' '.$data2['gstApell']?>","<?php echo $data2['gstNmpld']?>","<?php echo $data['sede']?>","<a href='promedio.php?data=<?php echo base64_encode($data['idtec'])?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACION</a>"],
     <?php } } ?>
 
 ];
