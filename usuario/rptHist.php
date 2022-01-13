@@ -295,17 +295,17 @@ unset($_SESSION['consulta']);
                     <label>FECHA FINALIZADA</label>
                     <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                     </div>                    
-                    <div class="col-sm-4" id="pndint1">
+                    <!-- <div class="col-sm-4" id="pndint1">
                     <label>SU EVALUACIÓN DE REPORTE</label>
                     <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
+                    </div> -->
                     </div>
-                    </div>
-                   <div class="form-group">
+                   <!-- <div class="form-group">
                     <div class="col-sm-12" id="pndint2">
                     <label>¿POR QUÉ?</label>
                     <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control" id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                     </div>
-                    </div>                             
+                    </div>                              -->
             </div> 
             </div>
             </div>
