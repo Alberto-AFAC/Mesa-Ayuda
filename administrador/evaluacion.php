@@ -194,7 +194,7 @@
     <script>
 <?php 
 
-    $datos = base64_decode($_GET['data']);
+    $datos = $_GET['data'];
     $queryReportes = "SELECT n_reporte,
     evaluacion.co_tecnico,
     evaluacion.act_servicio,
@@ -246,7 +246,7 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
 </script>
 <?php 
 
-    $datos = base64_decode($_GET['data']);
+    $datos = $_GET['data'];
     $datosCliente = "SELECT
 	reporte.n_reporte,
 	DATE_FORMAT( reporte.finicio, '%d/%m/%Y' ) AS finicio,

@@ -89,7 +89,7 @@ var dataSet = [
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>CANCELADO</a>";
 
                     } 
-                      ?>","<a href='evaluacion.php?data=<?php echo base64_encode($data['n_reporte'])?>'' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>"
+                      ?>","<a href='evaluacion.php?data=<?php echo $data['n_reporte']?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>"
     ],
     <?php } } }?>
 ];
@@ -174,7 +174,7 @@ var dataSet = [
 // GRAFICA QUE PERMITE RECIBIR EL VALOR DE LAS EVALUACIONES DEL REPORTE
 <?php 
 
-    $datos = base64_decode($_GET['data']);
+    $datos = $_GET['data'];
     $queryReportes = "SELECT n_reporte,
     evaluacion.co_tecnico,
     evaluacion.act_servicio,
