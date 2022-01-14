@@ -174,7 +174,7 @@ var dataSet = [
 // GRAFICA QUE PERMITE RECIBIR EL VALOR DE LAS EVALUACIONES DEL REPORTE
 <?php 
 
-    $datos = $_GET['data'];
+    $datos = base64_decode($_GET['data']);
     $queryReportes = "SELECT n_reporte,
     evaluacion.co_tecnico,
     evaluacion.act_servicio,
