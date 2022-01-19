@@ -109,6 +109,84 @@ function reporte() {
         });
     }
 }
+
+///REPORTE DE 10 MIN
+function reporte10min(){
+
+    var idTec = document.getElementById('tecnico').value;
+    var sede = document.getElementById('sedeTec').value;
+    var nempleado = document.getElementById('nempleado').value;
+    var obser = document.getElementById('obser').value;
+    var idequipo = document.getElementById('idequipo').value;
+    var servicio = document.getElementById('servicio').value;
+
+    if (servicio == '1CÓMPUTO' && idequipo == '0') {
+        idequipo = '';
+    }
+
+    var intervencion = document.getElementById('intervencion').value;
+    var descripcion = document.getElementById('descripcion').value;
+
+    var solucion = document.getElementById('solucion').value;
+    var ultima = document.getElementById('ultima').value;
+    var final = document.getElementById('final').value;
+
+    x = servicio + '/' + intervencion + '/' + descripcion + '/' + solucion + '/' + ultima + '/' + final;
+
+    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&idTec=' + idTec +'&opcion=registrarRport';
+
+    if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
+
+        // if(sede == '0'){
+        //    document.getElementById('sede').style.color = "red"; 
+        // }else{
+        //     document.getElementById('sede').style.color = "black";
+        // }
+
+        $("#vacio").toggle("toggled");
+        $('#exampleModalCenter').modal('hide');
+        setTimeout(function() {
+            $('#vacio').toggle('toggled');
+        }, 2000);
+        return;
+    } else {
+
+        //bloquear boton 
+        //      document.getElementById('button').disabled = 'false';
+        //        document.getElementById('button').style.color = "silver";
+        $.ajax({
+            url: '../php/rptUsu.php',
+            type: 'POST',
+            data: datos
+        }).done(function(respuesta) {
+            // console.log(respuesta);
+
+            if (respuesta == 0) {
+
+
+                $("#button").hide();
+                // $('#vacio').hide();
+                // $("#error").hide();
+                $("#exito").toggle("toggled");
+                setTimeout(function() {
+                    $("#exito").toggle("toggled");
+                }, 15000);
+                $("#button1").hide();
+                $('#exampleModalCenter').modal('hide');
+
+            } else if (respuesta == 1) {
+                // $("#exito").hide();
+                // $('#vacio').hide();
+                $("#error").toggle("toggled");
+                setTimeout(function() {
+                    $("#error").toggle("toggled");
+                }, 5000);
+                $('#exampleModalCenter').modal('hide');
+            }
+        });
+    }
+}
+
 //condición de radio button es equipo o no
 $(document).ready(function() {
     $("input[type=radio]").click(function(event) {

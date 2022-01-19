@@ -38,7 +38,7 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 		}else{
 			echo "1";
 		}	
-	}
+	}else
 	
 
 	if($opcion === 'evaluar'){
@@ -58,6 +58,43 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 		validaRport($nreporte,$conexion);
 
 		}else{	echo "1";	}	
+	}else
+
+	if($opcion === 'registrarRport'){
+
+
+
+	$nempleado = $_POST['nempleado'];	
+	$servicio  = substr($_POST['servicio'],1);
+	$intervencion = substr($_POST['intervencion'],1);
+	$descripcion = substr($_POST['descripcion'],1);
+	$solucion = substr($_POST['solucion'],1);
+	$ultima = substr($_POST['ultima'],1);
+	$final = $_POST['final'];
+
+if(consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion)){
+
+			
+	$idequipo = $_POST['idequipo'];
+	$obser = $_POST['obser'];
+	$sede = $_POST['sede'];
+
+	$idtec = $_POST['idTec'];
+
+	ini_set('date.timezone','America/Mexico_City');
+	$fenvio= date('Y').'/'.date('m').'/'.date('d');	
+	$Hinic=date('H:i');
+
+if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion)){
+//		 echo "0";
+		// enviarCorreo($nempleado,$conexion);		
+			echo "0";
+		 	}else{	echo "1";	}	
+
+		}else{
+			echo "1";
+		}
+
 	}
 
 function selecTec($sede,$conexion){

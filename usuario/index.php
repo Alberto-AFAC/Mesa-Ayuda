@@ -6,6 +6,8 @@ session_start();
     if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
  }else{ header('Location: ../');}
 
+    $n_empleado = $_SESSION['gstNmpld']['gstNmpld'];
+
 unset($_SESSION['consulta']);
 ?>
 <!DOCTYPE html>
@@ -100,13 +102,41 @@ unset($_SESSION['consulta']);
             </div>
         </nav>
 
+
+<?php
+ini_set('date.timezone','America/Mexico_City');
+$actual = date('Y-m-d');
+$hactual = date('H:i:s');
+$queri ="SELECT * FROM reporte WHERE n_empleado = $n_empleado AND finicio = '$actual' ORDER BY n_reporte DESC";
+$resultado = mysqli_query($conexion, $queri);
+    $row = mysqli_fetch_assoc($resultado);
+
+        if(isset($row['n_reporte']) && !empty($row['n_reporte'])){
+            $nrprt = $row['n_reporte'];
+            $sede = $row['pila'];
+            $tecnico = $row['idtec'];  
+            $hora = $row['hinicio']; 
+            $res = 'SI';       
+        }else{
+                $nrprt = '';
+                $hora = '0000-00-00';
+                $res = 'NO';
+        }
+
+?>
+
+
     <div id="page-wrapper">
         <div class="row">
+            
+
             <div class="col-lg-12">
                 <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                 <h1 class="page-header">GENERAR REPORTE</h1>
                 <p style="text-transform: uppercase; font-size: 13px; text-align: right;" id="alerta"></p>
             </div>
+
+
         </div>
 
         <div class="row">   
@@ -202,7 +232,38 @@ unset($_SESSION['consulta']);
 
                                 <div class="form-group"><br>
                                 <div class="col-sm-offset-0 col-sm-5">
+
+
+<?php 
+
+$date = new DateTime($hora);
+$date->modify('+10 minute');
+$hr_rprt = $date->format('H:i:s');
+$hactual;
+$h1 = strtotime($hr_rprt);
+$h2 = strtotime($hactual);
+
+// if($h1 >= $h2){
+// echo "a tiempo";
+// }else{
+// echo "fuera de tiempo";
+// }
+
+//echo $hora;
+if($h1 <= $h2){
+?>
+
+
                                 <button style="font-size: 13px;" type="button"class="btn btn-green btn-lg" id="button1" data-toggle="modal" data-target="#exampleModalCenter">GENERAR REPORTE</button>
+<?php }else{ ?>
+
+                                <button style="font-size: 13px;" type="button" id="button" onclick="reporte10min();" class="btn btn-primary">GENERAR REPORTE</button>
+     
+                                <input type="hidden" name="sedeTec" id="sedeTec" value="<?php echo $sede ?>">
+                                <input type="hidden" name="tecnico" id="tecnico" value="<?php echo $tecnico ?>">
+
+<?php } ?>    
+
                                 <!-- <button type="button" id="button" class="btn btn-green btn-lg" onclick="reporte();">Generar reporte</button> -->
                                 <!--THIS CONTAINER IS FOR CHARGUE THE MODAL FUNCTION -->
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
