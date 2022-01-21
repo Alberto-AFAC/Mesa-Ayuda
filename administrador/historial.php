@@ -542,22 +542,15 @@ onclick="location.href='./'" -->
                         </div>
                         </br>
                         <div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <span class="input-group-addon">
-        Desde
-      </span>
-      <input type="text" class="form-control date-range-filter" placeholder="Fecha minima" data-date-format="dd-mm-yyyy" id="min">
-    </div>
-  </div>
-  <div class="col-lg-6">
-    <div class="input-group">
-      <span class="input-group-addon">
-      Hasta
-      </span>
-      <input type="text" class="form-control date-range-filter" placeholder="Fecha maxíma" data-date-format="dd-mm-yyyy" id="max">
-    </div>
-  </div>
+                        <div class="input-group input-daterange">
+
+<input type="text" id="min-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="DESDE:">
+
+<div class="input-group-addon">-</div>
+
+<input type="text" id="max-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="HASTA:">
+
+</div>
 </div>
                      <br><br>
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">

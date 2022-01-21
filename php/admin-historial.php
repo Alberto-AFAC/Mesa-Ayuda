@@ -1,45 +1,49 @@
 <?php include('../conexion/conexion.php');?>
 <script type="text/javascript">
+     $.fn.datepicker.dates['en'] = {
+        days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        daysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+        daysMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+            'Octubre', 'Noviembre', 'Diciembre'
+        ],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        today: "Hoy",
+        clear: "Clear",
+        format: "yyyy/dd/mm",
+        titleFormat: "MM yyyy",
+        /* Leverages same syntax as 'format' */
+        weekStart: 0
+    };
 $(document).ready(function() {
-  $('.input-daterange input').each(function() {
-                $(this).datepicker('clearDates');
-               
-            });
-            $.fn.datepicker.dates['en'] = {
-    days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-    daysShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-    daysMin:  ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    monthsShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-    today: "Hoy",
-    clear: "Clear",
-    format: "mm/dd/yyyy",
-    titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
-    weekStart: 0
-};
+    $('.input-daterange input').each(function() {
+        $(this).datepicker('clearDates');
+
+    });
+   
     // Extend dataTables search
     $.fn.dataTable.ext.search.push(
-                function(settings, data, dataIndex) {
-                    var min = $('#min').val();
-                    var max = $('#max').val();
-                    var createdAt = data[2] || 3; // Our date column in the table
+        function(settings, data, dataIndex) {
+            var min = $('#min-date').val();
+            var max = $('#max-date').val();
+            var createdAt = data[3] || 0; // Our date column in the table
 
-                    if (
-                        (min == "" || max == "") ||
-                        (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
-                    ) {
-                        return true;
-                    }
-                    return false;
-                }
-            );
-var dataSet = [
-    <?php
+            if (
+                (min == "" || max == "") ||
+                (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
+            ) {
+                return true;
+            }
+            return false;
+        }
+    );
+    var dataSet = [
+        <?php
         $query1 = "SELECT 
         n_reporte,
         n_empleado empleado,
-        DATE_FORMAT(finicio, '%d-%m-%Y' ) AS finicio,
-        DATE_FORMAT(ffinal, '%d-%m-%Y' ) AS ffinal,
+        DATE_FORMAT(finicio, '%Y-%m-%d' ) AS finicio,
+        DATE_FORMAT(ffinal, '%Y-%m-%d' ) AS ffinal,
         YEAR(finicio) AS año,
         evaluacion,
         estado_rpt,
@@ -78,8 +82,10 @@ var dataSet = [
 
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>","<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>","<?php echo  $data['finicio']?>","<?php echo  $data['ffinal']?>","<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
-        "<?php 
+        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+            "<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>", "<?php echo  $data['finicio']?>",
+            "<?php echo  $data['ffinal']?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+            "<?php 
 
         if($data['estado_rpt'] == 'Finalizado'){
                 
@@ -89,10 +95,11 @@ var dataSet = [
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>CANCELADO</a>";
 
                     } 
-                      ?>","<a href='evaluacion.php?data=<?php echo $data['n_reporte']?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>"
-    ],
-    <?php } } }?>
-];
+                      ?>",
+            "<a href='evaluacion.php?data=<?php echo $data['n_reporte']?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>"
+        ],
+        <?php } } }?>
+    ];
 
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
 
@@ -105,25 +112,25 @@ var dataSet = [
         },
         dom: 'Bfrtip',
         buttons: [{
-          // title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
-          title: '',
-          extend: 'print',
-          text: '<span class="glyphicon glyphicon-file"> IMPRIMIR REPORTE</span>',
-          className: "addNewRecord",
-          // orientation: 'portrait',
-          customize: function (win) {
-            $(win.document.body)
-                        .css( 'font-size', '6pt' )
+                // title: 'AGENCIA FEDERAL DE AVIACIÓN CIVIL',
+                title: '',
+                extend: 'print',
+                text: '<span class="glyphicon glyphicon-file"> IMPRIMIR REPORTE</span>',
+                className: "addNewRecord",
+                // orientation: 'portrait',
+                customize: function(win) {
+                    $(win.document.body)
+                        .css('font-size', '6pt')
                         .prepend(
                             '<img src="" style="position:absolute; top:0; left:0;" />'
                         );
- 
-                    $(win.document.body).find( 'table' )
-                        .addClass( 'compact' )
-                        .css( 'font-size', 'inherit' );
+
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+                }
+
             }
-        
-        }
             // 'copy', 'csv', 'excel', 'pdf', 'print'
             // 'print'
         ],
@@ -155,19 +162,27 @@ var dataSet = [
         ],
     });
 
-    $('.date-range-filter').change(function() {
-                var table = $('#data-table-administrador').DataTable();
-                table.draw();
-            });
-
-
-            $('.date-range-filter').datepicker();
-         
-});
-    //Cierre de la función
-    // $('#min, #max').on('change', function() {
-    //     tableGenerarReporte.draw();
+    // $('.date-range-filter').change(function() {
+    //     var table = $('#data-table-administrador').DataTable();
+    //     table.draw();
     // });
+
+
+    // $('.date-range-filter').datepicker();
+    $('.date-range-filter').change(function() {
+    tableGenerarReporte.draw();
+});
+
+$('#my-table_filter').hide();
+
+});
+
+// Re-draw the table when the a date range filter changes
+
+//Cierre de la función
+// $('#min, #max').on('change', function() {
+//     tableGenerarReporte.draw();
+// });
 // });
 
 //GRÁFICA PARA MEDIR EL EQUIPO DE COMPUTO
@@ -193,12 +208,20 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
     type: 'bar',
     data: {
         <?php  while($dataEvaluaciones = mysqli_fetch_array($resEvaluacion)){ ?>
-        labels: ["CONOCIMIENTOS DEL TÉCNICO","ACTITUD DE SERVICIO DEL TÉCNICO","HABILIDADES DE COMUNICACIÓN DEL TÉCNICO","TIEMPO DE RESPUESTA","TIEMPO DE SOLUCIÓN","CALIDAD GENERAL DEL SERVICIO RECIBIDO"],
+        labels: ["CONOCIMIENTOS DEL TÉCNICO", "ACTITUD DE SERVICIO DEL TÉCNICO",
+            "HABILIDADES DE COMUNICACIÓN DEL TÉCNICO", "TIEMPO DE RESPUESTA", "TIEMPO DE SOLUCIÓN",
+            "CALIDAD GENERAL DEL SERVICIO RECIBIDO"
+        ],
         datasets: [{
             label: "EVALUACIÓN DE SERVICIO",
             backgroundColor: ["#337ab7", "#095892"],
             borderWidth: 0,
-            data: ["<?php echo $dataEvaluaciones['co_tecnico'] ?>","<?php echo $dataEvaluaciones['act_servicio']?>","<?php echo $dataEvaluaciones['hab_comun']?>","<?php echo $dataEvaluaciones['tiempo_resp']?>","<?php echo $dataEvaluaciones['tiempo_soluc']?>","<?php echo $dataEvaluaciones['calidad_genral']?>"
+            data: ["<?php echo $dataEvaluaciones['co_tecnico'] ?>",
+                "<?php echo $dataEvaluaciones['act_servicio']?>",
+                "<?php echo $dataEvaluaciones['hab_comun']?>",
+                "<?php echo $dataEvaluaciones['tiempo_resp']?>",
+                "<?php echo $dataEvaluaciones['tiempo_soluc']?>",
+                "<?php echo $dataEvaluaciones['calidad_genral']?>"
             ]
         }, ]
         <?php } ?>
@@ -241,28 +264,29 @@ var piechar = new Chart(document.getElementById("piechart-servicios"), {
     type: 'polarArea',
     data: {
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Escritorio", "Laptop", "Tableta","Total"
-        ],
+        labels: ["Escritorio", "Laptop", "Tableta", "Total"],
         datasets: [{
             label: "Sistemas",
-            backgroundColor: ["#006E6D","#009C9A","#00D6D4","#5ED0CF"],
+            backgroundColor: ["#006E6D", "#009C9A", "#00D6D4", "#5ED0CF"],
             borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONE']?>","<?php echo $row['INVERVENCIONL']?>","<?php echo $row['INVERVENCIONT']?>","<?php echo $row['COMPUTOPRINCIPAL']?>"]
+            data: ["<?php echo $row['INVERVENCIONE']?>", "<?php echo $row['INVERVENCIONL']?>",
+                "<?php echo $row['INVERVENCIONT']?>", "<?php echo $row['COMPUTOPRINCIPAL']?>"
+            ]
         }]
         <?php }?>
     },
     options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'COMPUTO'
-      }
-    }
-  },
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'COMPUTO'
+            }
+        }
+    },
 });
 
 //GRÁFICA PARA MEDIR EL SERVICIO DE IMPRESION
@@ -280,28 +304,29 @@ var piechar = new Chart(document.getElementById("piechart-impresion"), {
     type: 'polarArea',
     data: {
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["M-Funcional", "Impr", "Escann","Total"
-        ],
+        labels: ["M-Funcional", "Impr", "Escann", "Total"],
         datasets: [{
             label: "Sistemas",
-            backgroundColor: ["#00CF4B","#00F358","#37FF80","#91FFB9"],
+            backgroundColor: ["#00CF4B", "#00F358", "#37FF80", "#91FFB9"],
             borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONM']?>","<?php echo $row['INVERVENCIONI']?>","<?php echo $row['INVERVENCIONES']?>","<?php echo $row['IMPRESIONPRINCIPAL']?>"]
+            data: ["<?php echo $row['INVERVENCIONM']?>", "<?php echo $row['INVERVENCIONI']?>",
+                "<?php echo $row['INVERVENCIONES']?>", "<?php echo $row['IMPRESIONPRINCIPAL']?>"
+            ]
         }]
         <?php }?>
     },
     options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'IMPRESIÓN'
-      }
-    }
-  },
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'IMPRESIÓN'
+            }
+        }
+    },
 });
 //GRÁFICA PARA MEDIR EL SERVICIO DE COMUNICACIONES
 <?php 
@@ -319,28 +344,29 @@ var piechar = new Chart(document.getElementById("piechart-comunicaciones"), {
     type: 'polarArea',
     data: {
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Internet", "Telefonía","Total"
-        ],
+        labels: ["Internet", "Telefonía", "Total"],
         datasets: [{
             label: "Sistemas",
-            backgroundColor: ["#000075","#2424D1","#3636FF"],
+            backgroundColor: ["#000075", "#2424D1", "#3636FF"],
             borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONINT']?>","<?php echo $row['INVERVENCIONTEL']?>","<?php echo $row['COMUNICACIONESPRINCIPAL']?>"]
+            data: ["<?php echo $row['INVERVENCIONINT']?>", "<?php echo $row['INVERVENCIONTEL']?>",
+                "<?php echo $row['COMUNICACIONESPRINCIPAL']?>"
+            ]
         }]
         <?php }?>
     },
     options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'COMUNICACIONES'
-      }
-    }
-  },
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'COMUNICACIONES'
+            }
+        }
+    },
 });
 //GRÁFICA PARA MEDIR LA PROGRAMACIÓN DE EVENTOS Y REUNIONES
 <?php 
@@ -355,31 +381,30 @@ var piechar = new Chart(document.getElementById("piechart-eventos"), {
     type: 'polarArea',
     data: {
         <?php while($row = mysqli_fetch_array($resultado)){ ?>
-        labels: ["Préstamo de equipo","Total"
-        ],
+        labels: ["Préstamo de equipo", "Total"],
         datasets: [{
             label: "Sistemas",
-            backgroundColor: ["#FF6609","#FF8C47"],
+            backgroundColor: ["#FF6609", "#FF8C47"],
             borderWidth: 0,
-            data: ["<?php echo $row['INVERVENCIONPREST']?>","<?php echo $row['PROGRAMACIONPRIN']?>"]
+            data: ["<?php echo $row['INVERVENCIONPREST']?>", "<?php echo $row['PROGRAMACIONPRIN']?>"]
         }]
         <?php }?>
     },
     options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'PROGRAMACIÓN DE EVENTOS/REUNIONES'
-      }
-    }
-  },
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'PROGRAMACIÓN DE EVENTOS/REUNIONES'
+            }
+        }
+    },
 });
 
-function evaluaciont(principal){
-alert(principal);
+function evaluaciont(principal) {
+    alert(principal);
 }
 </script>
