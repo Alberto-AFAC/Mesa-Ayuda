@@ -162,7 +162,7 @@ var dataSet = [
                         sede
                         
                     FROM
-                    	REPORTE
+                    	reporte
                     	INNER JOIN tecnico ON idtec = id_tecnico
                     	INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
                     WHERE
