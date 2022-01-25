@@ -31,7 +31,7 @@
 
 
             }else{
-            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-default">ASIGNE</a>';    
+            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-default">NORMAL</a>';    
             }
 
         $query = "SELECT * FROM asignacion WHERE n_emp = $nemple AND estado = 0";
