@@ -6,6 +6,7 @@
                 <option value="2IMPRESIÓN">IMPRESIÓN</option>
                 <option value="3COMUNICACIONES">COMUNICACIONES </option>
                 <option value="4PROGRAMACIÓN DE EVENTOS/REUNIONES">PROGRAMACIÓN DE EVENTOS/REUNIONES</option>
+                <option value="5SISTEMAS">SISTEMAS</option>
 				
 		</select>
 	</div>

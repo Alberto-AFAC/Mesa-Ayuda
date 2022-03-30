@@ -22,7 +22,7 @@
             }
 
         $queri = "SELECT * FROM personal 
-            WHERE gstIdper = $idusu AND estado = 0 ORDER BY gstIdper ASC";
+            WHERE gstIdper = $idusu ORDER BY gstIdper ASC";
     $resultados = mysqli_query($conexion2,$queri);
     while($data = mysqli_fetch_array($resultados)){
        $id = $data['gstIdper'];
