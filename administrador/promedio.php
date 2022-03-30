@@ -272,10 +272,10 @@ while($row = mysqli_fetch_assoc($resultado))
             }
             $desempeño = $conocimientos + $actitudTecnico + $habilidadTecnico + $tiempoTecnico + $solucionTecnico + $calidadTecnico;
             if($desempeño >= 50){
-                $finalPromedio = "<span style='font-weight: bold; color: green;'>EXCELENTE DESEMPEÑO, SEGUN LAS EVALUACIONES DE CADA USUARIO</span>";
+                $finalPromedio = "<span style='font-weight: bold; color: green;'>BUEN DESEMPEÑO</span>";
 
-            }else{
-                $finalPromedio = "<span style='font-weight: bold; color: red;'>BAJO DESEMPEÑO, SEGUN LAS EVALUACIONES DE CADA USUARIO</span>";
+            }else if($desempeño <= 49){
+                $finalPromedio = "<span style='font-weight: bold; color: orange;'>DESEMPEÑO REGULAR</span>";
             }
             ?>
                             labels: ["CONOCIMIENTOS DEL TÉCNICO", "ACTITUD DE SERVICIO DEL TÉCNICO",
@@ -333,6 +333,7 @@ WHERE
     }
     ?>
                     <div style="text-align: center;" class="col-sm-3">
+                    <p style="color: gray; font-size: 17px;">REPORTES CONCLUIDOS: <?php echo $promediototal?></p>
                         <p style="color: gray; font-size: 17px;">USUARIO: <?php echo $dataCliente['usuario']?></p>
                         <p style="color: gray; font-size: 17px;">SEDE: <?php echo $dataCliente['sede']?></p>
                         <?php echo $status ?>
