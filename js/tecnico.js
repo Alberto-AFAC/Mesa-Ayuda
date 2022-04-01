@@ -50,13 +50,13 @@ function tecnico() {
 function modificar() {
     var frm = $("#Editar").serialize();
     //console.log(frm);
-     alert(frm);
     $.ajax({
         url: "../../php/tecnico.php",
         type: 'POST',
         data: frm + "&opcion=modificar"
     }).done(function(respuesta) {
         console.log(respuesta);
+        
         if (respuesta == 0) {
             $('#exitos').slideDown('slow');
             setTimeout(function() {

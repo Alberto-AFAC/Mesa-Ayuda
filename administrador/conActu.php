@@ -29,7 +29,7 @@
                 </div>
 
             <div class="modal-body">
-                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
+                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $idtecnico ?>">
                 <input type="hidden" id="opcion" name="opcion" value="actualizar">
                     <div class="form-group">
                     <div class="col-sm-12">

@@ -1,14 +1,28 @@
 <?php  
+include ("../../gestor/conexion/conexion.php");
+include ("../conexion/conexion.php"); 
 session_start(); 
+  if (isset($_SESSION['usuario'])) 
+    { 
+      $id = $_SESSION['usuario']['id_usu'];
+    }else{ header('Location: ../../gestor'); }
+
+        $query = "SELECT gstNombr,gstApell,gstNmpld FROM personal
+            WHERE gstIdper = $id ";
+        $result = mysqli_query($conexion2,$query);
+        $usua = mysqli_fetch_row($result);
+
+// if (isset($_SESSION['usuario'])) 
+//     { }else{ header('Location: ../'); }
   //evaluaremos si la variable de sesión existe de lo contrario no se hará nada 
   //si la variable sesión existe, se evaluará que tipo de usuario está ingresando de esa manera saber a dónde se debe redireccionar en caso de que ya se haya logeado 
-  if(isset($_SESSION['gstNmpld'])){
-    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
- }else{ header('Location: ../');}
+ //  if(isset($_SESSION['gstNmpld'])){
+ //    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
+ // }else{ header('Location: ../');}
 
-    $n_empleado = $_SESSION['gstNmpld']['gstNmpld'];
+     $n_empleado =  $usua[2];
 
-unset($_SESSION['consulta']);
+    unset($_SESSION['consulta']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -90,9 +104,8 @@ function Alertaempleado() {
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
-                                SESIÓN</a>
+                    <ul class="dropdown-menu dropdown-user">                   
+                     <li><a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                 </li>
@@ -183,8 +196,7 @@ $resultado = mysqli_query($conexion, $queri);
                                 <label id="nota1"></label>    
                                 <label id="nota2">¡Agregue los datos del equipo que desea reportar!</label>
                                 </div> -->
-                                            <input id="nempleado" name="nempleado" type="hidden"
-                                                value="<?php echo $_SESSION['gstNmpld']['gstNmpld']?>" />
+                                <input id="nempleado" name="nempleado" type="hidden" value="<?php echo $n_empleado?>"/>
 
                                             <input id="idequipo" name="idequipo" type="hidden" value="0" />
 

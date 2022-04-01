@@ -1,26 +1,35 @@
-<?php include ("../conexion/conexion.php");
-session_start();
+<?php 
+include ("../../gestor/conexion/conexion.php");
+include ("../conexion/conexion.php"); 
+session_start(); 
+  if (isset($_SESSION['usuario'])) 
+    { 
+      $id = $_SESSION['usuario']['id_usu'];
+    }else{ header('Location: ../../gestor'); }
 //si la variable ssesion existe realizara las siguiente evaluacion 
-    if (isset($_SESSION['usuario'])) {
-        //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "tecnico"){
-            //y se redirecciona al directorio que le corresponde
-            header("Location: ../");
-            }
-        }else{
-            //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
-            header('Location: ../');
-        }
+//*** if (isset($_SESSION['usuario'])) {
+//si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
+//*** if($_SESSION['usuario']['privilegios'] != "tecnico"){
+//y se redirecciona al directorio que le corresponde
+//*** header("Location: ../"); } }else{
+//si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
+//*** header('Location: ../'); }
 
-                ini_set('date.timezone','America/Mexico_City');
-                $Final= date('d').'/'.date('m').'/'.date('Y');
-                $Hfinal=date('H:i:s');
-                unset($_SESSION['consulta']);
+$query = "SELECT * FROM tecnico WHERE id_usu = $id AND baja = 0";
+$resultado = mysqli_query($conexion, $query);
+if($data = mysqli_fetch_array($resultado)){
 
-    $sql = "SELECT gstNmpld, gstNombr, gstApell FROM personal WHERE estado = 0 && gstNmpld != 0";
-    $usua = mysqli_query($conexion2,$sql);
-    date_default_timezone_set('America/Mexico_City');
-    
+    $idtecnico = $data['id_tecnico'];    
+}
+
+        ini_set('date.timezone','America/Mexico_City');
+        $Final= date('d').'/'.date('m').'/'.date('Y');
+        $Hfinal=date('H:i:s');
+        unset($_SESSION['consulta']);
+
+        $sql = "SELECT gstNmpld, gstNombr, gstApell FROM personal WHERE estado = 0 && gstNmpld != 0";
+        $usua = mysqli_query($conexion2,$sql);
+        date_default_timezone_set('America/Mexico_City');
 
 
 ?>
@@ -79,7 +88,7 @@ session_start();
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>-
-                        <li><a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                        <li><a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>
@@ -158,7 +167,7 @@ session_start();
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" id="id_usuario" name="id_usuario"
-                                    value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
+                                    value="<?php echo $idtecnico; ?>">
                                 <input type="hidden" id="opcion" name="opcion" value="atender">
                                 <div class="form-group">
                                     <div class="col-sm-3">
@@ -701,7 +710,7 @@ $(document).ready(function() {
 <script type="text/javascript">
 var dataSet = [
     <?php
-	    $idtecnico = $_SESSION['usuario']['id_tecnico'];
+	    // $idtecnico = $_SESSION['usuario']['id_tecnico'];
 	    $query = "SELECT 
         DATE_FORMAT(reporte.finicio, '%d/%m/%Y') AS iniciotab,
         DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as finaltab,

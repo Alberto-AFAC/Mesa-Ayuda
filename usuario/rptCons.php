@@ -1,10 +1,23 @@
 <?php  
+include ("../../gestor/conexion/conexion.php");
+include ("../conexion/conexion.php"); 
 session_start(); 
+  if (isset($_SESSION['usuario'])) 
+    { 
+      $id = $_SESSION['usuario']['id_usu'];
+    }else{ header('Location: ../../gestor'); }
+
+        $query = "SELECT gstNombr,gstApell,gstNmpld FROM personal
+            WHERE gstIdper = $id ";
+        $result = mysqli_query($conexion2,$query);
+        $usua = mysqli_fetch_row($result);
+        $numEmp = $usua[2];
+
   //evaluaremos si la variable de sesión existe de lo contrario no se hará nada 
   //si la variable sesión existe, se evaluará que tipo de usuario está ingresando de esa manera saber a dónde se debe redireccionar en caso de que ya se haya logeado
-if(isset($_SESSION['gstNmpld'])){
-    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
-}else{ header('Location: ../');}
+//*** if(isset($_SESSION['gstNmpld'])){
+//     if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
+// }else{ header('Location: ../');}
 unset($_SESSION['consulta']);
 ?>
 <!DOCTYPE html>
@@ -677,7 +690,7 @@ unset($_SESSION['consulta']);
 <script type="text/javascript">
 var dataSet = [
     <?php
-	     $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
+	     // $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
          $query = "SELECT 
             tecnico.id_usu,
             reporte.n_reporte,

@@ -14,6 +14,8 @@
             $nemple = $data['gstNmpld'];
             $cargo = $data['gstCargo'];
             $area = '';
+
+
      
         $query = "SELECT *,count(n_emp) AS ttl FROM asignacion WHERE n_emp = $nemple AND estado = 0";
         // $queri = "SELECT * FROM personal ORDER BY gstIdper ASC";
@@ -21,12 +23,21 @@
         $n=0;
         if($data = mysqli_fetch_array($resultados) ){
 
-            if($data['ttl']!=0){            
+            if($data['ttl']!=0){   
+
+           if($nemple == 0){
+
+                $detalle_usuario = "<a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-silver'> </i></a>";
+            }else{
+                $detalle_usuario = "<a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-success'>({$data['ttl']}) <i class='fa fa-desktop text-silver'> </i></a>";
+            } 
+
+
         ?>
     
     ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,'<?php echo $cargo ?>' ,"<?php 
 
-    echo "   <a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-success'>({$data['ttl']}) <i class='fa fa-desktop text-silver'> </i></a>";?>"
+    echo $detalle_usuario?>"
     ],
 
 <?php }else{ ?>

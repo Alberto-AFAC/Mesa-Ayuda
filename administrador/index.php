@@ -1,19 +1,25 @@
 <?php 
-session_start();
-//si la variable ssesion existe realizara las siguiente evaluacion 
-    if (isset($_SESSION['usuario'])) {
-        //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "admin"){
-            //y se redirecciona al directorio que le corresponde
-            header("Location: ../");
-            }
-        }else{
-            //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
-            header('Location: ../');
-        }
+include ("../../gestor/conexion/conexion.php");
+include ("../conexion/conexion.php"); 
+session_start(); 
+if (isset($_SESSION['usuario'])) 
+{ 
+$idu = $_SESSION['usuario']['id_usu'];
+}else{ header('Location: ../../gestor'); }
+// if (isset($_SESSION['usuario'])) {
+// if($_SESSION['usuario']['privilegios'] != "admin"){
+// header("Location: ../");
+// }
+// }else{
+// header('Location: ../');
+// }
 
-        //$idu = $_SESSION['usuario']['id_usuario'];
-       $idu = $_SESSION['usuario']['id_usu'];
+    $query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
+    $resultado = mysqli_query($conexion, $query);
+    if($data = mysqli_fetch_array($resultado)){
+
+        $idtecnico = $data['id_tecnico'];    
+    }       
    ini_set('date.timezone','America/Mexico_City');
   $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");  
   $fecha = $meses[date('n')-1].'  '.date('Y');
@@ -83,7 +89,7 @@ session_start();
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>
 
-                        <li><a href="../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                        <li><a href="../../gestor/conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>
@@ -327,7 +333,7 @@ onclick="location.href='./'" -->
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" id="id_usuario" name="id_usuario"
-                                    value="<?php echo $_SESSION['usuario']['id_tecnico'];?>">
+                                    value="<?php echo $idtecnico;?>">
                                 <input type="hidden" id="opcion" name="opcion" value="atender">
                                 <div class="form-group">
                                     <div class="col-sm-3">
