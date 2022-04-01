@@ -44,6 +44,9 @@ function reporte() {
     if (servicio == '1CÓMPUTO' && idequipo == '0') {
         idequipo = '';
     }
+    if(servicio == '5SISTEMAS'){
+        var sede = 'WEB';
+    }
 
     var intervencion = document.getElementById('intervencion').value;
     var descripcion = document.getElementById('descripcion').value;
