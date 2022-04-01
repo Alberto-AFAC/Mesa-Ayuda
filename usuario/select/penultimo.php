@@ -360,7 +360,13 @@ switch ($id) /*aCPU*/{
   <option value="0NO SE VISUALIZA EL CONTENIDO DEL PORTAL">NO SE VISUALIZA EL CONTENIDO DEL PORTAL</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
+
+
+
+  
   <?php break;
   case "4": ?>
   
@@ -370,6 +376,8 @@ switch ($id) /*aCPU*/{
   <option value="0LOCALIZACIÓN DE INFORMACIÓN ESPECIFICA">LOCALIZACIÓN DE INFORMACIÓN ESPECIFICA</option>
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
   <?php break;
   case "5": ?>
@@ -388,6 +396,8 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
   <?php break;
   case "6": ?>
@@ -403,6 +413,8 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
   <?php break;
   case "7": ?>
@@ -417,6 +429,9 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
   <?php break;
   case "8": ?>
   
@@ -430,6 +445,8 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
   <?php break;
   case "9": ?>
@@ -448,6 +465,8 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
   <?php break;
   case "-": ?>
@@ -463,6 +482,8 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
   
   <?php break;
@@ -491,7 +512,9 @@ switch ($id) /*aCPU*/{
   </select>
   </div>
 
-  
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
   <?php break;
   case "]": ?>
   
@@ -505,6 +528,9 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
   <?php break;
   case "{": ?>
   
@@ -518,6 +544,9 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
 
   <?php break;
   case ",": ?>
@@ -534,6 +563,9 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
 
   <?php break;
   case ":": ?>
@@ -548,6 +580,9 @@ switch ($id) /*aCPU*/{
 
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
 
   <?php break;
   case ";": ?>
@@ -555,9 +590,9 @@ switch ($id) /*aCPU*/{
   <div class="col-sm-offset-0 col-sm-6">
   <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0No reconoce Usuario/Contraseña">No reconoce Usuario/Contraseña</option>
-  <option value="0No permite generar una nueva contraseña">No permite generar una nueva contraseña</option>
-  <option value="0No permite generar una nueva contraseña">No permite generar una nueva contraseña</option>
+  <option value="0NO RECONOCE USUARIO/CONTRASEÑA">NO RECONOCE USUARIO/CONTRASEÑA</option>
+  <option value="0NO PERMITE GENERAR UNA NUEVA CONTRASEÑA">NO PERMITE GENERAR UNA NUEVA CONTRASEÑA</option>
+  <option value="0TARANTELLA NO PERMITE INTERACTUAR CON EL SISTEMA">TARANTELLA NO PERMITE INTERACTUAR CON EL SISTEMA</option>
   <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
 
 

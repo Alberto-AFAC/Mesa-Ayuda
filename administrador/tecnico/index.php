@@ -360,6 +360,8 @@ if (isset($_SESSION['usuario'])) {
                             <option selected>SELECCIONE...</option>
                             <option value="tecnico">TÉCNICO</option>
                             <option value="admin">ADMINISTRADOR</option>
+                            <option value="admin web">WEB</option>
+ 
                         </select>
                     </div>
 
@@ -481,6 +483,7 @@ if (isset($_SESSION['usuario'])) {
                             name="aprivilg" id="aprivilg" type="text" data-live-search="true">                         
                             <option value="tecnico">TÉCNICO</option>
                             <option value="admin">ADMINISTRADOR</option>
+                            <option value="admin web">WEB</option>
                         </select>
                     </div>
 
