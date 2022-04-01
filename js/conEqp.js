@@ -486,7 +486,9 @@ function persona(id_usu) {
 
 
 //registrar evaluacion por parte del usuario
+
 function evlRpt() {
+
 
     var nreporte = document.getElementById('nreporte').value;
     var conocimientos = $('input[name=conocimientos]:checked').val();
@@ -496,6 +498,7 @@ function evlRpt() {
     var solucion = $('input[name=solucion]:checked').val();
     var calidad = $('input[name=calidad]:checked').val();
     var observa = document.getElementById('observa').value;
+
     //alert(nreporte + respuesta + observa);
     if (!document.querySelector('input[name=conocimientos]:checked') || !document.querySelector('input[name=actitud]:checked') || !document.querySelector('input[name=habilidades]:checked') || !document.querySelector('input[name=respuesta]:checked') || !document.querySelector('input[name=solucion]:checked') || !document.querySelector('input[name=calidad]:checked') || nreporte == '' || observa == '') {
 
@@ -508,7 +511,6 @@ function evlRpt() {
         return;
     } else {
         //bloquear boton 
-
         $.ajax({
             url: '../php/rptUsu.php',
             type: 'POST',
@@ -522,6 +524,44 @@ function evlRpt() {
                 $("#error").toggle("toggled");
                 setTimeout(function() {
                     $("#error").toggle("toggled");
+                }, 3000);
+            }
+        });
+    }
+
+}
+
+function evlRptCancela() {
+    var nreporte = document.getElementById('nreporte').value;
+    var conocimientos = 'cancelado';  
+    var actitud = 'cancelado';  
+    var habilidades = 'cancelado';  
+    var respuesta = 'cancelado';  
+    var solucion = 'cancelado';  
+    var calidad = 'cancelado';  
+    var observa = document.getElementById('observac').value;
+    //alert(nreporte + respuesta + observa);
+    if (nreporte == '' || observa == '') {
+        $("#vacioc").toggle("toggled");
+        setTimeout(function() {
+            $('#vacioc').toggle('toggled');
+        }, 3000);
+        return;
+    } else {
+        //bloquear boton 
+        $.ajax({
+            url: '../php/rptUsu.php',
+            type: 'POST',
+            data: 'nreporte=' + nreporte + '&conocimientos=' + conocimientos + '&actitud=' + actitud + '&habilidades=' + habilidades + '&respuesta=' + respuesta + '&solucion=' + solucion + '&calidad=' + calidad + '&observa=' + observa + '&opcion=evaluar'
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta == 0) {
+                $("#exitoc").toggle("toggled");
+                setTimeout("location.href = 'rptCons';", 4000);
+            } else if (respuesta == 1) {
+                $("#errorc").toggle("toggled");
+                setTimeout(function() {
+                    $("#errorc").toggle("toggled");
                 }, 3000);
             }
         });
