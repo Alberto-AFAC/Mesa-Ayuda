@@ -114,7 +114,7 @@ function reporte() {
 }
 
 ///REPORTE DE 10 MIN
-function reporte10min(){
+function reporte10min() {
 
     var idTec = document.getElementById('tecnico').value;
     var sede = document.getElementById('sedeTec').value;
@@ -136,7 +136,7 @@ function reporte10min(){
 
     x = servicio + '/' + intervencion + '/' + descripcion + '/' + solucion + '/' + ultima + '/' + final;
 
-    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&idTec=' + idTec +'&opcion=registrarRport';
+    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&idTec=' + idTec + '&opcion=registrarRport';
 
     if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
 

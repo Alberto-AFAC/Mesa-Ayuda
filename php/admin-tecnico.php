@@ -17,8 +17,10 @@
             if(strtoupper($data['privilegios'])== 'ADMIN'){
                 $privilegios = 'ADMINISTRADOR';
 
-            } else {
+            } else if(strtoupper($data['privilegios'])== 'TECNICO') {
                 $privilegios = 'TÉCNICO';
+            }else{
+                $privilegios = 'ADMINISTRADOR WEB';
             }
 
         $queri = "SELECT * FROM personal 

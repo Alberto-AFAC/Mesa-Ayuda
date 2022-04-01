@@ -75,6 +75,25 @@ switch ($id) {
               <script type="text/javascript">
               reset();
               </script>
+<?php break;
+   case "5":?>
+            <div class="col-sm-offset-0 col-sm-4">
+            <select  id="intervencion" class="form-control" class="selectpicker" name="intervencion" type="text" data-live-search="true">
+            <option value="0">SELECCIONE</option>
+            <option value="jAfac">AFAC</option>
+            <option value="kCass">CASS</option>
+            <option value="lElicencias">E-LICENCIAS</option>
+            <option value="mSiac">SIAC</option>
+            <option value="nSiar">SIAR</option>
+
+            </option>
+            </select>
+            </div>
+              <!--Resetear select-->
+              
+              <script type="text/javascript">
+              reset();
+              </script>
 
 <?php break;
    case "5":?>
@@ -148,6 +167,7 @@ function reset(){
       $('#select3').load('select/penultimo.php');
       $('#select4').load('select/ultimo.php');
       $('#select5').load('select/final.php');
+
         }
   })
 }
