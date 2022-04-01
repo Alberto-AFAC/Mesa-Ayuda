@@ -1,5 +1,17 @@
 <?php
+include ("../../gestor/conexion/conexion.php");
 include ("../conexion/conexion.php");
+session_start(); 
+  $id = $_SESSION['usuario']['id_usu'];
+
+        $query = "SELECT gstNombr,gstApell,gstNmpld FROM personal
+            WHERE gstIdper = $id ";
+        $result = mysqli_query($conexion2,$query);
+        $usua = mysqli_fetch_row($result);
+     $query = "SELECT gstNombr,gstApell FROM personal
+            WHERE gstIdper = $id ";
+        $result = mysqli_query($conexion2,$query);
+        $usu = mysqli_fetch_row($result);        
 //si la variable ssesion existe realizara las siguiente evaluacion 
 
   //evaluaremos si la variable de session existe de lo contrario no se ara nada 
@@ -11,5 +23,5 @@ include ("../conexion/conexion.php");
         $usu = mysqli_fetch_row($result);*/
 ?>
 <body>
-<a class="navbar-brand" href="./">BIENVENIDO - <?php echo $_SESSION['gstNmpld']['gstNombr'].' '.$_SESSION['gstNmpld']['gstApell'];?></a>
+<a class="navbar-brand" title="Menú de acceso" href="../../gestor/menu/">BIENVENIDO - <?php echo $usu[0].''.$usu[1];?></a>
 </body>

@@ -14,6 +14,14 @@
             $nemple = $data['gstNmpld'];
             $cargo = $data['gstCargo'];
             $area = '';
+
+            if($nemple == 0){
+
+                $detalle_usuario = "<a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='fa fa-desktop text-silver'></i></a>";
+            }else{
+                $detalle_usuario = "<a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-success'><i class='fa fa-desktop text-silver'></i></a>";
+            }
+
      
      $querys = "SELECT * FROM prioridad WHERE n_empleado = $nemple AND estado = 0";
         $resultados = mysqli_query($conexion,$querys);
@@ -45,7 +53,8 @@
     
     ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,'<?php echo $cargo ?>' , '<?php echo $prio ?>' ,"<?php 
 
-echo "   <a title='Detalles usuario' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-success'><i class='fa fa-desktop text-silver'></i></a>";?>"],
+echo $detalle_usuario ?>"],
+
 <?php }else{ ?>
     ['<?php echo $nemple;?>','<?php echo $nombre?>','<?php echo $apellidos?>' ,'<?php echo $cargo ?>', '<?php echo $prio ?>' ,"<?php 
 

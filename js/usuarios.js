@@ -217,6 +217,14 @@ function datos_detalle(id) {
 
 
 function equpios(nempleado) {
+
+    if(nempleado==0){
+
+        html = '<b>EL USUARIO NO TIENE NÚMERO DE EMPLEADO ASIGNADO<b>';
+        $("#eqpos").html(html);
+
+    }else{
+
     $.ajax({
         url: '../../php/asigEqpo.php',
         type: 'POST'
@@ -234,6 +242,8 @@ function equpios(nempleado) {
         html += '</tbody></table>';
         $("#eqpos").html(html);
     })
+}
+
 }
 
 var RegistrarUsu = function() {

@@ -1,18 +1,18 @@
 <?php session_start();
-//si la variable ssesion existe realizara las siguiente evaluacion 
-    // if (isset($_SESSION['usuario'])) {
-    //     //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-    //     if($_SESSION['usuario']['privilegios'] != "tecnico"){
-    //         //y se redirecciona al directorio que le corresponde
-    //         header("Location: ../");
-    //         }
-    //     }else{
-    //         //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
-    //         header('Location: ../');
-    //     }
+include ("../../gestor/conexion/conexion.php");
+include ("../conexion/conexion.php"); 
+session_start();
+if (isset($_SESSION['usuario'])) 
+{ 
+$idu = $_SESSION['usuario']['id_usu'];
+}else{ header('Location: ../../gestor'); }
 
-        //$idu = $_SESSION['usuario']['id_usuario'];
-       
+    $query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
+    $resultado = mysqli_query($conexion, $query);
+    if($data = mysqli_fetch_array($resultado)){
+
+        $idtecnico = $data['id_tecnico'];    
+    }         
 ?>
 <!DOCTYPE html>
 <html lang="es">

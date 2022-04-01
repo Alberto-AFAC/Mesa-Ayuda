@@ -189,7 +189,12 @@ $('#my-table_filter').hide();
 // GRAFICA QUE PERMITE RECIBIR EL VALOR DE LAS EVALUACIONES DEL REPORTE
 <?php 
 
-    $datos = $_GET['data'];
+        if(isset($_GET['data'])&&!empty($_GET['data'])){
+            $datos = $_GET['data'];
+        }else{
+            $datos = '';
+        }
+    
     $queryReportes = "SELECT n_reporte,
     evaluacion.co_tecnico,
     evaluacion.act_servicio,

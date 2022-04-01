@@ -1,7 +1,14 @@
 <?php
+	include ("../../gestor/conexion/conexion.php");
 	include("../conexion/conexion.php");
 	session_start();
-	$numEmp = $_SESSION['gstNmpld']['gstNmpld'];
+	$id = $_SESSION['usuario']['id_usu'];
+	$query = "SELECT gstNombr,gstApell,gstNmpld FROM personal
+	WHERE gstIdper = $id ";
+	$result = mysqli_query($conexion2,$query);
+	$usua = mysqli_fetch_row($result);	 
+	$numEmp = $usua[2];
+
 	$query = "
 	SELECT marca_cpu,serie_cpu,version_windows,id_equipo,proceso,tipo_equipo
 	FROM equipo 

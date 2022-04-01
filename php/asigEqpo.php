@@ -1,6 +1,6 @@
 <?php
 	include("../conexion/conexion.php");
-	session_start();
+	//session_start();
 	$query = "
 	SELECT * 
 	FROM equipo 

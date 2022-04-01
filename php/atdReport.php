@@ -1,7 +1,19 @@
 <?php
-	include("../conexion/conexion.php");
-	session_start();
-	$idtecnico = $_SESSION['usuario']['id_tecnico'];
+include ("../../gestor/conexion/conexion.php");
+include ("../conexion/conexion.php"); 
+session_start(); 
+  if (isset($_SESSION['usuario'])) 
+    { 
+      $id = $_SESSION['usuario']['id_usu'];
+    }else{ header('Location: ../../gestor'); }
+	//** $idtecnico = $_SESSION['usuario']['id_tecnico'];
+
+	$query = "SELECT * FROM tecnico WHERE id_usu = $id AND baja = 0";
+	$resultado = mysqli_query($conexion, $query);
+	if($data = mysqli_fetch_array($resultado)){
+	    $idtecnico = $data['id_tecnico'];    
+	}	
+
 	$query = "
 	SELECT 
 	-- usuarios.nombre,

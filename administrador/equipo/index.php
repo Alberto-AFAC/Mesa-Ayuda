@@ -1,18 +1,19 @@
 <?php session_start();
-//si la variable ssesion existe realizara las siguiente evaluacion 
-    if (isset($_SESSION['usuario'])) {
-        //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
-        if($_SESSION['usuario']['privilegios'] != "admin"){
-            //y se redirecciona al directorio que le corresponde
-            header("Location: ../../");
-            }
-        }else{
-            //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
-            header('Location: ../../');
-        }
-
-        //$idu = $_SESSION['usuario']['id_usuario'];
-    $idu = $_SESSION['usuario']['id_usu'];
+include ("../../../gestor/conexion/conexion.php");
+include("../../conexion/conexion.php"); 
+session_start();
+if (isset($_SESSION['usuario'])) 
+{ 
+$idu = $_SESSION['usuario']['id_usu'];
+}else{ header('Location: ../../gestor'); }
+// if (isset($_SESSION['usuario'])) {
+// if($_SESSION['usuario']['privilegios'] != "admin"){
+// header("Location: ../../");
+// }
+// }else{
+// header('Location: ../../');
+// }
+// $idu = $_SESSION['usuario']['id_usu'];
  
      
 ?>
@@ -64,7 +65,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <?php include("../../usuarios.php");?>
+                <?php include("../usuarios.php");?>
             </div>
             <!-- /.navbar-header -->
 
@@ -129,7 +130,7 @@
                     <ul class="dropdown-menu dropdown-user">
                     <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../../conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+                        <li><a href="../../../gestor/conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

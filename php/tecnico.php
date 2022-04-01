@@ -1,5 +1,4 @@
-	<?php 
-include ("../conexion/conexion.php");
+<?php include ("../conexion/conexion.php");
 //crear las variables las cuales van almacenar dichos datos provinientes del formulario  
 	$opcion = $_POST["opcion"];
 	$informacion = [];//<---Arreglo
