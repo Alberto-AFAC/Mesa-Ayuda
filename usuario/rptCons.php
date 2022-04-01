@@ -422,117 +422,6 @@ unset($_SESSION['consulta']);
                             </div>
                         </div>
 
-
-                        <!-- <div class="form-group"> -->
-                        <!-- <div class="col-sm-2">
-                                <label>N° REPORTE</label>
-                                <input id="nreporte" name="nreporte" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- <div class="col-sm-4">
-                                <label>TÉCNICO</label>
-                                <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- <div class="col-sm-2">
-                                <label>EXTENSIÓN</label>
-                                <input id="extension" name="extension" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- <div class="col-sm-4">
-                                <label>CORREO</label>
-                                <input id="correo" name="correo" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- </div>  -->
-
-                        <!-- <div class="form-group"> -->
-                        <!-- <div class="col-sm-4">
-                                <label>TIPO DE SERVICIO</label>
-                                <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- 
-                            <div class="col-sm-4">
-                                <label style="color:white;">.</label>
-                                <input id="intervencion" name="intervencion" type="text" class="form-control"
-                                    disabled="">
-                            </div> -->
-
-                        <!-- <div class="col-sm-4">
-                                <label style="color:white;">.</label>
-                                <input id="descripcion" name="descripcion" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- </div> -->
-
-                        <!-- <div class="form-group"> -->
-                        <!-- <div class="col-sm-4">
-
-                                <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- 
-                            <div class="col-sm-4">
-
-                                <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- 
-                            <div class="col-sm-4">
-
-                                <input id="final" name="final" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- </div -->
-
-                        <!-- <div class="form-group"> -->
-                        <!-- <div class="col-sm-12">
-                                <label>OBSERVACIONES</label>
-                                <textarea id="usu_observ" name="usu_observ" class="form-control"
-                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                            </div> -->
-                        <!-- </div> -->
-
-                        <!-- <div class="form-group"> -->
-                        <!-- <div class="col-sm-12">
-                                <label>RESPUESTA DE FALLA</label>
-                                <textarea id="falla_interna" name="falla_interna" class="form-control"
-                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                            </div> -->
-                        <!-- </div> -->
-                        <!-- 
-                        <div class="form-group" id="externo">
-                            <div class="col-sm-12">
-                                <label>RESPUESTA EXTERNA DE LA FALLA</label>
-                                <textarea id="falla_xterna" name="falla_xterna" class="form-control"
-                                    id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                            </div>
-                        </div> -->
-
-                        <!-- <div class="form-group"> -->
-                        <!-- <div class="col-sm-6">
-                                <label> FECHA REPORTE</label>
-                                <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- <div class="col-sm-6">
-                                <label> FECHA FINALIZADA</label>
-                                <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
-                            </div> -->
-                        <!-- </div> -->
-
-                        <!-- <p id="div1"> -->
-                        <!-- ¿COMO LE PARECIÓ EL SERVICIO? -->
-                        <!-- <label for="BUENO">BUENO</label>
-                            <input name="evaluacion" type="radio" value="BUENO" id="BUENO" />
-                            <label for="REGULAR">REGULAR</label>
-                            <input name="evaluacion" type="radio" value="REGULAR" id="REGULAR" />
-                            <label for="MALO">MALO</label>
-                            <input name="evaluacion" type="radio" value="MALO" id="MALO" /> -->
-                        <!-- </p> -->
-                        <!-- <p id="div2">
-                            <label for="Cancelado">CANCELADO</label>
-                            <input name="evaluacion" type="radio" value="CANCELADO" id="CANCELADO" />
-                        <p> -->
-                        <!-- <div class="form-group" id="externo">
-                            <div class="col-sm-12">
-                                <label>¿DESCRIBA POR QUÉ?</label>
-                                <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control"
-                                    id="exampleFormControlTextarea1" rows="2"></textarea>
-                            </div>
-                        </div> -->
-
                         <div class="form-group">
                             <div class="col-sm-offset-0 col-sm-4">
                                 <button type="button" id="button" class="btn btn-green"
@@ -556,6 +445,72 @@ unset($_SESSION['consulta']);
             </div>
         </div>
     </form>
+
+
+
+<!-------CANCELADO------->
+
+   <form class="form-horizontal" action="" method="POST" onsubmit="return evlRpt(this)">
+        <div class="modal fade" id="modalEvalCancelado" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel">
+
+            <div class="modal-dialog width" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" onclick="location.href='rptCons.php'" class="close" data-dismiss="modal"
+                            aria-label="Close"><span style="color: black" aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel"><b>EVALUAR REPORTE - <input class="transparent"
+                                    style="text-transform: uppercase;" id="estado_rpt" name="estado_rpt"
+                                    disabled=""></b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="jumbotron">
+                            <div class="container">
+                                <input id="nreporte" name="nreporte" type="hidden" disabled>
+                                <!-- TABLE TO EVALUATION -->
+                     
+                                <p style='font-weight: bold; font-size: 12px; text-align: justify;'>COMENTE MOTIVO DE CANCELACIÓN </p>
+                                <div>
+                                    <textarea style='font-weight: bold; font-size: 12px; text-align: justify;' onkeyup="mayus(this);"
+                                        placeholder="(SUS COMENTARIOS DETALLADOS NOS AYUDARÁN A MEJORAR SU EXPERIENCIA.)"
+                                        id="observac" name="observac" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="2"></textarea><br>
+                                    <p style='font-weight: bold; font-size: 12px; text-align: justify;'> *NO SUMINISTRE
+                                        INFORMACIÓN CONFIDENCIAL O INFORMACIÓN QUE PERTENEZCA A ALGUNA PERSONA
+                                        ESPECÍFICAMENTE.</p>
+                                    <br>
+                                    <p style='font-size: 12px; text-align: justify;'> APRECIAMOS QUE
+                                        DEDIQUE EL TIEMPO A COMPARTIR SUS OPINIONES. SU RETROALIMENTACIÓN ES
+                                        INCREÍBLEMENTE VALIOSA PARA NOSOTROS A FIN DE MEJORAR AÚN MÁS SU EXPERIENCIA CON
+                                        NOSOTROS.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-0 col-sm-4">
+                                <button type="button" id="button" class="btn btn-green"
+                                    onclick="evlRptCancela();">ACEPTAR</button>
+                            </div>
+                            <b>
+                                <p class="alert alert-danger text-center padding error" id="errorc">Error al evaluar
+                                    técnico</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-success text-center padding exito" id="exitoc">¡Se cancelo reporte con éxito!</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-warning text-center padding aviso" id="vacioc">Es necesario comentar reporte cancelado</p>
+                            </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
 
     <form class="form-horizontal" action="" method="POST">
         <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
@@ -750,12 +705,12 @@ if($data['estado_rpt'] == 'Por atender'){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-info' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>PENDIENTE</a>";?>"
     ],
 
-    <?php }else if($data['estado_rpt'] == 'Cancelado'){ ?>
+    <?php }else if($data['estado_rpt'] == 'Cancelado' && $data['evaluacion'] == '0'){ ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>CONFIRMAR</a>";                        
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEvalCancelado' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>CONFIRMAR</a>";                        
                     
                  ?>"
     ],
