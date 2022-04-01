@@ -285,7 +285,10 @@ WHERE
    
             </div>
     </div>
+    <div style="text-align: center;" class="col-sm-12">
+    <a href="historial" style="float: right;" class="btn btn-info"><i class="fa fa-undo" aria-hidden="true"></i> REGRESAR</a>
             
+    </div>  
                 
         </div>
         <!-- /.row -->
