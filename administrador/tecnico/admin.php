@@ -140,37 +140,28 @@ $idtec = mysqli_fetch_row($result);
     </ul>
     <!-- /.navbar-top-links -->
 
-    <div class="navbar-default sidebar" role="navigation">
-        <div class="sidebar-nav navbar-collapse">
-            <ul class="nav" id="side-menu">
-                <li>
-                    <a href="../"><i class="glyphicon glyphicon-home"></i> INICIO</a>
-                </li>
-                <li>
-                    <a href="#"><i class="glyphicon glyphicon-cog"></i> REGISTROS<span
-                        class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-<!--                             <li>
-                                <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
-                            </li> -->
-                            <li>
-                                <a href="../usuarios"><i class="fa fa-users"></i> USUARIOS</a>
-                            </li>
-                            <li>
-                                <a href="../equipo"><i class="fa fa-desktop"></i> EQUIPOS</a>
-                            </li>
-                            <li>
-                                <a href="./"><i class="fa fa-street-view"></i> TÉCNICO</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="../../tecnico/"><i class="glyphicon glyphicon-home"></i> INICIO</a>
+                        </li>
+                        <li>
+                            <a href="../../tecnico/conRpt.php"><i class="fa fa-keyboard-o"></i> CONSULTAR REPORTES</a>
+                            <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
+                            <!-- /.nav-second-level -->
+                        </li>
 
+                        <?php if($id == '22'){ ?>
+                        <li>
+                            <a href="admin.php"><i class="fa fa-street-view"></i> TÉCNICOS</a>
+                        </li>
+                        <?php } ?>
 
-                </ul>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.sidebar-collapse -->
-        </div>
         <!-- /.navbar-static-side -->
     </nav>
 
