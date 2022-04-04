@@ -16,7 +16,9 @@ session_start();
         $resultado = mysqli_query($conexion, $query);
         if($data = mysqli_fetch_array($resultado)){
         $idtecnico = $data['id_tecnico'];    
-        }   
+        }
+        ini_set('date.timezone','America/Mexico_City');
+        $fecha = date('Y');   
        
 ?>
 <!DOCTYPE html>
@@ -48,15 +50,15 @@ session_start();
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
     <link rel="stylesheet"
         href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript" src="../datas/jquery-3.js"></script>
-
     <script type="text/javascript" src="../js/atdRpt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
 
 
 </head>
@@ -130,12 +132,19 @@ session_start();
                 <div class="col-lg-12">
                     <img src="../img/afac.png" class="imgafac">
                     <h1 class="page-header">CONSULTA DE REPORTES </h1>
+                    <?php
+                    echo
+                    "<marquee style='color: white; background-color: #1489D8;' width='100%' direction='left'>
+                        ESTADISTICAS GENERALES MOSTRADAS AL AÑO $fecha
+                    </marquee>";
+                    ?>
                 </div>
             </div>
 
             <div class="row">
-
-                <div class="col-lg-4 col-md-6">
+            <?php if($data['sede'] == 'WEB'):?>
+            <?php else: ?>
+            <div class="col-lg-4 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -347,6 +356,7 @@ session_start();
                     <button style="float: right;" data-toggle="modal" data-target="#exampleModal"
                         class="btn btn-info">CONSULTAR DESEMPEÑO</button>
                 </div>
+              <?php endif ?>
 
                 <?php
                                                 $query ="SELECT
@@ -418,10 +428,96 @@ session_start();
                         </div>
                     </div>
                 </div>
+                <?php 
+                if($data['sede'] == 'WEB'):?>
+                    <div class="zoom col-lg-3 col-md-6">
+                    <div data-toggle="modal" data-target="#finalizados" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/realizado.svg" width="60px" alt="Bueno" class="img-fluid">
+                                </div>
+                                <?php 
+                                $query ="SELECT
+                                            'total',
+                                            COUNT( CASE WHEN estado_rpt = 'Por atender' THEN 1 END ) AS Por_atender,
+                                            COUNT( CASE WHEN estado_rpt = 'Finalizado' THEN 1 END ) AS Finalizado,
+                                            COUNT( CASE WHEN estado_rpt = 'Cancelado' THEN 1 END ) AS Cancelado,
+                                            COUNT( CASE WHEN estado_rpt = 'Pendiente' THEN 1 END ) AS Pendiente 
+                                        FROM
+                                            reporte
+                                        WHERE
+                                        servicio = 'SISTEMAS'";
+                                $resultado = mysqli_query($conexion, $query);
+                                $row = mysqli_fetch_assoc($resultado);
+                                ?>
+                                <div class="col-xs-9 text-right text-success">
+                                    <div class="huge"><?php echo $row['Finalizado'] ?></div>
+                                    <div>FINALIZADOS</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="zoom col-lg-3 col-md-6">
+                    <div data-toggle="modal" data-target="#poratender" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/pendiente.svg" width="60px" alt="Bueno" class="img-fluid">
+                                </div>
+                                <div class="col-xs-9 text-right text-danger">
+                                    <div class="huge"><?php echo $row['Por_atender'] ?></div>
+                                    <div>POR ATENDER</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="zoom col-lg-3 col-md-6">
+                    <div data-toggle="modal" data-target="#pendiente" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/realizando.svg" width="60px" alt="Bueno" class="img-fluid">
+                                </div>
+                                <div class="col-xs-9 text-right text-primary">
+                                    <div class="huge"><?php echo $row['Pendiente'] ?></div>
+                                    <div>REALIZANDO</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zoom col-lg-3 col-md-6">
+                    <div data-toggle="modal" data-target="#cancelado" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="../img/cancelado.svg" width="60px" alt="Bueno" class="img-fluid">
+                                </div>
+                                <div class="col-xs-9 text-right text-warning">
+                                    <div class="huge"><?php echo $row['Cancelado'] ?></div>
+                                    <div>CANCELADOS</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <?php else : ?>
+
+                <?php endif?>
+
                 <div class="panel-body">
                     <div style="padding-top: 30px;" class="col-lg-12">
-                        <?php //include("../html/consultar.html");?>
+                         <?php if($data['sede']== 'WEB'):?>
+                        <table style="width: 100%" id="data-table-consulta-web" class="table table-striped table-hover">
+                        <?php else :?>
                         <table style="width: 100%" id="data-table-consulta" class="table table-striped table-hover">
+                        <?php endif?>
+
                         </table>
                     </div>
                 </div>
@@ -591,7 +687,8 @@ session_start();
     <!-- /#wrapper -->
 </body>
 
-
+<script src="../js/jquery-1.12.3.min.js"></script>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>
@@ -599,6 +696,12 @@ session_start();
 <script src="../js/dataTables.buttons.min.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script>
 
 
 <!--     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -614,6 +717,7 @@ session_start();
  -->
 <!--<script type="text/javascript" src="../js/atdRpt.js"></script>-->
 <script>
+    // TABLA DE REPORTE PARA USUARIOS QUE ATIENDEN SISTEMAS
 var dataSet = [
     <?php
 	    //** $idtecnico = $_SESSION['usuario']['id_tecnico'];
@@ -733,6 +837,133 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
     ],
 });
 
+// TABLE QUE GENERAN LOS REPORTES EN WEB
+var dataSet = [
+    <?php
+	    //** $idtecnico = $_SESSION['usuario']['id_tecnico'];
+        $query = "SELECT 
+        reporte.n_reporte,
+        reporte.finicio comparacioni,
+        reporte.ffinal comparacionf,
+        DATE_FORMAT(reporte.finicio, '%d/%m/%Y') as finicio,
+        DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as ftermino,
+        reporte.estado_rpt,
+        reporte.servicio,
+        reporte.intervencion,
+        reporte.descripcion,
+        reporte.usu_observ,
+        reporte.n_reporte,
+        reporte.falla_interna,
+        reporte.falla_xterna,
+        reporte.observa,
+        reporte.evaluacion,
+        reporte.hinicio,
+        reporte.hfinal,
+        reporte.idequipo,
+        n_empleado empleado
+        FROM reporte
+        WHERE servicio = 'SISTEMAS'";
+    $resultado = mysqli_query($conexion, $query);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+         $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $fila = $idtecnico;
+            $nombre = $data2['gstNombr'];
+            $apellidos = $data2['gstApell']; 
+            $servicio= $data['servicio'];
+            $extension = $data2['gstExTel'];
+            $final = $data['ftermino'];
+            $inicio = $data['finicio'];
+
+ 
+if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
+    ?>["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
+        "<?php echo $extension?>",
+        "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
+        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>",
+        "<span style='color: gray'>NO DISPONIBLE</span>"
+    ],
+    <?php }else if($data['evaluacion'] != '0'){ ?>["<?php echo  $data['n_reporte']?>",
+        "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>",
+        "<?php echo $inicio ?>", "<?php echo $final ?>",
+
+
+        "<?php 
+if($data['evaluacion']=='CANCELADO'){
+    echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>DETALLES</a>";
+
+}else if($data['evaluacion']=='1'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO</a>";
+}
+
+
+
+
+?>", "<a href='evaluacion.php?data=<?php echo base64_encode($data['n_reporte'])?>' type='button' class='detalle btn btn-default'  style='width:100%; font-size:12px;'>DETALLES</a>"
+        ],
+
+    <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
+        "<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
+        "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
+        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>","<span style='color: gray;'>NO DISPONIBLE</span>"
+    ],
+    <?php  } 
+    }  
+} ?>
+];
+$(document).ready(function() {
+var tableGenerarReporte = $('#data-table-consulta-web').DataTable({    
+    dom: 'Bfrtip',
+    buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ], 
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "NOMBRE USUARIO"
+        },
+        {
+            title: "EXT."
+        },
+        {
+            title: "SERVICIO"
+        },
+        {
+            title: "REPORTE"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "ESTADO"
+        },
+        {
+            title: "EVALUACIÓN"
+        }
+    ],
+});
+
+} );
 function evaluacionID(idEvaluacion) {
     alert(idEvaluacion)
 
