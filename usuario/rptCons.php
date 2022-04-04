@@ -86,7 +86,7 @@ unset($_SESSION['consulta']);
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                            <a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>
