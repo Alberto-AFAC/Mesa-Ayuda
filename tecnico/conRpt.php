@@ -50,7 +50,6 @@ session_start();
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
     <link rel="stylesheet"
         href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
@@ -357,7 +356,7 @@ session_start();
 
 
                     </div>
-                    <button style="float: right;" data-toggle="modal" data-target="#exampleModal"
+                    <button type="button" style="float: right;" data-toggle="modal" data-target="#exampleModal"
                         class="btn btn-info">CONSULTAR DESEMPEÑO</button>
                 </div>
               <?php endif ?>
@@ -530,7 +529,68 @@ session_start();
 
 
             <?php include('conActu.php');?>
+            <!-- VISUALIZACIÓN DE LAS CARDS -->
+            <div class="modal fade" id="finalizados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-finalizados" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="poratender" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-por-atender" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-pendiente" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="cancelado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-cancelado" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FINISH STADISTICS-->
 
             <form class="form-horizontal" action="" method="POST">
                 <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
@@ -694,7 +754,7 @@ session_start();
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<!-- <script src="../js/bootstrap.min.js"></script> -->
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
@@ -707,20 +767,6 @@ session_start();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-
-
-<!--     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <script src="../js/buttons.bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="calendario/tcal.js"></script> 
-
-    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-    <script type="text/javascript" src="valida/valida.js"></script>
-    <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script> 
- -->
-<!--<script type="text/javascript" src="../js/atdRpt.js"></script>-->
 <script>
     // TABLA DE REPORTE PARA USUARIOS QUE ATIENDEN SISTEMAS
 var dataSet = [
@@ -1031,8 +1077,439 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
     },
 });
 
+// TODO FINALIZADOS
+$(document).ready(function () {
+    
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS' 
+     ORDER BY
+         n_reporte DESC";
+	$resultado4 = mysqli_query($conexion, $query1);
+        while($data5 = mysqli_fetch_array($resultado4)){
+            $idempleado=$data5['empleado'];
+            $idper = $data5['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data5['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data5['ffinal'];
+            };
+            if($data5['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data5['evaluacion'];
+            }
 
 
+if($data5['estado_rpt'] == 'Finalizado'){
+        ?>
+
+    ["<?php echo $data5['año']."-".$data5['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+        "<?php echo $data5['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>"],
+
+    <?php } ?>
+    <?php }  }} ?>
+];
+//       
+
+
+
+
+
+var tableFinalizados = $('#data-table-finalizados').DataTable({
+
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+
+// TODO POR ATENDER
+
+
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS' 
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Por atender'){
+        ?>
+
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+        "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+        "aqui va"],
+
+    <?php } ?>
+    <?php }  }} ?>
+];
+//       
+
+var tableGenerarReporte = $('#data-table-por-atender').DataTable({
+
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+
+//TODO REALIZANDO
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS'
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Pendiente'){
+        ?>
+
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+        "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+        "aqui va"],
+
+    <?php } ?>
+    <?php }  }} ?>
+];
+//       
+
+var tableGenerarReporte = $('#data-table-pendiente').DataTable({
+
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+// TODO CANCELADO
+
+var dataSet = [
+    <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS' 
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Cancelado'){
+        ?>
+
+    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+        "<?php echo $data['finicio']?>",
+        "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+        "aqui va"],
+
+    <?php } ?>
+    <?php }  }} ?>
+];
+//       
+
+var tableGenerarReporte = $('#data-table-cancelado').DataTable({
+
+    "language": {
+        "searchPlaceholder": "Buscar datos...",
+        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+    },
+    "order": [
+        [0, "desc"]
+    ],
+    pageLength: 5,
+    lengthMenu: [
+        [5, 10, 20, -1],
+        [5, 10, 20, 'Todos']
+    ],
+    orderCellsTop: true,
+    fixedHeader: true,
+    data: dataSet,
+    columns: [{
+            title: "N°"
+        },
+        {
+            title: "USUARIO"
+        },
+        {
+            title: "INICIO"
+        },
+        {
+            title: "TERMINO"
+        },
+        {
+            title: "TÉCNICO"
+        }
+    ],
+});
+
+
+
+});
 
 
 
