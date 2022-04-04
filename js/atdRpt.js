@@ -94,7 +94,6 @@
 	//detalles de reporte Por atender
 	function atender(detalles) {
 
-
 	    $.ajax({
 	        url: '../php/atdReport.php',
 	        type: 'POST'
@@ -388,10 +387,11 @@ function personal(n_empleado){
 	    var solucion = document.getElementById('solucion').value;
 	    var ultima = document.getElementById('ultima').value;
 	    var final = document.getElementById('final').value;
+	    var sede = document.getElementById('sede').value;
 
-	    datos = servicio + '*' + intervencion + '*' + descripcion + '*' + falla_interna + '*' + falla_xterna + '*' + estado_rpt + '*' + rspst + '*' + solucion + '*' + ultima + '*' + final;
+	    datos = servicio + '*' + intervencion + '*' + descripcion + '*' + falla_interna + '*' + falla_xterna + '*' + estado_rpt + '*' + rspst + '*' + solucion + '*' + ultima + '*' + final + '*' + sede;
 	    //alert(datos);
-	    if (nreporte == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || solucion == '' || ultima == '' || final == '' || falla_interna == '' || estado_rpt == '') {
+	    if (nreporte == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || solucion == '' || ultima == '' || final == '' || falla_interna == '' || estado_rpt == '' || sede == '') {
 	        $("#vacios").toggle("toggled");
 	        setTimeout(function() {
 	            $('#vacios').toggle('toggled');
@@ -401,7 +401,7 @@ function personal(n_empleado){
 	        $.ajax({
 	            url: '../php/atdRptFnl.php',
 	            type: 'POST',
-	            data: 'nreporte=' + nreporte + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&falla_interna=' + falla_interna + '&falla_xterna=' + falla_xterna + '&estado_rpt=' + estado_rpt + '&rspst=' + rspst + '&opcion=atender'
+	            data: 'nreporte=' + nreporte + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&falla_interna=' + falla_interna + '&falla_xterna=' + falla_xterna + '&estado_rpt=' + estado_rpt + '&rspst=' + rspst + '&sede=' + sede +'&opcion=atender'
 	        }).done(function(respuesta) {
 	            console.log(respuesta);
 
