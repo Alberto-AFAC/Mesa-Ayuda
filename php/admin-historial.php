@@ -90,7 +90,7 @@ $(document).ready(function() {
             }else if($data['estado_rpt'] == 'Cancelado'){
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>CANCELADO</a>";
             }?>","<?php if($data['evaluacion'] == '0'){
-                echo "<a type='button' class='detalle btn btn-default' style='width:100%;font-size: 12px;' disabled>NO DISPNIBLE</a>";
+                echo "<a type='button' class='detalle btn btn-default' style='width:100%;font-size: 12px;' disabled>NO DISPONIBLE</a>";
             }else{
                 echo "<a href='evaluacion.php?data={$data['n_reporte']}' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACIÓN</a>";
             }?>"

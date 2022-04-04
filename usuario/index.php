@@ -104,8 +104,9 @@ document.getElementById('alerta').innerHTML = texto;
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">                   
-                     <li><a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="../../gestor/conexion/cerrar_session.php"><i
+                                    class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                 </li>
@@ -196,7 +197,8 @@ $res = 'NO';
                                 <label id="nota1"></label>    
                                 <label id="nota2">¡Agregue los datos del equipo que desea reportar!</label>
                                 </div> -->
-                                <input id="nempleado" name="nempleado" type="hidden" value="<?php echo $n_empleado?>"/>
+                                            <input id="nempleado" name="nempleado" type="hidden"
+                                                value="<?php echo $n_empleado?>" />
 
                                             <input id="idequipo" name="idequipo" type="hidden" value="0" />
 
