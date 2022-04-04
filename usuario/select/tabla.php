@@ -80,11 +80,11 @@ switch ($id) {
             <div class="col-sm-offset-0 col-sm-4">
             <select  id="intervencion" class="form-control" class="selectpicker" name="intervencion" type="text" data-live-search="true">
             <option value="0">SELECCIONE</option>
-            <option value="jAfac">AFAC</option>
-            <option value="kCass">CASS</option>
-            <option value="lElicencias">E-LICENCIAS</option>
-            <option value="mSiac">SIAC</option>
-            <option value="nSiar">SIAR</option>
+            <option value="jAFAC">AFAC</option>
+            <option value="kCASS">CASS</option>
+            <option value="lE-LICENCIAS">E-LICENCIAS</option>
+            <option value="mSIAC">SIAC</option>
+            <option value="nSIAR">SIAR</option>
 
             </option>
             </select>

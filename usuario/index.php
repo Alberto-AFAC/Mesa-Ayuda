@@ -338,6 +338,7 @@ $resultado = mysqli_query($conexion, $query); ?>
 <option value="<?php echo $row['sede']?>">
 <?php echo $row['sede']?></option>
 <?php } }?>
+<option value="OTRO">OTRO</option>
 
 </select>
 </div>

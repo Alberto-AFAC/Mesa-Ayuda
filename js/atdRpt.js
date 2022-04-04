@@ -106,7 +106,6 @@
 
 	            if (obj.data[i].n_reporte == detalles) {
 
-
 	                year = obj.data[i].finicio.substring(0, 4);
 	                month = obj.data[i].finicio.substring(5, 7);
 	                day = obj.data[i].finicio.substring(8, 10);
@@ -118,7 +117,6 @@
 	                Finaliza = day + '/' + month + '/' + year;
 
 	                detalles = obj.data[i].n_reporte + '*' + obj.data[i].nombre + '*' + obj.data[i].apellidos + '*' + obj.data[i].extension + '*' + obj.data[i].ubicacion + '*' + obj.data[i].servicio + '*' + obj.data[i].intervencion + '*' + obj.data[i].descripcion + '*' + obj.data[i].usu_observ + '*' + obj.data[i].falla_interna + '*' + Finicio + '*' + Finaliza + '*' + obj.data[i].falla_xterna + '*' + obj.data[i].observa + '*' + obj.data[i].evaluacion + '*' + obj.data[i].estado_rpt + '*' + obj.data[i].hinicio + '*' + obj.data[i].hfinal + '*' + obj.data[i].idequipo + '*' + obj.data[i].solucion + '*' + obj.data[i].ultima + '*' + obj.data[i].final+'*'+obj.data[i].n_empleado;
-
 
 	                var d = detalles.split("*");
 
@@ -167,6 +165,7 @@
 	         
 	                ComprobarEqpo(d[18]);
 	                personal(d[22]);
+	                sedes(d[0]);
 
 	            }
 	        }
@@ -174,6 +173,26 @@
 
 	}
 
+function sedes(sede_id){
+
+    $.ajax({
+	        url: '../php/listar_sede.php',
+	        type: 'POST'
+	    }).done(function(resp) {
+	        obj = JSON.parse(resp);
+	        var res = obj.data;
+
+	        for (i = 0; i < res.length; i++) {
+
+	            if (obj.data[i].idrep == sede_id) {
+
+					            	
+					$("#modalAtndr #sede").val(obj.data[i].titulo);
+	            }
+	        }
+	    })
+
+}
 
 function personal(n_empleado){
 

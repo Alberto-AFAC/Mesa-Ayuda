@@ -56,7 +56,6 @@ function modificar() {
         data: frm + "&opcion=modificar"
     }).done(function(respuesta) {
         console.log(respuesta);
-        
         if (respuesta == 0) {
             $('#exitos').slideDown('slow');
             setTimeout(function() {
@@ -108,7 +107,8 @@ function eliminar_usuario() {
     //para realiza el evento del clic del boton
 
     var idtec = $("#EliminarUsuario #idtec").val(),
-        opcion = $("#EliminarUsuario #opcion").val();
+        opcion = $("#EliminarUsuario #opcion").val()
+        admin_tec = $("#EliminarUsuario #admin_tec").val();
     $.ajax({
         method: "POST",
         url: "../../php/tecnico.php",
@@ -117,7 +117,7 @@ function eliminar_usuario() {
 
         var json_info = JSON.parse(info);
         mostrar_mensaje(json_info);
-        location.href = './';
+        location.href = ''+admin_tec+'';
         limpiar_datos();
         listar_usuario();
     });

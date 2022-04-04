@@ -252,6 +252,7 @@ $idtec = mysqli_fetch_row($result);
                             ¿Está seguro de eliminar técnico? <strong data-name=""></strong>
                             <!--<input id="nombre" name="nombre" />-->
                         </div>
+                        <input type="hidden" name="admin_tec" id="admin_tec" value="./">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary"
                             data-dismiss="modal" onclick="eliminar_usuario()">ACEPTAR</button>
@@ -374,19 +375,20 @@ $idtec = mysqli_fetch_row($result);
                             <option value="admin">ADMINISTRADOR</option> 
                         </select>
                     </div>
-
                 </div>
-                <div class="form-group">
+
+                <div class="form-group" style="display: none;">
                     <div class="col-sm-offset-0 col-sm-6">
                         <label for="usuario">USUARIO</label>
-                        <input style="text-transform: uppercase;" id="usuario" name="usuario" type="text" class="form-control">
+                        <input style="text-transform: uppercase;" id="usuario" name="usuario" type="text" class="form-control" value="12345678">
                     </div>
                     <div class="col-sm-offset-0 col-sm-6">
                         <label for="password">CONTRASEÑA</label>
-                        <input id="password" name="password" type="password" class="form-control">
+                        <input id="password" name="password" type="password" class="form-control" value="12345678">
                         <!-- <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-sm-offset-0 col-sm-4">
                         <label>ENTRADA</label>
@@ -498,14 +500,14 @@ $idtec = mysqli_fetch_row($result);
                     </div>
 
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display: none;">
                     <div class="col-sm-offset-0 col-sm-6">
                         <label for="usuario">Usuario</label>
-                        <input id="ausuario" name="ausuario" type="text" class="form-control">
+                        <input id="ausuario" name="ausuario" type="text" class="form-control" value="12345678">
                     </div>
                     <div class="col-sm-offset-0 col-sm-6">
                         <label for="password">Contraseña</label>
-                        <input id="apassword" name="apassword" type="password" class="form-control">
+                        <input id="apassword" name="apassword" type="password" class="form-control" value="12345678">
                         <!-- <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
                     </div>
                 </div>

@@ -354,11 +354,15 @@ if($data = mysqli_fetch_array($resultado)){
                                     <label>EXTENSIÓN</label>
                                     <input id="extension" name="extension" type="text" class="form-control" disabled="">
                                 </div>
-                                <!--       <div class="col-sm-2">
-                    <label>Ubicación</label>
-                    <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
-                    </div> -->
                             </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>SEDE</label>
+                                    <input id="sede" name="sede" type="text" class="form-control">
+                                </div>
+              
+                            </div>                            
 
                             <p id="divp">
                                 ¿ES CORRECTA LA DESCRIPCIÓN DEL PROBLEMA QUE SELECCIONO EL USUARIO?

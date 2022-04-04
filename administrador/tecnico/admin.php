@@ -154,7 +154,7 @@ $idtec = mysqli_fetch_row($result);
 
                         <?php if($id == '22'){ ?>
                         <li>
-                            <a href="admin.php"><i class="fa fa-street-view"></i> TÉCNICOS</a>
+                            <a href="admin"><i class="fa fa-street-view"></i> TÉCNICOS</a>
                         </li>
                         <?php } ?>
 
@@ -243,6 +243,7 @@ $idtec = mysqli_fetch_row($result);
                             ¿Está seguro de eliminar técnico? <strong data-name=""></strong>
                             <!--<input id="nombre" name="nombre" />-->
                         </div>
+                        <input type="hidden" name="admin_tec" id="admin_tec" value="admin">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary"
                             data-dismiss="modal" onclick="eliminar_usuario()">ACEPTAR</button>
@@ -271,7 +272,7 @@ $idtec = mysqli_fetch_row($result);
                     <div class="modal-header">
                         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><a
-                            href="./" style="color: black"><span style="color: black;"
+                            href="admin" style="color: black"><span style="color: black;"
                             aria-hidden="true"
                             class="glyphicon glyphicon-remove"></span></a></button>
                             <h4 class="modal-title" id="exampleModalLabel">INFORMACIÓN DEL TÉCNICO Y SUS EQUIPOS DE COMPUTO </h4>
@@ -331,7 +332,7 @@ $idtec = mysqli_fetch_row($result);
 
                     <div class="modal-header">
                         <button type="button" id="btn_listar" class="close" data-dismiss="modal"
-                        aria-label="Close"><a href="./"><span style="color: black"
+                        aria-label="Close"><a href="admin"><span style="color: black"
                             aria-hidden="true">&times;</span></a></button>
 
 
@@ -362,24 +363,24 @@ $idtec = mysqli_fetch_row($result);
                             name="privilg" id="privilg" type="text" data-live-search="true">
                             <option selected>SELECCIONE...</option>
                             <option value="tecnico">TÉCNICO</option>
-                            <option value="admin">ADMINISTRADOR</option> 
+                            
                         </select>
                     </div>
 
                 </div>
-                <div class="form-group">
+                <div class="form-group"  style="display: none;">
                     <div class="col-sm-offset-0 col-sm-6">
                         <label for="usuario">USUARIO</label>
-                        <input style="text-transform: uppercase;" id="usuario" name="usuario" type="text" class="form-control">
+                        <input style="text-transform: uppercase;" id="usuario" name="usuario" type="hidden" class="form-control" value="1">
                     </div>
                     <div class="col-sm-offset-0 col-sm-6">
                         <label for="password">CONTRASEÑA</label>
-                        <input id="password" name="password" type="password" class="form-control">
+                        <input id="password" name="password" type="hidden" value="12345678" class="form-control">
                         <!-- <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-4">
+                    <div class="col-sm-offset-0 col-sm-6">
                         <label>ENTRADA</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="entrada" id="entrada" type="text" data-live-search="true">
@@ -389,7 +390,7 @@ $idtec = mysqli_fetch_row($result);
                         <?php }?>                                                                                
                     </select>
                 </div>
-                <div class="col-sm-offset-0 col-sm-4">
+                <div class="col-sm-offset-0 col-sm-6">
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="salida" id="salida" type="text" data-live-search="true">
@@ -399,7 +400,8 @@ $idtec = mysqli_fetch_row($result);
                     <?php }?>                                                         
                 </select>
             </div>
-            <div class="col-sm-offset-0 col-sm-4">
+            <input type="hidden" name="sede" id="sede" value="WEB">
+<!--             <div class="col-sm-offset-0 col-sm-4">
                     <label>SEDE</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="sede" id="sede" type="text" data-live-search="true">
@@ -412,7 +414,7 @@ $idtec = mysqli_fetch_row($result);
                     <option value="TERMINAL 1">TERMINAL 1</option>
                     <option value="TERMINAL 2">TERMINAL 2</option>
                 </select>
-            </div>
+            </div> -->
         </div>
 
         <div class="form-group"><br>
@@ -451,7 +453,7 @@ $idtec = mysqli_fetch_row($result);
 
          <div class="modal-header">
                         <button type="button" id="btn_listar" class="close" data-dismiss="modal"
-                        aria-label="Close"><a href="./"><span style="color: black"
+                        aria-label="Close"><a href="admin"><span style="color: black"
                             aria-hidden="true">&times;</span></a></button>
 
 
@@ -489,7 +491,7 @@ $idtec = mysqli_fetch_row($result);
                     </div>
 
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display: none;">
                     <div class="col-sm-offset-0 col-sm-6">
                         <label for="usuario">Usuario</label>
                         <input id="ausuario" name="ausuario" type="text" class="form-control">
@@ -501,7 +503,7 @@ $idtec = mysqli_fetch_row($result);
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-0 col-sm-4">
+                    <div class="col-sm-offset-0 col-sm-6">
                         <label>Entrada</label>
                         <select style="width: 100%" class="form-control" class="selectpicker"
                         name="aentrada" id="aentrada" type="text" data-live-search="true">
@@ -515,7 +517,7 @@ $idtec = mysqli_fetch_row($result);
                         } ?>  
                     </select>
                 </div>
-                <div class="col-sm-offset-0 col-sm-4">
+                <div class="col-sm-offset-0 col-sm-6">
                     <label>Salida</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asalida" id="asalida" type="text" data-live-search="true">
@@ -529,7 +531,8 @@ $idtec = mysqli_fetch_row($result);
                         } ?> 
                 </select>
             </div>
-            <div class="col-sm-offset-0 col-sm-4">
+            <input type="hidden" name="asede" id="asede" >
+<!--             <div class="col-sm-offset-0 col-sm-4">
                     <label>SEDE</label>
                     <select style="width: 100%" class="form-control" class="selectpicker"
                     name="asede" id="asede" type="text" data-live-search="true">
@@ -542,7 +545,7 @@ $idtec = mysqli_fetch_row($result);
                     <option value="TERMINAL 1">TERMINAL 1</option>
                     <option value="TERMINAL 2">TERMINAL 2</option>
                 </select>
-            </div>
+            </div> -->
         </div>
 
 
