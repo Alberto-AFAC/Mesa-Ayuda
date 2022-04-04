@@ -44,9 +44,9 @@ function reporte() {
     if (servicio == '1CÓMPUTO' && idequipo == '0') {
         idequipo = '';
     }
-    if(servicio == '5SISTEMAS'){
-        var sede = 'WEB';
-    }
+    // if(servicio == '5SISTEMAS'){
+    //     var sede = 'WEB';
+    // }
 
     var intervencion = document.getElementById('intervencion').value;
     var descripcion = document.getElementById('descripcion').value;
@@ -58,16 +58,9 @@ function reporte() {
     x = servicio + '/' + intervencion + '/' + descripcion + '/' + solucion + '/' + ultima + '/' + final;
 
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&opcion=registrar';
-
-
-
+    
+    
     if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
-
-        // if(sede == '0'){
-        //    document.getElementById('sede').style.color = "red"; 
-        // }else{
-        //     document.getElementById('sede').style.color = "black";
-        // }
 
         $("#vacio").toggle("toggled");
         $('#exampleModalCenter').modal('hide');
@@ -86,7 +79,7 @@ function reporte() {
             data: datos
         }).done(function(respuesta) {
             // console.log(respuesta);
-
+            alert(respuesta);
             if (respuesta == 0) {
 
 
@@ -123,8 +116,16 @@ function reporte10min() {
     var idequipo = document.getElementById('idequipo').value;
     var servicio = document.getElementById('servicio').value;
 
+
+
     if (servicio == '1CÓMPUTO' && idequipo == '0') {
         idequipo = '';
+    } 
+
+    if(servicio == '5SISTEMAS'){
+        opcion = 'registrar';
+    }else{
+        opcion = 'registrarRport';
     }
 
     var intervencion = document.getElementById('intervencion').value;
@@ -136,7 +137,7 @@ function reporte10min() {
 
     x = servicio + '/' + intervencion + '/' + descripcion + '/' + solucion + '/' + ultima + '/' + final;
 
-    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&idTec=' + idTec + '&opcion=registrarRport';
+    datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&idTec=' + idTec + '&opcion='+opcion;
 
     if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
 
@@ -162,8 +163,8 @@ function reporte10min() {
             type: 'POST',
             data: datos
         }).done(function(respuesta) {
-            // console.log(respuesta);
-
+             console.log(respuesta);
+             alert(respuesta);
             if (respuesta == 0) {
 
 

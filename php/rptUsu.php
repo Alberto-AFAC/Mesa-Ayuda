@@ -7,21 +7,40 @@
 
  if($opcion === 'registrar'){
 
-	$nempleado = $_POST['nempleado'];	
+ 	$usu_sede = $_POST['sede'];
 	$servicio  = substr($_POST['servicio'],1);
+	
+	if($usu_sede=='AFAC - AIFA'){
+	$sede = 'LAS FLORES';
+	if($servicio=='SISTEMAS'){
+	$sede = 'WEB';
+	}
+			
+	}else{
+	
+	$sede = $_POST['sede'];
+	if($servicio=='SISTEMAS'){
+	$sede = 'WEB';
+	}else{
+	$sede = $_POST['sede'];
+	}
+	
+	}
+
+	$nempleado = $_POST['nempleado'];	
+	
 	$intervencion = substr($_POST['intervencion'],1);
 	$descripcion = substr($_POST['descripcion'],1);
 	$solucion = substr($_POST['solucion'],1);
 	$ultima = substr($_POST['ultima'],1);
 	$final = $_POST['final'];
 
+
+
 if(consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion)){
 
-
-			
 	$idequipo = $_POST['idequipo'];
 	$obser = $_POST['obser'];
-	$sede = $_POST['sede'];
 
 	$idtec = selecTec($sede,$conexion);
 
@@ -32,7 +51,8 @@ if(consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$
 if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion)){
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
-			echo "0";
+			registrarSede($nempleado,$usu_sede,$conexion);
+			echo "0";			
 		 	}else{	echo "1";	}	
 
 		}else{
@@ -62,10 +82,22 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 
 	if($opcion === 'registrarRport'){
 
+ 	$usu_sede = $_POST['sede'];
+	$servicio  = substr($_POST['servicio'],1);
 
+	if($usu_sede=='AFAC - AIFA'){
+	$sede = 'LAS FLORES';
+	}else{
+	$sede = $_POST['sede'];
+	if($servicio=='SISTEMAS'){
+	$sede = 'WEB';
+	}else{
+	$sede = $_POST['sede'];
+	}
+	}
 
 	$nempleado = $_POST['nempleado'];	
-	$servicio  = substr($_POST['servicio'],1);
+	// $servicio  = substr($_POST['servicio'],1);
 	$intervencion = substr($_POST['intervencion'],1);
 	$descripcion = substr($_POST['descripcion'],1);
 	$solucion = substr($_POST['solucion'],1);
@@ -77,7 +109,7 @@ if(consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$
 			
 	$idequipo = $_POST['idequipo'];
 	$obser = $_POST['obser'];
-	$sede = $_POST['sede'];
+	// $sede = $_POST['sede'];
 
 	$idtec = $_POST['idTec'];
 
@@ -88,6 +120,7 @@ if(consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$
 if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$obser,$fenvio,$Hinic,$sede,$idtec,$conexion)){
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
+			registrarSede($nempleado,$usu_sede,$conexion);
 			echo "0";
 		 	}else{	echo "1";	}	
 
@@ -261,72 +294,19 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 
 	}
 
+	function registrarSede($nempleado,$usu_sede,$conexion){	
+	// INSERT INTO sede VALUES(0,$nempleado,0,'$usu_sede',0)
+	$query = "INSERT INTO sede(nmple,idrep,titulo) SELECT $nempleado,n_reporte,'$usu_sede' FROM reporte ORDER BY n_reporte DESC LIMIT 1";
 
 
-
-	//TODO AQUI VA LA EVALUACIÓN PARA ACTUALIZAR
-
-// function enviarCorreo($nempleado,$conexion){
-// 	// AQUÍ SE CREA Y ENVÍA EL REPORTE PARA EL TECNICO
-
-// 		$query = "SELECT MAX(reporte.n_reporte),
-// 		usuarios.nombre,
-// 		usuarios.apellidos,
-// 		usuarios.ubicacion,
-// 		usuarios.extension,
-// 		usuarios.correo,
-// 		reporte.n_empleado,
-// 		reporte.finicio,
-// 		reporte.hinicio,
-// 		reporte.descripcion,
-// 		reporte.ffinal,
-// 		reporte.hfinal,
-// 		reporte.servicio,
-// 		reporte.intervencion,
-// 		reporte.falla_interna,
-// 		reporte.falla_xterna,
-// 		reporte.observa,
-// 		reporte.usu_observ 
-// 	FROM
-// 		reporte
-// 		RIGHT JOIN tecnico ON id_tecnico = idtec
-// 		LEFT JOIN usuarios ON id_usuario = id_usu 
-// 	WHERE
-// 		reporte.n_empleado = $nempleado";		
-// 		$resultados = mysqli_query($conexion,$query);
-// 		$fila   = mysqli_fetch_assoc($resultados);
-// 		$fila['n_reporte'];
-// 		$mail = new PHPMailer();
-// 		$mail->IsSMTP();
-// 		$mail->SMTPAuth = true;
-// 		$mail->SMTPSecure = "ssl";
-// 		$mail->CharSet = "Content-Type: text/html; charset=utf-8";
-// 		$mail->Host = "smtp.gmail.com";
-// 		$mail->Port = 465;
-// 		$mail->Username ='jmondragonescamilla@gmail.com';
-// 		$mail->Password = 'ELVIS_wolf97';
-
-// 		$mail->AddAddress('jmondragonescamilla@gmail.com');
-// 		$mail->Subject = "SOLICITUD DE SERVICIO";
-// 		$msg = "<center><img src='https://www.aeropuertodetoluca.com.mx/en/admin/images/iconos-autoridad/autoridad-aeronautica.png' width='320px;' alt='imagen de cabezera' disabled></center><table width='100%'><br>
-// 			<tr><td bgcolor='#00A7B5' align='center'><span style='font-size: 19px; color: white'>SOLICITUD DE SERVICIO</span></td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>Folio: ".$fila['n_reporte']."</td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>N° Empleado: </td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>Tipo de curso: </td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>Fecha Inicio: </td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>Hora: </td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>Cargo: </td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>Sede del curso: </td></tr>
-// 			<tr><td style='text-align: center; font-size: 15px;'>Modalidad: </td></tr>
-// 			<hr><center>
-// 			<font color='#a1a1a1'>NOTA IMPORTANTE: Este correo se genera automaticamente. Por favor no responda o reenvie correos a de esta cuenta de e-mail.
-// 			</center><hr>
-// 			</table>";
-// 		$mail->MsgHTML($msg);
-// 		$mail->send();
-
-// 	}
-
+		if (mysqli_query($conexion,$query)) {
+			return true;
+			}else
+			{
+			return false;
+			}
+		cerrar($conexion);		
+	}
 
 	function cerrar($conexion){
 		mysqli_close($conexion);
