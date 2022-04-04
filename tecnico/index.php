@@ -243,8 +243,11 @@ if($data = mysqli_fetch_array($resultado)){
 
             <div class="panel-body">
                 <div class="col-lg-12">
-                    <?php //include("../html/atender.html");?>
+                <?php if($data['sede'] == 'WEB'):?>
+                    <table style="width: 100%" id="data-table-reporte-web" class="table table-striped table-hover">
+                    <?php else : ?>
                     <table style="width: 100%" id="data-table-reporte" class="table table-striped table-hover">
+                    <?php endif?>
                     </table>
                 </div>
             </div>
