@@ -349,6 +349,255 @@ switch ($id) /*aCPU*/{
   <option value="0CABLES Y/O ADAPTADORES DE AUDIO/VIDEO">CABLES Y/O ADAPTADORES DE AUDIO/VIDEO</option>
   </select>
   </div>
+  <!-- SISTEMAS -->
+  <?php break;
+  case "3": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO PERMITE LA DESCARGA DE DOCUMENTOS PUBLICADOS">NO PERMITE LA DESCARGA DE DOCUMENTOS PUBLICADOS</option>
+  <option value="0NO SE VISUALIZA EL CONTENIDO DEL PORTAL">NO SE VISUALIZA EL CONTENIDO DEL PORTAL</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+
+
+
+  
+  <?php break;
+  case "4": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0LOCALIZACIÓN DE INFORMACIÓN ESPECIFICA">LOCALIZACIÓN DE INFORMACIÓN ESPECIFICA</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "5": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0PUBLICACIÓN DE DOCUMENTO NUEVO">PUBLICACIÓN DE DOCUMENTO NUEVO</option>
+  <option value="0MODIFICACIÓN DE DOCUMENTO EXISTENTE">MODIFICACIÓN DE DOCUMENTO EXISTENTE</option>
+  <option value="0BAJA DE DOCUMENTO EXISTENTE">BAJA DE DOCUMENTO EXISTENTE</option>
+  <option value="0CREACIÓN DE UN NUEVO MÓDULO">CREACIÓN DE UN NUEVO MÓDULO</option>
+  <option value="0MODIFICACIÓN DE UN NUEVO MÓDULO EXISTENTE">MODIFICACIÓN DE UN NUEVO MÓDULO EXISTENTE</option>
+  <option value="0BAJA DE UN MODULO EXISTENTE">BAJA DE UN MODULO EXISTENTE</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "6": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO FINALIZA EL PROCESO DE CAPTURA DE UNA INSPECCIÓN">NO FINALIZA EL PROCESO DE CAPTURA DE UNA INSPECCIÓN</option>
+  <option value="0NO RESUELVE LA SOLICITUD DEL USUARIO">NO RESUELVE LA SOLICITUD DEL USUARIO</option>
+  <option value="0PROBLEMAS EN LAS COMUNICACIONES">PROBLEMAS EN LAS COMUNICACIONES</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "7": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO SE GUARDARON LOS DATOS REGISTRADOS DE UNA INSPECCIÓN">NO SE GUARDARON LOS DATOS REGISTRADOS DE UNA INSPECCIÓN</option>
+  <option value="0NO SE LOCALIZAN INSPECCIONES DE INSPECCIONES REGISTRADOS ANTERIORMENTE">NO SE LOCALIZAN INSPECCIONES DE INSPECCIONES REGISTRADOS ANTERIORMENTE</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "8": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO RECONOCE USUARIO/CONTRASEÑA">NO RECONOCE USUARIO/CONTRASEÑA</option>
+  <option value="0NO PERMITE GENERAR UNA NUEVA CONTRASEÑA">NO PERMITE GENERAR UNA NUEVA CONTRASEÑA</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "9": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO GENERA EL NÚMERO DE SOLICITUD">NO GENERA EL NÚMERO DE SOLICITUD</option>
+  <option value="0NO FINALIZA EL PROCESO DE REGISTRO DE UNA SOLICITUD">NO FINALIZA EL PROCESO DE REGISTRO DE UNA SOLICITUD </option>
+  <option value="0NO PERMITE LA CARGA DE DOCUMENTOS DE SOPORTE">NO PERMITE LA CARGA DE DOCUMENTOS DE SOPORTE</option>
+  <option value="0NO IMPRIME LICENCIA DE PERSONAL TÉCNICO AERONÁUTICO">NO IMPRIME LICENCIA DE PERSONAL TÉCNICO AERONÁUTICO</option>
+  <option value="0NO IMPRIME EL REPORTE DE LA LICENCIA PROVISIONAL">NO IMPRIME EL REPORTE DE LA LICENCIA PROVISIONAL</option>
+  <option value="0PROBLEMAS EN LAS COMUNICACIONES">PROBLEMAS EN LAS COMUNICACIONES</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "-": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO SE GUARDARON LOS DATOS REGISTRADOS DE UNA SOLICITUD">NO SE GUARDARON LOS DATOS REGISTRADOS DE UNA SOLICITUD</option>
+  <option value="0NO SE PLASMAN LOS DATOS DE UNA LICENCIAS">NO SE PLASMAN LOS DATOS DE UNA LICENCIAS</option>
+  <option value="0NO SE VISUALIZA LA TOTALIDAD DE DATOS EN EL REPORTE DE LICENCIA PROVISIONAL">NO SE VISUALIZA LA TOTALIDAD DE DATOS EN EL REPORTE DE LICENCIA PROVISIONAL</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  
+  <?php break;
+  case "[": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO FINALIZA EL PROCESO DE REGISTRO DE UN TRÁMITE">NO FINALIZA EL PROCESO DE REGISTRO DE UN TRÁMITE</option>
+  <option value="0NO PERMITE EJECUTAR LA FIRMA ELECTRÓNICA">NO PERMITE EJECUTAR LA FIRMA ELECTRÓNICA</option>
+  <option value="0NO FIRMA CORRECTAMENTE UNA RESOLUCIÓN LA FIRMA ELECTRÓNICA">NO FIRMA CORRECTAMENTE UNA RESOLUCIÓN LA FIRMA ELECTRÓNICA</option>
+  <option value="0NO SE TURNA UN TRÁMITE A UN ANALISTA">NO SE TURNA UN TRÁMITE A UN ANALISTA</option>
+  <option value="0NO IMPRIME EL OFICIO DE RESOLUCIÓN DE TRÁMITE">NO IMPRIME EL OFICIO DE RESOLUCIÓN DE TRÁMITE</option>
+  <option value="0NO PERMITE REALIZAR LOS CÁLCULOS DEL TRÁMITE SCT02-069">NO PERMITE REALIZAR LOS CÁLCULOS DEL TRÁMITE SCT02-069</option>
+  <option value="0NO RESUELVE LA PETICIÓN DEL USUARIO">NO RESUELVE LA PETICIÓN DEL USUARIO</option>
+  <option value="0NO SE LOCALIZA INFORMACIÓN REFERENTE A LOS PLANES Y PROGRAMAS">NO SE LOCALIZA INFORMACIÓN REFERENTE A LOS PLANES Y PROGRAMAS</option>
+  <option value="0NO SE PUEDE FINALIZAR UN TRÁMITE DE PLANES Y PROGRAMAS">NO SE PUEDE FINALIZAR UN TRÁMITE DE PLANES Y PROGRAMAS</option>
+  <option value="0NO SE LOCALIZA INFORMACIÓN REFERENTE A LOS CENTROS DE CAPACITACIÓN">NO SE LOCALIZA INFORMACIÓN REFERENTE A LOS CENTROS DE CAPACITACIÓN</option>
+  <option value="0NO SE PUEDE FINALIZAR UN TRÁMITE DE CENTROS DE CAPACITACIÓN">NO SE PUEDE FINALIZAR UN TRÁMITE DE CENTROS DE CAPACITACIÓN</option>
+  <option value="0NO SE LOCALIZA INFORMACIÓN REFERENTE A LOS INICIOS DE CURSOS">NO SE LOCALIZA INFORMACIÓN REFERENTE A LOS INICIOS DE CURSOS</option>
+  <option value="0NO SE PUEDE FINALIZAR UN TRÁMITE DE INICIOS DE CURSOS">NO SE PUEDE FINALIZAR UN TRÁMITE DE INICIOS DE CURSOS</option>
+  <option value="0PROBLEMAS EN LAS COMUNICACIONES">PROBLEMAS EN LAS COMUNICACIONES</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "]": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO SE GUARDARON LOS DATOS REGISTRADOS DE UN TRÁMITE">NO SE GUARDARON LOS DATOS REGISTRADOS DE UN TRÁMITE</option>
+  <option value="0NO SE LOCALIZAN DATOS DE TRÁMITES REGISTRADOS ANTERIORMENTE">NO SE LOCALIZAN DATOS DE TRÁMITES REGISTRADOS ANTERIORMENTE</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "{": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO RECONOCE USUARIO/CONTRASEÑA">NO RECONOCE USUARIO/CONTRASEÑA</option>
+  <option value="0NO PERMITE GENERAR UNA NUEVA CONTRASEÑA">NO PERMITE GENERAR UNA NUEVA CONTRASEÑA</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+
+  <?php break;
+  case ",": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO FINALIZA EL PROCESO DE REGISTRO DE UN TRÁMITE">NO FINALIZA EL PROCESO DE REGISTRO DE UN TRÁMITE</option>
+  <option value="0NO IMPRIME EL CERTIFICADO DE MATRÍCULA">NO IMPRIME EL CERTIFICADO DE MATRÍCULA </option>
+  <option value="0NO RESPONDE A LA SOLICITUD DEL USUARIO">NO RESPONDE A LA SOLICITUD DEL USUARIO </option>
+  <option value="0PROBLEMAS EN LAS COMUNICACIONES">PROBLEMAS EN LAS COMUNICACIONES</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+
+  <?php break;
+  case ":": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO SE GUARDARON LOS DATOS REGISTRADOS DE UN TRÁMITE">NO SE GUARDARON LOS DATOS REGISTRADOS DE UN TRÁMITE</option>
+  <option value="0NO SE LOCALIZAN DATOS DE TRÁMITES REGISTRADOS ANTERIORMENTE">NO SE LOCALIZAN DATOS DE TRÁMITES REGISTRADOS ANTERIORMENTE </option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+
+  <?php break;
+  case ";": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO RECONOCE USUARIO/CONTRASEÑA">NO RECONOCE USUARIO/CONTRASEÑA</option>
+  <option value="0NO PERMITE GENERAR UNA NUEVA CONTRASEÑA">NO PERMITE GENERAR UNA NUEVA CONTRASEÑA</option>
+  <option value="0TARANTELLA NO PERMITE INTERACTUAR CON EL SISTEMA">TARANTELLA NO PERMITE INTERACTUAR CON EL SISTEMA</option>
+  <option value="0OTROS">OTROS (ESPECIFICAR EN OBSERVACIONES)</option>
+
+
+  </select>
+  </div>
 
   <input type="hidden" name="ultima" id="ultima" value="xx">
   <input type="hidden" name="final" id="final" value="x">

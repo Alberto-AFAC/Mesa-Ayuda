@@ -75,6 +75,47 @@ switch ($id) {
               <script type="text/javascript">
               reset();
               </script>
+<?php break;
+   case "5":?>
+            <div class="col-sm-offset-0 col-sm-4">
+            <select  id="intervencion" class="form-control" class="selectpicker" name="intervencion" type="text" data-live-search="true">
+            <option value="0">SELECCIONE</option>
+            <option value="jAFAC">AFAC</option>
+            <option value="kCASS">CASS</option>
+            <option value="lE-LICENCIAS">E-LICENCIAS</option>
+            <option value="mSIAC">SIAC</option>
+            <option value="nSIAR">SIAR</option>
+
+            </option>
+            </select>
+            </div>
+              <!--Resetear select-->
+              
+              <script type="text/javascript">
+              reset();
+              </script>
+
+<?php break;
+   case "5":?>
+
+            <div class="col-sm-offset-0 col-sm-4">
+            <select  id="intervencion" class="form-control" class="selectpicker" name="intervencion" type="text" data-live-search="true">
+            <option value="0">SELECCIONE</option>
+            <option value="xCAPACITACIÓN AFAC">CAPACITACIÓN AFAC</option>
+            <option value="xLINGÜÍSTICA">LINGÜÍSTICA</option>
+            </option>
+            </select>
+            </div>
+              <!--Resetear select-->
+              
+              <script type="text/javascript">
+              reset();
+              </script>
+              <input type="hidden" name="descripcion" id="descripcion" value="0x">
+              <input type="hidden" name="solucion" id="solucion" value="0x">
+              <input type="hidden" name="ultima" id="ultima" value="0x">
+              <input type="hidden" name="final" id="final" value="x">
+
 
  <?php break;
    case "x":?>
@@ -126,6 +167,7 @@ function reset(){
       $('#select3').load('select/penultimo.php');
       $('#select4').load('select/ultimo.php');
       $('#select5').load('select/final.php');
+
         }
   })
 }

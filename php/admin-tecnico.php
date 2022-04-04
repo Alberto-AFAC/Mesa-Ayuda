@@ -41,23 +41,18 @@
        ?>
 
        ['<?php echo $id;?>', '<?php echo $nombre ?>',
-       '<?php echo $privilegios?>', '<?php echo $usuario?>', '<?php echo $horario?>', "<?php 
+       '<?php echo $privilegios?>', '<?php echo $horario?>', "<?php 
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
-       echo "<a title='Editar técnico' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>  <a title='Detalles técnico' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a> <a title='Dar de baja técnico' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='datos_eliminar({$idtec})' ><i class='fa fa-trash-o text-danger'></i></a>";
-
-
-       ?>"
-
-
+       echo "<a title='Editar técnico' type='button' data-target='#frmEditar' onclick='datos_editar({$id})' class='editar btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a>  <a title='Detalles técnico' type='button' data-target='#frmDetalles' onclick='datos_detalle({$id})' class='detalle btn btn-default'><i class='glyphicon glyphicon-user text-silver'></i></a> <a title='Dar de baja técnico' type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='datos_eliminar({$idtec})' ><i class='fa fa-trash-o text-danger'></i></a>";?>"
        ],
       
    <?php }else{ ?>
 
 
        ['<?php echo $id;?>', '<?php echo $nombre ?>',
-       '<?php echo $privilegios?>', '<?php echo $usuario?>', '<?php echo $inactivo.' - '.$observ.'<p style="color:silver; padding:0; margin:0;">'.$horario.'</p>' ?>', "<?php 
+       '<?php echo $privilegios?>', '<?php echo $inactivo.' - '.$observ.'<p style="color:silver; padding:0; margin:0;">'.$horario.'</p>' ?>', "<?php 
 
 // echo "<a href='javascript:openEdt1()' onclick='aredit({$id})' class='detalle btn btn-default'><i class='fa fa-pencil-square-o text-info'></i></a> <button type='button' class='eliminar btn btn-default' data-toggle='modal' data-target='#modalEliminar' onclick='eliminar({$id})'><li class='fa fa-trash-o text-danger'></li></button> ";
 
@@ -96,9 +91,6 @@
     },
     {
         title: "PRIVILEGIOS"
-    },
-    {
-        title: "USUARIO"
     },
     {
         title: "HORARIO"

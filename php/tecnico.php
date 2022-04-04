@@ -7,8 +7,8 @@ if($opcion === 'modificar'){
 		$idtec = $_POST['idtec'];
 		$idusu = $_POST['aidusu'];
 		$privilg = $_POST['aprivilg'];
-		$usuario = $_POST['ausuario'];
 		$password = $_POST['apassword'];
+		$usuario = $idusu.'_'.$_POST['ausuario'];
 		$entrada = $_POST['aentrada'];
 		$salida = $_POST['asalida'];
 		$sede = $_POST['asede'];
@@ -36,14 +36,11 @@ if($opcion === 'modificar'){
 
 $idusu = $_POST['idusu'];
 $privilg = $_POST['privilg'];
-$usuario = $_POST['usuario'];
 $password = $_POST['password'];
+$usuario = $idusu.'_'.$_POST['usuario'];
 $entrada = $_POST['entrada'];
 $salida = $_POST['salida'];
 $sede = $_POST['sede'];
-
-
-
 
 if(registrar($idusu,$usuario,$password,$privilg,$entrada,$salida,$sede,$conexion))
 					{

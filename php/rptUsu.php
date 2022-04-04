@@ -10,7 +10,7 @@
  	$usu_sede = $_POST['sede'];
 	$servicio  = substr($_POST['servicio'],1);
 	
-	if($usu_sede=='AFAC - AIFA'){
+	if($usu_sede=='AFAC - AIFA' || $usu_sede=='OTRO'){
 	$sede = 'LAS FLORES';
 	if($servicio=='SISTEMAS'){
 	$sede = 'WEB';
@@ -85,7 +85,7 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
  	$usu_sede = $_POST['sede'];
 	$servicio  = substr($_POST['servicio'],1);
 
-	if($usu_sede=='AFAC - AIFA'){
+	if($usu_sede=='AFAC - AIFA' || $usu_sede=='OTRO'){
 	$sede = 'LAS FLORES';
 	}else{
 	$sede = $_POST['sede'];

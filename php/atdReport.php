@@ -40,8 +40,7 @@ session_start();
 	reporte.ultima,
 	reporte.final,
 	reporte.n_empleado
-	FROM reporte 
-	WHERE reporte.idtec = '$idtecnico'";
+	FROM reporte";
 	$resultado = mysqli_query($conexion, $query);
 
 	if(!$resultado){

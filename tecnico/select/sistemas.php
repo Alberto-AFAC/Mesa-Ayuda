@@ -10,12 +10,12 @@
              $desc = substr($idp, 1);
 					
 
-//echo $id;
+echo $id;
 switch ($id) {
-  case "a":?>
+  case "j":?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <select  id="sistemas" class="form-control" class="selectpicker" name="sistemas" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="NO CAPTURA LA VOZ">NO CAPTURA LA VOZ</option>
   <option value="NO ENCIENDE">NO ENCIENDE</option>
@@ -27,7 +27,7 @@ switch ($id) {
   case "b":?>
 
  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" name="final" class="form-control" class="selectpicker" type="text" data-live-search="true">
+  <select  id="sistemas" name="sistemas" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="NO CAPTURA EL VIDEO">NO CAPTURA EL VIDEO</option>
   <option value="NO ENCIENDE">NO ENCIENDE</option>
@@ -39,7 +39,7 @@ switch ($id) {
   case "c": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <select  id="sistemas" class="form-control" class="selectpicker" name="sistemas" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="NO SE ESCUCHA EL AUDIO">NO SE ESCUCHA EL AUDIO</option>
   <option value="NO ENCIENDE">NO ENCIENDE</option>
@@ -51,7 +51,7 @@ switch ($id) {
  case "d": ?>
 
  <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <select  id="sistemas" class="form-control" class="selectpicker" name="sistemas" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="SIN ACCESO WEB EN USUARIO">SIN ACCESO WEB EN USUARIO</option>
   <option value="SIN ACCESO WEB EN EL ÁREA">SIN ACCESO WEB EN EL ÁREA</option>
@@ -65,7 +65,7 @@ switch ($id) {
   case "e": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <select  id="sistemas" class="form-control" class="selectpicker" name="sistemas" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="ACCESO A LA RED">ACCESO A LA RED</option>
   <option value="PÁGINA WEB BLOQUEADA">PÁGINA WEB BLOQUEADA</option>
@@ -77,7 +77,7 @@ switch ($id) {
   case "f": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <select  id="sistemas" class="form-control" class="selectpicker" name="sistemas" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="SIN ACCESO WEB EN USUARIO">SIN ACCESO WEB EN USUARIO</option>
   <option value="SIN ACCESO WEB EN EL ÁREA">SIN ACCESO WEB EN EL ÁREA</option>
@@ -90,7 +90,7 @@ switch ($id) {
   case "g": ?>
 
   <div class="col-sm-offset-0 col-sm-4">
-  <select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true">
+  <select  id="sistemas" class="form-control" class="selectpicker" name="sistemas" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
   <option value="ACCESO A LA RED">ACCESO A LA RED</option>
   <option value="PÁGINA WEB BLOQUEADA">PÁGINA WEB BLOQUEADA</option>
@@ -103,6 +103,6 @@ switch ($id) {
   default: }
 
 }else{ ?>
-<!-- <div class="col-sm-offset-0 col-sm-4"><select  id="final" class="form-control" class="selectpicker" name="final" type="text" data-live-search="true" disabled=""><option value="0">SELECCIONE OPCIÓN</option></select></div> -->
-<input type="hidden" id="final" name="final" value="0">
+<!-- <div class="col-sm-offset-0 col-sm-4"><select  id="sistemas" class="form-control" class="selectpicker" name="sistemas" type="text" data-live-search="true" disabled=""><option value="0">SELECCIONE OPCIÓN</option></select></div> -->
+<input type="hidden" id="sistemas" name="sistemas" value="x">
 <?php } ?>

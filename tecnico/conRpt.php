@@ -116,7 +116,11 @@ session_start();
                             <!-- <a href="#"><i class="fa fa-desktop"></i> Consultar equipos</a> -->
                             <!-- /.nav-second-level -->
                         </li>
-
+                        <?php if($id == '22'){ ?>
+                        <li>
+                            <a href="../administrador/tecnico/admin.php"><i class="fa fa-street-view"></i> TÉCNICOS</a>
+                        </li>
+                        <?php } ?>
 
 
                     </ul>
