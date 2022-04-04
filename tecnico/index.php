@@ -110,7 +110,11 @@ if($data = mysqli_fetch_array($resultado)){
                             <!-- /.nav-second-level -->
                         </li>
 
-
+                        <?php if($id == '22'){ ?>
+                        <li>
+                            <a href="../administrador/tecnico/admin.php"><i class="fa fa-street-view"></i> TÉCNICOS</a>
+                        </li>
+                        <?php } ?>
 
                     </ul>
                 </div>

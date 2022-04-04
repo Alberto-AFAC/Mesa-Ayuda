@@ -1,8 +1,14 @@
 <script type="text/javascript">
     var dataSet = [
     <?php
+    if($idtec[0]=='admin'){
+      $opcion = "!= 'WEB'";
+    }else{
+      $opcion = "= 'WEB'";    
+    }
+
         $query = "SELECT * FROM tecnico 
-        WHERE baja = 0";
+        WHERE sede $opcion AND baja = 0";
         $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
            $idusu = $data['id_usu'];
