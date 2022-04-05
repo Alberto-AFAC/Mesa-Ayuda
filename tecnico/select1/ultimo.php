@@ -44,8 +44,8 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select name="ultima" id="ultima" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE WINDOWS">FORMATEO/INSTALACIÓN DE WINDOWS</option>
-  <option value="0PAQUETERÍA OFFICE 365">PAQUETERÍA OFFICE 365</option>
+  <option value="0FORMATEO/INSTALACIÓN DE /ZIADO">FORMATEO/INSTALACIÓN DE /ZIADO</option>
+  <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
   <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
   <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>
 
@@ -58,19 +58,12 @@ switch ($id) {
  <div class="col-sm-offset-0 col-sm-4">
   <select name="ultima" id="ultima" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>
-  <option value="0CONFIGURACIÓN DE CARPETA COMPARTIDA">CONFIGURACIÓN DE CARPETA COMPARTIDA</option>
   <option value="0CONFIGURACIÓN/PERSONALIZACIÓN">CONFIGURACIÓN/PERSONALIZACIÓN</option>
-  <option value="0CORREO ELECTRÓNICO AFAC">CORREO ELECTRÓNICO AFAC</option>
   <option value="0RESPALDO DE INFORMACIÓN">RESPALDO DE INFORMACIÓN</option>
-
+  <option value="0ASESORÍA GENERAL">ASESORÍA GENERAL</option>
   <option value="0REUBICACIÓN DE EQUIPO">REUBICACIÓN DE EQUIPO</option>
-
-  <option value="0OFFICE 365">OFFICE 365</option>
-
+  <option value="0CONFIGURACIÓN DE CARPETA COMPARTIDA">CONFIGURACIÓN DE CARPETA COMPARTIDA</option>
   </select>
-
-
   </div>
   <input type="hidden" name="final" id="final" value="x">
 <?php break;
@@ -202,8 +195,8 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select name="ultima" id="ultima" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE WINDOWS">FORMATEO/INSTALACIÓN DE WINDOWS</option>
-  <option value="0PAQUETERÍA OFFICE 365">PAQUETERÍA OFFICE 365</option>
+  <option value="0FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALZIADO">FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALZIADO</option>
+  <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
   <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
   <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>  
   </select>
@@ -330,8 +323,8 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select name="ultima" id="ultima" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE WINDOWS">FORMATEO/INSTALACIÓN DE WINDOWS</option>
-  <option value="0PAQUETERÍA OFFICE 365">PAQUETERÍA OFFICE 365</option>
+  <option value="0FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO">FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO</option>
+  <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
   <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
   <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>
   <input type="hidden" name="final" id="final" value="x">
