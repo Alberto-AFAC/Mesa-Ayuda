@@ -908,6 +908,7 @@ var dataSet = [
         reporte.servicio,
         reporte.intervencion,
         reporte.descripcion,
+        reporte.solucion,
         reporte.usu_observ,
         reporte.n_reporte,
         reporte.falla_interna,
@@ -937,6 +938,10 @@ var dataSet = [
             $nombre = $data2['gstNombr'];
             $apellidos = $data2['gstApell']; 
             $servicio= $data['servicio'];
+            $intervencion= $data['intervencion'];
+            $falla= $data['descripcion'];
+            $problema= $data['solucion'];
+            $usuarioObsr = $data['usu_observ'];
             $extension = $data2['gstExTel'];
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
@@ -944,20 +949,20 @@ var dataSet = [
 if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pila'] =='WEB' || $data['evaluacion'] == '2' && $data['estado_rpt'] =='Finalizado' && $data['pila'] =='WEB'){ ?>
      ["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
-        "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
+        "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>","<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA CONFIRMAR</a>";?>",
         "<span style='color: gray'>NO DISPONIBLE</span>"
     ],
 <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){ ?>
     ["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
-        "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
+        "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>","<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>",
         "<span style='color: gray'>NO DISPONIBLE</span>"
     ],
     <?php }else if($data['evaluacion'] == '1'){ ?>
         ["<?php echo  $data['n_reporte']?>",
-        "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>",
+        "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>",
         "<?php echo $inicio ?>", 
 
         "<?php echo $final ?>",
@@ -978,7 +983,7 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pi
 
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
         "<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
-        "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
+        "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>","<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>","<span style='color: gray;'>CANCELADO</span>"
     ],
     <?php  } 
@@ -1013,6 +1018,18 @@ $(document).ready(function() {
             },
             {
                 title: "SERVICIO"
+            },
+            {
+                title: "SISTEMA"
+            },
+            {
+                title: "FALLA"
+            },
+            {
+                title: "PROBLEMA"
+            },
+            {
+                title: "OBSERVACIONES USUARIO"
             },
             {
                 title: "REPORTE"

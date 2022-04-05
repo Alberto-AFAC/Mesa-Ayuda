@@ -47,9 +47,10 @@ $fecha = date('Y');
     <!-- CREACIÓN DE BOTONES -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
 </head>
+
 <body>
 
-<div class="loader"></div>
+    <div class="loader"></div>
 
     <div id="wrapper">
 
@@ -185,7 +186,8 @@ $fecha = date('Y');
                     <ul class="dropdown-menu dropdown-user">
                         <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../../gestor/conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                        <li><a href="../../gestor/conexion/session_cerrar.php"><i
+                                    class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>
@@ -204,12 +206,12 @@ $fecha = date('Y');
                         <li>
 
                             <a href="historial.php"><i class="fa fa-list-alt"></i> HISTORIAL<span
-                                    class="fa arrow"></span></a> 
-                                             
+                                    class="fa arrow"></span></a>
+
                             <ul class="nav nav-second-level">
                                 <li>
-                            <a href="./"><i class="glyphicon glyphicon-home"></i> INICIO</a>
-                          
+                                    <a href="./"><i class="glyphicon glyphicon-home"></i> INICIO</a>
+
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -218,7 +220,7 @@ $fecha = date('Y');
                             <a href="#"><i class="glyphicon glyphicon-cog"></i> REGISTROS<span
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-<!--                                 <li>
+                                <!--                                 <li>
                                     <a href="area"><i class="fa fa-list-alt"></i> Areas</a>
                                 </li> -->
                                 <li>
@@ -227,9 +229,9 @@ $fecha = date('Y');
                                 <li>
                                     <a href="equipo"><i class="fa fa-desktop"></i> EQUIPOS</a>
                                 </li>
-                            <li>
+                                <li>
                                     <a href="tecnico"><i class="fa fa-street-view"></i> TÉCNICO</a>
-                            </li>
+                                </li>
 
                             </ul>
                             <!-- /.nav-second-level -->
@@ -259,76 +261,78 @@ $fecha = date('Y');
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-       
 
-	
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <i class="more-less glyphicon glyphicon-plus"></i>
-                    SOLICITUD DE REPORTES SEGÚN SERVICIO
-                </a>
-            </h4>
-            
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-                  
-            <div class="row">
-           
-            <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                            <div style="padding-top:20px;" class="row">
-                                <canvas id="piechart-servicios"></canvas>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                            <div style="padding-top:20px;" class="row">
-                                <canvas id="piechart-impresion"></canvas>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                            <div style="padding-top:20px;" class="row">
-                                <canvas id="piechart-comunicaciones"></canvas>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="padding-top: 10px;" class="col-lg-4 col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                            <div style="padding-top:20px;" class="row">
-                                <canvas id="piechart-eventos"></canvas>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-</div>
 
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                <i class="more-less glyphicon glyphicon-plus"></i>
+                                SOLICITUD DE REPORTES SEGÚN SERVICIO
+                            </a>
+                        </h4>
+
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+
+                            <div class="row">
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div style="padding-top:20px;" class="row">
+                                                    <canvas id="piechart-servicios"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div style="padding-top:20px;" class="row">
+                                                    <canvas id="piechart-impresion"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div style="padding-top:20px;" class="row">
+                                                    <canvas id="piechart-comunicaciones"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="padding-top: 10px;" class="col-lg-4 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div style="padding-top:20px;" class="row">
+                                                    <canvas id="piechart-eventos"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div></div>
-   
+
 
             <!-- <div class="row col-lg-6 col-md-6">
                     <div class="panel panel-default">
@@ -382,8 +386,7 @@ onclick="location.href='./'" -->
                                 </h4>
                             </div>
                             <div class="modal-body">
-                                <input type="hidden" id="id_usuario" name="id_usuario"
-                                    value="<?php echo $idtecnico ?>">
+                                <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $idtecnico ?>">
                                 <input type="hidden" id="opcion" name="opcion" value="atender">
                                 <div class="form-group">
                                     <div class="col-sm-3">
@@ -393,14 +396,15 @@ onclick="location.href='./'" -->
                                     </div>
                                     <div class="col-sm-6">
                                         <label>USUARIO</label>
-                                        <input id="gstNombr" name="gstNombr" type="text" class="form-control" disabled="">
+                                        <input id="gstNombr" name="gstNombr" type="text" class="form-control"
+                                            disabled="">
                                     </div>
                                     <div class="col-sm-3">
                                         <label>EXTENSIÓN</label>
                                         <input id="gstExTel" name="gstExTel" type="text" class="form-control"
                                             disabled="">
                                     </div>
-<!--                                     <div class="col-sm-2">
+                                    <!--                                     <div class="col-sm-2">
                                         <label>Ubicación</label>
                                         <input id="ubicacion" name="ubicacion" type="text" class="form-control"
                                             disabled="">
@@ -477,7 +481,7 @@ onclick="location.href='./'" -->
                                         <input class="form-control" selected="true" id="nomtec" name="nomtec"
                                             disabled="">
                                     </div>
-<!--                                     <div class="col-sm-4" style="display: none;" id="reasigar">
+                                    <!--                                     <div class="col-sm-4" style="display: none;" id="reasigar">
                                         <label>Reasignar técnico </label>
                                         <select style="width: 100%" class="form-control" class="selectpicker" id="idtec"
                                             name="idtec" type="text" data-live-search="true">
@@ -549,17 +553,19 @@ onclick="location.href='./'" -->
                         </div>
                         </br>
                         <div class="row">
-                        <div class="input-group input-daterange">
+                            <div class="input-group input-daterange">
 
-<input type="text" id="min-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="DESDE:">
+                                <input type="text" id="min-date" class="form-control date-range-filter"
+                                    data-date-format="yyyy-mm-dd" placeholder="DESDE:">
 
-<div class="input-group-addon">-</div>
+                                <div class="input-group-addon">-</div>
 
-<input type="text" id="max-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="HASTA:">
+                                <input type="text" id="max-date" class="form-control date-range-filter"
+                                    data-date-format="yyyy-mm-dd" placeholder="HASTA:">
 
-</div>
-</div>
-                     <br><br>
+                            </div>
+                        </div>
+                        <br><br>
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
                     </div>
@@ -583,7 +589,7 @@ onclick="location.href='./'" -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
-<script type="text/javascript" src="../js/admin.js"></script> 
+<script type="text/javascript" src="../js/admin.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -597,16 +603,17 @@ onclick="location.href='./'" -->
 
 <?php include('../php/admin-historial.php');?>
 <script>
-    function toggleIcon(e) {
-        $(e.target)
-            .prev('.panel-heading')
-            .find(".more-less")
-            .toggleClass('glyphicon-plus glyphicon-minus');
-    }
-    $('.panel-group').on('hidden.bs.collapse', toggleIcon);
-    $('.panel-group').on('shown.bs.collapse', toggleIcon);
-    $(window).load(function() {
+function toggleIcon(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find(".more-less")
+        .toggleClass('glyphicon-plus glyphicon-minus');
+}
+$('.panel-group').on('hidden.bs.collapse', toggleIcon);
+$('.panel-group').on('shown.bs.collapse', toggleIcon);
+$(window).load(function() {
     $(".loader").fadeOut("slow");
 });
-    </script>
+</script>
+
 </html>
