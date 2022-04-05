@@ -41,7 +41,7 @@
 
 	function atender($nreporte,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion){
 
-		$query = "UPDATE reporte SET servicio = '$servicio',intervencion = '$intervencion',descripcion = '$descripcion',solucion='$solucion',ultima='$ultima',final='$final',falla_interna = '$falla_interna',falla_xterna = '$falla_xterna', ffinal = '$Final', estado_rpt = '$estado_rpt', hfinal = '$Hfinal' WHERE n_reporte=$nreporte";
+		$query = "UPDATE reporte SET servicio = '$servicio',intervencion = '$intervencion',descripcion = '$descripcion',solucion='$solucion',ultima='$ultima',final='$final',falla_interna = '$falla_interna',falla_xterna = '$falla_xterna', ffinal = '$Final', estado_rpt = '$estado_rpt', hfinal = '$Hfinal',evaluacion='0' WHERE n_reporte=$nreporte";
 		if (mysqli_query($conexion,$query)) {
 			return true;
 			}else
@@ -53,7 +53,7 @@
 
 	function atndr($nreporte,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion){
 
-		$query = "UPDATE reporte SET falla_interna = '$falla_interna',falla_xterna = '$falla_xterna', ffinal = '$Final', estado_rpt = '$estado_rpt', hfinal = '$Hfinal' WHERE n_reporte=$nreporte";	
+		$query = "UPDATE reporte SET falla_interna = '$falla_interna',falla_xterna = '$falla_xterna', ffinal = '$Final', estado_rpt = '$estado_rpt', hfinal = '$Hfinal',evaluacion='0' WHERE n_reporte=$nreporte";	
 		if (mysqli_query($conexion,$query)) {
 			return true;
 			}else
