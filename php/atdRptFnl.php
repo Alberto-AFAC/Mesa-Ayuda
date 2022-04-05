@@ -10,6 +10,7 @@
 	$falla_xterna = $_POST['falla_xterna'];
 	$estado_rpt = $_POST['estado_rpt'];
 	$rspst = $_POST['rspst'];
+	$sede = $_POST['sede'];
 
 		ini_set('date.timezone','America/Mexico_City');
 		$Final = date('Y').'/'.date('m').'/'.date('d');	
@@ -25,12 +26,16 @@
 
 	
 		if(atender($nreporte,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion))
-			{	echo "$estado_rpt";	}else{	echo "1";	}	
+			{	echo "$estado_rpt";	
+				saveSede($nreporte,$sede,$conexion);
+	}else{	echo "1";	}	
 
 	}else{
 
 		if(atndr($nreporte,$falla_interna,$falla_xterna,$estado_rpt,$Final,$Hfinal,$conexion))
-			{	echo "$estado_rpt";	}else{	echo "1";	}
+			{	echo "$estado_rpt";	
+				saveSede($nreporte,$sede,$conexion);
+			}else{	echo "1";	}
 		}
 	}
 
@@ -56,6 +61,17 @@
 			return false;
 			}
 		cerrar($conexion);
+	}
+
+	function saveSede($nreporte,$sede,$conexion){
+		$query = "UPDATE sede SET titulo = '$sede' WHERE idrep=$nreporte";	
+		if (mysqli_query($conexion,$query)) {
+			return true;
+			}else
+			{
+			return false;
+			}
+		cerrar($conexion);		
 	}
 
 ?>
