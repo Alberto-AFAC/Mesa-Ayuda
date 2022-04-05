@@ -128,6 +128,18 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 			echo "1";
 		}
 
+	}else if($opcion === 'cnfrmrRprt'){
+
+	$nreporte = $_POST['nreporte'];
+	$observa = $_POST['observa'];
+	$confirmar = $_POST['confirmar'];
+
+		if(confirmar($nreporte,$observa,$confirmar,$conexion)){
+		echo "0";
+
+	//	validaRport($nreporte,$conexion);
+
+		}else{	echo "1";	}	
 	}
 
 function selecTec($sede,$conexion){
@@ -292,6 +304,20 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 		}
 	cerrar($conexion);
 
+	}
+
+	function confirmar($nreporte,$observa,$confirmar,$conexion){
+
+	$query = "UPDATE reporte SET evaluacion = '$confirmar', observa ='$observa' WHERE n_reporte = $nreporte";
+	if(mysqli_query($conexion,$query)){
+
+		return true;
+
+		}else{
+
+			return false;
+		}
+		cerrar($conexion);		
 	}
 
 	function registrarSede($nempleado,$usu_sede,$conexion){	

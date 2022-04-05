@@ -361,6 +361,15 @@ function evaluar(fila) {
                     $("#div1").show();
                     $("#div2").hide();
                 }
+        
+                $("#modalEvalConfirmar #observaconf").val(obj.data[i].observa)
+                 if(obj.data[i].evaluacion==2){
+                $("#modalEvalConfirmar #button").hide();
+                $("#modalEvalConfirmar #false").attr('checked', true);
+                $("#modalEvalConfirmar #true").attr('disabled','disabled');
+                 }else{
+                $("#modalEvalConfirmar #button").show();                                        
+                 }   
 
                 persona(obj.data[i].id_usu);
 
@@ -531,7 +540,7 @@ function evlRpt() {
     }
 
 }
-
+//REPORTE CANCELADO
 function evlRptCancela() {
     var nreporte = document.getElementById('nreporte').value;
     var conocimientos = 'cancelado';  
@@ -542,7 +551,9 @@ function evlRptCancela() {
     var calidad = 'cancelado';  
     var observa = document.getElementById('observac').value;
     //alert(nreporte + respuesta + observa);
-    if (nreporte == '' || observa == '') {
+    datos = 'nreporte=' + nreporte + '&conocimientos=' + conocimientos + '&actitud=' + actitud + '&habilidades=' + habilidades + '&respuesta=' + respuesta + '&solucion=' + solucion + '&calidad=' + calidad + '&observa=' + observa + '&opcion=evaluar';
+
+     if (nreporte == '' || observa == '') {
         $("#vacioc").toggle("toggled");
         setTimeout(function() {
             $('#vacioc').toggle('toggled');
@@ -553,7 +564,7 @@ function evlRptCancela() {
         $.ajax({
             url: '../php/rptUsu.php',
             type: 'POST',
-            data: 'nreporte=' + nreporte + '&conocimientos=' + conocimientos + '&actitud=' + actitud + '&habilidades=' + habilidades + '&respuesta=' + respuesta + '&solucion=' + solucion + '&calidad=' + calidad + '&observa=' + observa + '&opcion=evaluar'
+            data: datos 
         }).done(function(respuesta) {
             console.log(respuesta);
             if (respuesta == 0) {
@@ -563,6 +574,43 @@ function evlRptCancela() {
                 $("#errorc").toggle("toggled");
                 setTimeout(function() {
                     $("#errorc").toggle("toggled");
+                }, 3000);
+            }
+        });
+    }
+
+}
+
+//REPORTE CONFIRMADO QUE SE REALIZO CON EXITO
+function evlRptConfirmar() {
+    var nreporte = document.getElementById('nreporte').value;
+    var observa = document.getElementById('observaconf').value;
+    var confirmar = $('input[name=confirmar]:checked').val();
+    //alert(nreporte + respuesta + observa);
+    datos = 'nreporte=' + nreporte + '&observa=' + observa + '&confirmar=' + confirmar + '&opcion=cnfrmrRprt';
+
+     if (!document.querySelector('input[name=confirmar]:checked') || nreporte == '' || observa == '') {
+        $("#vaciof").toggle("toggled");
+        setTimeout(function() {
+            $('#vaciof').toggle('toggled');
+        }, 3000);
+        return;
+    } else {
+        //bloquear boton 
+        $.ajax({
+            url: '../php/rptUsu.php',
+            type: 'POST',
+            data: datos 
+        }).done(function(respuesta) {
+            console.log(respuesta);
+            alert(respuesta);
+            if (respuesta == 0) {
+                $("#exitof").toggle("toggled");
+                setTimeout("location.href = 'rptCons';", 4000);
+            } else if (respuesta == 1) {
+                $("#errorf").toggle("toggled");
+                setTimeout(function() {
+                    $("#errorf").toggle("toggled");
                 }, 3000);
             }
         });

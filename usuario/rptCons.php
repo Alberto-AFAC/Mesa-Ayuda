@@ -510,8 +510,73 @@ unset($_SESSION['consulta']);
         </div>
     </form>
 
+<!------------------- CONFIRMAR REPORTE DE SISTEMA ------------->
+<form class="form-horizontal" action="" method="POST" onsubmit="return evlRpt(this)">
+        <div class="modal fade" id="modalEvalConfirmar" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel">
 
+            <div class="modal-dialog width" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
 
+                        <button type="button" onclick="location.href='rptCons.php'" class="close" data-dismiss="modal"
+                            aria-label="Close"><span style="color: black" aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel"><b>CONFIRMAR REPORTE - <input class="transparent"
+                                    style="text-transform: uppercase;" id="estado_rpt" name="estado_rpt"
+                                    disabled=""></b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="jumbotron">
+                            <div class="container">
+                                <input id="nreporte" name="nreporte" type="hidden" disabled>
+                                <!-- TABLE TO EVALUATION -->
+                     
+                                <p style='font-weight: bold; font-size: 12px; text-align: justify;'>¿EL SERVICIO SE REALIZÓ CON ÉXITO?
+                                </p>
+                                <label for="SI">SI</label>
+                                <input name="confirmar" type="radio" value="1" id="true" />
+                                <label for="NO">NO</label>
+                                <input name="confirmar" type="radio" value="2" id="false" />
+                                <div>
+                                    <textarea style='font-weight: bold; font-size: 12px; text-align: justify;' onkeyup="mayus(this);"
+                                        placeholder="(SUS COMENTARIOS DETALLADOS NOS AYUDARÁN A MEJORAR SU EXPERIENCIA.)"
+                                        id="observaconf" name="observaconf" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="2"></textarea><br>
+                                    <p style='font-weight: bold; font-size: 12px; text-align: justify;'> *NO SUMINISTRE
+                                        INFORMACIÓN CONFIDENCIAL O INFORMACIÓN QUE PERTENEZCA A ALGUNA PERSONA
+                                        ESPECÍFICAMENTE.</p>
+                                    <br>
+                                    <p style='font-size: 12px; text-align: justify;'> APRECIAMOS QUE
+                                        DEDIQUE EL TIEMPO A COMPARTIR SUS OPINIONES. SU RETROALIMENTACIÓN ES
+                                        INCREÍBLEMENTE VALIOSA PARA NOSOTROS A FIN DE MEJORAR AÚN MÁS SU EXPERIENCIA CON
+                                        NOSOTROS.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-0 col-sm-4">
+                                <button type="button" id="button" class="btn btn-green"
+                                    onclick="evlRptConfirmar();">ACEPTAR</button>
+                            </div>
+                            <b>
+                                <p class="alert alert-danger text-center padding error" id="errorf">Error al evaluar
+                                    técnico</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-success text-center padding exito" id="exitof">¡Se cancelo reporte con éxito!</p>
+                            </b>
+                            <b>
+                                <p class="alert alert-warning text-center padding aviso" id="vaciof">Es necesario comentar reporte cancelado</p>
+                            </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+<!---------------------------------------------------------->
     <form class="form-horizontal" action="" method="POST">
         <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel">
@@ -614,18 +679,18 @@ unset($_SESSION['consulta']);
                                 <label> FECHA FINALIZADA</label>
                                 <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
                             </div>
-                            <div class="col-sm-4" id="pndint1">
+<!--                             <div class="col-sm-4" id="pndint1">
                                 <label> SU EVALUACIÓN DE REPORTE</label>
                                 <input id="evaluacion" name="evaluacion" type="text" class="form-control" disabled="">
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="form-group">
+     <!--                    <div class="form-group">
                             <div class="col-sm-12" id="pndint2">
                                 <label>¿POR QUÉ?</label>
                                 <textarea onkeyup="mayus(this);" id="observa" name="observa" class="form-control"
                                     id="exampleFormControlTextarea1" rows="2" disabled=""></textarea>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -661,7 +726,8 @@ var dataSet = [
             reporte.falla_interna,
             reporte.falla_xterna,
             reporte.observa,
-            reporte.usu_observ
+            reporte.usu_observ,
+            reporte.pila
                 FROM reporte
                 RIGHT JOIN tecnico
                 ON id_tecnico = idtec
@@ -672,6 +738,7 @@ var dataSet = [
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
             $idtecnico=$data['id_usu'];
+            $pila = $data['pila'];
             $sql2="SELECT gstNombr,
                           gstNmpld,
                           gstApell,
@@ -686,6 +753,13 @@ var dataSet = [
                 $apellidos = $dato['gstApell'];
                 // $idpersona = $dato['gstIdper'];
 
+                if($pila=='WEB'){
+                    $evaluarCof = "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style=' font-size:12px;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style=' font-size:12px;'>CONFIRMAR</a>";
+                }else{
+                    $evaluarCof = "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>EVALUAR</a>";
+                }        
+
+
 if($data['estado_rpt'] == 'Por atender'){
 
         ?>["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
@@ -695,7 +769,7 @@ if($data['estado_rpt'] == 'Por atender'){
     ],
     <?php 
 
-}else if($data['estado_rpt'] == 'Pendiente'){ ?>
+}else if($data['estado_rpt'] == 'Pendiente'  && $data['evaluacion'] == '0'){ ?>
 
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>",
@@ -721,15 +795,25 @@ if($data['estado_rpt'] == 'Por atender'){
     ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
 
-                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>EVALUAR</a>";                        
+                echo $evaluarCof;                        
                     
                  ?>"
     ],
 
 
-    <?php } 
-        }
-            }?>
+    <?php }else if($data['estado_rpt'] == 'Finalizado' && $data['evaluacion'] == '2'){ ?>
+
+   ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+        "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
+
+                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style=' font-size:12px;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-warning' onclick='evaluar({$data['n_reporte']})' style='font-size:12px;'>PENDIENTE</a>";                        
+                    
+                 ?>"
+    ],
+
+<?php    } 
+              }
+                    }?>
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({

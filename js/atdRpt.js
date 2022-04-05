@@ -269,14 +269,6 @@ function personal(n_empleado){
 
 	                var d = detalles.split("*");
 	                $("#modalDtll #n_reporte").val(d[0]);
-	                // $("#modalDtll #usuario").val(d[1] + ' ' + d[2]);
-	                // $("#modalDtll #extension").val(d[3]);
-	                // $("#modalDtll #ubicacion").val(d[4]);
-	                // $("#modalDtll #servicio").val(d[5]);
-	                // $("#modalDtll #intervencion").val(d[6]);
-	                // $("#modalDtll #descripcion").val(d[7]);
-
-
 					$("#modalDtll #servicio").val(d[5]);
 					$("#modalDtll #intervencion").val(d[6]);
 					$("#modalDtll #descripcion").val(d[7]);
@@ -340,6 +332,7 @@ function personal(n_empleado){
 	        }
 	    })
 	}
+
 
 
 

@@ -379,7 +379,7 @@ unset($_SESSION['consulta']);
                 $apellidos = $data2[2];
                 $ext = $data2[3];
 
-if($data['evaluacion'] != '0'){
+if($data['evaluacion'] == '1'){
         ?>
     
     ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo  $ext ?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
