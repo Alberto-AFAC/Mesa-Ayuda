@@ -50,7 +50,7 @@ $(document).ready(function() {
         id_usu 
         FROM reporte
         INNER JOIN tecnico ON idtec = id_tecnico 
-        WHERE 	MONTH ( finicio ) = MONTH (
+        WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
         CURRENT_DATE ()) 
         AND estado_rpt = 'Finalizado' || estado_rpt = 'Cancelado'
         ORDER BY
