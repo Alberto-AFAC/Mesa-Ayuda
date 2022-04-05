@@ -180,6 +180,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                                         FROM
                                             reporte
                                         WHERE
+                                      servicio != 'SISTEMAS' AND
                                       MONTH ( finicio ) = MONTH (
                                       CURRENT_DATE ())";
                                 $resultado = mysqli_query($conexion, $query);

@@ -12,6 +12,7 @@ var dataSet = [
          id_usu
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio !='SISTEMAS'
         --  WHERE 	MONTH ( finicio ) = MONTH (
         --  CURRENT_DATE ()) 
     
@@ -276,7 +277,7 @@ var dataSet = [
          id_usu
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
-         WHERE 	MONTH ( finicio ) = MONTH (
+         WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
          CURRENT_DATE ()) 
     
      ORDER BY
@@ -390,7 +391,7 @@ var dataSet = [
          id_usu
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
-         WHERE 	MONTH ( finicio ) = MONTH (
+         WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
          CURRENT_DATE ()) 
     
      ORDER BY
@@ -498,7 +499,7 @@ var dataSet = [
          id_usu
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
-         WHERE 	MONTH ( finicio ) = MONTH (
+         WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
          CURRENT_DATE ()) 
     
      ORDER BY
@@ -607,7 +608,7 @@ var dataSet = [
          id_usu
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
-         WHERE 	MONTH ( finicio ) = MONTH (
+         WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
          CURRENT_DATE ()) 
     
      ORDER BY
