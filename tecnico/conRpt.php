@@ -827,14 +827,23 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
 if($data['evaluacion']=='CANCELADO'){
     echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>DETALLES</a>";
 
-}else if($data['evaluacion']=='1'){
+}else if($data['evaluacion']=='1' && $data['estado_rpt']=='Finalizado'){
         echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO</a>";
+}else if($data['evaluacion']=='1' && $data['estado_rpt']=='Cancelado'){
+        echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-warning' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>CANCELADO</a>";
 }
 
 
 
 
-?>", "<a href='evaluacion.php?data=<?php echo base64_encode($data['n_reporte'])?>' type='button' class='detalle btn btn-default'  style='width:100%; font-size:12px;'>DETALLES</a>"
+?>", 
+<?php if($data['evaluacion']=='1' && $data['estado_rpt']=='Cancelado'){ ?>
+"<span style='color:silver;'>NO DISPONIBLE</span>"
+<?php }else{ ?>
+
+"<a href='evaluacion.php?data=<?php echo base64_encode($data['n_reporte'])?>' type='button' class='detalle btn btn-default'  style='width:100%; font-size:12px;'>DETALLES</a>"
+<?php } ?>   
+
     ],
 
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
@@ -932,7 +941,7 @@ var dataSet = [
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
-if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pila'] =='WEB'){ ?>
+if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pila'] =='WEB' || $data['evaluacion'] == '2' && $data['estado_rpt'] =='Finalizado' && $data['pila'] =='WEB'){ ?>
      ["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
@@ -946,7 +955,7 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pi
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>",
         "<span style='color: gray'>NO DISPONIBLE</span>"
     ],
-    <?php }else if($data['evaluacion'] != '0'){ ?>
+    <?php }else if($data['evaluacion'] == '1'){ ?>
         ["<?php echo  $data['n_reporte']?>",
         "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>",
         "<?php echo $inicio ?>", 
@@ -965,10 +974,6 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pi
          echo "<span style='color: black; margin:center;'>CONFIRMO</spam>"; ?>"
 
         <?php } ?>
-
-
-
-
         ],
 
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
@@ -1019,7 +1024,7 @@ $(document).ready(function() {
                 title: "ESTADO"
             },
             {
-                title: "EVALUACIÓN"
+                title: "DETALLES"
             }
         ],
     });

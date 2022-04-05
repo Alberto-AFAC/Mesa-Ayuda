@@ -162,6 +162,15 @@
 
 	                //ID equipo para busqueda en la función
 	         
+	                if(d[14]==2){
+	                $("#modalAtndr #observac").val(d[13]);	                	
+	                $("#confirmar").show();
+	                }else{
+	                $("#modalAtndr #observac").remove();
+	                $("#confirmar").remove();	                		                	
+	                }
+
+
 	                ComprobarEqpo(d[18]);
 	                personal(d[22]);
 	                sedes(d[0]);

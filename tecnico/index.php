@@ -439,6 +439,13 @@ if($data = mysqli_fetch_array($resultado)){
                                         id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                                 </div>
                             </div>
+                            <div class="form-group" id="confirmar">
+                                <div class="col-sm-12">
+                                    <label style="color:red">EL SERVICIO NO SE REALIZÓ CON ÉXITO</label>
+                                    <textarea id="observac" name="observac" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-sm-12">

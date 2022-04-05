@@ -134,11 +134,16 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 	$observa = $_POST['observa'];
 	$confirmar = $_POST['confirmar'];
 
-		if(confirmar($nreporte,$observa,$confirmar,$conexion)){
+		if($confirmar==2){
+			$estado = 'Pendiente';
+		}else{
+			$estado = 'Finalizado';
+		}
+
+
+		if(confirmar($nreporte,$observa,$confirmar,$estado,$conexion)){
 		echo "0";
-
 	//	validaRport($nreporte,$conexion);
-
 		}else{	echo "1";	}	
 	}
 
@@ -306,9 +311,9 @@ function registraEqpo($nempleado,$modelo,$serie,$verwind,$proceso,$conexion){
 
 	}
 
-	function confirmar($nreporte,$observa,$confirmar,$conexion){
+	function confirmar($nreporte,$observa,$confirmar,$estado,$conexion){
 
-	$query = "UPDATE reporte SET evaluacion = '$confirmar', observa ='$observa' WHERE n_reporte = $nreporte";
+	$query = "UPDATE reporte SET evaluacion = '$confirmar', observa ='$observa', estado_rpt = '$estado' WHERE n_reporte = $nreporte";
 	if(mysqli_query($conexion,$query)){
 
 		return true;

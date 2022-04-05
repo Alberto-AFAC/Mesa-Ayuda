@@ -801,7 +801,7 @@ if($data['estado_rpt'] == 'Por atender'){
     ],
 
 
-    <?php }else if($data['estado_rpt'] == 'Finalizado' && $data['evaluacion'] == '2'){ ?>
+    <?php }else if($data['estado_rpt'] == 'Pendiente' && $data['evaluacion'] == '2'){ ?>
 
    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 

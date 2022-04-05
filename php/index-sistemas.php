@@ -280,8 +280,11 @@ if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt
                 if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     } 
-                      else if($data['estado_rpt'] == 'Pendiente') {
+                      else if($data['estado_rpt'] == 'Pendiente' && $data['evaluacion']==0) {
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-info' onclick='atender({$data['n_reporte']})' style='width:100%; font-size:12px;'>PENDIENTE</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
+
+                    }else if($data['estado_rpt'] == 'Pendiente' && $data['evaluacion']==2) {
+                echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-danger' onclick='atender({$data['n_reporte']})' style='width:100%; font-size:12px;'>PENDIENTE</a>"; if($data['servicio']=='CÓMPUTO'){ echo "<center><a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' ><i class='fa fa-desktop text-warning'></i></a></center>";}
 
                     }else if($data['evaluacion'] =='0' && $data['estado_rpt'] =='Cancelado'){
 

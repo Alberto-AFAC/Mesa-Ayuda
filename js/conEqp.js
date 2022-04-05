@@ -79,7 +79,7 @@ function reporte() {
             data: datos
         }).done(function(respuesta) {
             // console.log(respuesta);
-            alert(respuesta);
+            // alert(respuesta);
             if (respuesta == 0) {
 
 
@@ -164,7 +164,7 @@ function reporte10min() {
             data: datos
         }).done(function(respuesta) {
              console.log(respuesta);
-             alert(respuesta);
+             // alert(respuesta);
             if (respuesta == 0) {
 
 
@@ -603,7 +603,7 @@ function evlRptConfirmar() {
             data: datos 
         }).done(function(respuesta) {
             console.log(respuesta);
-            alert(respuesta);
+            // alert(respuesta);
             if (respuesta == 0) {
                 $("#exitof").toggle("toggled");
                 setTimeout("location.href = 'rptCons';", 4000);
