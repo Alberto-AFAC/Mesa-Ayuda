@@ -992,6 +992,8 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pi
 ];
 $(document).ready(function() {
     var tableGenerarReporte = $('#data-table-consulta-web').DataTable({
+        responsive: true,
+        "scrollX": true,
         dom: 'Bfrtip',
         buttons: [
             'excel'
