@@ -50,7 +50,6 @@ session_start();
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
     <link rel="stylesheet"
         href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
@@ -95,7 +94,8 @@ session_start();
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>-
-                        <li><a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                        <li><a href="../../gestor/conexion/cerrar_session.php"><i
+                                    class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>
@@ -146,9 +146,9 @@ session_start();
             </div>
 
             <div class="row">
-            <?php if($data['sede'] == 'WEB'):?>
-            <?php else: ?>
-            <div class="col-lg-4 col-md-6">
+                <?php if($data['sede'] == 'WEB'):?>
+                <?php else: ?>
+                <div class="col-lg-4 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -357,10 +357,10 @@ session_start();
 
 
                     </div>
-                    <button style="float: right;" data-toggle="modal" data-target="#exampleModal"
+                    <button type="button" style="float: right;" data-toggle="modal" data-target="#exampleModal"
                         class="btn btn-info">CONSULTAR DESEMPEÑO</button>
                 </div>
-              <?php endif ?>
+                <?php endif ?>
 
                 <?php
                                                 $query ="SELECT
@@ -434,7 +434,7 @@ session_start();
                 </div>
                 <?php 
                 if($data['sede'] == 'WEB'):?>
-                    <div class="zoom col-lg-3 col-md-6">
+                <div class="zoom col-lg-3 col-md-6">
                     <div data-toggle="modal" data-target="#finalizados" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -509,109 +509,165 @@ session_start();
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <?php else : ?>
 
-                <?php endif?>
+            <?php endif?>
 
-                <div class="panel-body">
-                    <div style="padding-top: 30px;" class="col-lg-12">
-                         <?php if($data['sede']== 'WEB'):?>
-                        <table style="width: 100%" id="data-table-consulta-web" class="table table-striped table-hover">
+            <div class="panel-body">
+                <div style="padding-top: 30px;" class="col-lg-12">
+                    <?php if($data['sede']== 'WEB'):?>
+                    <table style="width: 100%" id="data-table-consulta-web" class="table table-striped table-hover">
                         <?php else :?>
                         <table style="width: 100%" id="data-table-consulta" class="table table-striped table-hover">
-                        <?php endif?>
+                            <?php endif?>
 
                         </table>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+
+        <?php include('conActu.php');?>
+        <!-- VISUALIZACIÓN DE LAS CARDS -->
+        <div class="modal fade" id="finalizados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-finalizados" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
                     </div>
                 </div>
             </div>
-            <br><br>
+        </div>
 
+        <div class="modal fade" id="poratender" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-por-atender" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <?php include('conActu.php');?>
+        <div class="modal fade" id="pendiente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-pendiente" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="modal fade" id="cancelado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" style="width: 720px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="data-table-cancelado" class="table table-striped table-bordered" width="100%"
+                            cellspacing="0"></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FINISH STADISTICS-->
 
-            <form class="form-horizontal" action="" method="POST">
-                <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel">
+        <form class="form-horizontal" action="" method="POST">
+            <div class="modal fade" id="modalDtll" class="col-xs-12 .col-md-12" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel">
 
-                    <div class="modal-dialog width" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                    onclick="limpiarCampo()"><span style="color: black"
-                                        aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE - <input
-                                            style="text-transform: uppercase;" class="transparent" id="estado_rpt"
-                                            name="estado_rpt" disabled=""></b></h4>
-                            </div>
-                            <div class="modal-body">
-                                <input type="hidden" id="id_usuario" name="id_usuario"
-                                    value="<?php echo $idtecnico?>">
-                                <input type="hidden" id="opcion" name="opcion" value="actualizar">
-                                <div class="form-group">
-                                    <div class="col-sm-3">
-                                        <label>N° REPORTE</label>
-                                        <input id="n_reporte" name="n_reporte" type="text" class="form-control"
-                                            class="disabled" disabled="">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label>USUARIO</label>
-                                        <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label>EXTENSIÓN</label>
-                                        <input id="extension" name="extension" type="text" class="form-control"
-                                            disabled="">
-                                    </div>
-                                    <!-- <div class="col-sm-2">
+                <div class="modal-dialog width" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                onclick="limpiarCampo()"><span style="color: black" aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel"><b>DETALLES DEL REPORTE - <input
+                                        style="text-transform: uppercase;" class="transparent" id="estado_rpt"
+                                        name="estado_rpt" disabled=""></b></h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $idtecnico?>">
+                            <input type="hidden" id="opcion" name="opcion" value="actualizar">
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label>N° REPORTE</label>
+                                    <input id="n_reporte" name="n_reporte" type="text" class="form-control"
+                                        class="disabled" disabled="">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>USUARIO</label>
+                                    <input id="usuario" name="usuario" type="text" class="form-control" disabled="">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label>EXTENSIÓN</label>
+                                    <input id="extension" name="extension" type="text" class="form-control" disabled="">
+                                </div>
+                                <!-- <div class="col-sm-2">
                     <label>Ubicación</label>
                     <input id="ubicacion" name="ubicacion" type="text" class="form-control" disabled="">
                     </div> -->
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label>TIPO DE SERVICIO</label>
+                                    <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
                                 </div>
 
-
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <label>TIPO DE SERVICIO</label>
-                                        <input id="servicio" name="servicio" type="text" class="form-control"
-                                            disabled="">
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <label style="color:white;">.</label>
-                                        <input id="intervencion" name="intervencion" type="text" class="form-control"
-                                            disabled="">
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <label style="color:white;">.</label>
-                                        <input id="descripcion" name="descripcion" type="text" class="form-control"
-                                            disabled="">
-                                    </div>
+                                <div class="col-sm-4">
+                                    <label style="color:white;">.</label>
+                                    <input id="intervencion" name="intervencion" type="text" class="form-control"
+                                        disabled="">
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="col-sm-4">
+                                <div class="col-sm-4">
+                                    <label style="color:white;">.</label>
+                                    <input id="descripcion" name="descripcion" type="text" class="form-control"
+                                        disabled="">
+                                </div>
+                            </div>
 
-                                        <input id="solucion" name="solucion" type="text" class="form-control"
-                                            disabled="">
-                                    </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
 
-                                    <div class="col-sm-4">
-
-                                        <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
-                                    </div>
-
-                                    <div class="col-sm-4">
-
-                                        <input id="final" name="final" type="text" class="form-control" disabled="">
-                                    </div>
+                                    <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
                                 </div>
 
-                                <!--                             <div class="form-group">
+                                <div class="col-sm-4">
+
+                                    <input id="ultima" name="ultima" type="text" class="form-control" disabled="">
+                                </div>
+
+                                <div class="col-sm-4">
+
+                                    <input id="final" name="final" type="text" class="form-control" disabled="">
+                                </div>
+                            </div>
+
+                            <!--                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <label>TIPO DE SERVICIO</label>
                                     <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
@@ -630,46 +686,46 @@ session_start();
                                 </div>
                             </div> -->
 
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label>
-                                        <textarea id="usu_observ" name="usu_observ" class="form-control"
-                                            id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                                    </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label>
+                                    <textarea id="usu_observ" name="usu_observ" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <label>RESPUESTA A LA FALLA</label>
-                                        <textarea id="falla_interna" name="falla_interna" class="form-control"
-                                            id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                                    </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>RESPUESTA A LA FALLA</label>
+                                    <textarea id="falla_interna" name="falla_interna" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                                 </div>
+                            </div>
 
-                                <div class="form-group" id="falla">
-                                    <div class="col-sm-12">
-                                        <label> RESPUESTA EXTERNA A LA FALLA</label>
-                                        <textarea id="falla_xterna" name="falla_xterna" class="form-control"
-                                            id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
-                                    </div>
+                            <div class="form-group" id="falla">
+                                <div class="col-sm-12">
+                                    <label> RESPUESTA EXTERNA A LA FALLA</label>
+                                    <textarea id="falla_xterna" name="falla_xterna" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <label> FECHA REPORTE</label>
-                                        <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label> FECHA FINALIZADA</label>
-                                        <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
-                                    </div>
-                                    <!-- <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <label> FECHA REPORTE</label>
+                                    <input id="finicio" name="finicio" type="text" class="form-control" disabled="">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label> FECHA FINALIZADA</label>
+                                    <input id="ffinal" name="ffinal" type="text" class="form-control" disabled="">
+                                </div>
+                                <!-- <div class="col-sm-4">
                                         <label> SU EVALUACIÓN DE REPORTE</label>
                                         <input id="evaluacion" name="evaluacion" type="text" class="form-control"
                                             disabled="">
                                     </div> -->
-                                </div>
-                                <!-- <div class="form-group">
+                            </div>
+                            <!-- <div class="form-group">
                                     <div class="col-sm-12">
                                         <label>¿POR QUÉ?</label>
                                         <textarea id="observa" name="observa" class="form-control"
@@ -677,15 +733,15 @@ session_start();
                                     </div>
                                 </div> -->
 
-                            </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
 
 
-        </div>
-        <!-- /.row -->
+    </div>
+    <!-- /.row -->
     </div>
     <!-- MODAL DE DETALLES EVALUACIÓN -->
     <!-- /#wrapper -->
@@ -694,6 +750,7 @@ session_start();
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
+<!-- <script src="../js/bootstrap.min.js"></script> -->
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
@@ -706,22 +763,8 @@ session_start();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-
-
-<!--     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <script src="../js/buttons.bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="calendario/tcal.js"></script> 
-
-    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-    <script type="text/javascript" src="valida/valida.js"></script>
-    <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script> 
- -->
-<!--<script type="text/javascript" src="../js/atdRpt.js"></script>-->
 <script>
-    // TABLA DE REPORTE PARA USUARIOS QUE ATIENDEN SISTEMAS
+// TABLA DE REPORTE PARA USUARIOS QUE ATIENDEN SISTEMAS
 var dataSet = [
     <?php
 	    //** $idtecnico = $_SESSION['usuario']['id_tecnico'];
@@ -792,12 +835,13 @@ if($data['evaluacion']=='CANCELADO'){
 
 
 ?>", "<a href='evaluacion.php?data=<?php echo base64_encode($data['n_reporte'])?>' type='button' class='detalle btn btn-default'  style='width:100%; font-size:12px;'>DETALLES</a>"
-        ],
+    ],
 
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
         "<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
-        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>","<span style='color: gray;'>NO DISPONIBLE</span>"
+        "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>",
+        "<span style='color: gray;'>NO DISPONIBLE</span>"
     ],
     <?php  } 
     }  
@@ -937,50 +981,51 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pi
 } ?>
 ];
 $(document).ready(function() {
-var tableGenerarReporte = $('#data-table-consulta-web').DataTable({    
-    dom: 'Bfrtip',
-    buttons: [
-           'excel'
-        ], 
-    "language": {
-        "searchPlaceholder": "Buscar datos...",
-        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    },
-    "order": [
-        [0, "desc"]
-    ],
+    var tableGenerarReporte = $('#data-table-consulta-web').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'excel'
+        ],
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
 
-    orderCellsTop: true,
-    fixedHeader: true,
-    data: dataSet,
-    columns: [{
-            title: "N°"
-        },
-        {
-            title: "NOMBRE USUARIO"
-        },
-        {
-            title: "EXT."
-        },
-        {
-            title: "SERVICIO"
-        },
-        {
-            title: "REPORTE"
-        },
-        {
-            title: "TERMINO"
-        },
-        {
-            title: "ESTADO"
-        },
-        {
-            title: "DETALLES"
-        }
-    ],
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: "N°"
+            },
+            {
+                title: "NOMBRE USUARIO"
+            },
+            {
+                title: "EXT."
+            },
+            {
+                title: "SERVICIO"
+            },
+            {
+                title: "REPORTE"
+            },
+            {
+                title: "TERMINO"
+            },
+            {
+                title: "ESTADO"
+            },
+            {
+                title: "EVALUACIÓN"
+            }
+        ],
+    });
+
 });
 
-} );
 function evaluacionID(idEvaluacion) {
     alert(idEvaluacion)
 
@@ -1013,12 +1058,20 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
     type: 'bar',
     data: {
         <?php  while($dataEvaluaciones = mysqli_fetch_array($resEvaluacion)){ ?>
-        labels: ["CONOCIMIENTOS DEL TÉCNICO","ACTITUD DE SERVICIO DEL TÉCNICO","HABILIDADES DE COMUNICACIÓN DEL TÉCNICO","TIEMPO DE RESPUESTA","TIEMPO DE SOLUCIÓN","CALIDAD GENERAL DEL SERVICIO RECIBIDO"],
+        labels: ["CONOCIMIENTOS DEL TÉCNICO", "ACTITUD DE SERVICIO DEL TÉCNICO",
+            "HABILIDADES DE COMUNICACIÓN DEL TÉCNICO", "TIEMPO DE RESPUESTA", "TIEMPO DE SOLUCIÓN",
+            "CALIDAD GENERAL DEL SERVICIO RECIBIDO"
+        ],
         datasets: [{
             label: "EVALUACIÓN DE SERVICIO",
             backgroundColor: ["#337ab7", "#095892"],
             borderWidth: 0,
-            data: ["<?php echo $dataEvaluaciones['co_tecnico'] ?>","<?php echo $dataEvaluaciones['act_servicio']?>","<?php echo $dataEvaluaciones['hab_comun']?>","<?php echo $dataEvaluaciones['tiempo_resp']?>","<?php echo $dataEvaluaciones['tiempo_soluc']?>","<?php echo $dataEvaluaciones['calidad_genral']?>"
+            data: ["<?php echo $dataEvaluaciones['co_tecnico'] ?>",
+                "<?php echo $dataEvaluaciones['act_servicio']?>",
+                "<?php echo $dataEvaluaciones['hab_comun']?>",
+                "<?php echo $dataEvaluaciones['tiempo_resp']?>",
+                "<?php echo $dataEvaluaciones['tiempo_soluc']?>",
+                "<?php echo $dataEvaluaciones['calidad_genral']?>"
             ]
         }, ]
         <?php } ?>
@@ -1043,11 +1096,443 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
     },
 });
 
+// TODO FINALIZADOS
+$(document).ready(function () {
+
+    var dataSet = [
+        <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS' 
+     ORDER BY
+         n_reporte DESC";
+	$resultado4 = mysqli_query($conexion, $query1);
+        while($data5 = mysqli_fetch_array($resultado4)){
+            $idempleado=$data5['empleado'];
+            $idper = $data5['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data5['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data5['ffinal'];
+            };
+            if($data5['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data5['evaluacion'];
+            }
+
+
+if($data5['estado_rpt'] == 'Finalizado'){
+        ?>
+
+        ["<?php echo $data5['año']."-".$data5['n_reporte']?>",
+            "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+            "<?php echo $data5['finicio']?>",
+            "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>"],
+
+        <?php } ?>
+        <?php }  }} ?>
+    ];
+    //       
 
 
 
 
 
+    var tableFinalizados = $('#data-table-finalizados').DataTable({
+
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
+        pageLength: 5,
+        lengthMenu: [
+            [5, 10, 20, -1],
+            [5, 10, 20, 'Todos']
+        ],
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: "N°"
+            },
+            {
+                title: "USUARIO"
+            },
+            {
+                title: "INICIO"
+            },
+            {
+                title: "TERMINO"
+            },
+            {
+                title: "TÉCNICO"
+            }
+        ],
+    });
+
+    // TODO POR ATENDER
+
+
+    var dataSet = [
+        <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS' 
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Por atender'){
+        ?>
+
+        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+            "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+            "<?php echo $data['finicio']?>",
+            "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+            "aqui va"],
+
+        <?php } ?>
+        <?php }  }} ?>
+    ];
+    //       
+
+    var tableGenerarReporte = $('#data-table-por-atender').DataTable({
+
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
+        pageLength: 5,
+        lengthMenu: [
+            [5, 10, 20, -1],
+            [5, 10, 20, 'Todos']
+        ],
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: "N°"
+            },
+            {
+                title: "USUARIO"
+            },
+            {
+                title: "INICIO"
+            },
+            {
+                title: "TERMINO"
+            },
+            {
+                title: "TÉCNICO"
+            }
+        ],
+    });
+
+    //TODO REALIZANDO
+    var dataSet = [
+        <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS'
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Pendiente'){
+        ?>
+
+        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+            "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+            "<?php echo $data['finicio']?>",
+            "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+            "aqui va"],
+
+        <?php } ?>
+        <?php }  }} ?>
+    ];
+    //       
+
+    var tableGenerarReporte = $('#data-table-pendiente').DataTable({
+
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
+        pageLength: 5,
+        lengthMenu: [
+            [5, 10, 20, -1],
+            [5, 10, 20, 'Todos']
+        ],
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: "N°"
+            },
+            {
+                title: "USUARIO"
+            },
+            {
+                title: "INICIO"
+            },
+            {
+                title: "TERMINO"
+            },
+            {
+                title: "TÉCNICO"
+            }
+        ],
+    });
+    // TODO CANCELADO
+
+    var dataSet = [
+        <?php
+         $query1 = "SELECT 
+         n_reporte,
+         n_empleado empleado,
+         DATE_FORMAT(finicio, '%d/%m/%Y' ) AS finicio,
+         DATE_FORMAT(ffinal, '%d/%m/%Y' ) AS ffinal,
+        YEAR(finicio) AS año,
+         evaluacion,
+         estado_rpt,
+         id_usu
+         FROM reporte
+         INNER JOIN tecnico ON idtec = id_tecnico 
+         WHERE servicio = 'SISTEMAS' 
+     ORDER BY
+         n_reporte DESC";
+	$resultado = mysqli_query($conexion, $query1);
+        while($data = mysqli_fetch_array($resultado)){
+            $idempleado=$data['empleado'];
+            $idper = $data['id_usu'];
+            $sql2="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstNmpld = $idempleado";
+    $result2=mysqli_query($conexion2,$sql2);
+    while($data2=mysqli_fetch_array($result2)){
+
+            $sql3="SELECT gstNombr,
+                          gstApell,
+                          gstExTel,
+                          gstNmpld
+                          FROM personal
+                        WHERE
+                        gstIdper = $idper";
+    $result3=mysqli_query($conexion2,$sql3);
+    while($data3=mysqli_fetch_array($result3)){         
+        // $ext = $dato['gstExTel'];
+        // $nombre = $dato['gstNombr'];
+        // $apellidos = $dato['gstApell'];
+        // $idpersona = $dato['gstIdper'];
+            if($data['ffinal'] == '0000-00-00'){
+                $NA = "Sin fecha";
+
+            } else {
+                $NA = $data['ffinal'];
+            };
+            if($data['evaluacion'] == '0'){
+                $eva = "SIN EVALUAR";
+            } else {
+                $eva = $data['evaluacion'];
+            }
+
+
+if($data['estado_rpt'] == 'Cancelado'){
+        ?>
+
+        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+            "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+            "<?php echo $data['finicio']?>",
+            "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+
+            "aqui va"],
+
+        <?php } ?>
+        <?php }  }} ?>
+    ];
+    //       
+
+    var tableGenerarReporte = $('#data-table-cancelado').DataTable({
+
+        "language": {
+            "searchPlaceholder": "Buscar datos...",
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
+        "order": [
+            [0, "desc"]
+        ],
+        pageLength: 5,
+        lengthMenu: [
+            [5, 10, 20, -1],
+            [5, 10, 20, 'Todos']
+        ],
+        orderCellsTop: true,
+        fixedHeader: true,
+        data: dataSet,
+        columns: [{
+                title: "N°"
+            },
+            {
+                title: "USUARIO"
+            },
+            {
+                title: "INICIO"
+            },
+            {
+                title: "TERMINO"
+            },
+            {
+                title: "TÉCNICO"
+            }
+        ],
+    });
+
+
+
+});
 </script>
 
 </html>
