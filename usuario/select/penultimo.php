@@ -602,6 +602,95 @@ switch ($id) /*aCPU*/{
   <input type="hidden" name="ultima" id="ultima" value="xx">
   <input type="hidden" name="final" id="final" value="x">
 
+  <?php break;
+  case "|": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO GUARDA EL FORMATO">NO GUARDA EL FORMATO</option>
+  <option value="0NO SE PUEDE VISUALIZAR EL FORMATO CL-01">NO SE PUEDE VISUALIZAR EL FORMATO CL-01</option>
+
+
+  </select>
+  </div>
+
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "%": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO GUARDA EL FORMATO">NO GUARDA EL FORMATO</option>
+  <option value="0NO SE PUEDE VISUALIZAR EL FORMATO CL-02">NO SE PUEDE VISUALIZAR EL FORMATO CL-02</option>
+
+
+  </select>
+  </div>
+
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "@": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO SE PUEDE CARGAR EL FORMATO CL-01">NO SE PUEDE CARGAR EL FORMATO CL-01</option>
+  <option value="0NO SE PUEDE AGENDAR CITA">NO SE PUEDE AGENDAR CITA</option>
+  <option value="0NO SE PUEDE CARGAR EL FORMATO CL-02">NO SE PUEDE CARGAR EL FORMATO CL-02</option>
+  <option value="0NO SE VISUALIZAN LOS FORMATOS CARGADOS">NO SE VISUALIZAN LOS FORMATOS CARGADOS</option>
+  <option value="0NO SE VISUALIZAN LOS NOMBRES DE LOS PARTICIPANTES">NO SE VISUALIZAN LOS NOMBRES DE LOS PARTICIPANTES</option>
+
+
+
+
+
+  </select>
+  </div>
+
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+  <?php break;
+  case "<": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+  <option value="0">SELECCIONE</option>
+  <option value="0NO SE PUEDE INICIAR EXAMEN">NO SE PUEDE INICIAR EXAMEN</option>
+  <option value="0EL PROCESO DE INICIAR EXAMEN NO INICIA">EL PROCESO DE INICIAR EXAMEN NO INICIA</option>
+  <option value="0LA GRABACIÓN DE AUDIO NO INICIA">LA GRABACIÓN DE AUDIO NO INICIA</option>
+  <option value="0NO SE REPRODUCEN LAS PREGUNTAS DE LA PRIMER SECCION">NO SE REPRODUCEN LAS PREGUNTAS DE LA PRIMER SECCION</option>
+  <option value="0NO SE REPRODUCEN LAS PREGUNTAS DE LA SEGUNDA SECCIÓN">NO SE REPRODUCEN LAS PREGUNTAS DE LA SEGUNDA SECCIÓN</option>
+  <option value="0NO SE REPRODUCEN LAS PREGUNTAS DE LA TERCER SECCIÓN">NO SE REPRODUCEN LAS PREGUNTAS DE LA TERCER SECCIÓN</option>
+  <option value="0NO FINALIZA LA EVALUACIÓN">NO FINALIZA LA EVALUACIÓN</option>
+  <option value="0EL AUDIO NO SE REPRODUCE">EL AUDIO NO SE REPRODUCE</option>
+  <option value="0NO OBTENGO DATOS EN EL HISTORICO DE EVALUACIÓN">NO OBTENGO DATOS EN EL HISTORICO DE EVALUACIÓN</option>
+
+
+
+
+
+
+
+
+  </select>
+  </div>
+
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+
+
+
+
+
+
 <?php 
   break;
   default: }

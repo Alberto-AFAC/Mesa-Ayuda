@@ -85,6 +85,7 @@ switch ($id) {
             <option value="lE-LICENCIAS">E-LICENCIAS</option>
             <option value="mSIAC">SIAC</option>
             <option value="nSIAR">SIAR</option>
+            <option value="oCOMPETENCIA LINGUISTICA">COMPETENCIA LINGÜISTICA</option>
 
             </option>
             </select>
