@@ -560,14 +560,13 @@ unset($_SESSION['consulta']);
                                     onclick="evlRptConfirmar();">ACEPTAR</button>
                             </div>
                             <b>
-                                <p class="alert alert-danger text-center padding error" id="errorf">Error al evaluar
-                                    técnico</p>
+                                <p class="alert alert-danger text-center padding error" id="errorf">ERROR AL CONFIRMAR TÉCNICO</p>
                             </b>
                             <b>
-                                <p class="alert alert-success text-center padding exito" id="exitof">¡Se cancelo reporte con éxito!</p>
+                                <p class="alert alert-success text-center padding exito" id="exitof">¡SE CONFIRMO REPORTE CON ÉXITO!</p>
                             </b>
                             <b>
-                                <p class="alert alert-warning text-center padding aviso" id="vaciof">Es necesario comentar reporte cancelado</p>
+                                <p class="alert alert-warning text-center padding aviso" id="vaciof">ES NECESARIO COMENTAR REPORTE</p>
                             </b>
                         </div>
                     </div>
@@ -806,7 +805,7 @@ if($data['estado_rpt'] == 'Por atender'){
    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
 
-                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style=' font-size:12px;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-warning' onclick='evaluar({$data['n_reporte']})' style='font-size:12px;'>PENDIENTE</a>";                        
+                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style=' width:48%; font-size:12px; margin:0 auto;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-warning' onclick='evaluar({$data['n_reporte']})' style='width:48%; font-size:12px; margin:0 auto;'>PENDIENTE</a>";                        
                     
                  ?>"
     ],

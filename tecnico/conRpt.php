@@ -667,29 +667,18 @@ session_start();
                                 </div>
                             </div>
 
-                            <!--                             <div class="form-group">
-                                <div class="col-sm-4">
-                                    <label>TIPO DE SERVICIO</label>
-                                    <input id="servicio" name="servicio" type="text" class="form-control" disabled="">
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <label>INTERVENCIÓN</label>
-                                    <input id="intervencion" name="intervencion" type="text" class="form-control"
-                                        disabled="">
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <label>DESCRIPCIÓN</label>
-                                    <input id="descripcion" name="descripcion" type="text" class="form-control"
-                                        disabled="">
-                                </div>
-                            </div> -->
-
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <label>OBSERVACIONES DEL USUARIO AL PROBLEMA</label>
                                     <textarea id="usu_observ" name="usu_observ" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="obserConf">
+                                <div class="col-sm-12">
+                                    <label>EL SERVICIO SE REALIZÓ CON ÉXITO</label>
+                                    <textarea id="obser_confir" name="obser_confir" class="form-control"
                                         id="exampleFormControlTextarea1" rows="3" disabled=""></textarea>
                                 </div>
                             </div>
