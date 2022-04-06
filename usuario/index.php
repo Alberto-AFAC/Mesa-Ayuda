@@ -104,8 +104,17 @@ document.getElementById('alerta').innerHTML = texto;
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
+
+
+
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../../gestor/conexion/cerrar_session.php"><i
+                        <li>
+
+
+<a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
+                                    class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
+
+                            <a href="../../gestor/conexion/cerrar_session.php"><i
                                     class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
@@ -379,6 +388,9 @@ Llene campos vacíos</p>
 </div>
 </div>
 </div>
+
+<?php include('conActu.php');?>
+
 </body>
 
 <link rel="stylesheet" type="text/css" href="../administrador/librerias/select2/css/select2.css">

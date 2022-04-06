@@ -307,8 +307,6 @@ function personal(n_empleado){
 					$("#modalDtll #final").val(d[22]);
 					}
 
-
-
 	                $("#modalDtll #usu_observ").val(d[8]);
 	                $("#modalDtll #falla_interna").val(d[9]);
 	                $("#modalDtll #finicio").val(d[10] + ' a las ' + d[16] + ' hrs');
@@ -321,9 +319,11 @@ function personal(n_empleado){
 	                }
 	                
 	                if(d[13]=='0'){
-	                $("#modalDtll #observa").val('');	                	
+	                $("#modalDtll #obser_confir").val('');
+	                $("#obserConf").hide();	                	
 	                }else{
-	                $("#modalDtll #observa").val(d[13]);	                	
+	                $("#modalDtll #obser_confir").val(d[13]);	                	
+	                $("#obserConf").show();
 	                }
 
 	                if(d[14]=='0'){
@@ -336,6 +336,14 @@ function personal(n_empleado){
 	                $("#modalDtll #estado_rpt").val(d[15]);
 
 					personal(d[19]);
+
+					// 	alert(obj.data[i].observa);
+
+					// if(obj.data[i].observa==0){
+					// $("#obser_confir").hide();
+					// }else{
+					// $("#modalDtll #obser_confir").val(obj.data[i].observa);
+					// }
 
 	            }
 	        }

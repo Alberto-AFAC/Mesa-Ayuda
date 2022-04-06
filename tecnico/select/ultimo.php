@@ -44,7 +44,7 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select name="ultima" id="ultima" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE /ZIADO">FORMATEO/INSTALACIÓN DE /ZIADO</option>
+  <option value="0FORMATEO/INSTALACIÓN DE WINDOWS">FORMATEO/INSTALACIÓN DE WINDOWS</option>
   <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
   <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
   <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>
@@ -195,7 +195,7 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select name="ultima" id="ultima" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALZIADO">FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALZIADO</option>
+  <option value="0FORMATEO/INSTALACIÓN DE WINDOWS">FORMATEO/INSTALACIÓN DE WINDOWS</option>
   <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
   <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
   <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>  
@@ -323,7 +323,7 @@ switch ($id) {
   <div class="col-sm-offset-0 col-sm-4">
   <select name="ultima" id="ultima" class="form-control" class="selectpicker" type="text" data-live-search="true">
   <option value="0">SELECCIONE</option>
-  <option value="0FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO">FORMATEO/INSTALACIÓN DE SISTEMA OPERATIVO ACTUALIZADO</option>
+  <option value="0FORMATEO/INSTALACIÓN DE WINDOWS">FORMATEO/INSTALACIÓN DE WINDOWS</option>
   <option value="0PAQUETERÍA DE OFICINA">PAQUETERÍA DE OFICINA</option>
   <option value="0TIPO DE LETRA INSTITUCIONAL">TIPO DE LETRA INSTITUCIONAL</option>
   <option value="0OTRO SOFTWARE">OTRO SOFTWARE</option>
