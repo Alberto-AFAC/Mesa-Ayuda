@@ -156,7 +156,7 @@ if($data = mysqli_fetch_array($resultado)){
                 </div>
                 <?php 
                 if($data['sede'] == 'WEB'):?>
-                    <div class="zoom col-lg-3 col-md-6">
+                <div class="zoom col-lg-3 col-md-6">
                     <div data-toggle="modal" data-target="#finalizados" class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -233,22 +233,22 @@ if($data = mysqli_fetch_array($resultado)){
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <?php else : ?>
 
-                <?php endif?>
+            <?php endif?>
 
 
 
 
             <div class="panel-body">
                 <div class="col-lg-12">
-                <?php if($data['sede'] == 'WEB'):?>
+                    <?php if($data['sede'] == 'WEB'):?>
                     <table style="width: 100%" id="data-table-reporte-web" class="table table-striped table-hover">
-                    <?php else : ?>
-                    <table style="width: 100%" id="data-table-reporte" class="table table-striped table-hover">
-                    <?php endif?>
-                    </table>
+                        <?php else : ?>
+                        <table style="width: 100%" id="data-table-reporte" class="table table-striped table-hover">
+                            <?php endif?>
+                        </table>
                 </div>
             </div>
         </div>
@@ -364,8 +364,8 @@ if($data = mysqli_fetch_array($resultado)){
                                     <label>SEDE</label>
                                     <input id="sede" name="sede" type="text" class="form-control">
                                 </div>
-              
-                            </div>                            
+
+                            </div>
 
                             <p id="divp">
                                 ¿ES CORRECTA LA DESCRIPCIÓN DEL PROBLEMA QUE SELECCIONO EL USUARIO?
@@ -415,7 +415,11 @@ if($data = mysqli_fetch_array($resultado)){
 
                                 <div class="col-sm-4">
                                     <!--                     <label>Tipo de servicio</label>
- --> <input id="solucion" type="text" class="form-control" disabled="">
+ -->
+                                    <textarea onkeyup="mayus(this);" id="solucion" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="1" readonly></textarea>
+                                    <!-- <input id="solucion" type="text" class="form-control" disabled=""> -->
+
                                 </div>
 
                                 <div class="col-sm-4">
