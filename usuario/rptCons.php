@@ -630,8 +630,8 @@ unset($_SESSION['consulta']);
 
                         <div class="form-group">
                             <div class="col-sm-4">
-
-                                <input id="solucion" name="solucion" type="text" class="form-control" disabled="">
+                            <textarea id="solucion" name="solucion" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="1" disabled=""></textarea>
                             </div>
 
                             <div class="col-sm-4">
