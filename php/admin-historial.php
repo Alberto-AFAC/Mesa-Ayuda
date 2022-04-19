@@ -82,7 +82,7 @@ $(document).ready(function() {
 
         ?>
 
-        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+        ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>",
             "<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>", "<?php echo  $data['finicio']?>",
             "<?php echo  $data['ffinal']?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
             "<?php if($data['estado_rpt'] == 'Finalizado') {
@@ -100,6 +100,7 @@ $(document).ready(function() {
     ];
 
     var tableGenerarReporte = $('#data-table-administrador').DataTable({
+        
 
         "order": [
             [5, "desc"]

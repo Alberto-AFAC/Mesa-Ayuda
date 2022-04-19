@@ -146,7 +146,7 @@ $idu = $_SESSION['usuario']['id_usu'];
 
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
                     <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                     <h1 class='page-header'>ADMINISTRADOR</h1>
                     <?php
@@ -493,6 +493,7 @@ onclick="location.href='./'" -->
 
 
 
+
             <div class="row">
                 <div id="cuadro1" class="col-lg-12">
                     <div class="panel panel-default">
@@ -508,7 +509,7 @@ onclick="location.href='./'" -->
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div id="overflow" role="tabpanel" class="tab-pane active" id="home"><br><br>
+                                <div role="tabpanel" class="tab-pane active" id="home"><br><br>
                                     <table id="data-table-administrador" class="table table-striped table-bordered"
                                         width="100%" cellspacing="0"></table>
 
@@ -527,29 +528,31 @@ onclick="location.href='./'" -->
 
                 </div>
 
+
                 <!-- Nav tabs -->
 
                 <!-- /#wrapper -->
 </body>
 
-
-
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
-<!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
-<script src="../js/admin.js"></script>
+<script type="text/javascript" src="../js/admin.js"></script>
 <script src="../js/status.js"></script>
 
+
 <!-----DATATABLE RESPONSIVE------>
-<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+
+
 <script>
 $(window).load(function() {
     $(".loader").fadeOut("slow");

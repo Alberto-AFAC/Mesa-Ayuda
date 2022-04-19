@@ -248,7 +248,7 @@ $fecha = date('Y');
 
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
                     <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                     <h1 class="page-header">HISTORIAL DE REPORTES</h1>
                     <?php

@@ -36,6 +36,9 @@ $idtec = mysqli_fetch_row($result);
 
     <title>Sistema</title>
 
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 
     <!-- Bootstrap Core CSS -->
     <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,6 +51,7 @@ $idtec = mysqli_fetch_row($result);
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
     <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
+
 </head>
 
 <body>
@@ -221,7 +225,7 @@ $idtec = mysqli_fetch_row($result);
                         <p style="text-align: center; float: right; width:95%;" class="mensaje"></p>
                     </div>
                     <div class="panel-body" style="font-size: 12px;">
-                        <table id="data-table-area" class="table table-striped table-bordered"></table>
+                        <table id="data-table-area" width="100%" class="table table-striped table-bordered"></table>
                     </div>
                 </div>
             </div>
@@ -635,6 +639,13 @@ $idtec = mysqli_fetch_row($result);
 <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="../../js/tecnico.js"></script>
 <script src="../../js/status.js"></script>
+
+
+<!-----DATATABLE RESPONSIVE------>
+<!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+
 
 <link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
 <script type="text/javascript">

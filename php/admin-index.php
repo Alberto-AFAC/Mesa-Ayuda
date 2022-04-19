@@ -74,7 +74,7 @@ $prio = 'NORMAL';
 if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-    ["<?php echo $data['n_reporte']?>", "<?php echo $prio ?>",
+    ["<?php echo 'TEC-'.$data['n_reporte']?>", "<?php echo $prio ?>",
         "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
@@ -97,7 +97,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
     <?php }  if($data['estado_rpt'] == 'Pendiente'){ ?>
 
-    ["<?php echo $data['n_reporte']?>", "<?php echo $prio ?>",
+    ["<?php echo 'TEC-'.$data['n_reporte']?>", "<?php echo $prio ?>",
         "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
@@ -194,7 +194,7 @@ $result2=mysqli_query($conexion2,$sql2);
         $contadorPersonas ++;
     ?>
 
-    ["<?php echo $contadorPersonas ?>","<?php echo $data2['gstNombr'].' '.$data2['gstApell']?>","<?php echo $data2['gstNmpld']?>","<?php echo $data['sede']?>","<a href='promedio.php?data=<?php echo base64_encode($data['idtec'])?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACION</a>"],
+    ["<?php echo 'TEC-'.$data['n_reporte'] ?>","<?php echo $data2['gstNombr'].' '.$data2['gstApell']?>","<?php echo $data2['gstNmpld']?>","<?php echo $data['sede']?>","<a href='promedio.php?data=<?php echo base64_encode($data['idtec'])?>' type='button'  class='detalle btn btn-default' style='width:100%;font-size: 12px;'>EVALUACION</a>"],
     <?php } } ?>
 
 ];
@@ -332,7 +332,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Finalizado'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
@@ -449,7 +449,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
@@ -560,7 +560,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Pendiente'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
@@ -672,7 +672,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Cancelado'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
