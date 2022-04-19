@@ -40,10 +40,10 @@ $idu = $_SESSION['usuario']['id_usu'];
 
     <title>Sistema</title>
 
-
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <!-- MetisMenu CSS -->
-
-
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -51,7 +51,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-
+    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
 </head>
 
 <body>
@@ -79,7 +79,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                 <?php include('notif.php');?>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -508,7 +508,7 @@ onclick="location.href='./'" -->
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="home"><br><br>
+                                <div id="overflow" role="tabpanel" class="tab-pane active" id="home"><br><br>
                                     <table id="data-table-administrador" class="table table-striped table-bordered"
                                         width="100%" cellspacing="0"></table>
 
@@ -536,15 +536,20 @@ onclick="location.href='./'" -->
 
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/select2.js"></script>
-<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
-<script type="text/javascript" src="../js/admin.js"></script>
+<script src="../js/admin.js"></script>
 <script src="../js/status.js"></script>
+
+<!-----DATATABLE RESPONSIVE------>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
 <script>
 $(window).load(function() {
     $(".loader").fadeOut("slow");

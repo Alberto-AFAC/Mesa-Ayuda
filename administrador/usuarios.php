@@ -23,6 +23,6 @@ session_start();
 ?>
 <body>
 
-    <a class="navbar-brand" title="Menú de acceso" href="../../../gestor/menu/">BIENVENIDO - <?php echo $usu[0].''.$usu[1];?></a>   
+    <a class="navbar-brand" title="Menú de acceso" href="../../../gestor/menu/">BIENVENIDO - <?php echo $usu[0].' '.$usu[1];?></a>   
 
 </body>

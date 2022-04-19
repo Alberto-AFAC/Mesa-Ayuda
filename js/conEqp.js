@@ -79,17 +79,20 @@ function reporte() {
             data: datos
         }).done(function(respuesta) {
             // console.log(respuesta);
-            // alert(respuesta);
-            if (respuesta == 0) {
+             // alert(respuesta);
+            if (respuesta != 1) {
 
 
                 $("#button").hide();
                 // $('#vacio').hide();
                 // $("#error").hide();
-                $("#exito").toggle("toggled");
+                $("#exito").toggle('toggle');
+                $("#exito").html('¡Su reporte se generó con éxito, <b style="color:blue;">Número de reporte asignado: '+respuesta+'</b>, se le asigno un técnico!, Para más detalles: <a href="rptCons.php" style="color:blue; cursor:pointer;">Reportes</a>');
+
+
                 setTimeout(function() {
                     $("#exito").toggle("toggled");
-                }, 15000);
+                }, 55000);
                 $("#button1").hide();
                 $('#exampleModalCenter').modal('hide');
 
@@ -165,13 +168,13 @@ function reporte10min() {
         }).done(function(respuesta) {
              console.log(respuesta);
              // alert(respuesta);
-            if (respuesta == 0) {
+            if (respuesta != 1) {
 
 
                 $("#button").hide();
-                // $('#vacio').hide();
-                // $("#error").hide();
-                $("#exito").toggle("toggled");
+                $("#exito").toggle('toggle');
+                $("#exito").html('¡Su reporte se generó con éxito, <b style="color:blue;">Número de reporte asignado: '+respuesta+'</b>, se le asigno un técnico!, Para más detalles: <a href="rptCons.php" style="color:blue; cursor:pointer;">Reportes</a>');
+
                 setTimeout(function() {
                     $("#exito").toggle("toggled");
                 }, 15000);

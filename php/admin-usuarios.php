@@ -65,6 +65,12 @@ echo "<a title='Detalles usuario' type='button' data-target='#frmDetalles' oncli
 ];
 
 var tableGenerarReporte = $('#data-table-area').DataTable({
+          
+   rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+    responsive: true,
+
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -78,7 +84,7 @@ var tableGenerarReporte = $('#data-table-area').DataTable({
     {title: "APELLIDOS"},
     {title: "CARGO"},    
     {title: "PRIORIDAD"},    
-    {title: "ACCIÓN"}    
+    {title: "ACCIÓN", "width": "10%"}    
     ],
     });
 

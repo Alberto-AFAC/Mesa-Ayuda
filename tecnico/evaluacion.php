@@ -59,7 +59,7 @@ session_start();
 
     <script type="text/javascript" src="../js/atdRpt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
 
 </head>
 
@@ -88,7 +88,7 @@ session_start();
 
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -165,7 +165,7 @@ session_start();
     }
 }
  ?>
-            <div class="row">
+            <div class="row" id="titulo-consulta">
                 <div class="col-lg-12">
                     <img src="../img/afac.png" class="imgafac">
                     <h1 class="page-header">CONSULTA DE REPORTES </h1>
@@ -174,7 +174,7 @@ session_start();
 
             <div class="row">
                 <div class="form-group">
-                    <div class="col-sm-9">
+                    <div class="col-sm-9" id="estadistica_evaluacion">
                 <canvas id="piechart-licencias"></canvas>
     </div>
     <script>
@@ -259,9 +259,16 @@ WHERE
 	evaluacion.id_reporte = '$datos'"; 
     $resEvaluacion = mysqli_query($conexion, $datosCliente);
     $dataCliente = mysqli_fetch_array($resEvaluacion);
+
+    if($dataCliente['servicio']=='SISTEMAS'){
+    $folio = 'SIS-';
+    }else{
+    $folio = 'TEC-';    
+    }
+
     ?>
-    <div style="text-align: center;" class="col-sm-3">
-                <p style="color: gray; font-size: 17px;">REPORTE: <?php echo $dataCliente['n_reporte']?></p>
+    <div style="text-align: center;" class="col-sm-3" >
+                <p style="color: gray; font-size: 17px;">REPORTE: <?php echo $folio.$dataCliente['n_reporte']?></p>
                 <p style="color: gray; font-size: 17px;">FECHA INICIO: <?php echo $dataCliente['finicio']?></p>
                 <p style="color: gray; font-size: 17px;">FECHA TERMINO: <?php echo $dataCliente['ftermino']?></p>
                 <p style="color: gray; font-size: 17px;">SERVICIO: <?php echo $dataCliente['servicio']?></p>

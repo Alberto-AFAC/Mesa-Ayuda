@@ -30,6 +30,10 @@ unset($_SESSION['consulta']);
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Reporte</title>
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -37,6 +41,7 @@ unset($_SESSION['consulta']);
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
     <style>
     #customers {
         font-family: Arial, Helvetica, sans-serif;
@@ -72,7 +77,7 @@ unset($_SESSION['consulta']);
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
+            <div class="navbar-header" id="perfil">
                 <?php include("usuarios.php");?>
             </div>
             <ul class="nav navbar-top-links navbar-right">
@@ -81,7 +86,7 @@ unset($_SESSION['consulta']);
                     <?php //include("../php/correo.php");?>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -113,7 +118,7 @@ unset($_SESSION['consulta']);
             </div>
         </nav>
         <div id="page-wrapper">
-            <div class="row">
+            <div class="row" id="header">
                 <div class="col-lg-12">
                     <img src="../img/afac.png" class="imgafac">
                     <h1 class="page-header">CONSULTAR REPORTE</h1>
@@ -125,10 +130,10 @@ unset($_SESSION['consulta']);
                         <div class="panel-heading"></div>
                     </div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" >
                     <div class="col-lg-12">
 
-                        <table id="data-table-reporte" class="table table-striped table-hover"></table>
+                        <table id="data-table-reporte" width="100%" class="table table-striped table-hover"></table>
                     </div>
                 </div>
             </div>
@@ -697,6 +702,11 @@ unset($_SESSION['consulta']);
     </form>
 
 </body>
+<!-----DATATABLE RESPONSIVE------>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+
 <script src="../js/mayu.js"></script>
 <script src="../js/conEqp.js"></script>
 <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
@@ -753,15 +763,16 @@ var dataSet = [
                 // $idpersona = $dato['gstIdper'];
 
                 if($pila=='WEB'){
-                    $evaluarCof = "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style=' font-size:12px;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style=' font-size:12px;'>CONFIRMAR</a>";
+                    $evaluarCof = "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>CONFIRMAR</a>";
+                    $tipo = 'SIS-';
                 }else{
                     $evaluarCof = "<a href='#' type='button' data-toggle='modal' data-target='#modalEval' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>EVALUAR</a>";
+                    $tipo = 'TEC-';
                 }        
 
+    if($data['estado_rpt'] == 'Por atender'){
 
-if($data['estado_rpt'] == 'Por atender'){
-
-        ?>["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+        ?>["<?php echo  $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>",
         "<?php                   
                 echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-danger' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>POR ATENDER</a>"; ?>"
@@ -770,7 +781,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
 }else if($data['estado_rpt'] == 'Pendiente'  && $data['evaluacion'] == '0'){ ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+    ["<?php echo  $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>",
         "<?php 
 
@@ -780,7 +791,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
     <?php }else if($data['estado_rpt'] == 'Cancelado' && $data['evaluacion'] == '0'){ ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+    ["<?php echo  $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
 
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalEvalCancelado' class='detalle btn btn-default' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px;'>CONFIRMAR</a>";                        
@@ -791,7 +802,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
     <?php }else if($data['evaluacion'] == '0'){ ?>
 
-    ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+    ["<?php echo  $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
 
                 echo $evaluarCof;                        
@@ -802,10 +813,10 @@ if($data['estado_rpt'] == 'Por atender'){
 
     <?php }else if($data['estado_rpt'] == 'Pendiente' && $data['evaluacion'] == '2'){ ?>
 
-   ["<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
+   ["<?php echo $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $ext?>",
         "<?php echo $data['servicio']?>", "<?php echo $inicio?>", "<?php echo $final?>", "<?php 
 
-                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style=' width:48%; font-size:12px; margin:0 auto;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-warning' onclick='evaluar({$data['n_reporte']})' style='width:48%; font-size:12px; margin:0 auto;'>PENDIENTE</a>";                        
+                echo "<a href='' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style=' width:100%; font-size:12px; margin:0 auto;'>DETALLES</a> <a href='#' type='button' data-toggle='modal' data-target='#modalEvalConfirmar' class='detalle btn btn-warning' onclick='evaluar({$data['n_reporte']})' style='width:100%; font-size:12px; margin:0 auto;'>PENDIENTE</a>";                        
                     
                  ?>"
     ],
@@ -816,6 +827,12 @@ if($data['estado_rpt'] == 'Por atender'){
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({
+
+       rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+    responsive: true,
+
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -845,7 +862,7 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
             title: "TERMINO"
         },
         {
-            title: "ESTADO"
+            title: "ESTADO", "width": "10%"
         }
     ],
 });

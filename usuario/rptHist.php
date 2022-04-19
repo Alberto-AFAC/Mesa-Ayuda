@@ -29,18 +29,24 @@ unset($_SESSION['consulta']);
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Reporte</title>
+
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+   <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
 </head>
 <body>
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
+            <div class="navbar-header" id="perfil">
                <?php include("usuarios.php");?>
             </div>
             <ul class="nav navbar-top-links navbar-right">
@@ -48,7 +54,7 @@ unset($_SESSION['consulta']);
                    <?php //include("../php/correo.php");?>
                 </li>          
                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">                   
@@ -77,7 +83,7 @@ unset($_SESSION['consulta']);
         </nav>
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
                      <img src="../img/afac.png" class="imgafac">
                      <h1 class="page-header">HISTORIAL REPORTE</h1>
                 </div>
@@ -91,7 +97,7 @@ unset($_SESSION['consulta']);
                  <div class="panel-body">
                     <div class="col-lg-12">
 
-                    <table id="data-table-reporte" class="table table-striped table-hover"></table>
+                    <table id="data-table-reporte" width="100%" class="table table-striped table-hover"></table>
                     </div>
                  </div>   
             </div>
@@ -326,6 +332,11 @@ unset($_SESSION['consulta']);
 </form>
 
 </body>
+    <!-----DATATABLE RESPONSIVE------>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+
     <script src="../js/mayu.js"></script>
     <script src="../js/conEqp.js"></script>
     <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
@@ -379,10 +390,16 @@ unset($_SESSION['consulta']);
                 $apellidos = $data2[2];
                 $ext = $data2[3];
 
+                if($data[9]=='SISTEMAS'){
+                    $folio = 'SIS';
+                }else{
+                    $folio = 'TEC';
+                }
+
 if($data['evaluacion'] == '1'){
         ?>
     
-    ["<?php echo  $data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo  $ext ?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
+    ["<?php echo  $folio.'-'.$data['n_reporte']?>","<?php echo  $nombre." ".$apellidos?>","<?php echo  $ext ?>","<?php echo $data['servicio']?>","<?php echo $inicio?>","<?php echo $final?>","<?php 
 
                   if($data['estado_rpt']=='Finalizado'){
             echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-success' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FINALIZADO </a>";
@@ -399,6 +416,11 @@ if($data['evaluacion'] == '1'){
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({
+   rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+    responsive: true,
+
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"

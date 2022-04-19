@@ -20,16 +20,20 @@ $idu = $_SESSION['usuario']['id_usu'];
 
     <title>Sistema</title>
 
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
     <!-- Bootstrap Core CSS -->
     <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+<!-- <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/> -->
 <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
 <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="../../css/styles.css">
 <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
-
+<link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
 </head>
 
 <body>
@@ -104,7 +108,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                <?php include('../notif.php');?>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -158,7 +162,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <div id="page-wrapper">
             <!--<h3 class="text-center" style="border: 1px solid red;"> <small class="mensaje">123</small></h3>-->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
              <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">         <h1 class="page-header">BAJAS DE USUARIOS </h1>                    
                 </div>
                 <!-- /.col-lg-12 -->
@@ -197,7 +201,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                   <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
             </div>
                <div class="panel-body" style="font-size: 12px;">             
-                    <table id="data-table-area" class="table table-striped table-bordered"></table>
+                    <table id="data-table-area" width="100%" class="table table-striped table-bordered"></table>
                 </div>
         </div>          
     </div>      
@@ -537,6 +541,10 @@ $idu = $_SESSION['usuario']['id_usu'];
     <!-- /#wrapper -->
 </body>
 
+    <!-----DATATABLE RESPONSIVE------>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
 
     <!--<script src="js/jquery-1.12.3.js"></script>-->
     <script src="../../js/bootstrap.min.js"></script>
@@ -555,12 +563,9 @@ $idu = $_SESSION['usuario']['id_usu'];
 
     <script src="../../boots/metisMenu/metisMenu.min.js"></script>
     <script src="../../dist/js/sb-admin-2.js"></script>
-<!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
-
-    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-<!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-    <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
+    <!--     <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script> -->
+    <!--     <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+        <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    --> 
     <script type="text/javascript" src="../../js/usuarios.js"></script>
     <script src="../../js/status.js"></script>
 <link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">

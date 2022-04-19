@@ -22,6 +22,5 @@ session_start();
         $result = mysqli_query($conexion,$query);
         $usu = mysqli_fetch_row($result);*/
 ?>
-<body>
-<a class="navbar-brand" title="Menú de acceso" href="../../gestor/menu/">BIENVENIDO - <?php echo $usu[0].''.$usu[1];?></a>
-</body>
+<a class="navbar-brand inhabilitado" title="Menú de acceso" href="../../gestor/menu/">BIENVENIDO - <?php echo $usu[0].''.$usu[1];?></a>
+<a class="navbar-brand habilitado" href="../../gestor/menu/"><?php echo $usu[0].''.$usu[1];?></a>

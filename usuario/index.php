@@ -39,10 +39,8 @@ unset($_SESSION['consulta']);
 
 <!-- Bootstrap Core CSS -->
 <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 <!-- MetisMenu CSS -->
 <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
@@ -59,6 +57,8 @@ unset($_SESSION['consulta']);
 <script src="../dist/sweetAlert2/sweetalert2.all.min.js"></script>
 <link rel="stylesheet" href="../dist/sweetAlert2/sweetalert2.min.css">
 <link rel="stylesheet" type="text/css" href="../css/styles.css">
+
+<link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
 <style>
 #mostrar_segun_html,
 #mostrar_segun_val {
@@ -90,7 +90,7 @@ document.getElementById('alerta').innerHTML = texto;
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
+            <div class="navbar-header" id="perfil">
                 <?php include("usuarios.php");?>
             </div>
             <!-- /.navbar-header -->
@@ -101,7 +101,7 @@ document.getElementById('alerta').innerHTML = texto;
                     <!-- /.dropdown-messages -->
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
 
@@ -110,12 +110,21 @@ document.getElementById('alerta').innerHTML = texto;
                     <ul class="dropdown-menu dropdown-user">
                         <li>
 
+<!-- <a id="inicio" href="./"><i class="fa fa-home"></i> INICIO</a>
+<a id="report" href="rptCons.php"><i class="fa fa-keyboard-o"></i> REPORTES</a>
+<a id="histor" href="rptHist.php"><i class="glyphicon glyphicon-header"></i> HISTORIAL</a> -->
 
-<a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
-                                    class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
+<a id="inicio" href="./"><i class="fa fa-home"></i> INICIO</a>
+<a id="report" href="rptCons.php"><i class="fa fa-keyboard-o"></i> REPORTES</a>
+<a id="histor" href="rptHist.php"><i class="glyphicon glyphicon-header"></i> HISTORIAL</a>
 
-                            <a href="../../gestor/conexion/cerrar_session.php"><i
-                                    class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+
+<a href="#" type="button" data-toggle="modal" data-target="#modalEditar">
+    <i class="fa fa-pencil-square-o"></i> ACTUALIZAR
+</a>
+<a href="../../gestor/conexion/cerrar_session.php">
+    <i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN
+</a>
                         </li>
                     </ul>
                 </li>
@@ -172,7 +181,7 @@ $res = 'NO';
             <div class="row">
 
 
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
                     <img src="../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                     <h1 class="page-header">GENERAR REPORTE</h1>
                     <p style="text-transform: uppercase; font-size: 13px; text-align: right;" id="alerta"></p>
@@ -260,7 +269,7 @@ $res = 'NO';
                                 <input type="radio" name="catch" value="false" id="pregunta2">
                                 <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
                                 </div> -->
-                                        <div class="form-group">
+                                        <div class="form-group" id="equi_asig">
                                             <div id="equipo"></div>
                                         </div>
                                     </div>
@@ -370,10 +379,8 @@ reporte con la descripción del problema ya está asignada, para más
 detalles de su lado izquierdo </p>
 </b>
 <b>
-<p style="text-transform: uppercase;"
-class="alert alert-success text-center padding reporte" id="exito">¡Su
-reporte se generó con éxito, se le asigno un técnico!, Para más detalles
-de su lado izquierdo: Reportes</p>
+<div style="text-transform: uppercase;"
+class="alert alert-success text-center padding reporte" id="exito"></div>
 </b>
 <b>
 <p style="text-transform: uppercase;"

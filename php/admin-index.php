@@ -114,6 +114,10 @@ if($data['estado_rpt'] == 'Por atender'){
 //       
 
 var tableGenerarReporte = $('#data-table-administrador').DataTable({
+         rowReorder: {
+            selector: 'td:nth-child(3)'
+        },
+    responsive: true,
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -201,7 +205,10 @@ $result2=mysqli_query($conexion2,$sql2);
 
 
 var tableGenerarReporte = $('#data-table-promedio').DataTable({
-
+     rowReorder: {
+            selector: 'td:nth-child(3)'
+        },
+    responsive: true,
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -341,7 +348,10 @@ if($data['estado_rpt'] == 'Finalizado'){
 
 
 var tableGenerarReporte = $('#data-table-finalizados').DataTable({
-
+     rowReorder: {
+            selector: 'td:nth-child(3)'
+        },
+    responsive: true,
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -451,7 +461,10 @@ if($data['estado_rpt'] == 'Por atender'){
 //       
 
 var tableGenerarReporte = $('#data-table-por-atender').DataTable({
-
+     rowReorder: {
+            selector: 'td:nth-child(3)'
+        },
+    responsive: true,
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -559,7 +572,10 @@ if($data['estado_rpt'] == 'Pendiente'){
 //       
 
 var tableGenerarReporte = $('#data-table-pendiente').DataTable({
-
+     rowReorder: {
+            selector: 'td:nth-child(3)'
+        },
+    responsive: true,
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -668,7 +684,10 @@ if($data['estado_rpt'] == 'Cancelado'){
 //       
 
 var tableGenerarReporte = $('#data-table-cancelado').DataTable({
-
+     rowReorder: {
+            selector: 'td:nth-child(3)'
+        },
+    responsive: true,
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"

@@ -12,7 +12,7 @@ include("../../conexion/conexion.php");
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
-$idu = $_SESSION['usuario']['id_usu'];
+    $idu = $_SESSION['usuario']['id_usu'];
 }else{ header('Location: ../../gestor'); }
 
 ?>
@@ -29,20 +29,22 @@ $idu = $_SESSION['usuario']['id_usu'];
 
     <title>Sistema</title>
 
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <!-- Bootstrap Core CSS -->
+    <!-- <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/> -->
     <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
-<link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
-<link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../../css/styles.css">
-<link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
-
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
 </head>
 
 <body>
-<div class="loader"></div>
+    <div class="loader"></div>
 
     <div id="wrapper">
 
@@ -61,7 +63,7 @@ $idu = $_SESSION['usuario']['id_usu'];
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                   <?php //include("../../php/correos.php");?>
+                    <?php //include("../../php/correos.php");?>
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
                             <a href="#">
@@ -109,277 +111,277 @@ $idu = $_SESSION['usuario']['id_usu'];
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
-               
+
                 <!-- /.dropdown -->
-               <?php include('../notif.php');?>
+                <?php include('../notif.php');?>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                    <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
-                    </li>-->
-                        <li><a href="../../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
+<!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
+</li>-->
+<li><a href="../../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+</li>
+</ul>
+<!-- /.dropdown-user -->
+</li>
+<!-- /.dropdown -->
+</ul>
+<!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-        <li>
-                            <a href="../"><i class="glyphicon glyphicon-home"></i> INICIO</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-cog"></i> REGISTROS<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            <li>
+                <a href="../"><i class="glyphicon glyphicon-home"></i> INICIO</a>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-cog"></i> REGISTROS<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
 <!--                                 <li>
-                                    <a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
-                                </li> -->
-                            <li>
-                                    <a href="./"><i class="fa fa-users"></i> USUARIOS <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level"><li><a href="../bajas">BAJAS</a></li></ul>
-                            </li>
-                            <li>
-                                    <a href="../equipo"><i class="fa fa-desktop"></i> EQUIPOS</a>
-                            </li>
-                            <li>
-                                    <a href="../tecnico"><i class="fa fa-street-view"></i> TÉCNICO</a>
-                            </li>
-                            </ul>                            
-                            <!-- /.nav-second-level -->
-                        </li>
+<a href="../area"><i class="fa fa-list-alt"></i> Areas</a>
+</li> -->
+<li>
+    <a href="./"><i class="fa fa-users"></i> USUARIOS <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level"><li><a href="../bajas">BAJAS</a></li></ul>
+</li>
+<li>
+    <a href="../equipo"><i class="fa fa-desktop"></i> EQUIPOS</a>
+</li>
+<li>
+    <a href="../tecnico"><i class="fa fa-street-view"></i> TÉCNICO</a>
+</li>
+</ul>                            
+<!-- /.nav-second-level -->
+</li>
 
 
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
+</ul>
+</div>
+<!-- /.sidebar-collapse -->
+</div>
+<!-- /.navbar-static-side -->
+</nav>
 
-    <div id="page-wrapper">
-            <!--<h3 class="text-center" style="border: 1px solid red;"> <small class="mensaje">123</small></h3>-->
-            <div class="row">
-                <div class="col-lg-12">
-             <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">         <h1 class="page-header">USUARIOS</h1>                    
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+<div id="page-wrapper">
+    <!--<h3 class="text-center" style="border: 1px solid red;"> <small class="mensaje">123</small></h3>-->
+    <div class="row" id="header">
+        <div class="col-lg-12">
+            <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">         <h1 class="page-header">USUARIOS</h1>                    
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
-            <script src="../../js/jquery-1.12.3.min.js"></script>
-            <?php
+    <script src="../../js/jquery-1.12.3.min.js"></script>
+    <?php
 
-            $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
-            $are = mysqli_query($conexion,$sql);
+    $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+    $are = mysqli_query($conexion,$sql);
 
-            $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
-            $aree = mysqli_query($conexion,$sql);
+    $sql = "SELECT id_area, adscripcion FROM area WHERE estado = 0";
+    $aree = mysqli_query($conexion,$sql);
 
-            $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
-            $cargo = mysqli_query($conexion,$sql);
+    $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
+    $cargo = mysqli_query($conexion,$sql);
 
-            $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
-            $acargo = mysqli_query($conexion,$sql);            
-            ?>
-  
-         <!-- /.row -->
+    $sql = "SELECT id_cargo, cargo FROM cargo WHERE estado = 0";
+    $acargo = mysqli_query($conexion,$sql);            
+    ?>
 
-<style type="text/css">
-    #cuadro2,#Editar,#Detalles,#Dtllsprio{
-        display: none;
-    }
-</style>
+    <!-- /.row -->
+
+    <style type="text/css">
+        #cuadro2,#Editar,#Detalles,#Dtllsprio{
+            display: none;
+        }
+    </style>
 
 
-<div class="row">
-    <div id="cuadro1" class="col-lg-12">
-        <div class="panel panel-default">                  
-            <div style="padding: 0;" class="panel-heading"> 
+    <div class="row">
+        <div id="cuadro1" class="col-lg-12">
+            <div class="panel panel-default">                  
+                <div style="padding: 0;" class="panel-heading"> 
                     <!-- <button title="Agregar usuario" type="button" style="color:blue;" class="btn btn-default" data-toggle="modal" onclick="RegistrarUsu()"><i class='fa fa-user-plus text-info' ></i></button> -->
-                  <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
+                    <p style="text-align: center; float: left; width:100%;" class="mensaje"></p>
+                </div>
+                <div class="panel-body" style="font-size: 12px;">             
+                    <table id="data-table-area" width="100%" class="table table-striped table-bordered"></table>
+                </div>
+            </div>          
+        </div>      
+    </div>
+
+    <div>
+        <form id="EliminarUsuario" action="" method="POST">
+            <input type="hidden" id="id_usuario" name="id_usuario" value="">
+            <input type="hidden" id="opcion" name="opcion" value="eliminar">
+            <!-- Modal -->
+            <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                            <h4 class="modal-title" id="modalProyectoEliminarLabel">Eliminar usuario</h4>
+                        </div>
+                        <div class="modal-body">                            
+                            ¿Está seguro de eliminar este usuario? <strong data-name=""></strong>
+                            <!--<input id="nombre" name="nombre" />-->              
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="eliminar-usuario" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-               <div class="panel-body" style="font-size: 12px;">             
-                    <table id="data-table-area" class="table table-striped table-bordered"></table>
-                </div>
-        </div>          
-    </div>      
-</div>
+            <!-- Modal -->
+        </form>
 
-<div>
-<form id="EliminarUsuario" action="" method="POST">
-    <input type="hidden" id="id_usuario" name="id_usuario" value="">
-    <input type="hidden" id="opcion" name="opcion" value="eliminar">
-    <!-- Modal -->
-    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                    <h4 class="modal-title" id="modalProyectoEliminarLabel">Eliminar usuario</h4>
-                </div>
-                <div class="modal-body">                            
-                    ¿Está seguro de eliminar este usuario? <strong data-name=""></strong>
-                <!--<input id="nombre" name="nombre" />-->              
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="eliminar-usuario" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <style type="text/css">
+            #frmDetalles input,textarea{ border: 1px solid transparent; }
+        </style>
+
+
+
+        <form id="Detalles" class="form-horizontal" action="" method="POST">
+
+            <div id="frmDetalles" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+                <div class="modal-dialog-modi" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
+
+
+
+                            <button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
+                            <h4 class="modal-title" id="exampleModalLabel"><b>INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO</b> </h4>
+
+
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="col-sm-offset-1 col-sm-10">
+
+
+                            </div>
+
+                            <input type="hidden" id="id_usuario" name="id_usuario">
+                            <input type="hidden" id="opcion" name="opcion" value="modificar">
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-0 col-sm-4" >
+                                    <label for="Nombre">NOMBRE</label>
+                                    <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
+                                </div>
+                                <div class="col-sm-offset-0 col-sm-4" >
+                                    <label for="Correo">CORREO</label>
+                                    <input id="correo" name="correo" type="text"  class="form-control" disabled="">
+                                </div>
+                                <div class="col-sm-offset-0 col-sm-2">
+                                    <label for="N° empleado">N° EMPLEADO</label>
+                                    <input id="n_empleado" name="n_empleado" type="text" class="form-control" disabled="">
+                                </div> 
+                                <div class="col-sm-offset-0 col-sm-2">
+                                    <label for="Extension">EXTENSIÓN</label>
+                                    <input id="extension" name="extension" type="text" class="form-control" disabled="">
+                                </div> 
+                            </div>
+
+                            <div class="form-group">  
+                                <div class="col-sm-offset-0 col-sm-3">
+                                    <label for="Adscripción">CARGO</label>
+                                    <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
+                                </div>  
+                                <div class="col-sm-offset-0 col-sm-9">
+                                    <label for="Adscripción">ADSCRIPCIÓN</label>
+                                    <input id="area" name="area" type="text" class="form-control" disabled="">
+                                </div>
+                            </div>
+
+                            <div id="eqpos"></div>
+
+                        </div>
+
+
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Modal -->
-</form>
-
-<style type="text/css">
-#frmDetalles input,textarea{ border: 1px solid transparent; }
-</style>
+        </form>
 
 
+        <form id="Dtllsprio" class="form-horizontal" action="" method="POST">
 
-<form id="Detalles" class="form-horizontal" action="" method="POST">
+            <div id="frmDetalles" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 
-<div id="frmDetalles" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog-modi" role="document">
+                    <div class="modal-content">
 
-<div class="modal-dialog-modi" role="document">
-<div class="modal-content">
+                        <div class="modal-header">
 
-<div class="modal-header">
-
-<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
+                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
 
 
 
-<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
-<h4 class="modal-title" id="exampleModalLabel"><b>INFORMACIÓN DEL USUARIO Y SUS EQUIPOS DE COMPUTO</b> </h4>
+                            <button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
+                            <h4 class="modal-title" id="exampleModalLabel"><b>ASIGNAR PRIORIDAD PARA ATENCIÓN DE SERVICIO</b> </h4>
 
 
-</div>
-   
- <div class="modal-body">
+                        </div>
 
-    <div class="col-sm-offset-1 col-sm-10">
+                        <div class="modal-body">
 
-      
- </div>
-
-    <input type="hidden" id="id_usuario" name="id_usuario">
-    <input type="hidden" id="opcion" name="opcion" value="modificar">
-
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-4" >
-    <label for="Nombre">NOMBRE</label>
-    <input id="nombre" name="nombre" type="text"  class="form-control" disabled="">
-    </div>
-    <div class="col-sm-offset-0 col-sm-4" >
-    <label for="Correo">CORREO</label>
-    <input id="correo" name="correo" type="text"  class="form-control" disabled="">
-    </div>
-    <div class="col-sm-offset-0 col-sm-2">
-    <label for="N° empleado">N° EMPLEADO</label>
-    <input id="n_empleado" name="n_empleado" type="text" class="form-control" disabled="">
-    </div> 
-    <div class="col-sm-offset-0 col-sm-2">
-    <label for="Extension">EXTENSIÓN</label>
-    <input id="extension" name="extension" type="text" class="form-control" disabled="">
-    </div> 
-    </div>
-    
-    <div class="form-group">  
-    <div class="col-sm-offset-0 col-sm-3">
-    <label for="Adscripción">CARGO</label>
-    <input id="cargo" name="cargo" type="text" class="form-control" disabled="">
-    </div>  
-    <div class="col-sm-offset-0 col-sm-9">
-    <label for="Adscripción">ADSCRIPCIÓN</label>
-    <input id="area" name="area" type="text" class="form-control" disabled="">
-    </div>
-    </div>
-   
-   <div id="eqpos"></div>
-
-    </div>
+                            <div class="col-sm-offset-1 col-sm-10">
 
 
+                            </div>
 
-</div>
-</div>
-</div>
-</form>
+                            <input type="hidden" id="idusup" name="idusup">
+                            <input id="nempleo" name="nempleo" type="hidden" class="form-control" disabled="">
+                            <input type="hidden" id="opcions" name="opcions" class="form-control" disabled="">
 
-
-<form id="Dtllsprio" class="form-horizontal" action="" method="POST">
-
-<div id="frmDetalles" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-
-<div class="modal-dialog-modi" role="document">
-<div class="modal-content">
-
-<div class="modal-header">
-
-<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a></button> -->
-
-
-
-<button type="button"  class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span style="color: black;" aria-hidden="true" class="glyphicon glyphicon-remove" ></span></a></button>
-<h4 class="modal-title" id="exampleModalLabel"><b>ASIGNAR PRIORIDAD PARA ATENCIÓN DE SERVICIO</b> </h4>
-
-
-</div>
-   
- <div class="modal-body">
-
-    <div class="col-sm-offset-1 col-sm-10">
-
-      
- </div>
-
-    <input type="hidden" id="idusup" name="idusup">
-    <input id="nempleo" name="nempleo" type="hidden" class="form-control" disabled="">
-    <input type="hidden" id="opcions" name="opcions" class="form-control" disabled="">
-
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-6" >
-    <label for="Nombre">NOMBRE</label>
-    <input id="usuario" name="usuario" type="text"  class="form-control" disabled="">
-    </div>
-            <div class="col-sm-offset-0 col-sm-6">
-                    <label>PRIORIDAD DE ATENCIÓN </label>
-                    <select style="width: 100%" class="form-control" class="selectpicker"
-                    name="prioridad" id="prioridad" type="text" data-live-search="true">
-                    <option value="0" selected>SELECCIONE...</option>
+                            <div class="form-group">
+                                <div class="col-sm-offset-0 col-sm-6" >
+                                    <label for="Nombre">NOMBRE</label>
+                                    <input id="usuario" name="usuario" type="text"  class="form-control" disabled="">
+                                </div>
+                                <div class="col-sm-offset-0 col-sm-6">
+                                    <label>PRIORIDAD DE ATENCIÓN </label>
+                                    <select style="width: 100%" class="form-control" class="selectpicker"
+                                    name="prioridad" id="prioridad" type="text" data-live-search="true">
+                                    <option value="0" selected>SELECCIONE...</option>
 <!--                     <option value="BAJA">BAJA</option>
- -->                    <option value="MEDIA">MEDIA</option>
-                    <option value="ALTA">ALTA</option>
-                </select>
-            </div>
-        </div>
-    
-          <div class="form-group"><br>
-            <div class="col-sm-offset-0 col-sm-3">
-                <button type="button" id="button" class="btn btn-green"
-                onclick="asignar();">ACEPTAR</button>
-            </div>
-   <!--          <b>
-                <p class="alert alert-danger text-center padding error" id="danger">El técnico ya esta agregado </p>
-            </b> -->
+-->                    <option value="MEDIA">MEDIA</option>
+<option value="ALTA">ALTA</option>
+</select>
+</div>
+</div>
 
-            <b>
-                <p class="alert alert-success text-center padding exito" id="exitop">¡Prioridad asignada con éxito!</p>
-            </b>
-
-            <b>
-                <p class="alert alert-warning text-center padding aviso" id="vaciop">Seleccione prioridad </p>
-            </b>
-        </div>
-
+<div class="form-group"><br>
+    <div class="col-sm-offset-0 col-sm-3">
+        <button type="button" id="button" class="btn btn-green"
+        onclick="asignar();">ACEPTAR</button>
     </div>
+<!--          <b>
+<p class="alert alert-danger text-center padding error" id="danger">El técnico ya esta agregado </p>
+</b> -->
+
+<b>
+    <p class="alert alert-success text-center padding exito" id="exitop">¡Prioridad asignada con éxito!</p>
+</b>
+
+<b>
+    <p class="alert alert-warning text-center padding aviso" id="vaciop">Seleccione prioridad </p>
+</b>
+</div>
+
+</div>
 
 
 
@@ -389,275 +391,279 @@ $idu = $_SESSION['usuario']['id_usu'];
 </form>
 
 
- 
+
 <!-- <form class="form-horizontal" action="" method="POST" >
-    <div  class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog-modi" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                  
-  ---------------------------
+<div  class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog-modi" role="document">
+<div class="modal-content">
+<div class="modal-header">
 
-                </div>
-                <div class="modal-body">
-  
-  --------------------------------
+---------------------------
 
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+<div class="modal-body">
+
+--------------------------------
+
+</div>
+</div>
+</div>
+</div>
 </form>
- -->
+-->
 
 <form class="form-horizontal" action="" method="POST" onsubmit="return registrar(this)">
- <div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 
 
-    <div class="modal-dialog-modi" role="document">
-    <div class="modal-content">
+        <div class="modal-dialog-modi" role="document">
+            <div class="modal-content">
 
-    <div class="modal-header">
-        <button type="button" id="btn_listar" class="close" data-dismiss="modal" aria-label="Close"><a href="./"><span style="color: black"  aria-hidden="true">&times;</span></a></button>
+                <div class="modal-header">
+                    <button type="button" id="btn_listar" class="close" data-dismiss="modal" aria-label="Close"><a href="./"><span style="color: black"  aria-hidden="true">&times;</span></a></button>
 
 
-        <div class="cerrar"><a ><span class="icon-cross"></span></a></div>
+                    <div class="cerrar"><a ><span class="icon-cross"></span></a></div>
 
-        <h4 class="modal-title" id="exampleModalLabel">Agregar Usuario</h4>
-        <div class="alert alert-danger text-center" style="display:none;color: black" id="danger">
-        <p>El usuario ya esta registrado</p>
+                    <h4 class="modal-title" id="exampleModalLabel">Agregar Usuario</h4>
+                    <div class="alert alert-danger text-center" style="display:none;color: black" id="danger">
+                        <p>El usuario ya esta registrado</p>
+                    </div>
+                    <div class="alert alert-success text-center" style="display:none; color: black" id="exito">
+                        <p>Usario registrado</p>
+                    </div>
+                    <div class="alert alert-warning text-center" style="display:none;color: black" id="aviso_vacio">
+                        <p>Debes escribir contenido en el campo vacio</p>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+
+
+                    <input type="hidden" id="opcion" name="opcion" value="registrar">
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="nombre">Nombre</label>
+                            <input id="nombre" name="nombre" type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="apellidos">Apellidos</label>
+                            <input id="apellidos" name="apellidos" type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="correo">Correo</label>
+                            <input id="correo" name="correo" type="text" class="form-control">
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="idcargo">Cargo:</label>
+                            <select style="width: 100%" class="form-control" class="selectpicker" name="id_cargo" id="id_cargo" type="text" data-live-search="true">
+                                <option selected></option> 
+                                <?php while($caresp = mysqli_fetch_row($cargo)):?>
+                                    <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-offset-0 col-sm-8">
+                            <label>Area adscripción:</label>
+                            <select style="width: 100%" class="form-control" class="selectpicker" name="id_area" id="id_area" type="text" data-live-search="true">
+                                <option selected></option> 
+                                <?php while($rea = mysqli_fetch_row($are)):?>
+                                    <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="extension">Extension</label>
+                            <input id="extension" name="extension" type="text" class="form-control">
+                        </div>
+
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label>Ubicación:</label>
+                            <select  class="form-control" class="selectpicker" name="ubicacion" id="ubicacion" type="text" data-live-search="true">
+                                <option selected></option> 
+                                <option value="Piso m2">Piso m2</option>
+                                <option value="Piso 1">Piso 1</option>
+                                <option value="Piso 2">Piso 2</option>
+                                <option value="Piso 3">Piso 3</option>
+                                <option value="Piso 4">Piso 4</option>
+                                <option value="Piso 7">Piso 7</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="n_empleado">N° Empleado</label>
+                            <input id="n_empleado" name="n_empleado" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group"><br>
+                        <div class="col-sm-offset-0 col-sm-5">
+                            <button type="button" class="btn btn-primary" onclick="registrar();">Guardar</button>
+                            <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="alert alert-success text-center" style="display:none; color: black" id="exito">
-        <p>Usario registrado</p>
+    </div>
+</form> 
+
+
+<form id="Editar" class="form-horizontal" action="" method="POST">
+
+    <div id="frmEditar" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+        <div class="modal-dialog-modi" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span aria-hidden="true">&times;</span></a></button>
+
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+
+                    <h4 class="modal-title" id="exampleModalLabel">Actualizar Usuario</h4>
+                    <div class="alert alert-danger text-center" style="display:none; color:black;" id="error">
+                        <p>Error! no se pudo actualizar usuario</p>
+                    </div>
+                    <div class="alert alert-success text-center" style="display:none; color:black;" id="echo">
+                        <p>Usuario actualizado</p>
+                    </div>
+                    <div class="alert alert-warning text-center" style="display:none; color:black;" id="vacio">
+                        <p>Debes escribir contenido en el campo vacio</p>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="id_usuario" name="id_usuario" value="0">
+                    <input type="hidden" id="opcion" name="opcion" value="modificar">
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="nombre">Nombre</label>
+                            <input id="nombre" name="nombre" type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="apellidos">Apellidos</label>
+                            <input id="apellidos" name="apellidos" type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="correo">Correo</label>
+                            <input id="correo" name="correo" type="text" class="form-control">
+                        </div>    
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="idcargo">Cargo:</label>
+                            <select style="width: 100%" class="form-control" class="selectpicker" name="idcargo" id="idcargo" type="text" data-live-search="true">
+                                <option selected></option> 
+                                <?php while($caresp = mysqli_fetch_row($acargo)):?>
+                                    <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-offset-0 col-sm-8">
+                            <label>Area adscripción:</label>
+                            <select style="width: 100%" class="form-control" class="selectpicker" name="idarea" id="idarea" type="text" data-live-search="true">
+                                <option value="0">Único</option>
+                                <?php while($reae = mysqli_fetch_row($aree)):?>
+                                    <option value="<?php echo $reae[0]?>"><?php echo $reae[1]?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="extension">Extension</label>
+                            <input id="extension" name="extension" type="text" class="form-control">
+                        </div>
+
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="ubicacion">Ubicación</label>
+                            <input id="ubicacion" name="ubicacion" type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-offset-0 col-sm-4">
+                            <label for="n_empleado">N° Empleado</label>
+                            <input id="n_empleado" name="n_empleado" type="text" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="form-group"><br>
+                        <div class="col-sm-offset-0 col-sm-5">
+                            <button type="button" class="btn btn-primary" onclick="modificar();">Guardar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="alert alert-warning text-center" style="display:none;color: black" id="aviso_vacio">
-        <p>Debes escribir contenido en el campo vacio</p>
-        </div>
     </div>
-
-    <div class="modal-body">
-
-
-    <input type="hidden" id="opcion" name="opcion" value="registrar">
-        
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="nombre">Nombre</label>
-    <input id="nombre" name="nombre" type="text" class="form-control">
-    </div>
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="apellidos">Apellidos</label>
-    <input id="apellidos" name="apellidos" type="text" class="form-control">
-    </div>
-     <div class="col-sm-offset-0 col-sm-4">
-    <label for="correo">Correo</label>
-    <input id="correo" name="correo" type="text" class="form-control">
-    </div> 
-    </div>
-
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="idcargo">Cargo:</label>
-   <select style="width: 100%" class="form-control" class="selectpicker" name="id_cargo" id="id_cargo" type="text" data-live-search="true">
-    <option selected></option> 
-    <?php while($caresp = mysqli_fetch_row($cargo)):?>
-      <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
-    <?php endwhile; ?>
-    </select>
-    </div>
-
-    <div class="col-sm-offset-0 col-sm-8">
-    <label>Area adscripción:</label>
-   <select style="width: 100%" class="form-control" class="selectpicker" name="id_area" id="id_area" type="text" data-live-search="true">
-    <option selected></option> 
-    <?php while($rea = mysqli_fetch_row($are)):?>
-      <option value="<?php echo $rea[0]?>"><?php echo $rea[1]?></option>
-    <?php endwhile; ?>
-    </select>
-    </div>
-    </div>
-
-
-    <div class="form-group">
-      
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="extension">Extension</label>
-    <input id="extension" name="extension" type="text" class="form-control">
-    </div>
-
-    <div class="col-sm-offset-0 col-sm-4">
-    <label>Ubicación:</label>
-   <select  class="form-control" class="selectpicker" name="ubicacion" id="ubicacion" type="text" data-live-search="true">
-    <option selected></option> 
-      <option value="Piso m2">Piso m2</option>
-      <option value="Piso 1">Piso 1</option>
-      <option value="Piso 2">Piso 2</option>
-      <option value="Piso 3">Piso 3</option>
-      <option value="Piso 4">Piso 4</option>
-      <option value="Piso 7">Piso 7</option>
-    </select>
-    </div>
-  
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="n_empleado">N° Empleado</label>
-    <input id="n_empleado" name="n_empleado" type="text" class="form-control">
-    </div>
-    </div>
-
-    <div class="form-group"><br>
-    <div class="col-sm-offset-0 col-sm-5">
-    <button type="button" class="btn btn-primary" onclick="registrar();">Guardar</button>
-    <button type="reset" class="btn btn-primary" id="boton">Vaciar</button>
-    </div>
-    </div>
-    </div>
-   
-    </div>
-    </div>
-    </div>
-    </form> 
-
-
- <form id="Editar" class="form-horizontal" action="" method="POST">
-
-<div id="frmEditar" class="col-sm-12 col-md-12 col-lg-12"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-
-    <div class="modal-dialog-modi" role="document">
-    <div class="modal-content">
-
-    <div class="modal-header">
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><a href="./" style="color: black"><span aria-hidden="true">&times;</span></a></button>
-
-        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-
-    <h4 class="modal-title" id="exampleModalLabel">Actualizar Usuario</h4>
-<div class="alert alert-danger text-center" style="display:none; color:black;" id="error">
-<p>Error! no se pudo actualizar usuario</p>
+</form>
 </div>
-<div class="alert alert-success text-center" style="display:none; color:black;" id="echo">
-<p>Usuario actualizado</p>
+
 </div>
-    <div class="alert alert-warning text-center" style="display:none; color:black;" id="vacio">
-<p>Debes escribir contenido en el campo vacio</p>
+<!-- /.row -->
 </div>
-    </div>
+<!-- /#page-wrapper -->
 
-    <div class="modal-body">
-
-    <input type="hidden" id="id_usuario" name="id_usuario" value="0">
-    <input type="hidden" id="opcion" name="opcion" value="modificar">
-
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="nombre">Nombre</label>
-    <input id="nombre" name="nombre" type="text" class="form-control">
-    </div>
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="apellidos">Apellidos</label>
-    <input id="apellidos" name="apellidos" type="text" class="form-control">
-    </div>
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="correo">Correo</label>
-    <input id="correo" name="correo" type="text" class="form-control">
-    </div>    
-    </div>
-    <div class="form-group">
-
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="idcargo">Cargo:</label>
-   <select style="width: 100%" class="form-control" class="selectpicker" name="idcargo" id="idcargo" type="text" data-live-search="true">
-    <option selected></option> 
-    <?php while($caresp = mysqli_fetch_row($acargo)):?>
-      <option value="<?php echo $caresp[0]?>"><?php echo $caresp[1]?></option>
-    <?php endwhile; ?>
-    </select>
-    </div>
-
-    <div class="col-sm-offset-0 col-sm-8">
-    <label>Area adscripción:</label>
-    <select style="width: 100%" class="form-control" class="selectpicker" name="idarea" id="idarea" type="text" data-live-search="true">
-    <option value="0">Único</option>
-    <?php while($reae = mysqli_fetch_row($aree)):?>
-      <option value="<?php echo $reae[0]?>"><?php echo $reae[1]?></option>
-    <?php endwhile; ?>
-    </select>
-    </div>
-    </div>
-    <div class="form-group">
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="extension">Extension</label>
-    <input id="extension" name="extension" type="text" class="form-control">
-    </div>
-
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="ubicacion">Ubicación</label>
-    <input id="ubicacion" name="ubicacion" type="text" class="form-control">
-    </div>
-    <div class="col-sm-offset-0 col-sm-4">
-    <label for="n_empleado">N° Empleado</label>
-    <input id="n_empleado" name="n_empleado" type="text" class="form-control">
-    </div>
-
-    </div>
-    <div class="form-group"><br>
-    <div class="col-sm-offset-0 col-sm-5">
-    <button type="button" class="btn btn-primary" onclick="modificar();">Guardar</button>
-    
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </form>
-    </div>
-
-        </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-
-    <!-- /#wrapper -->
+<!-- /#wrapper -->
 </body>
 
+<!-----DATATABLE RESPONSIVE------>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
 
-    <!--<script src="js/jquery-1.12.3.js"></script>-->
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/jquery.dataTables.min.js"></script>
-    <script src="../../js/dataTables.bootstrap.js"></script>
-    <!--botones DataTables-->   
-    <script src="../../js/dataTables.buttons.min.js"></script>
-    <script src="../../js/buttons.bootstrap.min.js"></script>
-    <!--Libreria para exportar Excel-->
-    <script src="../../js/jszip.min.js"></script>
-    <!--Librerias para exportar PDF-->
-    <script src="../../js/pdfmake.min.js"></script>
-    <script src="../../js/vfs_fonts.js"></script>
-    <!--Librerias para botones de exportación-->
-    <script src="../../js/buttons.html5.min.js"></script>        
+<!--<script src="js/jquery-1.12.3.js"></script>-->
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/jquery.dataTables.min.js"></script>
+<script src="../../js/dataTables.bootstrap.js"></script>
+<!--botones DataTables-->   
+<script src="../../js/dataTables.buttons.min.js"></script>
+<script src="../../js/buttons.bootstrap.min.js"></script>
+<!--Libreria para exportar Excel-->
+<script src="../../js/jszip.min.js"></script>
+<!--Librerias para exportar PDF-->
+<script src="../../js/pdfmake.min.js"></script>
+<script src="../../js/vfs_fonts.js"></script>
+<!--Librerias para botones de exportación-->
+<script src="../../js/buttons.html5.min.js"></script>        
 
-    <script src="../../boots/metisMenu/metisMenu.min.js"></script>
-    <script src="../../dist/js/sb-admin-2.js"></script>
+<script src="../../boots/metisMenu/metisMenu.min.js"></script>
+<script src="../../dist/js/sb-admin-2.js"></script>
 <!--    <script type="text/javascript" src="calendario/tcal.js"></script> -->
 
-    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 <!--    <script type="text/javascript" src="valida/valida.js"></script>-->
-    <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>    
+<!--     <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>     -->
     <script type="text/javascript" src="../../js/usuarios.js"></script>
     <script src="../../js/status.js"></script>
-<link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
-<script type="text/javascript">
-    $(document).ready(function(){
+    <link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
+    <script type="text/javascript">
+        $(document).ready(function(){
             $('#id_area').select2();
             $('#idarea').select2();
-    });
-    $(window).load(function() {
-    $(".loader").fadeOut("slow");
-});
-</script>
-<script src="../../js/select2.js"></script> 
-<?php include('../../php/admin-usuarios.php');?>
-</html>
+        });
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+        });
+    </script>
+    <script src="../../js/select2.js"></script> 
+    <?php include('../../php/admin-usuarios.php');?>
+    </html>
 <!-- <a href='#' type='button' data-toggle='modal' data-target='#modalVal' class='detalle btn btn-default' onclick='atender({$id})' ><i class='fa fa-desktop'></i></a> -->

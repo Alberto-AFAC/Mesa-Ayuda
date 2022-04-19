@@ -22,16 +22,16 @@ $idu = $_SESSION['usuario']['id_usu'];
 
     <title>Sistema</title>
 
-<!--     
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+<!--
     <link href="../../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="../../boots/morrisjs/morris.css" rel="stylesheet">
     <link href="../../boots/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../../boots/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
     <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/> -->
-
-
-
     <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -39,7 +39,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
     <script src="../../js/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="../../js/equipo.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
 
 
 </head>
@@ -117,7 +117,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                 <?php include('../notif.php');?>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -219,7 +219,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                                   <p style="padding: 0.5em; text-align: center; float: right; width:95%;" class="mensaje"></p>
                             </div>
                                <div class="panel-body" style="font-size: 12px;">             
-                                    <table id="data-table-area" class="table table-striped table-bordered"></table>
+                                    <table width="100%" id="data-table-area" class="table table-striped table-bordered"></table>
                                 </div>
                         </div>          
                     </div>
@@ -292,7 +292,7 @@ Agregar datos del  equipo </h4>
                     <div class="col-sm-12" >
                     <select style="width: 100%" class="form-control" class="selectpicker" id="nempleado" name="nempleado" type="text" data-live-search="true">
                    <option value="">Seleccione usuario</option>    
-                    <option value="0">NO ASIGNADO</option> 
+                    <option value="1">NO ASIGNADO</option> 
                     <?php while($usuario = mysqli_fetch_row($resu)):?>
                     <option value="<?php echo $usuario[0]?>"><?php echo $usuario[1].' '.$usuario[2]?></option>
                     <?php endwhile; ?>
@@ -670,9 +670,6 @@ EDITAR DATOS DEL EQUIPO </b></h4>
     <!-- /#wrapper -->
 </body>
 
-
-
-
 <!-- <script src="../../js/jquery.dataTables.min.js"></script>
 <script src="../../js/buttons.bootstrap.min.js"></script>
 <script src="../../js/jszip.min.js"></script>
@@ -696,6 +693,12 @@ EDITAR DATOS DEL EQUIPO </b></h4>
 <script src="../../dist/js/sb-admin-2.js"></script>
 <script src="../../js/status.js"></script>
 <link rel="stylesheet" type="text/css" href="../../boots/bootstrap/css/select2.css">
+
+<!-----DATATABLE RESPONSIVE------>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
   $('#n_empleado').select2();

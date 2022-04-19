@@ -34,6 +34,9 @@ session_start();
 
     <title>Reporte</title>
 
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <!-- Bootstrap Core CSS -->
     <!-- MetisMenu CSS -->
     <link href="../boots/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -50,15 +53,17 @@ session_start();
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet"
-        href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+
+<!--     <link rel="stylesheet"
+        href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" /> -->
+ 
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+ <!--    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
     <script type="text/javascript" src="../js/atdRpt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
-
+<!--     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">    
 
 </head>
 
@@ -87,7 +92,7 @@ session_start();
 
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -133,7 +138,7 @@ session_start();
         <div id="page-wrapper">
 
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
                     <img src="../img/afac.png" class="imgafac">
                     <h1 class="page-header">CONSULTA DE REPORTES </h1>
                     <?php
@@ -515,11 +520,11 @@ session_start();
             <?php endif?>
 
             <div class="panel-body">
-                <div style="padding-top: 30px;" class="col-lg-12">
+                <div id="overflow" style="padding-top: 30px;" class="col-lg-12">
                     <?php if($data['sede']== 'WEB'):?>
-                    <table style="width: 100%" id="data-table-consulta-web" class="table table-striped table-hover">
+                    <table width="100%" id="data-table-consulta-web" class="table table-striped table-hover">
                         <?php else :?>
-                        <table style="width: 100%" id="data-table-consulta" class="table table-striped table-hover">
+                        <table width="100%" id="data-table-consulta" class="table table-striped table-hover">
                             <?php endif?>
 
                         </table>
@@ -736,17 +741,29 @@ session_start();
     <!-- /#wrapper -->
 </body>
 
-<script src="../js/jquery-1.12.3.min.js"></script>
+<!-----DATATABLE RESPONSIVE------>
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+
+
+<script src="../js/jquery-1.12.3.min.js"></script>
+<!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
 <script src="../boots/bootstrap/js/bootstrap.min.js"></script>
+
+
 <!-- <script src="../js/bootstrap.min.js"></script> -->
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/dataTables.bootstrap.js"></script>
 <script src="../js/dataTables.buttons.min.js"></script>
 <script src="../boots/metisMenu/metisMenu.min.js"></script>
 <script src="../dist/js/sb-admin-2.js"></script>
+
+
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
@@ -799,16 +816,21 @@ var dataSet = [
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
+            if($servicio=='SISTEMAS'){
+                $tipo = 'SIS-';
+            }else{
+                $tipo = 'TEC-';
+            }
  
 if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){
-    ?>["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
+    ?>["<?php echo $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>",
         "<span style='color: gray'>NO DISPONIBLE</span>"
     ],
-    <?php }else if($data['evaluacion'] != '0'){ ?>["<?php echo  $data['n_reporte']?>",
-        "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>",
+    <?php }else if($data['evaluacion'] != '0'){ ?>["<?php echo $tipo.$data['n_reporte']?>",
+        "<?php echo $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>",
         "<?php echo $inicio ?>", "<?php echo $final ?>",
 
 
@@ -836,7 +858,7 @@ if($data['evaluacion']=='CANCELADO'){
     ],
 
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
-        "<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
+        "<?php echo $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
         "<?php echo $servicio?>", "<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>",
         "<span style='color: gray;'>NO DISPONIBLE</span>"
@@ -846,6 +868,10 @@ if($data['evaluacion']=='CANCELADO'){
 } ?>
 ];
 var tableGenerarReporte = $('#data-table-consulta').DataTable({
+       rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+    responsive: true,    
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -935,22 +961,28 @@ var dataSet = [
             $final = $data['ftermino'];
             $inicio = $data['finicio'];
 
+            if($servicio=='SISTEMAS'){
+                $tipo = 'SIS-';                    
+            }else{
+                $tipo = 'TEC-';
+            }
+
 if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pila'] =='WEB' || $data['evaluacion'] == '2' && $data['estado_rpt'] =='Finalizado' && $data['pila'] =='WEB'){ ?>
-     ["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
+     ["<?php echo $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
         "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>","<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA CONFIRMAR</a>";?>",
         "<span style='color: gray'>NO DISPONIBLE</span>"
     ],
 <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado'){ ?>
-    ["<?php echo $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
+    ["<?php echo $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>",
         "<?php echo $extension?>",
         "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>","<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA SU EVALUACIÓN</a>";?>",
         "<span style='color: gray'>NO DISPONIBLE</span>"
     ],
     <?php }else if($data['evaluacion'] == '1'){ ?>
-        ["<?php echo  $data['n_reporte']?>",
+        ["<?php echo $tipo.$data['n_reporte']?>",
         "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>", "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>",
         "<?php echo $inicio ?>", 
 
@@ -971,7 +1003,7 @@ if($data['evaluacion'] == '0' && $data['estado_rpt'] =='Finalizado' && $data['pi
         ],
 
     <?php }else if($data['evaluacion'] == '0' && $data['estado_rpt'] == 'Cancelado'){ ?>[
-        "<?php echo  $data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
+        "<?php echo $tipo.$data['n_reporte']?>", "<?php echo  $nombre." ".$apellidos?>", "<?php echo $extension?>",
         "<?php echo $servicio?>","<?php echo $intervencion?>","<?php echo $falla?>","<?php echo $problema?>","<?php echo $usuarioObsr?>","<?php echo $inicio ?>", "<?php echo $final ?>",
         "<?php echo "<a href='#' type='button' data-toggle='modal' data-target='#modalDtll' class='detalle btn btn-default' onclick='detalle({$data['n_reporte']})' style='width:100%; font-size:12px;'>FALTA QUE CONFIRME</a>";?>","<span style='color: gray;'>CANCELADO</span>"
     ],
@@ -1122,7 +1154,8 @@ $(document).ready(function () {
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         servicio
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS' 
@@ -1167,11 +1200,16 @@ $(document).ready(function () {
                 $eva = $data5['evaluacion'];
             }
 
+            if($data5[8]=='SISTEMAS'){
+                $folio = 'SIS-';
+            }else{
+                $folio = 'TEC-';
+            }
 
 if($data5['estado_rpt'] == 'Finalizado'){
         ?>
 
-        ["<?php echo $data5['año']."-".$data5['n_reporte']?>",
+        ["<?php echo $data5['año']."-"."$folio".$data5['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
             "<?php echo $data5['finicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>"],
@@ -1180,10 +1218,6 @@ if($data5['estado_rpt'] == 'Finalizado'){
         <?php }  }} ?>
     ];
     //       
-
-
-
-
 
     var tableFinalizados = $('#data-table-finalizados').DataTable({
 
@@ -1233,7 +1267,8 @@ if($data5['estado_rpt'] == 'Finalizado'){
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         servicio
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS' 
@@ -1268,7 +1303,6 @@ if($data5['estado_rpt'] == 'Finalizado'){
         // $idpersona = $dato['gstIdper'];
             if($data['ffinal'] == '0000-00-00'){
                 $NA = "Sin fecha";
-
             } else {
                 $NA = $data['ffinal'];
             };
@@ -1278,11 +1312,16 @@ if($data5['estado_rpt'] == 'Finalizado'){
                 $eva = $data['evaluacion'];
             }
 
+            if($data[8]=='SISTEMAS'){
+                $folio = 'SIS-';
+            }else{
+                $folio = 'TEC-';
+            }
 
-if($data['estado_rpt'] == 'Por atender'){
+        if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+        ["<?php echo $data['año']."-"."$folio".$data['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
             "<?php echo $data['finicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
@@ -1328,7 +1367,6 @@ if($data['estado_rpt'] == 'Por atender'){
             }
         ],
     });
-
     //TODO REALIZANDO
     var dataSet = [
         <?php
@@ -1340,13 +1378,14 @@ if($data['estado_rpt'] == 'Por atender'){
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         servicio
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS'
-     ORDER BY
+         ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+	   $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -1385,11 +1424,16 @@ if($data['estado_rpt'] == 'Por atender'){
                 $eva = $data['evaluacion'];
             }
 
+            if($data[8]=='SISTEMAS'){
+                $folio = 'SIS-';
+            }else{
+                $folio = 'TEC-';
+            }
 
-if($data['estado_rpt'] == 'Pendiente'){
+    if($data['estado_rpt'] == 'Pendiente'){
         ?>
 
-        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+        ["<?php echo $data['año']."-"."$folio".$data['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
             "<?php echo $data['finicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
@@ -1447,7 +1491,8 @@ if($data['estado_rpt'] == 'Pendiente'){
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         servicio
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS' 
@@ -1492,11 +1537,16 @@ if($data['estado_rpt'] == 'Pendiente'){
                 $eva = $data['evaluacion'];
             }
 
+            if($data[8]=='SISTEMAS'){
+                $folio = 'SIS-';
+            }else{
+                $folio = 'TEC-';
+            }
 
 if($data['estado_rpt'] == 'Cancelado'){
         ?>
 
-        ["<?php echo $data['año']."-".$data['n_reporte']?>",
+        ["<?php echo $data['año']."-"."$folio".$data['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
             "<?php echo $data['finicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",

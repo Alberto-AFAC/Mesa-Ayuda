@@ -48,16 +48,23 @@ if($data = mysqli_fetch_array($resultado)){
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Reporte</title>
+
+    <!-----------DATA TABLE RESPONSIVE---------->
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet"
         href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+
     <script type="text/javascript" src="../js/atdRpt.js"></script>
     <link href="../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">    
 </head>
 
 <body>
@@ -85,7 +92,7 @@ if($data = mysqli_fetch_array($resultado)){
 
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -131,7 +138,7 @@ if($data = mysqli_fetch_array($resultado)){
         <div id="page-wrapper">
 
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
                     <img src="../img/afac.png" class="imgafac">
                     <h1 class="page-header">ATENDER REPORTE</h1>
                     <?php 
@@ -244,9 +251,9 @@ if($data = mysqli_fetch_array($resultado)){
             <div class="panel-body">
                 <div class="col-lg-12">
                 <?php if($data['sede'] == 'WEB'):?>
-                    <table style="width: 100%" id="data-table-reporte-web" class="table table-striped table-hover">
+                    <table width="100%" id="data-table-reporte-web" class="table table-striped table-hover">
                     <?php else : ?>
-                    <table style="width: 100%" id="data-table-reporte" class="table table-striped table-hover">
+                    <table width="100%" id="data-table-reporte" class="table table-striped table-hover">
                     <?php endif?>
                     </table>
                 </div>
@@ -495,7 +502,7 @@ if($data = mysqli_fetch_array($resultado)){
                             </div>
 
 
-                            <div class="form-group" style="text-transform: uppercase;"><br>
+                            <div class="form-group" style="text-transform: uppercase;" id="notifi"><br>
                                 <div class="col-sm-offset-0 col-sm-4">
                                     <button type="button" id="button" class="btn btn-green"
                                         onclick="atdRpt();">ACEPTAR</button>
@@ -861,15 +868,20 @@ if($data = mysqli_fetch_array($resultado)){
 <script src="../js/mayu.js"></script>
 <script src="../js/buttons.bootstrap.min.js"></script>
 
-<script type="text/javascript" src="calendario/tcal.js"></script>
-
-<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<!-- <script type="text/javascript" src="calendario/tcal.js"></script> -->
 <script type="text/javascript" src="valida/valida.js"></script>
+<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+
 <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
 <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css">
-<script type="text/javascript">
+<!-----DATATABLE RESPONSIVE------>
+<!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="../boots/bootstrap/css/select2.css"><script type="text/javascript">
 $(document).ready(function() {
     // $('#buscador').load('select/buscar.php');
     // $('#select1').load('select/tabla.php');

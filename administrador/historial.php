@@ -46,6 +46,7 @@ $fecha = date('Y');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
     <!-- CREACIÓN DE BOTONES -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
 </head>
 
 <body>
@@ -180,7 +181,7 @@ $fecha = date('Y');
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -566,8 +567,10 @@ onclick="location.href='./'" -->
                             </div>
                         </div>
                         <br><br>
+                    <div id="cuadro2">
                         <table id="data-table-administrador" class="table table-bordered" width="100%" cellspacing="0">
                         </table>
+                    </div>
                     </div>
                 </div>
             </div>

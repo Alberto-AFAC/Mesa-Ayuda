@@ -16,7 +16,7 @@
         // $query = "SELECT * FROM equipo 
         // INNER JOIN asignacion ON id_equi = id_equipo 
         // WHERE n_emp = 0 AND equipo.estado = 0 ORDER BY id_equipo ASC";
-        $queri = "SELECT * FROM personal WHERE estado = 1 AND gstNmpld = $n_emp ORDER BY gstIdper ASC";
+        $queri = "SELECT * FROM personal WHERE gstNmpld = $n_emp AND estado = 1 ORDER BY gstIdper ASC";
         $resultado = mysqli_query($conexion2, $queri);
        
         if($dato = mysqli_fetch_array($resultado)){
@@ -47,7 +47,9 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 
              $id = $data['id_equipo'];
 
-if($data['proceso']=='designado'){ ?>
+if($data['n_emp']=='1'){ 
+
+    ?>
 
     ['<?php echo $n?>','<?php echo $data['num_invntraio']?>','<?php echo $data['marca_cpu']?>','<?php echo $data['serie_cpu']?>','<?php echo 'NO ASIGNADO'?>',"<?php if($data['num_invntraio'] == '0'){
 
@@ -57,16 +59,27 @@ echo "<a title='Editar equipo de computo' href='javascript:openEqpo()' onclick='
 }
     ?>"],
 
-<?php } 
+<?php 
+} 
 
 }
 }?>
+
+
+
+
 ];
 
 var tableGenerarReporte = $('#data-table-area').DataTable({
                 "order": [
             [0, "desc"]
         ],
+
+   rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+    responsive: true,
+        
     "language": {
     "searchPlaceholder": "Buscar datos...",
     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"

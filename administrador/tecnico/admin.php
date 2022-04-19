@@ -36,6 +36,7 @@ $idtec = mysqli_fetch_row($result);
 
     <title>Sistema</title>
 
+
     <!-- Bootstrap Core CSS -->
     <link href="../../boots/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -46,7 +47,7 @@ $idtec = mysqli_fetch_row($result);
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
-
+    <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
 </head>
 
 <body>
@@ -124,7 +125,7 @@ $idtec = mysqli_fetch_row($result);
                 <?php include('../notif.php');?>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -168,7 +169,7 @@ $idtec = mysqli_fetch_row($result);
     <div id="page-wrapper">
         <!--<h3 class="text-center" style="border: 1px solid red;"> <small class="mensaje">123</small></h3>-->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" id="header">
                 <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                 <h1 class="page-header" style="text-transform: uppercase;">TÉCNICOS</h1>
             </div>

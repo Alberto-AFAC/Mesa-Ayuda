@@ -77,22 +77,14 @@ var dataSet = [
             $extension = $data2['gstExTel'];
             $final = $data['ffinal'];
             $inicio = $data['finicio'];
+            $tipo = 'SIS-';
 
-
-            // if($data['HORAFINAL'] <= 5 || $data['HORAFINAL'] <=10){
-            //     $tTotal = "<span title='A tiempo' style='background-color: green;' class='badge'>".$data['HORAFINAL']." hrs</i></span>";
-            // } else if($data['HORAFINAL'] <= 6 || $data['HORAFINAL'] <=15){
-            //     $tTotal = "<span title='Fuera de tiempo' style='background-color: black;' class='badge'>".$data['HORAFINAL']." hrs</span>";
-            // } else if($data['HORAFINAL'] >= 24 ){
-            //     $tTotal = "<span title='Fuera de tiempo' style='background-color: red;' class='badge'>".$data['HORAFINAL']." hrs</span>";
-            // } 
-            
   $actual = date('d/m/Y');
 
 if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente'){
         ?>
 
-    ["<?php echo $data['n_reporte'] ?>", "<?php echo $prio ?>", "<?php echo $nombre . " " . $apellidos ?>",
+    ["<?php echo $tipo.$data['n_reporte'] ?>", "<?php echo $prio ?>", "<?php echo $nombre . " " . $apellidos ?>",
         "<?php echo $extension?>",
         "<?php echo $data['servicio']?>", "<?php echo $iniciotab ?>", "<?php echo $finaltab?>",
         "<?php echo $tiempos ?>", "<?php if($data['estado_rpt'] == 'Por atender'){
@@ -132,6 +124,11 @@ if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt
 ];
 
 var tableGenerarReporte = $('#data-table-reporte').DataTable({
+       rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+    responsive: true,
+
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -268,7 +265,7 @@ var dataSet = [
 if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt'] == 'Pendiente'){
         ?>
 
-    ["<?php echo $data['n_reporte'] ?>", "<?php echo $prio ?>", "<?php echo $nombre . " " . $apellidos ?>",
+    ["<?php echo $tipo.$data['n_reporte'] ?>", "<?php echo $prio ?>", "<?php echo $nombre . " " . $apellidos ?>",
         "<?php echo $extension?>",
         "<?php echo $data['servicio']?>", "<?php echo $iniciotab ?>", "<?php echo $finaltab?>",
         "<?php echo $tiempos ?>", "<?php if($data['estado_rpt'] == 'Por atender'){
@@ -311,6 +308,12 @@ if($inicio==$actual || $data['estado_rpt'] == 'Por atender' || $data['estado_rpt
 ];
 
 var tableGenerarReporte = $('#data-table-reporte-web').DataTable({
+
+   rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+    responsive: true,
+    
     "language": {
         "searchPlaceholder": "Buscar datos...",
         "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
@@ -416,7 +419,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Finalizado'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-"."SIS-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
@@ -530,7 +533,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Por atender'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-"."SIS-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
@@ -638,7 +641,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Pendiente'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-"."SIS-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
@@ -746,7 +749,7 @@ var dataSet = [
 if($data['estado_rpt'] == 'Cancelado'){
         ?>
 
-    ["<?php echo $data['año']."-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
+    ["<?php echo $data['año']."-"."SIS-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
         "<?php echo $data['finicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 

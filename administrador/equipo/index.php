@@ -27,7 +27,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+<link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
     <title>Sistema</title>
 
 <!--     
@@ -124,7 +124,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                 <?php include('../notif.php');?>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a id="icon-usu" class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -183,7 +183,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <div id="page-wrapper">
             <!--<h3 class="text-center" style="border: 1px solid red;"> <small class="mensaje">123</small></h3>-->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="header">
              <img src="../../img/afac.png" style="float: right; width: 90px;margin-top: 0.8em">
                     <h1 class="page-header">EQUIPOS ASIGNADOS </h1>                    
                 </div>
@@ -278,7 +278,7 @@ while ($per = mysqli_fetch_row($resultados)) {
 
 <!----------------------IP DIRECCIÓN----------------------------->
 
-<form id="Frmdupli" class="form-horizontal" action="" method="POST" style="width: 50%; margin: 0 auto;">
+<form id="Frmdupli" class="form-horizontal" action="" method="POST" style=" margin: 0 auto;">
   <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
    
 
@@ -335,7 +335,7 @@ while ($per = mysqli_fetch_row($resultados)) {
 
 <!------------------------NÚMERO DE INVETARIO--------------------------->
 
-<form id="Frminvet" class="form-horizontal" action="" method="POST" style="width: 50%; margin: 0 auto;">
+<form id="Frminvet" class="form-horizontal" action="" method="POST" style="margin: 0 auto;">
   <div class="col-sm-12 col-md-12 col-lg-12" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
    
 
@@ -808,6 +808,7 @@ EDITAR DATOS DEL EQUIPO </b></h4>
 
 <script src="../../js/jquery-1.12.3.min.js"></script>
 <script src="../../js/select2.js"></script>
+
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>

@@ -12,17 +12,20 @@
 	
 	if($usu_sede=='AFAC - AIFA' || $usu_sede=='OTRO'){
 	$sede = 'LAS FLORES';
+	$tipo = 'TEC-';		
 	if($servicio=='SISTEMAS'){
 	$sede = 'WEB';
+	$tipo = 'SIS-';
 	}
-			
 	}else{
 	
 	$sede = $_POST['sede'];
 	if($servicio=='SISTEMAS'){
 	$sede = 'WEB';
+	$tipo = 'SIS-';
 	}else{
 	$sede = $_POST['sede'];
+	$tipo = 'TEC-';
 	}
 	
 	}
@@ -52,7 +55,8 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
 			registrarSede($nempleado,$usu_sede,$conexion);
-			echo "0";			
+			$folio_rpt = consultarReporte($conexion);
+			echo $tipo.$folio_rpt;			
 		 	}else{	echo "1";	}	
 
 		}else{
@@ -91,9 +95,11 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 	$sede = $_POST['sede'];
 	if($servicio=='SISTEMAS'){
 	$sede = 'WEB';
+	$tipo = 'SIS-';
 	}else{
 	$sede = $_POST['sede'];
 	}
+	$tipo = 'TEC-';
 	}
 
 	$nempleado = $_POST['nempleado'];	
@@ -121,7 +127,8 @@ if(registrar($nempleado,$idequipo,$servicio,$intervencion,$descripcion,$solucion
 //		 echo "0";
 		// enviarCorreo($nempleado,$conexion);		
 			registrarSede($nempleado,$usu_sede,$conexion);
-			echo "0";
+			$folio_rpt = consultarReporte($conexion);
+			echo $tipo.$folio_rpt;			
 		 	}else{	echo "1";	}	
 
 		}else{
@@ -232,6 +239,14 @@ $query="SELECT id_tecnico FROM tecnico
   }
 }	
 
+function consultarReporte($conexion){
+
+$query = "SELECT n_reporte FROM reporte ORDER BY n_reporte DESC LIMIT 1";
+$result = mysqli_query($conexion,$query);
+while ($res = mysqli_fetch_row($result)) {
+		return $res[0];
+	}
+}
 
 function consultar($nempleado,$servicio,$intervencion,$descripcion,$solucion,$ultima,$final,$conexion){
 
