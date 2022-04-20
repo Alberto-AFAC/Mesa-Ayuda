@@ -86,7 +86,7 @@ switch ($id) {
             <option value="mSIAC">SIAC</option>
             <option value="nSIAR">SIAR</option>
             <option value="oCOMPETENCIA LINGUISTICA">COMPETENCIA LINGÜISTICA</option>
-
+            <option value="pCAPACITACIÓN AFAC">CAPACITACIÓN AFAC</option>
             </option>
             </select>
             </div>
@@ -97,7 +97,7 @@ switch ($id) {
               </script>
 
 <?php break;
-   case "5":?>
+   case "6":?>
 
             <div class="col-sm-offset-0 col-sm-4">
             <select  id="intervencion" class="form-control" class="selectpicker" name="intervencion" type="text" data-live-search="true">
@@ -152,7 +152,7 @@ $('#intervencion').change(function(){
            url:'session/valor.php',
   success:function(r){
     $('#select2').load('select/select.php');
-    console.log("aqui perro--chupas"+ $('#intervencion').val());
+    // console.log("aqui perro--chupas"+ $('#intervencion').val());
   }
         });
     });

@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <?php session_start();
   
   $id=0;//esto comentalo y ponle el defaul 0
@@ -11,7 +12,7 @@
              ?>
              <?php
 					
-//cho '>'.$id;
+//echo '>'.$id;
 switch ($id) /*aCPU*/{
   case "a":?>
 
@@ -645,11 +646,6 @@ switch ($id) /*aCPU*/{
   <option value="0NO SE PUEDE CARGAR EL FORMATO CL-02">NO SE PUEDE CARGAR EL FORMATO CL-02</option>
   <option value="0NO SE VISUALIZAN LOS FORMATOS CARGADOS">NO SE VISUALIZAN LOS FORMATOS CARGADOS</option>
   <option value="0NO SE VISUALIZAN LOS NOMBRES DE LOS PARTICIPANTES">NO SE VISUALIZAN LOS NOMBRES DE LOS PARTICIPANTES</option>
-
-
-
-
-
   </select>
   </div>
 
@@ -671,26 +667,115 @@ switch ($id) /*aCPU*/{
   <option value="0NO FINALIZA LA EVALUACIÓN">NO FINALIZA LA EVALUACIÓN</option>
   <option value="0EL AUDIO NO SE REPRODUCE">EL AUDIO NO SE REPRODUCE</option>
   <option value="0NO OBTENGO DATOS EN EL HISTORICO DE EVALUACIÓN">NO OBTENGO DATOS EN EL HISTORICO DE EVALUACIÓN</option>
-
-
-
-
-
-
-
-
   </select>
   </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
+ <?php break;
+  case "A": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+  <option value="0NO GUARDA EL PERSONAL">NO GUARDA EL PERSONAL</option>
+  <option value="0NO SE PUEDE SELECCIONAR EL PUESTO">NO SE PUEDE SELECCIONAR EL PUESTO</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+ <?php break;
+  case "B": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+    <option value="0NO SE PUEDE SELECCIONAR LOS AEROPUERTOS">NO SE PUEDE SELECCIONAR LOS AEROPUERTOS</option>
+    <option value="0NO SE PUEDE SELECCIONAR SUBDIRECCIÓN">NO SE PUEDE SELECCIONAR SUBDIRECCIÓN</option>
+    <option value="0NO SE PUEDE SELECCIONAR DEPARTAMENTO">NO SE PUEDE SELECCIONAR DEPARTAMENTO</option>
+  </select>
+  </div>
   <input type="hidden" name="ultima" id="ultima" value="xx">
   <input type="hidden" name="final" id="final" value="x">
 
 
+ <?php break;
+  case "C": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+    <option value="0NO SE PUEDE GUARDAR EL CURSO">NO SE PUEDE GUARDAR EL CURSO</option>
+    <option value="0NO SE PUEDE GUARDAR EL TEMARIO">NO SE PUEDE GUARDAR EL TEMARIO</option>
+    <option value="0NO SE PUEDE SELECCIONAR MAS DE DOS PERFILES">NO SE PUEDE SELECCIONAR MAS DE DOS PERFILES</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
+
+<?php break;
+  case "D": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+   <option value="0NO SE PUEDE EDITAR EL CURSO">NO SE PUEDE EDITAR EL CURSO</option>
+   <option value="0NO SE PUEDE ELIMINAR EL CURSO">NO SE PUEDE ELIMINAR EL CURSO</option>
+   <option value="0NO SE PUEDE AGREGA TEMARIO">NO SE PUEDE AGREGA TEMARIO</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
 
+<?php break;
+  case "E": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+    <option value="0NO APARECE EL INSPECTOR">NO APARECE EL INSPECTOR</option>
+    <option value="0NO GUARDA LA PROGRAMACIÓN DE CURSO">NO GUARDA LA PROGRAMACIÓN DE CURSO</option>
+    <option value="0NO ENVIA LA NOTIFICACIÓN A PARTICIPANTES">NO ENVIA LA NOTIFICACIÓN A PARTICIPANTES</option>
+    <option value="0NO ENVIA LA NOTIFICACIÓN A RESPONSABLES">NO ENVIA LA NOTIFICACIÓN A RESPONSABLES</option>
+    <option value="0NO EVALUA A LOS PARTICIPANTES">NO EVALUA A LOS PARTICIPANTES</option>
+    <option value="0NO SE PUEDE GUARDAR LA GENERACIÓN DE CONSTANCIAS DE PARTICIPANTES">NO SE PUEDE GUARDAR LA GENERACIÓN DE CONSTANCIAS DE PARTICIPANTES</option>
+    <option value="0NO SE PUEDE FINALIZAR EL CURSO">NO SE PUEDE FINALIZAR EL CURSO</option>
+    <option value="0NO SE PUEDE REPROGRMAR">NO SE PUEDE REPROGRMAR</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
 
+<?php break;
+  case "F": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+    <option value="0NO SE PUEDE VISUALIZAR EL PDF">NO SE PUEDE VISUALIZAR EL PDF</option>
+    <option value="0NO SE PUEDE VALIDAR LA CADENA">NO SE PUEDE VALIDAR LA CADENA</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 
+
+  <?php break;
+  case "G": ?>
+  
+  <div class="col-sm-offset-0 col-sm-6">
+  <select  id="solucion" class="form-control" class="selectpicker" name="solucion" type="text" data-live-search="true">
+    <option value="0">SELECCIONE</option>
+    <option value="0NO SE PUEDE CARGAR OJT Ó BITACORAS">NO SE PUEDE CARGAR OJT Ó BITACORAS</option>
+    <option value="0NO SE PUEDE CARGAR NUEVA ESPECIALIDAD">NO SE PUEDE CARGAR NUEVA ESPECIALIDAD</option>
+    <option value="0NO SE PUEDE VISUALIZAR EL PDF DE OJT Y BITACORA">NO SE PUEDE VISUALIZAR EL PDF DE OJT Y BITACORA</option>
+  </select>
+  </div>
+  <input type="hidden" name="ultima" id="ultima" value="xx">
+  <input type="hidden" name="final" id="final" value="x">
 <?php 
   break;
   default: }

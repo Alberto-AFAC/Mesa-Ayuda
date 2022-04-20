@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <?php session_start();
   
   $id=0;
@@ -226,6 +227,27 @@ switch ($id) {
         <option value="%ALTA FORMATO CL-02">ALTA FORMATO CL-02</option>
         <option value="@PROGRAMAR CITA">PROGRAMAR CITA</option>
         <option value="<APLICACIÓN DE EXAMEN">APLICACIÓN DE EXAMEN</option>
+
+        <!-- <option value="PROGRAMAR CITA">PROGRAMAR CITA</option> -->
+        <!-- <option value="¿LENTITUD">LENTITUD</option> -->
+        </option>
+    </select>
+</div>
+
+<?php break;
+  case "p": ?>
+
+<div class="col-sm-offset-0 col-sm-4">
+    <select id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text"
+        data-live-search="true">
+        <option value="0">SELECCIONE</option>
+        <option value="AALTA DE PERSONAL">ALTA DE PERSONAL </option>
+        <option value="BASIGNAR PUESTO">ASIGNAR PUESTO </option>
+        <option value="CALTA CURSOS">ALTA CURSOS </option>
+        <option value="DCONSULTA DE CURSOS">CONSULTA DE CURSOS </option>
+        <option value="EPROGRAMAR CURSO">PROGRAMAR CURSO </option>
+        <option value="FHISTORIAL DE CONSTANCIAS">HISTORIAL DE CONSTANCIAS </option>
+        <option value="GINSPECTORES">INSPECTORES </option>
 
         <!-- <option value="PROGRAMAR CITA">PROGRAMAR CITA</option> -->
         <!-- <option value="¿LENTITUD">LENTITUD</option> -->

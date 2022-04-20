@@ -77,7 +77,13 @@ var dataSet = [
             $extension = $data2['gstExTel'];
             $final = $data['ffinal'];
             $inicio = $data['finicio'];
+
+
+            if($data[6]=='SUSTEMAS'){
             $tipo = 'SIS-';
+            }else{
+            $tipo = 'TEC-';
+            }
 
   $actual = date('d/m/Y');
 
