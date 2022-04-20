@@ -2,7 +2,7 @@
   
   $id=0;
 
-				if(isset($_SESSION['consulta']) && !empty($_SESSION['consulta'])){
+				if(isset($_SESSION['consulta']) & !empty($_SESSION['consulta'])){
 
 			
 						 $idp=$_SESSION['consulta'];
@@ -210,6 +210,24 @@ switch ($id) {
         <option value=",LENTITUD">LENTITUD</option>
         <option value=":PERDIDA DE DATOS">PERDIDA DE DATOS</option>
         <option value=";NO SE PUEDE ACCEDER AL SISTEMA">NO SE PUEDE ACCEDER AL SISTEMA</option>
+        <!-- <option value="¿LENTITUD">LENTITUD</option> -->
+        </option>
+    </select>
+</div>
+
+<?php break;
+  case "o": ?>
+
+<div class="col-sm-offset-0 col-sm-4">
+    <select id="descripcion" class="form-control" class="selectpicker" name="descripcion" type="text"
+        data-live-search="true">
+        <option value="0">SELECCIONE</option>
+        <option value="|ALTA FORMATO CL-01">ALTA FORMATO CL-01</option>
+        <option value="%ALTA FORMATO CL-02">ALTA FORMATO CL-02</option>
+        <option value="@PROGRAMAR CITA">PROGRAMAR CITA</option>
+        <option value="<APLICACIÓN DE EXAMEN">APLICACIÓN DE EXAMEN</option>
+
+        <!-- <option value="PROGRAMAR CITA">PROGRAMAR CITA</option> -->
         <!-- <option value="¿LENTITUD">LENTITUD</option> -->
         </option>
     </select>
