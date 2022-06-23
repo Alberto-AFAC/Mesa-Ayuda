@@ -15,12 +15,12 @@ $idu = $_SESSION['usuario']['id_usu'];
 }else{ header('Location: ../../gestor'); }
 
 
-$query = "SELECT privilegios FROM tecnico
-WHERE id_usu = $idu ";
-$result = mysqli_query($conexion,$query);
-$idtec = mysqli_fetch_row($result);
+// $query = "SELECT privilegios FROM tecnico
+// WHERE id_usu = $idu AND baja = 0";
+// $result = mysqli_query($conexion,$query);
+// $idtec = mysqli_fetch_row($result);
 
-
+    include('../distroy.php');
 
 ?>
 <!DOCTYPE html>

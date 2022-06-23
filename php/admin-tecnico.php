@@ -1,14 +1,19 @@
 <script type="text/javascript">
     var dataSet = [
     <?php
-    if($idtec[0]=='admin'){
+    if($data['privilegios']=='admin'){
       $opcion = "!= 'WEB'";
+      $privil = "!= 'super_admin'";
+    }else if($data['privilegios']=='super_admin'){
+      $opcion = "!= 'x'";
+      $privil = "!= 'x'";
     }else{
       $opcion = "= 'WEB'";    
+      $privil = "!= 'super_admin'";
     }
 
         $query = "SELECT * FROM tecnico 
-        WHERE sede $opcion AND baja = 0";
+        WHERE sede $opcion AND baja = 0 AND privilegios $privil ";
         $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
            $idusu = $data['id_usu'];
@@ -22,7 +27,6 @@
 
             if(strtoupper($data['privilegios'])== 'ADMIN'){
                 $privilegios = 'ADMINISTRADOR';
-
             } else if(strtoupper($data['privilegios'])== 'TECNICO') {
                 $privilegios = 'TÉCNICO';
             }else{

@@ -2,29 +2,20 @@
 include ("../../gestor/conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
-if (isset($_SESSION['usuario'])) 
-{ 
-$idu = $_SESSION['usuario']['id_usu'];
+if (isset($_SESSION['usuario'])){ 
+$idu = $_SESSION['usuario']['id_usu'];    
 }else{ header('Location: ../../gestor'); }
-// if (isset($_SESSION['usuario'])) {
-// if($_SESSION['usuario']['privilegios'] != "admin"){
-// header("Location: ../");
-// }
-// }else{
-// header('Location: ../');
-// }
 
-    $query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
-    $resultado = mysqli_query($conexion, $query);
-    if($data = mysqli_fetch_array($resultado)){
+    include('acceso.php');
 
-        $idtecnico = $data['id_tecnico'];    
-    }       
    ini_set('date.timezone','America/Mexico_City');
   $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");  
   $fecha = $meses[date('n')-1].'  '.date('Y');
   date_default_timezone_set('America/Mexico_City');
                 $hoy = date("d.m.y, g:i a"); 
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -135,8 +126,9 @@ $idu = $_SESSION['usuario']['id_usu'];
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-
-
+                        <?php if($data['privilegios']=='super_admin'){ ?>
+                        <li><a href="../usuario"><i class="fa fa-pencil-square-o"></i> GENERAR REPORTE</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

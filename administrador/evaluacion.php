@@ -7,12 +7,14 @@ if (isset($_SESSION['usuario']))
 $idu = $_SESSION['usuario']['id_usu'];
 }else{ header('Location: ../../gestor'); }
 
-    $query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
-    $resultado = mysqli_query($conexion, $query);
-    if($data = mysqli_fetch_array($resultado)){
+    include('acceso.php');
+    
+    // $query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
+    // $resultado = mysqli_query($conexion, $query);
+    // if($data = mysqli_fetch_array($resultado)){
 
-        $idtecnico = $data['id_tecnico'];    
-    }         
+    //     $idtecnico = $data['id_tecnico'];    
+    // }         
 ?>
 <!DOCTYPE html>
 <html lang="es">

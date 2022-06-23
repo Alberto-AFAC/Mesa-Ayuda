@@ -14,13 +14,7 @@ session_start();
 //*** header("Location: ../"); } }else{
 //si no exixte quiere decir que nadie se ha logeado y lo regsara al inicio (login)
 //*** header('Location: ../'); }
-
-$query = "SELECT * FROM tecnico WHERE id_usu = $id AND baja = 0";
-$resultado = mysqli_query($conexion, $query);
-if($data = mysqli_fetch_array($resultado)){
-
-    $idtecnico = $data['id_tecnico'];    
-}
+    include('acceso.php');
 
         ini_set('date.timezone','America/Mexico_City');
         $Final= date('d').'/'.date('m').'/'.date('Y');
@@ -34,6 +28,7 @@ if($data = mysqli_fetch_array($resultado)){
         $fecha = $meses[date('n')-1].'  '.date('Y');
         date_default_timezone_set('America/Mexico_City');
                       $hoy = date("d.m.y, g:i a"); 
+
 
 
 ?>

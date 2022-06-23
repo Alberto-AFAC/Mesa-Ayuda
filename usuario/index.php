@@ -4,21 +4,28 @@ include ("../conexion/conexion.php");
 session_start(); 
 if (isset($_SESSION['usuario'])) 
 { 
-$id = $_SESSION['usuario']['id_usu'];
+$idu = $_SESSION['usuario']['id_usu'];
 }else{ header('Location: ../../gestor'); }
 
+
+$query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
+$resultado = mysqli_query($conexion, $query);
+if($data = mysqli_fetch_array($resultado)){
+
+$idtecnico = $data['id_tecnico'];    
+
+}       
+
+if(!isset($data['privilegios'])){
+    $privilegios = '';
+}else{
+    $privilegios = $data['privilegios'];
+}     
+
 $query = "SELECT gstNombr,gstApell,gstNmpld FROM personal
-WHERE gstIdper = $id ";
+WHERE gstIdper = $idu ";
 $result = mysqli_query($conexion2,$query);
 $usua = mysqli_fetch_row($result);
-
-// if (isset($_SESSION['usuario'])) 
-//     { }else{ header('Location: ../'); }
-//evaluaremos si la variable de sesión existe de lo contrario no se hará nada 
-//si la variable sesión existe, se evaluará que tipo de usuario está ingresando de esa manera saber a dónde se debe redireccionar en caso de que ya se haya logeado 
-//  if(isset($_SESSION['gstNmpld'])){
-//    if($_SESSION['gstNmpld']['gstNmpld'] != ''){}    
-// }else{ header('Location: ../');}
 
 $n_empleado =  $usua[2];
 
@@ -146,7 +153,15 @@ document.getElementById('alerta').innerHTML = texto;
                                 <!--<span class="fa arrow"></span>-->
                             </a>
                         </li>
+                        <?php 
+                                if($privilegios == 'super_admin'){ ?>
 
+                                    <li>
+                                        <a href="../administrador"><i class="glyphicon glyphicon-cog"></i> ADMINISTRADOR
+                                            <!--<span class="fa arrow"></span>-->
+                                        </a>
+                                    </li>
+                        <?php } ?>
 
                     </ul>
                 </div>

@@ -6,14 +6,8 @@ if (isset($_SESSION['usuario']))
 { 
 $idu = $_SESSION['usuario']['id_usu'];
 }else{ header('Location: ../../gestor'); }
-// if (isset($_SESSION['usuario'])) {
-// if($_SESSION['usuario']['privilegios'] != "admin"){
-// header("Location: ../../");
-// }
-// }else{
-// header('Location: ../../');
-// }
-// $idu = $_SESSION['usuario']['id_usu'];
+
+    include('../distroy.php');
  
      
 ?>

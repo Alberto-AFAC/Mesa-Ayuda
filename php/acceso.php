@@ -12,6 +12,8 @@ $resultado = mysqli_query($conexion, $query);
 if($data = mysqli_fetch_array($resultado)){
 	if($data['privilegios']=='admin'){
 		header('Location: ../administrador');
+	}else if($data['privilegios']=='super_admin'){
+		header('Location: ../administrador');
 	}else if($data['privilegios']=='tecnico'){
 		header('Location: ../tecnico');
 	}else if($data['privilegios']=='admin-web'){

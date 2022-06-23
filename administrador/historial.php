@@ -6,19 +6,9 @@ if (isset($_SESSION['usuario']))
 { 
 $idu = $_SESSION['usuario']['id_usu'];
 }else{ header('Location: ../../gestor'); }
-//** if (isset($_SESSION['usuario'])) {
-// if($_SESSION['usuario']['privilegios'] != "admin"){
-// header("Location: ../"); }
-// }else{ header('Location: ../'); }
-// $idu = $_SESSION['usuario']['id_usu'];
 
+    include('acceso.php');
 
-    $query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
-    $resultado = mysqli_query($conexion, $query);
-    if($data = mysqli_fetch_array($resultado)){
-
-        $idtecnico = $data['id_tecnico'];    
-    }    
 ini_set('date.timezone','America/Mexico_City');
 $fecha = date('Y');
 

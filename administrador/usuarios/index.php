@@ -15,6 +15,8 @@ if (isset($_SESSION['usuario']))
     $idu = $_SESSION['usuario']['id_usu'];
 }else{ header('Location: ../../gestor'); }
 
+    include('../distroy.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

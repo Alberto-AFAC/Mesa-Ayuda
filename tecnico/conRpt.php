@@ -12,11 +12,8 @@ session_start();
         //** if($_SESSION['usuario']['privilegios'] != "tecnico"){ header("Location: ../");            } }else{
         //     header('Location: ../');
         // }
-        $query = "SELECT * FROM tecnico WHERE id_usu = $id AND baja = 0";
-        $resultado = mysqli_query($conexion, $query);
-        if($data = mysqli_fetch_array($resultado)){
-        $idtecnico = $data['id_tecnico'];    
-        }
+    include('acceso.php');
+
         ini_set('date.timezone','America/Mexico_City');
         $fecha = date('Y');   
        
