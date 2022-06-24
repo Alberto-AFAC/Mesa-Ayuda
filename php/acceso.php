@@ -10,6 +10,9 @@ if (isset($_SESSION['usuario'])){
 $query = "SELECT * FROM tecnico WHERE id_usu = $id AND baja = 0";
 $resultado = mysqli_query($conexion, $query);
 if($data = mysqli_fetch_array($resultado)){
+
+	// echo $data['privilegios'];
+
 	if($data['privilegios']=='admin'){
 		header('Location: ../administrador');
 	}else if($data['privilegios']=='super_admin'){
@@ -17,7 +20,10 @@ if($data = mysqli_fetch_array($resultado)){
 	}else if($data['privilegios']=='tecnico'){
 		header('Location: ../tecnico');
 	}else if($data['privilegios']=='admin-web'){
+	}else{
+	header('Location: ../usuario'); 			
 	}
+
 }else{	
 	header('Location: ../usuario'); 	
 }

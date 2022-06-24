@@ -93,9 +93,9 @@ $idu = $_SESSION['usuario']['id_usu'];
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <!-- <li>
-                            <a href="./"><i class="glyphicon glyphicon-home"></i> Inicio</a>
-                        </li> -->
+                        <li>
+                            <a href="../../gestor/menu"><i style="color:#000000;">.</i> MENÚ PRINCIPAL</a>
+                        </li>
                         <li>
                             <a href="./"><i class="glyphicon glyphicon-home"></i> INICIO<span
                                     class="fa arrow"></span></a>
