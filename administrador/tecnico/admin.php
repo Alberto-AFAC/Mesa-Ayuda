@@ -6,13 +6,13 @@
 // }else{
 // header('Location: ../../');
 // }
-include ("../../../gestor/conexion/conexion.php");
+include ("../../../conexion/conexion.php");
 include("../../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
 
 $query = "SELECT privilegios FROM tecnico
@@ -50,7 +50,7 @@ $idtec = mysqli_fetch_row($result);
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
-    <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/responsive.css">
 
 </head>
 
@@ -135,7 +135,7 @@ $idtec = mysqli_fetch_row($result);
                     <ul class="dropdown-menu dropdown-user">
                     <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                    <li><a href="../../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                    <li><a href="../../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                     SESIÓN</a>
                 </li>
             </ul>

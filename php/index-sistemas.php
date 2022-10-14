@@ -1,30 +1,30 @@
 <script type="text/javascript">
 var dataSet = [
     <?php
-	    // $idtecnico = $_SESSION['usuario']['id_tecnico'];
-	    $query = "SELECT 
+        // $idtecnico = $_SESSION['usuario']['id_tecnico'];
+        $query = "SELECT 
         DATE_FORMAT(reporte.finicio, '%d/%m/%Y') AS iniciotab,
         DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as finaltab,
-		reporte.n_reporte,
-		reporte.finicio, 
-		reporte.ffinal,
-		reporte.estado_rpt,
-		reporte.servicio,
-		reporte.intervencion,
-		reporte.descripcion,
-		reporte.usu_observ,
-		reporte.n_reporte,
-		reporte.falla_interna,
-		reporte.falla_xterna,
-		reporte.observa,
-		reporte.evaluacion,
-		reporte.hinicio,
-		reporte.hfinal,
-		reporte.idequipo,
+        reporte.n_reporte,
+        reporte.finicio, 
+        reporte.ffinal,
+        reporte.estado_rpt,
+        reporte.servicio,
+        reporte.intervencion,
+        reporte.descripcion,
+        reporte.usu_observ,
+        reporte.n_reporte,
+        reporte.falla_interna,
+        reporte.falla_xterna,
+        reporte.observa,
+        reporte.evaluacion,
+        reporte.hinicio,
+        reporte.hfinal,
+        reporte.idequipo,
         n_empleado empleado
-		FROM reporte 
-		WHERE  reporte.idtec = '$idtecnico'";
-	$resultado = mysqli_query($conexion, $query);
+        FROM reporte 
+        WHERE  reporte.idtec = '$idtecnico'";
+    $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
          $sql2="SELECT gstNombr,
@@ -39,15 +39,15 @@ var dataSet = [
            $nemple = $data2['gstNmpld'];
         // COMPARTE DATES WITH DATA IS ZERO
         $hoy = date("y-m-d g:i a"); 
-        $fecha1 = new DateTime($data['finicio']."".$data['hinicio']);
-        $fecha2 = new DateTime($hoy);
+        $fecha1 = new DateTime($hoy);
+        $fecha2 = new DateTime($data['finicio']."".$data['hinicio']);
         $intervalo = $fecha1->diff($fecha2);
-        $total = $intervalo->format('%H hrs %i min');//00 años 0 meses 0 días 08 horas 0 minutos 0 segundos
+        $total = $intervalo->format('%a días %H hrs %i min');//00 años 0 meses 0 días 08 horas 0 minutos 0 segundos
         // COMPARE DATES WITH DATA IS + 1
         $fechafinalizada1 = new DateTime($data['finicio']."".$data['hinicio']);
         $fechafinalizada2 = new DateTime($data['ffinal']."".$data['hfinal']);
         $intervalo = $fechafinalizada1->diff($fechafinalizada2);
-        $totalFinal = $intervalo->format('%H hrs %i min');//00 años 0 meses 0 días 08 horas 0 minutos 0 segundos
+        $totalFinal = $intervalo->format('%a días %H hrs %i min');//00 años 0 meses 0 días 08 horas 0 minutos 0 segundos
 
         if($data['ffinal'] == '0000-00-00' && $data['hfinal'] == '00:00:00'){
             $tiempos = $total;
@@ -67,8 +67,8 @@ var dataSet = [
     $prio = 'NORMAL';
     }
 
-            $finaltab = $data['finaltab'];
-            $iniciotab = $data['iniciotab']; 
+            $finaltab = $data['finaltab'].'-'.$data['hfinal'];
+            $iniciotab = $data['iniciotab'].'-'.$data['hinicio']; 
             $fila = $idtecnico;
             $nombre = $data2['gstNombr'];
             $apellidos = $data2['gstApell']; 
@@ -180,30 +180,30 @@ var tableGenerarReporte = $('#data-table-reporte').DataTable({
 // TABLA PARA REPORTES WEB
 var dataSet = [
     <?php
-	    // $idtecnico = $_SESSION['usuario']['id_tecnico'];
-	    $query = "SELECT 
+        // $idtecnico = $_SESSION['usuario']['id_tecnico'];
+        $query = "SELECT 
         DATE_FORMAT(reporte.finicio, '%d/%m/%Y') AS iniciotab,
         DATE_FORMAT(reporte.ffinal, '%d/%m/%Y') as finaltab,
-		reporte.n_reporte,
-		reporte.finicio, 
-		reporte.ffinal,
-		reporte.estado_rpt,
-		reporte.servicio,
-		reporte.intervencion,
-		reporte.descripcion,
-		reporte.usu_observ,
-		reporte.n_reporte,
-		reporte.falla_interna,
-		reporte.falla_xterna,
-		reporte.observa,
-		reporte.evaluacion,
-		reporte.hinicio,
-		reporte.hfinal,
-		reporte.idequipo,
+        reporte.n_reporte,
+        reporte.finicio, 
+        reporte.ffinal,
+        reporte.estado_rpt,
+        reporte.servicio,
+        reporte.intervencion,
+        reporte.descripcion,
+        reporte.usu_observ,
+        reporte.n_reporte,
+        reporte.falla_interna,
+        reporte.falla_xterna,
+        reporte.observa,
+        reporte.evaluacion,
+        reporte.hinicio,
+        reporte.hfinal,
+        reporte.idequipo,
         n_empleado empleado
-		FROM reporte 
-		WHERE servicio = 'SISTEMAS'";
-	$resultado = mysqli_query($conexion, $query);
+        FROM reporte 
+        WHERE servicio = 'SISTEMAS'";
+    $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
          $sql2="SELECT gstNombr,
@@ -246,8 +246,8 @@ var dataSet = [
     $prio = 'NORMAL';
     }
 
-            $finaltab = $data['finaltab'];
-            $iniciotab = $data['iniciotab']; 
+            $finaltab = $data['finaltab'].'-'.$data['hfinal'];
+            $iniciotab = $data['iniciotab'].'-'.$data['hinicio']; 
             $fila = $idtecnico;
             $nombre = $data2['gstNombr'];
             $apellidos = $data2['gstApell']; 
@@ -374,7 +374,9 @@ var dataSet = [
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
@@ -382,7 +384,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+    $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -413,7 +415,7 @@ var dataSet = [
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -426,7 +428,7 @@ if($data['estado_rpt'] == 'Finalizado'){
         ?>
 
     ["<?php echo $data['año']."-"."SIS-".$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo $data['finicio']?>",
+        "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
@@ -496,7 +498,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+    $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -604,7 +606,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+    $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -712,7 +714,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+    $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];

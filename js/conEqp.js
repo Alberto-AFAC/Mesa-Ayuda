@@ -60,7 +60,7 @@ function reporte() {
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&opcion=registrar';
     
     
-    if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
+    if (sede == '0' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
 
         $("#vacio").toggle("toggled");
         $('#exampleModalCenter').modal('hide');
@@ -142,7 +142,7 @@ function reporte10min() {
 
     datos = 'nempleado=' + nempleado + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&obser=' + obser + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&idequipo=' + idequipo + '&sede=' + sede + '&idTec=' + idTec + '&opcion='+opcion;
 
-    if (sede == '0' || idequipo == '' || nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
+    if (sede == '0' ||  nempleado == '' || servicio == 'x' || intervencion == '0' || descripcion == '0' || obser == '' || solucion == '0' || ultima == '0' || final == '0') {
 
         // if(sede == '0'){
         //    document.getElementById('sede').style.color = "red"; 

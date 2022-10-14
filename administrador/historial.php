@@ -1,11 +1,11 @@
 <?php 
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
     include('acceso.php');
 
@@ -36,7 +36,7 @@ $fecha = date('Y');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
     <!-- CREACIÓN DE BOTONES -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 </head>
 
 <body>
@@ -177,7 +177,7 @@ $fecha = date('Y');
                     <ul class="dropdown-menu dropdown-user">
                         <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../../gestor/conexion/session_cerrar.php"><i
+                        <li><a href="../../conexion/session_cerrar.php"><i
                                     class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>

@@ -66,4 +66,4 @@
     </div>
 </form>  
 
-<script type="text/javascript" src="../../gestor/js/cursos.js"></script>
+<script type="text/javascript" src="../../js/cursos.js"></script>

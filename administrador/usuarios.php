@@ -1,5 +1,5 @@
 <?php
-include ("../../../gestor/conexion/conexion.php");
+include ("../../../conexion/conexion.php");
 include ("../../conexion/conexion.php"); 
 session_start(); 
   $id = $_SESSION['usuario']['id_usu'];
@@ -23,6 +23,6 @@ session_start();
 ?>
 <body>
 
-    <a class="navbar-brand" title="Menú de acceso" href="../../../gestor/menu/">BIENVENIDO - <?php echo $usu[0].' '.$usu[1];?></a>   
+    <a class="navbar-brand" title="Menú de acceso" href="../../../menu/">BIENVENIDO - <?php echo $usu[0].' '.$usu[1];?></a>   
 
 </body>

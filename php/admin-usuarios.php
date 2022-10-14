@@ -33,8 +33,8 @@
             $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-success">'.$ridad.'</a>';
             }else if($ridad=='MEDIA'){
             $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-info">'.$ridad.'</a>';
-            }else if($ridad=='BAJA'){
-            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-warning">'.$ridad.'</a>';
+            }else if($ridad=='NORMAL'){
+            $prio = '<a title="Asignar prioridad" type="button" data-target="#frmDetalles" onclick="datos_prioridad('.$id.')" class="detalle btn btn-default">'.$ridad.'</a>';
             }
 
 

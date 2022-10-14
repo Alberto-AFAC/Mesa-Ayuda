@@ -1,11 +1,11 @@
 <?php  
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
 
 $query = "SELECT * FROM tecnico WHERE id_usu = $idu AND baja = 0";
@@ -65,7 +65,7 @@ unset($_SESSION['consulta']);
 <link rel="stylesheet" href="../dist/sweetAlert2/sweetalert2.min.css">
 <link rel="stylesheet" type="text/css" href="../css/styles.css">
 
-<link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 <style>
 #mostrar_segun_html,
 #mostrar_segun_val {
@@ -78,21 +78,101 @@ display: none;
 </style>
 </head>
 <script>
-function Alertaempleado() {
-fecha = new Date();
-hora = fecha.getHours();
-if (hora >= 18 && hora < 24) {
-texto =
-"<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.</b>";
-}
-if (hora >= 0 && hora < 8) {
-texto =
-"<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.</b>";
-}
-document.getElementById('alerta').innerHTML = texto;
-}
-</script>
+ const festivos = [[1],[24],[21],[],[1,5],[],[],[15],[16],[12],[2,20],[25]];
 
+const diaActu = new Date();
+
+function calculaEntrega(diaActu, diasPactados, festivos) {
+    
+    let diaPropuesto = new Date(diaActu.getFullYear(), diaActu.getMonth(), diaActu.getDate());
+
+    let i = 0;
+        while (diasPactados > 0 ) {
+        let festivo = false;
+        diaPropuesto = new Date(diaActu.getFullYear(), diaActu.getMonth(), diaActu.getDate() + i);
+
+            let m = diaPropuesto.getMonth();
+            let dia = diaPropuesto.getDate();
+
+            for (let d in festivos[m]) {
+                if (dia === festivos[m][d]) {
+                    festivo = true;
+                    break;
+                }
+            } // Fin bucle for
+
+            if (!festivo) {
+                diasPactados--;
+            }
+        i++;
+    } // Fin de bucle while
+
+    // Devolvemos el resultado
+    return diaPropuesto;
+
+} // Fin función
+
+
+const diaEntrega = calculaEntrega(diaActu, 1, festivos);
+    
+let diaVigente = new Date(diaEntrega.getFullYear(), diaEntrega.getMonth(), diaEntrega.getDate());
+
+var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+
+        fecha = new Date();
+
+    dias = diasSemana[diaVigente.getDay()];
+    mes = meses[diaVigente.getMonth()];
+    anio = diaEntrega.getFullYear();
+
+    if(diasSemana[fecha.getDay()]!=dias){
+        let dias = 'Festivo';
+        Alertaempleado(dias);           
+    }else{
+        Alertaempleado(dias);           
+    }
+
+    function Alertaempleado(dias) {
+         fecha = new Date();
+        hora = fecha.getHours();
+
+        if(dias=='Festivo'){
+                texto = "<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por ser día festivo</b>";          
+        }else{
+
+        if(dias=='Viernes'){
+
+            if (hora >= 18 && hora < 24) {
+                texto =
+                "<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el día lunes a partir de las 9 de la mañana..</b>";
+            }
+            if (hora >= 0 && hora < 8) {
+                texto =
+                "<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá a partir de las 9 de la mañana.</b>";
+            }
+
+        }else if(dias=='Sábado' || dias=='Domingo'){
+
+            texto =
+            "<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el día lunes a partir de las 9 de la mañana.</b>";
+
+        }else if(dias=='Lunes' || dias=='Martes' || dias=='Miércoles' || dias=='Jueves'){
+
+            if (hora >= 18 && hora < 24) {
+                texto =
+                "<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá el dia de mañana.</b>";
+            }
+            if (hora >= 0 && hora < 8) {
+                texto =
+                "<b style='color:red;'>Es importante tener en cuenta que nuestros técnicos actualmente no se <br> encuentran disponibles por lo que su solicitud se atenderá a partir de las 9 de la mañana.</b>";
+            }
+
+        }
+    }
+        document.getElementById('alerta').innerHTML = texto;        
+    }
+</script>
 <body onload="Alertaempleado()">
     <div id="wrapper">
         <!-- Navigation -->
@@ -129,7 +209,7 @@ document.getElementById('alerta').innerHTML = texto;
 <a href="#" type="button" data-toggle="modal" data-target="#modalEditar">
     <i class="fa fa-pencil-square-o"></i> ACTUALIZAR
 </a>
-<a href="../../gestor/conexion/cerrar_session.php">
+<a href="../../conexion/cerrar_session.php">
     <i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN
 </a>
                         </li>
@@ -143,7 +223,7 @@ document.getElementById('alerta').innerHTML = texto;
                     <ul class="nav" id="side-menu">
 
                           <li>
-                             <a href="../../gestor/menu"><i style="color:#000000;">.</i> MENÚ PRINCIPAL</a>
+                             <a href="../../menu"><i style="color:#000000;">.</i> MENÚ PRINCIPAL</a>
                           </li>
 
 
@@ -221,7 +301,7 @@ $res = 'NO';
                             <div class="list-group">
                                 <form class="form-horizontal" action="" method="POST" id="ConEquipo"
                                     onsubmit="return reporte(this)">
-                                    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+
 
                                     <div id="div2" style="display: none;">
                                         <!--<div class="radio">
@@ -291,6 +371,7 @@ $res = 'NO';
                                 <input type="radio" name="catch" value="false" id="pregunta2">
                                 <label for="pregunta2">¿Desea reportar otro equipo de cómputo?</label>
                                 </div> -->
+                                    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
                                         <div class="form-group" id="equi_asig">
                                             <div id="equipo"></div>
                                         </div>

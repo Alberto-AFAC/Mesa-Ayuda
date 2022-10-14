@@ -2,7 +2,7 @@
 	include("../conexion/conexion.php");
 
 
-	$query = "SELECT * FROM personal";
+	$query = "SELECT * FROM personal WHERE gstNmpld != 0 ";
 	$resultado = mysqli_query($conexion2, $query);
 
 	if(!$resultado){

@@ -1,10 +1,10 @@
 <?php 
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
 if (isset($_SESSION['usuario'])){ 
 $idu = $_SESSION['usuario']['id_usu'];    
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
     include('acceso.php');
 
@@ -42,7 +42,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <script type="text/javascript" src="../js/funciones.js"></script>
     <script type="text/javascript" src="../js/area.js"></script>
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 </head>
 
 <body>
@@ -80,7 +80,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>
 
-                        <li><a href="../../gestor/conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                        <li><a href="../../conexion/session_cerrar.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>
@@ -94,7 +94,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="../../gestor/menu"><i style="color:#000000;">.</i> MENÚ PRINCIPAL</a>
+                            <a href="../../menu"><i style="color:#000000;">.</i> MENÚ PRINCIPAL</a>
                         </li>
                         <li>
                             <a href="./"><i class="glyphicon glyphicon-home"></i> INICIO<span

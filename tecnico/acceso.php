@@ -5,14 +5,16 @@ $resultado = mysqli_query($conexion, $query);
 if($data = mysqli_fetch_array($resultado)){
 
 $idtecnico = $data['id_tecnico'];    
+$sede = $data['sede'];    
+    
 }
 
 if(!isset($data['privilegios'])){
-header('Location: ../../gestor');
+header('Location: ../../');
 }                
 
 if($data['privilegios']=='admin'){
-header('Location: ../../gestor');
+header('Location: ../../');
 }
 
 

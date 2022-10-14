@@ -7,11 +7,11 @@
     }       
 
     if(!isset($data['privilegios'])){
-        header('Location: ../../../gestor');
+        header('Location: ../../../');
     }                
 
     if($data['privilegios']=='tecnico'){
-        header('Location: ../../../gestor');
+        header('Location: ../../../');
     }
 
 

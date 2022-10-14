@@ -140,7 +140,8 @@ function edtEqpo() {
     var ubicacion = document.getElementById('eubicaeqpo').value;
     var cambio = document.getElementById('cambio').value;
 
-    if (n_empleado == 0) { var asignado = 'designado'; } else { var asignado = 'asignado'; }
+    // if (n_empleado == 0) { var asignado = 'designado'; } else { var asignado = 'asignado'; }
+    if (n_empleado == 0) { var asignado = 'designado'; var n_empleado = 1; } else { var asignado = 'asignado'; }
 
     datos = 'n_empleado=' + n_empleado + '&cambio=' + cambio + '&asignado=' + asignado + '&id_equipo=' + id_equipo + '&num_invntraio=' + num_invntraio + '&marca_cpu=' + marca_cpu + '&serie_cpu=' + serie_cpu + '&memoria_ram=' + memoria_ram + '&procesador=' + procesador + '&velocidad_proc=' + velocidad_proc + '&uni_disc_flax=' + uni_disc_flax + '&disco_duro=' + disco_duro + '&serie_teclado=' + serie_teclado + '&serie_monitor=' + serie_monitor + '&version_windows=' + version_windows + '&version_office=' + version_office + '&serie_mouse=' + serie_mouse + '&direccion_ip=' + direccion_ip + '&nombre_equipo=' + nombre_equipo + '&servicio_internet=' + servicio_internet + '&tipo_equipo=' + tipo_equipo + '&ubicacion=' + ubicacion + '&opcion=actualizar';
 

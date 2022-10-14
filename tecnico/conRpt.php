@@ -1,11 +1,11 @@
 <?php session_start();
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
   if (isset($_SESSION['usuario'])) 
     { 
       $id = $_SESSION['usuario']['id_usu'];
-    }else{ header('Location: ../../gestor'); }
+    }else{ header('Location: ../../'); }
 //si la variable ssesion existe realizara las siguiente evaluacion 
     //** if (isset($_SESSION['usuario'])) {
         //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
@@ -60,7 +60,7 @@ session_start();
     <script type="text/javascript" src="../js/atdRpt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!--     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">    
+    <link rel="stylesheet" type="text/css" href="../../css/responsive.css">    
 
 </head>
 
@@ -96,7 +96,7 @@ session_start();
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>-
-                        <li><a href="../../gestor/conexion/cerrar_session.php"><i
+                        <li><a href="../../conexion/cerrar_session.php"><i
                                     class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
@@ -158,7 +158,7 @@ session_start();
                                     <img src="../img/conocimiento.png" width="60px" alt="Bueno" class="img-fluid">
                                 </div>
                                 <?php 
-	                            //*** $idtecnico = $_SESSION['usuario']['id_tecnico'];
+                                //*** $idtecnico = $_SESSION['usuario']['id_tecnico'];
                                 $query ="SELECT *
                                 FROM
                                 reporte
@@ -770,7 +770,7 @@ session_start();
 // TABLA DE REPORTE PARA USUARIOS QUE ATIENDEN SISTEMAS
 var dataSet = [
     <?php
-	    //** $idtecnico = $_SESSION['usuario']['id_tecnico'];
+        //** $idtecnico = $_SESSION['usuario']['id_tecnico'];
         $query = "SELECT 
         reporte.n_reporte,
         reporte.finicio comparacioni,
@@ -810,8 +810,8 @@ var dataSet = [
             $apellidos = $data2['gstApell']; 
             $servicio= $data['servicio'];
             $extension = $data2['gstExTel'];
-            $final = $data['ftermino'];
-            $inicio = $data['finicio'];
+            $final = $data['ftermino'].'-'.$data['hfinal'];
+            $inicio = $data['finicio'].'-'.$data['hinicio'];
 
             if($servicio=='SISTEMAS'){
                 $tipo = 'SIS-';
@@ -909,7 +909,7 @@ var tableGenerarReporte = $('#data-table-consulta').DataTable({
 // TABLE QUE GENERAN LOS REPORTES EN WEB
 var dataSet = [
     <?php
-	    //** $idtecnico = $_SESSION['usuario']['id_tecnico'];
+        //** $idtecnico = $_SESSION['usuario']['id_tecnico'];
         $query = "SELECT 
         reporte.n_reporte,
         reporte.finicio comparacioni,
@@ -955,8 +955,8 @@ var dataSet = [
             $problema= $data['solucion'];
             $usuarioObsr = $data['usu_observ'];
             $extension = $data2['gstExTel'];
-            $final = $data['ftermino'];
-            $inicio = $data['finicio'];
+            $final = $data['ftermino'].'-'.$data['hfinal'];
+            $inicio = $data['finicio'].'-'.$data['hinicio'];
 
             if($servicio=='SISTEMAS'){
                 $tipo = 'SIS-';                    
@@ -1152,13 +1152,15 @@ $(document).ready(function () {
          evaluacion,
          estado_rpt,
          id_usu,
-         servicio
+         servicio,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS' 
      ORDER BY
          n_reporte DESC";
-	$resultado4 = mysqli_query($conexion, $query1);
+    $resultado4 = mysqli_query($conexion, $query1);
         while($data5 = mysqli_fetch_array($resultado4)){
             $idempleado=$data5['empleado'];
             $idper = $data5['id_usu'];
@@ -1189,7 +1191,7 @@ $(document).ready(function () {
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data5['ffinal'];
+                $NA = $data5['ffinal'].'-'.$data5['hfinal'];
             };
             if($data5['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -1208,7 +1210,7 @@ if($data5['estado_rpt'] == 'Finalizado'){
 
         ["<?php echo $data5['año']."-"."$folio".$data5['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-            "<?php echo $data5['finicio']?>",
+            "<?php echo $data5['finicio'].'-'.$data5['hinicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>"],
 
         <?php } ?>
@@ -1265,13 +1267,15 @@ if($data5['estado_rpt'] == 'Finalizado'){
          evaluacion,
          estado_rpt,
          id_usu,
-         servicio
+         servicio,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS' 
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+    $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -1301,7 +1305,7 @@ if($data5['estado_rpt'] == 'Finalizado'){
             if($data['ffinal'] == '0000-00-00'){
                 $NA = "Sin fecha";
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -1320,7 +1324,7 @@ if($data5['estado_rpt'] == 'Finalizado'){
 
         ["<?php echo $data['año']."-"."$folio".$data['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-            "<?php echo $data['finicio']?>",
+            "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
             "aqui va"],
@@ -1376,13 +1380,15 @@ if($data5['estado_rpt'] == 'Finalizado'){
          evaluacion,
          estado_rpt,
          id_usu,
-         servicio
+         servicio,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS'
          ORDER BY
          n_reporte DESC";
-	   $resultado = mysqli_query($conexion, $query1);
+       $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -1413,7 +1419,7 @@ if($data5['estado_rpt'] == 'Finalizado'){
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hinicio'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -1432,7 +1438,7 @@ if($data5['estado_rpt'] == 'Finalizado'){
 
         ["<?php echo $data['año']."-"."$folio".$data['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-            "<?php echo $data['finicio']?>",
+            "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
             "aqui va"],
@@ -1489,13 +1495,15 @@ if($data5['estado_rpt'] == 'Finalizado'){
          evaluacion,
          estado_rpt,
          id_usu,
-         servicio
+         servicio,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio = 'SISTEMAS' 
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+    $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -1526,7 +1534,7 @@ if($data5['estado_rpt'] == 'Finalizado'){
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -1545,7 +1553,7 @@ if($data['estado_rpt'] == 'Cancelado'){
 
         ["<?php echo $data['año']."-"."$folio".$data['n_reporte']?>",
             "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-            "<?php echo $data['finicio']?>",
+            "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
             "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
             "aqui va"],

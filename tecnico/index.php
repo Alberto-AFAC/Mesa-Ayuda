@@ -1,11 +1,11 @@
 <?php 
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
   if (isset($_SESSION['usuario'])) 
     { 
       $id = $_SESSION['usuario']['id_usu'];
-    }else{ header('Location: ../../gestor'); }
+    }else{ header('Location: ../../'); }
 //si la variable ssesion existe realizara las siguiente evaluacion 
 //*** if (isset($_SESSION['usuario'])) {
 //si se ha logeado evaluamos si el usuario que aya ingresado intenta acceder a este directorio no es de tipo administrador, no le es permitido el acceso .. si tipo usuario es distinto de admin , entonces no tiene nada que hacer en este directorio 
@@ -59,7 +59,7 @@ session_start();
     <link href="../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">    
+    <link rel="stylesheet" type="text/css" href="../../css/responsive.css">    
 </head>
 
 <body>
@@ -94,7 +94,7 @@ session_start();
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>-
-                        <li><a href="../../gestor/conexion/cerrar_session.php"><i
+                        <li><a href="../../conexion/cerrar_session.php"><i
                                     class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
@@ -110,7 +110,7 @@ session_start();
                     <ul class="nav" id="side-menu">
 
                           <li>
-                             <a href="../../gestor/menu"><i style="color:#000000;">.</i> MENÚ PRINCIPAL</a>
+                             <a href="../../menu"><i style="color:#000000;">.</i> MENÚ PRINCIPAL</a>
                           </li>
 
                         <li>
@@ -369,7 +369,11 @@ session_start();
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <label>SEDE</label>
+                                    <?php if($sede=='WEB'){ ?>    
                                     <input id="sede" name="sede" type="text" class="form-control">
+                                    <?php }else{ ?>
+                                    <input id="sede" name="sede" type="text" class="form-control"  disabled="">
+                                    <?php } ?>
                                 </div>
 
                             </div>

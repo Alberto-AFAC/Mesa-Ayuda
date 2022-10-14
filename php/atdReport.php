@@ -1,11 +1,11 @@
 <?php
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
   if (isset($_SESSION['usuario'])) 
     { 
       $id = $_SESSION['usuario']['id_usu'];
-    }else{ header('Location: ../../gestor'); }
+    }else{ header('Location: ../../'); }
 	//** $idtecnico = $_SESSION['usuario']['id_tecnico'];
 
 	$query = "SELECT * FROM tecnico WHERE id_usu = $id AND baja = 0";

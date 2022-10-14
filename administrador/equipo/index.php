@@ -1,11 +1,11 @@
 <?php session_start();
-include ("../../../gestor/conexion/conexion.php");
+include ("../../../conexion/conexion.php");
 include("../../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
     include('../distroy.php');
  
@@ -21,7 +21,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-<link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="../../../css/responsive.css">
     <title>Sistema</title>
 
 <!--     
@@ -124,7 +124,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                     <ul class="dropdown-menu dropdown-user">
                     <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../../../gestor/conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+                        <li><a href="../../../conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -224,7 +224,7 @@ while ($per = mysqli_fetch_row($resultados)) {
          $ttlip++;
 }
 
-$query="SELECT num_invntraio, count(*) AS ttlip FROM equipo WHERE estado = 0 GROUP BY num_invntraio HAVING COUNT(*)>1";
+$query="SELECT num_invntraio, count(*) AS ttlip FROM equipo WHERE num_invntraio != 0 AND estado = 0 GROUP BY num_invntraio HAVING COUNT(*)>1";
  $resultados = mysqli_query($conexion,$query);
 $ttlin = 0;
 while ($per = mysqli_fetch_row($resultados)) {
@@ -356,7 +356,7 @@ NÚMERO DE INVENTARIOS DUPLICADOS </b></h4>
 
 <?php 
 
-$query="SELECT num_invntraio,direccion_ip, count(*) AS ttlip,serie_cpu FROM equipo WHERE estado = 0 GROUP BY num_invntraio HAVING COUNT(*)>1";
+$query="SELECT num_invntraio,direccion_ip, count(*) AS ttlip,serie_cpu FROM equipo WHERE num_invntraio !=0 AND estado = 0 GROUP BY num_invntraio HAVING COUNT(*)>1";
  $resultados = mysqli_query($conexion,$query);
 $n=1;
 while ($per = mysqli_fetch_row($resultados)) {
@@ -437,7 +437,7 @@ AGREGAR DATOS DEL EQUIPO </b></h4>
                     <label>TIPO DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" id="tipo_equipo" name="tipo_equipo" type="text" data-live-search="true">
                     <option value="0">SELECCIONE...</option> 
-                    <option value="LAP TOP ">LAPTOP </option>
+                    <option value="LAPTOP">LAPTOP </option>
                     <option value="ESCRITORIO">ESCRITORIO</option>
                     </select>
                     </div>
@@ -661,7 +661,7 @@ EDITAR DATOS DEL EQUIPO </b></h4>
                     <div class="col-sm-4">
                     <label>TIPO DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" id="etipo_equipo" name="etipo_equipo" type="text" data-live-search="true">
-                    <option value="LAP TOP ">LAPTOP</option>
+                    <option value="LAPTOP">LAPTOP</option>
                     <option value="ESCRITORIO">ESCRITORIO</option>
                     </select>
                     </div>

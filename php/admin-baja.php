@@ -4,7 +4,7 @@
         <?php
          $query = "SELECT * FROM personal 
           
-          WHERE personal.estado = 1 && gstIdper != 0 ORDER BY gstIdper ASC";
+          WHERE personal.estado = 1 AND gstIdper != 0 AND gstNmpld != 0 ORDER BY gstIdper ASC";
              $resultado = mysqli_query($conexion2, $query);
         while($data = mysqli_fetch_array($resultado)){
            $id = $data['gstIdper'];

@@ -47,7 +47,9 @@ $(document).ready(function() {
         YEAR(finicio) AS año,
         evaluacion,
         estado_rpt,
-        id_usu 
+        id_usu,
+        hinicio,
+        hfinal 
         FROM reporte
         INNER JOIN tecnico ON idtec = id_tecnico 
         WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
@@ -83,8 +85,8 @@ $(document).ready(function() {
         ?>
 
         ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>",
-            "<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>", "<?php echo  $data['finicio']?>",
-            "<?php echo  $data['ffinal']?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
+            "<?php echo  $data2['gstNombr']." ".$data2['gstApell']?>", "<?php echo  $data['finicio'].'-'.$data['hinicio']?>",
+            "<?php echo  $data['ffinal'].'-'.$data['hfinal']?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
             "<?php if($data['estado_rpt'] == 'Finalizado') {
                 echo "<a href='#' type='button' data-toggle='modal' data-target='#modalAtndr' class='detalle btn btn-default' onclick='atender({$data['n_reporte']})' style='width:100%;font-size: 12px;'>FINALIZADO</a>";
             }else if($data['estado_rpt'] == 'Cancelado'){
@@ -256,7 +258,7 @@ var piechar = new Chart(document.getElementById("piechart-licencias"), {
 
 <?php 
             $query = "SELECT
-       	    COUNT( CASE WHEN servicio = 'COMPUTO' THEN 1 END ) AS COMPUTOPRINCIPAL,
+            COUNT( CASE WHEN servicio = 'COMPUTO' THEN 1 END ) AS COMPUTOPRINCIPAL,
             COUNT( CASE WHEN intervencion = 'ESCRITORIO' THEN 1 END ) AS INVERVENCIONE,
             COUNT( CASE WHEN intervencion = 'LAPTOP' THEN 1 END ) AS INVERVENCIONL,
             COUNT( CASE WHEN intervencion = 'TABLETA' THEN 1 END ) AS INVERVENCIONT
@@ -412,8 +414,3 @@ function evaluaciont(principal) {
     alert(principal);
 }
 </script>
-
-
-
-
-

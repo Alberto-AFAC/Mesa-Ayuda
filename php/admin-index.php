@@ -9,16 +9,18 @@ var dataSet = [
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio !='SISTEMAS'
-        --  WHERE 	MONTH ( finicio ) = MONTH (
+        --  WHERE   MONTH ( finicio ) = MONTH (
         --  CURRENT_DATE ()) 
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+  $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -51,7 +53,7 @@ var dataSet = [
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -76,7 +78,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
     ["<?php echo 'TEC-'.$data['n_reporte']?>", "<?php echo $prio ?>",
         "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+        "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php if($data['estado_rpt'] == 'Por atender'){
@@ -99,7 +101,7 @@ if($data['estado_rpt'] == 'Por atender'){
 
     ["<?php echo 'TEC-'.$data['n_reporte']?>", "<?php echo $prio ?>",
         "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio']?>",
+        "<?php echo  $data2['gstExTel']?>", "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "<?php 
@@ -160,22 +162,22 @@ var tableGenerarReporte = $('#data-table-administrador').DataTable({
 var dataSet = [
     <?php
          $query1 = "SELECT
-                    	id_tecnico,
-                    	id_usu,
-                    	reporte.idtec,
-                    	reporte.n_reporte,
+                      id_tecnico,
+                      id_usu,
+                      reporte.idtec,
+                      reporte.n_reporte,
                         sede
                         
                     FROM
-                    	reporte
-                    	INNER JOIN tecnico ON idtec = id_tecnico
-                    	INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
+                      reporte
+                      INNER JOIN tecnico ON idtec = id_tecnico
+                      INNER JOIN evaluacion ON evaluacion.id_reporte = reporte.n_reporte
                     WHERE
-                    	MONTH ( finicio ) = MONTH (
-                    	CURRENT_DATE ()) 
+                      MONTH ( finicio ) = MONTH (
+                      CURRENT_DATE ()) 
                     GROUP BY
-                    	id_usu";
-	$resultado = mysqli_query($conexion, $query1);
+                      id_usu";
+  $resultado = mysqli_query($conexion, $query1);
     $contadorPersonas = 0;
         while($data = mysqli_fetch_array($resultado)){
             
@@ -281,7 +283,9 @@ var dataSet = [
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
@@ -289,7 +293,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+  $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -320,7 +324,7 @@ var dataSet = [
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -333,7 +337,7 @@ if($data['estado_rpt'] == 'Finalizado'){
         ?>
 
     ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo $data['finicio']?>",
+        "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
@@ -398,7 +402,9 @@ var dataSet = [
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
@@ -406,7 +412,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+  $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -437,7 +443,7 @@ var dataSet = [
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -450,7 +456,7 @@ if($data['estado_rpt'] == 'Por atender'){
         ?>
 
     ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo $data['finicio']?>",
+        "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
@@ -509,7 +515,9 @@ var dataSet = [
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
@@ -517,7 +525,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+  $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -548,7 +556,7 @@ var dataSet = [
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -561,7 +569,7 @@ if($data['estado_rpt'] == 'Pendiente'){
         ?>
 
     ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo $data['finicio']?>",
+        "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],
@@ -621,7 +629,9 @@ var dataSet = [
         YEAR(finicio) AS año,
          evaluacion,
          estado_rpt,
-         id_usu
+         id_usu,
+         hinicio,
+         hfinal
          FROM reporte
          INNER JOIN tecnico ON idtec = id_tecnico 
          WHERE servicio != 'SISTEMAS' AND MONTH ( finicio ) = MONTH (
@@ -629,7 +639,7 @@ var dataSet = [
     
      ORDER BY
          n_reporte DESC";
-	$resultado = mysqli_query($conexion, $query1);
+  $resultado = mysqli_query($conexion, $query1);
         while($data = mysqli_fetch_array($resultado)){
             $idempleado=$data['empleado'];
             $idper = $data['id_usu'];
@@ -660,7 +670,7 @@ var dataSet = [
                 $NA = "Sin fecha";
 
             } else {
-                $NA = $data['ffinal'];
+                $NA = $data['ffinal'].'-'.$data['hfinal'];
             };
             if($data['evaluacion'] == '0'){
                 $eva = "SIN EVALUAR";
@@ -673,7 +683,7 @@ if($data['estado_rpt'] == 'Cancelado'){
         ?>
 
     ["<?php echo $data['año']."-".'TEC-'.$data['n_reporte']?>", "<?php echo  $data2['gstNombr'].' '.$data2['gstApell']?>",
-        "<?php echo $data['finicio']?>",
+        "<?php echo $data['finicio'].'-'.$data['hinicio']?>",
         "<?php echo $NA?>", "<?php echo  $data3['gstNombr'].' '.$data3['gstApell']?>",
 
         "aqui va"],

@@ -1,11 +1,11 @@
 <?php session_start();
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
     include('acceso.php');
     

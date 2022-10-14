@@ -40,6 +40,13 @@
        $id = $data['gstIdper'];
        $nombre = $data['gstNombr'].' '.$data['gstApell'];
 
+        if($data['estado']==1){
+        $nombre = '<p style="color:red;">CONFIRME BAJA DE TÉCNICO -></p>'.$data['gstNombr'].' '.$data['gstApell'];
+        }else{
+        $nombre = $data['gstNombr'].' '.$data['gstApell'];
+        }
+
+
        if($activo==0){
 
        ?>

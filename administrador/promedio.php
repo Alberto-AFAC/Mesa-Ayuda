@@ -1,11 +1,11 @@
 <?php session_start();
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
     
     include('acceso.php');
 
@@ -91,7 +91,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>-
-                        <li><a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                        <li><a href="../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>

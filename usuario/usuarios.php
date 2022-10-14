@@ -1,5 +1,5 @@
 <?php
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php");
 session_start(); 
   $id = $_SESSION['usuario']['id_usu'];
@@ -22,5 +22,5 @@ session_start();
         $result = mysqli_query($conexion,$query);
         $usu = mysqli_fetch_row($result);*/
 ?>
-<a class="navbar-brand inhabilitado" title="Menú de acceso" href="../../gestor/menu/">BIENVENIDO - <?php echo $usu[0].''.$usu[1];?></a>
-<a class="navbar-brand habilitado" href="../../gestor/menu/"><?php echo $usu[0].''.$usu[1];?></a>
+<a class="navbar-brand inhabilitado" title="Menú de acceso" href="../../menu/">BIENVENIDO - <?php echo $usu[0].''.$usu[1];?></a>
+<a class="navbar-brand habilitado" href="../../menu/"><?php echo $usu[0].''.$usu[1];?></a>

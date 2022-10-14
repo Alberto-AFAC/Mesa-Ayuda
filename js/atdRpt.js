@@ -401,12 +401,13 @@ function personal(n_empleado){
 
 	    datos = servicio + '*' + intervencion + '*' + descripcion + '*' + falla_interna + '*' + falla_xterna + '*' + estado_rpt + '*' + rspst + '*' + solucion + '*' + ultima + '*' + final + '*' + sede;
 	    //alert(datos);
-	    if (nreporte == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || solucion == '' || ultima == '' || final == '' || falla_interna == '' || estado_rpt == '' || sede == '') {
+	    if (nreporte == '' || servicio == '0' || intervencion == '0' || descripcion == '0' || solucion == '' || ultima == '' || final == '' || falla_interna == '' || estado_rpt == '') {
 	        $("#vacios").toggle("toggled");
 	        setTimeout(function() {
 	            $('#vacios').toggle('toggled');
 	        }, 4000);
 	        return;
+	        
 	    } else {
 	        $.ajax({
 	            url: '../php/atdRptFnl.php',
@@ -414,6 +415,8 @@ function personal(n_empleado){
 	            data: 'nreporte=' + nreporte + '&servicio=' + servicio + '&intervencion=' + intervencion + '&descripcion=' + descripcion + '&solucion=' + solucion + '&ultima=' + ultima + '&final=' + final + '&falla_interna=' + falla_interna + '&falla_xterna=' + falla_xterna + '&estado_rpt=' + estado_rpt + '&rspst=' + rspst + '&sede=' + sede +'&opcion=atender'
 	        }).done(function(respuesta) {
 	            console.log(respuesta);
+
+//            alert(respuesta);
 
 	            if (respuesta == 'Por atender') {
 	                $("#pndnt").toggle("toggled");

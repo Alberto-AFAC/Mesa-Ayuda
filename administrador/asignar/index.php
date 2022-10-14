@@ -1,11 +1,11 @@
 <?php session_start();
-include ("../../../gestor/conexion/conexion.php");
+include ("../../../conexion/conexion.php");
 include("../../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
  
      
 ?>
@@ -39,7 +39,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
     <script src="../../js/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="../../js/equipo.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/responsive.css">
 
 
 </head>
@@ -123,7 +123,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                     <ul class="dropdown-menu dropdown-user">
                     <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                        <li><a href="../../../gestor/conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+                        <li><a href="../../../conexion/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -324,7 +324,7 @@ Agregar datos del  equipo </h4>
                     <label>TIPO DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" id="tipo_equipo" name="tipo_equipo" type="text" data-live-search="true">
                     <option value="0">SELECCIONE...</option> 
-                    <option value="LAP TOP ">LAPTOP </option>
+                    <option value="LAPTOP">LAPTOP </option>
                     <option value="ESCRITORIO">ESCRITORIO</option>
                     </select>
                     </div>
@@ -429,18 +429,19 @@ Agregar datos del  equipo </h4>
                     </div>
                     </div>
 
-
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="agrEqpo();">ACEPTAR</button>
-                    </div>
-                    <b><p class="alert alert-info text-center padding error" id="danger">Este equipo, existe en la base de datos </p></b>
+                    <button type="button" id="button" class="btn btn-green" onclick="agrEqpo();">ACEPTAR</button>
 
-                    <b><p class="alert alert-success text-center padding exito" id="success">¡Se agregaron los datos con éxito!</p></b>
+                    <button type="button" id="button" class="btn btn-default" onclick="location.href='./'" >CERRAR</button>
+                                        </div>
+                    <b><p style="width: 500px;" class="alert alert-info text-center padding error" id="danger">Este equipo, existe en la base de datos </p></b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
-                    </div>
+                    <b><p style="width: 500px;" class="alert alert-success text-center padding exito" id="success">¡Se agregaron los datos con éxito!</p></b>
 
+                    <b><p style="width: 500px;" class="alert alert-warning text-center padding aviso" id="empty">Es necesario agregar los datos que se solicitan </p></b>
+                    </div>                    
+                    
             </div>            
             </div>
             </div>
@@ -548,7 +549,7 @@ EDITAR DATOS DEL EQUIPO </b></h4>
                     <div class="col-sm-4">
                     <label>TIPO DEL EQUIPO</label>
                     <select  class="form-control" class="selectpicker" id="etipo_equipo" name="etipo_equipo" type="text" data-live-search="true">
-                    <option value="LAP TOP ">LAPTOP</option>
+                    <option value="LAPTOP">LAPTOP</option>
                     <option value="ESCRITORIO">ESCRITORIO</option>
                     </select>
                     </div>
@@ -649,13 +650,17 @@ EDITAR DATOS DEL EQUIPO </b></h4>
 
                     <div class="form-group"><br>
                     <div class="col-sm-offset-0 col-sm-5">
-                    <button type="button" id="button" class="btn btn-green btn-lg" onclick="edtEqpo();">Aceptar</button>
+                    <button type="button" id="button" class="btn btn-green" onclick="edtEqpo();">ACEPTAR</button>
+
+
+                    <button type="button" id="button" class="btn btn-default" onclick="location.href='./'" >CERRAR</button>
+
                     </div>
-                    <b><p class="alert alert-danger text-center padding error" id="danger1">Error al agregar datos del equipo </p></b>
+                    <b><p style="width: 500px" class="alert alert-danger text-center padding error" id="danger1">Error al agregar datos del equipo </p></b>
 
-                    <b><p class="alert alert-success text-center padding exito" id="success1">¡Se actualizaron los datos del equipo con éxito! </p></b>
+                    <b><p style="width: 500px" class="alert alert-success text-center padding exito" id="success1">¡Se actualizaron los datos del equipo con éxito! </p></b>
 
-                    <b><p class="alert alert-warning text-center padding aviso" id="empty1">Es necesario agregar los datos que se solicitan </p></b>
+                    <b><p style="width: 500px" class="alert alert-warning text-center padding aviso" id="empty1">Es necesario agregar los datos que se solicitan </p></b>
                     </div>
 
             </div>            

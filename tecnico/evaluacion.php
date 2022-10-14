@@ -1,11 +1,11 @@
 <?php session_start();
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
   if (isset($_SESSION['usuario'])) 
     { 
       $id = $_SESSION['usuario']['id_usu'];
-    }else{ header('Location: ../../gestor'); }
+    }else{ header('Location: ../../'); }
 // if (isset($_SESSION['usuario'])) {
 // if($_SESSION['usuario']['privilegios'] != "tecnico"){
 // header("Location: ../");
@@ -59,7 +59,7 @@ session_start();
 
     <script type="text/javascript" src="../js/atdRpt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 
 </head>
 
@@ -95,7 +95,7 @@ session_start();
                         <li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i
                                     class="fa fa-pencil-square-o"></i> ACTUALIZAR</a>
                         </li>-
-                        <li><a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                        <li><a href="../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                                 SESIÓN</a>
                         </li>
                     </ul>

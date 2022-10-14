@@ -6,13 +6,13 @@
 // }else{
 // header('Location: ../../');
 // }
-include ("../../../gestor/conexion/conexion.php");
+include ("../../../conexion/conexion.php");
 include("../../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
 $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
 
 // $query = "SELECT privilegios FROM tecnico
@@ -49,7 +49,7 @@ $idu = $_SESSION['usuario']['id_usu'];
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
-    <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/responsive.css">
 </head>
 
 <body>
@@ -133,7 +133,7 @@ $idu = $_SESSION['usuario']['id_usu'];
                     <ul class="dropdown-menu dropdown-user">
                     <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
                     </li>-->
-                    <li><a href="../../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
+                    <li><a href="../../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR
                     SESIÓN</a>
                 </li>
             </ul>
@@ -425,6 +425,10 @@ $idu = $_SESSION['usuario']['id_usu'];
                     <option value="LICENCIAS">LICENCIAS</option>
                     <option value="TERMINAL 1">TERMINAL 1</option>
                     <option value="TERMINAL 2">TERMINAL 2</option>
+                    <?php if($data['privilegios']=='super_admin'){ ?>
+                    <option value="WEB">PERSONAL WEB</option>
+                    <?php } ?>
+
                 </select>
             </div>
         </div>
@@ -499,6 +503,10 @@ $idu = $_SESSION['usuario']['id_usu'];
                             name="aprivilg" id="aprivilg" type="text" data-live-search="true">                         
                             <option value="tecnico">TÉCNICO</option>
                             <option value="admin">ADMINISTRADOR</option>
+                            <?php if($data['privilegios']=='super_admin'){ ?>
+                            <option value="super_admin" disabled="">SUPER ADMINISTRADOR</option>
+                            <?php } ?>
+
                         </select>
                     </div>
 
@@ -555,6 +563,10 @@ $idu = $_SESSION['usuario']['id_usu'];
                     <option value="LICENCIAS">LICENCIAS</option>
                     <option value="TERMINAL 1">TERMINAL 1</option>
                     <option value="TERMINAL 2">TERMINAL 2</option>
+                    <?php if($data['privilegios']=='super_admin'){ ?>
+                    <option value="WEB">PERSONAL WEB</option>
+                    <?php } ?>
+
                 </select>
             </div>
         </div>

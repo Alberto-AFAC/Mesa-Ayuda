@@ -7,13 +7,13 @@
 // }else{
 // header('Location: ../../');
 // }
-include ("../../../gestor/conexion/conexion.php");
+include ("../../../conexion/conexion.php");
 include("../../conexion/conexion.php"); 
 session_start();
 if (isset($_SESSION['usuario'])) 
 { 
     $idu = $_SESSION['usuario']['id_usu'];
-}else{ header('Location: ../../gestor'); }
+}else{ header('Location: ../../'); }
 
     include('../distroy.php');
 
@@ -42,7 +42,7 @@ if (isset($_SESSION['usuario']))
     <link href="../../boots/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../datas/dataTables.css">
-    <link rel="stylesheet" type="text/css" href="../../../gestor/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/responsive.css">
 </head>
 
 <body>
@@ -124,7 +124,7 @@ if (isset($_SESSION['usuario']))
                     <ul class="dropdown-menu dropdown-user">
 <!--<li><a href="#" type="button" data-toggle="modal" data-target="#modalEditar"><i class="fa fa-pencil-square-o"></i> Actualizar</a>
 </li>-->
-<li><a href="../../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+<li><a href="../../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
 </li>
 </ul>
 <!-- /.dropdown-user -->
@@ -358,9 +358,9 @@ if (isset($_SESSION['usuario']))
                                     <select style="width: 100%" class="form-control" class="selectpicker"
                                     name="prioridad" id="prioridad" type="text" data-live-search="true">
                                     <option value="0" selected>SELECCIONE...</option>
-<!--                     <option value="BAJA">BAJA</option>
--->                    <option value="MEDIA">MEDIA</option>
-<option value="ALTA">ALTA</option>
+                            <option value="NORMAL">NORMAL</option>
+                            <option value="MEDIA">MEDIA</option>
+                            <option value="ALTA">ALTA</option>
 </select>
 </div>
 </div>

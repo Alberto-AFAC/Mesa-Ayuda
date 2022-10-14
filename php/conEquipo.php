@@ -1,5 +1,5 @@
 <?php
-	include ("../../gestor/conexion/conexion.php");
+	include ("../../conexion/conexion.php");
 	include("../conexion/conexion.php");
 	session_start();
 	$id = $_SESSION['usuario']['id_usu'];

@@ -1,11 +1,11 @@
 <?php  
-include ("../../gestor/conexion/conexion.php");
+include ("../../conexion/conexion.php");
 include ("../conexion/conexion.php"); 
 session_start(); 
   if (isset($_SESSION['usuario'])) 
     { 
       $id = $_SESSION['usuario']['id_usu'];
-    }else{ header('Location: ../../gestor'); }
+    }else{ header('Location: ../../'); }
 
         $query = "SELECT gstNombr,gstApell,gstNmpld FROM personal
             WHERE gstIdper = $id ";
@@ -40,7 +40,7 @@ unset($_SESSION['consulta']);
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
    <link rel="stylesheet" type="text/css" href="../datas/dataTables.css">
-   <link rel="stylesheet" type="text/css" href="../../gestor/css/responsive.css">
+   <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
 </head>
 <body>
     <div id="wrapper">
@@ -59,7 +59,7 @@ unset($_SESSION['consulta']);
                     </a>
                     <ul class="dropdown-menu dropdown-user">                   
                         <li>
-                            <a href="../../gestor/conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
+                            <a href="../../conexion/cerrar_session.php"><i class="fa fa-sign-out fa-fw"></i>CERRAR SESIÓN</a>
                         </li>
                     </ul>
                 </li>
@@ -350,7 +350,7 @@ unset($_SESSION['consulta']);
     <script type="text/javascript">
         var dataSet = [
         <?php
-	     // $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
+         // $numEmp = $_SESSION['gstNmpld']['gstNmpld'];
          $query = "SELECT 
             tecnico.id_usu,
             reporte.n_reporte,
@@ -374,8 +374,8 @@ unset($_SESSION['consulta']);
              $resultado = mysqli_query($conexion, $query);
         while($data = mysqli_fetch_array($resultado)){
             $fila = $data['n_reporte'];
-            $final = $data['ftermino'];
-            $inicio = $data['finicio'];
+            $final = $data['ftermino'].'-'.$data['hfinal'];
+            $inicio = $data['finicio'].'-'.$data['hinicio'];
             $idtecnico=$data['id_usu'];
             $sql2="SELECT gstNmpld,
                           gstNombr,                          
